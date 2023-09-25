@@ -1,0 +1,360 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('media/images/DJI_0942_1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0px;
+}
+
+.start-container {
+  height: 98vh;
+  width: 98vw;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header {
+  top: 0px;
+  font-size: 24px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  position: relative;
+  transition: top 0.5s cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+.section {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  align-items: flex-start;
+  position: relative;
+  left: 20px;
+  height: 80%;
+  transition: left 0.5s ease-out;
+  top: 0px;
+}
+
+.sidebar {
+  width: 30%;
+  padding: 20px;
+}
+
+.content {
+  height: 80%;
+  padding: 20px;
+  border: 1px solid;
+  border-color: #a39e9e;
+  border-radius: 10px;
+  overflow: auto;
+}
+
+.scenarios {
+  font-size: 18px;
+  text-align: left;
+}
+
+.scenario-box {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.scenario-box:hover {
+  background-color: rgba(106, 212, 132, 0.5);
+  transition: background-color 0.3s ease;
+}
+
+.scenario-box-clicked {
+  cursor: default;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  border-radius: 10px;
+  background-color: rgba(106, 212, 132, 1);
+}
+
+.title-box {
+  font-size: 26px;
+}
+
+.scenarion-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.learn-button,
+.control-button {
+  background-color: rgba(0, 123, 255, 0.3);
+  color: rgba(240, 240, 240, 0.3);
+  padding: 10px 20px;
+  cursor: default;
+  transition: background-color 0.3s ease;
+  margin-left: 50px;
+  margin-right: 50px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.scenarion-button-active {
+  background-color: rgba(0, 123, 255, 0.8);
+  color: rgba(240, 240, 240, 0.8);
+}
+
+.scenarion-button-active:hover {
+  background-color: rgba(0, 123, 255, 1);
+  color: rgba(240, 240, 240, 1);
+}
+
+.text-box p,ul{
+  text-align: justify;
+}
+.info-page{
+  display: none;
+}
+.info-page-active{
+  display: block;
+}
+.info-buttons {
+  display: flex;
+  padding: 20px;
+}
+
+
+/*Классы тренажёра*/
+
+.tren-container {
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #F4F4F4;
+  background-image: url('media/images/crest1.png');
+  background-repeat: repeat;
+  background-size: auto;
+  /*  transition: opacity 0.5s ease 0.5s;*/
+}
+
+.navigation {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-buttons-window {
+  width: 3%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.action-buttons-window button {
+  height: 50%;
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  cursor: pointer; 
+  background-position: center; 
+}
+
+.model-map-window {
+  width: 47%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.model3D-window {
+  width: 100%;
+  height: 100%;
+}
+
+.tab-window {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+
+.tab-scheme {
+  width: 20%;
+}
+
+.tab-scheme-max {
+  width: 25%;
+}
+
+/* Окно с тренажером */
+.simulator {
+  width: 100%;
+  height: 79%;
+  display: flex;
+}
+
+.model-window {
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.schema-window {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.scheme-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  visibility: hidden;
+}
+
+.scheme-img {
+  position: absolute;
+  transform: translate(0, 0);
+  pointer-events: none;
+}
+
+.scroll-scheme {
+  width: 80%;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  margin: 10px auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  border: 1px solid;
+  border-color: #a39e9e;
+  border-radius: 10px;
+  transition: top 0.3s ease;
+}
+
+.scroll-scheme .scroll-rect {
+  height: 100%;
+  background-color: rgba(115, 128, 240, 0.8);
+  border-radius: 10px;
+  transform: translate(0, 0);
+}
+
+
+/* Окно с информацией */
+.info {
+  width: 100%;
+  height: 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-window {
+  height: 100%;
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.control-window button {
+  width: 50%;
+/*  height: 50%;*/
+/*  background-repeat: no-repeat; */
+/*  background-size: cover; */
+/*  cursor: pointer; */
+/*  background-position: center; */
+}
+
+/*.control-window button.exit {
+  background-image: url('/media/images/icons/exit.png');
+}
+
+.control-window button.info-btn {
+  background-image: url('/media/images/icons/info.png');
+}
+
+.control-window button.help {
+  background-image: url('/media/images/icons/help.png');
+}
+
+.control-window button.restart {
+  background-image: url('/media/images/icons/restart.png');
+}
+*/
+.action-buttons-window button.call {
+  background-image: url('/media/images/icons/call.png');
+}
+
+.action-buttons-window button.operation {
+  background-image: url('/media/images/icons/operation.png');
+}
+
+.message-buttons-window {
+  height: 100%;
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.message-buttons-window button {
+  width: 100%;
+}
+
+.text-window {
+  display: flex;
+  width: 80%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  width: 96%;
+  height: 80%;
+  border: 1px solid;
+  border-color: #a39e9e;
+  border-radius: 10px;
+  padding-top: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

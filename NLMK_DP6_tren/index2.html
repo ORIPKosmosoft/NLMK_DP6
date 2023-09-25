@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Преальфа билд тренажёра доменной печи №6</title>
+  <link rel="stylesheet" href="styles.css">
+  <script async src="js/es-module-shims.js"></script>
+  <script type="importmap">
+    {
+    "imports": {
+      "three": "/js/three.module.js",
+      "three/addons/": "/js/"
+      }
+    }
+  </script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/module3d.js"></script>
+  <style>
+    .test-div{
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" id="x" value="0" style="position: fixed; top: 0; right: 0; z-index: 505;">
+  <input type="text" id="y" value="0" style="position: fixed; top: 21px; right: 0; z-index: 505;">
+  <input type="text" id="z" value="0" style="position: fixed; top: 42px; right: 0; z-index: 505;">
+
+
+  <input type="text" id="xx" value="0" style="position: fixed; top: 70px; right: 0; z-index: 505;">
+  <input type="text" id="yy" value="0" style="position: fixed; top: 91px; right: 0; z-index: 505;">
+  <input type="text" id="zz" value="0" style="position: fixed; top: 112px; right: 0; z-index: 505;">
+  <button id="id1" style="position: fixed; right: 200px; top: 0px; z-index: 505;">1</button>
+  <button id="id2" style="position: fixed; right: 220px; top: 0px; z-index: 505;">2</button>
+  <button id="idR" style="position: fixed; right: 240px; top: 0px; z-index: 505;">R</button>
+  <!-- <div class="test-div" model3D="Pult">
+  </div> -->
+  <div class="start-container">
+    <div class="header">
+      Тренажёр обучения газовщика доменной печи №6
+    </div>
+    <div class="section">
+      <div class="sidebar">
+        <div class="scenarios">
+          Сценарии
+        </div>
+      </div>
+      <div class="content">
+        <div class="title-box">
+          <p>Пуск и остановка доменной печи:</p>
+        </div>
+        <div class="scenario-box">
+          <p>Пуск печи после кратковременной остановки. Печь находится в режиме "тяга" через трубу.</p>
+        </div>
+        <div class="scenario-box">
+          <p>Кратковременная остановка доменной печи (без зажигания газа на колошнике) со взятием на тягу при нормальном режиме работы печи.</p>
+        </div>
+        <div class="scenario-box">
+          <p>Взятие печи на тягу через воздухонагреватель (при кратковременной остановке) с индивидуальным вентилятором газовой горелки.</p>
+        </div>
+        <div class="title-box">
+          <p>Действия в случае аварийных ситуаций:</p>
+        </div>
+        <div class="scenario-box">
+          <p>Пожар (воспламенения природного газа высокого давления на цеховом коллекторе)</p>
+        </div>
+        <div class="scenario-box">
+          <p>Не закрывается пылевой затвор/клапан выгрузки пыли пылеуловителя</p>
+        </div>
+        <div class="scenario-box">
+          <p>Разрыв брони воздухонагревателя, находящегося в режиме дутье с выбросом раскаленных огнеупоров</p>
+        </div>
+      </div>
+      <div class="scenarion-buttons">
+        <button class="learn-button">Обучение</button>
+        <button class="control-button">Контроль</button>
+      </div>
+    </div>
+  </div>
+  <div class="tren-container">
+    <div class="navigation">
+      <div class="action-buttons-window">
+        <button>Оповещение</button>
+        <button>Операция</button>
+      </div>
+      <div class="model-map-window">
+        <!-- 3Д вид на пульты сверху -->
+        <div class="test-div" model3D="Pult" top style="display: inline-block;">  </div>
+      </div>
+      <div class="tab-window">
+        <button class="tab-scheme">МС1</button>
+        <button class="tab-scheme">МС2</button>
+        <button class="tab-scheme">МС3</button>
+        <button class="tab-scheme">МС4</button>
+        <button class="tab-scheme">МС5</button>
+        <button class="tab-scheme">МС6</button>
+        <button class="tab-scheme">МС7</button>
+        <button class="tab-scheme">МС8</button>
+        <button class="tab-scheme">МС9</button>
+        <button class="tab-scheme">МС10</button>
+        <button class="tab-scheme tab-scheme-max">МС11</button>
+        <button class="tab-scheme tab-scheme-max">МС12</button>
+        <button class="tab-scheme tab-scheme-max">МС13</button>
+        <button class="tab-scheme tab-scheme-max">МС14</button>
+      </div>
+    </div>
+    <div class="simulator">
+      <div class="model-window">
+        <!-- 3Д вид от первого лица -->
+        <div class="test-div" model3D="Pult" forward style="display: inline-block;">  </div>
+      </div>
+      <div class="schema-window">
+        <img class="scheme-img" src="media/images/schemes/1.png"/>
+        <img class="scheme-img" src="media/images/schemes/2.png"/>
+        <img class="scheme-img" src="media/images/schemes/3.png"/>
+      </div>
+    </div>
+    <div class="info">
+      <div class="control-window">
+        <button>Выход</button>
+        <button>Инфо</button>
+        <button>Помощь</button>
+        <button>Рестарт</button>
+      </div>
+      <div class="message-buttons-window">
+        <button>Сообщения</button>
+        <button>Ошибки</button>
+      </div>
+      <div class="text-window">
+        <div class="message">Тестовое сообщение</div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
