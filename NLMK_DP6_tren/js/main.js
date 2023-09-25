@@ -96,6 +96,8 @@ function domLoaded() {
   });
 
   function movePicOnProperPlace(e) {
+    // TODO Изменить положение схемы ещё и при зуме
+    // TODO Сделать изменение размера схемы при смене схемы
     let tempSchemeContainer = document.querySelector('.schema-window').children[activeScheme];
     let tempScheme = tempSchemeContainer.querySelector('.scheme-img');
     if (tempSchemeContainer.scale === 1) {
@@ -115,7 +117,7 @@ function domLoaded() {
             tempSchemeContainer.transformXY.y = ((tempScheme.getBoundingClientRect().height - tempSchemeContainer.parentElement.getBoundingClientRect().height) / (2 * tempSchemeContainer.scale)) *
               (tempSchemeContainer.transformXY.y > 0 ? 1 : -1);
           }
-        }  else tempSchemeContainer.transformXY.y = 0;
+        } else tempSchemeContainer.transformXY.y = 0;
         tempSchemeContainer.style.transform = `scale(${tempSchemeContainer.scale}) translate(${tempSchemeContainer.transformXY.x}px, ${tempSchemeContainer.transformXY.y}px)`;
       }
     }
@@ -143,13 +145,8 @@ function domLoaded() {
     if (img.naturalWidth) tempBool = true;
     else img.addEventListener('load', () => tempBool = true)
     if (tempBool === true) {
-      if (img.naturalWidth / img.parentElement.clientWidth < img.naturalHeight / img.parentElement.clientHeight) {
-        img.style.width = 'auto';
-        img.style.height = '100%';
-      } else {
-        img.style.width = '100%';
-        img.style.height = 'auto';
-      }
+      img.style.width = img.naturalWidth / img.parentElement.clientWidth < img.naturalHeight / img.parentElement.clientHeight ? 'auto' : '100%';
+      img.style.height = img.naturalWidth / img.parentElement.clientWidth < img.naturalHeight / img.parentElement.clientHeight ? '100%' : 'auto';
     }
   });
 
@@ -211,35 +208,6 @@ function domLoaded() {
       Element.clicked = false;
     })
   })
-
-  document.body.addEventListener('mousemove', function (e) {
-    // Array.from(document.querySelectorAll('.scroll-rect')).forEach(Element => {
-    //   if (Element.clicked === true) {
-    //     let oldX = parseInt(Element.startTransform.substring(Element.startTransform.indexOf('(') + 1, Element.startTransform.indexOf('p')))
-    //     let newX = oldX + (e.clientX - Element.clickedCoors.x) - 1;
-    //     if (newX <= 0) newX = 0;
-    //     if (newX + Element.clientWidth >= Element.parentElement.clientWidth) newX = Element.parentElement.clientWidth - Element.clientWidth - 1;
-    //     Element.style.transform = `translate(${newX}px, 0px)`;
-    //     let img = document.querySelectorAll('.scheme-img')[activeScheme];
-    //     let diffPx = ((Element.parentElement.clientWidth - Element.clientWidth) / 2) - (Element.getBoundingClientRect().x - Element.parentElement.getBoundingClientRect().x);
-    //     img.style.transform = img.style.width === 'auto' ? `translate(${(diffPx / (Element.parentElement.clientWidth)) * img.clientWidth}px, 0px)` :
-    //       `translate(0px, ${(diffPx / (Element.parentElement.clientWidth)) * img.clientHeight}px)`;
-    //   }
-    // });
-  })
-
-
-  // Array.from(document.querySelectorAll('.scroll-rect')).forEach((Element, Index) => {
-  //   Element.addEventListener('mousedown', function (e) {
-  //     e.currentTarget.clickedCoors = {
-  //       x: e.clientX,
-  //       y: e.clientY,
-  //     }
-  //     e.currentTarget.startTransform = e.currentTarget.style.transform;
-  //     e.currentTarget.clicked = true;
-  //   })
-  // })
-
 
   //---------------
   // Правая часть заглавной страницы
