@@ -50,7 +50,11 @@ function domLoaded() {
     Element.addEventListener('click', () => changeMessageWindow(Index));
   })
 
-  document.querySelector('.schema-window').addEventListener('mouseout', (e) => e.currentTarget.activeMove = false)
+  document.querySelector('.schema-window').addEventListener('mouseout', (e) => {
+    e.currentTarget.activeMove = false
+    e.currentTarget.style.cursor = 'grab';
+  }
+  )
 
   document.querySelector('.schema-window').addEventListener('wheel', function (e) {
     e.preventDefault();
@@ -68,6 +72,7 @@ function domLoaded() {
 
   document.querySelector('.schema-window').addEventListener('mousedown', function (e) {
     e.preventDefault();
+    e.currentTarget.style.cursor = 'grabbing';
     e.currentTarget.activeMove = true;
     e.currentTarget.children[activeScheme].startClick = {
       x: e.clientX,
@@ -86,6 +91,7 @@ function domLoaded() {
   });
   document.querySelector('.schema-window').addEventListener('mouseup', function (e) {
     e.preventDefault();
+    e.currentTarget.style.cursor = 'grab';
     e.currentTarget.activeMove = false;
     e.currentTarget.children[activeScheme].startClick = undefined;
     e.currentTarget.children[activeScheme].startCoors = undefined;

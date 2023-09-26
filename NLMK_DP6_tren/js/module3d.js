@@ -1,8 +1,5 @@
 /*----------TODO----------------------------------------------------
---------------------------------------------------------------------
-сделать ограничесние для движения камерой
---------------------------------------------------------------------
-При клике на сферу остальные сферы делать прозрачными
+Добавить прелаудер
 --------------------------------------------------------------------
 */
 import * as THREE from 'three';
@@ -111,13 +108,18 @@ document.addEventListener('DOMContentLoaded', function () {
 					mouseoverSphere = undefined;
 					for (let i = 0; i < 4; i++) {
 						sphereArr[i].material.opacity = (raycaster.intersectObject(sphereArr[i]).length > 0 || i === active3dPosition) ? 1 : 0.4;
-						if (raycaster.intersectObject(sphereArr[i]).length > 0) mouseoverSphere = sphereArr[i];
+						if (raycaster.intersectObject(sphereArr[i]).length > 0)
+							mouseoverSphere = sphereArr[i];
 					}
+					document.querySelector('.model-map-window').style.cursor = mouseoverSphere === undefined ? 'default' : 'pointer';
 				});
 				renderer.domElement.addEventListener('click', (e) => {
 					if (mouseoverSphere) {
-						// let tempEuler = new Euler(0, 0, 0, 'YXZ');
+						sphereArr.forEach((Element) => {
+							Element.material.opacity = 0.4;
+						})
 						if (mouseoverSphere.name.indexOf('0') !== -1) {
+
 							active3dPosition = 0;
 							obj3dSup.cameras[1].position.set(-4.1, 3.7, 2.2);
 							obj3dSup.cameras[1].lookAt(-4.1, 1.5, 0.4);
@@ -137,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
 							obj3dSup.cameras[1].position.set(13, 3.7, 4);
 							obj3dSup.cameras[1].lookAt(14.25, 1.5, 2.7);
 						}
+						mouseoverSphere.material.opacity = 1;
 						obj3dSup.cameras[1].startEulerY = undefined;
 					}
 				});
@@ -167,56 +170,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				renderer.domElement.addEventListener('mouseout', () => {
 					controls.unlock();
 				});
-				renderer.domElement.addEventListener('mousemove', (e) => {
-					// var mouse3D = new THREE.Vector3();
-					// mouse3D.normalize();
-					// controls.getDirection(mouse3D);
-					// console.log(mouse3D);
-					// 	var movementX = e.movementX || e.mozMovementX || e.webkitMovementX || 0;
-					// 	if (controls.startXPx !== undefined) {
-					// 		if (mouse3D.x < -0.25) {
-					// 			if (movementX >= 0) {
-					// 				controls.startXPx = e.clientX;
-					// 				controls.lock();
-					// 			} else {
-					// 				controls.startXPx = undefined;
-					// 				controls.unlock();
-					// 			}
-					// 		} else if (mouse3D.x > 0.25) {
-					// 			if (movementX <= 0) {
-					// 				controls.startXPx = e.clientX;
-					// 				controls.lock();
-					// 			} else {
-					// 				controls.startXPx = undefined;
-					// 				controls.unlock();
-					// 			}
-					// 		} else {
-					// 			controls.lock();
-					// 		}
-					// 	} else {
-					// 		if (controls.mousedown === true) {
-					// 			if (mouse3D.x < -0.25) {
-					// 				if (movementX >= 0) {
-					// 					controls.startXPx = e.clientX;
-					// 				}
-					// 			} else if (mouse3D.x > 0.25) {
-					// 				if (movementX <= 0) {
-					// 					controls.startXPx = e.clientX;
-					// 				}
-					// 			}
-					// 		}
-					// 	}
-				});
-
-
-				controls.addEventListener('lock', () => {
-
-				});
-
-				controls.addEventListener('unlock', () => {
-					// Камера разблокирована
-				});
-
 			}
 
 			obj3dSup.cameras.push(camera)
