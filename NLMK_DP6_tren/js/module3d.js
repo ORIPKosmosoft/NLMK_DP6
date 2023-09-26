@@ -37,8 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
       (xhr) => {
         Array.from(document.querySelectorAll('.spin-loader-text')).forEach((Element) => {
-          Element.innerText = Math.round((xhr.loaded / xhr.total) * 100);
-          console.log(Element.innerText);
+          Element.innerText = (xhr.loaded / xhr.total).toFixed(2) * 100;
         })
       },
       (error) => {
