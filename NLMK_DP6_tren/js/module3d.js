@@ -32,12 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
       animate();
       Array.from(document.querySelectorAll('.spin-loader')).forEach((Element, Index) => {
         // Element.remove();
-        document.querySelectorAll('.model3D-window')[Index].style.top = '0px';
+        // document.querySelectorAll('.model3D-window')[Index].style.top = '0px';
       })
     },
       (xhr) => {
         Array.from(document.querySelectorAll('.spin-loader-text')).forEach((Element) => {
           Element.innerText = Math.round((xhr.loaded / xhr.total) * 100);
+          console.log(Element.innerText);
         })
       },
       (error) => {
