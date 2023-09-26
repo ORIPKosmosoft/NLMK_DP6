@@ -122,15 +122,19 @@ body {
   color: rgba(240, 240, 240, 1);
 }
 
-.text-box p,ul{
+.text-box p,
+ul {
   text-align: justify;
 }
-.info-page{
+
+.info-page {
   display: none;
 }
-.info-page-active{
+
+.info-page-active {
   display: block;
 }
+
 .info-buttons {
   display: flex;
   padding: 20px;
@@ -171,10 +175,10 @@ body {
 
 .action-buttons-window button {
   height: 50%;
-  background-repeat: no-repeat; 
-  background-size: cover; 
-  cursor: pointer; 
-  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  background-position: center;
 }
 
 .model-map-window {
@@ -184,8 +188,11 @@ body {
 }
 
 .model3D-window {
+  position: relative;
   width: 100%;
   height: 100%;
+  top: -50px;
+  left: 0px;
 }
 
 .tab-window {
@@ -297,29 +304,8 @@ body {
 
 .control-window button {
   width: 50%;
-/*  height: 50%;*/
-/*  background-repeat: no-repeat; */
-/*  background-size: cover; */
-/*  cursor: pointer; */
-/*  background-position: center; */
 }
 
-/*.control-window button.exit {
-  background-image: url('/media/images/icons/exit.png');
-}
-
-.control-window button.info-btn {
-  background-image: url('/media/images/icons/info.png');
-}
-
-.control-window button.help {
-  background-image: url('/media/images/icons/help.png');
-}
-
-.control-window button.restart {
-  background-image: url('/media/images/icons/restart.png');
-}
-*/
 .action-buttons-window button.call {
   background-image: url('/media/images/icons/call.png');
 }
@@ -361,4 +347,62 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+/* .window-loader-3d {
+  
+}
+
+.map-loader-3d {
+
+} */
+
+.spin-loader {
+  position: relative;
+  left: 47%;
+  top: 48%;
+  color: #dfdfdf;
+  font-size: 24px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+}
+
+.window-loader-3d {
+  position: absolute;
+  left: 0px;
+  top: -38px;
+  width: 48px;
+  height: 48px;
+  border: 3px solid #c5c5c5;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.window-loader-3d::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-bottom-color: #FF3D00;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
