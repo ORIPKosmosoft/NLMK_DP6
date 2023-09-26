@@ -36,8 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
       })
     },
       (xhr) => {
+        let tempLoad = (xhr.loaded / xhr.total).toFixed(2) * 100;
+        console.log(tempLoad);
         Array.from(document.querySelectorAll('.spin-loader-text')).forEach((Element) => {
-          Element.innerText = (xhr.loaded / xhr.total).toFixed(2) * 100;
+          Element.innerText = tempLoad;
         })
       },
       (error) => {
