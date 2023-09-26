@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
       gltf.scene.layers.set(1);
       animate();
       Array.from(document.querySelectorAll('.spin-loader')).forEach((Element, Index) => {
-        Element.remove();
+        // Element.remove();
         document.querySelectorAll('.model3D-window')[Index].style.top = '0px';
       })
     },
