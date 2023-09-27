@@ -1,5 +1,8 @@
-// TODO Заранее загрузить все модели и рисунки и тд.
-// делать их просто видимыми 
+/*                 TODO
+----------------------------------------------------
+----------------------------------------------------
+*/
+
 
 document.addEventListener("DOMContentLoaded", domLoaded)
 
@@ -102,8 +105,6 @@ function domLoaded() {
   });
 
   function movePicOnProperPlace(e) {
-    // TODO Изменить положение схемы ещё и при зуме
-    // TODO Сделать изменение размера схемы при смене схемы
     let tempSchemeContainer = document.querySelector('.schema-window').children[activeScheme];
     let tempScheme = tempSchemeContainer.querySelector('.scheme-img');
     if (tempSchemeContainer.scale === 1) {
@@ -124,6 +125,21 @@ function domLoaded() {
               (tempSchemeContainer.transformXY.y > 0 ? 1 : -1);
           }
         } else tempSchemeContainer.transformXY.y = 0;
+        tempSchemeContainer.style.transform = `scale(${tempSchemeContainer.scale}) translate(${tempSchemeContainer.transformXY.x}px, ${tempSchemeContainer.transformXY.y}px)`;
+      }
+      if (e.type === 'wheel') {
+        if (tempScheme.getBoundingClientRect().left > tempSchemeContainer.parentElement.getBoundingClientRect().left)
+          tempSchemeContainer.transformXY.x = ((tempScheme.getBoundingClientRect().width - tempSchemeContainer.parentElement.getBoundingClientRect().width) / (2 * tempSchemeContainer.scale));
+        if (tempScheme.getBoundingClientRect().right < tempSchemeContainer.parentElement.getBoundingClientRect().right)
+          tempSchemeContainer.transformXY.x = -((tempScheme.getBoundingClientRect().width - tempSchemeContainer.parentElement.getBoundingClientRect().width) / (2 * tempSchemeContainer.scale));
+        if (tempScheme.getBoundingClientRect().top > tempSchemeContainer.parentElement.getBoundingClientRect().top)
+          tempSchemeContainer.transformXY.y = ((tempScheme.getBoundingClientRect().height - tempSchemeContainer.parentElement.getBoundingClientRect().height) / (2 * tempSchemeContainer.scale));
+        if (tempScheme.getBoundingClientRect().bottom < tempSchemeContainer.parentElement.getBoundingClientRect().bottom)
+          tempSchemeContainer.transformXY.y = -((tempScheme.getBoundingClientRect().height - tempSchemeContainer.parentElement.getBoundingClientRect().height) / (2 * tempSchemeContainer.scale));
+        if (tempScheme.getBoundingClientRect().height < tempSchemeContainer.parentElement.getBoundingClientRect().height)
+          tempSchemeContainer.transformXY.y = 0;
+        if (tempScheme.getBoundingClientRect().width < tempSchemeContainer.parentElement.getBoundingClientRect().width)
+          tempSchemeContainer.transformXY.x = 0;
         tempSchemeContainer.style.transform = `scale(${tempSchemeContainer.scale}) translate(${tempSchemeContainer.transformXY.x}px, ${tempSchemeContainer.transformXY.y}px)`;
       }
     }
@@ -191,8 +207,11 @@ function domLoaded() {
 
   function changeSchemes(Num) {
     Array.from(document.querySelectorAll('.scheme-container')).forEach((Element, Index) => {
+      Element.style.transform = 'scale(1) translate(0px, 0px)';
+      Element.startClick = undefined;
+      Element.startCoors = { x: 0, y: 0 };
+      Element.transformXY = { x: 0, y: 0 };
       Element.scale = 1;
-      Element.querySelector('.scheme-img').style.transform = 'translate(0, 0)';
       Element.style.visibility = Num === Index ? 'visible' : 'hidden';
       if (Num > document.querySelectorAll('.scheme-container').length - 1) {
         activeScheme = 0;

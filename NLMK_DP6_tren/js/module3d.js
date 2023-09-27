@@ -1,5 +1,4 @@
 /*----------TODO----------------------------------------------------
-Добавить прелаудер
 --------------------------------------------------------------------
 */
 import * as THREE from 'three';
@@ -51,8 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(error)
       }
     )
-
-
 
     function animate() {
       requestAnimationFrame(animate);
