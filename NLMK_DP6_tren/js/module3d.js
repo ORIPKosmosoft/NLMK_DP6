@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
           if (key == document.querySelector('div[model3D]').getAttribute('model3D'))
           maxWeight = total3DModelsWeight[key];
         }
-        let tempLoad = (xhr.loaded /(maxWeight === 0 ? xhr.total : maxWeight)).toFixed(2) * 100;
+        let tempLoad = ((xhr.loaded /(maxWeight === 0 ? xhr.total : maxWeight)).toFixed(2) * 100).toFixed(0);
         Array.from(document.querySelectorAll('.spin-loader-text')).forEach((Element) => {
           Element.innerText = tempLoad;
         })
