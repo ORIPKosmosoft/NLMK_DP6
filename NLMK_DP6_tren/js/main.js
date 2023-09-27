@@ -2,14 +2,12 @@
 ----------------------------------------------------
 ----------------------------------------------------
 */
-
-
-document.addEventListener("DOMContentLoaded", domLoaded)
+document.addEventListener("DOMContentLoaded", domLoaded);
 
 function domLoaded() {
-  let activeScheme = 0;
-  let scenarioSelected = false;
-  let messages = {
+  trenWorkObj.activeScheme = 0;
+  trenWorkObj.scenarioSelected = false;
+  trenWorkObj.messages = {
     normal: ['Тестовое сообщение'],
     error: ['Тестовая ошибка']
   }
@@ -21,7 +19,7 @@ function domLoaded() {
     box.addEventListener('click', function (e) {
       e.currentTarget.classList.toggle('scenario-box-clicked', true);
       e.currentTarget.classList.toggle('scenario-box', false);
-      scenarioSelected = Index;
+      trenWorkObj.scenarioSelected = Index;
       Array.from(document.querySelector('.scenarion-buttons').children).forEach((Element, Index) => {
         Element.classList.toggle('scenarion-button-active', true);
         Element.onclick = (e) => startTren(e.currentTarget.innerText, box.innerText);
@@ -77,17 +75,17 @@ function domLoaded() {
     e.preventDefault();
     e.currentTarget.style.cursor = 'grabbing';
     e.currentTarget.activeMove = true;
-    e.currentTarget.children[activeScheme].startClick = {
+    e.currentTarget.children[trenWorkObj.activeScheme].startClick = {
       x: e.clientX,
       y: e.clientY
     };
-    let startTransformIndexX = e.currentTarget.children[activeScheme].style.transform.indexOf('translate(') + 10;
-    let finishTransformIndexX = e.currentTarget.children[activeScheme].style.transform.indexOf('px', startTransformIndexX);
-    let tempX = parseInt(e.currentTarget.children[activeScheme].style.transform.substring(startTransformIndexX, finishTransformIndexX));
-    let startTransformIndexY = e.currentTarget.children[activeScheme].style.transform.indexOf('px') + 3;
-    let finishTransformIndexY = e.currentTarget.children[activeScheme].style.transform.indexOf('px', startTransformIndexY);
-    let tempY = parseInt(e.currentTarget.children[activeScheme].style.transform.substring(startTransformIndexY, finishTransformIndexY));
-    e.currentTarget.children[activeScheme].startCoors = {
+    let startTransformIndexX = e.currentTarget.children[trenWorkObj.activeScheme].style.transform.indexOf('translate(') + 10;
+    let finishTransformIndexX = e.currentTarget.children[trenWorkObj.activeScheme].style.transform.indexOf('px', startTransformIndexX);
+    let tempX = parseInt(e.currentTarget.children[trenWorkObj.activeScheme].style.transform.substring(startTransformIndexX, finishTransformIndexX));
+    let startTransformIndexY = e.currentTarget.children[trenWorkObj.activeScheme].style.transform.indexOf('px') + 3;
+    let finishTransformIndexY = e.currentTarget.children[trenWorkObj.activeScheme].style.transform.indexOf('px', startTransformIndexY);
+    let tempY = parseInt(e.currentTarget.children[trenWorkObj.activeScheme].style.transform.substring(startTransformIndexY, finishTransformIndexY));
+    e.currentTarget.children[trenWorkObj.activeScheme].startCoors = {
       x: tempX,
       y: tempY
     };
@@ -96,8 +94,8 @@ function domLoaded() {
     e.preventDefault();
     e.currentTarget.style.cursor = 'grab';
     e.currentTarget.activeMove = false;
-    e.currentTarget.children[activeScheme].startClick = undefined;
-    e.currentTarget.children[activeScheme].startCoors = undefined;
+    e.currentTarget.children[trenWorkObj.activeScheme].startClick = undefined;
+    e.currentTarget.children[trenWorkObj.activeScheme].startCoors = undefined;
   });
   document.querySelector('.schema-window').addEventListener('mousemove', function (e) {
     e.preventDefault();
@@ -105,7 +103,7 @@ function domLoaded() {
   });
 
   function movePicOnProperPlace(e) {
-    let tempSchemeContainer = document.querySelector('.schema-window').children[activeScheme];
+    let tempSchemeContainer = document.querySelector('.schema-window').children[trenWorkObj.activeScheme];
     let tempScheme = tempSchemeContainer.querySelector('.scheme-img');
     if (tempSchemeContainer.scale === 1) {
       tempSchemeContainer.style.transform = `scale(1) translate(0px, 0px)`;
@@ -214,12 +212,12 @@ function domLoaded() {
       Element.scale = 1;
       Element.style.visibility = Num === Index ? 'visible' : 'hidden';
       if (Num > document.querySelectorAll('.scheme-container').length - 1) {
-        activeScheme = 0;
+        trenWorkObj.activeScheme = 0;
         document.querySelectorAll('.scheme-container')[0].style.visibility = 'visible';
         console.warn('У вас нет рисунка номер', Num);
       }
     })
-    activeScheme = Num;
+    trenWorkObj.activeScheme = Num;
   }
 
   function changeMessageWindow(Num) {
@@ -247,4 +245,7 @@ function domLoaded() {
 
     })
   })
+
+  loadTrenActions();
 }
+

@@ -1,4 +1,5 @@
 /*----------TODO----------------------------------------------------
+Нужно добавить trenWorkObj объект на главной 3Д сцене что под мышкой
 --------------------------------------------------------------------
 */
 import * as THREE from 'three';
@@ -8,7 +9,7 @@ import { PointerLockControls } from 'three/addons/controls/PointerLockControls.j
 
 document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('div[model3D]')) {
-    const total3DModelsWeight = {Pult: '13637846'};
+    const total3DModelsWeight = { Pult: '13637846' };
     let obj3dSup = { cameras: [], scenes: [], renderers: [], controls: [] };
     let active3dPosition = 0;
     const scene = new THREE.Scene();
@@ -34,14 +35,18 @@ document.addEventListener('DOMContentLoaded', function () {
         Element.remove();
         document.querySelectorAll('.model3D-window')[Index].style.top = '0px';
       })
+      gltf.scene.children[0].children.forEach((Element) => {
+        if (Element.material)
+          Element.startMaterialColor = { r: Element.material.color.r, g: Element.material.color.g, b: Element.material.color.b }
+      })
     },
       (xhr) => {
         let maxWeight = 0;
         for (let key in total3DModelsWeight) {
           if (key == document.querySelector('div[model3D]').getAttribute('model3D'))
-          maxWeight = total3DModelsWeight[key];
+            maxWeight = total3DModelsWeight[key];
         }
-        let tempLoad = ((xhr.loaded /(maxWeight === 0 ? xhr.total : maxWeight)).toFixed(2) * 100).toFixed(0);
+        let tempLoad = ((xhr.loaded / (maxWeight === 0 ? xhr.total : maxWeight)).toFixed(2) * 100).toFixed(0);
         Array.from(document.querySelectorAll('.spin-loader-text')).forEach((Element) => {
           Element.innerText = tempLoad;
         })
@@ -159,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         camera = new THREE.PerspectiveCamera(90, Element.getBoundingClientRect().width / Element.getBoundingClientRect().height, 0.1, 1000);
         camera.layers.set(0);
+        // camera.layers.enableAll();
         camera.position.set(-4.1, 3.7, 2.2);
         camera.lookAtCoors = { x: -4.1, y: 1.5, z: 0.4 };
         camera.lookAt(camera.lookAtCoors.x, camera.lookAtCoors.y, camera.lookAtCoors.z);
@@ -171,7 +177,33 @@ document.addEventListener('DOMContentLoaded', function () {
         controls.maxPolarAngle = 2.7;
         controls.minPolarAngle = 2.2;
 
+        const raycaster = new THREE.Raycaster();
+        raycaster.layers.set(0);
+        const mouseVector = new THREE.Vector2();
+        renderer.domElement.addEventListener('mousemove', (event) => {
+          const canvasBounds = renderer.domElement.getBoundingClientRect();
+          mouseVector.x = ((event.clientX - canvasBounds.left) / canvasBounds.width) * 2 - 1;
+          mouseVector.y = -((event.clientY - canvasBounds.top) / canvasBounds.height) * 2 + 1;
+          raycaster.setFromCamera(mouseVector, camera);
+
+          let tempObj = trenWorkObj.mouseover3dObjectTren;
+          let intersects = raycaster.intersectObjects(scene.children);
+          trenWorkObj.mouseover3dObjectTren = intersects.length > 0 && intersects[0].object.name && intersects[0].object.name === trenWorkObj.trenActionArr[trenWorkObj.scenarioSelected].actions[trenWorkObj.activeAction].target ? intersects[0].object : undefined;
+          if (tempObj !== trenWorkObj.mouseover3dObjectTren && trenWorkObj.mouseover3dObjectTren !== undefined) {
+            trenWorkObj.mouseover3dObjectTren.material.color.r = 5;
+            trenWorkObj.mouseover3dObjectTren.material.color.g = 5;
+            trenWorkObj.mouseover3dObjectTren.material.color.b = 0;
+          } else if (tempObj !== trenWorkObj.mouseover3dObjectTren && tempObj !== undefined) {
+            tempObj.material.color.r = tempObj.startMaterialColor.r;
+            tempObj.material.color.g = tempObj.startMaterialColor.g;
+            tempObj.material.color.b = tempObj.startMaterialColor.b;
+          }
+          document.querySelector('.model-window').style.cursor = trenWorkObj.mouseover3dObjectTren === undefined ? 'move' : 'pointer';
+        });
+
         renderer.domElement.addEventListener('mousedown', (e) => {
+          // trenWorkObj.mouseover3dObject = undefined;
+
           controls.lock();
         });
         renderer.domElement.addEventListener('touchstart', (e) => {
