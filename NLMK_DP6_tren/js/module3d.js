@@ -9,6 +9,7 @@ import { PointerLockControls } from 'three/addons/controls/PointerLockControls.j
 
 document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('div[model3D]')) {
+    const total3DModelsWeight = {Pult: '13637846'};
     let obj3dSup = { cameras: [], scenes: [], renderers: [], controls: [] };
     let active3dPosition = 0;
     const scene = new THREE.Scene();
@@ -36,8 +37,12 @@ document.addEventListener('DOMContentLoaded', function () {
       })
     },
       (xhr) => {
-        let tempLoad = (xhr.loaded / xhr.total).toFixed(2) * 100;
-        console.log(tempLoad, xhr.loaded, xhr);
+        let maxWeight = 0;
+        for (let key in total3DModelsWeight) {
+          if (key == document.querySelector('div[model3D]').getAttribute('model3D'))
+          maxWeight = total3DModelsWeight[key];
+        }
+        let tempLoad = (xhr.loaded /(maxWeight === 0 ? xhr.total : maxWeight)).toFixed(2) * 100;
         Array.from(document.querySelectorAll('.spin-loader-text')).forEach((Element) => {
           Element.innerText = tempLoad;
         })
