@@ -1,5 +1,8 @@
 /*----------TODO----------------------------------------------------
-Нужно добавить trenWorkObj объект на главной 3Д сцене что под мышкой
+Добавить точку перехода для мониторов
+Добавить новый вид на симуляторена мониторы.
+При переходе на этот вид поверх монитора должно появляться окно с дивом.
+Див содержит 2Д рисунок мнемосхемы на котором можно производить какие либо действия.
 --------------------------------------------------------------------
 */
 import * as THREE from 'three';
@@ -11,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('div[model3D]')) {
     const total3DModelsWeight = { Pult: '13637846' };
     let obj3dSup = { cameras: [], scenes: [], renderers: [], controls: [] };
-    let active3dPosition = 0;
+    trenWorkObj.active3dPosition = 0;
     const scene = new THREE.Scene();
     const light1 = new THREE.PointLight(0xffffff, 400);
     light1.position.set(7, 10, 0);
@@ -65,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       scene.children.forEach((Element) => {
         if (Element.name && Element.name.indexOf('playerPosition_') !== -1)
-          if (Element.name.indexOf(active3dPosition) !== -1 && Element.material.opacity !== 1)
+          if (Element.name.indexOf(trenWorkObj.active3dPosition) !== -1 && Element.material.opacity !== 1)
             Element.material.opacity = 1;
       })
     }
@@ -94,10 +97,10 @@ document.addEventListener('DOMContentLoaded', function () {
         camera.updateProjectionMatrix();
         camera.layers.enableAll();
 
-        let sphereArr = [],
+        let sphereArr = [], sphereCount = 5,
           mouseoverSphere;
         const sphereGeometry = new THREE.SphereGeometry(0.7, 32, 32);
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < sphereCount; i++) {
           const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent: true, opacity: 0.4 });
           const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
           sphere.layers.set(1);
@@ -110,10 +113,71 @@ document.addEventListener('DOMContentLoaded', function () {
             sphere.position.set(10.2, 0, 3.5);
           else if (i === 3)
             sphere.position.set(12, 0, 4);
+          else if (i === 4)
+            sphere.position.set(-12.5, 2.5, 2.8);
+          // else if (i === 5)
+          //   sphere.position.set(-12, 2.5, 3.5);
           sphere.name = 'playerPosition_' + i;
           sphere.touchableWithCamera = true;
           sphereArr.push(sphere);
         }
+        //---------------------------------------------------------------------------------
+        // Создание элемента управления камерой
+        // let tempCoorDiv = document.createElement('div');
+        // tempCoorDiv.style = `
+        //   position: absolute;
+        //   top: ${document.querySelector('.model-window').getBoundingClientRect().top}px;
+        //   left: 0px;
+        //   width: 50%;
+        //   height: 11%;
+        //   display: flex;
+        //   flex-flow: column nowrap;
+        //   place-content: center;
+        //   flex-direction: column;
+        //   flex-wrap: wrap;
+        //   align-content: center;
+        //   `;
+        // for (let a = 0; a < 2; a++) {
+        //   if (a === 0) {
+        //     for (let i = 0; i < 3; i++) {
+        //       let tempInput = document.createElement('input');
+        //       tempInput.type = 'number';
+        //       tempInput.style.width = '11%';
+        //       tempInput.value = 0;
+        //       tempCoorDiv.append(tempInput);
+        //       if (i === 2) {
+        //         let tempBtn = document.createElement('button');
+        //         tempBtn.innerText = 'Примернить положение';
+        //         tempBtn.style.width = '11%';
+        //         tempInput.style.width = '11%';
+        //         tempCoorDiv.append(tempBtn);
+        //         tempBtn.addEventListener('click', (e) => {
+        //           obj3dSup.cameras[1].position.set(tempCoorDiv.children[0].value, tempCoorDiv.children[1].value, tempCoorDiv.children[2].value);
+        //         })
+        //       }
+        //     }
+        //   } else if (a === 1) {
+        //     for (let i = 0; i < 3; i++) {
+        //       let tempInput = document.createElement('input');
+        //       tempInput.type = 'number';
+        //       tempInput.style.width = '11%';
+        //       tempInput.value = 0;
+        //       tempCoorDiv.append(tempInput);
+        //       if (i === 2) {
+        //         let tempBtn = document.createElement('button');
+        //         tempBtn.innerText = 'Примернить LookAt';
+        //         tempBtn.style.width = '11%';
+        //         tempCoorDiv.append(tempBtn);
+        //         tempBtn.addEventListener('click', (e) => {
+        //           obj3dSup.cameras[1].lookAt(tempCoorDiv.children[4].value, tempCoorDiv.children[5].value, tempCoorDiv.children[6].value);
+        //         })
+        //       }
+        //     }
+
+        //   }
+        // }
+        // document.querySelector('.model-window').append(tempCoorDiv);
+        //---------------------------------------------------------------------------------
 
         const raycaster = new THREE.Raycaster();
         raycaster.layers.set(1);
@@ -124,8 +188,8 @@ document.addEventListener('DOMContentLoaded', function () {
           mouseVector.y = -((event.clientY - canvasBounds.top) / canvasBounds.height) * 2 + 1;
           raycaster.setFromCamera(mouseVector, camera);
           mouseoverSphere = undefined;
-          for (let i = 0; i < 4; i++) {
-            sphereArr[i].material.opacity = (raycaster.intersectObject(sphereArr[i]).length > 0 || i === active3dPosition) ? 1 : 0.4;
+          for (let i = 0; i < sphereCount; i++) {
+            sphereArr[i].material.opacity = (raycaster.intersectObject(sphereArr[i]).length > 0 || i === trenWorkObj.active3dPosition) ? 1 : 0.4;
             if (raycaster.intersectObject(sphereArr[i]).length > 0)
               mouseoverSphere = sphereArr[i];
           }
@@ -137,26 +201,26 @@ document.addEventListener('DOMContentLoaded', function () {
               Element.material.opacity = 0.4;
             })
             if (mouseoverSphere.name.indexOf('0') !== -1) {
-
-              active3dPosition = 0;
               obj3dSup.cameras[1].position.set(-4.1, 3.7, 2.2);
               obj3dSup.cameras[1].lookAt(-4.1, 1.5, 0.4);
             }
             if (mouseoverSphere.name.indexOf('1') !== -1) {
-              active3dPosition = 1;
               obj3dSup.cameras[1].position.set(6.4, 3.7, 2.2);
               obj3dSup.cameras[1].lookAt(6.4, 1.5, 0.4);
             }
             if (mouseoverSphere.name.indexOf('2') !== -1) {
-              active3dPosition = 2;
               obj3dSup.cameras[1].position.set(10.2, 3.7, 2.2);
               obj3dSup.cameras[1].lookAt(10.2, 1.5, 0.4);
             }
             if (mouseoverSphere.name.indexOf('3') !== -1) {
-              active3dPosition = 3;
               obj3dSup.cameras[1].position.set(13, 3.7, 4);
               obj3dSup.cameras[1].lookAt(14.25, 1.5, 2.7);
             }
+            if (mouseoverSphere.name.indexOf('4') !== -1) {
+              obj3dSup.cameras[1].position.set(-12, 2.4, 3.2);
+              obj3dSup.cameras[1].lookAt(-12.72, 2.45, 2.5);
+            }
+            trenWorkObj.active3dPosition = parseFloat(mouseoverSphere.name.substring(mouseoverSphere.name.indexOf('_') + 1, mouseoverSphere.name.length));
             mouseoverSphere.material.opacity = 1;
             obj3dSup.cameras[1].startEulerY = undefined;
           }
@@ -164,7 +228,6 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         camera = new THREE.PerspectiveCamera(90, Element.getBoundingClientRect().width / Element.getBoundingClientRect().height, 0.1, 1000);
         camera.layers.set(0);
-        // camera.layers.enableAll();
         camera.position.set(-4.1, 3.7, 2.2);
         camera.lookAtCoors = { x: -4.1, y: 1.5, z: 0.4 };
         camera.lookAt(camera.lookAtCoors.x, camera.lookAtCoors.y, camera.lookAtCoors.z);
@@ -188,26 +251,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
           let tempObj = trenWorkObj.mouseover3dObjectTren;
           let intersects = raycaster.intersectObjects(scene.children);
-          trenWorkObj.mouseover3dObjectTren = intersects.length > 0 && intersects[0].object.name && intersects[0].object.name === trenWorkObj.trenActionArr[trenWorkObj.scenarioSelected].actions[trenWorkObj.activeAction].target ? intersects[0].object : undefined;
-          if (tempObj !== trenWorkObj.mouseover3dObjectTren && trenWorkObj.mouseover3dObjectTren !== undefined) {
-            trenWorkObj.mouseover3dObjectTren.material.color.r = 5;
-            trenWorkObj.mouseover3dObjectTren.material.color.g = 5;
-            trenWorkObj.mouseover3dObjectTren.material.color.b = 0;
-          } else if (tempObj !== trenWorkObj.mouseover3dObjectTren && tempObj !== undefined) {
-            tempObj.material.color.r = tempObj.startMaterialColor.r;
-            tempObj.material.color.g = tempObj.startMaterialColor.g;
-            tempObj.material.color.b = tempObj.startMaterialColor.b;
+          if (trenWorkObj.trenEnded === false && trenWorkObj.waitingInput === true) {
+            trenWorkObj.mouseover3dObjectTren = intersects.length > 0 && intersects[0].object.name && intersects[0].object.name === trenWorkObj.trenActionArr[trenWorkObj.scenarioSelected].actions[trenWorkObj.activeAction].target ? intersects[0].object : undefined;
+            if (tempObj !== trenWorkObj.mouseover3dObjectTren && trenWorkObj.mouseover3dObjectTren !== undefined) {
+              trenWorkObj.mouseover3dObjectTren.material.color.r = 5;
+              trenWorkObj.mouseover3dObjectTren.material.color.g = 5;
+              trenWorkObj.mouseover3dObjectTren.material.color.b = 0;
+            } else if (tempObj !== trenWorkObj.mouseover3dObjectTren && tempObj !== undefined) {
+              tempObj.material.color.r = tempObj.startMaterialColor.r;
+              tempObj.material.color.g = tempObj.startMaterialColor.g;
+              tempObj.material.color.b = tempObj.startMaterialColor.b;
+            }
+            document.querySelector('.model-window').style.cursor = trenWorkObj.mouseover3dObjectTren === undefined ? 'move' : 'pointer';
           }
-          document.querySelector('.model-window').style.cursor = trenWorkObj.mouseover3dObjectTren === undefined ? 'move' : 'pointer';
         });
 
         renderer.domElement.addEventListener('mousedown', (e) => {
-          // trenWorkObj.mouseover3dObject = undefined;
+          if (trenWorkObj.mouseover3dObjectTren !== undefined) {
+            document.querySelector('.model-window').style.cursor = 'move';
+            trenWorkObj.mouseover3dObjectTren.material.color.r = trenWorkObj.mouseover3dObjectTren.startMaterialColor.r;
+            trenWorkObj.mouseover3dObjectTren.material.color.g = trenWorkObj.mouseover3dObjectTren.startMaterialColor.g;
+            trenWorkObj.mouseover3dObjectTren.material.color.b = trenWorkObj.mouseover3dObjectTren.startMaterialColor.b;
+            // trenWorkObj.mouseover3dObjectTren = undefined;
+          } else {
+            controls.lock();
+          }
 
-          controls.lock();
-        });
-        renderer.domElement.addEventListener('touchstart', (e) => {
-          controls.lock();
         });
         renderer.domElement.addEventListener('mouseup', () => {
           controls.unlock();

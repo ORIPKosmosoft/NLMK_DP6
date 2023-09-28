@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", domLoaded);
 
 function domLoaded() {
   trenWorkObj.activeScheme = 0;
-  trenWorkObj.scenarioSelected = false;
+  trenWorkObj.scenarioSelected = undefined;
   trenWorkObj.messages = {
     normal: ['Тестовое сообщение'],
     error: ['Тестовая ошибка']
@@ -19,10 +19,9 @@ function domLoaded() {
     box.addEventListener('click', function (e) {
       e.currentTarget.classList.toggle('scenario-box-clicked', true);
       e.currentTarget.classList.toggle('scenario-box', false);
-      trenWorkObj.scenarioSelected = Index;
-      Array.from(document.querySelector('.scenarion-buttons').children).forEach((Element, Index) => {
+      Array.from(document.querySelector('.scenarion-buttons').children).forEach((Element) => {
         Element.classList.toggle('scenarion-button-active', true);
-        Element.onclick = (e) => startTren(e.currentTarget.innerText, box.innerText);
+        Element.onclick = (e) => prepareTren(e.currentTarget.innerText, box.innerText, Index);
       })
 
       scenarioBoxes.forEach(function (elem) {
@@ -59,7 +58,7 @@ function domLoaded() {
 
   document.querySelector('.schema-window').addEventListener('wheel', function (e) {
     e.preventDefault();
-    let activeSchemeContainer = document.querySelector('.schema-window').children[activeScheme];
+    let activeSchemeContainer = document.querySelector('.schema-window').children[trenWorkObj.activeScheme];
     let maxScale = activeSchemeContainer.hasAttribute('maximum-scale') ? activeSchemeContainer.getAttribute('maximum-scale').length > 0 ? activeSchemeContainer.getAttribute('maximum-scale') : 3 : 3;
     let newScaleDiff = e.deltaY > 1 ? (activeSchemeContainer.scale === 1 ? 0 : -0.1) : (activeSchemeContainer.scale > maxScale ? 0 : 0.1);
     activeSchemeContainer.scale += newScaleDiff;
@@ -149,8 +148,9 @@ function domLoaded() {
       if (e.currentTarget.style.opacity === '0') {
         e.currentTarget.style.visibility = 'hidden';
         document.querySelector('.header').style.top = '0px';
-        document.querySelector('.section').style.left = '20px';
-        document.querySelectorAll('.section')[1].style.left = '52%';
+        document.querySelectorAll('.section')[0].style.left = '0px';
+        document.querySelectorAll('.section')[1].style.left = '0px';
+        // document.querySelectorAll('.section')[1].style.left = '52%';
         document.querySelector('.start-container').style.visibility = 'visible';
       } else e.currentTarget.style.visibility = 'visible';
     }
@@ -184,11 +184,14 @@ function domLoaded() {
     })
   }
 
-  function startTren(TrenType, Scenario) {
+  function prepareTren(TrenType, Scenario, Index) {
     removeStartScreen();
+    changeSchemes(0);
     document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
     document.querySelector('.tren-container').style.opacity = 1;
-    changeSchemes(0);
+    trenWorkObj.trenType = TrenType;
+    trenWorkObj.scenarioSelected = Index;
+    console.log(trenWorkObj);
   }
 
   Array.from(document.querySelectorAll('.scheme-container')).forEach((Element, Index) => {
