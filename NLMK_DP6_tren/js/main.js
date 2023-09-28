@@ -191,7 +191,6 @@ function domLoaded() {
     document.querySelector('.tren-container').style.opacity = 1;
     trenWorkObj.trenType = TrenType;
     trenWorkObj.scenarioSelected = Index;
-    console.log(trenWorkObj);
   }
 
   Array.from(document.querySelectorAll('.scheme-container')).forEach((Element, Index) => {
@@ -248,6 +247,22 @@ function domLoaded() {
 
     })
   })
+
+  // Зазгрузка СВГ схем. Отработка текста в СВГ
+  if (document.querySelector('object')) {
+    document.querySelectorAll('object').forEach((ElementObj) => {
+      ElementObj.addEventListener('load', function (e) {
+        let tempSvg = e.currentTarget.contentDocument.querySelector('svg');
+        // На сколько умножить ширину тексте для сдвига
+        // (parseInt(tempSvg.getAttribute('width')) * 100 / tempSvg.getBoundingClientRect().width)
+        tempSvg.querySelectorAll('text').forEach(ElementText => {
+          // element.setAttribute('text-anchor', 'end'); // задать точку начала с конца
+          // element.setAttribute('x', `${parseFloat(element.getAttribute('x')) + (element.getBoundingClientRect().width * (parseInt(tempSvg.getAttribute('width')) * 100 / tempSvg.getBoundingClientRect().width))}`);
+          // element.innerHTML = 9999; // Заменить текст внутри, если нужно добавить правила
+        });
+      });
+    })
+  }
 
   loadTrenActions();
 }
