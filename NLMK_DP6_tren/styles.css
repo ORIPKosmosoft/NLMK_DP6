@@ -146,6 +146,25 @@ ul {
   padding: 20px;
 }
 
+.popup-alert {
+  position: absolute;
+  top: 45%;
+  left: 30%;
+  width: 40%;
+  height: 10%;
+  background-color: rgba(241, 92, 92, 1);
+  border: 2px solid;
+  border-color: #0f0f0f;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+}
+
 
 /*Классы тренажёра*/
 

@@ -15,17 +15,17 @@ let tempActions = [
       text: 'Заменить1',
       action: 'открыть',
       target: 'TV1',
-      time: 3
+      duration: 3
     }, {
       text: 'Заменить2',
       action: 'контролировать',
       target: 'TV2',
-      time: 3
+      duration: 3
     },{
       text: 'Заменить3',
       action: 'закрыть',
       target: 'TV3',
-      time: 3
+      duration: 3
     },
   ]
 ];

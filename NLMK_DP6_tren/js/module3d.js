@@ -1,14 +1,21 @@
 /*----------TODO----------------------------------------------------
-Добавить точку перехода для мониторов
-Добавить новый вид на симуляторена мониторы.
-При переходе на этот вид поверх монитора должно появляться окно с дивом.
-Див содержит 2Д рисунок мнемосхемы на котором можно производить какие либо действия.
+Заменить текстуру монитора на схему 2Д канвас
+МЕШ.material.map.offset.set(0.5, 0);
 --------------------------------------------------------------------
+Cделать выбор для клика по разным жлементам на 3Д виде
+Пока реализован выбор между объектами указанными в наборе действий
+В релизной версии изменить на все элементы, на которые можно нажать
+-----------------------------------------------------------------
+сделать 2 варианта замены текстуры на лампочках, прогрессбарах: канвас и смещение текстуры
+const texture = new THREE.CanvasTexture(ctx.canvas);
+const material = new THREE.MeshBasicMaterial({
+  map: texture,
+});
+
 */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
-
 
 document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('div[model3D]')) {
@@ -24,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
     scene.add(light2);
     const ambientLight = new THREE.AmbientLight();
     scene.add(ambientLight);
-
 
     let loaderGLTF = new GLTFLoader();
     loaderGLTF.load(`media/models/${document.querySelector('div[model3D]').getAttribute('model3D')}.gltf`, (gltf) => {
@@ -100,6 +106,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let sphereArr = [], sphereCount = 5,
           mouseoverSphere;
         const sphereGeometry = new THREE.SphereGeometry(0.7, 32, 32);
+        const ctx = document.createElement('canvas').getContext('2d');
+        ctx.canvas.width = 256;
+        ctx.canvas.height = 256;
+        ctx.fillStyle = '#FFF';
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         for (let i = 0; i < sphereCount; i++) {
           const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent: true, opacity: 0.4 });
           const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
@@ -220,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
               obj3dSup.cameras[1].position.set(-12, 2.4, 3.2);
               obj3dSup.cameras[1].lookAt(-12.72, 2.45, 2.5);
             }
+            trenWorkObj.activeControlCamera = mouseoverSphere.name.indexOf('4') !== -1 ? false : true;
             trenWorkObj.active3dPosition = parseFloat(mouseoverSphere.name.substring(mouseoverSphere.name.indexOf('_') + 1, mouseoverSphere.name.length));
             mouseoverSphere.material.opacity = 1;
             obj3dSup.cameras[1].startEulerY = undefined;
@@ -243,6 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const raycaster = new THREE.Raycaster();
         raycaster.layers.set(0);
         const mouseVector = new THREE.Vector2();
+        let tempDevName = undefined;
         renderer.domElement.addEventListener('mousemove', (event) => {
           const canvasBounds = renderer.domElement.getBoundingClientRect();
           mouseVector.x = ((event.clientX - canvasBounds.left) / canvasBounds.width) * 2 - 1;
@@ -252,7 +265,20 @@ document.addEventListener('DOMContentLoaded', function () {
           let tempObj = trenWorkObj.mouseover3dObjectTren;
           let intersects = raycaster.intersectObjects(scene.children);
           if (trenWorkObj.trenEnded === false && trenWorkObj.waitingInput === true) {
-            trenWorkObj.mouseover3dObjectTren = intersects.length > 0 && intersects[0].object.name && intersects[0].object.name === trenWorkObj.trenActionArr[trenWorkObj.scenarioSelected].actions[trenWorkObj.activeAction].target ? intersects[0].object : undefined;
+            if (trenWorkObj.dev === true) {
+              if (intersects.length > 0 && intersects[0].object.name) {
+                if (tempDevName !== intersects[0].object.name) {
+                  tempDevName = intersects[0].object.name;
+                  console.log(tempDevName);
+                }
+              }
+            }
+            // trenWorkObj.mouseover3dObjectTren = intersects.length > 0 && intersects[0].object.name && intersects[0].object.name === trenWorkObj.trenActionArr[trenWorkObj.scenarioSelected].actions[trenWorkObj.activeAction].target ? intersects[0].object : undefined;
+            trenWorkObj.mouseover3dObjectTren =
+              intersects.length > 0 &&
+                intersects[0].object.name &&
+                trenWorkObj.active3dObjects.indexOf(intersects[0].object.name) !== -1 ?
+                intersects[0].object : undefined;
             if (tempObj !== trenWorkObj.mouseover3dObjectTren && trenWorkObj.mouseover3dObjectTren !== undefined) {
               trenWorkObj.mouseover3dObjectTren.material.color.r = 5;
               trenWorkObj.mouseover3dObjectTren.material.color.g = 5;
@@ -274,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
             trenWorkObj.mouseover3dObjectTren.material.color.b = trenWorkObj.mouseover3dObjectTren.startMaterialColor.b;
             // trenWorkObj.mouseover3dObjectTren = undefined;
           } else {
-            controls.lock();
+            if (trenWorkObj.activeControlCamera === true) controls.lock();
           }
 
         });

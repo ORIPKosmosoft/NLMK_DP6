@@ -1,5 +1,8 @@
 /*                 TODO
 ----------------------------------------------------
+Сделать ресайзер для 2Д и 3Д
+----------------------------------------------------
+переработать систему сообщений
 ----------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", domLoaded);
@@ -185,12 +188,20 @@ function domLoaded() {
   }
 
   function prepareTren(TrenType, Scenario, Index) {
-    removeStartScreen();
-    changeSchemes(0);
-    document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
-    document.querySelector('.tren-container').style.opacity = 1;
-    trenWorkObj.trenType = TrenType;
-    trenWorkObj.scenarioSelected = Index;
+    if (trenWorkObj.trenActionArr[Index].actions) {
+      removeStartScreen();
+      changeSchemes(0);
+      document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
+      document.querySelector('.tren-container').style.opacity = 1;
+      trenWorkObj.trenType = TrenType;
+      trenWorkObj.scenarioSelected = Index;
+    } else {
+      let popupDiv = document.createElement('div');
+      popupDiv.classList.add('popup-alert');
+      popupDiv.innerHTML = `Вы не можете воспроизвести этот сценарий сейчас.`;
+      document.body.append(popupDiv);
+      document.body.addEventListener('mousedown', () => {if (document.querySelector('.popup-alert')) document.querySelector('.popup-alert').remove()});
+    }
   }
 
   Array.from(document.querySelectorAll('.scheme-container')).forEach((Element, Index) => {
@@ -222,10 +233,6 @@ function domLoaded() {
     trenWorkObj.activeScheme = Num;
   }
 
-  function changeMessageWindow(Num) {
-    document.querySelector('.message').innerHTML = Num === 0 ? messages.normal : messages.error;
-    document.querySelector('.message').style.backgroundColor = Num === 0 ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 0, 0, 0.4)';
-  }
 
   document.body.addEventListener('mouseup', function (e) {
     Array.from(document.querySelectorAll('.scroll-rect')).forEach((Element, Index) => {
@@ -249,6 +256,9 @@ function domLoaded() {
   })
 
   // Зазгрузка СВГ схем. Отработка текста в СВГ
+  /*
+    СВГ элементы добавить в массив объектов, где иметь быстрый доступ к этим элементам.
+  */
   if (document.querySelector('object')) {
     document.querySelectorAll('object').forEach((ElementObj) => {
       ElementObj.addEventListener('load', function (e) {
@@ -266,4 +276,10 @@ function domLoaded() {
 
   loadTrenActions();
 }
+
+function changeMessageWindow(Num) {
+  document.querySelector('.message').innerHTML = Num === 0 ? trenWorkObj.messages.normal : trenWorkObj.messages.error;
+  document.querySelector('.message').style.backgroundColor = Num === 0 ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 0, 0, 0.4)';
+}
+
 
