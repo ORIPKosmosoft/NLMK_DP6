@@ -1,6 +1,5 @@
 /*----------TODO----------------------------------------------------
-Заменить текстуру монитора на схему 2Д канвас
-МЕШ.material.map.offset.set(0.5, 0);
+Пусть в канвасе будет постоянно изменяться текст, будем следить за этим на мониторе
 --------------------------------------------------------------------
 Cделать выбор для клика по разным жлементам на 3Д виде
 Пока реализован выбор между объектами указанными в наборе действий
@@ -11,11 +10,18 @@ const texture = new THREE.CanvasTexture(ctx.canvas);
 const material = new THREE.MeshBasicMaterial({
   map: texture,
 });
-
+----------------------------------------------------------
+Создать уникальные материалы для каждого меша
 */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
+import Stats from 'three/addons/stats.module.js'
+
+if (trenWorkObj.dev === true) {
+  trenWorkObj.perfomance = new Stats();
+  // document.body.appendChild(trenWorkObj.perfomance.dom);
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('div[model3D]')) {
@@ -32,22 +38,44 @@ document.addEventListener('DOMContentLoaded', function () {
     const ambientLight = new THREE.AmbientLight();
     scene.add(ambientLight);
 
+
+
     let loaderGLTF = new GLTFLoader();
-    loaderGLTF.load(`media/models/${document.querySelector('div[model3D]').getAttribute('model3D')}.gltf`, (gltf) => {
+    loaderGLTF.load(`media/models/${document.querySelector('div[model3D]').getAttribute('model3D')}.glb`, (gltf) => {
+      // loaderGLTF.load(`media/models/${document.querySelector('div[model3D]').getAttribute('model3D')}.gltf`, (gltf) => {
       scene.add(gltf.scene);
-      let _scale = 50;
+      let _scale = 5000;
       gltf.scene.scale.set(_scale, _scale, _scale);
       gltf.scene.position.set(0, 3, 4.7);
+      // gltf.scene.position.set(0, 0, 0);
       gltf.scene.layers.set(1);
+      trenWorkObj.mainModel = gltf.scene;
       animate();
       Array.from(document.querySelectorAll('.spin-loader')).forEach((Element, Index) => {
         Element.remove();
         document.querySelectorAll('.model3D-window')[Index].style.top = '0px';
       })
-      gltf.scene.children[0].children.forEach((Element) => {
-        if (Element.material)
-          Element.startMaterialColor = { r: Element.material.color.r, g: Element.material.color.g, b: Element.material.color.b }
-      })
+
+      let unicMatArr = [];
+      gltf.scene.children.forEach((Element) => {
+        if (unicMatArr.indexOf(Element.children[0].material) === -1) unicMatArr.push(Element.children[0].material);
+        else {
+          let clonedMaterial = Element.children[0].material.clone();
+          Element.children[0].material = clonedMaterial;
+        }
+        if (Element.children[0].material)
+          Element.children[0].startMaterialColor = { r: Element.children[0].material.color.r, g: Element.children[0].material.color.g, b: Element.children[0].material.color.b }
+        if (Element.children[0].name && Element.children[0].name === 'Display_bend') {
+          trenWorkObj.tempMonitor = Element.children[0];
+          const img = new Image();
+          img.src = 'data:image/svg+xml,' + encodeURIComponent(new XMLSerializer().serializeToString(document.querySelector('object').contentDocument.querySelector('svg')));
+          img.onload = function () {
+            const material = new THREE.MeshBasicMaterial({ map: createSchemeTexture(img) });
+            Element.children[0].material = material;
+            Element.children[0].material.map.offset.y = 0.03;
+          };
+        }
+      });
     },
       (xhr) => {
         let maxWeight = 0;
@@ -66,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
     )
 
     function animate() {
-      requestAnimationFrame(animate);
+      if (trenWorkObj.dev === true) trenWorkObj.perfomance.begin();
       if (obj3dSup.renderers.length > 0) {
         obj3dSup.renderers.forEach((Element, Index) => {
           Element.render(scene, obj3dSup.cameras[Index]);
@@ -77,6 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
           if (Element.name.indexOf(trenWorkObj.active3dPosition) !== -1 && Element.material.opacity !== 1)
             Element.material.opacity = 1;
       })
+      if (trenWorkObj.dev === true) trenWorkObj.perfomance.end();
+      requestAnimationFrame(animate);
     }
 
 
@@ -106,11 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let sphereArr = [], sphereCount = 5,
           mouseoverSphere;
         const sphereGeometry = new THREE.SphereGeometry(0.7, 32, 32);
-        const ctx = document.createElement('canvas').getContext('2d');
-        ctx.canvas.width = 256;
-        ctx.canvas.height = 256;
-        ctx.fillStyle = '#FFF';
-        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         for (let i = 0; i < sphereCount; i++) {
           const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent: true, opacity: 0.4 });
           const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
@@ -125,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
           else if (i === 3)
             sphere.position.set(12, 0, 4);
           else if (i === 4)
-            sphere.position.set(-12.5, 2.5, 2.8);
+            sphere.position.set(-12, 2.5, 3);
           // else if (i === 5)
           //   sphere.position.set(-12, 2.5, 3.5);
           sphere.name = 'playerPosition_' + i;
@@ -214,6 +239,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (mouseoverSphere.name.indexOf('0') !== -1) {
               obj3dSup.cameras[1].position.set(-4.1, 3.7, 2.2);
               obj3dSup.cameras[1].lookAt(-4.1, 1.5, 0.4);
+              // obj3dSup.cameras[1].position.set(0, 5, 6);
+              // obj3dSup.cameras[1].lookAt(0, 5, 4);
             }
             if (mouseoverSphere.name.indexOf('1') !== -1) {
               obj3dSup.cameras[1].position.set(6.4, 3.7, 2.2);
@@ -228,8 +255,8 @@ document.addEventListener('DOMContentLoaded', function () {
               obj3dSup.cameras[1].lookAt(14.25, 1.5, 2.7);
             }
             if (mouseoverSphere.name.indexOf('4') !== -1) {
-              obj3dSup.cameras[1].position.set(-12, 2.4, 3.2);
-              obj3dSup.cameras[1].lookAt(-12.72, 2.45, 2.5);
+              obj3dSup.cameras[1].position.set(-11.2, 2.5, 3.9);
+              obj3dSup.cameras[1].lookAt(-12.1, 2.5, 3);
             }
             trenWorkObj.activeControlCamera = mouseoverSphere.name.indexOf('4') !== -1 ? false : true;
             trenWorkObj.active3dPosition = parseFloat(mouseoverSphere.name.substring(mouseoverSphere.name.indexOf('_') + 1, mouseoverSphere.name.length));
@@ -241,6 +268,8 @@ document.addEventListener('DOMContentLoaded', function () {
         camera = new THREE.PerspectiveCamera(90, Element.getBoundingClientRect().width / Element.getBoundingClientRect().height, 0.1, 1000);
         camera.layers.set(0);
         camera.position.set(-4.1, 3.7, 2.2);
+        // camera.position.set(-11.2, 2.5, 3.9);
+        // camera.lookAt(-12.1, 2.5, 3);
         camera.lookAtCoors = { x: -4.1, y: 1.5, z: 0.4 };
         camera.lookAt(camera.lookAtCoors.x, camera.lookAtCoors.y, camera.lookAtCoors.z);
         camera.updateProjectionMatrix();
@@ -269,7 +298,8 @@ document.addEventListener('DOMContentLoaded', function () {
               if (intersects.length > 0 && intersects[0].object.name) {
                 if (tempDevName !== intersects[0].object.name) {
                   tempDevName = intersects[0].object.name;
-                  console.log(tempDevName);
+                  // Наведение мышки на любой меш на сцене2
+                  // console.log(tempDevName);
                 }
               }
             }
@@ -321,3 +351,10 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   }
 })
+
+function createSchemeTexture(Img) {
+  const texture = new THREE.Texture(Img);
+  texture.needsUpdate = true;
+  texture.flipY = false;
+  return texture;
+}

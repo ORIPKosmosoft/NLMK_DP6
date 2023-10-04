@@ -36,8 +36,6 @@ function domLoaded() {
     });
   });
 
-
-
   Array.from(document.querySelectorAll('.tab-scheme')).forEach((Element, Index) => {
     Element.addEventListener('click', () => changeSchemes(Index));
     if (Index > document.querySelector('.schema-window').children.length - 1) {
@@ -51,13 +49,12 @@ function domLoaded() {
 
   Array.from(document.querySelector('.message-buttons-window').children).forEach((Element, Index) => {
     Element.addEventListener('click', () => changeMessageWindow(Index));
-  })
+  });
 
   document.querySelector('.schema-window').addEventListener('mouseout', (e) => {
     e.currentTarget.activeMove = false
     e.currentTarget.style.cursor = 'grab';
-  }
-  )
+  });
 
   document.querySelector('.schema-window').addEventListener('wheel', function (e) {
     e.preventDefault();
@@ -164,14 +161,21 @@ function domLoaded() {
   })
 
   document.querySelectorAll('.scheme-img').forEach(img => {
-    let tempBool = false;
-    if (img.naturalWidth) tempBool = true;
-    else img.addEventListener('load', () => tempBool = true)
-    if (tempBool === true) {
-      img.style.width = img.naturalWidth / img.parentElement.clientWidth < img.naturalHeight / img.parentElement.clientHeight ? 'auto' : '100%';
-      img.style.height = img.naturalWidth / img.parentElement.clientWidth < img.naturalHeight / img.parentElement.clientHeight ? '100%' : 'auto';
+    if (img.tagName === 'OBJECT' && img.contentDocument.querySelector('svg')) {
+      placeScheme(img);
+    } else if (img.complete) {
+      placeScheme(img);
     }
   });
+
+  function placeScheme(Scheme) {
+    let sizes = {
+      w: Scheme.tagName === 'IMG' ? Scheme.naturalWidth : parseInt(Scheme.contentDocument.querySelector('svg').getAttribute('width')),
+      h: Scheme.tagName === 'IMG' ? Scheme.naturalHeight : parseInt(Scheme.contentDocument.querySelector('svg').getAttribute('height'))
+    }
+    Scheme.style.width = sizes.w / Scheme.parentElement.clientWidth < sizes.h / Scheme.parentElement.clientHeight ? 'auto' : '100%';
+    Scheme.style.height = sizes.w / Scheme.parentElement.clientWidth < sizes.h / Scheme.parentElement.clientHeight ? '100%' : 'auto';
+  }
 
   function removeStartScreen(argument) {
     document.querySelector('.header').style.top = -document.querySelector('.header').getBoundingClientRect().bottom - 10 + 'px';
@@ -200,7 +204,7 @@ function domLoaded() {
       popupDiv.classList.add('popup-alert');
       popupDiv.innerHTML = `Вы не можете воспроизвести этот сценарий сейчас.`;
       document.body.append(popupDiv);
-      document.body.addEventListener('mousedown', () => {if (document.querySelector('.popup-alert')) document.querySelector('.popup-alert').remove()});
+      document.body.addEventListener('mousedown', () => { if (document.querySelector('.popup-alert')) document.querySelector('.popup-alert').remove() });
     }
   }
 
@@ -260,20 +264,43 @@ function domLoaded() {
     СВГ элементы добавить в массив объектов, где иметь быстрый доступ к этим элементам.
   */
   if (document.querySelector('object')) {
+    trenWorkObj.svgSchemes = [];
     document.querySelectorAll('object').forEach((ElementObj) => {
-      ElementObj.addEventListener('load', function (e) {
-        let tempSvg = e.currentTarget.contentDocument.querySelector('svg');
-        // На сколько умножить ширину тексте для сдвига
-        // (parseInt(tempSvg.getAttribute('width')) * 100 / tempSvg.getBoundingClientRect().width)
-        tempSvg.querySelectorAll('text').forEach(ElementText => {
-          // element.setAttribute('text-anchor', 'end'); // задать точку начала с конца
-          // element.setAttribute('x', `${parseFloat(element.getAttribute('x')) + (element.getBoundingClientRect().width * (parseInt(tempSvg.getAttribute('width')) * 100 / tempSvg.getBoundingClientRect().width))}`);
-          // element.innerHTML = 9999; // Заменить текст внутри, если нужно добавить правила
+      let tempSvg;
+      if (ElementObj.contentDocument.querySelector('svg')) {
+        tempSvg = ElementObj.contentDocument.querySelector('svg');
+        trenWorkObj.svgSchemes.push({
+          name: tempSvg.baseURI.substring(tempSvg.baseURI.lastIndexOf('/') + 1, tempSvg.baseURI.indexOf('.svg')),
+          svg: tempSvg,
+          activeElements: [],
+        })
+      }
+      else {
+        ElementObj.addEventListener('load', function (e) {
+          tempSvg = e.currentTarget.contentDocument.querySelector('svg');
+          trenWorkObj.svgSchemes.push({
+            name: tempSvg.baseURI.substring(tempSvg.baseURI.lastIndexOf('/') + 1, tempSvg.baseURI.indexOf('.svg')),
+            svg: tempSvg,
+            activeElements: [],
+          })
         });
+      }
+    })
+    trenWorkObj.svgSchemes.forEach((Element, IndexSvg) => {
+      Element.svg.querySelectorAll('text').forEach(TextElement => {
+        // На сколько умножить ширину тексте для сдвига
+        (parseInt(Element.svg.getAttribute('width')) * 100 / Element.svg.getBoundingClientRect().width)
+        TextElement.setAttribute('text-anchor', 'end'); // задать точку начала с конца
+        TextElement.setAttribute('x', `${parseFloat(TextElement.getAttribute('x')) + (TextElement.getBoundingClientRect().width * (parseInt(Element.svg.getAttribute('width')) * 100 / Element.svg.getBoundingClientRect().width))}`);
+        if (TextElement.innerHTML === '0,16') {
+          trenWorkObj.svgSchemes[IndexSvg].activeElements.push({
+            element: TextElement,
+            name: '6VI_2_1'
+          })
+        }
       });
     })
   }
-
   loadTrenActions();
 }
 
@@ -281,5 +308,3 @@ function changeMessageWindow(Num) {
   document.querySelector('.message').innerHTML = Num === 0 ? trenWorkObj.messages.normal : trenWorkObj.messages.error;
   document.querySelector('.message').style.backgroundColor = Num === 0 ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 0, 0, 0.4)';
 }
-
-

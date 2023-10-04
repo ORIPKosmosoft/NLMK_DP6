@@ -1,9 +1,8 @@
 /*                 TODO
 ----------------------------------------------------
+Возможно делать замену не материалов, а их текстур
 ----------------------------------------------------
 */
-const trenWorkObj = { dev: true, activeAction: 0, trenTimer: 0, currentActionTime: 0, waitingInput: true, trenType: undefined, trenEnded: false, realTimer: 0, activeControlCamera: true,};
-
 function loadTrenActions() {
   trenWorkObj.trenActionArr = [];
   Array.from(document.querySelectorAll('.scenario-box')).forEach((Element, Index) => {
@@ -59,11 +58,63 @@ setInterval(() => {
         if (trenWorkObj.activeAction > trenWorkObj.trenActionArr[trenWorkObj.scenarioSelected].actions.length - 1) trenFinish();
       }
     }
+    if (trenWorkObj.realTimer % 1000 === 0) {
+
+      // Отработка замены материала
+      if (trenWorkObj.realTimer / 1000 - 1 < 10) {
+        // if (trenWorkObj.mainModel && trenWorkObj.unicMeshArr.length > 0) {
+        //   trenWorkObj.mainModel.children.forEach((Element) => {
+        //     if (Element.children[0].name && Element.children[0].name === 'Obj_progress_bar') {
+        //       Element.children[0].material = trenWorkObj.unicMeshArr[trenWorkObj.realTimer / 1000 - 1].material;
+        //     }
+        //   });
+        // }
+        refreshSvg(0, '6VI_2_1', '25');
+      }
+
+
+
+
+
+    }
   }
 }, 50);
 
-function trenFinish(params) {
+function trenFinish() {
   trenWorkObj.trenEnded = true;
 
   if (trenWorkObj.dev === true) console.warn(`Вы успешно завершили сценарий ${trenWorkObj.scenarioSelected}. Ваше время затраченное на прохождение тренажёра = ${trenWorkObj.realTimer / 1000} сек.`);
+}
+
+function refreshSvg(SvgNum, NameElement, ValueElement) {
+  const resultObject = findObjectByName(NameElement, trenWorkObj.svgSchemes[SvgNum].activeElements);
+  // resultObject.element.innerHTML = ValueElement;
+  resultObject.element.innerHTML = 0.16 + trenWorkObj.realTimer / 1000;
+  refreshTextureSchemes(SvgNum);
+}
+
+function refreshTextureSchemes(SvgNum) {
+  
+  const img = new Image();
+  img.src = 'data:image/svg+xml,' + encodeURIComponent(new XMLSerializer().serializeToString(trenWorkObj.svgSchemes[SvgNum].svg));
+  trenWorkObj.tempMonitor.material.map.source.data = img;
+  img.onload = function () {
+  //   const tempTexture = new THREE.Texture(img);
+  //   tempTexture.needsUpdate = true;
+    // texture.flipY = false;
+  //   trenWorkObj.tempMonitor.material.map = tempTexture;
+  //   // trenWorkObj.tempCtx.clearRect(-10000, -10000, 20000, 20000);
+  //   // trenWorkObj.tempCtx.drawImage(img, 0, 0);
+  //   // trenWorkObj.tempMonitor.material.map.offset.x = -Int/100;
+  //   // trenWorkObj.tempMonitor.material.map.offset.y = Int/100;
+  };
+}
+
+function findObjectByName(name, array) {
+  for (let i = 0; i < array.length; i++) {
+      if (array[i].name === name) {
+          return array[i]; // Возвращаем объект, если найден
+      }
+  }
+  return null; // Возвращаем null, если объект не найден
 }

@@ -1,7 +1,9 @@
+
 /*                 TODO
 ----------------------------------------------------
 ----------------------------------------------------
 */
+const trenWorkObj = { dev: true, activeAction: 0, trenTimer: 0, currentActionTime: 0, waitingInput: true, trenType: undefined, trenEnded: false, realTimer: 0, activeControlCamera: true, unicMeshArr: [] };
 /*                 action
 ----------------------------------------------------
 открыть
