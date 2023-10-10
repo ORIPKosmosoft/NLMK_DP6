@@ -20,7 +20,7 @@ import Stats from 'three/addons/stats.module.js'
 
 if (trenWorkObj.dev === true) {
   trenWorkObj.perfomance = new Stats();
-  // document.body.appendChild(trenWorkObj.perfomance.dom);
+  document.body.appendChild(trenWorkObj.perfomance.dom);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -65,20 +65,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (Element.children[0].material)
           Element.children[0].startMaterialColor = { r: Element.children[0].material.color.r, g: Element.children[0].material.color.g, b: Element.children[0].material.color.b }
-        if (Element.children[0].name && Element.children[0].name === 'Display_bend') {
-          trenWorkObj.tempMonitor = Element.children[0];
-          const img = new Image();
-          img.src = 'data:image/svg+xml,' + encodeURIComponent(new XMLSerializer().serializeToString(document.querySelector('object').contentDocument.querySelector('svg')));
-          img.onload = function () {
-            const material = new THREE.MeshBasicMaterial({ map: createSchemeTexture(img) });
-            Element.children[0].material = material;
-            Element.children[0].material.map.offset.y = 0.03;
-          };
-        }
+        // if (Element.children[0].name && Element.children[0].name === 'Display_bend') {
+        //   trenWorkObj.tempMonitor = Element.children[0];
+        //   const img = new Image();
+        //   img.src = 'data:image/svg+xml,' + encodeURIComponent(new XMLSerializer().serializeToString(document.querySelector('object').contentDocument.querySelector('svg')));
+        //   img.onload = function () {
+        //     const material = new THREE.MeshBasicMaterial({ map: createSchemeTexture(img) });
+        //     Element.children[0].material = material;
+        //     Element.children[0].material.map.offset.y = 0.03;
+        //   };
+        // }
       });
     },
       (xhr) => {
-        let maxWeight = 0;
+        let maxWeight = 1;
         for (let key in total3DModelsWeight) {
           if (key == document.querySelector('div[model3D]').getAttribute('model3D'))
             maxWeight = total3DModelsWeight[key];
@@ -318,13 +318,13 @@ document.addEventListener('DOMContentLoaded', function () {
               tempObj.material.color.g = tempObj.startMaterialColor.g;
               tempObj.material.color.b = tempObj.startMaterialColor.b;
             }
-            document.querySelector('.model-window').style.cursor = trenWorkObj.mouseover3dObjectTren === undefined ? 'move' : 'pointer';
+            document.querySelector('.game-view').style.cursor = trenWorkObj.mouseover3dObjectTren === undefined ? 'move' : 'pointer';
           }
         });
 
         renderer.domElement.addEventListener('mousedown', (e) => {
           if (trenWorkObj.mouseover3dObjectTren !== undefined) {
-            document.querySelector('.model-window').style.cursor = 'move';
+            document.querySelector('.game-view').style.cursor = 'move';
             trenWorkObj.mouseover3dObjectTren.material.color.r = trenWorkObj.mouseover3dObjectTren.startMaterialColor.r;
             trenWorkObj.mouseover3dObjectTren.material.color.g = trenWorkObj.mouseover3dObjectTren.startMaterialColor.g;
             trenWorkObj.mouseover3dObjectTren.material.color.b = trenWorkObj.mouseover3dObjectTren.startMaterialColor.b;

@@ -22,13 +22,6 @@
 </head>
 
 <body>
-
-  <!-- <canvas style="width: 800px;">
-
-  </canvas> -->
-
-
-
   <div class="start-container">
     <div class="header">
       Тренажёр обучения газовщика доменной печи №6
@@ -49,10 +42,6 @@
         <div class="scenario-box">
           <p>Кратковременная остановка доменной печи (без зажигания газа на колошнике) со взятием на тягу при нормальном
             режиме работы печи.</p>
-        </div>
-        <div class="scenario-box">
-          <p>Взятие печи на тягу через воздухонагреватель (при кратковременной остановке) с индивидуальным вентилятором
-            газовой горелки.</p>
         </div>
         <div class="title-box">
           <p>Действия в случае аварийных ситуаций:</p>
@@ -248,11 +237,14 @@
     </div>
   </div>
   <div class="tren-container">
-    <!-- <div class="navigation">
-      <div class="action-buttons-window">
-        <button class="call"></button>
-        <button class="operation"></button>
+    <div class="game-view">
+      <div class="spin-loader">
+        <div class="spin-loader-text">0</div>
+        <div class="window-loader-3d"></div>
       </div>
+      <div class="model3D-window" model3D="sm_komnata"></div>
+    </div>
+    <div class="game-interface">
       <div class="model-map-window">
         <div class="spin-loader">
           <div class="spin-loader-text">0</div>
@@ -260,72 +252,43 @@
         </div>
         <div class="model3D-window" model3D="sm_komnata"></div>
       </div>
-      <div class="tab-window">
-        <button class="tab-scheme">ДП</button>
-        <button class="tab-scheme">БЗУ</button>
-        <button class="tab-scheme">ВНК "Общая схема"</button>
-        <button class="tab-scheme">ВНК1</button>
-        <button class="tab-scheme">ВНК2</button>
-        <button class="tab-scheme">ВНК3</button>
-        <button class="tab-scheme">СПВГ</button>
-        <button class="tab-scheme">МС8</button>
-        <button class="tab-scheme">МС9</button>
-        <button class="tab-scheme">МС10</button>
-        <button class="tab-scheme tab-scheme-max">МС11</button>
-        <button class="tab-scheme tab-scheme-max">МС12</button>
-        <button class="tab-scheme tab-scheme-max">МС13</button>
-        <button class="tab-scheme tab-scheme-max">МС14</button>
+      <div class="time"></div>
+      <div class="chat"></div>
+      <div class="ui-buton-block">
+        <div class="scenario-info"></div>
+        <div class="help"></div>
+        <div class="guide"></div>
+      </div>
+      <div class="ui-buton-block">
+        <div class="exit"></div>
+        <div class="restart-operation"></div>
       </div>
     </div>
-    <div class="simulator">
-      <div class="model-window">
-        <div class="spin-loader">
-          <div class="spin-loader-text">0</div>
-          <div class="window-loader-3d"></div>
-        </div>
-        <div class="model3D-window" model3D="sm_komnata"></div>
-      </div>
-      <div class="schema-window">
-        <div class="scheme-container" maximum-scale="5">
-          <object class="scheme-img" data="media/images/schemes/dp.svg" type="image/svg+xml"></object>
-        </div>
-        <div class="scheme-container" maximum-scale="2">
-          <object class="scheme-img" data="media/images/schemes/bzu.svg" type="image/svg+xml"></object>
-        </div>
-        <div class="scheme-container">
-          <img class="scheme-img" src="media/images/schemes/BVNK_Main.jpg" />
-        </div>
-        <div class="scheme-container">
-          <object class="scheme-img" data="media/images/schemes/BVNK_VNK1.svg" type="image/svg+xml"></object>
-        </div>
-        <div class="scheme-container">
-          <object class="scheme-img" data="media/images/schemes/BVNK_VNK2.svg" type="image/svg+xml"></object>
-        </div>
-        <div class="scheme-container">
-          <object class="scheme-img" data="media/images/schemes/BVNK_VNK3.svg" type="image/svg+xml"></object>
-        </div>
-        <div class="scheme-container" maximum-scale="5">
-          <object class="scheme-img" data="media/images/schemes/vnk_spvg_old.svg" type="image/svg+xml"></object>
-        </div>
-      </div>
-    </div>
-    <div class="info">
-      <div class="control-window">
-        <button class="exit">Выход</button>
-        <button class="info-btn">Инфо</button>
-        <button class="help">Помощь</button>
-        <button class="restart">Рестарт</button>
-      </div>
-      <div class="message-buttons-window">
-        <button>Сообщения</button>
-        <button>Ошибки</button>
-      </div>
-      <div class="text-window">
-        <div class="message">Тестовое сообщение</div>
-      </div>
-    </div> -->
-    <div ></div>
   </div>
+
+  <!-- <div class="schema-window">
+    <div class="scheme-container" maximum-scale="5">
+      <object class="scheme-img" data="media/images/schemes/dp.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="scheme-container" maximum-scale="2">
+      <object class="scheme-img" data="media/images/schemes/bzu.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="scheme-container">
+      <img class="scheme-img" src="media/images/schemes/BVNK_Main.jpg" />
+    </div>
+    <div class="scheme-container">
+      <object class="scheme-img" data="media/images/schemes/BVNK_VNK1.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="scheme-container">
+      <object class="scheme-img" data="media/images/schemes/BVNK_VNK2.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="scheme-container">
+      <object class="scheme-img" data="media/images/schemes/BVNK_VNK3.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="scheme-container" maximum-scale="5">
+      <object class="scheme-img" data="media/images/schemes/vnk_spvg_old.svg" type="image/svg+xml"></object>
+    </div>
+  </div> -->
 </body>
 
 </html>

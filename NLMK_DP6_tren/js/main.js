@@ -11,8 +11,8 @@ function domLoaded() {
   trenWorkObj.activeScheme = 0;
   trenWorkObj.scenarioSelected = undefined;
   trenWorkObj.messages = {
-    normal: ['Тестовое сообщение'],
-    error: ['Тестовая ошибка']
+    normal: [],
+    error: []
   }
   let scenarioBoxes = document.querySelectorAll('.scenario-box');
 
@@ -36,111 +36,6 @@ function domLoaded() {
     });
   });
 
-  Array.from(document.querySelectorAll('.tab-scheme')).forEach((Element, Index) => {
-    Element.addEventListener('click', () => changeSchemes(Index));
-    if (Index > document.querySelector('.schema-window').children.length - 1) {
-      Element.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
-    }
-  })
-
-  Array.from(document.querySelector('.message-buttons-window').children).forEach((Element, Index) => {
-    Element.addEventListener('click', () => changeMessageWindow(Index));
-  })
-
-  Array.from(document.querySelector('.message-buttons-window').children).forEach((Element, Index) => {
-    Element.addEventListener('click', () => changeMessageWindow(Index));
-  });
-
-  document.querySelector('.schema-window').addEventListener('mouseout', (e) => {
-    e.currentTarget.activeMove = false
-    e.currentTarget.style.cursor = 'grab';
-  });
-
-  document.querySelector('.schema-window').addEventListener('wheel', function (e) {
-    e.preventDefault();
-    let activeSchemeContainer = document.querySelector('.schema-window').children[trenWorkObj.activeScheme];
-    let maxScale = activeSchemeContainer.hasAttribute('maximum-scale') ? activeSchemeContainer.getAttribute('maximum-scale').length > 0 ? activeSchemeContainer.getAttribute('maximum-scale') : 3 : 3;
-    let newScaleDiff = e.deltaY > 1 ? (activeSchemeContainer.scale === 1 ? 0 : -0.1) : (activeSchemeContainer.scale > maxScale ? 0 : 0.1);
-    activeSchemeContainer.scale += newScaleDiff;
-    if (activeSchemeContainer.scale === 1) {
-      activeSchemeContainer.startCoors = { x: 0, y: 0 };
-      activeSchemeContainer.transformXY = { x: 0, y: 0 };
-    }
-    activeSchemeContainer.style.transform = `scale(${activeSchemeContainer.scale}) translate(${activeSchemeContainer.transformXY.x}px, ${activeSchemeContainer.transformXY.y}px)`;
-    movePicOnProperPlace(e);
-  });
-
-  document.querySelector('.schema-window').addEventListener('mousedown', function (e) {
-    e.preventDefault();
-    e.currentTarget.style.cursor = 'grabbing';
-    e.currentTarget.activeMove = true;
-    e.currentTarget.children[trenWorkObj.activeScheme].startClick = {
-      x: e.clientX,
-      y: e.clientY
-    };
-    let startTransformIndexX = e.currentTarget.children[trenWorkObj.activeScheme].style.transform.indexOf('translate(') + 10;
-    let finishTransformIndexX = e.currentTarget.children[trenWorkObj.activeScheme].style.transform.indexOf('px', startTransformIndexX);
-    let tempX = parseInt(e.currentTarget.children[trenWorkObj.activeScheme].style.transform.substring(startTransformIndexX, finishTransformIndexX));
-    let startTransformIndexY = e.currentTarget.children[trenWorkObj.activeScheme].style.transform.indexOf('px') + 3;
-    let finishTransformIndexY = e.currentTarget.children[trenWorkObj.activeScheme].style.transform.indexOf('px', startTransformIndexY);
-    let tempY = parseInt(e.currentTarget.children[trenWorkObj.activeScheme].style.transform.substring(startTransformIndexY, finishTransformIndexY));
-    e.currentTarget.children[trenWorkObj.activeScheme].startCoors = {
-      x: tempX,
-      y: tempY
-    };
-  });
-  document.querySelector('.schema-window').addEventListener('mouseup', function (e) {
-    e.preventDefault();
-    e.currentTarget.style.cursor = 'grab';
-    e.currentTarget.activeMove = false;
-    e.currentTarget.children[trenWorkObj.activeScheme].startClick = undefined;
-    e.currentTarget.children[trenWorkObj.activeScheme].startCoors = undefined;
-  });
-  document.querySelector('.schema-window').addEventListener('mousemove', function (e) {
-    e.preventDefault();
-    movePicOnProperPlace(e)
-  });
-
-  function movePicOnProperPlace(e) {
-    let tempSchemeContainer = document.querySelector('.schema-window').children[trenWorkObj.activeScheme];
-    let tempScheme = tempSchemeContainer.querySelector('.scheme-img');
-    if (tempSchemeContainer.scale === 1) {
-      tempSchemeContainer.style.transform = `scale(1) translate(0px, 0px)`;
-    } else {
-      if (e.currentTarget.activeMove === true) {
-        tempSchemeContainer.transformXY.x = (e.clientX - tempSchemeContainer.startClick.x) + tempSchemeContainer.startCoors.x;
-        tempSchemeContainer.transformXY.y = (e.clientY - tempSchemeContainer.startClick.y) + tempSchemeContainer.startCoors.y;
-        if (tempScheme.getBoundingClientRect().width > tempSchemeContainer.parentElement.getBoundingClientRect().width) {
-          if (Math.abs(tempSchemeContainer.transformXY.x) > (tempScheme.getBoundingClientRect().width - tempSchemeContainer.parentElement.getBoundingClientRect().width) / (2 * tempSchemeContainer.scale)) {
-            tempSchemeContainer.transformXY.x = ((tempScheme.getBoundingClientRect().width - tempSchemeContainer.parentElement.getBoundingClientRect().width) / (2 * tempSchemeContainer.scale)) *
-              (tempSchemeContainer.transformXY.x > 0 ? 1 : -1);
-          }
-        } else tempSchemeContainer.transformXY.x = 0;
-        if (tempScheme.getBoundingClientRect().height > tempSchemeContainer.parentElement.getBoundingClientRect().height) {
-          if (Math.abs(tempSchemeContainer.transformXY.y) > (tempScheme.getBoundingClientRect().height - tempSchemeContainer.parentElement.getBoundingClientRect().height) / (2 * tempSchemeContainer.scale)) {
-            tempSchemeContainer.transformXY.y = ((tempScheme.getBoundingClientRect().height - tempSchemeContainer.parentElement.getBoundingClientRect().height) / (2 * tempSchemeContainer.scale)) *
-              (tempSchemeContainer.transformXY.y > 0 ? 1 : -1);
-          }
-        } else tempSchemeContainer.transformXY.y = 0;
-        tempSchemeContainer.style.transform = `scale(${tempSchemeContainer.scale}) translate(${tempSchemeContainer.transformXY.x}px, ${tempSchemeContainer.transformXY.y}px)`;
-      }
-      if (e.type === 'wheel') {
-        if (tempScheme.getBoundingClientRect().left > tempSchemeContainer.parentElement.getBoundingClientRect().left)
-          tempSchemeContainer.transformXY.x = ((tempScheme.getBoundingClientRect().width - tempSchemeContainer.parentElement.getBoundingClientRect().width) / (2 * tempSchemeContainer.scale));
-        if (tempScheme.getBoundingClientRect().right < tempSchemeContainer.parentElement.getBoundingClientRect().right)
-          tempSchemeContainer.transformXY.x = -((tempScheme.getBoundingClientRect().width - tempSchemeContainer.parentElement.getBoundingClientRect().width) / (2 * tempSchemeContainer.scale));
-        if (tempScheme.getBoundingClientRect().top > tempSchemeContainer.parentElement.getBoundingClientRect().top)
-          tempSchemeContainer.transformXY.y = ((tempScheme.getBoundingClientRect().height - tempSchemeContainer.parentElement.getBoundingClientRect().height) / (2 * tempSchemeContainer.scale));
-        if (tempScheme.getBoundingClientRect().bottom < tempSchemeContainer.parentElement.getBoundingClientRect().bottom)
-          tempSchemeContainer.transformXY.y = -((tempScheme.getBoundingClientRect().height - tempSchemeContainer.parentElement.getBoundingClientRect().height) / (2 * tempSchemeContainer.scale));
-        if (tempScheme.getBoundingClientRect().height < tempSchemeContainer.parentElement.getBoundingClientRect().height)
-          tempSchemeContainer.transformXY.y = 0;
-        if (tempScheme.getBoundingClientRect().width < tempSchemeContainer.parentElement.getBoundingClientRect().width)
-          tempSchemeContainer.transformXY.x = 0;
-        tempSchemeContainer.style.transform = `scale(${tempSchemeContainer.scale}) translate(${tempSchemeContainer.transformXY.x}px, ${tempSchemeContainer.transformXY.y}px)`;
-      }
-    }
-  }
 
   document.querySelector('.tren-container').addEventListener('transitionend', (e) => {
     if (e.propertyName === 'opacity') {
@@ -150,7 +45,6 @@ function domLoaded() {
         document.querySelector('.header').style.top = '0px';
         document.querySelectorAll('.section')[0].style.left = '0px';
         document.querySelectorAll('.section')[1].style.left = '0px';
-        // document.querySelectorAll('.section')[1].style.left = '52%';
         document.querySelector('.start-container').style.visibility = 'visible';
       } else e.currentTarget.style.visibility = 'visible';
     }
@@ -160,22 +54,7 @@ function domLoaded() {
     document.querySelector('.tren-container').style.opacity = 0;
   })
 
-  document.querySelectorAll('.scheme-img').forEach(img => {
-    if (img.tagName === 'OBJECT' && img.contentDocument.querySelector('svg')) {
-      placeScheme(img);
-    } else if (img.complete) {
-      placeScheme(img);
-    }
-  });
 
-  function placeScheme(Scheme) {
-    let sizes = {
-      w: Scheme.tagName === 'IMG' ? Scheme.naturalWidth : parseInt(Scheme.contentDocument.querySelector('svg').getAttribute('width')),
-      h: Scheme.tagName === 'IMG' ? Scheme.naturalHeight : parseInt(Scheme.contentDocument.querySelector('svg').getAttribute('height'))
-    }
-    Scheme.style.width = sizes.w / Scheme.parentElement.clientWidth < sizes.h / Scheme.parentElement.clientHeight ? 'auto' : '100%';
-    Scheme.style.height = sizes.w / Scheme.parentElement.clientWidth < sizes.h / Scheme.parentElement.clientHeight ? '100%' : 'auto';
-  }
 
   function removeStartScreen(argument) {
     document.querySelector('.header').style.top = -document.querySelector('.header').getBoundingClientRect().bottom - 10 + 'px';
@@ -194,7 +73,6 @@ function domLoaded() {
   function prepareTren(TrenType, Scenario, Index) {
     if (trenWorkObj.trenActionArr[Index].actions) {
       removeStartScreen();
-      changeSchemes(0);
       document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
       document.querySelector('.tren-container').style.opacity = 1;
       trenWorkObj.trenType = TrenType;
@@ -207,44 +85,6 @@ function domLoaded() {
       document.body.addEventListener('mousedown', () => { if (document.querySelector('.popup-alert')) document.querySelector('.popup-alert').remove() });
     }
   }
-
-  Array.from(document.querySelectorAll('.scheme-container')).forEach((Element, Index) => {
-    Element.style.transform = 'scale(1) translate(0px, 0px)';
-    Element.startClick = undefined;
-    Element.startCoors = { x: 0, y: 0 };
-    Element.transformXY = { x: 0, y: 0 };
-    Element.scale = 1;
-    Element.startDementions = {
-      w: Element.querySelector('.scheme-img').getBoundingClientRect().width,
-      h: Element.querySelector('.scheme-img').getBoundingClientRect().height
-    }
-  })
-
-  function changeSchemes(Num) {
-    Array.from(document.querySelectorAll('.scheme-container')).forEach((Element, Index) => {
-      Element.style.transform = 'scale(1) translate(0px, 0px)';
-      Element.startClick = undefined;
-      Element.startCoors = { x: 0, y: 0 };
-      Element.transformXY = { x: 0, y: 0 };
-      Element.scale = 1;
-      Element.style.visibility = Num === Index ? 'visible' : 'hidden';
-      if (Num > document.querySelectorAll('.scheme-container').length - 1) {
-        trenWorkObj.activeScheme = 0;
-        document.querySelectorAll('.scheme-container')[0].style.visibility = 'visible';
-        console.warn('У вас нет рисунка номер', Num);
-      }
-    })
-    trenWorkObj.activeScheme = Num;
-  }
-
-
-  document.body.addEventListener('mouseup', function (e) {
-    Array.from(document.querySelectorAll('.scroll-rect')).forEach((Element, Index) => {
-      Element.clickedCoors = { x: '', y: '', }
-      Element.clicked = false;
-    })
-  })
-
   //---------------
   // Правая часть заглавной страницы
   //---------------
@@ -255,52 +95,113 @@ function domLoaded() {
         document.querySelector('.info-page-active').classList.toggle('info-page-active', false);
         Element.closest('.section').querySelector('.content').children[Index].classList.toggle('info-page-active', true);
       }
-
     })
   })
 
   // Зазгрузка СВГ схем. Отработка текста в СВГ
   /*
     СВГ элементы добавить в массив объектов, где иметь быстрый доступ к этим элементам.
-  */
-  if (document.querySelector('object')) {
-    trenWorkObj.svgSchemes = [];
-    document.querySelectorAll('object').forEach((ElementObj) => {
-      let tempSvg;
-      if (ElementObj.contentDocument.querySelector('svg')) {
-        tempSvg = ElementObj.contentDocument.querySelector('svg');
-        trenWorkObj.svgSchemes.push({
-          name: tempSvg.baseURI.substring(tempSvg.baseURI.lastIndexOf('/') + 1, tempSvg.baseURI.indexOf('.svg')),
-          svg: tempSvg,
-          activeElements: [],
-        })
-      }
-      else {
-        ElementObj.addEventListener('load', function (e) {
-          tempSvg = e.currentTarget.contentDocument.querySelector('svg');
+      // document.querySelectorAll('.scheme-img').forEach(img => {
+  //   if (img.tagName === 'OBJECT' && img.contentDocument.querySelector('svg')) {
+  //     placeScheme(img);
+  //   } else if (img.complete) {
+  //     placeScheme(img);
+  //   }
+  // });
+  // function placeScheme(Scheme) {
+  //   let sizes = {
+  //     w: Scheme.tagName === 'IMG' ? Scheme.naturalWidth : parseInt(Scheme.contentDocument.querySelector('svg').getAttribute('width')),
+  //     h: Scheme.tagName === 'IMG' ? Scheme.naturalHeight : parseInt(Scheme.contentDocument.querySelector('svg').getAttribute('height'))
+  //   }
+  //   Scheme.style.width = sizes.w / Scheme.parentElement.clientWidth < sizes.h / Scheme.parentElement.clientHeight ? 'auto' : '100%';
+  //   Scheme.style.height = sizes.w / Scheme.parentElement.clientWidth < sizes.h / Scheme.parentElement.clientHeight ? '100%' : 'auto';
+  // }
+
+  // changeSchemes(Index);
+
+  // Array.from(document.querySelectorAll('.scheme-container')).forEach((Element) => {
+  //   Element.style.transform = 'scale(1) translate(0px, 0px)';
+  //   Element.startDementions = {
+  //     w: Element.querySelector('.scheme-img').getBoundingClientRect().width,
+  //     h: Element.querySelector('.scheme-img').getBoundingClientRect().height
+  //   }
+  // })
+
+  // function changeSchemes(Num) {
+  //   Array.from(document.querySelectorAll('.scheme-container')).forEach((Element, Index) => {
+  //     Element.style.transform = 'scale(1) translate(0px, 0px)';
+  //     Element.scale = 1;
+  //     Element.style.visibility = Num === Index ? 'visible' : 'hidden';
+  //     if (Num > document.querySelectorAll('.scheme-container').length - 1) {
+  //       trenWorkObj.activeScheme = 0;
+  //       document.querySelectorAll('.scheme-container')[0].style.visibility = 'visible';
+  //       console.warn('У вас нет рисунка номер', Num);
+  //     }
+  //   })
+  //   trenWorkObj.activeScheme = Num;
+  // }
+
+  // document.querySelector('.schema-window').addEventListener('mouseout', (e) => {
+  //   e.currentTarget.activeMove = false
+  //   e.currentTarget.style.cursor = 'grab';
+  // });
+
+  // document.querySelector('.schema-window').addEventListener('mousedown', function (e) {
+  //   e.preventDefault();
+  //   e.currentTarget.style.cursor = 'grabbing';
+  //   e.currentTarget.activeMove = true;
+  //   // TODO: тут будет клик по схеме. Добавить обработчик событий по элементам на схеме
+  // });
+  // document.querySelector('.schema-window').addEventListener('mouseup', function (e) {
+  //   e.preventDefault();
+  //   e.currentTarget.style.cursor = 'grab';
+  //   e.currentTarget.activeMove = false;
+  //   // TODO: тут будет клик по схеме. Добавить обработчик событий по элементам на схеме
+  // });
+  // document.querySelector('.schema-window').addEventListener('mousemove', function (e) {
+  //   e.preventDefault();
+  // });
+
+    
+    if (document.querySelector('object')) {
+      trenWorkObj.svgSchemes = [];
+      document.querySelectorAll('object').forEach((ElementObj) => {
+        let tempSvg;
+        if (ElementObj.contentDocument.querySelector('svg')) {
+          tempSvg = ElementObj.contentDocument.querySelector('svg');
           trenWorkObj.svgSchemes.push({
             name: tempSvg.baseURI.substring(tempSvg.baseURI.lastIndexOf('/') + 1, tempSvg.baseURI.indexOf('.svg')),
             svg: tempSvg,
             activeElements: [],
           })
-        });
-      }
-    })
-    trenWorkObj.svgSchemes.forEach((Element, IndexSvg) => {
-      Element.svg.querySelectorAll('text').forEach(TextElement => {
-        // На сколько умножить ширину тексте для сдвига
-        (parseInt(Element.svg.getAttribute('width')) * 100 / Element.svg.getBoundingClientRect().width)
-        TextElement.setAttribute('text-anchor', 'end'); // задать точку начала с конца
-        TextElement.setAttribute('x', `${parseFloat(TextElement.getAttribute('x')) + (TextElement.getBoundingClientRect().width * (parseInt(Element.svg.getAttribute('width')) * 100 / Element.svg.getBoundingClientRect().width))}`);
-        if (TextElement.innerHTML === '0,16') {
-          trenWorkObj.svgSchemes[IndexSvg].activeElements.push({
-            element: TextElement,
-            name: '6VI_2_1'
-          })
         }
-      });
-    })
-  }
+        else {
+          ElementObj.addEventListener('load', function (e) {
+            tempSvg = e.currentTarget.contentDocument.querySelector('svg');
+            trenWorkObj.svgSchemes.push({
+              name: tempSvg.baseURI.substring(tempSvg.baseURI.lastIndexOf('/') + 1, tempSvg.baseURI.indexOf('.svg')),
+              svg: tempSvg,
+              activeElements: [],
+            })
+          });
+        }
+      })
+      trenWorkObj.svgSchemes.forEach((Element, IndexSvg) => {
+        Element.svg.querySelectorAll('text').forEach(TextElement => {
+          // На сколько умножить ширину тексте для сдвига
+          (parseInt(Element.svg.getAttribute('width')) * 100 / Element.svg.getBoundingClientRect().width)
+          TextElement.setAttribute('text-anchor', 'end'); // задать точку начала с конца
+          TextElement.setAttribute('x', `${parseFloat(TextElement.getAttribute('x')) + (TextElement.getBoundingClientRect().width * (parseInt(Element.svg.getAttribute('width')) * 100 / Element.svg.getBoundingClientRect().width))}`);
+          if (TextElement.innerHTML === '0,16') {
+            trenWorkObj.svgSchemes[IndexSvg].activeElements.push({
+              element: TextElement,
+              name: '6VI_2_1'
+            })
+          }
+        });
+      })
+    }
+  */
   loadTrenActions();
 }
 
