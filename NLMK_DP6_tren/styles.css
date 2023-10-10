@@ -450,15 +450,3 @@ ul {
   margin-bottom: 5px;
 }
 
-#A1,#A2,#A3{
-  position: fixed;
-}
-#A1{
-  left: 30px;
-}
-#A2{
-  left: 60px;
-}
-#A3{
-  left: 90px;
-}

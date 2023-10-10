@@ -377,27 +377,6 @@ document.addEventListener('DOMContentLoaded', function () {
     mesh.position.set(-4, 3.6, 1.85);
     
     scene.add(mesh);
-    console.log(mesh);
-
-
-    document.getElementById("A1").addEventListener("click", (e) => {
-      let img = new Image();
-      console.log(img.complete);
-      let svgData = (new XMLSerializer()).serializeToString(svg);
-      img.src = 'data:image/svg+xml,' + encodeURIComponent(svgData);// + "?" + Math.random();
-      img.onload = function () {
-        let tempTexture = new THREE.Texture(img);
-        tempTexture.needsUpdate = true;
-        mesh.material.map = tempTexture;
-      }
-    })
-
-    document.getElementById("A2").addEventListener("click", (e) => {
-      
-    })
-    document.getElementById("A3").addEventListener("click", (e) => {
-      mesh.material.map.offset.x = 0.7;
-    })
 
     function SwapMaterial() {
       let img = new Image();
@@ -413,15 +392,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setInterval( ()=>{
       if (_timer == 7500) _timer = 0;
-      // svg
-      //svg = shemeSVG.contentDocument;
       let elements = svg.getElementsByClassName("fil28");
       for (var i = 0; i < elements.length; i++) {
         elements[i].style.fill = _colors[_timer];
       }
-      // mesh
-      SwapMaterial();
-      //mesh.material.map.offset.x = _pos[_timer];     
+      SwapMaterial();  
       _timer += 1500;
     }, 1500)
 
