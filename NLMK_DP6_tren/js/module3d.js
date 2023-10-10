@@ -10,6 +10,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import Stats from 'three/addons/stats.module.js'
+//import { SVGRenderer } from 'three/addons/renderers/SVGRenderer.js';
 
 if (devHelper.dev.enable === true) {
   devHelper.dev.perfomance = new Stats();
@@ -31,14 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const ambientLight = new THREE.AmbientLight();
     scene.add(ambientLight);
 
-
-
     let loaderGLTF = new GLTFLoader();
     loadGLB(loaderGLTF, document.querySelector('div[model3D]').getAttribute('model3D'), scene);
     
     Array.from(document.querySelectorAll('div[model3D]')).forEach((Element) => {
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      // renderer.outputColorSpace = THREE.SRGBColorSpace;
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(Element.getBoundingClientRect().width, Element.getBoundingClientRect().height);
       Element.append(renderer.domElement);
@@ -59,8 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
         camera.rotation.x = THREE.MathUtils.degToRad(-35);
         camera.updateProjectionMatrix();
         camera.layers.enableAll();
-
-        // TODO: реализовать активные точки перехода по объектам
 
         let sphereArr = [], sphereCount = 5,
           mouseoverSphere;
@@ -168,8 +164,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (mouseoverSphere.name.indexOf('0') !== -1) {
               devHelper.model3DVals.cameras[1].position.set(-4.1, 3.7, 2.2);
               devHelper.model3DVals.cameras[1].lookAt(-4.1, 1.5, 0.4);
-              // devHelper.model3DVals.cameras[1].position.set(0, 5, 6);
-              // devHelper.model3DVals.cameras[1].lookAt(0, 5, 4);
             }
             if (mouseoverSphere.name.indexOf('1') !== -1) {
               devHelper.model3DVals.cameras[1].position.set(6.4, 3.7, 2.2);
@@ -197,8 +191,6 @@ document.addEventListener('DOMContentLoaded', function () {
         camera = new THREE.PerspectiveCamera(90, Element.getBoundingClientRect().width / Element.getBoundingClientRect().height, 0.1, 1000);
         camera.layers.set(0);
         camera.position.set(-4.1, 3.7, 2.2);
-        // camera.position.set(-11.2, 2.5, 3.9);
-        // camera.lookAt(-12.1, 2.5, 3);
         camera.lookAtCoors = { x: -4.1, y: 1.5, z: 0.4 };
         camera.lookAt(camera.lookAtCoors.x, camera.lookAtCoors.y, camera.lookAtCoors.z);
         camera.updateProjectionMatrix();
@@ -228,11 +220,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (tempDevName !== intersects[0].object.name) {
                   tempDevName = intersects[0].object.name;
                   // Наведение мышки на любой меш на сцене2
-                  // console.log(tempDevName);
                 }
               }
             }
-            // devHelper.model3DVals.mouseoverMesh = intersects.length > 0 && intersects[0].object.name && intersects[0].object.name === devHelper.trenVals.actionArr[devHelper.trenVals.scenario].actions[devHelper.activeAction].target ? intersects[0].object : undefined;
             devHelper.model3DVals.mouseoverMesh =
               intersects.length > 0 &&
                 intersects[0].object.name &&
@@ -257,7 +247,6 @@ document.addEventListener('DOMContentLoaded', function () {
             devHelper.model3DVals.mouseoverMesh.material.color.r = devHelper.model3DVals.mouseoverMesh.startMaterialColor.r;
             devHelper.model3DVals.mouseoverMesh.material.color.g = devHelper.model3DVals.mouseoverMesh.startMaterialColor.g;
             devHelper.model3DVals.mouseoverMesh.material.color.b = devHelper.model3DVals.mouseoverMesh.startMaterialColor.b;
-            // devHelper.model3DVals.mouseoverMesh = undefined;
           } else {
             if (devHelper.model3DVals.activeControlCamera === true) controls.lock();
           }
@@ -271,32 +260,42 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }
 
-      devHelper.model3DVals.cameras.push(camera)
-      devHelper.model3DVals.renderers.push(renderer)
-      devHelper.model3DVals.scenes.push(scene)
-      devHelper.model3DVals.controls.push(controls)
-
-
+      devHelper.model3DVals.cameras.push(camera);
+      devHelper.model3DVals.renderers.push(renderer);
+      devHelper.model3DVals.scenes.push(scene);
+      devHelper.model3DVals.controls.push(controls);
     })
+
+    //---------------------------------------------------------------------------------
+    // замена текстуры материала на мониторе
+    // SwapMaterial();  
+    // function SwapMaterial() {
+    //   let img = new Image();
+    //   let svgData = (new XMLSerializer()).serializeToString(document.getElementById("S1").contentDocument);
+    //   img.src = 'data:image/svg+xml,' + encodeURIComponent(svgData);
+    //   img.onload = function () {
+    //     let tempTexture = new THREE.Texture(img);
+    //     tempTexture.needsUpdate = true;
+    //     ЗАМЕНИТЬ_МЕШ.material.map = tempTexture;
+    //     return tempTexture
+    //   }
+    // }
+    //---------------------------------------------------------------------------------
   }
 })
 
-function createSchemeTexture(Img) {
-  const texture = new THREE.Texture(Img);
-  texture.needsUpdate = true;
-  texture.flipY = false;
-  return texture;
-}
+
+
+
+
 
 function loadGLB(Loader, Name, Scene) {
   Loader.load(`media/models/${Name}.glb`, (gltf) => {
-  // Loader.load(`media/models/${document.querySelector('div[model3D]').getAttribute('model3D')}.gltf`, (gltf) => {
-    console.log(gltf);
+    if(devHelper.dev.enable === true) console.log(gltf);
     Scene.add(gltf.scene);
     let _scale = 1;
     gltf.scene.scale.set(_scale, _scale, _scale);
     gltf.scene.position.set(0, 0, 0);
-    // gltf.scene.position.set(0, 0, 0);
     gltf.scene.layers.set(1);
     devHelper.model3DVals.mainModel = gltf.scene;
     if (Name === 'Table') {
@@ -320,7 +319,7 @@ function loadGLB(Loader, Name, Scene) {
       document.querySelectorAll('.model3D-window')[Index].style.top = '0px';
     })
 
-    let unicMatArr = [];
+    // let unicMatArr = [];
     // gltf.scene.children.forEach((Element) => {
     //   if (unicMatArr.indexOf(Element.children[0].material) === -1) unicMatArr.push(Element.children[0].material);
     //   else {

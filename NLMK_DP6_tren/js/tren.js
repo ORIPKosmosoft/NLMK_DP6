@@ -115,3 +115,32 @@ function trenFinish() {
 //   }
 //   return null; // Возвращаем null, если объект не найден
 // }
+
+
+{
+  const Roles = {
+    "Я": "messageMy",
+    "Система": "messageSystem",
+    "Ученик": "message",
+    "Сотрудники НЛМК": "message"
+  }
+  function sendMessage(Sender, TextMessage){
+    let message = createCustomElement("div", "", {"class": Roles[Sender]})
+    let top = createCustomElement("div", "", {"class": "topMessage"}, message)
+    createCustomElement("div", Sender, {"class": "authorMessage"}, top)
+    createCustomElement("div", (new Date().toTimeString().split(" ")[0] /*МЕНЯТЬ*/), {"class": "timeMessage"}, top)
+    createCustomElement("div", "", {"class": "lineMessage"}, message);
+    createCustomElement("div", TextMessage, {"class": "textMessage"}, message)
+    document.querySelector(".chat").insertBefore(message, document.querySelector(".chat").children[0]);
+  }
+
+  function createCustomElement (tag, content, attributes, parrent = null) {
+    const element = document.createElement(tag)
+    element.innerHTML = content
+    for (const name in attributes) {
+      element.setAttribute(name, attributes[name])
+    }
+    if (parrent) parrent.append(element);
+    return element
+  }
+}
