@@ -301,6 +301,11 @@ ul {
   margin-top: 1%;
   margin-bottom: 1%;
   background-color: rgb(35, 153, 88);
+
+  padding-top: 5px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .ui-buton-block {
@@ -403,4 +408,37 @@ ul {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.message {
+  padding: 5px;
+  border: 1px solid #b2d916;
+  border-radius: 5px;
+  margin: 0 50px 10px 5px;
+}
+.messageMy{
+  padding: 5px;
+  border: 1px solid #b2d916;
+  border-radius: 5px;
+  margin: 0 5px 10px 50px;
+}
+.messageSystem{
+  padding: 5px;
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    margin: 0px 30px 5px 30px;
+}
+
+.topMessage{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.authorMessage{
+  font-weight: bold;
+}
+.lineMessage{
+  height: 0px;
+  border: 1px solid black;
+  margin-bottom: 5px;
 }
