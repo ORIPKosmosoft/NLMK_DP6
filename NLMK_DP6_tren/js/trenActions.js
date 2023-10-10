@@ -5,6 +5,7 @@
 */
 const devHelper = {
   trenVals: {
+    waitingInput: true,
     currentAction: 0,
     currentActionTime: 0,
     actionTimer: 0,
@@ -27,14 +28,15 @@ const devHelper = {
     scenes: [],
     renderers: [],
     controls: [],
-    mainModel: undefined
+    mainModel: undefined,
+    active3dObjects: [],
+    currentPosition: undefined
   },
-  svgSchemes: [],
+  svgVals: [],
   dev: {
     enable: true,
     perfomance: undefined,
   },
-  waitingInput: true,
 };
 /*                 action
 ----------------------------------------------------

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('div[model3D]')) {
     const total3DModelsWeight = { Console_BVNK: '6476388' };
     devHelper.model3DVals = { cameras: [], scenes: [], renderers: [], controls: [] };
-    devHelper.active3dPosition = 0;
+    devHelper.model3DVals.currentPosition = 0;
     const scene = new THREE.Scene();
     const light1 = new THREE.PointLight(0xffffff, 400);
     light1.position.set(7, 10, 0);
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
           raycaster.setFromCamera(mouseVector, camera);
           mouseoverSphere = undefined;
           for (let i = 0; i < sphereCount; i++) {
-            sphereArr[i].material.opacity = (raycaster.intersectObject(sphereArr[i]).length > 0 || i === devHelper.active3dPosition) ? 1 : 0.4;
+            sphereArr[i].material.opacity = (raycaster.intersectObject(sphereArr[i]).length > 0 || i === devHelper.model3DVals.currentPosition) ? 1 : 0.4;
             if (raycaster.intersectObject(sphereArr[i]).length > 0)
               mouseoverSphere = sphereArr[i];
           }
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
               devHelper.model3DVals.cameras[1].lookAt(-12.1, 2.5, 3);
             }
             devHelper.model3DVals.activeControlCamera = mouseoverSphere.name.indexOf('4') !== -1 ? false : true;
-            devHelper.active3dPosition = parseFloat(mouseoverSphere.name.substring(mouseoverSphere.name.indexOf('_') + 1, mouseoverSphere.name.length));
+            devHelper.model3DVals.currentPosition = parseFloat(mouseoverSphere.name.substring(mouseoverSphere.name.indexOf('_') + 1, mouseoverSphere.name.length));
             mouseoverSphere.material.opacity = 1;
             devHelper.model3DVals.cameras[1].startEulerY = undefined;
           }
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           let tempObj = devHelper.model3DVals.mouseoverMesh;
           let intersects = raycaster.intersectObjects(scene.children);
-          if (devHelper.trenVals.ended === false && devHelper.waitingInput === true) {
+          if (devHelper.trenVals.ended === false && devHelper.trenVals.waitingInput === true) {
             if (devHelper.dev.enable === true) {
               if (intersects.length > 0 && intersects[0].object.name) {
                 if (tempDevName !== intersects[0].object.name) {
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
             devHelper.model3DVals.mouseoverMesh =
               intersects.length > 0 &&
                 intersects[0].object.name &&
-                devHelper.active3dObjects.indexOf(intersects[0].object.name) !== -1 ?
+                devHelper.model3DVals.active3dObjects.indexOf(intersects[0].object.name) !== -1 ?
                 intersects[0].object : undefined;
             if (tempObj !== devHelper.model3DVals.mouseoverMesh && devHelper.model3DVals.mouseoverMesh !== undefined) {
               devHelper.model3DVals.mouseoverMesh.material.color.r = 5;
@@ -366,7 +366,7 @@ function animate() {
   }
   devHelper.model3DVals.scenes[0].children.forEach((Element) => {
     if (Element.name && Element.name.indexOf('playerPosition_') !== -1)
-      if (Element.name.indexOf(devHelper.active3dPosition) !== -1 && Element.material.opacity !== 1)
+      if (Element.name.indexOf(devHelper.model3DVals.currentPosition) !== -1 && Element.material.opacity !== 1)
         Element.material.opacity = 1;
   })
   if (devHelper.dev.enable === true) devHelper.dev.perfomance.end();

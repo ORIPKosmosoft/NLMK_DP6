@@ -161,12 +161,12 @@ function domLoaded() {
 
     
     if (document.querySelector('object')) {
-      devHelper.svgSchemes = [];
+      devHelper.svgVals = [];
       document.querySelectorAll('object').forEach((ElementObj) => {
         let tempSvg;
         if (ElementObj.contentDocument.querySelector('svg')) {
           tempSvg = ElementObj.contentDocument.querySelector('svg');
-          devHelper.svgSchemes.push({
+          devHelper.svgVals.push({
             name: tempSvg.baseURI.substring(tempSvg.baseURI.lastIndexOf('/') + 1, tempSvg.baseURI.indexOf('.svg')),
             svg: tempSvg,
             activeElements: [],
@@ -175,7 +175,7 @@ function domLoaded() {
         else {
           ElementObj.addEventListener('load', function (e) {
             tempSvg = e.currentTarget.contentDocument.querySelector('svg');
-            devHelper.svgSchemes.push({
+            devHelper.svgVals.push({
               name: tempSvg.baseURI.substring(tempSvg.baseURI.lastIndexOf('/') + 1, tempSvg.baseURI.indexOf('.svg')),
               svg: tempSvg,
               activeElements: [],
@@ -183,14 +183,14 @@ function domLoaded() {
           });
         }
       })
-      devHelper.svgSchemes.forEach((Element, IndexSvg) => {
+      devHelper.svgVals.forEach((Element, IndexSvg) => {
         Element.svg.querySelectorAll('text').forEach(TextElement => {
           // На сколько умножить ширину тексте для сдвига
           (parseInt(Element.svg.getAttribute('width')) * 100 / Element.svg.getBoundingClientRect().width)
           TextElement.setAttribute('text-anchor', 'end'); // задать точку начала с конца
           TextElement.setAttribute('x', `${parseFloat(TextElement.getAttribute('x')) + (TextElement.getBoundingClientRect().width * (parseInt(Element.svg.getAttribute('width')) * 100 / Element.svg.getBoundingClientRect().width))}`);
           if (TextElement.innerHTML === '0,16') {
-            devHelper.svgSchemes[IndexSvg].activeElements.push({
+            devHelper.svgVals[IndexSvg].activeElements.push({
               element: TextElement,
               name: '6VI_2_1'
             })
