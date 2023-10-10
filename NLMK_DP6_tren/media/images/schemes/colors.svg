@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2019 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="200px" height="100px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 20000 10000"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str1 {stroke:#2B2A29;stroke-width:100;stroke-miterlimit:22.9256}
+    .str0 {stroke:#2B2A29;stroke-width:236;stroke-miterlimit:22.9256}
+    .fil0 {fill:none}
+    .fil3 {fill:#FEFEFE}
+    .fil1 {fill:#D77B1D}
+    .fil2 {fill:#6A2F85}
+   ]]>
+  </style>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0 str0" x="14800" y="4600" width="4800" height="5200"/>
+  <rect class="fil1 str0" x="700" y="1200" width="5000" height="5900"/>
+  <polygon class="fil2 str1" points="6650,6350 13150,1150 12850,9050 "/>
+  <ellipse class="fil3 str1" cx="8750" cy="6850" rx="2000" ry="2300"/>
+ </g>
+</svg>

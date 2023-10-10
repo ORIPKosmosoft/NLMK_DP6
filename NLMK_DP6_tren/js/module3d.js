@@ -17,6 +17,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import Stats from 'three/addons/stats.module.js'
+//import { SVGRenderer } from 'three/addons/renderers/SVGRenderer.js';
 
 if (trenWorkObj.dev === true) {
   trenWorkObj.perfomance = new Stats();
@@ -349,7 +350,87 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     })
+
+    
+    let _colors = {
+      0: "rgb(237 0 0)",
+      1500: "rgb(14 69 249)",
+      3000: "rgb(187 118 158)",
+      4500: "rgb(83 203 190)",
+      6000: "rgb(46 157 42)",
+    }
+    let _pos = {
+      0: 0.9,
+      1500: 0.1,
+      3000: 0.3,
+      4500: 0.5,
+      6000: 0.7,
+    }
+    let _timer = 0;
+
+
+    let shemeSVG = document.getElementById("S1");
+    let svg = shemeSVG.contentDocument;
+   
+    //let mesh = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.3), new THREE.MeshBasicMaterial({ map: tempTexture }));
+    let mesh = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.3), SwapMaterial());
+    mesh.position.set(-4, 3.6, 1.85);
+    
+    scene.add(mesh);
+    console.log(mesh);
+
+
+    document.getElementById("A1").addEventListener("click", (e) => {
+      let img = new Image();
+      console.log(img.complete);
+      let svgData = (new XMLSerializer()).serializeToString(svg);
+      img.src = 'data:image/svg+xml,' + encodeURIComponent(svgData);// + "?" + Math.random();
+      img.onload = function () {
+        let tempTexture = new THREE.Texture(img);
+        tempTexture.needsUpdate = true;
+        mesh.material.map = tempTexture;
+      }
+    })
+
+    document.getElementById("A2").addEventListener("click", (e) => {
+      
+    })
+    document.getElementById("A3").addEventListener("click", (e) => {
+      mesh.material.map.offset.x = 0.7;
+    })
+
+    function SwapMaterial() {
+      let img = new Image();
+      let svgData = (new XMLSerializer()).serializeToString(svg);
+      img.src = 'data:image/svg+xml,' + encodeURIComponent(svgData);// + "?" + Math.random();
+      img.onload = function () {
+        let tempTexture = new THREE.Texture(img);
+        tempTexture.needsUpdate = true;
+        mesh.material.map = tempTexture;
+        return tempTexture
+      }
+    }
+
+    setInterval( ()=>{
+      if (_timer == 7500) _timer = 0;
+      // svg
+      //svg = shemeSVG.contentDocument;
+      let elements = svg.getElementsByClassName("fil28");
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].style.fill = _colors[_timer];
+      }
+      // mesh
+      SwapMaterial();
+      //mesh.material.map.offset.x = _pos[_timer];     
+      _timer += 1500;
+    }, 1500)
+
+    return;   
+
   }
+
+  
+  
 })
 
 function createSchemeTexture(Img) {
@@ -358,3 +439,5 @@ function createSchemeTexture(Img) {
   texture.flipY = false;
   return texture;
 }
+
+
