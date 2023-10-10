@@ -3,7 +3,39 @@
 ----------------------------------------------------
 ----------------------------------------------------
 */
-const trenWorkObj = { dev: true, activeAction: 0, trenTimer: 0, currentActionTime: 0, waitingInput: true, trenType: undefined, trenEnded: false, realTimer: 0, activeControlCamera: true, unicMeshArr: [] };
+const devHelper = {
+  trenVals: {
+    currentAction: 0,
+    currentActionTime: 0,
+    actionTimer: 0,
+    realTimer: 0,
+    type: undefined,
+    trenEnded: false,
+    lifeTime: '08:00',
+    actionArr: [],
+    scenario: undefined,
+    messages: {
+      normal: [],
+      error: []
+    }
+  },
+  model3DVals: {
+    activeControlCamera: true,
+    unicMeshArr: [],
+    mouseoverMesh: undefined,
+    cameras: [],
+    scenes: [],
+    renderers: [],
+    controls: [],
+    mainModel: undefined
+  },
+  svgSchemes: [],
+  dev: {
+    enable: true,
+    perfomance: undefined,
+  },
+  waitingInput: true,
+};
 /*                 action
 ----------------------------------------------------
 открыть
@@ -23,7 +55,7 @@ let tempActions = [
       action: 'контролировать',
       target: 'TV2',
       duration: 3
-    },{
+    }, {
       text: 'Заменить3',
       action: 'закрыть',
       target: 'TV3',

@@ -4,28 +4,28 @@
 ----------------------------------------------------
 */
 function loadTrenActions() {
-  trenWorkObj.trenActionArr = [];
+  devHelper.trenVals.actionArr = [];
   Array.from(document.querySelectorAll('.scenario-box')).forEach((Element, Index) => {
     let tempObjTren = {
       name: Element.innerText,
     }
-    trenWorkObj.trenActionArr.push(tempObjTren);
+    devHelper.trenVals.actionArr.push(tempObjTren);
     if (tempActions[Index]) tempObjTren.actions = tempActions[Index];
   })
-  trenWorkObj.active3dObjects = [...tempActions.flatMap(actionArr => actionArr.map(action => action.target))];
+  devHelper.active3dObjects = [...tempActions.flatMap(actionArr => actionArr.map(action => action.target))];
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector('.model-window')) {
     document.querySelector('.model-window').addEventListener('mousedown', (e) => {
-      if (trenWorkObj.mouseover3dObjectTren !== undefined && trenWorkObj.waitingInput === true) {
-        if (trenWorkObj.mouseover3dObjectTren.name === trenWorkObj.trenActionArr[trenWorkObj.scenarioSelected].actions[trenWorkObj.activeAction].target) {
-          if (trenWorkObj.dev === true) console.warn(`Вы успешно совершили нажатие на ${trenWorkObj.mouseover3dObjectTren.name} действия ${trenWorkObj.activeAction}.`);
+      if (devHelper.model3DVals.mouseoverMesh !== undefined && devHelper.waitingInput === true) {
+        if (devHelper.model3DVals.mouseoverMesh.name === devHelper.trenVals.actionArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].target) {
+          if (devHelper.dev.enable === true) console.warn(`Вы успешно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`);
           document.querySelector('.message').style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-          document.querySelector('.message').innerHTML = `Вы успешно совершили нажатие на ${trenWorkObj.mouseover3dObjectTren.name} действия ${trenWorkObj.activeAction}.`;
-          let currectAction = trenWorkObj.trenActionArr[trenWorkObj.scenarioSelected].actions[trenWorkObj.activeAction].action;
-          trenWorkObj.waitingInput = false;
-          trenWorkObj.mouseover3dObjectTren = undefined;
+          document.querySelector('.message').innerHTML = `Вы успешно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`;
+          let currectAction = devHelper.trenVals.actionArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].action;
+          devHelper.waitingInput = false;
+          devHelper.model3DVals.mouseoverMesh = undefined;
           if (currectAction === 'открыть') {
             // console.log('currectAction', currectAction);
           } else if (currectAction === 'закрыть') {
@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // console.log('currectAction', currectAction);
           }
         } else {
-          if (trenWorkObj.dev === true) console.warn(`Вы неверно совершили нажатие на ${trenWorkObj.mouseover3dObjectTren.name} действия ${trenWorkObj.activeAction}.`);
-          document.querySelector('.message').innerHTML = `Вы неверно совершили нажатие на ${trenWorkObj.mouseover3dObjectTren.name} действия ${trenWorkObj.activeAction}.`;
+          if (devHelper.dev.enable === true) console.warn(`Вы неверно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`);
+          document.querySelector('.message').innerHTML = `Вы неверно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`;
           document.querySelector('.message').style.backgroundColor = 'rgba(255, 0, 0, 0.4)';
         }
       }
@@ -44,30 +44,30 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 // setInterval(() => {
-//   if (trenWorkObj.scenarioSelected !== undefined) {
-//     trenWorkObj.realTimer += 50;
-//     if (trenWorkObj.trenEnded === false) {
-//       if (trenWorkObj.waitingInput === false) {
-//         trenWorkObj.trenTimer += 50;
-//         trenWorkObj.currentActionTime += 50;
+//   if (devHelper.trenVals.scenario !== undefined) {
+//     devHelper.trenVals.realTimer += 50;
+//     if (devHelper.trenVals.ended === false) {
+//       if (devHelper.waitingInput === false) {
+//         devHelper.trenTimer += 50;
+//         devHelper.trenVals.currentActionTime += 50;
 //       }
-//       if (trenWorkObj.currentActionTime >= trenWorkObj.trenActionArr[trenWorkObj.scenarioSelected].actions[trenWorkObj.activeAction].duration * 1000) {
-//         trenWorkObj.waitingInput = true;
-//         trenWorkObj.activeAction++;
-//         trenWorkObj.currentActionTime = 0;
-//         if (trenWorkObj.dev === true) console.warn(`Действие ${trenWorkObj.activeAction - 1} успешно завершено.`);
-//         document.querySelector('.message').innerHTML = `Действие ${trenWorkObj.activeAction - 1} успешно завершено.`;
-//         if (trenWorkObj.activeAction > trenWorkObj.trenActionArr[trenWorkObj.scenarioSelected].actions.length - 1) trenFinish();
+//       if (devHelper.trenVals.currentActionTime >= devHelper.trenVals.actionArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].duration * 1000) {
+//         devHelper.waitingInput = true;
+//         devHelper.trenVals.currentAction++;
+//         devHelper.trenVals.currentActionTime = 0;
+//         if (devHelper.dev.enable === true) console.warn(`Действие ${devHelper.trenVals.currentAction - 1} успешно завершено.`);
+//         document.querySelector('.message').innerHTML = `Действие ${devHelper.trenVals.currentAction - 1} успешно завершено.`;
+//         if (devHelper.trenVals.currentAction > devHelper.trenVals.actionArr[devHelper.trenVals.scenario].actions.length - 1) trenFinish();
 //       }
 //     }
-//     if (trenWorkObj.realTimer % 1000 === 0) {
+//     if (devHelper.trenVals.realTimer % 1000 === 0) {
 
 //       // Отработка замены материала
-//       if (trenWorkObj.realTimer / 1000 - 1 < 10) {
-//         // if (trenWorkObj.mainModel && trenWorkObj.unicMeshArr.length > 0) {
-//         //   trenWorkObj.mainModel.children.forEach((Element) => {
+//       if (devHelper.trenVals.realTimer / 1000 - 1 < 10) {
+//         // if (devHelper.mainModel && devHelper.model3DVals.unicMeshArr.length > 0) {
+//         //   devHelper.mainModel.children.forEach((Element) => {
 //         //     if (Element.children[0].name && Element.children[0].name === 'Obj_progress_bar') {
-//         //       Element.children[0].material = trenWorkObj.unicMeshArr[trenWorkObj.realTimer / 1000 - 1].material;
+//         //       Element.children[0].material = devHelper.model3DVals.unicMeshArr[devHelper.trenVals.realTimer / 1000 - 1].material;
 //         //     }
 //         //   });
 //         // }
@@ -78,32 +78,32 @@ document.addEventListener("DOMContentLoaded", () => {
 // }, 50);
 
 function trenFinish() {
-  trenWorkObj.trenEnded = true;
+  devHelper.trenVals.ended = true;
 
-  if (trenWorkObj.dev === true) console.warn(`Вы успешно завершили сценарий ${trenWorkObj.scenarioSelected}. Ваше время затраченное на прохождение тренажёра = ${trenWorkObj.realTimer / 1000} сек.`);
+  if (devHelper.dev.enable === true) console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.realTimer / 1000} сек.`);
 }
 
 // function refreshSvg(SvgNum, NameElement, ValueElement) {
-//   const resultObject = findObjectByName(NameElement, trenWorkObj.svgSchemes[SvgNum].activeElements);
+//   const resultObject = findObjectByName(NameElement, devHelper.svgSchemes[SvgNum].activeElements);
 //   // resultObject.element.innerHTML = ValueElement;
-//   resultObject.element.innerHTML = 0.16 + trenWorkObj.realTimer / 1000;
+//   resultObject.element.innerHTML = 0.16 + devHelper.trenVals.realTimer / 1000;
 //   refreshTextureSchemes(SvgNum);
 // }
 
 // function refreshTextureSchemes(SvgNum) {
 
 //   const img = new Image();
-//   img.src = 'data:image/svg+xml,' + encodeURIComponent(new XMLSerializer().serializeToString(trenWorkObj.svgSchemes[SvgNum].svg));
-//   trenWorkObj.tempMonitor.material.map.source.data = img;
+//   img.src = 'data:image/svg+xml,' + encodeURIComponent(new XMLSerializer().serializeToString(devHelper.svgSchemes[SvgNum].svg));
+//   devHelper.tempMonitor.material.map.source.data = img;
 //   img.onload = function () {
 //     //   const tempTexture = new THREE.Texture(img);
 //     //   tempTexture.needsUpdate = true;
 //     // texture.flipY = false;
-//     //   trenWorkObj.tempMonitor.material.map = tempTexture;
-//     //   // trenWorkObj.tempCtx.clearRect(-10000, -10000, 20000, 20000);
-//     //   // trenWorkObj.tempCtx.drawImage(img, 0, 0);
-//     //   // trenWorkObj.tempMonitor.material.map.offset.x = -Int/100;
-//     //   // trenWorkObj.tempMonitor.material.map.offset.y = Int/100;
+//     //   devHelper.tempMonitor.material.map = tempTexture;
+//     //   // devHelper.tempCtx.clearRect(-10000, -10000, 20000, 20000);
+//     //   // devHelper.tempCtx.drawImage(img, 0, 0);
+//     //   // devHelper.tempMonitor.material.map.offset.x = -Int/100;
+//     //   // devHelper.tempMonitor.material.map.offset.y = Int/100;
 //   };
 // }
 

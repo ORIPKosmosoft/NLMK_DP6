@@ -1,0 +1,37 @@
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('object').forEach((ElementObj) => {
+    devHelper.svgSchemes.push({
+      object: ElementObj,
+      svg: ElementObj.contentDocument.querySelector('svg'),
+      name: ElementObj.contentDocument.querySelector('svg').baseURI.substring(ElementObj.contentDocument.querySelector('svg').baseURI.lastIndexOf('/') + 1, ElementObj.contentDocument.querySelector('svg').baseURI.indexOf('.svg')),
+      activeElements: [],
+    })
+  })
+
+
+
+  devHelper.svgSchemes.forEach((Element, Index) => {
+    if (Element.name === 'dp') {
+      let mainSVG = Element.svg;
+      Element.svg.querySelectorAll('text').forEach(TextElement => {
+        if (TextElement.innerHTML === '4,32') {
+          devHelper.svgSchemes[Index].activeElements.push({
+            element: TextElement,
+            name: 'P_1'
+          })
+        }
+        if (TextElement.innerHTML === '4,22') {
+          devHelper.svgSchemes[Index].activeElements.push({
+            element: TextElement,
+            name: 'P_2'
+          })
+        }
+
+      })
+    }
+  })
+
+
+
+  console.log(devHelper);
+});

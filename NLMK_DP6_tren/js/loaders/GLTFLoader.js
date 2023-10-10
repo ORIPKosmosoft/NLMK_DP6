@@ -3356,7 +3356,6 @@ class GLTFParser {
 	 * @return {Promise<Material>}
 	 */
 	loadMaterial( materialIndex ) {
-
 		const parser = this;
 		const json = this.json;
 		const extensions = this.extensions;
@@ -3603,7 +3602,6 @@ class GLTFParser {
 	 * @return {Promise<Group|Mesh|SkinnedMesh>}
 	 */
 	loadMesh( meshIndex ) {
-
 		const parser = this;
 		const json = this.json;
 		const extensions = this.extensions;

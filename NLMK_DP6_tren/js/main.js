@@ -8,9 +8,8 @@
 document.addEventListener("DOMContentLoaded", domLoaded);
 
 function domLoaded() {
-  trenWorkObj.activeScheme = 0;
-  trenWorkObj.scenarioSelected = undefined;
-  trenWorkObj.messages = {
+  devHelper.trenVals.scenario = undefined;
+  devHelper.trenVals.messages = {
     normal: [],
     error: []
   }
@@ -71,12 +70,12 @@ function domLoaded() {
   }
 
   function prepareTren(TrenType, Scenario, Index) {
-    if (trenWorkObj.trenActionArr[Index].actions) {
+    if (devHelper.trenVals.actionArr[Index].actions) {
       removeStartScreen();
       document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
       document.querySelector('.tren-container').style.opacity = 1;
-      trenWorkObj.trenType = TrenType;
-      trenWorkObj.scenarioSelected = Index;
+      devHelper.trenVals.type = TrenType;
+      devHelper.trenVals.scenario = Index;
     } else {
       let popupDiv = document.createElement('div');
       popupDiv.classList.add('popup-alert');
@@ -133,12 +132,10 @@ function domLoaded() {
   //     Element.scale = 1;
   //     Element.style.visibility = Num === Index ? 'visible' : 'hidden';
   //     if (Num > document.querySelectorAll('.scheme-container').length - 1) {
-  //       trenWorkObj.activeScheme = 0;
   //       document.querySelectorAll('.scheme-container')[0].style.visibility = 'visible';
   //       console.warn('У вас нет рисунка номер', Num);
   //     }
   //   })
-  //   trenWorkObj.activeScheme = Num;
   // }
 
   // document.querySelector('.schema-window').addEventListener('mouseout', (e) => {
@@ -164,12 +161,12 @@ function domLoaded() {
 
     
     if (document.querySelector('object')) {
-      trenWorkObj.svgSchemes = [];
+      devHelper.svgSchemes = [];
       document.querySelectorAll('object').forEach((ElementObj) => {
         let tempSvg;
         if (ElementObj.contentDocument.querySelector('svg')) {
           tempSvg = ElementObj.contentDocument.querySelector('svg');
-          trenWorkObj.svgSchemes.push({
+          devHelper.svgSchemes.push({
             name: tempSvg.baseURI.substring(tempSvg.baseURI.lastIndexOf('/') + 1, tempSvg.baseURI.indexOf('.svg')),
             svg: tempSvg,
             activeElements: [],
@@ -178,7 +175,7 @@ function domLoaded() {
         else {
           ElementObj.addEventListener('load', function (e) {
             tempSvg = e.currentTarget.contentDocument.querySelector('svg');
-            trenWorkObj.svgSchemes.push({
+            devHelper.svgSchemes.push({
               name: tempSvg.baseURI.substring(tempSvg.baseURI.lastIndexOf('/') + 1, tempSvg.baseURI.indexOf('.svg')),
               svg: tempSvg,
               activeElements: [],
@@ -186,14 +183,14 @@ function domLoaded() {
           });
         }
       })
-      trenWorkObj.svgSchemes.forEach((Element, IndexSvg) => {
+      devHelper.svgSchemes.forEach((Element, IndexSvg) => {
         Element.svg.querySelectorAll('text').forEach(TextElement => {
           // На сколько умножить ширину тексте для сдвига
           (parseInt(Element.svg.getAttribute('width')) * 100 / Element.svg.getBoundingClientRect().width)
           TextElement.setAttribute('text-anchor', 'end'); // задать точку начала с конца
           TextElement.setAttribute('x', `${parseFloat(TextElement.getAttribute('x')) + (TextElement.getBoundingClientRect().width * (parseInt(Element.svg.getAttribute('width')) * 100 / Element.svg.getBoundingClientRect().width))}`);
           if (TextElement.innerHTML === '0,16') {
-            trenWorkObj.svgSchemes[IndexSvg].activeElements.push({
+            devHelper.svgSchemes[IndexSvg].activeElements.push({
               element: TextElement,
               name: '6VI_2_1'
             })
@@ -206,6 +203,6 @@ function domLoaded() {
 }
 
 function changeMessageWindow(Num) {
-  document.querySelector('.message').innerHTML = Num === 0 ? trenWorkObj.messages.normal : trenWorkObj.messages.error;
+  document.querySelector('.message').innerHTML = Num === 0 ? devHelper.trenVals.messages.normal : devHelper.trenVals.messages.error;
   document.querySelector('.message').style.backgroundColor = Num === 0 ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 0, 0, 0.4)';
 }

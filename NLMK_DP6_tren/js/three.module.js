@@ -1669,13 +1669,11 @@ const ColorManagement = {
 	},
 
 	fromWorkingColorSpace: function ( color, targetColorSpace ) {
-
 		return this.convert( color, this.workingColorSpace, targetColorSpace );
-
+		
 	},
-
+	
 	toWorkingColorSpace: function ( color, sourceColorSpace ) {
-
 		return this.convert( color, sourceColorSpace, this.workingColorSpace );
 
 	},
@@ -8963,7 +8961,6 @@ class Color {
 			}
 
 		} else {
-
 			this.setRGB( r, g, b );
 
 		}
@@ -8989,7 +8986,6 @@ class Color {
 		this.r = ( hex >> 16 & 255 ) / 255;
 		this.g = ( hex >> 8 & 255 ) / 255;
 		this.b = ( hex & 255 ) / 255;
-
 		ColorManagement.toWorkingColorSpace( this, colorSpace );
 
 		return this;
@@ -9001,7 +8997,10 @@ class Color {
 		this.r = r;
 		this.g = g;
 		this.b = b;
-
+		//TODO: Совершенно тупо заблокировал ошибку
+		// if (colorSpace !== ColorManagement.workingColorSpace) {
+			// colorSpace = ColorManagement.workingColorSpace
+		// }
 		ColorManagement.toWorkingColorSpace( this, colorSpace );
 
 		return this;
@@ -9071,7 +9070,6 @@ class Color {
 						// rgb(255,0,0) rgba(255,0,0,0.5)
 
 						handleAlpha( color[ 4 ] );
-
 						return this.setRGB(
 							Math.min( 255, parseInt( color[ 1 ], 10 ) ) / 255,
 							Math.min( 255, parseInt( color[ 2 ], 10 ) ) / 255,
@@ -9086,7 +9084,6 @@ class Color {
 						// rgb(100%,0%,0%) rgba(100%,0%,0%,0.5)
 
 						handleAlpha( color[ 4 ] );
-
 						return this.setRGB(
 							Math.min( 100, parseInt( color[ 1 ], 10 ) ) / 100,
 							Math.min( 100, parseInt( color[ 2 ], 10 ) ) / 100,
@@ -9295,7 +9292,7 @@ class Color {
 	}
 
 	getRGB( target, colorSpace = ColorManagement.workingColorSpace ) {
-
+		
 		ColorManagement.fromWorkingColorSpace( _color.copy( this ), colorSpace );
 
 		target.r = _color.r;
@@ -14856,7 +14853,6 @@ function WebGLBackground( renderer, cubemaps, cubeuvmaps, state, objects, alpha,
 
 		},
 		setClearColor: function ( color, alpha = 1 ) {
-
 			clearColor.set( color );
 			clearAlpha = alpha;
 			setClear( clearColor, clearAlpha );
@@ -24261,7 +24257,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 			const needsPowerOfTwo = textureNeedsPowerOfTwo( texture ) && isPowerOfTwo$1( texture.image ) === false;
 			let image = resizeImage( texture.image, needsPowerOfTwo, false, maxTextureSize );
 			image = verifyColorSpace( texture, image );
-
+			
 			const supportsMips = isPowerOfTwo$1( image ) || isWebGL2,
 				glFormat = utils.convert( texture.format, texture.colorSpace );
 
@@ -51403,7 +51399,7 @@ class ShapePath {
 
 		}
 
-		//console.log("shape", shapes);
+		// console.log("shape", shapes);
 
 		return shapes;
 
