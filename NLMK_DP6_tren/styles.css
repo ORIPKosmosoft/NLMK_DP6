@@ -36,7 +36,7 @@ body {
 
 .fon .logoN {
   position: absolute;
-  left: 2%;
+  left: 1.5%;
   top: 2%;
   width: 6%;
   height: auto;
@@ -278,7 +278,6 @@ body {
   color: #f4f4f4 !important;
   width: 80% !important;
   left: 17% !important;
-  cursor: default !important;
 }
 
 .drop-item .drop-span-active {
@@ -358,10 +357,11 @@ body {
 .scenarion-button object {
   width: 3.6vh;
   pointer-events: none;
+  margin-top: 1vh;
 }
 
 .scenarion-button span {
-  margin-top: 1vh;
+  margin-top: 0.3vh;
   font-size: 1.3ch;
   font-family: 'Circe-ExtraBold', sans-serif;
 }

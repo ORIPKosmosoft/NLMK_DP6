@@ -748,11 +748,6 @@ document.addEventListener("DOMContentLoaded", () => {
       Element2.element.id = `${Element.name}_${Element2.name}`;
     })
   })
-
-
-
-
-  console.log(devHelper);
 });
 
 // tempElemCount++;

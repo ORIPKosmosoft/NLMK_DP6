@@ -13,28 +13,6 @@ function domLoaded() {
     normal: [],
     error: []
   }
-  let scenarioBoxes = document.querySelectorAll('.scenario-box');
-
-  scenarioBoxes.forEach((box, Index) => {
-    box.classList.toggle('scenario-box-clicked', false);
-    box.classList.toggle('scenario-box', true);
-    box.addEventListener('click', function (e) {
-      e.currentTarget.classList.toggle('scenario-box-clicked', true);
-      e.currentTarget.classList.toggle('scenario-box', false);
-      Array.from(document.querySelector('.scenarion-buttons').children).forEach((Element) => {
-        Element.classList.toggle('scenarion-button-active', true);
-        Element.onclick = (e) => prepareTren(e.currentTarget.innerText, box.innerText, Index);
-      })
-
-      scenarioBoxes.forEach(function (elem) {
-        if (elem !== e.currentTarget) {
-          elem.classList.toggle('scenario-box-clicked', false);
-          elem.classList.toggle('scenario-box', true);
-        }
-      });
-    });
-  });
-
 
   document.querySelector('.tren-container').addEventListener('transitionend', (e) => {
     if (e.propertyName === 'opacity') {
@@ -53,25 +31,21 @@ function domLoaded() {
     document.querySelector('.tren-container').style.opacity = 0;
   })
 
-  function removeStartScreen(argument) {
+  function removeStartScreen() {
     document.querySelector('.header').style.top = -document.querySelector('.header').getBoundingClientRect().bottom - 10 + 'px';
-    document.querySelector('.section').style.left = -window.innerWidth / 2 + 'px';
-    document.querySelectorAll('.section')[1].style.left = '101%';
-    Array.from(document.querySelectorAll('.section')).forEach((Element) => {
-      Element.addEventListener('transitionend', (e) => {
-        if (e.propertyName === 'left' && (Element.style.left === -window.innerWidth / 2 + 'px' || Element.style.left === '101%')) {
-          document.querySelector('.start-container').style.visibility = 'hidden';
-          document.querySelector('.tren-container').style.visibility = 'visible';
-        }
-      });
-    })
+    document.querySelector('.section').style.left = -document.querySelector('.section').getBoundingClientRect().width*1.1 + 'px';
+  }
+
+  function revialTrenScreen() {
+      document.querySelector('.tren-container').style.visibility = 'visible';
+      document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
+      document.querySelector('.tren-container').style.opacity = 1;
   }
 
   function prepareTren(TrenType, Scenario, Index) {
     if (devHelper.trenVals.actionArr[Index].actions) {
       removeStartScreen();
-      document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
-      document.querySelector('.tren-container').style.opacity = 1;
+      revialTrenScreen();
       devHelper.trenVals.type = TrenType;
       devHelper.trenVals.scenario = Index;
     } else {
@@ -116,6 +90,7 @@ function domLoaded() {
       }
     }
   }
+
   document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
     Element.addEventListener('click', guideBtnsClick);
     if (index === 0) Element.dispatchEvent(new Event('click'));
@@ -149,7 +124,10 @@ function domLoaded() {
         btnCon.style.position = 'relative';
         btnCon.style.marginTop = -btnCon.getBoundingClientRect().height + 'px';
         btnCon.style.transform = `translateY(${(e.currentTarget.getBoundingClientRect().height + window.innerHeight * 0.02) * Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget) - window.innerHeight * 0.02}px`;
-
+      } else {
+        e.currentTarget.classList.toggle('drop-item-active', false);
+        e.currentTarget.querySelector('span').classList.toggle('drop-span-active', false);
+        document.querySelector('.scenarion-buttons-container').style.visibility = 'hidden';
       }
     });
   });
@@ -169,8 +147,8 @@ function domLoaded() {
         Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
           if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
         })
+        prepareTren(e.currentTarget.querySelector('span').innerText === 'Обучение' ? 'learn' : 'test', document.querySelector('.drop-item-active').querySelector('span').innerText, Array.from(document.querySelectorAll('.drop-item')).indexOf(document.querySelector('.drop-item-active')));
       }
-      // prepareTren(devHelper.trenVals.type, devHelper.trenVals.scenario, e.currentTarget.dataset.index);
     });
   })
 
@@ -186,10 +164,9 @@ function domLoaded() {
     })
   })
 
-
   loadTrenActions();
-
 }
+
 setInterval(() => {
   for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {
     const Element = document.querySelectorAll('.photo')[i];

@@ -5,9 +5,9 @@
 */
 function loadTrenActions() {
   devHelper.trenVals.actionArr = [];
-  Array.from(document.querySelectorAll('.scenario-box')).forEach((Element, Index) => {
+  Array.from(document.querySelectorAll('.drop-item')).forEach((Element, Index) => {
     let tempObjTren = {
-      name: Element.innerText,
+      name: Element.querySelector('span').innerText,
     }
     devHelper.trenVals.actionArr.push(tempObjTren);
     if (tempActions[Index]) tempObjTren.actions = tempActions[Index];
