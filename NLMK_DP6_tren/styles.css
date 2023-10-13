@@ -66,7 +66,7 @@ body {
   left: 20%;
   text-align: left;
   line-height: 1.2;
-  color: #e5e5e5;
+  color: #f5f5f5;
   transition: top 0.5s cubic-bezier(0.47, 0, 0.745, 0.715);
   font-size: 49px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -119,12 +119,14 @@ body {
   box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
   border: 2px solid #f8f8f8;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .section .nav-icon-active {
   border: 2px solid #2c5289;
   background: #2c5289;
   color: #f8f8f8;
+  cursor: default !important;
 }
 
 .section .nav-icon:hover {
@@ -151,18 +153,17 @@ body {
   height: 96%;
   width: 86%;
   padding: 1%;
-
+  overflow: hidden;
 }
 
 .text-container {
-  height: 100%;
+  height: 101%;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  transition: margin-top 0.3s ease;
 }
-
-/* BebasNeue Bold Circe-Bold Circe-ExtraBold Circe-Regular Roboto-Medium*/
 
 .text-container .info-header {
   font-size: 3.5ch;
@@ -181,18 +182,41 @@ body {
   text-align: initial;
   font-family: 'Circe-ExtraBold', sans-serif;
   color: #2c5289;
+  cursor: pointer;
 }
 
-.text-container .dropdown-content {
-  width: 98%;
+.text-container .drop-title img {
+  width: 2vh;
+  height: auto;
+  transform: rotate(-90deg);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.arrow-text-active {
+  transform: rotate(0deg) !important;
+}
+
+.drop-main .dropdown-container {
+  overflow: hidden;
+}
+
+.dropdown-container .dropdown-content {
+  margin-top: 1vh;
+  width: 97%;
   font-size: 2ch;
-  margin-left: 2%;
+  padding-left: 2.5%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: flex-start;
   text-align: initial;
   font-family: 'Circe-Bold', sans-serif;
+  transition: margin-top 0.3s ease;
+}
+
+.first-drop {
+  margin-top: -1000vh !important;
 }
 
 .dropdown-content .drop-item {
@@ -205,7 +229,7 @@ body {
   border-radius: 10px;
   padding-left: 1%;
   padding-right: 1%;
-  margin-bottom: 2%;
+  margin-bottom: 2vh;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   border: 2px solid #f4f4f4;
   transition: all 0.3s ease;
@@ -213,6 +237,7 @@ body {
   display: flex;
   align-items: center;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .dropdown-content .drop-item span {
@@ -224,11 +249,46 @@ body {
   border: 2px solid #2c5289;
 }
 
+.dropdown-container .simple-text {
+  padding-left: 2.5vh;
+  margin-top: 0vh;
+}
+
+.dropdown-container .simple-text ul {
+  padding-left: 1vh;
+  margin: 0px;
+  font-family: 'Circe-Regular', sans-serif;
+  text-align: left;
+} 
+/* BebasNeue Bold Circe-Bold Circe-ExtraBold Circe-Regular Roboto-Medium*/
+.dropdown-container .simple-text h3 {
+  margin: 2vh 0px 0px 0px;
+  font-family: 'Circe-Bold', sans-serif;
+  font-size: larger;
+}
+.dropdown-container .simple-text h4 {
+  margin: 0;
+  font-family: 'Circe-Bold', sans-serif;
+  font-size: larger;
+}
+
+.drop-item-active {
+  background-color: #2c5289 !important;
+  border: 2px solid #2c5289 !important;
+  color: #f4f4f4 !important;
+  width: 80% !important;
+  left: 17% !important;
+  cursor: default !important;
+}
+
+.drop-item .drop-span-active {
+  min-width: 126% !important;
+}
+
 .scroll-container .movable-container {
   top: 0px;
-  width: 98%;
+  width: 52vw;
   position: relative;
-  z-index: 2;
 }
 
 .movable-container .drop-main {
@@ -241,14 +301,13 @@ body {
 .text-container .scroll-container {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
+  max-height: 100%;
 }
 
 .scenarion-buttons-container {
   height: 8vh;
   position: absolute;
-  top: 0px;
-  left: 0px;
   background-color: #f8f8f8;
   border-radius: 10px;
   display: flex;
@@ -256,7 +315,7 @@ body {
   flex-wrap: nowrap;
   align-items: stretch;
   box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  visibility: hidden;
 }
 
 .scenarion-buttons-container .scenarion-button {
@@ -266,7 +325,34 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  font-family: 'Circe-Bold', sans-serif;
+  background-color: #f8f8f8;
+  border: 2px solid #f8f8f8;
+  transition: background-color 0.2s ease, border 0.2s ease;
+}
+
+.scenarion-buttons-container .border-right {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.scenarion-buttons-container .border-left {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.scenarion-buttons-container .scenarion-button:hover {
+  border: 2px solid #2c5289;
+}
+
+.scenarion-buttons-container .scenarion-button-active {
+  background-color: #2c5289;
+  border: 2px solid #2c5289;
+  color: #f4f4f4;
+  cursor: default !important;
+}
+
+.scenarion-buttons-container .scenarion-button-active:hover {
+  background-color: #2c5289;
 }
 
 .scenarion-button object {
@@ -276,6 +362,8 @@ body {
 
 .scenarion-button span {
   margin-top: 1vh;
+  font-size: 1.3ch;
+  font-family: 'Circe-ExtraBold', sans-serif;
 }
 
 .right-border {
@@ -399,7 +487,6 @@ ul {
   border-color: #0f0f0f;
   border-radius: 10px;
   text-align: center;
-  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -474,28 +561,6 @@ ul {
   /* transform: translate(0, 0); */
   /* pointer-events: none; */
 }
-
-.scroll-scheme {
-  width: 80%;
-  height: 20px;
-  position: absolute;
-  top: 10px;
-  margin: 10px auto;
-  background-color: rgba(255, 255, 255, 0.8);
-  z-index: 10;
-  border: 1px solid;
-  border-color: #a39e9e;
-  border-radius: 10px;
-  transition: top 0.3s ease;
-}
-
-.scroll-scheme .scroll-rect {
-  height: 100%;
-  background-color: rgba(115, 128, 240, 0.8);
-  border-radius: 10px;
-  transform: translate(0, 0);
-}
-
 
 /* Окно с информацией */
 .game-view {
