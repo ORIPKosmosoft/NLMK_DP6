@@ -20,51 +20,90 @@
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/module3d.js"></script>
   <script type="module" src="js/test_svg.js"></script>
-  
 </head>
 
 <body>
-
+  <div class="fon">
+    <img class="photo" src="media/images/UI/photo_1.jpg" style="opacity: 1" />
+    <img class="photo" src="media/images/UI/photo_2.jpg" />
+    <img class="photo" src="media/images/UI/photo_3.jpg" />
+    <img class="photo" src="media/images/UI/photo_4.jpg" />
+    <img class="photo" src="media/images/UI/photo_5.jpg" />
+    <img class="photo" src="media/images/UI/photo_6.jpg" />
+    <img class="photo" src="media/images/UI/photo_7.jpg" />
+    <img class="photo" src="media/images/UI/photo_8.jpg" />
+    <img class="hrom" src="media/images/UI/hrom.png" />
+    <img class="logoK" src="media/images/UI/logo_kosmosft.png">
+    <img class="logoN" src="media/images/UI/logo_NLMK.png">
+  </div>
   <div class="start-container">
     <div class="header">
-      Тренажёр обучения газовщика доменной печи №6
+      <span class="bebas">ТРЕНАЖЕР ОБУЧЕНИЯ ГАЗОВЩИКА ДОМЕННОЙ ПЕЧИ </span>
+      <span class="roboto">№</span><span class="bebas">6</span>
     </div>
     <div class="section">
-      <div class="sidebar">
-        <div class="scenarios">
-          Сценарии
+      <div class="nav-bar">
+        <div class="nav-icon">
+          <object data="media/images/UI/icons/scenario.svg" type="image/svg+xml"></object>
+          <span>Сценарии</span>
+        </div>
+        <div class="nav-icon">
+          <object data="media/images/UI/icons/docs.svg" type="image/svg+xml"></object>
+          <span>Документы</span>
+        </div>
+        <div class="nav-icon">
+          <object data="media/images/UI/icons/engin2.svg" type="image/svg+xml"></object>
+          <span>Оборудование</span>
+        </div>
+        <div class="nav-icon">
+          <object data="media/images/UI/icons/person.svg" type="image/svg+xml"></object>
+          <span>Персонал</span>
+        </div>
+        <div class="nav-icon">
+          <object data="media/images/UI/icons/test.svg" type="image/svg+xml"></object>
+          <span>Тесты</span>
         </div>
       </div>
-      <div class="content">
-        <div class="title-box">
-          <p>Пуск и остановка доменной печи:</p>
-        </div>
-        <div class="scenario-box">
-          <p>Пуск печи после кратковременной остановки. Печь находится в режиме "тяга" через трубу.</p>
-        </div>
-        <div class="scenario-box">
-          <p>Кратковременная остановка доменной печи (без зажигания газа на колошнике) со взятием на тягу при нормальном
-            режиме работы печи.</p>
-        </div>
-        <div class="title-box">
-          <p>Действия в случае аварийных ситуаций:</p>
-        </div>
-        <div class="scenario-box">
-          <p>Пожар (воспламенения природного газа высокого давления на цеховом коллекторе)</p>
-        </div>
-        <div class="scenario-box">
-          <p>Не закрывается пылевой затвор/клапан выгрузки пыли пылеуловителя</p>
-        </div>
-        <div class="scenario-box">
-          <p>Разрыв брони воздухонагревателя, находящегося в режиме дутье с выбросом раскаленных огнеупоров</p>
+      <div class="info-container">
+        <div class="text-container">
+          <span class="info-header">Сценарии</span>
+          <div class="scroll-container">
+            <div class="movable-container">
+              <div class="drop-main">
+                <span class="drop-title"><span class="arrow">&#9660;</span>Пуск и остановка доменной печи</span>
+                <div class="dropdown-content">
+                  <div class="drop-item">
+                    <span>
+                      Кратковременная остановка доменной печи (без зажигания газа на колошнике) со взятием на тягу при
+                      нормальном режиме работы печи.
+                    </span>
+                  </div>
+                  <div class="drop-item">
+                    <span>Пуск печи после кратковременной остановки. Печь находится в режиме "тяга" через
+                      трубу.</span></div>
+                </div>
+              </div>
+              <div class="drop-main">
+                <span class="drop-title"><span class="arrow">&#9660;</span>Действия в случае аварийных ситуаций</span>
+                <div class="dropdown-content">
+                  <div class="drop-item"><span>Пожар (воспламенения природного газа высокого давления на цеховом коллекторе)</span></div>
+                  <div class="drop-item"><span>Не закрывается пылевой затвор/клапан выгрузки пыли пылеуловителя</span></div>
+                  <div class="drop-item"><span>Разрыв брони воздухонагревателя, находящегося в режиме дутье с выбросом раскаленных огнеупоров</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="scenarion-buttons">
+
+
+      <!-- <div class="scenarion-buttons">
         <button class="learn-button">Обучение</button>
         <button class="control-button">Контроль</button>
-      </div>
-    </div>
-    <div class="section">
+      </div>  -->
+
+      <!-- <div class="section">
       <div class="info-buttons" style="width: auto;">
         <button>Нормативные ссылки</button>
         <button>Состав оборудования</button>
@@ -237,47 +276,47 @@
         <button class="learn-button">Обучение</button>
         <button class="control-button">Контроль</button>
       </div>
+    </div> -->
     </div>
-  </div>
-  <div class="tren-container">
-    <div class="game-view">
-      <div class="spin-loader">
-        <div class="spin-loader-text">0</div>
-        <div class="window-loader-3d"></div>
-      </div>
-      <div class="model3D-window" model3D="Table"></div>
-    </div>
-    <div class="game-interface">
-      <div class="model-map-window">
+    <div class="tren-container">
+      <div class="game-view">
         <div class="spin-loader">
           <div class="spin-loader-text">0</div>
           <div class="window-loader-3d"></div>
         </div>
-        <div class="model3D-window" model3D="Table"></div>
+        <div class="model3D-window" model3D="Room"></div>
       </div>
-      <div class="time"></div>
-      <div class="chat"></div>
-      <div class="ui-buton-block">
-        <div class="scenario-info"></div>
-        <div class="help"></div>
-        <div class="guide"></div>
-      </div>
-      <div class="ui-buton-block">
-        <div class="exit"></div>
-        <div class="restart"></div>
+      <div class="game-interface">
+        <div class="model-map-window">
+          <div class="spin-loader">
+            <div class="spin-loader-text">0</div>
+            <div class="window-loader-3d"></div>
+          </div>
+          <div class="model3D-window" model3D="Room"></div>
+        </div>
+        <div class="time"></div>
+        <div class="chat"></div>
+        <div class="ui-buton-block">
+          <div class="scenario-info"></div>
+          <div class="help"></div>
+          <div class="guide"></div>
+        </div>
+        <div class="ui-buton-block">
+          <div class="exit"></div>
+          <div class="restart"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <object class="scheme-img" data="media/images/schemes/dp.svg" type="image/svg+xml"></object>
+    <!-- <object class="scheme-img" data="media/images/schemes/dp.svg" type="image/svg+xml"></object> -->
 
-  <!-- <div class="schema-window">
+    <!-- <div class="schema-window">
     <div class="scheme-container" maximum-scale="5">
     </div>
     <div class="scheme-container" maximum-scale="2">
       <object class="scheme-img" data="media/images/schemes/bzu.svg" type="image/svg+xml"></object>
     </div>
     <div class="scheme-container">
-      <img class="scheme-img" src="media/images/schemes/BVNK_Main.jpg" />
+      <img class="scheme-img" src="media/images/schemes/vnk_main.jpg" />
     </div>
     <div class="scheme-container">
       <object class="scheme-img" data="media/images/schemes/BVNK_VNK1.svg" type="image/svg+xml"></object>
@@ -292,6 +331,17 @@
       <object class="scheme-img" data="media/images/schemes/vnk_spvg.svg" type="image/svg+xml"></object>
     </div>
   </div> -->
+  <div class="scenarion-buttons-container">
+    <div class="scenarion-button">
+      <object data="media/images/UI/icons/control.svg" type="image/svg+xml"></object>
+      <span>Контроль</span>
+    </div>
+    <div class="right-border"></div>
+    <div class="scenarion-button">
+      <object data="media/images/UI/icons/learn.svg" type="image/svg+xml"></object>
+      <span>Обучение</span>
+    </div>
+  </div>
 </body>
 
 </html>

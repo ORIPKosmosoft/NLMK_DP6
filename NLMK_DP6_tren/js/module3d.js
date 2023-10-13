@@ -10,7 +10,6 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import Stats from 'three/addons/stats.module.js'
-//import { SVGRenderer } from 'three/addons/renderers/SVGRenderer.js';
 
 if (devHelper.dev.enable === true) {
   devHelper.dev.perfomance = new Stats();
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     scene.add(ambientLight);
 
     let loaderGLTF = new GLTFLoader();
-    loadGLB(loaderGLTF, document.querySelector('div[model3D]').getAttribute('model3D'), scene);
+    // loadGLB(loaderGLTF, document.querySelector('div[model3D]').getAttribute('model3D'), scene);
     
     Array.from(document.querySelectorAll('div[model3D]')).forEach((Element) => {
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -298,21 +297,28 @@ function loadGLB(Loader, Name, Scene) {
     gltf.scene.position.set(0, 0, 0);
     gltf.scene.layers.set(1);
     devHelper.model3DVals.mainModel = gltf.scene;
-    if (Name === 'Table') {
+    if (Name === 'Room') {
       animate();
-      loadGLB(Loader, 'Monitors_group0', Scene);
+      loadGLB(Loader, 'Room_Clock', Scene);
     }
-    if (Name === 'Monitors_group0') loadGLB(Loader, 'Monitors_group1', Scene);
-    if (Name === 'Monitors_group1') loadGLB(Loader, 'Monitors_group2', Scene);
-    if (Name === 'Monitors_group2') loadGLB(Loader, 'TV_panels', Scene);
-    if (Name === 'TV_panels') loadGLB(Loader, 'Telephone', Scene);
-    if (Name === 'Telephone') loadGLB(Loader, 'Plakat', Scene);
-    if (Name === 'Plakat') loadGLB(Loader, 'Microphone', Scene);
-    // if (Name === 'Microphone') loadGLB(Loader, 'Console_BVNK', Scene);
-    // if (Name === 'Console_BVNK') loadGLB(Loader, 'Console_BZY', Scene);
-    // if (Name === 'Console_BZY') loadGLB(Loader, 'Console_DP6', Scene);
-    // if (Name === 'Console_DP6') loadGLB(Loader, 'Console_PSODP6', Scene);
-    // if (Name === 'Console_PSODP6') loadGLB(Loader, 'Console_UGKS', Scene);
+    if (Name === 'Room_Clock') loadGLB(Loader, 'Room_Group_000', Scene); // -5fps много весит, ненужно
+    if (Name === 'Room_Group_000') loadGLB(Loader, 'Room_Group_001', Scene);
+    if (Name === 'Room_Group_001') loadGLB(Loader, 'Room_Lightning', Scene);
+    if (Name === 'Room_Lightning') loadGLB(Loader, 'Room_Vent', Scene); // почему так много весит - облегчить
+    if (Name === 'Room_Vent') loadGLB(Loader, 'Table', Scene);
+    if (Name === 'Table') loadGLB(Loader, 'TV_panels', Scene);
+    if (Name === 'TV_panels') loadGLB(Loader, 'ComputersGroup00', Scene);
+    if (Name === 'ComputersGroup00') loadGLB(Loader, 'ComputersGroup01', Scene); //-5fps
+    if (Name === 'ComputersGroup01') loadGLB(Loader, 'ComputersGroup02', Scene);
+    if (Name === 'ComputersGroup02') loadGLB(Loader, 'ComputersGroup03', Scene);
+    // if (Name === 'ComputersGroup03') loadGLB(Loader, 'Console_BVNK', Scene); // баги с текстурами
+    // if (Name === 'ComputersGroup03') loadGLB(Loader, 'Console_BZU', Scene); // лаги
+    // if (Name === 'ComputersGroup03') loadGLB(Loader, 'Console_DP6', Scene); // баги с текстурами
+    // if (Name === 'ComputersGroup03') loadGLB(Loader, 'Console_UGKS', Scene); // баги с текстурами
+    // if (Name === 'ComputersGroup03') loadGLB(Loader, 'Console_PSODP6', Scene);
+    if (Name === 'ComputersGroup03') loadGLB(Loader, 'Joystick', Scene);
+    if (Name === 'Joystick') loadGLB(Loader, 'Mikrofon', Scene);
+    if (Name === 'Mikrofon') loadGLB(Loader, 'Telephone', Scene);
     
     Array.from(document.querySelectorAll('.spin-loader')).forEach((Element, Index) => {
       Element.remove();

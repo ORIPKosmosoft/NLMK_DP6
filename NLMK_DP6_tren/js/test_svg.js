@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('object').forEach((ElementObj) => {
+  document.querySelectorAll('object .scheme-img').forEach((ElementObj) => {
     devHelper.svgVals.push({
       object: ElementObj,
       svg: ElementObj.contentDocument.querySelector('svg'),
@@ -112,11 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
               name: 'F_prir_gaz_tryb'
             })
           else
-            TextElement.innerHTML = 99999999;
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'F_prir_gaz_table'
-          })
+            devHelper.svgVals[Index].activeElements.push({
+              element: TextElement,
+              name: 'F_prir_gaz_table'
+            })
         }
         if (TextElement.innerHTML === '2120') {
           if (TextIndex === 200) {

@@ -87,15 +87,15 @@ function domLoaded() {
   //---------------
   // Правая часть заглавной страницы
   //---------------
-  document.querySelector('.info-page').classList.add("info-page-active");
-  Array.from(document.querySelector('.info-buttons').querySelectorAll('button')).forEach((Element, Index) => {
-    Element.addEventListener('click', (e) => {
-      if (document.querySelector('.info-page-active') !== Element.closest('.section').querySelector('.content').children[Index]) {
-        document.querySelector('.info-page-active').classList.toggle('info-page-active', false);
-        Element.closest('.section').querySelector('.content').children[Index].classList.toggle('info-page-active', true);
-      }
-    })
-  })
+  // document.querySelector('.info-page').classList.add("info-page-active");
+  // Array.from(document.querySelector('.info-buttons').querySelectorAll('button')).forEach((Element, Index) => {
+  //   Element.addEventListener('click', (e) => {
+  //     if (document.querySelector('.info-page-active') !== Element.closest('.section').querySelector('.content').children[Index]) {
+  //       document.querySelector('.info-page-active').classList.toggle('info-page-active', false);
+  //       Element.closest('.section').querySelector('.content').children[Index].classList.toggle('info-page-active', true);
+  //     }
+  //   })
+  // })
 
   // Зазгрузка СВГ схем. Отработка текста в СВГ
   /*
@@ -199,8 +199,69 @@ function domLoaded() {
       })
     }
   */
+  
+  function guideBtnsClick(e) {
+    document.querySelectorAll('.section .nav-icon').forEach((Element2) => {
+      Element2.classList.toggle('nav-icon-active', false);
+      let tempSvg = Element2.querySelector('object').contentDocument.querySelector('svg');
+      Array.from(tempSvg.children).forEach((SvgElem) => {
+        if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#7c7c7c');
+      })
+    })
+    e.currentTarget.classList.toggle('nav-icon-active', true);
+    let tempSvg = e.currentTarget.querySelector('object').contentDocument.querySelector('svg');
+    Array.from(tempSvg.children).forEach((SvgElem) => {
+      if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f8f8f8');
+    })
+  }
+  document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
+    Element.addEventListener('click', guideBtnsClick);
+    if (index === 0) Element.dispatchEvent(new Event('click'));
+  });
+
+  document.querySelectorAll('.dropdown-content .drop-item').forEach((Element) => {
+    Element.addEventListener('click', (e) => {
+      document.querySelectorAll('.dropdown-content .drop-item').forEach((Element2) => {
+        if (Element2 !== e.currentTarget) {
+          Element2.querySelector('span').style.minWidth = '100%';
+          Element2.style.backgroundColor = '';
+          Element2.style.border = '';
+          Element2.style.color = '';
+          Element2.style.width = '';
+          Element2.style.left = '';
+        }
+      });
+      e.currentTarget.querySelector('span').style.minWidth = '126%';
+      e.currentTarget.style.backgroundColor = '#2c5289';
+      e.currentTarget.style.border = '2px solid #2c5289';
+      e.currentTarget.style.color = '#f4f4f4';
+      e.currentTarget.style.width = '77%';
+      e.currentTarget.style.left = '20%';
+      let btnScenarioContainer = document.querySelector('.scenarion-buttons-container');
+      btnScenarioContainer.style.left = e.currentTarget.getBoundingClientRect().left + 'px';
+      btnScenarioContainer.style.top = e.currentTarget.getBoundingClientRect().top + 'px';
+     
+    });
+  });
+
+
   loadTrenActions();
+
 }
+setInterval(() => {
+  for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {
+    const Element = document.querySelectorAll('.photo')[i];
+    Element.style.transition = 'opacity 1s ease';
+    if (Element.style.opacity === '1') {
+      Element.style.opacity = 0;
+      let nextElem = Element.nextElementSibling.classList.contains('photo') ? Element.nextElementSibling : document.querySelector('.photo');
+      nextElem.style.transition = 'opacity 1s ease';
+      nextElem.style.opacity = 1;
+      break
+    }
+  }
+}, 4000)
+
 
 function changeMessageWindow(Num) {
   document.querySelector('.message').innerHTML = Num === 0 ? devHelper.trenVals.messages.normal : devHelper.trenVals.messages.error;
