@@ -16,31 +16,44 @@ function loadTrenActions() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector('.model-window')) {
-    document.querySelector('.model-window').addEventListener('mousedown', (e) => {
+  if (document.querySelector('.game-view')) {
+    document.querySelector('.game-view').addEventListener('mousedown', (e) => {
       if (devHelper.model3DVals.mouseoverMesh !== undefined && devHelper.trenVals.waitingInput === true) {
         if (devHelper.model3DVals.mouseoverMesh.name === devHelper.trenVals.actionArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].target) {
-          if (devHelper.dev.enable === true) console.warn(`Вы успешно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`);
-          document.querySelector('.message').style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-          document.querySelector('.message').innerHTML = `Вы успешно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`;
-          let currectAction = devHelper.trenVals.actionArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].action;
-          devHelper.trenVals.waitingInput = false;
-          devHelper.model3DVals.mouseoverMesh = undefined;
-          if (currectAction === 'открыть') {
-            // console.log('currectAction', currectAction);
-          } else if (currectAction === 'закрыть') {
-            // console.log('currectAction', currectAction);
-          } else if (currectAction === 'контролировать') {
-            // console.log('currectAction', currectAction);
-          }
+          // if (devHelper.dev.enable === true) console.warn(`Вы успешно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`);
+          // document.querySelector('.message').style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+          // document.querySelector('.message').innerHTML = `Вы успешно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`;
+          // let currectAction = devHelper.trenVals.actionArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].action;
+          // devHelper.trenVals.waitingInput = false;
+          // devHelper.model3DVals.mouseoverMesh = undefined;
+          // if (currectAction === 'открыть') {
+          //   // console.log('currectAction', currectAction);
+          // } else if (currectAction === 'закрыть') {
+          //   // console.log('currectAction', currectAction);
+          // } else if (currectAction === 'контролировать') {
+          //   // console.log('currectAction', currectAction);
+          // }
         } else {
-          if (devHelper.dev.enable === true) console.warn(`Вы неверно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`);
-          document.querySelector('.message').innerHTML = `Вы неверно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`;
-          document.querySelector('.message').style.backgroundColor = 'rgba(255, 0, 0, 0.4)';
+          // if (devHelper.dev.enable === true) console.warn(`Вы неверно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`);
+          // document.querySelector('.message').innerHTML = `Вы неверно совершили нажатие на ${devHelper.model3DVals.mouseoverMesh.name} действия ${devHelper.trenVals.currentAction}.`;
+          // document.querySelector('.message').style.backgroundColor = 'rgba(255, 0, 0, 0.4)';
+        }
+      }
+      if (devHelper.model3DVals.currentPosition === undefined) {
+        if (devHelper.model3DVals.mouseoverMesh && devHelper.model3DVals.mouseoverMesh.name === 'Display_flat002') {
+          animMoveCamera({ x: -6.66, y: 1.13, z: 0.65 }, { x: -6.75, y: 1.13, z: 0.56 }, 0);
+        }
+        if (devHelper.model3DVals.mouseoverMesh && devHelper.model3DVals.mouseoverMesh.name === 'Display_flat002_1') {
+          animMoveCamera({ x: -6.2, y: 1.13, z: 0.19 }, { x: -6.29, y: 1.13, z: 0.10 }, 1);
         }
       }
     })
   }
+
+  document.querySelector('.back-btn').addEventListener('click', (e) => {
+    animMoveCamera({ x: 0.61, y: 1.67, z: 2.28 }, { x: 0.61, y: 1.67, z: 0 }, undefined);
+    e.currentTarget.style.visibility = 'hidden';
+  })
 })
 
 // setInterval(() => {
@@ -79,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function trenFinish() {
   devHelper.trenVals.ended = true;
-
   if (devHelper.dev.enable === true) console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.realTimer / 1000} сек.`);
 }
 
@@ -142,3 +154,41 @@ function createCustomElement(Tag = 'div', Content = '', Attributes = undefined, 
   if (Parent) Parent.append(element);
   return element
 }
+
+function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
+  devHelper.model3DVals.currentPosition = CurPos;
+  devHelper.model3DVals.cameraMove.end.x = PosCoors.x;
+  devHelper.model3DVals.cameraMove.end.y = PosCoors.y;
+  devHelper.model3DVals.cameraMove.end.z = PosCoors.z;
+  devHelper.model3DVals.cameraMove.lookEnd.x = LookAtCoors.x;
+  devHelper.model3DVals.cameraMove.lookEnd.y = LookAtCoors.y;
+  devHelper.model3DVals.cameraMove.lookEnd.z = LookAtCoors.z;
+  devHelper.model3DVals.cameraMove.start = devHelper.model3DVals.cameras[0].position;
+  devHelper.model3DVals.cameraMove.startTime = Date.now();
+  devHelper.model3DVals.cameraMove.duration = 2000;
+  moveCameraTick();
+}
+
+function lerp(start, end, amount) {
+  return start.clone().lerp(end, amount);
+}
+
+function moveCameraTick() {
+  var currentTime = Date.now();
+  var elapsedTime = currentTime - devHelper.model3DVals.cameraMove.startTime;
+  var progress = Math.min(elapsedTime / devHelper.model3DVals.cameraMove.duration, 1);
+  devHelper.model3DVals.cameras[0].position.copy(lerp(devHelper.model3DVals.cameraMove.start, devHelper.model3DVals.cameraMove.end, progress));
+  // let temp1 = devHelper.model3DVals.cameras[0].lookAtCoors;
+  // var newLookAt = new THREE.Vector3().lerpVectors(temp1, targetPoint, progress);
+  // devHelper.model3DVals.cameras[0].getWorldDirection(startLookAt);
+  // var newLookAt = new THREE.Vector3().lerpVectors(startLookAt, targetPoint, progress);
+  // console.log(temp1, devHelper.model3DVals.cameraMove.lookEnd);
+
+  devHelper.model3DVals.cameras[0].lookAt(devHelper.model3DVals.cameraMove.lookEnd);
+  if (progress < 1) requestAnimationFrame(moveCameraTick);
+  else {
+    document.querySelector('.back-btn').style.visibility = devHelper.model3DVals.currentPosition === undefined ? 'hidden' : 'visible';
+    devHelper.model3DVals.cameras[0].position.copy(devHelper.model3DVals.cameraMove.end);
+  }
+}
+

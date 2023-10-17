@@ -18,7 +18,8 @@ const devHelper = {
     messages: {
       normal: [],
       error: []
-    }
+    },
+    ended: false,
   },
   model3DVals: {
     activeControlCamera: true,
@@ -30,7 +31,17 @@ const devHelper = {
     controls: [],
     mainModel: undefined,
     active3dObjects: [],
-    currentPosition: undefined
+    currentPosition: undefined,
+    playerPosMeshs: [],
+    cameraMove: {
+      start: undefined,
+      end: undefined,
+      startTime: undefined,
+      duration: undefined,
+      lookStart: undefined,
+      lookEnd: undefined,
+    }
+
   },
   svgVals: [],
   dev: {

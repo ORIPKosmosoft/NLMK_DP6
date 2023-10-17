@@ -134,13 +134,13 @@ function onMouseMove(event) {
 	_euler.x = Math.max(_PI_2 - this.maxPolarAngle, Math.min(_PI_2 - this.minPolarAngle, _euler.x));
 	if (camera.startEulerY === undefined) camera.startEulerY = _euler.y;
 	
-	
-	if (_euler.y > camera.startEulerY - 0.65 && _euler.y < camera.startEulerY + 0.65) {
-		if (_euler.y < camera.startEulerY - 0.65) _euler.y = camera.startEulerY - 0.65;
-		if (_euler.y > camera.startEulerY + 0.65) _euler.y = camera.startEulerY + 0.65;
-		camera.quaternion.setFromEuler(_euler);
-		this.dispatchEvent(_changeEvent);
-	}
+	// TODO мой код
+	// if (_euler.y > camera.startEulerY - 0.65 && _euler.y < camera.startEulerY + 0.65) {
+	// 	if (_euler.y < camera.startEulerY - 0.65) _euler.y = camera.startEulerY - 0.65;
+	// 	if (_euler.y > camera.startEulerY + 0.65) _euler.y = camera.startEulerY + 0.65;
+	// }
+	camera.quaternion.setFromEuler(_euler);
+	this.dispatchEvent(_changeEvent);
 }
 
 function onPointerlockChange() {

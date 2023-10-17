@@ -558,6 +558,8 @@ ul {
   position: absolute;
   top: 0%;
   left: 0%;
+  /* visibility: hidden; */
+  display: none;
   /* transform: translate(0, 0); */
   /* pointer-events: none; */
 }
@@ -751,6 +753,22 @@ ul {
   height: 0px;
   border: 1px solid black;
   margin-bottom: 5px;
+}
+
+.back-btn {
+  position: absolute;
+  left: 47vw;
+  bottom: 5%;
+  width: 5vw;
+  height: 3vh;
+  visibility: hidden;
+}
+
+/* babylon */
+#renderCanvas {
+  width: 100%;
+  height: 100%;
+  touch-action: none;
 }
 
 

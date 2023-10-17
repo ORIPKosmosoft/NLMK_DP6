@@ -27,19 +27,21 @@ function domLoaded() {
     }
   })
 
-  document.querySelector('.exit').addEventListener('click', (e) => {
-    document.querySelector('.tren-container').style.opacity = 0;
-  })
+  if (document.querySelector('.exit')) {
+    document.querySelector('.exit').addEventListener('click', (e) => {
+      document.querySelector('.tren-container').style.opacity = 0;
+    })
+  }
 
   function removeStartScreen() {
     document.querySelector('.header').style.top = -document.querySelector('.header').getBoundingClientRect().bottom - 10 + 'px';
-    document.querySelector('.section').style.left = -document.querySelector('.section').getBoundingClientRect().width*1.1 + 'px';
+    document.querySelector('.section').style.left = -document.querySelector('.section').getBoundingClientRect().width * 1.1 + 'px';
   }
 
   function revialTrenScreen() {
-      document.querySelector('.tren-container').style.visibility = 'visible';
-      document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
-      document.querySelector('.tren-container').style.opacity = 1;
+    document.querySelector('.tren-container').style.visibility = 'visible';
+    document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
+    document.querySelector('.tren-container').style.opacity = 1;
   }
 
   function prepareTren(TrenType, Scenario, Index) {
@@ -77,7 +79,7 @@ function domLoaded() {
       let textConNew = document.querySelector('.info-container').children[newTextIndex];
       textConNew.classList.toggle('text-container-active', true);
       document.querySelector('.info-container').children[0].style.marginTop = `-${newTextIndex * textConNew.getBoundingClientRect().height}px`;
-      
+
       if (document.querySelector('.arrow-text-active')) {
         document.querySelectorAll('.arrow-text-active').forEach((Element) => {
           Element.parentElement.dispatchEvent(new Event('click'));

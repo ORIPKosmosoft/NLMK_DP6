@@ -8998,9 +8998,9 @@ class Color {
 		this.g = g;
 		this.b = b;
 		//TODO: Совершенно тупо заблокировал ошибку
-		// if (colorSpace !== ColorManagement.workingColorSpace) {
-			// colorSpace = ColorManagement.workingColorSpace
-		// }
+		if (colorSpace !== ColorManagement.workingColorSpace) {
+			colorSpace = ColorManagement.workingColorSpace
+		}
 		ColorManagement.toWorkingColorSpace( this, colorSpace );
 
 		return this;
