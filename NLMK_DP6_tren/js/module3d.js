@@ -12,12 +12,12 @@
 Добавить изменение времени на3Д к главному изменении времени
 change3DTime
 --------------------------------------------------------------------
-Запретить клик через другие модели
+
 --------------------------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("renderCanvas");
-  const engine = new BABYLON.Engine(canvas, true); 
+  const engine = new BABYLON.Engine(canvas, true);
 
   const createScene = function () {
     let scene = new BABYLON.Scene(engine);
@@ -31,9 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
     light.intensity = 0.5;
     let light2 = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     light2.intensity = 2;
-
-    loadModel('All', scene);
-    loadModel('Highlight', scene);
+    window.onload = function () {
+      loadModel('All', scene);
+      loadModel('Highlight', scene);
+    };
 
     scene.actionManager = new BABYLON.ActionManager(scene);
     scene.actionManager.registerAction(
@@ -114,15 +115,18 @@ document.addEventListener("DOMContentLoaded", () => {
         animMoveCamera([0.35, 2.15, -3.4], [0.1913, -0.0046, 0], undefined);
       })
       // Для поиска нужного меша
-      canvas.addEventListener("pointermove", function () {
-        var pickResult = scene.pick(scene.pointerX, scene.pointerY);
-        if (pickResult.hit) {
-          var meshName = pickResult.pickedMesh.name;
-          console.log("Имя меша под мышью: " + pickResult.pickedMesh);
-        } else {
-          console.log("Меш не найден под мышью.");
-        }
-      });
+      // canvas.addEventListener("pointermove", function () {
+      //   var pickResult = scene.pick(scene.pointerX, scene.pointerY);
+      //   if (pickResult.hit)
+      //     devHelper.model3DVals.meshUnderPointer = pickResult.pickedMesh.name;
+      //   else devHelper.model3DVals.meshUnderPointer = undefined;
+      //   // {
+      //   // var meshName = pickResult.pickedMesh.name;
+      //   // console.log("Имя меша под мышью: " + pickResult.pickedMesh);
+      //   // } else {
+      //   //   console.log("Меш не найден под мышью.");
+      //   // }
+      // });
     } else {
       document.querySelector('.help-btn-block').remove();
     }
@@ -137,6 +141,14 @@ document.addEventListener("DOMContentLoaded", () => {
     scene.render();
   });
 
+  scene.onPointerMove = function (evt, pickInfo) {
+    if (pickInfo.hit) {
+      var mesh = pickInfo.pickedMesh;
+      console.log(mesh.name);
+    }
+  };
+
+
   window.addEventListener("resize", function () {
     engine.resize();
   });
@@ -145,23 +157,21 @@ document.addEventListener("DOMContentLoaded", () => {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
       if (Name === 'All') {
         meshes.forEach(element => {
-          if (devHelper.dev.enable === true) element.isPickable = true;
+          element.actionManager = new BABYLON.ActionManager(Scene);
+          element.isPickable = true;
           if (element.name && element.name === 'Display_flat002') {
-            // const imgTag = document.createElement('img');
-            // imgTag.src = '../media/images/schemes/dp.svg';
-            // let newTexture = new BABYLON.Texture('../media/images/UI/photo_1.jpg', Scene);
-            // let newMaterial = new BABYLON.StandardMaterial('material_' + element.name, Scene);
-            // newMaterial.diffuseTexture = newTexture;
-            // element.material = newMaterial;
             makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 1);
           } else if (element.name && element.name === 'Display_flat003') {
             makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 2);
           } else if (element.name && element.name === 'Object042') {
-          } 
+            devHelper.model3DVals.activeMeshs.push(element);
+            element.name = 'kl022'
+          }
         });
         change3DTime();
       } else {
         meshes.forEach(element => {
+          element.actionManager = new BABYLON.ActionManager(Scene);
           element.isPickable = true;
           const groundMat = new BABYLON.StandardMaterial("groundMat");
           groundMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
@@ -189,9 +199,7 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   if (CurPos === undefined)
     devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = true);
   else devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
-
   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = CurPos === 1 ? false : true;
-
   var positionAnimation = new BABYLON.Animation(
     "positionAnimation",
     "position",
@@ -231,7 +239,6 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   rotationAnimation.setKeys(rotationKeys);
   devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
   devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false);
-
 }
 
 function makeMovePoint(Mesh, Scene, PosCoors, LookAtCoors, CurPos) {
@@ -270,10 +277,11 @@ function makeUnicMat(UnicMesh) {
 
 function changeColorTexture(Mesh, State) {
   if (devHelper.model3DVals.currentPosition === undefined) {
+    // console.log(devHelper.model3DVals.meshUnderPointer, Mesh.name);
+    // if (devHelper.model3DVals.meshUnderPointer === Mesh.name) {
     let newBlue1 = State === true ? 0 : 1;
     let newBlue2 = State === true ? -1 : 0;
     let newAlpha = State === true ? 0.5 : 0;
-
     if (Mesh.material.alpha !== 1) {
       Mesh.material.alpha = newAlpha;
     } else {
@@ -281,6 +289,7 @@ function changeColorTexture(Mesh, State) {
       else if (Mesh.material._emissiveColor)
         Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
     }
+    // }
   }
 }
 
@@ -310,4 +319,36 @@ function change3DTime(Time = '00:00:00') {
   digit4.material = unic4.material.clone();
   digit5.material = unic5.material.clone();
   digit6.material = unic4.material.clone();
+}
+
+
+function rotateMesh(Mesh = undefined, Angle = 0, Axis = undefined, Duration = 60, Scene = devHelper.model3DVals.scene) {
+  if (devHelper.dev.enable === true) {
+    if (Mesh === undefined) console.warn(`В функцию rotateMesh не передали меш.`);
+    if (Axis === undefined) console.warn(`В функцию rotateMesh не передали тип.`);
+  }
+  if (Mesh !== undefined || Axis !== undefined) {
+    if (Mesh.rotation._isDirty === false) Mesh.rotation = new BABYLON.Vector3(0, 0, 0);
+    Angle = Angle * (Math.PI / 180);
+    console.log(Angle);
+    let animation = new BABYLON.Animation(
+      "rotationAnimation",
+      `rotation.${Axis}`,
+      60,
+      BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+      BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+    );
+    var keys = [
+      {
+        frame: 0,
+        value: Mesh.rotation[Axis]
+      },
+      {
+        frame: Duration,
+        value: Angle
+      }
+    ];
+    animation.setKeys(keys);
+    Scene.beginDirectAnimation(Mesh, [animation], 0, Duration, false);
+  } else return
 }

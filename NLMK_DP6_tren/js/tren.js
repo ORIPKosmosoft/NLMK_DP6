@@ -1,5 +1,9 @@
 /*                TODO
 ----------------------------------------------------
+начать делайть действия
+Внести имена мешей из массива действий
+проверят на соответсвие
+дальше делать уже клик
 ----------------------------------------------------
 */
 function loadTrenActions() {
@@ -11,7 +15,7 @@ function loadTrenActions() {
     devHelper.trenVals.actionArr.push(tempObjTren);
     if (tempActions[Index]) tempObjTren.actions = tempActions[Index];
   })
-  devHelper.model3DVals.active3dObjects = [...tempActions.flatMap(actionArr => actionArr.map(action => action.target))];
+  // devHelper.trenVals.activeMeshs = [...tempActions.flatMap(actionArr => actionArr.map(action => action.target))];
 }
 
 document.addEventListener("DOMContentLoaded", () => {

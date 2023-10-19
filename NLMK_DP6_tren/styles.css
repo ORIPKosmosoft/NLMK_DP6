@@ -776,6 +776,15 @@ ul {
   height: 3vh;
   visibility: hidden;
 }
+/* svg схемы 
+-----------------------------------------------------
+*/
+.svg-scheme-container {
+  top: 101%;
+  left: 101%;
+  position: absolute;
+  visibility: hidden;
+}
 
 /* babylon 
 -----------------------------------------------------

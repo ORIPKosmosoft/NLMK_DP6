@@ -20,14 +20,16 @@ const devHelper = {
       error: []
     },
     ended: false,
+    activeMeshs: [],
   },
   model3DVals: {
     activeControlCamera: true,
     camera: undefined,
     scene: undefined,
-    active3dObjects: [],
+    activeMeshs: [],
     currentPosition: undefined,
     movePointMesh: [],
+    meshUnderPointer: undefined,
   },
   svgVals: [],
   dev: {
@@ -37,27 +39,18 @@ const devHelper = {
 };
 /*                 action
 ----------------------------------------------------
-открыть
-закрыть
-контролировать
+rotateMesh(devHelper.model3DVals.activeMeshs[0], 90, 'y');
 ----------------------------------------------------
 */
 let tempActions = [
   [
     {
       text: 'Заменить1',
-      action: 'открыть',
-      target: 'TV1',
-      duration: 3
-    }, {
-      text: 'Заменить2',
-      action: 'контролировать',
-      target: 'TV2',
-      duration: 3
-    }, {
-      text: 'Заменить3',
-      action: 'закрыть',
-      target: 'TV3',
+      action: {
+        target: 'kl022',
+        position: {},
+        rotation: {y: 90},
+      },
       duration: 3
     },
   ]
