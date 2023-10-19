@@ -189,10 +189,35 @@ document.addEventListener("DOMContentLoaded", () => {
             element.dispose();
           }
         })
-      }
+      }    
     });
   }
+
+////////////////////////
+  const c_dynamicMaterial = new BABYLON.StandardMaterial(`dynamicMaterial_${getRandomInt()}`, scene);
+  function newTextureOnMesh(mesh, _svg){
+    _svg = _svg.contentDocument.querySelector('svg')
+    let outputImage = document.querySelector('#output-scheme-img')
+    let planeTexture = new BABYLON.DynamicTexture("texturePlane", {width: _svg.getAttribute('width'), height: _svg.getAttribute('height')}, scene, true);
+    c_dynamicMaterial.diffuseTexture = c_dynamicMaterial.emissiveTexture = planeTexture;
+    mesh.material = c_dynamicMaterial;
+  
+    let textureContext = planeTexture.getContext();
+    let xml = new XMLSerializer().serializeToString(_svg)
+    let svg64 = btoa(unescape(encodeURIComponent(xml)))
+    let b64Start = 'data:image/svg+xml;base64,';
+  
+    outputImage.onload = function() {
+      textureContext.drawImage(document.querySelector('#output-scheme-img'), 0, 0);
+      planeTexture.update();
+    }
+    outputImage.src = b64Start + svg64;
+  }
+////////////////////
+
+
 });
+
 
 function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   devHelper.model3DVals.currentPosition = CurPos;
