@@ -17,7 +17,8 @@
 --------------------------------------------------------------------
 Разобраться с изменением текстур мешей
 --------------------------------------------------------------------
-
+Разработать смену текстур на 3Д модели часов
+change3DTime
 */
 const devHelper = {
   trenVals: {
@@ -39,29 +40,15 @@ const devHelper = {
   },
   model3DVals: {
     activeControlCamera: true,
-    unicMeshArr: [],
-    mouseoverMesh: undefined,
-    cameras: [],
-    scenes: [],
-    renderers: [],
-    controls: [],
-    mainModel: undefined,
+    camera: undefined,
+    scene: undefined,
     active3dObjects: [],
     currentPosition: undefined,
-    playerPosMeshs: [],
-    cameraMove: {
-      start: undefined,
-      end: undefined,
-      startTime: undefined,
-      duration: undefined,
-      lookStart: undefined,
-      lookEnd: undefined,
-    }
-
+    movePointMesh: [],
   },
   svgVals: [],
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
   },
 };
@@ -76,12 +63,37 @@ document.addEventListener("DOMContentLoaded", () => {
     let camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0.35, 2.15, -3.4), scene);
     devHelper.model3DVals.camera = camera;
     camera.rotation = new BABYLON.Vector3(0.1913, -0.0046, 0);
-    // camera.setTarget(BABYLON.Vector3.Zero());
     camera.attachControl(canvas, true);
     camera.minZ = 0.1;
-    const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
-    light.intensity = 2;
+    const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, -1, 0), scene);
+    light.intensity = 0.5;
+    const light2 = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+    light2.intensity = 2;
+
     loadModel('All', scene);
+    camera.noRotationConstraint = true;
+
+    scene.actionManager = new BABYLON.ActionManager(scene);
+    scene.actionManager.registerAction(
+      new BABYLON.ExecuteCodeAction(
+        BABYLON.ActionManager.OnEveryFrameTrigger,
+        function () {
+          // TODO Добавить органичесние на поворот камеры на главном виде и щитов
+          // if (devHelper.model3DVals.currentPosition === undefined) {
+          //   if (camera.rotation.y >= 1.01)
+          //     camera.rotation.y = 1.01;
+          //   if (camera.rotation.y <= -0.93)
+          //     camera.rotation.y = -0.93;
+          //   if (camera.rotation.x >= 0.608)
+          //     camera.rotation.x = 0.608;
+          //   if (camera.rotation.x <= -0.12) {
+          //     camera.rotation.x = -0.12;
+          //   }
+          //   console.log('X: ' + camera.rotation.x, 'Y: ' + camera.rotation.y);
+          // }
+        }
+      )
+    );
     /* Положения камеры на объекты
     начальное положение
     0.35, 2.15, -3.4
@@ -94,62 +106,67 @@ document.addEventListener("DOMContentLoaded", () => {
     /* Блок кнопопк для камеры
     ----------------------------------------------------------------------------------------------------------
      */
-    document.querySelector('#takePosition').addEventListener('click', () => {
-      document.querySelector('.value-input').children[0].value = camera.position.x;
-      document.querySelector('.value-input').children[1].value = camera.position.y;
-      document.querySelector('.value-input').children[2].value = camera.position.z;
-      document.querySelectorAll('.value-input')[1].children[0].value = camera.rotation.x;
-      document.querySelectorAll('.value-input')[1].children[1].value = camera.rotation.y;
-      document.querySelectorAll('.value-input')[1].children[2].value = camera.rotation.z;
-    })
-    const keys = {
-      W: 87,
-      A: 65,
-      S: 83,
-      D: 68,
-      X: 88,
-      Z: 90,
-    };
-    const moveSpeed = 0.01;
-    const handleKeyDown = (event) => {
-      const keyCode = event.keyCode;
-      switch (keyCode) {
-        case keys.W:
-          camera.position.z = parseFloat(camera.position.z) + moveSpeed;
-          break;
-        case keys.A:
-          camera.position.x = parseFloat(camera.position.x) - moveSpeed;
-          break;
-        case keys.S:
-          camera.position.z = parseFloat(camera.position.z) - moveSpeed;
-          break;
-        case keys.D:
-          camera.position.x = parseFloat(camera.position.x) + moveSpeed;
-          break;
-        case keys.Z:
-          camera.position.y = parseFloat(camera.position.y) + moveSpeed;
-          break;
-        case keys.X:
-          camera.position.y = parseFloat(camera.position.y) - moveSpeed;
-          break;
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    // document.querySelector('#movePositionX1').addEventListener('click', () => {
-    //   camera.position = new BABYLON.Vector3(parseFloat(camera.position.x) + 0.01, parseFloat(camera.position.y), parseFloat(camera.position.z))
-    // })
-    // document.querySelector('#movePositionX2').addEventListener('click', () => {
-    //   camera.position = new BABYLON.Vector3(parseFloat(camera.position.x) - 0.01, parseFloat(camera.position.y), parseFloat(camera.position.z))
-    // })
-    // document.querySelector('button').addEventListener('click', animMoveCamera);
-    // document.querySelector('button').addEventListener('click', () => {
-    //   console.log(devHelper.model3DVals.camera.rotation);
-    // });
+    if (devHelper.dev.enable === true) {
+      document.querySelector('#takePosition').addEventListener('click', () => {
+        document.querySelector('.value-input').children[0].value = camera.position.x;
+        document.querySelector('.value-input').children[1].value = camera.position.y;
+        document.querySelector('.value-input').children[2].value = camera.position.z;
+        document.querySelectorAll('.value-input')[1].children[0].value = camera.rotation.x;
+        document.querySelectorAll('.value-input')[1].children[1].value = camera.rotation.y;
+        document.querySelectorAll('.value-input')[1].children[2].value = camera.rotation.z;
+      })
+      const keys = {
+        W: 87,
+        A: 65,
+        S: 83,
+        D: 68,
+        X: 88,
+        Z: 90,
+      };
+      const moveSpeed = 0.01;
+      const handleKeyDown = (event) => {
+        const keyCode = event.keyCode;
+        switch (keyCode) {
+          case keys.W:
+            camera.position.z = parseFloat(camera.position.z) + moveSpeed;
+            break;
+          case keys.A:
+            camera.position.x = parseFloat(camera.position.x) - moveSpeed;
+            break;
+          case keys.S:
+            camera.position.z = parseFloat(camera.position.z) - moveSpeed;
+            break;
+          case keys.D:
+            camera.position.x = parseFloat(camera.position.x) + moveSpeed;
+            break;
+          case keys.Z:
+            camera.position.y = parseFloat(camera.position.y) + moveSpeed;
+            break;
+          case keys.X:
+            camera.position.y = parseFloat(camera.position.y) - moveSpeed;
+            break;
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      document.querySelector('#back-btn').addEventListener('click', () => {
+        animMoveCamera([0.35, 2.15, -3.4], [0.1913, -0.0046, 0], undefined);
+      })
+      // Для поиска нужного меша
+      canvas.addEventListener("pointermove", function () {
+        var pickResult = scene.pick(scene.pointerX, scene.pointerY);
+        if (pickResult.hit) {
+          var meshName = pickResult.pickedMesh.name;
+          console.log("Имя меша под мышью: " + meshName);
+        } else {
+          console.log("Меш не найден под мышью.");
+        }
+      });
+    } else {
+      document.querySelector('.help-btn-block').remove();
+    }
     /* Блок кнопопк для камеры
 ----------------------------------------------------------------------------------------------------------
  */
-
-
     return scene;
   };
 
@@ -164,105 +181,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadModel(Name, Scene) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
-      // let unicMatArr = [];
       meshes.forEach(element => {
-        // console.log(element.name, element.id);
-        // if (element.material) {
-        //   if (unicMatArr.indexOf(element.material) === -1) unicMatArr.push(element.material);
-        //   else {
-        //     let clonedMaterial = element.material.clone();
-        //     element.material = clonedMaterial;
-        //   }
-        // }
+        if (devHelper.dev.enable === true) element.isPickable = true;
         if (element.name && element.name === 'Display_flat002') {
-          let newTexture = new BABYLON.Texture('../media/images/UI/photo_1.jpg', Scene);
-          let newMaterial = new BABYLON.StandardMaterial('material_' + element.name, Scene);
-          newMaterial.diffuseTexture = newTexture;
-          element.material = newMaterial;
-
-          element.isPickable = true;
-          element.actionManager = new BABYLON.ActionManager(Scene);
-          element.actionManager.registerAction(
-            new BABYLON.ExecuteCodeAction(
-              BABYLON.ActionManager.OnPointerOverTrigger,
-              function () {
-                if (element.material) element.material.diffuseColor = new BABYLON.Color3(1, 1, 0);
-              }
-            )
-          );
-          element.actionManager.registerAction(
-            new BABYLON.ExecuteCodeAction(
-              BABYLON.ActionManager.OnPointerOutTrigger,
-              function () {
-                if (element.material) element.material.diffuseColor = new BABYLON.Color3(1, 1, 1);
-              }
-            )
-          );
-          element.actionManager.registerAction(
-            new BABYLON.ExecuteCodeAction(
-              BABYLON.ActionManager.OnPickTrigger,
-              function () {
-                animMoveCamera([-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 1)
-              }
-            )
-          );
-
-
-
-          // const dynamicTexture = new BABYLON.DynamicTexture("dynamicTexture", { width: 2000, height: 902 }, Scene);
-          // const context = dynamicTexture.getContext();
-          // const svgString = `<svg width="2000" height="902">${document.querySelector('object').contentDocument.querySelector('svg').innerHTML}</svg>`;
-          // console.log(svgString);
-          // console.log();
-
-          // const DOMURL = window.URL || window.webkitURL || window;
-          // const img = new Image();
-          // const svg = new Blob([svgString], { type: "image/svg+xml" });
-          // const url = DOMURL.createObjectURL(svg);
-
-          // img.onload = function () {
-          //   context.drawImage(img, 0, 0);
-          //   let newMaterial = new BABYLON.StandardMaterial('newMaterial', Scene);
-          //   newMaterial.diffuseTexture = dynamicTexture;
-          //   element.material = newMaterial;
-          //   DOMURL.revokeObjectURL(url);
-          //   console.log(img);
-          // };
-
-          // img.src = url;
-
-          // const img = new Image();
-          // img.src = 'data:image/svg+xml,' + encodeURIComponent(new XMLSerializer().serializeToString(document.querySelector('object').contentDocument.querySelector('svg')));
-          // img.onload = function () {
-          //   console.log(img);
-          //   let newTexture = new BABYLON.Texture(img.src, Scene, false, false, BABYLON.Texture.NEAREST_SAMPLINGMODE, null, null, null, null, null, true);
-          //   let newMaterial = new BABYLON.StandardMaterial('newMaterial', Scene);
-          //   newMaterial.diffuseTexture = newTexture;
-          //   element.material = newMaterial;
-          // };
-          // img.onerror = function () {
-          //   console.error("Ошибка загрузки изображения");
-          // };
+          // const imgTag = document.createElement('img');
+          // imgTag.src = '../media/images/schemes/dp.svg';
+          // let newTexture = new BABYLON.Texture('../media/images/UI/photo_1.jpg', Scene);
+          // let newMaterial = new BABYLON.StandardMaterial('material_' + element.name, Scene);
+          // newMaterial.diffuseTexture = newTexture;
+          // element.material = newMaterial;
+          makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 1);
         } else if (element.name && element.name === 'Display_flat003') {
-          console.log(element);
+          makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 2);
+        } else if (element.name && element.name === 'BZU') { //Object001 Line001 BZU
+          makeMovePoint(element, Scene, [-3.56, 1.73, -1], [0.5216195764415446, 0.007373100235868478, 0], 2);
         }
       });
-      // let tempMesh = meshes.find(mesh => mesh.name === 'Display_flat002');
-      // if (tempMesh) {
-      //   let newTexture = new BABYLON.Texture('../media/images/UI/photo_1.jpg', Scene);
-      //   let newMaterial = new BABYLON.StandardMaterial('newMaterial', Scene);
-      //   newMaterial.diffuseTexture = newTexture;
-      //   tempMesh.material = newMaterial;
-      //   console.log('Меш с новой текстурой:', tempMesh);
-      // } else {
-      //   console.log('Меш не найден в загруженной модели.');
-      // }
-      // }
+      change3DTime();
     });
   }
 });
 
 function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
+  devHelper.model3DVals.currentPosition = CurPos;
+  if (CurPos === undefined)
+    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = true);
+  else devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
+
+  devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = CurPos === 1 ? false : true;
+
   var positionAnimation = new BABYLON.Animation(
     "positionAnimation",
     "position",
@@ -303,4 +250,73 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
   devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false);
 
+}
+
+function makeMovePoint(Mesh, Scene, PosCoors, LookAtCoors, CurPos) {
+  devHelper.model3DVals.movePointMesh.push(Mesh);
+  makeUnicMat(Mesh);
+  Mesh.actionManager = new BABYLON.ActionManager(Scene);
+  Mesh.actionManager.registerAction(
+    new BABYLON.ExecuteCodeAction(
+      BABYLON.ActionManager.OnPointerOverTrigger,
+      function () { changeColorTexture(Mesh, true); }
+    )
+  );
+  Mesh.actionManager.registerAction(
+    new BABYLON.ExecuteCodeAction(
+      BABYLON.ActionManager.OnPointerOutTrigger,
+      function () { changeColorTexture(Mesh, false); }
+    )
+  );
+  Mesh.actionManager.registerAction(
+    new BABYLON.ExecuteCodeAction(
+      BABYLON.ActionManager.OnPickTrigger,
+      function () { changeColorTexture(Mesh, false); }
+    )
+  );
+}
+
+function makeUnicMat(UnicMesh) {
+  if (UnicMesh.material) {
+    let tempMaterial = UnicMesh.material.clone('material_' + UnicMesh.name);
+    UnicMesh.material = tempMaterial;
+  }
+}
+
+function changeColorTexture(Mesh, State) {
+  if (devHelper.model3DVals.currentPosition === undefined) {
+    let newBlue1 = State === true ? 0 : 1;
+    let newBlue2 = State === true ? -1 : 0;
+    if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
+    else if (Mesh.material._emissiveColor)
+      Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
+  }
+}
+
+//TODO тут сделать часы 3Д
+function change3DTime(Time = '00:00:00') {
+  // Пример кода часов 3Д
+  let unicOff = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_0');
+  let unic0 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_001');
+  let unic1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_002');
+  let unic2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_003');
+  let unic3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_004');
+  let unic4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_005');
+  let unic5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_006');
+  let unic6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_007');
+  let unic7 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_008');
+  let unic8 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_009');
+  let unic9 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_off');
+  let digit1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits000');
+  let digit2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits001');
+  let digit3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits002');
+  let digit4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits003');
+  let digit5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits004');
+  let digit6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits005');
+  digit1.material = unic0.material.clone();
+  digit2.material = unic7.material.clone();
+  digit3.material = unic3.material.clone();
+  digit4.material = unic4.material.clone();
+  digit5.material = unic5.material.clone();
+  digit6.material = unic4.material.clone();
 }
