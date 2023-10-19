@@ -141,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
     engine.resize();
   });
 
-
   function loadModel(Name, Scene) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
       if (Name === 'All') {
@@ -153,16 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
             // let newTexture = new BABYLON.Texture('../media/images/UI/photo_1.jpg', Scene);
             // let newMaterial = new BABYLON.StandardMaterial('material_' + element.name, Scene);
             // newMaterial.diffuseTexture = newTexture;
-            // element.material = newMaterial;.
-
-            setTimeout(() => {
-              newTextureOnMesh(element, document.querySelector('.scheme-img'))
-            }, 5000);
-            
+            // element.material = newMaterial;
             makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 1);
           } else if (element.name && element.name === 'Display_flat003') {
             makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 2);
-          } else if (element.name && element.name === 'Object042') { } 
+          } else if (element.name && element.name === 'Object042') {
+          } 
         });
         change3DTime();
       } else {
@@ -341,12 +336,3 @@ function change3DTime(Time = '00:00:00') {
   digit5.material = unic5.material.clone();
   digit6.material = unic4.material.clone();
 }
-
-function getRandomInt(){
-  return String(Math.random()).split('.')[1];
-}
-
-
- 
-
-
