@@ -95,11 +95,18 @@ function domLoaded() {
 
   document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
     Element.addEventListener('click', guideBtnsClick);
-    if (index === 0) Element.dispatchEvent(new Event('click'));
+    if (index === 0)
+      setTimeout(() => {
+        Element.classList.toggle('nav-icon-active', true);
+        Array.from(Element.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+          if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
+        })
+      }, 150);
+
   });
 
   document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
-    Element.style.marginTop = `-${Element.getBoundingClientRect().height}px`;
+    Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
     Element.classList.remove('first-drop');
   })
 
@@ -157,7 +164,7 @@ function domLoaded() {
   document.querySelectorAll('.drop-title').forEach((Element) => {
     Element.addEventListener('click', (e) => {
       e.currentTarget.querySelector('img').classList.toggle('arrow-text-active');
-      e.currentTarget.nextElementSibling.children[0].style.marginTop = e.currentTarget.querySelector('img').classList.contains('arrow-text-active') ? '' :
+      e.currentTarget.nextElementSibling.children[0].style.marginTop = e.currentTarget.querySelector('img').classList.contains('arrow-text-active') ? '1vh' :
         `-${e.currentTarget.nextElementSibling.children[0].getBoundingClientRect().height}px`;
       if (e.currentTarget.nextElementSibling.querySelector('.drop-item-active')) {
         e.currentTarget.nextElementSibling.querySelector('.drop-item-active').classList.toggle('drop-item-active', false);

@@ -23,29 +23,15 @@ const devHelper = {
   },
   model3DVals: {
     activeControlCamera: true,
-    unicMeshArr: [],
-    mouseoverMesh: undefined,
-    cameras: [],
-    scenes: [],
-    renderers: [],
-    controls: [],
-    mainModel: undefined,
+    camera: undefined,
+    scene: undefined,
     active3dObjects: [],
     currentPosition: undefined,
-    playerPosMeshs: [],
-    cameraMove: {
-      start: undefined,
-      end: undefined,
-      startTime: undefined,
-      duration: undefined,
-      lookStart: undefined,
-      lookEnd: undefined,
-    }
-
+    movePointMesh: [],
   },
   svgVals: [],
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
   },
 };
