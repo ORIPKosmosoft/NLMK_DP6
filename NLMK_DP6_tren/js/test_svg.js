@@ -1,18 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('object .scheme-img').forEach((ElementObj) => {
+window.addEventListener('load', function () {
+  document.querySelector('.svg-scheme-container').querySelectorAll('object').forEach((ObjSvg) => {
     devHelper.svgVals.push({
-      object: ElementObj,
-      svg: ElementObj.contentDocument.querySelector('svg'),
-      name: ElementObj.contentDocument.querySelector('svg').baseURI.substring(ElementObj.contentDocument.querySelector('svg').baseURI.lastIndexOf('/') + 1, ElementObj.contentDocument.querySelector('svg').baseURI.indexOf('.svg')),
+      name: ObjSvg.data.substring(ObjSvg.data.lastIndexOf('/') + 1, ObjSvg.data.indexOf('.svg')),
+      object: ObjSvg,
+      svg: ObjSvg.contentDocument.querySelector('svg'),
       activeElements: [],
     })
   })
 
-
   //TODO: Весть текст изменениямый сместить если надо
   devHelper.svgVals.forEach((Element, Index) => {
     if (Element.name === 'dp') {
-      let tempElemCount = 0;
       Element.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
         if (TextElement.innerHTML === '4,32') {
           devHelper.svgVals[Index].activeElements.push({
@@ -732,6 +730,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   devHelper.svgVals.forEach((Element) => {
+    makeDynamicTextureDisplay(Element);
     //let tempUnicArr = [];
     Element.activeElements.forEach((Element2) => {
       // Element2.element.innerHTML = 'ВЗЯЛ';
@@ -750,7 +749,27 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 
-// tempElemCount++;
-// TextElement.innerHTML = '!!' + tempElemCount + '!!';
-// console.log(TextIndex);
-// console.log(tempElemCount);
+function makeDynamicTextureDisplay(ObjectSvg) {
+  let outputImage = ObjectSvg.object.nextElementSibling;
+  let planeTexture = new BABYLON.DynamicTexture(`texture_${ObjectSvg.name}`, { width: ObjectSvg.svg.getAttribute('width'), height: ObjectSvg.svg.getAttribute('height') }, devHelper.model3DVals.scene, true);
+  let textureContext = planeTexture.getContext();
+  outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(ObjectSvg.svg))));
+  outputImage.onload = function () {
+    textureContext.drawImage(outputImage, 0, 0);
+    planeTexture.update();
+  }
+  devHelper.model3DVals.svgDisplays.textures.push(planeTexture);
+  // c_dynamicMaterial.diffuseTexture = c_dynamicMaterial.emissiveTexture = planeTexture;
+
+  // console.log(devHelper.model3DVals.svgDisplays);
+
+  // let xml = new XMLSerializer().serializeToString(ObjectSvg.svg)
+  // let svg64 = btoa(unescape(encodeURIComponent(xml)))
+  // let b64Start = 'data:image/svg+xml;base64,';
+  // let svg64 = btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(ObjectSvg.svg))))
+  // outputImage.onload = function () {
+  //   textureContext.drawImage(document.querySelector('#output-scheme-img'), 0, 0);
+  //   planeTexture.update();
+  // }
+  // c_dynamicMaterial.diffuseTexture = c_dynamicMaterial.emissiveTexture = planeTexture;
+}

@@ -12,7 +12,7 @@ const devHelper = {
     realTimer: 0,
     type: undefined,
     trenEnded: false,
-    lifeTime: '08:00',
+    lifeTime: '08:00:00',
     actionArr: [],
     scenario: undefined,
     messages: {
@@ -30,6 +30,10 @@ const devHelper = {
     currentPosition: undefined,
     movePointMesh: [],
     meshUnderPointer: undefined,
+    svgDisplays: {
+      meshs: [],
+      textures: []
+    },
   },
   svgVals: [],
   dev: {
@@ -49,7 +53,7 @@ let tempActions = [
       action: {
         target: 'kl022',
         position: {},
-        rotation: {y: 90},
+        rotation: { y: 90 },
       },
       duration: 3
     },

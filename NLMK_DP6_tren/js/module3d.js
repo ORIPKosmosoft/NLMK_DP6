@@ -12,7 +12,8 @@
 Добавить изменение времени на3Д к главному изменении времени
 change3DTime
 --------------------------------------------------------------------
-
+Добавить функцию изменения текстуры на мониторах, прям для вызова.
+Пока сделал функцию установки текстуры на монитор и материала.
 --------------------------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,10 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
     light.intensity = 0.5;
     let light2 = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     light2.intensity = 2;
-    window.onload = function () {
-      loadModel('All', scene);
-      loadModel('Highlight', scene);
-    };
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        loadModel('All', scene);
+        loadModel('Highlight', scene);
+      }, 1000);
+    });
 
     scene.actionManager = new BABYLON.ActionManager(scene);
     scene.actionManager.registerAction(
@@ -160,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
           element.actionManager = new BABYLON.ActionManager(Scene);
           element.isPickable = true;
           if (element.name && element.name === 'Display_flat002') {
+            makeSvgDisplay(element, Scene, 'dp');
             makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 1);
           } else if (element.name && element.name === 'Display_flat003') {
             makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 2);
@@ -189,34 +193,24 @@ document.addEventListener("DOMContentLoaded", () => {
             element.dispose();
           }
         })
-      }    
+      }
     });
   }
 
-////////////////////////
-  const c_dynamicMaterial = new BABYLON.StandardMaterial(`dynamicMaterial_${getRandomInt()}`, scene);
-  function newTextureOnMesh(mesh, _svg){
-    _svg = _svg.contentDocument.querySelector('svg')
-    let outputImage = document.querySelector('#output-scheme-img')
-    let planeTexture = new BABYLON.DynamicTexture("texturePlane", {width: _svg.getAttribute('width'), height: _svg.getAttribute('height')}, scene, true);
-    c_dynamicMaterial.diffuseTexture = c_dynamicMaterial.emissiveTexture = planeTexture;
-    mesh.material = c_dynamicMaterial;
-  
-    let textureContext = planeTexture.getContext();
-    let xml = new XMLSerializer().serializeToString(_svg)
-    let svg64 = btoa(unescape(encodeURIComponent(xml)))
-    let b64Start = 'data:image/svg+xml;base64,';
-  
-    outputImage.onload = function() {
-      textureContext.drawImage(document.querySelector('#output-scheme-img'), 0, 0);
-      planeTexture.update();
-    }
-    outputImage.src = b64Start + svg64;
-  }
-////////////////////
-
-
 });
+
+function makeSvgDisplay(Mesh, Scene, SvgName) {
+  let tempMat = new BABYLON.StandardMaterial(`material_${Mesh.name}`, Scene);
+  Mesh.material = tempMat;
+  devHelper.model3DVals.svgDisplays.meshs.push(Mesh);
+  let tempInterval = setInterval(() => {
+    if (devHelper.model3DVals.svgDisplays.textures.length === document.querySelector('.svg-scheme-container').querySelectorAll('object').length) {
+      Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = devHelper.model3DVals.svgDisplays.textures.find(item => item.name === 'texture_' + SvgName);
+      clearInterval(tempInterval);
+    }
+  }, 500);
+}
+
 
 
 function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
@@ -302,8 +296,6 @@ function makeUnicMat(UnicMesh) {
 
 function changeColorTexture(Mesh, State) {
   if (devHelper.model3DVals.currentPosition === undefined) {
-    // console.log(devHelper.model3DVals.meshUnderPointer, Mesh.name);
-    // if (devHelper.model3DVals.meshUnderPointer === Mesh.name) {
     let newBlue1 = State === true ? 0 : 1;
     let newBlue2 = State === true ? -1 : 0;
     let newAlpha = State === true ? 0.5 : 0;
@@ -314,7 +306,6 @@ function changeColorTexture(Mesh, State) {
       else if (Mesh.material._emissiveColor)
         Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
     }
-    // }
   }
 }
 
@@ -345,7 +336,6 @@ function change3DTime(Time = '00:00:00') {
   digit5.material = unic5.material.clone();
   digit6.material = unic4.material.clone();
 }
-
 
 function rotateMesh(Mesh = undefined, Angle = 0, Axis = undefined, Duration = 60, Scene = devHelper.model3DVals.scene) {
   if (devHelper.dev.enable === true) {

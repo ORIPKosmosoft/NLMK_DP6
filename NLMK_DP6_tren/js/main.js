@@ -8,12 +8,6 @@
 document.addEventListener("DOMContentLoaded", domLoaded);
 
 function domLoaded() {
-  devHelper.trenVals.scenario = undefined;
-  devHelper.trenVals.messages = {
-    normal: [],
-    error: []
-  }
-
   document.querySelector('.tren-container').addEventListener('transitionend', (e) => {
     if (e.propertyName === 'opacity') {
       e.currentTarget.style.visibility = e.currentTarget.style.opacity === '0' ? 'hidden' : 'visible';
@@ -26,12 +20,6 @@ function domLoaded() {
       } else e.currentTarget.style.visibility = 'visible';
     }
   })
-
-  if (document.querySelector('.exit')) {
-    document.querySelector('.exit').addEventListener('click', (e) => {
-      document.querySelector('.tren-container').style.opacity = 0;
-    })
-  }
 
   function removeStartScreen() {
     document.querySelector('.header').style.top = -document.querySelector('.header').getBoundingClientRect().bottom - 10 + 'px';
@@ -58,52 +46,6 @@ function domLoaded() {
       document.body.addEventListener('mousedown', () => { if (document.querySelector('.popup-alert')) document.querySelector('.popup-alert').remove() });
     }
   }
-
-  function guideBtnsClick(e) {
-    if (!e.currentTarget.classList.contains('nav-icon-active')) {
-      document.querySelectorAll('.section .nav-icon').forEach((Element2) => {
-        Element2.classList.toggle('nav-icon-active', false);
-        Array.from(Element2.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
-          if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#7c7c7c');
-        })
-      })
-      e.currentTarget.classList.toggle('nav-icon-active', true);
-      Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
-        if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
-      })
-
-      if (document.querySelector('.text-container-active')) {
-        document.querySelector('.text-container-active').classList.toggle('text-container-active', false);
-      }
-      let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget);
-      let textConNew = document.querySelector('.info-container').children[newTextIndex];
-      textConNew.classList.toggle('text-container-active', true);
-      document.querySelector('.info-container').children[0].style.marginTop = `-${newTextIndex * textConNew.getBoundingClientRect().height}px`;
-
-      if (document.querySelector('.arrow-text-active')) {
-        document.querySelectorAll('.arrow-text-active').forEach((Element) => {
-          Element.parentElement.dispatchEvent(new Event('click'));
-        })
-      }
-
-      if (document.querySelector('.info-container').querySelector('.drop-item-active')) {
-        document.querySelector('.info-container').querySelector('.drop-item-active').classList.toggle('drop-item-active', false);
-        document.querySelector('.scenarion-buttons-container').style.visibility = 'hidden';
-      }
-    }
-  }
-
-  document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
-    Element.addEventListener('click', guideBtnsClick);
-    if (index === 0)
-      setTimeout(() => {
-        Element.classList.toggle('nav-icon-active', true);
-        Array.from(Element.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
-          if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
-        })
-      }, 150);
-
-  });
 
   document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
     Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
@@ -190,8 +132,48 @@ setInterval(() => {
   }
 }, 4000)
 
+window.addEventListener('load', function () {
+  document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
+    Element.addEventListener('click', guideBtnsClick);
+    if (index === 0) {
+      Element.classList.toggle('nav-icon-active', true);
+      Array.from(Element.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+        if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
+      })
+    }
+  });
+});
 
-function changeMessageWindow(Num) {
-  document.querySelector('.message').innerHTML = Num === 0 ? devHelper.trenVals.messages.normal : devHelper.trenVals.messages.error;
-  document.querySelector('.message').style.backgroundColor = Num === 0 ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 0, 0, 0.4)';
+function guideBtnsClick(e) {
+  if (!e.currentTarget.classList.contains('nav-icon-active')) {
+    document.querySelectorAll('.section .nav-icon').forEach((Element2) => {
+      Element2.classList.toggle('nav-icon-active', false);
+      Array.from(Element2.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+        if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#7c7c7c');
+      })
+    })
+    e.currentTarget.classList.toggle('nav-icon-active', true);
+    Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+      if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
+    })
+
+    if (document.querySelector('.text-container-active')) {
+      document.querySelector('.text-container-active').classList.toggle('text-container-active', false);
+    }
+    let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget);
+    let textConNew = document.querySelector('.info-container').children[newTextIndex];
+    textConNew.classList.toggle('text-container-active', true);
+    document.querySelector('.info-container').children[0].style.marginTop = `-${newTextIndex * textConNew.getBoundingClientRect().height}px`;
+
+    if (document.querySelector('.arrow-text-active')) {
+      document.querySelectorAll('.arrow-text-active').forEach((Element) => {
+        Element.parentElement.dispatchEvent(new Event('click'));
+      })
+    }
+
+    if (document.querySelector('.info-container').querySelector('.drop-item-active')) {
+      document.querySelector('.info-container').querySelector('.drop-item-active').classList.toggle('drop-item-active', false);
+      document.querySelector('.scenarion-buttons-container').style.visibility = 'hidden';
+    }
+  }
 }
