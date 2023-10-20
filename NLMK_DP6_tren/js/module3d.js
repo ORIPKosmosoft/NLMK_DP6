@@ -12,8 +12,6 @@
 Добавить изменение времени на3Д к главному изменении времени
 change3DTime
 --------------------------------------------------------------------
-Реализовать просмотр инстансов и забить их
---------------------------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("renderCanvas");
@@ -122,14 +120,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       };
       window.addEventListener('keydown', handleKeyDown);
-      // Для поиска нужного меша
     } else {
       document.querySelector('.help-btn-block').remove();
     }
-    /* Блок кнопопк для камеры
-    ----------------------------------------------------------------------------------------------------------
-    */
-   return scene;
+    //----------------------------------------------------------------------------------------------------------
+    return scene;
   };
   canvas.addEventListener("pointermove", function () {
     var pickResult = scene.pick(scene.pointerX, scene.pointerY);
@@ -145,14 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
     scene.render();
   });
 
-  // scene.onPointerMove = function (evt, pickInfo) {
-  //   if (pickInfo.hit) {
-  //     var mesh = pickInfo.pickedMesh;
-  //     console.log(mesh.name);
-  //   }
-  // };
-
-
   window.addEventListener("resize", function () {
     engine.resize();
   });
@@ -160,25 +147,28 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadModel(Name, Scene) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
       if (Name === 'All') {
+        let meshArr = [];
         meshes.forEach(element => {
-          element.actionManager = new BABYLON.ActionManager(Scene);
-          element.isPickable = true;
-          if (element.name && element.name === 'Display_flat002') {
-            makeSvgDisplay(element, Scene, 'bzu');
-            makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 1);
-          } else if (element.name && element.name === 'Display_flat003') {
-            makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 2);
-          } else if (element.name && element.name === 'Object042') {
-            devHelper.model3DVals.activeMeshs.push(element);
-            element.name = 'kl022'
-
-            // element.instances.forEach(instance => {
-            //   instance.actionManager = new BABYLON.ActionManager(Scene);
-            //   instance.isPickable = true;
-            // })
-
+          meshArr.push(element);
+          if (element.instances && element.instances.length > 0) {
+            element.instances.forEach(instance => {
+              meshArr.push(instance);
+            })
           }
-        });
+        })
+        meshArr.forEach(Mesh => {
+          Mesh.actionManager = new BABYLON.ActionManager(Scene);
+          Mesh.isPickable = true;
+          if (Mesh.name && Mesh.name === 'Display_flat002') {
+            makeSvgDisplay(Mesh, Scene, 'bzu');
+            makeMovePoint(Mesh, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 1);
+          } else if (Mesh.name && Mesh.name === 'Display_flat003') {
+            makeMovePoint(Mesh, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 2);
+          } else if (Mesh.name && Mesh.name === 'Object062') {
+            devHelper.model3DVals.activeMeshs.push(Mesh);
+            Mesh.name = 'kl022'
+          }
+        })
         change3DTime();
       } else {
         meshes.forEach(element => {
