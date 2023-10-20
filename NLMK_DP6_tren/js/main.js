@@ -33,11 +33,12 @@ function domLoaded() {
   }
 
   function prepareTren(TrenType, Scenario, Index) {
-    if (devHelper.trenVals.actionArr[Index].actions) {
+    if (devHelper.trenVals.scenarioArr[Index].actions) {
       removeStartScreen();
       revialTrenScreen();
       devHelper.trenVals.type = TrenType;
       devHelper.trenVals.scenario = Index;
+      startTren();
     } else {
       let popupDiv = document.createElement('div');
       popupDiv.classList.add('popup-alert');

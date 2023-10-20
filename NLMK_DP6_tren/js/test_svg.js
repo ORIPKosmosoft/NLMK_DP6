@@ -759,6 +759,5 @@ function makeDynamicTextureDisplay(ObjectSvg) {
   outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(ObjectSvg.svg))));
   outputImage.onload = function () {
     textureContext.drawImage(outputImage, 0, 0);
-    console.log(planeTexture);
   }
 }

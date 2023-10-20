@@ -12,6 +12,10 @@
 Добавить изменение времени на3Д к главному изменении времени
 change3DTime
 --------------------------------------------------------------------
+Добавить всплывающую подсказку при наведении на хотспот
+--------------------------------------------------------------------
+Сделать блокировку активных мешей если не на нужном виде
+--------------------------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("renderCanvas");
@@ -70,11 +74,20 @@ document.addEventListener("DOMContentLoaded", () => {
     ----------------------------------------------------------------------------------------------------------
      */
     if (devHelper.dev.enable === true) {
-      document.getElementById('movePositionX1').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'dp');
-      })
       document.getElementById('movePositionX2').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'bzu');
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK1');
+      })
+      document.getElementById('movePositionY1').addEventListener('click', () => {
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK2');
+      })
+      document.getElementById('movePositionY2').addEventListener('click', () => {
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK3');
+      })
+      document.getElementById('movePositionZ1').addEventListener('click', () => {
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_main');
+      })
+      document.getElementById('movePositionZ2').addEventListener('click', () => {
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_spvg');
       })
       document.querySelector('#takePosition').addEventListener('click', () => {
         document.querySelector('.value-input').children[0].value = camera.position.x;
@@ -129,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.addEventListener("pointermove", function () {
     var pickResult = scene.pick(scene.pointerX, scene.pointerY);
     if (pickResult.hit) {
-      if (devHelper.dev.enable === true) console.log(pickResult.pickedMesh.name);
+      if (devHelper.dev.enable === true) console.log(pickResult.pickedMesh.name, pickResult.pickedMesh.uniqueId);
       devHelper.model3DVals.meshUnderPointer = pickResult.pickedMesh.name;
     }
     else devHelper.model3DVals.meshUnderPointer = undefined;
@@ -160,13 +173,13 @@ document.addEventListener("DOMContentLoaded", () => {
           Mesh.actionManager = new BABYLON.ActionManager(Scene);
           Mesh.isPickable = true;
           if (Mesh.name && Mesh.name === 'Display_flat002') {
-            makeSvgDisplay(Mesh, Scene, 'bzu');
-            makeMovePoint(Mesh, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 1);
+            makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 1 });
           } else if (Mesh.name && Mesh.name === 'Display_flat003') {
-            makeMovePoint(Mesh, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 2);
-          } else if (Mesh.name && Mesh.name === 'Object062') {
-            devHelper.model3DVals.activeMeshs.push(Mesh);
-            Mesh.name = 'kl022'
+            makeSvgDisplay(Mesh, Scene, 'vnk_main');
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 2 });
+          } else if (Mesh.uniqueId && Mesh.uniqueId === 3594) {
+            makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
           }
         })
         change3DTime();
@@ -179,13 +192,13 @@ document.addEventListener("DOMContentLoaded", () => {
           groundMat.alpha = 0;
           element.material = groundMat;
           if (element.name && element.name === 'Console_BVNK_highlight') {
-            makeMovePoint(element, Scene, [-3.56, 1.73, -1], [0.5216195764415446, 0.007373100235868478, 0], 2);
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
           } else if (element.name && element.name === 'Console_BZU_highlight') {
-            makeMovePoint(element, Scene, [-3.56, 1.73, -1], [0.5216195764415446, 0.007373100235868478, 0], 1);
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
           } else if (element.name && element.name === 'Console_DP6_highlight') {
-            makeMovePoint(element, Scene, [-3.56, 1.73, -1], [0.5216195764415446, 0.007373100235868478, 0], 1);
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
           } else if (element.name && element.name === 'Console_UGKS_highlight') {
-            makeMovePoint(element, Scene, [-3.56, 1.73, -1], [0.5216195764415446, 0.007373100235868478, 0], 1);
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
           } else if (element.name && element.name === 'Console_PSODP6_highlight') {
             element.dispose();
           }
@@ -208,36 +221,84 @@ function makeSvgDisplay(Mesh, Scene, SvgName) {
   }, 500);
 }
 
-function makeMovePoint(Mesh, Scene, PosCoors, LookAtCoors, CurPos) {
-  devHelper.model3DVals.movePointMesh.push(Mesh);
-  makeUnicMat(Mesh);
-  Mesh.actionManager = new BABYLON.ActionManager(Scene);
-  Mesh.actionManager.registerAction(
-    new BABYLON.ExecuteCodeAction(
-      BABYLON.ActionManager.OnPointerOverTrigger,
-      function () { changeColorTexture(Mesh, true); }
-    )
-  );
-  Mesh.actionManager.registerAction(
-    new BABYLON.ExecuteCodeAction(
-      BABYLON.ActionManager.OnPointerOutTrigger,
-      function () { changeColorTexture(Mesh, false); }
-    )
-  );
-  Mesh.actionManager.registerAction(
-    new BABYLON.ExecuteCodeAction(
-      BABYLON.ActionManager.OnPickTrigger,
-      function () {
-        changeColorTexture(Mesh, false);
-        animMoveCamera(PosCoors, LookAtCoors, CurPos);
+function makeActiveMesh(Mesh = undefined, Vals = undefined) {
+  if (Mesh === undefined || Vals === undefined) {
+    if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции makeActiveMesh.');
+    return;
+  } else {
+    if (Mesh instanceof BABYLON.InstancedMesh) {
+      let tempMesh = Mesh.sourceMesh.clone();
+      tempMesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
+      tempMesh.name = Mesh.name;
+      tempMesh.material = Mesh.material.clone(`material_${tempMesh.name}`);
+      tempMesh.setAbsolutePosition(new BABYLON.Vector3(Mesh.absolutePosition._x, Mesh.absolutePosition._y, Mesh.absolutePosition._z));
+      // tempMesh.position = Mesh.position.clone();
+      // tempMesh.position = new BABYLON.Vector3(0, 0, 0);
+      devHelper.model3DVals.activeMeshs[devHelper.model3DVals.activeMeshs.indexOf(Mesh)] = tempMesh;
+      if (tempMesh.absolutePosition._x !== Mesh.absolutePosition._x) {
+        console.log('Mesh.sourceMesh', Mesh.absolutePosition, Mesh.position);
+        console.log('Mesh', Mesh.absolutePosition, Mesh.position);
+        console.log('tempMesh', tempMesh.absolutePosition, tempMesh.position);
+      //   tempMesh.position.x += tempMesh.absolutePosition._x - Mesh.absolutePosition._x; 
       }
-    )
-  );
+      // tempMesh.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
+      Mesh.dispose();
+      Mesh = tempMesh;
+    }
+    // tempMesh.rotation = Mesh.rotation.clone();
+    // tempMesh.position = Mesh.position.clone();
+    // tempMesh.position = new BABYLON.Vector3(Mesh.absolutePosition._x, Mesh.absolutePosition._y, Mesh.absolutePosition._z);
+    // tempMesh.position = new BABYLON.Vector3(0, 0, 0);
+    // tempMesh.position._isDirty = false;
+
+
+
+
+    Mesh.actionManager.registerAction(
+      new BABYLON.ExecuteCodeAction(
+        BABYLON.ActionManager.OnPointerOverTrigger,
+        function () { changeColorTexture(Mesh, true); }
+      )
+    );
+    Mesh.actionManager.registerAction(
+      new BABYLON.ExecuteCodeAction(
+        BABYLON.ActionManager.OnPointerOutTrigger,
+        function () { changeColorTexture(Mesh, false); }
+      )
+    );
+    if (Vals.name) {
+      devHelper.model3DVals.activeMeshs.push(Mesh);
+      Mesh.name = Vals.name;
+      Mesh.currentPosition = Vals.posIndex;
+      // clickOnMesh(Mesh);
+    } else if (Vals.posCoors) {
+      devHelper.model3DVals.movePointMesh.push(Mesh);
+      Mesh.actionManager.registerAction(
+        new BABYLON.ExecuteCodeAction(
+          BABYLON.ActionManager.OnPickTrigger,
+          function () {
+            clickOnPointMesh(Mesh, Vals);
+          }
+        )
+      );
+    }
+    makeUnicMat(Mesh);
+  }
+}
+
+function clickOnPointMesh(Mesh = undefined, Vals = undefined) {
+  if (Mesh === undefined || Vals === undefined) {
+    if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции clickOnPointMesh.');
+    return;
+  } else {
+    changeColorTexture(Mesh, false);
+    animMoveCamera(Vals.posCoors, Vals.lookAtCoors, Vals.posIndex);
+  }
 }
 
 function makeUnicMat(UnicMesh) {
   if (UnicMesh.material) {
-    let tempMaterial = UnicMesh.material.clone('material_' + UnicMesh.name);
+    let tempMaterial = UnicMesh.material.clone(`material_${UnicMesh.name}`);
     UnicMesh.material = tempMaterial;
   }
 }
@@ -245,7 +306,6 @@ function makeUnicMat(UnicMesh) {
 function changeSvgtexture(Mesh = undefined, SvgName = undefined) {
   if (Mesh && SvgName) {
     let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
-    console.log(SvgName, Texture);
     let textureContext = Texture.getContext();
     let newIndex = devHelper.model3DVals.svgDisplays.textures.indexOf(Texture);
     let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[newIndex];
@@ -262,7 +322,21 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined) {
 }
 
 function changeColorTexture(Mesh = undefined, State = undefined) {
-  if (devHelper.model3DVals.currentPosition === undefined) {
+  let tempBool = false;
+  if (devHelper.model3DVals.movePointMesh.indexOf(Mesh) !== -1) {
+    if (devHelper.model3DVals.currentPosition === undefined)
+      tempBool = true;
+  } else if (devHelper.model3DVals.activeMeshs.indexOf(Mesh) !== -1) {
+    if (devHelper.model3DVals.currentPosition === Mesh.currentPosition)
+      tempBool = true;
+  }
+
+
+  console.log(tempBool, Mesh.name);
+  // не меняется цвет у ключа
+  // сделать чтобы цвет ключа менялся только при приближении к пульту
+  // пока мы не приблизимся все активоты должны быть не активны
+  if (tempBool === true) {
     let newBlue1 = State === true ? 0 : 1;
     let newBlue2 = State === true ? -1 : 0;
     let newAlpha = State === true ? 0.5 : 0;
@@ -311,7 +385,6 @@ function rotateMesh(Mesh = undefined, Angle = 0, Axis = undefined, Duration = 60
   if (Mesh !== undefined || Axis !== undefined) {
     if (Mesh.rotation._isDirty === false) Mesh.rotation = new BABYLON.Vector3(0, 0, 0);
     Angle = Angle * (Math.PI / 180);
-    console.log(Angle);
     let animation = new BABYLON.Animation(
       "rotationAnimation",
       `rotation.${Axis}`,
@@ -380,4 +453,15 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
   devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false);
 }
+
+function clickOnMesh(Mesh = undefined) {
+  if (Mesh === undefined) {
+    if (devHelper.dev.enable === true) console.warn(`В функцию clickOnMesh не передали меш.`);
+    return
+  } else {
+    console.log(Mesh);
+    // devHelper.model3DVals.meshUnderPointer = Mesh;
+  }
+}
+
 
