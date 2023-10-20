@@ -32,7 +32,9 @@ const devHelper = {
     meshUnderPointer: undefined,
     svgDisplays: {
       meshs: [],
-      textures: []
+      textures: [],
+      tagImgs: [],
+      svgs: []
     },
   },
   svgVals: [],

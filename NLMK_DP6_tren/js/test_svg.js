@@ -752,24 +752,13 @@ window.addEventListener('load', function () {
 function makeDynamicTextureDisplay(ObjectSvg) {
   let outputImage = ObjectSvg.object.nextElementSibling;
   let planeTexture = new BABYLON.DynamicTexture(`texture_${ObjectSvg.name}`, { width: ObjectSvg.svg.getAttribute('width'), height: ObjectSvg.svg.getAttribute('height') }, devHelper.model3DVals.scene, true);
+  devHelper.model3DVals.svgDisplays.textures.push(planeTexture);
+  devHelper.model3DVals.svgDisplays.tagImgs.push(outputImage);
+  devHelper.model3DVals.svgDisplays.svgs.push(ObjectSvg.svg);
   let textureContext = planeTexture.getContext();
   outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(ObjectSvg.svg))));
   outputImage.onload = function () {
     textureContext.drawImage(outputImage, 0, 0);
-    planeTexture.update();
+    console.log(planeTexture);
   }
-  devHelper.model3DVals.svgDisplays.textures.push(planeTexture);
-  // c_dynamicMaterial.diffuseTexture = c_dynamicMaterial.emissiveTexture = planeTexture;
-
-  // console.log(devHelper.model3DVals.svgDisplays);
-
-  // let xml = new XMLSerializer().serializeToString(ObjectSvg.svg)
-  // let svg64 = btoa(unescape(encodeURIComponent(xml)))
-  // let b64Start = 'data:image/svg+xml;base64,';
-  // let svg64 = btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(ObjectSvg.svg))))
-  // outputImage.onload = function () {
-  //   textureContext.drawImage(document.querySelector('#output-scheme-img'), 0, 0);
-  //   planeTexture.update();
-  // }
-  // c_dynamicMaterial.diffuseTexture = c_dynamicMaterial.emissiveTexture = planeTexture;
 }

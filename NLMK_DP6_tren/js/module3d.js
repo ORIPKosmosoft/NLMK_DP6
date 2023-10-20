@@ -12,8 +12,7 @@
 Добавить изменение времени на3Д к главному изменении времени
 change3DTime
 --------------------------------------------------------------------
-Добавить функцию изменения текстуры на мониторах, прям для вызова.
-Пока сделал функцию установки текстуры на монитор и материала.
+Реализовать просмотр инстансов и забить их
 --------------------------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", () => {
@@ -73,6 +72,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ----------------------------------------------------------------------------------------------------------
      */
     if (devHelper.dev.enable === true) {
+      document.getElementById('movePositionX1').addEventListener('click', () => {
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'dp');
+      })
+      document.getElementById('movePositionX2').addEventListener('click', () => {
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'bzu');
+      })
       document.querySelector('#takePosition').addEventListener('click', () => {
         document.querySelector('.value-input').children[0].value = camera.position.x;
         document.querySelector('.value-input').children[1].value = camera.position.y;
@@ -80,6 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.value-input')[1].children[0].value = camera.rotation.x;
         document.querySelectorAll('.value-input')[1].children[1].value = camera.rotation.y;
         document.querySelectorAll('.value-input')[1].children[2].value = camera.rotation.z;
+      })
+      document.querySelector('#back-btn').addEventListener('click', () => {
+        animMoveCamera([0.35, 2.15, -3.4], [0.1913, -0.0046, 0], undefined);
       })
       const keys = {
         W: 87,
@@ -114,42 +122,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       };
       window.addEventListener('keydown', handleKeyDown);
-      document.querySelector('#back-btn').addEventListener('click', () => {
-        animMoveCamera([0.35, 2.15, -3.4], [0.1913, -0.0046, 0], undefined);
-      })
       // Для поиска нужного меша
-      // canvas.addEventListener("pointermove", function () {
-      //   var pickResult = scene.pick(scene.pointerX, scene.pointerY);
-      //   if (pickResult.hit)
-      //     devHelper.model3DVals.meshUnderPointer = pickResult.pickedMesh.name;
-      //   else devHelper.model3DVals.meshUnderPointer = undefined;
-      //   // {
-      //   // var meshName = pickResult.pickedMesh.name;
-      //   // console.log("Имя меша под мышью: " + pickResult.pickedMesh);
-      //   // } else {
-      //   //   console.log("Меш не найден под мышью.");
-      //   // }
-      // });
     } else {
       document.querySelector('.help-btn-block').remove();
     }
     /* Блок кнопопк для камеры
-----------------------------------------------------------------------------------------------------------
- */
-    return scene;
+    ----------------------------------------------------------------------------------------------------------
+    */
+   return scene;
   };
+  canvas.addEventListener("pointermove", function () {
+    var pickResult = scene.pick(scene.pointerX, scene.pointerY);
+    if (pickResult.hit) {
+      if (devHelper.dev.enable === true) console.log(pickResult.pickedMesh.name);
+      devHelper.model3DVals.meshUnderPointer = pickResult.pickedMesh.name;
+    }
+    else devHelper.model3DVals.meshUnderPointer = undefined;
+  });
 
   const scene = createScene();
   engine.runRenderLoop(function () {
     scene.render();
   });
 
-  scene.onPointerMove = function (evt, pickInfo) {
-    if (pickInfo.hit) {
-      var mesh = pickInfo.pickedMesh;
-      console.log(mesh.name);
-    }
-  };
+  // scene.onPointerMove = function (evt, pickInfo) {
+  //   if (pickInfo.hit) {
+  //     var mesh = pickInfo.pickedMesh;
+  //     console.log(mesh.name);
+  //   }
+  // };
 
 
   window.addEventListener("resize", function () {
@@ -163,13 +164,19 @@ document.addEventListener("DOMContentLoaded", () => {
           element.actionManager = new BABYLON.ActionManager(Scene);
           element.isPickable = true;
           if (element.name && element.name === 'Display_flat002') {
-            makeSvgDisplay(element, Scene, 'dp');
+            makeSvgDisplay(element, Scene, 'bzu');
             makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 1);
           } else if (element.name && element.name === 'Display_flat003') {
             makeMovePoint(element, Scene, [-6.56, 1.12, -0.79], [-0.0165, -0.7836, 0], 2);
           } else if (element.name && element.name === 'Object042') {
             devHelper.model3DVals.activeMeshs.push(element);
             element.name = 'kl022'
+
+            // element.instances.forEach(instance => {
+            //   instance.actionManager = new BABYLON.ActionManager(Scene);
+            //   instance.isPickable = true;
+            // })
+
           }
         });
         change3DTime();
@@ -205,59 +212,10 @@ function makeSvgDisplay(Mesh, Scene, SvgName) {
   devHelper.model3DVals.svgDisplays.meshs.push(Mesh);
   let tempInterval = setInterval(() => {
     if (devHelper.model3DVals.svgDisplays.textures.length === document.querySelector('.svg-scheme-container').querySelectorAll('object').length) {
-      Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = devHelper.model3DVals.svgDisplays.textures.find(item => item.name === 'texture_' + SvgName);
+      changeSvgtexture(Mesh, SvgName);
       clearInterval(tempInterval);
     }
   }, 500);
-}
-
-
-
-function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
-  devHelper.model3DVals.currentPosition = CurPos;
-  if (CurPos === undefined)
-    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = true);
-  else devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
-  devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = CurPos === 1 ? false : true;
-  var positionAnimation = new BABYLON.Animation(
-    "positionAnimation",
-    "position",
-    60,
-    BABYLON.Animation.ANIMATIONTYPE_VECTOR3,
-    BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
-  );
-
-  var positionKeys = [];
-  positionKeys.push({
-    frame: 0,
-    value: devHelper.model3DVals.camera.position.clone()
-  });
-  positionKeys.push({
-    frame: 120,
-    value: new BABYLON.Vector3(PosCoors[0], PosCoors[1], PosCoors[2])
-  });
-  positionAnimation.setKeys(positionKeys);
-
-  var rotationAnimation = new BABYLON.Animation(
-    "rotationAnimation",
-    "rotation",
-    60,
-    BABYLON.Animation.ANIMATIONTYPE_VECTOR3,
-    BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
-  );
-
-  var rotationKeys = [];
-  rotationKeys.push({
-    frame: 0,
-    value: devHelper.model3DVals.camera.rotation.clone()
-  });
-  rotationKeys.push({
-    frame: 120,
-    value: new BABYLON.Vector3(LookAtCoors[0], LookAtCoors[1], LookAtCoors[2])
-  });
-  rotationAnimation.setKeys(rotationKeys);
-  devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
-  devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false);
 }
 
 function makeMovePoint(Mesh, Scene, PosCoors, LookAtCoors, CurPos) {
@@ -294,7 +252,26 @@ function makeUnicMat(UnicMesh) {
   }
 }
 
-function changeColorTexture(Mesh, State) {
+function changeSvgtexture(Mesh = undefined, SvgName = undefined) {
+  if (Mesh && SvgName) {
+    let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
+    console.log(SvgName, Texture);
+    let textureContext = Texture.getContext();
+    let newIndex = devHelper.model3DVals.svgDisplays.textures.indexOf(Texture);
+    let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[newIndex];
+    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[newIndex]))));
+    outputImage.onload = function () {
+      textureContext.drawImage(outputImage, 0, 0);
+      Texture.update();
+      if (Mesh.material.diffuseTexture !== Texture) Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = Texture;
+    }
+  } else {
+    if (devHelper.dev.enable === true) console.warn(`В функцию changeSvgtexture передали не все переменные.`);
+    return
+  }
+}
+
+function changeColorTexture(Mesh = undefined, State = undefined) {
   if (devHelper.model3DVals.currentPosition === undefined) {
     let newBlue1 = State === true ? 0 : 1;
     let newBlue2 = State === true ? -1 : 0;
@@ -308,7 +285,6 @@ function changeColorTexture(Mesh, State) {
     }
   }
 }
-
 //TODO тут сделать часы 3Д
 function change3DTime(Time = '00:00:00') {
   // Пример кода часов 3Д
@@ -367,3 +343,51 @@ function rotateMesh(Mesh = undefined, Angle = 0, Axis = undefined, Duration = 60
     Scene.beginDirectAnimation(Mesh, [animation], 0, Duration, false);
   } else return
 }
+
+function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
+  devHelper.model3DVals.currentPosition = CurPos;
+  if (CurPos === undefined)
+    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = true);
+  else devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
+  devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = CurPos === 1 ? false : true;
+  var positionAnimation = new BABYLON.Animation(
+    "positionAnimation",
+    "position",
+    60,
+    BABYLON.Animation.ANIMATIONTYPE_VECTOR3,
+    BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+  );
+
+  var positionKeys = [];
+  positionKeys.push({
+    frame: 0,
+    value: devHelper.model3DVals.camera.position.clone()
+  });
+  positionKeys.push({
+    frame: 120,
+    value: new BABYLON.Vector3(PosCoors[0], PosCoors[1], PosCoors[2])
+  });
+  positionAnimation.setKeys(positionKeys);
+
+  var rotationAnimation = new BABYLON.Animation(
+    "rotationAnimation",
+    "rotation",
+    60,
+    BABYLON.Animation.ANIMATIONTYPE_VECTOR3,
+    BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+  );
+
+  var rotationKeys = [];
+  rotationKeys.push({
+    frame: 0,
+    value: devHelper.model3DVals.camera.rotation.clone()
+  });
+  rotationKeys.push({
+    frame: 120,
+    value: new BABYLON.Vector3(LookAtCoors[0], LookAtCoors[1], LookAtCoors[2])
+  });
+  rotationAnimation.setKeys(rotationKeys);
+  devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
+  devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false);
+}
+
