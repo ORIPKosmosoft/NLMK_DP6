@@ -38,7 +38,7 @@ setInterval(() => {
       } else {
         // Тут сделать нажатие на 3Д элементы
         /*
-        devHelper.trenVals.activeMeshs
+        devHelper.trenVals.activeMeshs1
         devhelper.model3DVals.activeMeshs
         devhelper.model3DVals.movePointMesh
         */
