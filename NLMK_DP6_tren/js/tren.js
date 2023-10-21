@@ -36,14 +36,9 @@ setInterval(() => {
         devHelper.trenVals.currentActionTime += 50;
         devHelper.trenVals.scenarioTimer += 50;
       } else {
-        // Тут сделать нажатие на 3Д элементы
-        /*
-        devHelper.trenVals.activeMeshs1
-        devhelper.model3DVals.activeMeshs
-        devhelper.model3DVals.movePointMesh
-        */
 
       }
+
       if (devHelper.trenVals.currentActionTime >= devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].duration * 1000) {
         devHelper.trenVals.waitingInput = true;
         devHelper.trenVals.currentAction++;
@@ -57,26 +52,29 @@ setInterval(() => {
 }, 50);
 
 function trenClickOnMesh(Mesh) {
-  let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction];
-  if (currentActonObject.action && currentActonObject.action.target && currentActonObject.action.target === Mesh.name) {
-    if (currentActonObject.action.rotation && Object.keys(currentActonObject.action.rotation).length > 0) {
-      if (currentActonObject.action.rotation.y && currentActonObject.action.rotation.y !== '')
-        rotateMesh(Mesh, currentActonObject.action.rotation.y, 'y');
-      if (currentActonObject.action.rotation.z && currentActonObject.action.rotation.z !== '')
-        rotateMesh(Mesh, currentActonObject.action.rotation.z, 'z');
-      if (currentActonObject.action.rotation.x && currentActonObject.action.rotation.x !== '')
-        rotateMesh(Mesh, currentActonObject.action.rotation.x, 'x');
+  if (devHelper.trenVals.waitingInput === true) {
+    let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction];
+    if (currentActonObject.action && currentActonObject.action.target && currentActonObject.action.target === Mesh.name) {
+      if (currentActonObject.action.rotation && Object.keys(currentActonObject.action.rotation).length > 0) {
+        if (currentActonObject.action.rotation.y && currentActonObject.action.rotation.y !== '')
+          moveRotationMesh(Mesh, 'r', currentActonObject.action.rotation.y, 'y');
+        if (currentActonObject.action.rotation.z && currentActonObject.action.rotation.z !== '')
+          moveRotationMesh(Mesh, 'r', currentActonObject.action.rotation.z, 'z');
+        if (currentActonObject.action.rotation.x && currentActonObject.action.rotation.x !== '')
+          moveRotationMesh(Mesh, 'r', currentActonObject.action.rotation.x, 'x');
+      }
+      if (currentActonObject.action.position && Object.keys(currentActonObject.action.position).length > 0) {
+        if (currentActonObject.action.position.x && currentActonObject.action.position.x !== '')
+          moveRotationMesh(Mesh, 'p', currentActonObject.action.position.x, 'x');
+        if (currentActonObject.action.position.y && currentActonObject.action.position.y !== '')
+          moveRotationMesh(Mesh, 'p', currentActonObject.action.position.y, 'y');
+        if (currentActonObject.action.position.z && currentActonObject.action.position.z !== '')
+          moveRotationMesh(Mesh, 'p', currentActonObject.action.position.z, 'z');
+      }
+      devHelper.trenVals.waitingInput = false;
+    } else {
+      if (devHelper.dev.enable === true) console.warn(`Клик на ${Mesh.name} в действии ${devHelper.trenVals.currentAction + 1} неверный.`);
     }
-    if (currentActonObject.action.position && Object.keys(currentActonObject.action.position).length > 0) {
-      if (currentActonObject.action.position.x && currentActonObject.action.position.x !== '')
-        moveMesh(Mesh, currentActonObject.action.position.x, 'x');
-      if (currentActonObject.action.position.y && currentActonObject.action.position.y !== '')
-        moveMesh(Mesh, currentActonObject.action.position.y, 'y');
-      if (currentActonObject.action.position.z && currentActonObject.action.position.z !== '')
-        moveMesh(Mesh, currentActonObject.action.position.z, 'z');
-    }
-  } else {
-    if (devHelper.dev.enable === true) console.warn(`Клик на ${Mesh.name} неверный.`);
   }
 }
 

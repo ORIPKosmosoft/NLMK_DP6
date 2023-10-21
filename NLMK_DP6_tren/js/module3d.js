@@ -367,18 +367,17 @@ function change3DTime(Time = '00:00:00') {
   digit5.material = unic5.material.clone();
   digit6.material = unic4.material.clone();
 }
-
-function rotateMesh(Mesh = undefined, Angle = 0, Axis = undefined, Duration = 60, Scene = devHelper.model3DVals.scene) {
+function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefined, Duration = 1, Scene = devHelper.model3DVals.scene) {
   if (devHelper.dev.enable === true) {
     if (Mesh === undefined) console.warn(`В функцию rotateMesh не передали меш.`);
     if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
   }
   if (Mesh !== undefined || Axis !== undefined) {
     if (Mesh.rotation._isDirty === false) Mesh.rotation = new BABYLON.Vector3(0, 0, 0);
-    Angle = Angle * (Math.PI / 180);
+    if (Type === 'r') Val = Val * (Math.PI / 180);
     let animation = new BABYLON.Animation(
-      "rotationAnimation",
-      `rotation.${Axis}`,
+      Type === 'r' ? "rotationAnimation" : "positionAnimation",
+      Type === 'r' ? `rotation.${Axis}` : `position.${Axis}`,
       60,
       BABYLON.Animation.ANIMATIONTYPE_FLOAT,
       BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
@@ -386,43 +385,16 @@ function rotateMesh(Mesh = undefined, Angle = 0, Axis = undefined, Duration = 60
     var keys = [
       {
         frame: 0,
-        value: Mesh.rotation[Axis]
+        value: Type === 'r' ? Mesh.rotation[Axis] : Mesh.position[Axis],
       },
       {
-        frame: Duration,
-        value: Angle
+        frame: Duration * 60,
+        value: Val
       }
     ];
     animation.setKeys(keys);
-    Scene.beginDirectAnimation(Mesh, [animation], 0, Duration, false);
-  } else return
-}
-function moveMesh(Mesh = undefined, Distance = 0, Axis = undefined, Duration = 60, Scene = devHelper.model3DVals.scene) {
-  if (devHelper.dev.enable === true) {
-    if (Mesh === undefined) console.warn(`В функцию moveMesh не передали меш.`);
-    if (Axis === undefined) console.warn(`В функцию moveMesh не передали Axis.`);
-  }
-  if (Mesh !== undefined || Axis !== undefined) {
-    if (Mesh.rotation._isDirty === false) Mesh.rotation._isDirty = true;
-    let animation = new BABYLON.Animation(
-      "positionAnimation",
-      `position.${Axis}`,
-      60,
-      BABYLON.Animation.ANIMATIONTYPE_FLOAT,
-      BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
-    );
-    var keys = [
-      {
-        frame: 0,
-        value: Mesh.position[Axis]
-      },
-      {
-        frame: Duration,
-        value: Distance
-      }
-    ];
-    animation.setKeys(keys);
-    Scene.beginDirectAnimation(Mesh, [animation], 0, Duration, false);
+    Scene.beginDirectAnimation(Mesh, [animation], 0, Duration * 60, false);
+    console.log(animation);
   } else return
 }
 

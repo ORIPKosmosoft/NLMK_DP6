@@ -44,11 +44,8 @@ const devHelper = {
     perfomance: undefined,
   },
 };
-/*                 action
-----------------------------------------------------
-rotateMesh(devHelper.model3DVals.activeMeshs[0], 90, 'y');
-----------------------------------------------------
-*/
+
+
 let tempActions = [
   [ // Первый сценарий
     {
@@ -64,8 +61,8 @@ let tempActions = [
       text: 'Заменить1',
       action: {
         target: 'kl021',
-        position: {},
-        rotation: { y: 90 },
+        position: {x: 0.2},
+        rotation: {},
       },
       duration: 3
     },
@@ -75,8 +72,8 @@ let tempActions = [
       text: 'Заменить1',
       action: {
         target: 'kl021',
-        position: {},
-        rotation: { y: 90 },
+        position: {x: 0.2},
+        rotation: {},
       },
       duration: 3
     },
