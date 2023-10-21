@@ -47,6 +47,11 @@ setInterval(() => {
         //         document.querySelector('.message').innerHTML = `Действие ${devHelper.trenVals.currentAction - 1} успешно завершено.`;
         if (devHelper.trenVals.currentAction > devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length - 1) trenFinish();
       }
+      if (devHelper.trenVals.realTimer % 1000 === 0) {
+        const currentTime = new Date();
+        const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`;
+        console.log(`Текущее время: ${formattedTime}. Время сценария ${devHelper.trenVals.realTimer / 1000}.`);
+      }
     }
   }
 }, 50);
