@@ -21,11 +21,11 @@ function loadTrenActions() {
 function startTren() {
   // расписать поведение интерфейса при начале тренажёра в зависимости от обучения/контроля
   if (devHelper.trenVals.type === 'learn') {
-    
+
   } else {
 
   }
-  console.log(devHelper.trenVals);
+  // console.log(Object.keys(tempActions[0][0].action.position).length > 0);
 }
 
 setInterval(() => {
@@ -49,12 +49,36 @@ setInterval(() => {
         devHelper.trenVals.currentAction++;
         devHelper.trenVals.currentActionTime = 0;
         if (devHelper.dev.enable === true) console.warn(`Действие ${devHelper.trenVals.currentAction - 1} успешно завершено.`);
-//         document.querySelector('.message').innerHTML = `Действие ${devHelper.trenVals.currentAction - 1} успешно завершено.`;
+        //         document.querySelector('.message').innerHTML = `Действие ${devHelper.trenVals.currentAction - 1} успешно завершено.`;
         if (devHelper.trenVals.currentAction > devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length - 1) trenFinish();
-    }
+      }
     }
   }
 }, 50);
+
+function trenClickOnMesh(Mesh) {
+  let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction];
+  if (currentActonObject.action && currentActonObject.action.target && currentActonObject.action.target === Mesh.name) {
+    if (currentActonObject.action.rotation && Object.keys(currentActonObject.action.rotation).length > 0) {
+      if (currentActonObject.action.rotation.y && currentActonObject.action.rotation.y !== '')
+        rotateMesh(Mesh, currentActonObject.action.rotation.y, 'y');
+      if (currentActonObject.action.rotation.z && currentActonObject.action.rotation.z !== '')
+        rotateMesh(Mesh, currentActonObject.action.rotation.z, 'z');
+      if (currentActonObject.action.rotation.x && currentActonObject.action.rotation.x !== '')
+        rotateMesh(Mesh, currentActonObject.action.rotation.x, 'x');
+    }
+    if (currentActonObject.action.position && Object.keys(currentActonObject.action.position).length > 0) {
+      if (currentActonObject.action.position.x && currentActonObject.action.position.x !== '')
+        moveMesh(Mesh, currentActonObject.action.position.x, 'x');
+      if (currentActonObject.action.position.y && currentActonObject.action.position.y !== '')
+        moveMesh(Mesh, currentActonObject.action.position.y, 'y');
+      if (currentActonObject.action.position.z && currentActonObject.action.position.z !== '')
+        moveMesh(Mesh, currentActonObject.action.position.z, 'z');
+    }
+  } else {
+    if (devHelper.dev.enable === true) console.warn(`Клик на ${Mesh.name} неверный.`);
+  }
+}
 
 function trenFinish() {
   devHelper.trenVals.ended = true;

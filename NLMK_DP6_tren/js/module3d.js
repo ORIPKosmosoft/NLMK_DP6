@@ -16,6 +16,8 @@ change3DTime
 --------------------------------------------------------------------
 Сделать блокировку активных мешей если не на нужном виде
 --------------------------------------------------------------------
+не отрисовывать рендер пока не перешли в тренажёр
+--------------------------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("renderCanvas");
@@ -170,8 +172,10 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
         meshArr.forEach(Mesh => {
-          Mesh.actionManager = new BABYLON.ActionManager(Scene);
-          Mesh.isPickable = true;
+          // if (devHelper.dev.enable === true) {
+            Mesh.actionManager = new BABYLON.ActionManager(Scene);
+            Mesh.isPickable = true;
+          // }
           if (Mesh.name && Mesh.name === 'Display_flat002') {
             makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
             makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 1 });
@@ -180,6 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
             makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 2 });
           } else if (Mesh.uniqueId && Mesh.uniqueId === 3594) {
             makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
+          } else if (Mesh.uniqueId && Mesh.uniqueId === 3592) {
+            makeActiveMesh(Mesh, { name: 'kl021', posIndex: 3 });
           }
         })
         change3DTime();
@@ -206,7 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
 });
 
 function makeSvgDisplay(Mesh, Scene, SvgName) {
@@ -228,32 +233,38 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
   } else {
     if (Mesh instanceof BABYLON.InstancedMesh) {
       let tempMesh = Mesh.sourceMesh.clone();
-      tempMesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
       tempMesh.name = Mesh.name;
       tempMesh.material = Mesh.material.clone(`material_${tempMesh.name}`);
       tempMesh.setAbsolutePosition(new BABYLON.Vector3(Mesh.absolutePosition._x, Mesh.absolutePosition._y, Mesh.absolutePosition._z));
-      // tempMesh.position = Mesh.position.clone();
-      // tempMesh.position = new BABYLON.Vector3(0, 0, 0);
-      devHelper.model3DVals.activeMeshs[devHelper.model3DVals.activeMeshs.indexOf(Mesh)] = tempMesh;
-      if (tempMesh.absolutePosition._x !== Mesh.absolutePosition._x) {
-        console.log('Mesh.sourceMesh', Mesh.absolutePosition, Mesh.position);
-        console.log('Mesh', Mesh.absolutePosition, Mesh.position);
-        console.log('tempMesh', tempMesh.absolutePosition, tempMesh.position);
-      //   tempMesh.position.x += tempMesh.absolutePosition._x - Mesh.absolutePosition._x; 
-      }
-      // tempMesh.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
       Mesh.dispose();
       Mesh = tempMesh;
     }
-    // tempMesh.rotation = Mesh.rotation.clone();
-    // tempMesh.position = Mesh.position.clone();
-    // tempMesh.position = new BABYLON.Vector3(Mesh.absolutePosition._x, Mesh.absolutePosition._y, Mesh.absolutePosition._z);
-    // tempMesh.position = new BABYLON.Vector3(0, 0, 0);
-    // tempMesh.position._isDirty = false;
+    Mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
 
-
-
-
+    if (Vals.name) {
+      Mesh.name = Vals.name;
+      Mesh.currentPosition = Vals.posIndex;
+      Mesh.isPickable = false;
+      if (devHelper.model3DVals.activeMeshs[Vals.posIndex] === undefined)
+        devHelper.model3DVals.activeMeshs[Vals.posIndex] = [Mesh];
+      else
+        devHelper.model3DVals.activeMeshs[Vals.posIndex].push(Mesh);
+    } else if (Vals.posCoors) {
+      Mesh.isPickable = true;
+      devHelper.model3DVals.movePointMesh.push(Mesh);
+    }
+    Mesh.actionManager.registerAction(
+      new BABYLON.ExecuteCodeAction(
+        BABYLON.ActionManager.OnPickTrigger,
+        function () {
+          if (Vals.name) {
+            clickOnMesh(Mesh);
+          } else if (Vals.posCoors) {
+            clickOnPointMesh(Mesh, Vals);
+          }
+        }
+      )
+    );
     Mesh.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
         BABYLON.ActionManager.OnPointerOverTrigger,
@@ -266,22 +277,6 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
         function () { changeColorTexture(Mesh, false); }
       )
     );
-    if (Vals.name) {
-      devHelper.model3DVals.activeMeshs.push(Mesh);
-      Mesh.name = Vals.name;
-      Mesh.currentPosition = Vals.posIndex;
-      // clickOnMesh(Mesh);
-    } else if (Vals.posCoors) {
-      devHelper.model3DVals.movePointMesh.push(Mesh);
-      Mesh.actionManager.registerAction(
-        new BABYLON.ExecuteCodeAction(
-          BABYLON.ActionManager.OnPickTrigger,
-          function () {
-            clickOnPointMesh(Mesh, Vals);
-          }
-        )
-      );
-    }
     makeUnicMat(Mesh);
   }
 }
@@ -332,10 +327,6 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
   }
 
 
-  console.log(tempBool, Mesh.name);
-  // не меняется цвет у ключа
-  // сделать чтобы цвет ключа менялся только при приближении к пульту
-  // пока мы не приблизимся все активоты должны быть не активны
   if (tempBool === true) {
     let newBlue1 = State === true ? 0 : 1;
     let newBlue2 = State === true ? -1 : 0;
@@ -380,7 +371,7 @@ function change3DTime(Time = '00:00:00') {
 function rotateMesh(Mesh = undefined, Angle = 0, Axis = undefined, Duration = 60, Scene = devHelper.model3DVals.scene) {
   if (devHelper.dev.enable === true) {
     if (Mesh === undefined) console.warn(`В функцию rotateMesh не передали меш.`);
-    if (Axis === undefined) console.warn(`В функцию rotateMesh не передали тип.`);
+    if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
   }
   if (Mesh !== undefined || Axis !== undefined) {
     if (Mesh.rotation._isDirty === false) Mesh.rotation = new BABYLON.Vector3(0, 0, 0);
@@ -406,12 +397,43 @@ function rotateMesh(Mesh = undefined, Angle = 0, Axis = undefined, Duration = 60
     Scene.beginDirectAnimation(Mesh, [animation], 0, Duration, false);
   } else return
 }
+function moveMesh(Mesh = undefined, Distance = 0, Axis = undefined, Duration = 60, Scene = devHelper.model3DVals.scene) {
+  if (devHelper.dev.enable === true) {
+    if (Mesh === undefined) console.warn(`В функцию moveMesh не передали меш.`);
+    if (Axis === undefined) console.warn(`В функцию moveMesh не передали Axis.`);
+  }
+  if (Mesh !== undefined || Axis !== undefined) {
+    if (Mesh.rotation._isDirty === false) Mesh.rotation._isDirty = true;
+    let animation = new BABYLON.Animation(
+      "positionAnimation",
+      `position.${Axis}`,
+      60,
+      BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+      BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+    );
+    var keys = [
+      {
+        frame: 0,
+        value: Mesh.position[Axis]
+      },
+      {
+        frame: Duration,
+        value: Distance
+      }
+    ];
+    animation.setKeys(keys);
+    Scene.beginDirectAnimation(Mesh, [animation], 0, Duration, false);
+  } else return
+}
 
 function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   devHelper.model3DVals.currentPosition = CurPos;
   if (CurPos === undefined)
     devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = true);
-  else devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
+  else {
+    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
+    devHelper.model3DVals.activeMeshs[CurPos].forEach(mesh => mesh.isPickable = true);
+  }
   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = CurPos === 1 ? false : true;
   var positionAnimation = new BABYLON.Animation(
     "positionAnimation",
@@ -459,8 +481,7 @@ function clickOnMesh(Mesh = undefined) {
     if (devHelper.dev.enable === true) console.warn(`В функцию clickOnMesh не передали меш.`);
     return
   } else {
-    console.log(Mesh);
-    // devHelper.model3DVals.meshUnderPointer = Mesh;
+    trenClickOnMesh(Mesh);
   }
 }
 
