@@ -144,13 +144,14 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.addEventListener("pointermove", function () {
     var pickResult = scene.pick(scene.pointerX, scene.pointerY);
     if (pickResult.hit) {
-      if (devHelper.dev.enable === true) console.log(pickResult.pickedMesh.name, pickResult.pickedMesh.uniqueId);
+      // if (devHelper.dev.enable === true) console.log(pickResult.pickedMesh.name, pickResult.pickedMesh.uniqueId);
       devHelper.model3DVals.meshUnderPointer = pickResult.pickedMesh.name;
     }
     else devHelper.model3DVals.meshUnderPointer = undefined;
   });
 
   const scene = createScene();
+  if (devHelper.dev.enable === true) scene.debugLayer.show();
   engine.runRenderLoop(function () {
     scene.render();
   });
@@ -173,8 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         meshArr.forEach(Mesh => {
           // if (devHelper.dev.enable === true) {
-            Mesh.actionManager = new BABYLON.ActionManager(Scene);
-            Mesh.isPickable = true;
+          Mesh.actionManager = new BABYLON.ActionManager(Scene);
+          Mesh.isPickable = true;
           // }
           if (Mesh.name && Mesh.name === 'Display_flat002') {
             makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
@@ -186,6 +187,23 @@ document.addEventListener("DOMContentLoaded", () => {
             makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
           } else if (Mesh.uniqueId && Mesh.uniqueId === 3592) {
             makeActiveMesh(Mesh, { name: 'kl021', posIndex: 3 });
+          } else if (Mesh.name && Mesh.name === 'Object_042') {
+            // Mesh.simplify([{ quality: 0.9, distance: 1 }, { quality: 0.3, distance: 2 }], false, BABYLON.SimplificationType.QUADRATIC, function () {
+            //   alert("simplification finished");
+            // });
+            // Mesh.simplify([{ quality: 0.9, distance: 1 }, { quality: 0.3, distance: 2 }]);
+
+            // Mesh.optimizeIndices(function () {
+            // })
+
+          } else if (Mesh.name && Mesh.name === 'Console_DP6') {
+
+          } else if (Mesh.name && Mesh.name === 'Console_PSODP6') {
+
+          } else if (Mesh.name && Mesh.name === 'Console_BVNK') {
+
+          } else if (Mesh.name && Mesh.name === 'Console_UGKS') {
+
           }
         })
         change3DTime();
@@ -326,18 +344,35 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
       tempBool = true;
   }
 
-
   if (tempBool === true) {
-    let newBlue1 = State === true ? 0 : 1;
-    let newBlue2 = State === true ? -1 : 0;
-    let newAlpha = State === true ? 0.5 : 0;
-    if (Mesh.material.alpha !== 1) {
-      Mesh.material.alpha = newAlpha;
-    } else {
-      if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
-      else if (Mesh.material._emissiveColor)
-        Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
-    }
+    
+    // if (State === true) {
+    //   Mesh.enableEdgesRendering();
+    //   Mesh.edgesColor = new BABYLON.Color4(1, 1, 0, 0.5);
+    //   Mesh.edgesWidth = 2;
+    //   devHelper.model3DVals.glowLayer = new BABYLON.GlowLayer("glow", devHelper.model3DVals.scene);
+    //   devHelper.model3DVals.glowLayer.addIncludedOnlyMesh(Mesh);
+    //   devHelper.model3DVals.glowLayer.intensity = 0.3;
+    //   Mesh.material.oldEmissiveColor = Mesh.material.emissiveColor;
+    //   Mesh.material.emissiveColor = BABYLON.Color3.Yellow();
+    // } else {
+    //   Mesh.edgesWidth = 0;
+    //   if (devHelper.model3DVals.glowLayer) {
+    //     devHelper.model3DVals.glowLayer.dispose();
+    //     Mesh.material.emissiveColor = Mesh.material.oldEmissiveColor;
+    //   }
+    // }
+
+    // let newBlue1 = State === true ? 0 : 1;
+    // let newBlue2 = State === true ? -1 : 0;
+    // let newAlpha = State === true ? 0.5 : 0;
+    // if (Mesh.material.alpha !== 1) {
+    //   Mesh.material.alpha = newAlpha;
+    // } else {
+    //   if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
+    //   else if (Mesh.material._emissiveColor)
+    //     Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
+    // }
   }
 }
 //TODO тут сделать часы 3Д
