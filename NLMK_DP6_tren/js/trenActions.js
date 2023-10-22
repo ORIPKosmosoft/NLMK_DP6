@@ -31,6 +31,7 @@ const devHelper = {
     currentPosition: undefined,
     movePointMesh: [],
     meshUnderPointer: undefined,
+    engine: undefined,
     svgDisplays: {
       meshs: [],
       textures: [],

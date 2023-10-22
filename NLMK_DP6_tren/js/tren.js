@@ -68,7 +68,6 @@ function trenTimeTick(timeStamp) {
   }
 }
 
-
 function trenClickOnMesh(Mesh) {
   if (devHelper.trenVals.waitingInput === true) {
     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction];

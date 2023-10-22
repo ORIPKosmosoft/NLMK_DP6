@@ -38,6 +38,7 @@ function domLoaded() {
       revialTrenScreen();
       devHelper.trenVals.type = TrenType;
       devHelper.trenVals.scenario = Index;
+      startRender();
       startTren();
     } else {
       let popupDiv = document.createElement('div');

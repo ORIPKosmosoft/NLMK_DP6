@@ -21,10 +21,10 @@ change3DTime
 */
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("renderCanvas");
-  const engine = new BABYLON.Engine(canvas, true);
+  devHelper.model3DVals.engine = new BABYLON.Engine(canvas, true);
 
   const createScene = function () {
-    let scene = new BABYLON.Scene(engine);
+    let scene = new BABYLON.Scene(devHelper.model3DVals.engine);
     devHelper.model3DVals.scene = scene;
     let camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0.35, 2.15, -3.4), scene);
     devHelper.model3DVals.camera = camera;
@@ -33,11 +33,18 @@ document.addEventListener("DOMContentLoaded", () => {
     camera.minZ = 0.1;
     let light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, -1, 0), scene);
     light.intensity = 0.5;
-    let light2 = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
-    light2.intensity = 2;
+    var light2 = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -2, 0), scene);
+    light2.position = new BABYLON.Vector3(0, 15, 0);
+    light2.intensity = 0.5;
+    light2.shadowMinZ = 10;
+    light2.shadowMaxZ = 40;
+    let light3 = new BABYLON.HemisphericLight("light3", new BABYLON.Vector3(0, 1, 0), scene);
+    light3.intensity = 0.2;
+    var shadowGenerator = new BABYLON.ShadowGenerator(1024, light2);
+    shadowGenerator.useContactHardeningShadow = true;
     window.addEventListener('load', function () {
       setTimeout(() => {
-        loadModel('All', scene);
+        loadModel('All', scene, shadowGenerator);
         loadModel('Highlight', scene);
       }, 1000);
     });
@@ -138,6 +145,27 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       document.querySelector('.help-btn-block').remove();
     }
+    // var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameter: 2 }, scene);
+    // sphere.position.y = 1;
+    // var material = new BABYLON.StandardMaterial("material", scene);
+    // sphere.material = material;
+    // var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, scene);
+    // ground.receiveShadows = true;
+    // ground.material = material;
+    
+    // shadowGenerator.useExponentialShadowMap = true;
+    // shadowGenerator.usePoissonSampling = true;
+
+    // shadowGenerator.useBlurExponentialShadowMap = true;
+    // shadowGenerator.usePercentageCloserFiltering = true;
+
+    // shadowGenerator.usePercentageCloserFiltering = true;
+    
+    // shadowGenerator.useContactHardeningShadow = true;
+    // shadowGenerator.contactHardeningLightSizeUVRatio = 0.001;
+    
+    // shadowGenerator.getShadowMap().renderList.push(sphere);
+    
     //----------------------------------------------------------------------------------------------------------
     return scene;
   };
@@ -152,15 +180,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const scene = createScene();
   if (devHelper.dev.enable === true) scene.debugLayer.show();
-  engine.runRenderLoop(function () {
-    scene.render();
-  });
+  // engine.runRenderLoop(function () {
+  //   scene.render();
+  // });
 
   window.addEventListener("resize", function () {
-    engine.resize();
+    devHelper.model3DVals.engine.resize();
   });
 
-  function loadModel(Name, Scene) {
+  function loadModel(Name, Scene, ShadowGenerator) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
       if (Name === 'All') {
         let meshArr = [];
@@ -173,6 +201,8 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
         meshArr.forEach(Mesh => {
+          // Mesh.receiveShadows = true;
+          // Mesh.castShadows = true;
           // if (devHelper.dev.enable === true) {
           Mesh.actionManager = new BABYLON.ActionManager(Scene);
           Mesh.isPickable = true;
@@ -187,17 +217,10 @@ document.addEventListener("DOMContentLoaded", () => {
             makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
           } else if (Mesh.uniqueId && Mesh.uniqueId === 3592) {
             makeActiveMesh(Mesh, { name: 'kl021', posIndex: 3 });
-          } else if (Mesh.name && Mesh.name === 'Object_042') {
-            // Mesh.simplify([{ quality: 0.9, distance: 1 }, { quality: 0.3, distance: 2 }], false, BABYLON.SimplificationType.QUADRATIC, function () {
-            //   alert("simplification finished");
-            // });
-            // Mesh.simplify([{ quality: 0.9, distance: 1 }, { quality: 0.3, distance: 2 }]);
-
-            // Mesh.optimizeIndices(function () {
-            // })
-
-          } else if (Mesh.name && Mesh.name === 'Console_DP6') {
-
+          } else if (Mesh.name && Mesh.name === 'Table') {
+            Mesh.receiveShadows = true;
+          } else if (Mesh.name && Mesh.name === 'Monitor_flat021') {
+            ShadowGenerator.getShadowMap().renderList.push(Mesh);
           } else if (Mesh.name && Mesh.name === 'Console_PSODP6') {
 
           } else if (Mesh.name && Mesh.name === 'Console_BVNK') {
@@ -345,7 +368,7 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
   }
 
   if (tempBool === true) {
-    
+
     // if (State === true) {
     //   Mesh.enableEdgesRendering();
     //   Mesh.edgesColor = new BABYLON.Color4(1, 1, 0, 0.5);
@@ -438,7 +461,8 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
     devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = true);
   else {
     devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
-    devHelper.model3DVals.activeMeshs[CurPos].forEach(mesh => mesh.isPickable = true);
+    if (devHelper.model3DVals.activeMeshs[CurPos])
+      devHelper.model3DVals.activeMeshs[CurPos].forEach(mesh => mesh.isPickable = true);
   }
   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = CurPos === 1 ? false : true;
   var positionAnimation = new BABYLON.Animation(
@@ -489,6 +513,12 @@ function clickOnMesh(Mesh = undefined) {
   } else {
     trenClickOnMesh(Mesh);
   }
+}
+
+function startRender() {
+  devHelper.model3DVals.engine.runRenderLoop(function () {
+    devHelper.model3DVals.scene.render();
+  });
 }
 
 
