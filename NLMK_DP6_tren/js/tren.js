@@ -6,6 +6,7 @@
 дальше делать уже клик
 ----------------------------------------------------
 */
+let startFrameStamp = undefined, actionFrameStamp = undefined;
 function loadTrenActions() {
   devHelper.trenVals.scenarioArr = [];
   Array.from(document.querySelectorAll('.drop-item')).forEach((Element, Index) => {
@@ -25,36 +26,48 @@ function startTren() {
   } else {
 
   }
-  // console.log(Object.keys(tempActions[0][0].action.position).length > 0);
+  startFrameStamp = actionFrameStamp = undefined;
+  devHelper.trenVals.realTimer = 0;
+  devHelper.trenVals.currentAction = 0;
+  devHelper.trenVals.currentActionTime = 0;
+  devHelper.trenVals.scenarioTimer = 0;
+  devHelper.trenVals.ended = false;
+  devHelper.trenVals.waitingInput = true;
+  window.requestAnimationFrame(trenTimeTick);
 }
 
-setInterval(() => {
+function trenTimeTick(timeStamp) {
   if (devHelper.trenVals.scenario !== undefined) {
-    devHelper.trenVals.realTimer += 50;
+    if (startFrameStamp === undefined) startFrameStamp = timeStamp;
+    devHelper.trenVals.realTimer += Math.round(timeStamp - startFrameStamp);
     if (devHelper.trenVals.ended === false) {
       if (devHelper.trenVals.waitingInput === false) {
-        devHelper.trenVals.currentActionTime += 50;
-        devHelper.trenVals.scenarioTimer += 50;
+        if (actionFrameStamp === undefined) actionFrameStamp = timeStamp;
+        devHelper.trenVals.currentActionTime = Math.round(timeStamp - actionFrameStamp);;
+        devHelper.trenVals.scenarioTimer = Math.round(timeStamp - actionFrameStamp);;
       } else {
 
       }
 
-      if (devHelper.trenVals.currentActionTime >= devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].duration * 1000) {
-        devHelper.trenVals.waitingInput = true;
-        devHelper.trenVals.currentAction++;
-        devHelper.trenVals.currentActionTime = 0;
-        if (devHelper.dev.enable === true) console.warn(`Действие ${devHelper.trenVals.currentAction - 1} успешно завершено.`);
-        //         document.querySelector('.message').innerHTML = `Действие ${devHelper.trenVals.currentAction - 1} успешно завершено.`;
-        if (devHelper.trenVals.currentAction > devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length - 1) trenFinish();
-      }
-      if (devHelper.trenVals.realTimer % 1000 === 0) {
-        const currentTime = new Date();
-        const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`;
-        console.log(`Текущее время: ${formattedTime}. Время сценария ${devHelper.trenVals.realTimer / 1000}.`);
-      }
+        if (devHelper.trenVals.currentActionTime >= devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].duration * 1000) {
+          devHelper.trenVals.waitingInput = true;
+          actionFrameStamp = undefined;
+          devHelper.trenVals.currentAction++;
+          devHelper.trenVals.currentActionTime = 0;
+          if (devHelper.dev.enable === true) console.warn(`Действие ${devHelper.trenVals.currentAction - 1} успешно завершено.`);
+          if (devHelper.trenVals.currentAction > devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length - 1) trenFinish();
+        }
+      //   if (devHelper.trenVals.realTimer % 1000 === 0) {
+      //     const currentTime = new Date();
+      //     const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`;
+      //     console.log(`Текущее время: ${formattedTime}. Время сценария ${devHelper.trenVals.realTimer / 1000}.`);
+      //     console.log(currentTime.getMilliseconds());
+      //   }
     }
+    window.requestAnimationFrame(trenTimeTick);
   }
-}, 50);
+}
+
 
 function trenClickOnMesh(Mesh) {
   if (devHelper.trenVals.waitingInput === true) {
@@ -114,4 +127,3 @@ function createCustomElement(Tag = 'div', Content = '', Attributes = undefined, 
   if (Parent) Parent.append(element);
   return element
 }
-

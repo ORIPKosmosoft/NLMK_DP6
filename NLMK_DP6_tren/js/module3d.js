@@ -394,7 +394,6 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
     ];
     animation.setKeys(keys);
     Scene.beginDirectAnimation(Mesh, [animation], 0, Duration * 60, false);
-    console.log(animation);
   } else return
 }
 
