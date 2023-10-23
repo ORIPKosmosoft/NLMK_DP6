@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
     light.intensity = 0.5;
     var light2 = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -2, 0), scene);
     light2.position = new BABYLON.Vector3(0, 15, 0);
-    light2.intensity = 0.5;
+    light2.intensity = 1;
     light2.shadowMinZ = 10;
     light2.shadowMaxZ = 40;
     let light3 = new BABYLON.HemisphericLight("light3", new BABYLON.Vector3(0, 1, 0), scene);
-    light3.intensity = 0.2;
+    light3.intensity = 1;
     var shadowGenerator = new BABYLON.ShadowGenerator(1024, light2);
     shadowGenerator.useContactHardeningShadow = true;
     window.addEventListener('load', function () {
@@ -145,26 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       document.querySelector('.help-btn-block').remove();
     }
-    // var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameter: 2 }, scene);
-    // sphere.position.y = 1;
     // var material = new BABYLON.StandardMaterial("material", scene);
-    // sphere.material = material;
     // var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, scene);
     // ground.receiveShadows = true;
     // ground.material = material;
-    
-    // shadowGenerator.useExponentialShadowMap = true;
-    // shadowGenerator.usePoissonSampling = true;
-
-    // shadowGenerator.useBlurExponentialShadowMap = true;
-    // shadowGenerator.usePercentageCloserFiltering = true;
-
-    // shadowGenerator.usePercentageCloserFiltering = true;
-    
-    // shadowGenerator.useContactHardeningShadow = true;
-    // shadowGenerator.contactHardeningLightSizeUVRatio = 0.001;
-    
-    // shadowGenerator.getShadowMap().renderList.push(sphere);
     
     //----------------------------------------------------------------------------------------------------------
     return scene;
@@ -213,13 +197,20 @@ document.addEventListener("DOMContentLoaded", () => {
           } else if (Mesh.name && Mesh.name === 'Display_flat003') {
             makeSvgDisplay(Mesh, Scene, 'vnk_main');
             makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 2 });
-          } else if (Mesh.uniqueId && Mesh.uniqueId === 3594) {
+          } else if (Mesh.id && Mesh.id === '25408591-8ddd-4b64-a7ad-499aaa995ae6') {
             makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
-          } else if (Mesh.uniqueId && Mesh.uniqueId === 3592) {
+          } else if (Mesh.id && Mesh.id === '8d7497bf-6a8b-4906-8a35-1dc986e6e655') {
             makeActiveMesh(Mesh, { name: 'kl021', posIndex: 3 });
-          } else if (Mesh.name && Mesh.name === 'Table') {
+          } else if (Mesh.name && Mesh.name === 'Rectangle001') {
+            if (Mesh.id && Mesh.id === 'c4938c6e-adb9-4618-8fe0-76497fa5e0a7') {
+              Mesh.receiveShadows = true;
+              ShadowGenerator.getShadowMap().renderList.push(Mesh);
+            }
+          } else if (Mesh.name && Mesh.name === 'Room') {
             Mesh.receiveShadows = true;
           } else if (Mesh.name && Mesh.name === 'Monitor_flat021') {
+            ShadowGenerator.getShadowMap().renderList.push(Mesh);
+          } else if (Mesh.name && Mesh.name === 'Monitor_flat023') {
             ShadowGenerator.getShadowMap().renderList.push(Mesh);
           } else if (Mesh.name && Mesh.name === 'Console_PSODP6') {
 
@@ -234,10 +225,10 @@ document.addEventListener("DOMContentLoaded", () => {
         meshes.forEach(element => {
           element.actionManager = new BABYLON.ActionManager(Scene);
           element.isPickable = true;
-          const groundMat = new BABYLON.StandardMaterial("groundMat");
-          groundMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
-          groundMat.alpha = 0;
-          element.material = groundMat;
+          const lightMat = new BABYLON.StandardMaterial("lightMat");
+          lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
+          lightMat.alpha = 0;
+          element.material = lightMat;
           if (element.name && element.name === 'Console_BVNK_highlight') {
             makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
           } else if (element.name && element.name === 'Console_BZU_highlight') {
@@ -370,32 +361,32 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
   if (tempBool === true) {
 
     // if (State === true) {
-    //   Mesh.enableEdgesRendering();
-    //   Mesh.edgesColor = new BABYLON.Color4(1, 1, 0, 0.5);
-    //   Mesh.edgesWidth = 2;
-    //   devHelper.model3DVals.glowLayer = new BABYLON.GlowLayer("glow", devHelper.model3DVals.scene);
-    //   devHelper.model3DVals.glowLayer.addIncludedOnlyMesh(Mesh);
-    //   devHelper.model3DVals.glowLayer.intensity = 0.3;
-    //   Mesh.material.oldEmissiveColor = Mesh.material.emissiveColor;
-    //   Mesh.material.emissiveColor = BABYLON.Color3.Yellow();
+    // //   Mesh.enableEdgesRendering();
+    // //   Mesh.edgesColor = new BABYLON.Color4(1, 1, 0, 0.5);
+    // //   Mesh.edgesWidth = 2;
+    // //   devHelper.model3DVals.glowLayer = new BABYLON.GlowLayer("glow", devHelper.model3DVals.scene);
+    // //   devHelper.model3DVals.glowLayer.addIncludedOnlyMesh(Mesh);
+    // //   devHelper.model3DVals.glowLayer.intensity = 0.3;
+    // //   Mesh.material.oldEmissiveColor = Mesh.material.emissiveColor;
+    // //   Mesh.material.emissiveColor = BABYLON.Color3.Yellow();
     // } else {
-    //   Mesh.edgesWidth = 0;
-    //   if (devHelper.model3DVals.glowLayer) {
-    //     devHelper.model3DVals.glowLayer.dispose();
-    //     Mesh.material.emissiveColor = Mesh.material.oldEmissiveColor;
-    //   }
+    // //   Mesh.edgesWidth = 0;
+    // //   if (devHelper.model3DVals.glowLayer) {
+    // //     devHelper.model3DVals.glowLayer.dispose();
+    // //     Mesh.material.emissiveColor = Mesh.material.oldEmissiveColor;
+    // //   }
     // }
 
-    // let newBlue1 = State === true ? 0 : 1;
-    // let newBlue2 = State === true ? -1 : 0;
-    // let newAlpha = State === true ? 0.5 : 0;
-    // if (Mesh.material.alpha !== 1) {
-    //   Mesh.material.alpha = newAlpha;
-    // } else {
-    //   if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
-    //   else if (Mesh.material._emissiveColor)
-    //     Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
-    // }
+    let newBlue1 = State === true ? 0 : 1;
+    let newBlue2 = State === true ? -1 : 0;
+    let newAlpha = State === true ? 0.5 : 0;
+    if (Mesh.material.alpha !== 1) {
+      Mesh.material.alpha = newAlpha;
+    } else {
+      if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
+      else if (Mesh.material._emissiveColor)
+        Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
+    }
   }
 }
 //TODO тут сделать часы 3Д
@@ -425,6 +416,7 @@ function change3DTime(Time = '00:00:00') {
   digit5.material = unic5.material.clone();
   digit6.material = unic4.material.clone();
 }
+
 function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefined, Duration = 1, Scene = devHelper.model3DVals.scene) {
   if (devHelper.dev.enable === true) {
     if (Mesh === undefined) console.warn(`В функцию rotateMesh не передали меш.`);
