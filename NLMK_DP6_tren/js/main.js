@@ -1,8 +1,6 @@
 /*                 TODO
 ----------------------------------------------------
-Сделать ресайзер для 2Д и 3Д
-----------------------------------------------------
-переработать систему сообщений
+Сделать ресайзер для 2Д
 ----------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", domLoaded);
@@ -48,11 +46,6 @@ function domLoaded() {
       document.body.addEventListener('mousedown', () => { if (document.querySelector('.popup-alert')) document.querySelector('.popup-alert').remove() });
     }
   }
-
-  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
-    Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
-    Element.classList.remove('first-drop');
-  })
 
   document.querySelectorAll('.dropdown-content .drop-item').forEach((Element) => {
     Element.addEventListener('click', (e) => {
@@ -118,6 +111,7 @@ function domLoaded() {
   })
 
   loadTrenActions();
+  console.log(devHelper);
 }
 
 setInterval(() => {
@@ -135,6 +129,10 @@ setInterval(() => {
 }, 4000)
 
 window.addEventListener('load', function () {
+  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
+    Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
+    Element.classList.remove('first-drop');
+  })
   document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
     Element.addEventListener('click', guideBtnsClick);
     if (index === 0) {
@@ -179,3 +177,4 @@ function guideBtnsClick(e) {
     }
   }
 }
+

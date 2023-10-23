@@ -14,9 +14,9 @@ change3DTime
 --------------------------------------------------------------------
 Добавить всплывающую подсказку при наведении на хотспот
 --------------------------------------------------------------------
-Сделать блокировку активных мешей если не на нужном виде
---------------------------------------------------------------------
 не отрисовывать рендер пока не перешли в тренажёр
+--------------------------------------------------------------------
+Добавить 2Д окно над монитором
 --------------------------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", () => {
@@ -456,8 +456,14 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
     if (devHelper.model3DVals.activeMeshs[CurPos])
       devHelper.model3DVals.activeMeshs[CurPos].forEach(mesh => mesh.isPickable = true);
   }
-  devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = CurPos === 1 ? false : true;
-  var positionAnimation = new BABYLON.Animation(
+  // if (CurPos === 1) { // все мониторы
+  //   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = false;
+  //   // тут сделать появление экрана 2Д
+  // } else {
+  //   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = true;
+  // }
+  
+  let positionAnimation = new BABYLON.Animation(
     "positionAnimation",
     "position",
     60,
@@ -476,7 +482,7 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   });
   positionAnimation.setKeys(positionKeys);
 
-  var rotationAnimation = new BABYLON.Animation(
+  let rotationAnimation = new BABYLON.Animation(
     "rotationAnimation",
     "rotation",
     60,
@@ -495,7 +501,9 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   });
   rotationAnimation.setKeys(rotationKeys);
   devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
-  devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false);
+  devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false, 1, () => {
+    revialSvgObject(CurPos);
+  });
 }
 
 function clickOnMesh(Mesh = undefined) {

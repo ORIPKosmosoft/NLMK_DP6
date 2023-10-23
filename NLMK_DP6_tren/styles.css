@@ -775,17 +775,30 @@ ul {
   visibility: hidden;
 }
 /* svg схемы 
------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
+
 */
-.svg-scheme-container {
+.svg-scheme-container object {
   top: 101%;
   left: 101%;
   position: absolute;
   visibility: hidden;
 }
 
+.svg-scheme-container img {
+  top: 101%;
+  left: 101%;
+  position: absolute;
+  visibility: hidden;
+}
+
+.invisible-element-svg {
+  position: absolute;
+}
+
 /* babylon 
------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
+
 */
 #renderCanvas {
   width: 100%;

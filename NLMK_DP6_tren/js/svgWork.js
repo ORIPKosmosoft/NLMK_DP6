@@ -761,3 +761,73 @@ function makeDynamicTextureDisplay(ObjectSvg) {
     textureContext.drawImage(outputImage, 0, 0);
   }
 }
+
+function revialSvgObject(CurrentPosition) {
+  let activeMonitor = undefined;
+  if (CurrentPosition === 1) { // вынести повторяемые блкои кода
+    let mainContainer = document.createElement('div');
+    mainContainer.style.position = 'absolute';
+    mainContainer.style.top = '44px';
+    mainContainer.style.left = '223px';
+    mainContainer.style.width = '73%';
+    mainContainer.style.height = '89%';
+    document.body.append(mainContainer);
+
+    for (let i = 0; i < 5; i++) {
+      let invisElem = document.createElement('div');
+      invisElem.classList.add('invisible-element-svg');
+      let tempObj = {x: 0, y: 0, w: 0, h: 0};
+      if (i === 0) tempObj = {x: 0.5, y: 0.5, w: 6.5, h: 3};
+      else if (i === 1) tempObj = {x: 8.5, y: 0.5, w: 6.5, h: 3};
+      else if (i === 2) tempObj = {x: 16, y: 0.5, w: 7, h: 3};
+      else if (i === 3) tempObj = {x: 24, y: 0.5, w: 7, h: 3};
+      else if (i === 4) tempObj = {x: 32, y: 0.5, w: 6.8, h: 3};
+      let tempName = 'vnk_main';
+      if (i === 0) tempName = 'vnk_main';
+      else if (i === 1) tempName = 'BVNK_VNK1';
+      else if (i === 2) tempName = 'BVNK_VNK2';
+      else if (i === 3) tempName = 'BVNK_VNK3';
+      else if (i === 4) tempName = 'vnk_spvg';
+
+      invisElem.addEventListener('click', () => changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], tempName));
+
+      invisElem.style.left = tempObj.x + 'vw';
+      invisElem.style.top = tempObj.y + 'vh';
+      invisElem.style.width = tempObj.w + 'vw';
+      invisElem.style.height = tempObj.h + 'vh';
+      mainContainer.append(invisElem);
+    }
+
+    // let temp1 = document.createElement('div');
+    // temp1.style.width = '10%';
+    // temp1.style.height = '4%';
+    // temp1.addEventListener('click', (e) => {
+    //   changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_main');
+    // })
+    // let temp2 = document.createElement('div');
+    // temp2.style.width = '10%';
+    // temp2.style.height = '4%';
+    // temp2.addEventListener('click', (e) => {
+    //   changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK1');
+    // })
+    // let temp3 = document.createElement('div');
+    // temp3.style.width = '10%';
+    // temp3.style.height = '4%';
+    // temp3.addEventListener('click', (e) => {
+    //   changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK2');
+    // })
+    // let temp4 = document.createElement('div');
+    // temp4.style.width = '10%';
+    // temp4.style.height = '4%';
+    // temp4.addEventListener('click', (e) => {
+    //   changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK3');
+    // })
+    // let temp5 = document.createElement('div');
+    // temp5.style.width = '10%';
+    // temp5.style.height = '4%';
+    // temp5.addEventListener('click', (e) => {
+    //   changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_spvg');
+    // })
+    // mainContainer.append(temp1, temp2, temp3, temp4, temp5);
+  }
+}
