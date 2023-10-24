@@ -26,6 +26,15 @@ body {
   opacity: 0;
 }
 
+.fon .fon-dark {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 .fon .hrom {
   position: absolute;
   top: 0%;
@@ -202,7 +211,7 @@ body {
 }
 
 .dropdown-container .dropdown-content {
-  margin-top: 1vh;
+  margin-top: -1000vh;
   width: 97%;
   font-size: 2ch;
   padding-left: 2.5%;
@@ -560,8 +569,8 @@ ul {
   position: absolute;
   top: 0%;
   left: 0%;
-  /* visibility: hidden; */
-  display: none;
+  visibility: hidden;
+  /* display: none; */
   /* transform: translate(0, 0); */
   /* pointer-events: none; */
 }
@@ -765,14 +774,54 @@ ul {
   height: 3vh;
   visibility: hidden;
 }
+/* svg схемы 
+----------------------------------------------------------------------------------------------------------
 
-/* babylon */
+*/
+.svg-scheme-container object {
+  top: 101%;
+  left: 101%;
+  position: absolute;
+  visibility: hidden;
+}
+
+.svg-scheme-container img {
+  top: 101%;
+  left: 101%;
+  position: absolute;
+  visibility: hidden;
+}
+
+.invisible-element-svg {
+  position: absolute;
+  cursor: pointer;
+}
+
+/* babylon 
+----------------------------------------------------------------------------------------------------------
+
+*/
 #renderCanvas {
   width: 100%;
   height: 100%;
   touch-action: none;
 }
 
+.help-btn-block {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 150px;
+  height: 500px;
+}
+
+.value-input {
+  width: 40px;
+}
+
+/* babylon 
+-----------------------------------------------------
+*/
 
 
 /* Сергей */

@@ -1,19 +1,11 @@
 /*                 TODO
 ----------------------------------------------------
-Сделать ресайзер для 2Д и 3Д
-----------------------------------------------------
-переработать систему сообщений
+Сделать ресайзер для 2Д
 ----------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", domLoaded);
 
 function domLoaded() {
-  devHelper.trenVals.scenario = undefined;
-  devHelper.trenVals.messages = {
-    normal: [],
-    error: []
-  }
-
   document.querySelector('.tren-container').addEventListener('transitionend', (e) => {
     if (e.propertyName === 'opacity') {
       e.currentTarget.style.visibility = e.currentTarget.style.opacity === '0' ? 'hidden' : 'visible';
@@ -27,12 +19,6 @@ function domLoaded() {
     }
   })
 
-  if (document.querySelector('.exit')) {
-    document.querySelector('.exit').addEventListener('click', (e) => {
-      document.querySelector('.tren-container').style.opacity = 0;
-    })
-  }
-
   function removeStartScreen() {
     document.querySelector('.header').style.top = -document.querySelector('.header').getBoundingClientRect().bottom - 10 + 'px';
     document.querySelector('.section').style.left = -document.querySelector('.section').getBoundingClientRect().width * 1.1 + 'px';
@@ -45,11 +31,13 @@ function domLoaded() {
   }
 
   function prepareTren(TrenType, Scenario, Index) {
-    if (devHelper.trenVals.actionArr[Index].actions) {
+    if (devHelper.trenVals.scenarioArr[Index].actions) {
       removeStartScreen();
       revialTrenScreen();
       devHelper.trenVals.type = TrenType;
       devHelper.trenVals.scenario = Index;
+      startRender();
+      startTren();
     } else {
       let popupDiv = document.createElement('div');
       popupDiv.classList.add('popup-alert');
@@ -60,50 +48,6 @@ function domLoaded() {
       });
     }
   }
-
-  function guideBtnsClick(e) {
-    if (!e.currentTarget.classList.contains('nav-icon-active')) {
-      document.querySelectorAll('.section .nav-icon').forEach((Element2) => {
-        Element2.classList.toggle('nav-icon-active', false);
-        Array.from(Element2.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
-          if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#7c7c7c');
-        })
-      })
-      e.currentTarget.classList.toggle('nav-icon-active', true);
-      Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
-        if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
-      })
-
-      if (document.querySelector('.text-container-active')) {
-        document.querySelector('.text-container-active').classList.toggle('text-container-active', false);
-      }
-      let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget);
-      let textConNew = document.querySelector('.info-container').children[newTextIndex];
-      textConNew.classList.toggle('text-container-active', true);
-      document.querySelector('.info-container').children[0].style.marginTop = `-${newTextIndex * textConNew.getBoundingClientRect().height}px`;
-
-      if (document.querySelector('.arrow-text-active')) {
-        document.querySelectorAll('.arrow-text-active').forEach((Element) => {
-          Element.parentElement.dispatchEvent(new Event('click'));
-        })
-      }
-
-      if (document.querySelector('.info-container').querySelector('.drop-item-active')) {
-        document.querySelector('.info-container').querySelector('.drop-item-active').classList.toggle('drop-item-active', false);
-        document.querySelector('.scenarion-buttons-container').style.visibility = 'hidden';
-      }
-    }
-  }
-
-  document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
-    Element.addEventListener('click', guideBtnsClick);
-    if (index === 0) Element.dispatchEvent(new Event('click'));
-  });
-
-  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
-    Element.style.marginTop = `-${Element.getBoundingClientRect().height}px`;
-    Element.classList.remove('first-drop');
-  })
 
   document.querySelectorAll('.dropdown-content .drop-item').forEach((Element) => {
     Element.addEventListener('click', (e) => {
@@ -159,7 +103,7 @@ function domLoaded() {
   document.querySelectorAll('.drop-title').forEach((Element) => {
     Element.addEventListener('click', (e) => {
       e.currentTarget.querySelector('img').classList.toggle('arrow-text-active');
-      e.currentTarget.nextElementSibling.children[0].style.marginTop = e.currentTarget.querySelector('img').classList.contains('arrow-text-active') ? '' :
+      e.currentTarget.nextElementSibling.children[0].style.marginTop = e.currentTarget.querySelector('img').classList.contains('arrow-text-active') ? '1vh' :
         `-${e.currentTarget.nextElementSibling.children[0].getBoundingClientRect().height}px`;
       if (e.currentTarget.nextElementSibling.querySelector('.drop-item-active')) {
         e.currentTarget.nextElementSibling.querySelector('.drop-item-active').classList.toggle('drop-item-active', false);
@@ -168,7 +112,6 @@ function domLoaded() {
     })
   })
 
-  // Сергей
   // Переход к нужному тесту
   document.querySelector('.tests-container').querySelectorAll('.tests-button').forEach((Element) => {
     Element.addEventListener('click', (e) => {
@@ -182,7 +125,6 @@ function domLoaded() {
     })
   })
 
-  // Сергей
   // Правильные ответы для самопроверки
   const testsAnswerResults = {
     selfcheck: {
@@ -196,9 +138,7 @@ function domLoaded() {
       2: 2, // 3
     },
   }
-  // let selfcheckContainer = document.querySelectorAll('.selfcheck-container').length;
 
-  // Сергей
   // Вешаю обработчик нажатия на все <div class="selfcheck-radio">
   document.querySelectorAll('.selfcheck-radio').forEach((Element) => {
     Element.addEventListener('click', (e) => {
@@ -206,7 +146,6 @@ function domLoaded() {
     })
   })
 
-  // Сергей
   // Вешаю обработчик на кнопку 'Подтвердить'
   document.querySelectorAll('.selfcheck-confirm-button').forEach((Element) => {
     Element.addEventListener('click', (e) => {
@@ -217,7 +156,71 @@ function domLoaded() {
   loadTrenActions();
 }
 
-// Сергей
+setInterval(() => {
+  for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {
+    const Element = document.querySelectorAll('.photo')[i];
+    Element.style.transition = 'opacity 1s ease';
+    if (Element.style.opacity === '1') {
+      Element.style.opacity = 0;
+      let nextElem = Element.nextElementSibling.classList.contains('photo') ? Element.nextElementSibling : document.querySelector('.photo');
+      nextElem.style.transition = 'opacity 1s ease';
+      nextElem.style.opacity = 1;
+      break
+    }
+  }
+}, 4000)
+
+window.addEventListener('load', function () {
+  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
+    Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
+    Element.classList.remove('first-drop');
+  })
+  document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
+    Element.addEventListener('click', guideBtnsClick);
+    if (index === 0) {
+      Element.classList.toggle('nav-icon-active', true);
+      Array.from(Element.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+        if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
+      })
+    }
+  });
+  if (devHelper.dev.enable === true) console.log(devHelper);
+});
+
+function guideBtnsClick(e) {
+  if (!e.currentTarget.classList.contains('nav-icon-active')) {
+    document.querySelectorAll('.section .nav-icon').forEach((Element2) => {
+      Element2.classList.toggle('nav-icon-active', false);
+      Array.from(Element2.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+        if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#7c7c7c');
+      })
+    })
+    e.currentTarget.classList.toggle('nav-icon-active', true);
+    Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+      if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
+    })
+
+    if (document.querySelector('.text-container-active')) {
+      document.querySelector('.text-container-active').classList.toggle('text-container-active', false);
+    }
+    let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget);
+    let textConNew = document.querySelector('.info-container').children[newTextIndex];
+    textConNew.classList.toggle('text-container-active', true);
+    document.querySelector('.info-container').children[0].style.marginTop = `-${newTextIndex * textConNew.getBoundingClientRect().height}px`;
+
+    if (document.querySelector('.arrow-text-active')) {
+      document.querySelectorAll('.arrow-text-active').forEach((Element) => {
+        Element.parentElement.dispatchEvent(new Event('click'));
+      })
+    }
+
+    if (document.querySelector('.info-container').querySelector('.drop-item-active')) {
+      document.querySelector('.info-container').querySelector('.drop-item-active').classList.toggle('drop-item-active', false);
+      document.querySelector('.scenarion-buttons-container').style.visibility = 'hidden';
+    }
+  }
+}
+
 // Функция работы с radioButton
 function radioButtonChange(elem) {
   if (elem.parentElement.classList.contains('active-radio')) return;
@@ -237,14 +240,12 @@ function radioButtonChange(elem) {
   }
 }
 
-// Сергей
 // Подтверждение ответа в тестах
 function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
   let selfcheckContainer = elem.closest('.selfcheck-container');
   let selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
   let radioContainer = selfcheckContainer.querySelector('.selfcheck-radio-container');
   let radioButtSelectIndex = Array.from(radioContainer.querySelectorAll('.radio-elem')).indexOf(radioContainer.querySelector('.active-radio'));
-  // console.log(selfcheckcontainerIndex);
   if (radioButtSelectIndex == selfcheckTrueResults.selfcheck[selfcheckcontainerIndex]) {
     radioContainer.querySelector('.active-radio').classList.toggle('correct-answer', true);
     selfcheckContainer.classList.toggle('block-selfcheck-container', true);
@@ -254,22 +255,3 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
   }
 }
 
-setInterval(() => {
-  for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {
-    const Element = document.querySelectorAll('.photo')[i];
-    Element.style.transition = 'opacity 1s ease';
-    if (Element.style.opacity === '1') {
-      Element.style.opacity = 0;
-      let nextElem = Element.nextElementSibling.classList.contains('photo') ? Element.nextElementSibling : document.querySelector('.photo');
-      nextElem.style.transition = 'opacity 1s ease';
-      nextElem.style.opacity = 1;
-      break
-    }
-  }
-}, 4000)
-
-
-function changeMessageWindow(Num) {
-  document.querySelector('.message').innerHTML = Num === 0 ? devHelper.trenVals.messages.normal : devHelper.trenVals.messages.error;
-  document.querySelector('.message').style.backgroundColor = Num === 0 ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 0, 0, 0.4)';
-}

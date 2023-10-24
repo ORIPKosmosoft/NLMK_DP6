@@ -1,121 +1,115 @@
-/*----------TODO----------------------------------------------------
-Сделать переход по карте по объектам
-----------------------------------------------------------
-Создать уникальные материалы для каждого меша
-----------------------------------------------------------
-Создать анимацию загрузки
+// Остановка вращения камерой camera.inputs.attached.mouse._allowCameraRotation = false;
+/* Убрать движение камерой
+    camera.inputs.attached.keyboard.keysDown = [];
+    camera.inputs.attached.keyboard.keysDownward = [];
+    camera.inputs.attached.keyboard.keysLeft = [];
+    camera.inputs.attached.keyboard.keysRight = [];
+    camera.inputs.attached.keyboard.keysUp = [];
+    camera.inputs.attached.keyboard.keysUpward = [];
 */
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
-import Stats from 'three/addons/stats.module.js'
 
-if (devHelper.dev.enable === true) {
-  devHelper.dev.perfomance = new Stats();
-  document.body.appendChild(devHelper.dev.perfomance.dom);
-}
+/*----------TODO----------------------------------------------------
+Добавить изменение времени на3Д к главному изменении времени
+change3DTime
+--------------------------------------------------------------------
+Добавить всплывающую подсказку при наведении на хотспот
+--------------------------------------------------------------------
+не отрисовывать рендер пока не перешли в тренажёр
+--------------------------------------------------------------------
+Добавить 2Д окно над монитором
+--------------------------------------------------------------------
+*/
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("renderCanvas");
+  devHelper.model3DVals.engine = new BABYLON.Engine(canvas, true);
 
-document.addEventListener('DOMContentLoaded', function () {
-  if (document.querySelector('div[model3D]')) {
-    // const total3DModelsWeight = { Console_BVNK: '6476388' };
-    devHelper.model3DVals.cameraMove.end = new THREE.Vector3(0, 0, 0);
-    devHelper.model3DVals.cameraMove.lookEnd = new THREE.Vector3(0, 0, 0);
-    const scene = new THREE.Scene();
-    const ambientLight = new THREE.AmbientLight("#FFFFFF", 3);
-    scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight("#FFFFFF", 2);
-    directionalLight.position.set(0, 3, 1);
-    directionalLight.castShadow = true;
-    scene.add(directionalLight);
+  const createScene = function () {
+    let scene = new BABYLON.Scene(devHelper.model3DVals.engine);
+    devHelper.model3DVals.scene = scene;
+    let camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0.35, 2.15, -3.4), scene);
+    devHelper.model3DVals.camera = camera;
+    camera.rotation = new BABYLON.Vector3(0.1913, -0.0046, 0);
+    camera.attachControl(canvas, true);
+    camera.minZ = 0.1;
+    let light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, -1, 0), scene);
+    light.intensity = 0.5;
+    var light2 = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -2, 0), scene);
+    light2.position = new BABYLON.Vector3(0, 15, 0);
+    light2.intensity = 1;
+    light2.shadowMinZ = 10;
+    light2.shadowMaxZ = 40;
+    let light3 = new BABYLON.HemisphericLight("light3", new BABYLON.Vector3(0, 1, 0), scene);
+    light3.intensity = 1;
+    var shadowGenerator = new BABYLON.ShadowGenerator(1024, light2);
+    shadowGenerator.useContactHardeningShadow = true;
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        loadModel('All', scene, shadowGenerator);
+        loadModel('Highlight', scene);
+      }, 1000);
+    });
 
-    let loaderGLTF = new GLTFLoader();
-    let loaderDraco = new DRACOLoader();
-    loaderDraco.setDecoderPath('/js/libs/draco/');
-    loaderGLTF.setDRACOLoader(loaderDraco);
-
-    loadGLB(loaderGLTF, document.querySelector('div[model3D]').getAttribute('model3D'), scene);
-    let div3D = document.querySelector('div[model3D]');
-    const renderer = new THREE.WebGLRenderer({ antialias: !0 });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(div3D.getBoundingClientRect().width, div3D.getBoundingClientRect().height);
-
-    div3D.append(renderer.domElement);
-    //---------------------------------------------------------------------------------
-    // Создание элемента управления камерой
-    if (devHelper.dev.enable === true) {
-      let tempCoorDiv = document.createElement('div');
-      tempCoorDiv.style = `
-            position: absolute;
-            top: 50px;
-            left: 0px;
-            width: 50%;
-            height: 15%;
-            display: flex;
-            flex-flow: column nowrap;
-            place-content: center;
-            flex-direction: column;
-            flex-wrap: wrap;
-            align-content: center;
-            `;
-      for (let a = 0; a < 2; a++) {
-        if (a === 0) {
-          for (let i = 0; i < 3; i++) {
-            let tempInput = document.createElement('input');
-            tempInput.type = 'number';
-            tempInput.style.width = '11%';
-            tempInput.value = 0;
-            tempCoorDiv.append(tempInput);
-            if (i === 2) {
-              let tempBtn = document.createElement('button');
-              tempBtn.innerText = 'Примернить положение';
-              tempBtn.style.width = '11%';
-              tempInput.style.width = '11%';
-              tempCoorDiv.append(tempBtn);
-              tempBtn.addEventListener('click', (e) => {
-                devHelper.model3DVals.cameras[0].position.set(tempCoorDiv.children[0].value, tempCoorDiv.children[1].value, tempCoorDiv.children[2].value);
-              })
-              let tempBtn2 = document.createElement('button');
-              tempBtn2.innerText = 'Взять положение';
-              tempBtn2.style.width = '11%';
-              tempCoorDiv.append(tempBtn2);
-              tempBtn2.addEventListener('click', (e) => {
-                e.currentTarget.parentElement.children[0].value = devHelper.model3DVals.cameras[0].position.x;
-                e.currentTarget.parentElement.children[1].value = devHelper.model3DVals.cameras[0].position.y;
-                e.currentTarget.parentElement.children[2].value = devHelper.model3DVals.cameras[0].position.z;
-              })
-            }
-          }
-        } else if (a === 1) {
-          for (let i = 0; i < 3; i++) {
-            let tempInput = document.createElement('input');
-            tempInput.type = 'number';
-            tempInput.style.width = '11%';
-            tempInput.value = 0;
-            tempCoorDiv.append(tempInput);
-            if (i === 2) {
-              let tempBtn = document.createElement('button');
-              tempBtn.innerText = 'Примернить LookAt';
-              tempBtn.style.width = '11%';
-              tempCoorDiv.append(tempBtn);
-              tempBtn.addEventListener('click', (e) => {
-                devHelper.model3DVals.cameras[0].lookAt(tempCoorDiv.children[5].value, tempCoorDiv.children[6].value, tempCoorDiv.children[7].value);
-              })
-              let tempBtn2 = document.createElement('button');
-              tempBtn2.innerText = 'Взять lookAt';
-              tempBtn2.style.width = '11%';
-              tempCoorDiv.append(tempBtn2);
-              tempBtn2.addEventListener('click', (e) => {
-                // e.currentTarget.parentElement.children[0].value = devHelper.model3DVals.cameras[0].position.x;
-                // e.currentTarget.parentElement.children[1].value = devHelper.model3DVals.cameras[0].position.y;
-                // e.currentTarget.parentElement.children[2].value = devHelper.model3DVals.cameras[0].position.z;
-              })
-            }
-          }
+    scene.actionManager = new BABYLON.ActionManager(scene);
+    scene.actionManager.registerAction(
+      new BABYLON.ExecuteCodeAction(
+        BABYLON.ActionManager.OnEveryFrameTrigger,
+        function () {
+          // TODO Добавить органичесние на поворот камеры на главном виде и щитов
+          // if (devHelper.model3DVals.currentPosition === undefined) {
+          //   if (camera.rotation.y >= 1.01)
+          //     camera.rotation.y = 1.01;
+          //   if (camera.rotation.y <= -0.93)
+          //     camera.rotation.y = -0.93;
+          //   if (camera.rotation.x >= 0.608)
+          //     camera.rotation.x = 0.608;
+          //   if (camera.rotation.x <= -0.12) {
+          //     camera.rotation.x = -0.12;
+          //   }
+          //   console.log('X: ' + camera.rotation.x, 'Y: ' + camera.rotation.y);
+          // }
         }
-      }
-      document.querySelector('.game-view').append(tempCoorDiv);
+      )
+    );
+    /* Положения камеры на объекты
+    начальное положение
+    0.35, 2.15, -3.4
+    0.1913, -0.0046, 0
+    Монитор1
+    -6.56, 1.12, -0.79
+    -0.0165, -0.7836, 0
+    */
 
+    /* Блок кнопопк для камеры
+    ----------------------------------------------------------------------------------------------------------
+     */
+    if (devHelper.dev.enable === true) {
+      document.getElementById('movePositionX2').addEventListener('click', () => {
+        // changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK1');
+        changeSvgElem('fire_vnk_1', { position: { x: 10 } });
+      })
+      document.getElementById('movePositionY1').addEventListener('click', () => {
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK2');
+      })
+      document.getElementById('movePositionY2').addEventListener('click', () => {
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK3');
+      })
+      document.getElementById('movePositionZ1').addEventListener('click', () => {
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_main');
+      })
+      document.getElementById('movePositionZ2').addEventListener('click', () => {
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_spvg');
+      })
+      document.querySelector('#takePosition').addEventListener('click', () => {
+        document.querySelector('.value-input').children[0].value = camera.position.x;
+        document.querySelector('.value-input').children[1].value = camera.position.y;
+        document.querySelector('.value-input').children[2].value = camera.position.z;
+        document.querySelectorAll('.value-input')[1].children[0].value = camera.rotation.x;
+        document.querySelectorAll('.value-input')[1].children[1].value = camera.rotation.y;
+        document.querySelectorAll('.value-input')[1].children[2].value = camera.rotation.z;
+      })
+      document.querySelector('#back-btn').addEventListener('click', () => {
+        animMoveCamera([0.35, 2.15, -3.4], [0.1913, -0.0046, 0], undefined);
+      })
       const keys = {
         W: 87,
         A: 65,
@@ -124,40 +118,18 @@ document.addEventListener('DOMContentLoaded', function () {
         X: 88,
         Z: 90,
       };
-
       const moveSpeed = 0.01;
-
       const handleKeyDown = (event) => {
-        let tempStatsPos = undefined;
-        if (!document.getElementById('testPosCam')) {
-          tempStatsPos = document.createElement('div');
-          tempStatsPos.id = 'testPosCam';
-          tempStatsPos.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
-          tempStatsPos.style.position = 'absolute';
-          tempStatsPos.style.top = '200px';
-          tempStatsPos.style.left = '300px';
-          tempStatsPos.style.width = '350px';
-          tempStatsPos.style.height = '50px';
-          document.querySelector('.game-view').append(tempStatsPos);
-        } else tempStatsPos = document.querySelector('#testPosCam');
-
-        tempStatsPos.innerHTML = `X:${camera.position.x}; Y:${camera.position.y}; Z:${camera.position.z}`;
-        // console.log(renderer.info);
-        // console.log('calls:', renderer.info.render.calls, '; triangles:', renderer.info.render.triangles);
-        //1.74 1.33 0.57
-
-
         const keyCode = event.keyCode;
-
         switch (keyCode) {
           case keys.W:
-            camera.position.z = parseFloat(camera.position.z) - moveSpeed;
+            camera.position.z = parseFloat(camera.position.z) + moveSpeed;
             break;
           case keys.A:
             camera.position.x = parseFloat(camera.position.x) - moveSpeed;
             break;
           case keys.S:
-            camera.position.z = parseFloat(camera.position.z) + moveSpeed;
+            camera.position.z = parseFloat(camera.position.z) - moveSpeed;
             break;
           case keys.D:
             camera.position.x = parseFloat(camera.position.x) + moveSpeed;
@@ -171,346 +143,400 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       };
       window.addEventListener('keydown', handleKeyDown);
-
-      //---------------------------------------------------------------------------------
-
+    } else {
+      document.querySelector('.help-btn-block').remove();
     }
+    // var material = new BABYLON.StandardMaterial("material", scene);
+    // var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, scene);
+    // ground.receiveShadows = true;
+    // ground.material = material;
 
+    //----------------------------------------------------------------------------------------------------------
+    return scene;
+  };
+  canvas.addEventListener("pointermove", function () {
+    var pickResult = scene.pick(scene.pointerX, scene.pointerY);
+    if (pickResult.hit) {
+      // if (devHelper.dev.enable === true) console.log(pickResult.pickedMesh.name, pickResult.pickedMesh.uniqueId);
+      devHelper.model3DVals.meshUnderPointer = pickResult.pickedMesh.name;
+    }
+    else devHelper.model3DVals.meshUnderPointer = undefined;
+  });
 
-    // if (Element.parentElement.classList.contains('model-map-window')) {
-    //   camera = new THREE.OrthographicCamera(
-    //     Element.getBoundingClientRect().width / -43,
-    //     Element.getBoundingClientRect().width / 43,
-    //     Element.getBoundingClientRect().height / 43,
-    //     Element.getBoundingClientRect().height / -43,
-    //     1,
-    //     10000);
-    //   camera.position.set(2.5, 5.5, 7.3);
-    //   camera.updateProjectionMatrix();
-    //   camera.lookAt(2.5, 3, 0);
-    //   camera.updateProjectionMatrix();
-    //   camera.rotation.x = THREE.MathUtils.degToRad(-35);
-    //   camera.updateProjectionMatrix();
+  const scene = createScene();
+  if (devHelper.dev.enable === true) scene.debugLayer.show();
+  // engine.runRenderLoop(function () {
+  //   scene.render();
+  // });
 
-    //   let sphereArr = [], sphereCount = 5,
-    //     mouseoverSphere;
-    //   const sphereGeometry = new THREE.SphereGeometry(0.7, 32, 32);
-    //   for (let i = 0; i < sphereCount; i++) {
-    //     const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent: true, opacity: 0.4 });
-    //     const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-    //     scene.add(sphere);
-    //     if (i === 0)
-    //       sphere.position.set(-4.1, 0, 3.5);
-    //     else if (i === 1)
-    //       sphere.position.set(6.4, 0, 3.5);
-    //     else if (i === 2)
-    //       sphere.position.set(10.2, 0, 3.5);
-    //     else if (i === 3)
-    //       sphere.position.set(12, 0, 4);
-    //     else if (i === 4)
-    //       sphere.position.set(-12, 2.5, 3);
-    //     // else if (i === 5)
-    //     //   sphere.position.set(-12, 2.5, 3.5);
-    //     sphere.name = 'playerPosition_' + i;
-    //     sphere.touchableWithCamera = true;
-    //     sphereArr.push(sphere);
-    //   }
+  window.addEventListener("resize", function () {
+    devHelper.model3DVals.engine.resize();
+  });
 
-    //   const raycaster = new THREE.Raycaster();
-    //   const mouseVector = new THREE.Vector2();
-    //   renderer.domElement.addEventListener('mousemove', (event) => {
-    //     const canvasBounds = renderer.domElement.getBoundingClientRect();
-    //     mouseVector.x = ((event.clientX - canvasBounds.left) / canvasBounds.width) * 2 - 1;
-    //     mouseVector.y = -((event.clientY - canvasBounds.top) / canvasBounds.height) * 2 + 1;
-    //     raycaster.setFromCamera(mouseVector, camera);
-    //     mouseoverSphere = undefined;
-    //     for (let i = 0; i < sphereCount; i++) {
-    //       sphereArr[i].material.opacity = (raycaster.intersectObject(sphereArr[i]).length > 0 || i === devHelper.model3DVals.currentPosition) ? 1 : 0.4;
-    //       if (raycaster.intersectObject(sphereArr[i]).length > 0)
-    //         mouseoverSphere = sphereArr[i];
-    //     }
-    //     // document.querySelector('.model-map-window').style.cursor = mouseoverSphere === undefined ? 'default' : 'pointer';
-    //   });
-    //   renderer.domElement.addEventListener('click', (e) => {
-    //     if (mouseoverSphere) {
-    //       sphereArr.forEach((Element) => {
-    //         Element.material.opacity = 0.4;
-    //       })
-    //       if (mouseoverSphere.name.indexOf('0') !== -1) {
-    //         devHelper.model3DVals.cameras[1].position.set(-4.1, 3.7, 2.2);
-    //         devHelper.model3DVals.cameras[1].lookAt(-4.1, 1.5, 0.4);
-    //       }
-    //       if (mouseoverSphere.name.indexOf('1') !== -1) {
-    //         devHelper.model3DVals.cameras[1].position.set(6.4, 3.7, 2.2);
-    //         devHelper.model3DVals.cameras[1].lookAt(6.4, 1.5, 0.4);
-    //       }
-    //       if (mouseoverSphere.name.indexOf('2') !== -1) {
-    //         devHelper.model3DVals.cameras[1].position.set(10.2, 3.7, 2.2);
-    //         devHelper.model3DVals.cameras[1].lookAt(10.2, 1.5, 0.4);
-    //       }
-    //       if (mouseoverSphere.name.indexOf('3') !== -1) {
-    //         devHelper.model3DVals.cameras[1].position.set(13, 3.7, 4);
-    //         devHelper.model3DVals.cameras[1].lookAt(14.25, 1.5, 2.7);
-    //       }
-    //       if (mouseoverSphere.name.indexOf('4') !== -1) {
-    //         devHelper.model3DVals.cameras[1].position.set(-11.2, 2.5, 3.9);
-    //         devHelper.model3DVals.cameras[1].lookAt(-12.1, 2.5, 3);
-    //       }
-    //       devHelper.model3DVals.activeControlCamera = mouseoverSphere.name.indexOf('4') !== -1 ? false : true;
-    //       devHelper.model3DVals.currentPosition = parseFloat(mouseoverSphere.name.substring(mouseoverSphere.name.indexOf('_') + 1, mouseoverSphere.name.length));
-    //       mouseoverSphere.material.opacity = 1;
-    //       devHelper.model3DVals.cameras[1].startEulerY = undefined;
-    //     }
-    //   });
-    // } else {
-    let camera = new THREE.PerspectiveCamera(75, div3D.getBoundingClientRect().width / div3D.getBoundingClientRect().height, 0.1, 1000);
-    camera.position.set(0.61, 1.67, 2.28);
-    camera.lookAtCoors = new THREE.Vector3(0.61, 1.3, 0);
-    // camera.position.set(1.74, 1.33, 0.57);
-    // camera.lookAtCoors = { x: 1.74, y: 0.8, z: -0.04 };
-    /* 
-    начальный вид
-    0.61, 1.67, 2.28
-    x: 0.61, y: 1.3, z: 0
-    Монитор 1
-    -6.66, 1.13, 0.65
-    x: -6.78, y: 1.12, z: 0.56
-    */
-    camera.lookAt(camera.lookAtCoors);
-    camera.updateProjectionMatrix();
-    camera.newLookAt = new THREE.Vector3(0, 0, 0);
-    Object.assign(camera.newLookAt, camera.lookAtCoors);
-
-    let controls = new PointerLockControls(camera, renderer.domElement);
-    // controls.maxPolarAngle = 2.7;
-    // controls.minPolarAngle = 2.2;
-
-    const raycaster = new THREE.Raycaster();
-    const mouseVector = new THREE.Vector2();
-    let tempDevName = undefined;
-    renderer.domElement.addEventListener('mousemove', (event) => {
-      const canvasBounds = renderer.domElement.getBoundingClientRect();
-      mouseVector.x = ((event.clientX - canvasBounds.left) / canvasBounds.width) * 2 - 1;
-      mouseVector.y = -((event.clientY - canvasBounds.top) / canvasBounds.height) * 2 + 1;
-      raycaster.setFromCamera(mouseVector, camera);
-
-      let tempObj = devHelper.model3DVals.mouseoverMesh;
-      let intersects = raycaster.intersectObjects(scene.children);
-      if (devHelper.trenVals.ended === false && devHelper.trenVals.waitingInput === true) {
-        if (devHelper.dev.enable === true) {
-          if (intersects.length > 0 && intersects[0].object.name) {
-            if (tempDevName !== intersects[0].object.name) {
-              tempDevName = intersects[0].object.name;
-              console.log(tempDevName);
-              // Наведение мышки на любой меш на сцене2
-            }
+  function loadModel(Name, Scene, ShadowGenerator) {
+    BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
+      if (Name === 'All') {
+        let meshArr = [];
+        meshes.forEach(element => {
+          meshArr.push(element);
+          if (element.instances && element.instances.length > 0) {
+            element.instances.forEach(instance => {
+              meshArr.push(instance);
+            })
           }
-        }
+        })
+        meshArr.forEach(Mesh => {
+          // Mesh.receiveShadows = true;
+          // Mesh.castShadows = true;
+          // if (devHelper.dev.enable === true) {
+          Mesh.actionManager = new BABYLON.ActionManager(Scene);
+          Mesh.isPickable = true;
+          // }
+          if (Mesh.name && Mesh.name === 'Display_flat002') {
+            makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 1 });
+          } else if (Mesh.name && Mesh.name === 'Display_flat003') {
+            makeSvgDisplay(Mesh, Scene, 'vnk_main');
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 2 });
+          } else if (Mesh.id && Mesh.id === '25408591-8ddd-4b64-a7ad-499aaa995ae6') {
+            makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
+          } else if (Mesh.id && Mesh.id === '8d7497bf-6a8b-4906-8a35-1dc986e6e655') {
+            makeActiveMesh(Mesh, { name: 'kl021', posIndex: 3 });
+          } else if (Mesh.name && Mesh.name === 'Rectangle001') {
+            if (Mesh.id && Mesh.id === 'c4938c6e-adb9-4618-8fe0-76497fa5e0a7') {
+              Mesh.receiveShadows = true;
+              ShadowGenerator.getShadowMap().renderList.push(Mesh);
+            }
+          } else if (Mesh.name && Mesh.name === 'Room') {
+            Mesh.receiveShadows = true;
+          } else if (Mesh.name && Mesh.name === 'Monitor_flat021') {
+            ShadowGenerator.getShadowMap().renderList.push(Mesh);
+          } else if (Mesh.name && Mesh.name === 'Monitor_flat023') {
+            ShadowGenerator.getShadowMap().renderList.push(Mesh);
+          } else if (Mesh.name && Mesh.name === 'Console_PSODP6') {
 
-        if (intersects.length > 0 && intersects[0].object.name) {
-          if (devHelper.model3DVals.active3dObjects.indexOf(intersects[0].object.name) !== -1) {
-            devHelper.model3DVals.mouseoverMesh = intersects[0].object;
-            if (tempObj !== devHelper.model3DVals.mouseoverMesh) {
-              devHelper.model3DVals.mouseoverMesh.material.color.r = 5;
-              devHelper.model3DVals.mouseoverMesh.material.color.g = 5;
-              devHelper.model3DVals.mouseoverMesh.material.color.b = 0;
-            }
-          } else if (devHelper.model3DVals.playerPosMeshs.indexOf(intersects[0].object.name) !== -1) {
-            if (devHelper.model3DVals.currentPosition === undefined) {
-              devHelper.model3DVals.mouseoverMesh = intersects[0].object;
-              if (tempObj !== devHelper.model3DVals.mouseoverMesh) {
-                devHelper.model3DVals.mouseoverMesh.material.color.r = 5;
-                devHelper.model3DVals.mouseoverMesh.material.color.g = 5;
-                devHelper.model3DVals.mouseoverMesh.material.color.b = 0;
-              }
-            }
-          } else {
-            devHelper.model3DVals.mouseoverMesh = undefined;
-            if (tempObj !== devHelper.model3DVals.mouseoverMesh && tempObj !== undefined) {
-              tempObj.material.color.r = tempObj.startMaterialColor.r;
-              tempObj.material.color.g = tempObj.startMaterialColor.g;
-              tempObj.material.color.b = tempObj.startMaterialColor.b;
-            }
+          } else if (Mesh.name && Mesh.name === 'Console_BVNK') {
+
+          } else if (Mesh.name && Mesh.name === 'Console_UGKS') {
+
           }
-        }
-
-
-        // if (devHelper.model3DVals.currentPosition === undefined) {
-
-        // }
-        // if (devHelper.model3DVals.mouseoverMesh === undefined) {
-        //   intersects.length > 0 && intersects[0].object.name &&
-        //     devHelper.model3DVals.active3dObjects.indexOf(intersects[0].object.name) !== -1 ?
-        //     intersects[0].object : undefined;
-        // }
-
-        document.querySelector('.game-view').style.cursor = devHelper.model3DVals.mouseoverMesh === undefined ? 'move' : 'pointer';
-      }
-    });
-
-    renderer.domElement.addEventListener('mousedown', (e) => {
-      if (devHelper.model3DVals.mouseoverMesh !== undefined) {
-        document.querySelector('.game-view').style.cursor = 'move';
-        devHelper.model3DVals.mouseoverMesh.material.color.r = devHelper.model3DVals.mouseoverMesh.startMaterialColor.r;
-        devHelper.model3DVals.mouseoverMesh.material.color.g = devHelper.model3DVals.mouseoverMesh.startMaterialColor.g;
-        devHelper.model3DVals.mouseoverMesh.material.color.b = devHelper.model3DVals.mouseoverMesh.startMaterialColor.b;
+        })
+        change3DTime();
       } else {
-        // if (devHelper.model3DVals.activeControlCamera === true) 
-        controls.lock();
+        meshes.forEach(element => {
+          element.actionManager = new BABYLON.ActionManager(Scene);
+          element.isPickable = true;
+          const lightMat = new BABYLON.StandardMaterial("lightMat");
+          lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
+          lightMat.alpha = 0;
+          element.material = lightMat;
+          if (element.name && element.name === 'Console_BVNK_highlight') {
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+          } else if (element.name && element.name === 'Console_BZU_highlight') {
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+          } else if (element.name && element.name === 'Console_DP6_highlight') {
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+          } else if (element.name && element.name === 'Console_UGKS_highlight') {
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+          } else if (element.name && element.name === 'Console_PSODP6_highlight') {
+            element.dispose();
+          }
+        })
       }
-
     });
-    renderer.domElement.addEventListener('mouseup', () => {
-      controls.unlock();
-    });
-    renderer.domElement.addEventListener('mouseout', () => {
-      controls.unlock();
-    });
-    // }
-
-    devHelper.model3DVals.cameras.push(camera);
-    devHelper.model3DVals.renderers.push(renderer);
-    devHelper.model3DVals.scenes.push(scene);
-    devHelper.model3DVals.controls.push(controls);
-    // })
-
-    //---------------------------------------------------------------------------------
-    // замена текстуры материала на мониторе
-    // SwapMaterial();  
-    // function SwapMaterial() {
-    //   let img = new Image();
-    //   let svgData = (new XMLSerializer()).serializeToString(document.getElementById("S1").contentDocument);
-    //   img.src = 'data:image/svg+xml,' + encodeURIComponent(svgData);
-    //   img.onload = function () {
-    //     let tempTexture = new THREE.Texture(img);
-    //     tempTexture.needsUpdate = true;
-    //     ЗАМЕНИТЬ_МЕШ.material.map = tempTexture;
-    //     return tempTexture
-    //   }
-    // }
-    //---------------------------------------------------------------------------------
   }
-})
+});
 
-
-
-
-
-
-function loadGLB(Loader, Name, Scene) {
-  // Loader.load(`media/models/gltf/${Name}.gltf`, (gltf) => {
-  Loader.load(`media/models/${Name}.glb`, (gltf) => {
-    if (devHelper.dev.enable === true) console.log(gltf);
-    Scene.add(gltf.scene);
-    let _scale = 1;
-    gltf.scene.scale.set(_scale, _scale, _scale);
-    gltf.scene.position.set(0, 0, 0);
-    devHelper.model3DVals.mainModel = gltf.scene;
-
-
-
-    if (Name === 'Room') {
-      animate();
-      loadGLB(Loader, 'Room_Clock', Scene);
+function makeSvgDisplay(Mesh, Scene, SvgName) {
+  let tempMat = new BABYLON.StandardMaterial(`material_${Mesh.name}`, Scene);
+  Mesh.material = tempMat;
+  devHelper.model3DVals.svgDisplays.meshs.push(Mesh);
+  let tempInterval = setInterval(() => {
+    if (devHelper.model3DVals.svgDisplays.textures.length === document.querySelector('.svg-scheme-container').querySelectorAll('object').length) {
+      changeSvgtexture(Mesh, SvgName);
+      clearInterval(tempInterval);
     }
-    if (Name === 'Room_Clock') loadGLB(Loader, 'Room_Group_000', Scene); // -5fps много весит, ненужно
-    if (Name === 'Room_Group_000') loadGLB(Loader, 'Room_Group_001', Scene);
-    if (Name === 'Room_Group_001') loadGLB(Loader, 'Room_Lightning', Scene); // Нужны ли вообще?
-    if (Name === 'Room_Lightning') loadGLB(Loader, 'Room_Vent', Scene); // Нужны ли вообще?
-    if (Name === 'Room_Vent') loadGLB(Loader, 'Table', Scene);
-    if (Name === 'Table') loadGLB(Loader, 'TV_panels', Scene);
-    if (Name === 'TV_panels') loadGLB(Loader, 'ComputersGroup00', Scene);
-    if (Name === 'ComputersGroup00') loadGLB(Loader, 'ComputersGroup01', Scene); //-5fps
-    if (Name === 'ComputersGroup01') loadGLB(Loader, 'ComputersGroup02', Scene);
-    if (Name === 'ComputersGroup02') loadGLB(Loader, 'ComputersGroup03', Scene);
-    if (Name === 'ComputersGroup03') loadGLB(Loader, 'Console_BVNK', Scene);
-    if (Name === 'Console_BVNK') loadGLB(Loader, 'Console_BZU', Scene);
-    if (Name === 'Console_BZU') loadGLB(Loader, 'Console_DP6', Scene);
-    if (Name === 'Console_UGKS') loadGLB(Loader, 'Console_PSODP6', Scene);
-    if (Name === 'Console_BVNK') loadGLB(Loader, 'Console_UGKS', Scene);
-    if (Name === 'Console_UGKS') loadGLB(Loader, 'Joystick', Scene);
-    if (Name === 'Joystick') loadGLB(Loader, 'Microphone', Scene);
-    if (Name === 'Microphone') loadGLB(Loader, 'Telephone', Scene);
-
-    Array.from(document.querySelectorAll('.spin-loader')).forEach((Element, Index) => {
-      Element.remove();
-      document.querySelectorAll('.model3D-window')[Index].style.top = '0px';
-    })
-
-
-
-    let unicMatArr = [];
-    gltf.scene.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        if (child.name && child.name.indexOf('Display_flat002') !== -1 && child.name.length === 15) {
-          devHelper.model3DVals.playerPosMeshs.push(child.name);
-          child.startMaterialColor = { r: child.material.color.r, g: child.material.color.g, b: child.material.color.b }
-        }
-        if (child.name && child.name.indexOf('Display_flat002_1') !== -1) {
-          devHelper.model3DVals.playerPosMeshs.push(child.name);
-          child.startMaterialColor = { r: child.material.color.r, g: child.material.color.g, b: child.material.color.b }
-        }
-        if (unicMatArr.indexOf(child.material) === -1) unicMatArr.push(child.material);
-        else {
-          let clonedMaterial = child.material.clone();
-          child.material = clonedMaterial;
-        }
-      }
-    })
-    // let unicMergeMeshArr = [];
-    // gltf.scene.children.forEach((Element) => {
-
-    //     unicMatArr.push(Element.children[0].material);
-    //     unicMergeMeshArr.push(new THREE.BufferGeometry());
-    //   } else {
-    //     let clonedMaterial = Element.children[0].material.clone();
-    //     Element.children[0].material = clonedMaterial;
-    //   }
-    //   //   if (Element.children[0].material)
-    //   //     Element.children[0].startMaterialColor = { r: Element.children[0].material.color.r, g: Element.children[0].material.color.g, b: Element.children[0].material.color.b }
-    //   //   // if (Element.children[0].name && Element.children[0].name === 'Display_bend') {
-    //   //   //   devHelper.tempMonitor = Element.children[0];
-    //   //   //   const img = new Image();
-    //   //   //   img.src = 'data:image/svg+xml,' + encodeURIComponent(new XMLSerializer().serializeToString(document.querySelector('object').contentDocument.querySelector('svg')));
-    //   //   //   img.onload = function () {
-    //   //   //     const material = new THREE.MeshBasicMaterial({ map: createSchemeTexture(img) });
-    //   //   //     Element.children[0].material = material;
-    //   //   //     Element.children[0].material.map.offset.y = 0.03;
-    //   //   //   };
-    //   //   // }
-    // });
-    // console.log(unicMatArr, unicMergeMeshArr);
-  },
-    (xhr) => {
-      // let maxWeight = 1;
-      // for (let key in total3DModelsWeight) {
-      //   if (key == document.querySelector('div[model3D]').getAttribute('model3D'))
-      //     maxWeight = total3DModelsWeight[key];
-      // }
-      // let tempLoad = ((xhr.loaded / (maxWeight === 0 ? xhr.total : maxWeight)).toFixed(2) * 100).toFixed(0);
-      // Array.from(document.querySelectorAll('.spin-loader-text')).forEach((Element) => {
-      //   Element.innerText = tempLoad;
-      // })
-    },
-    (error) => {
-      console.log(error)
-    }
-  )
+  }, 500);
 }
 
-function animate() {
-  if (devHelper.dev.enable === true) devHelper.dev.perfomance.begin();
-  if (devHelper.model3DVals.renderers.length > 0) {
-    devHelper.model3DVals.renderers.forEach((Element, Index) => {
-      Element.render(devHelper.model3DVals.scenes[Index], devHelper.model3DVals.cameras[Index]);
-    })
+function makeActiveMesh(Mesh = undefined, Vals = undefined) {
+  if (Mesh === undefined || Vals === undefined) {
+    if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции makeActiveMesh.');
+    return;
+  } else {
+    if (Mesh instanceof BABYLON.InstancedMesh) {
+      let tempMesh = Mesh.sourceMesh.clone();
+      tempMesh.name = Mesh.name;
+      tempMesh.material = Mesh.material.clone(`material_${tempMesh.name}`);
+      tempMesh.setAbsolutePosition(new BABYLON.Vector3(Mesh.absolutePosition._x, Mesh.absolutePosition._y, Mesh.absolutePosition._z));
+      Mesh.dispose();
+      Mesh = tempMesh;
+    }
+    Mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
+
+    if (Vals.name) {
+      Mesh.name = Vals.name;
+      Mesh.currentPosition = Vals.posIndex;
+      Mesh.isPickable = false;
+      if (devHelper.model3DVals.activeMeshs[Vals.posIndex] === undefined)
+        devHelper.model3DVals.activeMeshs[Vals.posIndex] = [Mesh];
+      else
+        devHelper.model3DVals.activeMeshs[Vals.posIndex].push(Mesh);
+    } else if (Vals.posCoors) {
+      Mesh.isPickable = true;
+      devHelper.model3DVals.movePointMesh.push(Mesh);
+    }
+    Mesh.actionManager.registerAction(
+      new BABYLON.ExecuteCodeAction(
+        BABYLON.ActionManager.OnPickTrigger,
+        function () {
+          if (Vals.name) {
+            clickOnMesh(Mesh);
+          } else if (Vals.posCoors) {
+            clickOnPointMesh(Mesh, Vals);
+          }
+        }
+      )
+    );
+    Mesh.actionManager.registerAction(
+      new BABYLON.ExecuteCodeAction(
+        BABYLON.ActionManager.OnPointerOverTrigger,
+        function () { changeColorTexture(Mesh, true); }
+      )
+    );
+    Mesh.actionManager.registerAction(
+      new BABYLON.ExecuteCodeAction(
+        BABYLON.ActionManager.OnPointerOutTrigger,
+        function () { changeColorTexture(Mesh, false); }
+      )
+    );
+    makeUnicMat(Mesh);
   }
-  devHelper.model3DVals.scenes[0].children.forEach((Element) => {
-    if (Element.name && Element.name.indexOf('playerPosition_') !== -1)
-      if (Element.name.indexOf(devHelper.model3DVals.currentPosition) !== -1 && Element.material.opacity !== 1)
-        Element.material.opacity = 1;
-  })
-  if (devHelper.dev.enable === true) devHelper.dev.perfomance.end();
-  requestAnimationFrame(animate);
 }
+
+function clickOnPointMesh(Mesh = undefined, Vals = undefined) {
+  if (Mesh === undefined || Vals === undefined) {
+    if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции clickOnPointMesh.');
+    return;
+  } else {
+    changeColorTexture(Mesh, false);
+    animMoveCamera(Vals.posCoors, Vals.lookAtCoors, Vals.posIndex);
+  }
+}
+
+function makeUnicMat(UnicMesh) {
+  if (UnicMesh.material) {
+    let tempMaterial = UnicMesh.material.clone(`material_${UnicMesh.name}`);
+    UnicMesh.material = tempMaterial;
+  }
+}
+
+function changeSvgtexture(Mesh = undefined, SvgName = undefined) {
+  if (Mesh && SvgName) {
+    Mesh.svgName = SvgName;
+    let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
+    let textureContext = Texture.getContext();
+    let newIndex = devHelper.model3DVals.svgDisplays.textures.indexOf(Texture);
+    let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[newIndex];
+    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[newIndex]))));
+    outputImage.onload = function () {
+      textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
+      textureContext.drawImage(outputImage, 0, 0);
+      Texture.update();
+      if (Mesh.material.diffuseTexture !== Texture) 
+        Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = Texture;
+    }
+  } else {
+    if (devHelper.dev.enable === true) console.warn(`В функцию changeSvgtexture передали не все переменные.`);
+    return
+  }
+}
+
+function updateSvgTexture(SvgName = undefined) {
+  if (SvgName) {
+    let SvgIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === SvgName; })
+    let outputImage = devHelper.svgVals[SvgIndex].object.nextElementSibling;
+    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[SvgIndex]))));
+    devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
+      changeSvgtexture(DisplayMesh, DisplayMesh.svgName);
+    })
+  } else {
+    if (devHelper.dev.enable === true) console.warn(`В функцию updateSvgTexture передали не все переменные.`);
+    return
+  }
+}
+
+function changeColorTexture(Mesh = undefined, State = undefined) {
+  let tempBool = false;
+  if (devHelper.model3DVals.movePointMesh.indexOf(Mesh) !== -1) {
+    if (devHelper.model3DVals.currentPosition === undefined)
+      tempBool = true;
+  } else if (devHelper.model3DVals.activeMeshs.indexOf(Mesh) !== -1) {
+    if (devHelper.model3DVals.currentPosition === Mesh.currentPosition)
+      tempBool = true;
+  }
+
+  if (tempBool === true) {
+
+    // if (State === true) {
+    // //   Mesh.enableEdgesRendering();
+    // //   Mesh.edgesColor = new BABYLON.Color4(1, 1, 0, 0.5);
+    // //   Mesh.edgesWidth = 2;
+    // //   devHelper.model3DVals.glowLayer = new BABYLON.GlowLayer("glow", devHelper.model3DVals.scene);
+    // //   devHelper.model3DVals.glowLayer.addIncludedOnlyMesh(Mesh);
+    // //   devHelper.model3DVals.glowLayer.intensity = 0.3;
+    // //   Mesh.material.oldEmissiveColor = Mesh.material.emissiveColor;
+    // //   Mesh.material.emissiveColor = BABYLON.Color3.Yellow();
+    // } else {
+    // //   Mesh.edgesWidth = 0;
+    // //   if (devHelper.model3DVals.glowLayer) {
+    // //     devHelper.model3DVals.glowLayer.dispose();
+    // //     Mesh.material.emissiveColor = Mesh.material.oldEmissiveColor;
+    // //   }
+    // }
+
+    let newBlue1 = State === true ? 0 : 1;
+    let newBlue2 = State === true ? -1 : 0;
+    let newAlpha = State === true ? 0.5 : 0;
+    if (Mesh.material.alpha !== 1) {
+      Mesh.material.alpha = newAlpha;
+    } else {
+      if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
+      else if (Mesh.material._emissiveColor)
+        Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
+    }
+  }
+}
+//TODO тут сделать часы 3Д
+function change3DTime(Time = '00:00:00') {
+  // Пример кода часов 3Д
+  let unicOff = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_0');
+  let unic0 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_001');
+  let unic1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_002');
+  let unic2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_003');
+  let unic3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_004');
+  let unic4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_005');
+  let unic5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_006');
+  let unic6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_007');
+  let unic7 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_008');
+  let unic8 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_009');
+  let unic9 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_off');
+  let digit1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits000');
+  let digit2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits001');
+  let digit3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits002');
+  let digit4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits003');
+  let digit5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits004');
+  let digit6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits005');
+  digit1.material = unic0.material.clone();
+  digit2.material = unic7.material.clone();
+  digit3.material = unic3.material.clone();
+  digit4.material = unic4.material.clone();
+  digit5.material = unic5.material.clone();
+  digit6.material = unic4.material.clone();
+}
+
+function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefined, Duration = 1, Scene = devHelper.model3DVals.scene) {
+  if (devHelper.dev.enable === true) {
+    if (Mesh === undefined) console.warn(`В функцию rotateMesh не передали меш.`);
+    if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
+  }
+  if (Mesh !== undefined || Axis !== undefined) {
+    if (Mesh.rotation._isDirty === false) Mesh.rotation = new BABYLON.Vector3(0, 0, 0);
+    if (Type === 'r') Val = Val * (Math.PI / 180);
+    let animation = new BABYLON.Animation(
+      Type === 'r' ? "rotationAnimation" : "positionAnimation",
+      Type === 'r' ? `rotation.${Axis}` : `position.${Axis}`,
+      60,
+      BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+      BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+    );
+    var keys = [
+      {
+        frame: 0,
+        value: Type === 'r' ? Mesh.rotation[Axis] : Mesh.position[Axis],
+      },
+      {
+        frame: Duration * 60,
+        value: Val
+      }
+    ];
+    animation.setKeys(keys);
+    Scene.beginDirectAnimation(Mesh, [animation], 0, Duration * 60, false);
+  } else return
+}
+
+function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
+  devHelper.model3DVals.currentPosition = CurPos;
+  if (CurPos === undefined)
+    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = true);
+  else {
+    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
+    if (devHelper.model3DVals.activeMeshs[CurPos])
+      devHelper.model3DVals.activeMeshs[CurPos].forEach(mesh => mesh.isPickable = true);
+  }
+  // if (CurPos === 1) { // все мониторы
+  //   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = false;
+  //   // тут сделать появление экрана 2Д
+  // } else {
+  //   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = true;
+  // }
+
+  let positionAnimation = new BABYLON.Animation(
+    "positionAnimation",
+    "position",
+    60,
+    BABYLON.Animation.ANIMATIONTYPE_VECTOR3,
+    BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+  );
+
+  var positionKeys = [];
+  positionKeys.push({
+    frame: 0,
+    value: devHelper.model3DVals.camera.position.clone()
+  });
+  positionKeys.push({
+    frame: 120,
+    value: new BABYLON.Vector3(PosCoors[0], PosCoors[1], PosCoors[2])
+  });
+  positionAnimation.setKeys(positionKeys);
+
+  let rotationAnimation = new BABYLON.Animation(
+    "rotationAnimation",
+    "rotation",
+    60,
+    BABYLON.Animation.ANIMATIONTYPE_VECTOR3,
+    BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+  );
+
+  var rotationKeys = [];
+  rotationKeys.push({
+    frame: 0,
+    value: devHelper.model3DVals.camera.rotation.clone()
+  });
+  rotationKeys.push({
+    frame: 120,
+    value: new BABYLON.Vector3(LookAtCoors[0], LookAtCoors[1], LookAtCoors[2])
+  });
+  rotationAnimation.setKeys(rotationKeys);
+  devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
+  devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false, 1, () => {
+    revialSvgObject(CurPos);
+  });
+}
+
+function clickOnMesh(Mesh = undefined) {
+  if (Mesh === undefined) {
+    if (devHelper.dev.enable === true) console.warn(`В функцию clickOnMesh не передали меш.`);
+    return
+  } else {
+    trenClickOnMesh(Mesh);
+  }
+}
+
+function startRender() {
+  devHelper.model3DVals.engine.runRenderLoop(function () {
+    devHelper.model3DVals.scene.render();
+  });
+}
+
 
