@@ -112,7 +112,6 @@ function domLoaded() {
     })
   })
 
-  // Сергей
   // Переход к нужному тесту
   document.querySelector('.tests-container').querySelectorAll('.tests-button').forEach((Element) => {
     Element.addEventListener('click', (e) => {
@@ -126,7 +125,6 @@ function domLoaded() {
     })
   })
 
-  // Сергей
   // Правильные ответы для самопроверки
   const testsAnswerResults = {
     selfcheck: {
@@ -140,9 +138,7 @@ function domLoaded() {
       2: 2, // 3
     },
   }
-  // let selfcheckContainer = document.querySelectorAll('.selfcheck-container').length;
 
-  // Сергей
   // Вешаю обработчик нажатия на все <div class="selfcheck-radio">
   document.querySelectorAll('.selfcheck-radio').forEach((Element) => {
     Element.addEventListener('click', (e) => {
@@ -150,7 +146,6 @@ function domLoaded() {
     })
   })
 
-  // Сергей
   // Вешаю обработчик на кнопку 'Подтвердить'
   document.querySelectorAll('.selfcheck-confirm-button').forEach((Element) => {
     Element.addEventListener('click', (e) => {
@@ -159,43 +154,6 @@ function domLoaded() {
   })
 
   loadTrenActions();
-}
-
-// Сергей
-// Функция работы с radioButton
-function radioButtonChange(elem) {
-  if (elem.parentElement.classList.contains('active-radio')) return;
-  let confirmButton = elem.closest('.selfcheck-container').querySelector('.selfcheck-confirm-button');
-  let radioContainer = elem.closest('.selfcheck-radio-container');
-  if (!elem.parentElement.classList.contains('active-radio')) {
-    if (radioContainer.contains(radioContainer.querySelector('.active-radio'))) {
-      radioContainer.querySelector('.active-radio').classList.toggle('active-radio', false);
-    }
-    elem.parentElement.classList.toggle('active-radio', true);
-    confirmButton.classList.toggle('disabled-button', false)
-    confirmButton.classList.toggle('active-button', true)
-  } else {
-    elem.parentElement.classList.toggle('active-radio', false);
-    confirmButton.classList.toggle('disabled-button', true)
-    confirmButton.classList.toggle('active-button', false)
-  }
-}
-
-// Сергей
-// Подтверждение ответа в тестах
-function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
-  let selfcheckContainer = elem.closest('.selfcheck-container');
-  let selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
-  let radioContainer = selfcheckContainer.querySelector('.selfcheck-radio-container');
-  let radioButtSelectIndex = Array.from(radioContainer.querySelectorAll('.radio-elem')).indexOf(radioContainer.querySelector('.active-radio'));
-  // console.log(selfcheckcontainerIndex);
-  if (radioButtSelectIndex == selfcheckTrueResults.selfcheck[selfcheckcontainerIndex]) {
-    radioContainer.querySelector('.active-radio').classList.toggle('correct-answer', true);
-    selfcheckContainer.classList.toggle('block-selfcheck-container', true);
-  } else {
-    radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', true);
-    selfcheckContainer.classList.toggle('block-selfcheck-container', true);
-  }
 }
 
 setInterval(() => {
@@ -228,7 +186,6 @@ window.addEventListener('load', function () {
   });
   if (devHelper.dev.enable === true) console.log(devHelper);
 });
-
 
 function guideBtnsClick(e) {
   if (!e.currentTarget.classList.contains('nav-icon-active')) {
@@ -264,8 +221,37 @@ function guideBtnsClick(e) {
   }
 }
 
-
-function changeMessageWindow(Num) {
-  document.querySelector('.message').innerHTML = Num === 0 ? devHelper.trenVals.messages.normal : devHelper.trenVals.messages.error;
-  document.querySelector('.message').style.backgroundColor = Num === 0 ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 0, 0, 0.4)';
+// Функция работы с radioButton
+function radioButtonChange(elem) {
+  if (elem.parentElement.classList.contains('active-radio')) return;
+  let confirmButton = elem.closest('.selfcheck-container').querySelector('.selfcheck-confirm-button');
+  let radioContainer = elem.closest('.selfcheck-radio-container');
+  if (!elem.parentElement.classList.contains('active-radio')) {
+    if (radioContainer.contains(radioContainer.querySelector('.active-radio'))) {
+      radioContainer.querySelector('.active-radio').classList.toggle('active-radio', false);
+    }
+    elem.parentElement.classList.toggle('active-radio', true);
+    confirmButton.classList.toggle('disabled-button', false)
+    confirmButton.classList.toggle('active-button', true)
+  } else {
+    elem.parentElement.classList.toggle('active-radio', false);
+    confirmButton.classList.toggle('disabled-button', true)
+    confirmButton.classList.toggle('active-button', false)
+  }
 }
+
+// Подтверждение ответа в тестах
+function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
+  let selfcheckContainer = elem.closest('.selfcheck-container');
+  let selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
+  let radioContainer = selfcheckContainer.querySelector('.selfcheck-radio-container');
+  let radioButtSelectIndex = Array.from(radioContainer.querySelectorAll('.radio-elem')).indexOf(radioContainer.querySelector('.active-radio'));
+  if (radioButtSelectIndex == selfcheckTrueResults.selfcheck[selfcheckcontainerIndex]) {
+    radioContainer.querySelector('.active-radio').classList.toggle('correct-answer', true);
+    selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+  } else {
+    radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', true);
+    selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+  }
+}
+
