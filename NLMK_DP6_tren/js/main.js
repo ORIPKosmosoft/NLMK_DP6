@@ -111,7 +111,6 @@ function domLoaded() {
   })
 
   loadTrenActions();
-  console.log(devHelper);
 }
 
 setInterval(() => {
@@ -142,6 +141,7 @@ window.addEventListener('load', function () {
       })
     }
   });
+  if (devHelper.dev.enable === true) console.log(devHelper);
 });
 
 function guideBtnsClick(e) {

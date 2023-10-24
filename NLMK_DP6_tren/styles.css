@@ -794,6 +794,7 @@ ul {
 
 .invisible-element-svg {
   position: absolute;
+  cursor: pointer;
 }
 
 /* babylon 

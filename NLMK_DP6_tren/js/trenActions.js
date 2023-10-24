@@ -36,7 +36,8 @@ const devHelper = {
       meshs: [],
       textures: [],
       tagImgs: [],
-      svgs: []
+      svgs: [],
+      materials: [],
     },
   },
   svgVals: [],

@@ -84,7 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     if (devHelper.dev.enable === true) {
       document.getElementById('movePositionX2').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK1');
+        // changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK1');
+        changeSvgElem('fire_vnk_1', { position: { x: 10 } });
       })
       document.getElementById('movePositionY1').addEventListener('click', () => {
         changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK2');
@@ -149,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, scene);
     // ground.receiveShadows = true;
     // ground.material = material;
-    
+
     //----------------------------------------------------------------------------------------------------------
     return scene;
   };
@@ -332,18 +333,35 @@ function makeUnicMat(UnicMesh) {
 
 function changeSvgtexture(Mesh = undefined, SvgName = undefined) {
   if (Mesh && SvgName) {
+    Mesh.svgName = SvgName;
     let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
     let textureContext = Texture.getContext();
     let newIndex = devHelper.model3DVals.svgDisplays.textures.indexOf(Texture);
     let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[newIndex];
     outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[newIndex]))));
     outputImage.onload = function () {
+      textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
       textureContext.drawImage(outputImage, 0, 0);
       Texture.update();
-      if (Mesh.material.diffuseTexture !== Texture) Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = Texture;
+      if (Mesh.material.diffuseTexture !== Texture) 
+        Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = Texture;
     }
   } else {
     if (devHelper.dev.enable === true) console.warn(`В функцию changeSvgtexture передали не все переменные.`);
+    return
+  }
+}
+
+function updateSvgTexture(SvgName = undefined) {
+  if (SvgName) {
+    let SvgIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === SvgName; })
+    let outputImage = devHelper.svgVals[SvgIndex].object.nextElementSibling;
+    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[SvgIndex]))));
+    devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
+      changeSvgtexture(DisplayMesh, DisplayMesh.svgName);
+    })
+  } else {
+    if (devHelper.dev.enable === true) console.warn(`В функцию updateSvgTexture передали не все переменные.`);
     return
   }
 }
@@ -462,7 +480,7 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   // } else {
   //   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = true;
   // }
-  
+
   let positionAnimation = new BABYLON.Animation(
     "positionAnimation",
     "position",

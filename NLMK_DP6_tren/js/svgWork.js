@@ -727,6 +727,50 @@ window.addEventListener('load', function () {
         }
       })
     }
+    if (Element.name === 'BVNK_VNK1') {
+      // Element.object.style.left = '0';
+      // Element.object.style.top = '0';
+      // Element.object.style.visibility = 'visible';
+      Element.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
+        if (TextElement.innerHTML === '92') {
+          addSvgElem(Index, TextElement, '3TI_43')
+
+        }
+      })
+      Element.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') {
+          devHelper.svgVals[Index].activeElements.push({
+            element: Element,
+            name: '313'
+          })
+          // Element.addEventListener('click', () => {
+          //   changeSvgElem('3TI_43', { text: '100' });
+          // });
+        }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') {
+          devHelper.svgVals[Index].activeElements.push({
+            element: Element,
+            name: 'vnk_1'
+          })
+        }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') {
+          devHelper.svgVals[Index].activeElements.push({
+            element: Element,
+            name: 'fire_vnk_1'
+          })
+        }
+      })
+    }
+    if (Element.name === 'vnk_main') {
+      Element.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') {
+          devHelper.svgVals[Index].activeElements.push({
+            element: Element,
+            name: 'vnk_1'
+          })
+        }
+      })
+    }
   })
 
   devHelper.svgVals.forEach((Element) => {
@@ -763,7 +807,6 @@ function makeDynamicTextureDisplay(ObjectSvg) {
 }
 
 function revialSvgObject(CurrentPosition) {
-  let activeMonitor = undefined;
   if (CurrentPosition === 1) { // вынести повторяемые блкои кода
     let mainContainer = document.createElement('div');
     mainContainer.style.position = 'absolute';
@@ -773,23 +816,28 @@ function revialSvgObject(CurrentPosition) {
     mainContainer.style.height = '89%';
     document.body.append(mainContainer);
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       let invisElem = document.createElement('div');
       invisElem.classList.add('invisible-element-svg');
-      let tempObj = {x: 0, y: 0, w: 0, h: 0};
-      if (i === 0) tempObj = {x: 0.5, y: 0.5, w: 6.5, h: 3};
-      else if (i === 1) tempObj = {x: 8.5, y: 0.5, w: 6.5, h: 3};
-      else if (i === 2) tempObj = {x: 16, y: 0.5, w: 7, h: 3};
-      else if (i === 3) tempObj = {x: 24, y: 0.5, w: 7, h: 3};
-      else if (i === 4) tempObj = {x: 32, y: 0.5, w: 6.8, h: 3};
-      let tempName = 'vnk_main';
-      if (i === 0) tempName = 'vnk_main';
-      else if (i === 1) tempName = 'BVNK_VNK1';
-      else if (i === 2) tempName = 'BVNK_VNK2';
-      else if (i === 3) tempName = 'BVNK_VNK3';
-      else if (i === 4) tempName = 'vnk_spvg';
+      let tempObj = { x: 0, y: 0, w: 0, h: 0 };
+      if (i === 0) tempObj = { x: 0.5, y: 0.5, w: 6.5, h: 3 };
+      else if (i === 1) tempObj = { x: 8.5, y: 0.5, w: 6.5, h: 3 };
+      else if (i === 2) tempObj = { x: 16, y: 0.5, w: 7, h: 3 };
+      else if (i === 3) tempObj = { x: 24, y: 0.5, w: 7, h: 3 };
+      else if (i === 4) tempObj = { x: 32, y: 0.5, w: 6.8, h: 3 };
+      else if (i === 5) tempObj = { x: 33.9, y: 23.5, w: 1.5, h: 2.7 };
 
-      invisElem.addEventListener('click', () => changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], tempName));
+      invisElem.addEventListener('click', () => {
+        if (i < 5) {
+          let tempName = 'vnk_main';
+          if (i === 0) tempName = 'vnk_main';
+          else if (i === 1) tempName = 'BVNK_VNK1';
+          else if (i === 2) tempName = 'BVNK_VNK2';
+          else if (i === 3) tempName = 'BVNK_VNK3';
+          else if (i === 4) tempName = 'vnk_spvg';
+          changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], tempName)
+        } else if (i === 5) changeSvgElem('fire_vnk_1', { position: { x: 10, y: 10 } });
+      });
 
       invisElem.style.left = tempObj.x + 'vw';
       invisElem.style.top = tempObj.y + 'vh';
@@ -797,37 +845,56 @@ function revialSvgObject(CurrentPosition) {
       invisElem.style.height = tempObj.h + 'vh';
       mainContainer.append(invisElem);
     }
+  }
+}
+// color; text; alpha; position в vw, vh;
+function changeSvgElem(Name = undefined, Val = {}) {
+  if (Name) {
+    devHelper.svgVals.forEach((svgArrObject) => {
+      svgArrObject.activeElements.forEach((activeElemObj) => {
+        if (activeElemObj.name === Name) {
+          if (Val.text && Val.text !== '')
+            activeElemObj.element.innerHTML = Val.text;
+          if (Val.color && Val.color !== '')
+            activeElemObj.element.style.fill = Val.color;
+          if (Val.alpha && Val.alpha !== '')
+            activeElemObj.element.style.opacity = Val.alpha;
+          if (Val.rotation && Val.rotation !== '')
+            changeSvgElemPos(activeElemObj.element, Val.rotation, 'rotate');
+          if (Val.position) {
+            if (Val.position.x && Val.position.x !== '') changeSvgElemPos(activeElemObj.element, Val.position.x, 'translateX');
+            if (Val.position.y && Val.position.y !== '') changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
+          }
+          updateSvgTexture(svgArrObject.name);
+        }
+      })
+    })
+  } else {
+    if (devHelper.dev.enable === true) console.warn(`В функцию changeSvgElem передали не все переменные.`);
+    return
+  }
+}
 
-    // let temp1 = document.createElement('div');
-    // temp1.style.width = '10%';
-    // temp1.style.height = '4%';
-    // temp1.addEventListener('click', (e) => {
-    //   changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_main');
-    // })
-    // let temp2 = document.createElement('div');
-    // temp2.style.width = '10%';
-    // temp2.style.height = '4%';
-    // temp2.addEventListener('click', (e) => {
-    //   changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK1');
-    // })
-    // let temp3 = document.createElement('div');
-    // temp3.style.width = '10%';
-    // temp3.style.height = '4%';
-    // temp3.addEventListener('click', (e) => {
-    //   changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK2');
-    // })
-    // let temp4 = document.createElement('div');
-    // temp4.style.width = '10%';
-    // temp4.style.height = '4%';
-    // temp4.addEventListener('click', (e) => {
-    //   changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK3');
-    // })
-    // let temp5 = document.createElement('div');
-    // temp5.style.width = '10%';
-    // temp5.style.height = '4%';
-    // temp5.addEventListener('click', (e) => {
-    //   changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_spvg');
-    // })
-    // mainContainer.append(temp1, temp2, temp3, temp4, temp5);
+function changeSvgElemPos(Elem, Val, Type) {
+  let tempTransform = Elem.style.transform ? Elem.style.transform : '';
+  let endString = Type === 'translateX' ? 'vw' : Type === 'translateY' ? 'vh' : 'deg';
+  console.log(`${Type}(${Val}${endString})`);
+  if (tempTransform !== '' && tempTransform.includes(Type)) {
+    let oldTrans = tempTransform.split(`${Type}(`)[1].split(endString)[0];
+    let newTransform = tempTransform.replace(`${Type}(${oldTrans}${endString})`, `${Type}(${Val}${endString})`);
+    Elem.style.transform = newTransform;
+  }
+  else
+    Elem.style.transform = tempTransform + `${Type}(${Val}${endString})`;
+}
+
+function addSvgElem(SvgIndex, Element, Name) {
+  devHelper.svgVals[SvgIndex].activeElements.push({
+    element: Element,
+    name: Name,
+  })
+  if (Element.tagName === 'text') {
+    Element.style.textAnchor = 'end';
+    Element.style.transform = `translate(${Element.getBoundingClientRect().width}px, 0px)`;
   }
 }
