@@ -229,7 +229,8 @@ function guideBtnsClick(e) {
     }
   } else {
     document.querySelector('.section').style.width = '';
-    document.querySelector('.info-container').style.left = '30vw';
+    // document.querySelector('.info-container').style.left = '20vw';
+    document.querySelector('.info-container').style.left = '-52vw';
     e.currentTarget.classList.toggle('nav-icon-active', false);
     Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
       if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#7c7c7c');
