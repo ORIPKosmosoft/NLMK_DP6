@@ -215,7 +215,7 @@ function guideBtnsClick(e) {
     let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget);
     let textConNew = document.querySelector('.info-container').children[newTextIndex];
     textConNew.classList.toggle('text-container-active', true);
-    document.querySelector('.info-container').children[0].style.marginTop = `-${newTextIndex * textConNew.getBoundingClientRect().height}px`;
+    document.querySelector('.info-container').children[0].style.marginTop = `-${(newTextIndex - 1) * textConNew.getBoundingClientRect().height}px`;
 
     if (document.querySelector('.arrow-text-active')) {
       document.querySelectorAll('.arrow-text-active').forEach((Element) => {
