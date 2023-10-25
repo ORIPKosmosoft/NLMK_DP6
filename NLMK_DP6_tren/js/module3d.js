@@ -15,8 +15,9 @@ change3DTime
 Добавить всплывающую подсказку при наведении на хотспот
 --------------------------------------------------------------------
 не отрисовывать рендер пока не перешли в тренажёр
+проблема в другом?
 --------------------------------------------------------------------
-Добавить 2Д окно над монитором
+При приблежении к хотспотам разрешить обзор немного, но при отпускании мышки камера вернётся в начальное положение
 --------------------------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", () => {
@@ -88,16 +89,16 @@ document.addEventListener("DOMContentLoaded", () => {
         changeSvgElem('fire_vnk_1', { position: { x: 10 } });
       })
       document.getElementById('movePositionY1').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK2');
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK2', true);
       })
       document.getElementById('movePositionY2').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK3');
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK3', true);
       })
       document.getElementById('movePositionZ1').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_main');
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_main', true);
       })
       document.getElementById('movePositionZ2').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_spvg');
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_spvg', true);
       })
       document.querySelector('#takePosition').addEventListener('click', () => {
         document.querySelector('.value-input').children[0].value = camera.position.x;
@@ -253,7 +254,7 @@ function makeSvgDisplay(Mesh, Scene, SvgName) {
   devHelper.model3DVals.svgDisplays.meshs.push(Mesh);
   let tempInterval = setInterval(() => {
     if (devHelper.model3DVals.svgDisplays.textures.length === document.querySelector('.svg-scheme-container').querySelectorAll('object').length) {
-      changeSvgtexture(Mesh, SvgName);
+      changeSvgtexture(Mesh, SvgName, true);
       clearInterval(tempInterval);
     }
   }, 500);
@@ -285,6 +286,7 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     } else if (Vals.posCoors) {
       Mesh.isPickable = true;
       devHelper.model3DVals.movePointMesh.push(Mesh);
+      Mesh.positionIndex = Vals.posIndex;
     }
     Mesh.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
@@ -331,7 +333,7 @@ function makeUnicMat(UnicMesh) {
   }
 }
 
-function changeSvgtexture(Mesh = undefined, SvgName = undefined) {
+function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false) {
   if (Mesh && SvgName) {
     Mesh.svgName = SvgName;
     let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
@@ -343,7 +345,7 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined) {
       textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
       textureContext.drawImage(outputImage, 0, 0);
       Texture.update();
-      if (Mesh.material.diffuseTexture !== Texture) 
+      if (ChangeTexture === true)
         Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = Texture;
     }
   } else {
@@ -352,14 +354,19 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined) {
   }
 }
 
-function updateSvgTexture(SvgName = undefined) {
+function updateSvgTexture(SvgName = undefined, ChangeTexture = false) {
   if (SvgName) {
     let SvgIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === SvgName; })
     let outputImage = devHelper.svgVals[SvgIndex].object.nextElementSibling;
     outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[SvgIndex]))));
-    devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
-      changeSvgtexture(DisplayMesh, DisplayMesh.svgName);
-    })
+    outputImage.onload = function () {
+      devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
+        if (DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1) !== SvgName)
+          changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), ChangeTexture);
+        else
+          changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), true);
+      })
+    }
   } else {
     if (devHelper.dev.enable === true) console.warn(`В функцию updateSvgTexture передали не все переменные.`);
     return

@@ -8,769 +8,180 @@ window.addEventListener('load', function () {
     })
   })
 
-  //TODO: Весть текст изменениямый сместить если надо
-  devHelper.svgVals.forEach((Element, Index) => {
-    if (Element.name === 'dp') {
-      Element.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
-        if (TextElement.innerHTML === '4,32') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_1'
-          })
-        }
-        if (TextElement.innerHTML === '4,22') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_2'
-          })
-        }
+  devHelper.svgVals.forEach((ObjectSvg, Index) => {
+    // if (ObjectSvg.name === 'BVNK_VNK3_obj') {
+    //   ObjectSvg.object.style.left = '0';
+    //   ObjectSvg.object.style.top = '0';
+    //   ObjectSvg.object.style.visibility = 'visible';
+    // }
+
+    if (ObjectSvg.name === 'dp') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
+        if (TextElement.innerHTML === '4,32') { addSvgElem(Index, TextElement, 'P_1'); }
+        if (TextElement.innerHTML === '4,22') { addSvgElem(Index, TextElement, 'P_2'); }
         if (TextElement.innerHTML === '30') {
           if (TextIndex < 307)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'EKZ_H' + (TextIndex - 222)
-            })
-          else
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'kol_furm'
-            })
+            addSvgElem(Index, TextElement, 'EKZ_H' + (TextIndex - 222)); else
+            addSvgElem(Index, TextElement, 'kol_furm');
         }
-        if (TextElement.innerHTML === '0,70') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'radar1_text'
-          })
-        }
-        if (TextElement.innerHTML === '0,97') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'radar2_text'
-          })
-        }
-        if (TextElement.innerHTML === '-1,67') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'radar3_text'
-          })
-        }
-        if (TextElement.innerHTML === '97') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'H_tryba'
-          })
-        }
-        if (TextElement.innerHTML === '582084') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'F_tryba'
-          })
-        }
-        if (TextElement.innerHTML === '2,30') {
-          if (TextIndex === 201) {
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'P_col_gaza'
-            })
-          } else {
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'P_tryba_1_' + (TextIndex - 287)
-            })
-
-          }
-        }
-        if (TextElement.innerHTML === '1,40') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Dp_obsh'
-          })
-        }
+        if (TextElement.innerHTML === '0,70') { addSvgElem(Index, TextElement, 'radar1_text'); }
+        if (TextElement.innerHTML === '0,97') { addSvgElem(Index, TextElement, 'radar2_text'); }
+        if (TextElement.innerHTML === '-1,67') { addSvgElem(Index, TextElement, 'radar3_text'); }
+        if (TextElement.innerHTML === '97') { addSvgElem(Index, TextElement, 'H_tryba'); }
+        if (TextElement.innerHTML === '582084') { addSvgElem(Index, TextElement, 'F_tryba'); }
+        if (TextElement.innerHTML === '2,30') { if (TextIndex === 201) { addSvgElem(Index, TextElement, 'P_col_gaza'); } else { addSvgElem(Index, TextElement, 'P_tryba_1_' + (TextIndex - 287)); } }
+        if (TextElement.innerHTML === '1,40') { addSvgElem(Index, TextElement, 'Dp_obsh'); }
         if (TextElement.innerHTML === '1210') {
           if (TextIndex === 198)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'T_gor_dyt_tryb_kras'
-            })
-          else if (TextIndex === 203)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'T_gor_dyt_table'
-            })
-          else if (TextIndex === 258)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'T_gor_dyt_tryb_sin'
-            })
+            addSvgElem(Index, TextElement, 'T_gor_dyt_tryb_kras'); else if (TextIndex === 203)
+            addSvgElem(Index, TextElement, 'T_gor_dyt_table'); else if (TextIndex === 258)
+            addSvgElem(Index, TextElement, 'T_gor_dyt_tryb_sin');
         }
         if (TextElement.innerHTML === '30708') {
           if (TextIndex === 199)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'F_prir_gaz_tryb'
-            })
-          else
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'F_prir_gaz_table'
-            })
+            addSvgElem(Index, TextElement, 'F_prir_gaz_tryb'); else
+            addSvgElem(Index, TextElement, 'F_prir_gaz_table');
         }
-        if (TextElement.innerHTML === '2120') {
-          if (TextIndex === 200) {
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'TTG'
-            })
-          } else {
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'TTG_zadanie'
-            })
-          }
-        }
-        if (TextElement.innerHTML === '1,00') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'F_par_yvl'
-          })
-        }
-        if (TextElement.innerHTML === '5,0') {
-          if (TextIndex === 197) {
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'W_par_yvl'
-            })
-          } else {
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Vlaznost'
-            })
-          }
-        }
-        if (TextIndex >= 292 && TextIndex <= 295) {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_tryba_2_' + (296 - TextIndex)
-          })
-        }
-        if (TextElement.innerHTML === '2,47') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_tryba_3_' + (TextIndex - 295),
-          })
-        }
-        if (TextIndex >= 298 && TextIndex <= 301) {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_tryba_4_' + (TextIndex - 297),
-          })
-        }
-        if (TextElement.innerHTML === '2,79') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_tryba_5_1',
-          })
-        }
-        if (TextElement.innerHTML === '2,76') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_tryba_5_2',
-          })
-        }
-        if (TextElement.innerHTML === '3,07') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_tryba_5_3',
-          })
-        }
-        if (TextElement.innerHTML === '3,59') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_tryba_5_4',
-          })
-        }
-        if (TextElement.innerHTML === '2,25') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_vbls',
-          })
-        }
-        if (TextElement.innerHTML === '0,24') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'dP_verh',
-          })
-        }
-        if (TextElement.innerHTML === '1,93') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'dP_obsh_tryba',
-          })
-        }
-        if (TextElement.innerHTML === '1,69') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'dP_nish_tryba',
-          })
-        }
-        if (TextElement.innerHTML === '2084') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'TTG_raschet',
-          })
-        }
-        if (TextElement.innerHTML === '43,0') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'N2',
-          })
-        }
-        if (TextElement.innerHTML === '26,9') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'CO',
-          })
-        }
-        if (TextElement.innerHTML === '21,9') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'CO2',
-          })
-        }
-        if (TextElement.innerHTML === '52577') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'EVS_DP7_O',
-          })
-        }
-        if (TextElement.innerHTML === '7174') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'EVS_DP7_F',
-          })
-        }
-        if (TextElement.innerHTML === '42753') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'EVD1_O',
-          })
-        }
-        if (TextElement.innerHTML === '365177') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'EVD1_F',
-          })
-        }
-        if (TextElement.innerHTML === '364389') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'EVD_F',
-          })
-        }
-        if (TextElement.innerHTML === '6081') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'F_evd',
-          })
-        }
-        if (TextElement.innerHTML === '5925') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'F_hol_dyt',
-          })
-        }
-        if (TextElement.innerHTML === '80') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'T_hol_dyt',
-          })
-        }
-        if (TextElement.innerHTML === '30,1') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'O_hol_dyt',
-          })
-        }
-        if (TextElement.innerHTML === '1847') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'FO2_hol_dyt',
-          })
-        }
-        if (TextElement.innerHTML === '8,2') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'H2_tryb',
-          })
-        }
-        if (TextElement.innerHTML === '44,8') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Nco_tryb',
-          })
-        }
-        if (TextElement.innerHTML === '1052') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Q_domG_tryb',
-          })
-        }
-        if (TextElement.innerHTML === '-0') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'H_snotr',
-          })
-        }
-        if (TextElement.innerHTML === '1327') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Tkyp_3',
-          })
-        }
-        if (TextElement.innerHTML === '102016') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Fvozdyh_3',
-          })
-        }
-        if (TextElement.innerHTML === '80994') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Fgaz_3',
-          })
-        }
-        if (TextElement.innerHTML === '1328') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Tkyp_2',
-          })
-        }
-        if (TextElement.innerHTML === '120222') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Fvozdyh_2',
-          })
-        }
-        if (TextElement.innerHTML === '101351') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Fgaz_2',
-          })
-        }
-        if (TextElement.innerHTML === '1297') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Tkyp_1',
-          })
-        }
-        if (TextElement.innerHTML === '141') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Tdym_3',
-          })
-        }
-        if (TextElement.innerHTML === '306') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Tdym_2',
-          })
-        }
-        if (TextElement.innerHTML === '174') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Tdym_1',
-          })
-        }
-        if (TextElement.innerHTML === 'НАГРЕВ') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Sostoynie_' + (59 - TextIndex),
-          })
-        }
-        if (TextElement.innerHTML === 'ДУТЬЕ') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Sostoynie_1',
-          })
-        }
-        if (TextElement.innerHTML === '68') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Temp_peref_1',
-          })
-        }
+        if (TextElement.innerHTML === '2120') { if (TextIndex === 200) { addSvgElem(Index, TextElement, 'TTG'); } else { addSvgElem(Index, TextElement, 'TTG_zadanie'); } }
+        if (TextElement.innerHTML === '1,00') { addSvgElem(Index, TextElement, 'F_par_yvl'); }
+        if (TextElement.innerHTML === '5,0') { if (TextIndex === 197) { addSvgElem(Index, TextElement, 'W_par_yvl'); } else { addSvgElem(Index, TextElement, 'Vlaznost'); } }
+        if (TextIndex >= 292 && TextIndex <= 295) { addSvgElem(Index, TextElement, 'P_tryba_2_' + (296 - TextIndex)); }
+        if (TextElement.innerHTML === '2,47') { addSvgElem(Index, TextElement, 'P_tryba_3_' + (TextIndex - 295)); }
+        if (TextIndex >= 298 && TextIndex <= 301) { addSvgElem(Index, TextElement, 'P_tryba_4_' + (TextIndex - 297)); }
+        if (TextElement.innerHTML === '2,79') { addSvgElem(Index, TextElement, 'P_tryba_5_1'); }
+        if (TextElement.innerHTML === '2,76') { addSvgElem(Index, TextElement, 'P_tryba_5_2'); }
+        if (TextElement.innerHTML === '3,07') { addSvgElem(Index, TextElement, 'P_tryba_5_3'); }
+        if (TextElement.innerHTML === '3,59') { addSvgElem(Index, TextElement, 'P_tryba_5_4'); }
+        if (TextElement.innerHTML === '2,25') { addSvgElem(Index, TextElement, 'P_vbls'); }
+        if (TextElement.innerHTML === '0,24') { addSvgElem(Index, TextElement, 'dP_verh'); }
+        if (TextElement.innerHTML === '1,93') { addSvgElem(Index, TextElement, 'dP_obsh_tryba'); }
+        if (TextElement.innerHTML === '1,69') { addSvgElem(Index, TextElement, 'dP_nish_tryba'); }
+        if (TextElement.innerHTML === '2084') { addSvgElem(Index, TextElement, 'TTG_raschet'); }
+        if (TextElement.innerHTML === '43,0') { addSvgElem(Index, TextElement, 'N2'); }
+        if (TextElement.innerHTML === '26,9') { addSvgElem(Index, TextElement, 'CO'); }
+        if (TextElement.innerHTML === '21,9') { addSvgElem(Index, TextElement, 'CO2'); }
+        if (TextElement.innerHTML === '52577') { addSvgElem(Index, TextElement, 'EVS_DP7_O'); }
+        if (TextElement.innerHTML === '7174') { addSvgElem(Index, TextElement, 'EVS_DP7_F'); }
+        if (TextElement.innerHTML === '42753') { addSvgElem(Index, TextElement, 'EVD1_O'); }
+        if (TextElement.innerHTML === '365177') { addSvgElem(Index, TextElement, 'EVD1_F'); }
+        if (TextElement.innerHTML === '364389') { addSvgElem(Index, TextElement, 'EVD_F'); }
+        if (TextElement.innerHTML === '6081') { addSvgElem(Index, TextElement, 'F_evd'); }
+        if (TextElement.innerHTML === '5925') { addSvgElem(Index, TextElement, 'F_hol_dyt'); }
+        if (TextElement.innerHTML === '80') { addSvgElem(Index, TextElement, 'T_hol_dyt'); }
+        if (TextElement.innerHTML === '30,1') { addSvgElem(Index, TextElement, 'O_hol_dyt'); }
+        if (TextElement.innerHTML === '1847') { addSvgElem(Index, TextElement, 'FO2_hol_dyt'); }
+        if (TextElement.innerHTML === '8,2') { addSvgElem(Index, TextElement, 'H2_tryb'); }
+        if (TextElement.innerHTML === '44,8') { addSvgElem(Index, TextElement, 'Nco_tryb'); }
+        if (TextElement.innerHTML === '1052') { addSvgElem(Index, TextElement, 'Q_domG_tryb'); }
+        if (TextElement.innerHTML === '-0') { addSvgElem(Index, TextElement, 'H_snotr'); }
+        if (TextElement.innerHTML === '1327') { addSvgElem(Index, TextElement, 'Tkyp_3'); }
+        if (TextElement.innerHTML === '102016') { addSvgElem(Index, TextElement, 'Fvozdyh_3'); }
+        if (TextElement.innerHTML === '80994') { addSvgElem(Index, TextElement, 'Fgaz_3'); }
+        if (TextElement.innerHTML === '1328') { addSvgElem(Index, TextElement, 'Tkyp_2'); }
+        if (TextElement.innerHTML === '120222') { addSvgElem(Index, TextElement, 'Fvozdyh_2'); }
+        if (TextElement.innerHTML === '101351') { addSvgElem(Index, TextElement, 'Fgaz_2'); }
+        if (TextElement.innerHTML === '1297') { addSvgElem(Index, TextElement, 'Tkyp_1'); }
+        if (TextElement.innerHTML === '141') { addSvgElem(Index, TextElement, 'Tdym_3'); }
+        if (TextElement.innerHTML === '306') { addSvgElem(Index, TextElement, 'Tdym_2'); }
+        if (TextElement.innerHTML === '174') { addSvgElem(Index, TextElement, 'Tdym_1'); }
+        if (TextElement.innerHTML === 'НАГРЕВ') { addSvgElem(Index, TextElement, 'Sostoynie_' + (59 - TextIndex)); }
+        if (TextElement.innerHTML === 'ДУТЬЕ') { addSvgElem(Index, TextElement, 'Sostoynie_1'); }
+        if (TextElement.innerHTML === '68') { addSvgElem(Index, TextElement, 'Temp_peref_1'); }
         if (TextElement.innerHTML === '63') {
           if (TextIndex === 241)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Temp_peref_2',
-            })
-          else
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Temp_peref_13',
-            })
+            addSvgElem(Index, TextElement, 'Temp_peref_2'); else
+            addSvgElem(Index, TextElement, 'Temp_peref_13');
         }
-        if (TextElement.innerHTML === '56') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Temp_peref_3',
-          })
-        }
+        if (TextElement.innerHTML === '56') { addSvgElem(Index, TextElement, 'Temp_peref_3'); }
         if (TextElement.innerHTML === '62') {
           if (TextIndex === 243)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Temp_peref_4',
-            })
-          else if (TextIndex === 246)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Temp_peref_8',
-            })
-          else
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Temp_peref_11',
-            })
+            addSvgElem(Index, TextElement, 'Temp_peref_4'); else if (TextIndex === 246)
+            addSvgElem(Index, TextElement, 'Temp_peref_8'); else
+            addSvgElem(Index, TextElement, 'Temp_peref_11');
         }
         if (TextElement.innerHTML === '61') {
           if (TextIndex === 245)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Temp_peref_5',
-            })
-          else if (TextIndex === 247)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Temp_peref_7',
-            })
-          else
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Temp_peref_9',
-            })
+            addSvgElem(Index, TextElement, 'Temp_peref_5'); else if (TextIndex === 247)
+            addSvgElem(Index, TextElement, 'Temp_peref_7'); else
+            addSvgElem(Index, TextElement, 'Temp_peref_9');
         }
-        if (TextElement.innerHTML === '57') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Temp_peref_6',
-          })
-        }
-        if (TextElement.innerHTML === '58') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Temp_peref_10',
-          })
-        }
-        if (TextElement.innerHTML === '59') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Temp_peref_12',
-          })
-        }
-        if (TextElement.innerHTML === '66') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Temp_peref_14',
-          })
-        }
-        if (TextElement.innerHTML === '65') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Temp_peref_15',
-          })
-        }
-        if (TextElement.innerHTML === '64') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'Temp_peref_16',
-          })
-        }
-        if (TextElement.innerHTML === '117') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'T1',
-          })
-        }
-        if (TextElement.innerHTML === '101') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'T2',
-          })
-        }
-        if (TextElement.innerHTML === '114') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'T3',
-          })
-        }
-        if (TextElement.innerHTML === '112') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'T4',
-          })
-        }
-        if (TextElement.innerHTML === '9,7') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'W_sinij_hol_dyt',
-          })
-        }
-        if (TextElement.innerHTML === '8,14') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_Os_szat_voz',
-          })
-        }
-        if (TextElement.innerHTML === '34') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'T_Os_szat_voz',
-          })
-        }
-        if (TextElement.innerHTML === '35') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'H_Os_szat_voz',
-          })
-        }
+        if (TextElement.innerHTML === '57') { addSvgElem(Index, TextElement, 'Temp_peref_6'); }
+        if (TextElement.innerHTML === '58') { addSvgElem(Index, TextElement, 'Temp_peref_10'); }
+        if (TextElement.innerHTML === '59') { addSvgElem(Index, TextElement, 'Temp_peref_12'); }
+        if (TextElement.innerHTML === '66') { addSvgElem(Index, TextElement, 'Temp_peref_14'); }
+        if (TextElement.innerHTML === '65') { addSvgElem(Index, TextElement, 'Temp_peref_15'); }
+        if (TextElement.innerHTML === '64') { addSvgElem(Index, TextElement, 'Temp_peref_16'); }
+        if (TextElement.innerHTML === '117') { addSvgElem(Index, TextElement, 'T1'); }
+        if (TextElement.innerHTML === '101') { addSvgElem(Index, TextElement, 'T2'); }
+        if (TextElement.innerHTML === '114') { addSvgElem(Index, TextElement, 'T3'); }
+        if (TextElement.innerHTML === '112') { addSvgElem(Index, TextElement, 'T4'); }
+        if (TextElement.innerHTML === '9,7') { addSvgElem(Index, TextElement, 'W_sinij_hol_dyt'); }
+        if (TextElement.innerHTML === '8,14') { addSvgElem(Index, TextElement, 'P_Os_szat_voz'); }
+        if (TextElement.innerHTML === '34') { addSvgElem(Index, TextElement, 'T_Os_szat_voz'); }
+        if (TextElement.innerHTML === '35') { addSvgElem(Index, TextElement, 'H_Os_szat_voz'); }
         if (TextElement.innerHTML === '15') {
           if (TextIndex === 273)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'T_prir_gaz',
-            })
+            addSvgElem(Index, TextElement, 'T_prir_gaz');
         }
-        if (TextElement.innerHTML === '39') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'H_prir_gaz',
-          })
-        }
-        if (TextElement.innerHTML === '30626') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'F_pg_sym_prir_gaz',
-          })
-        }
-        if (TextElement.innerHTML === '8,56') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'P_pg_prir_gaz',
-          })
-        }
-        if (TextElement.innerHTML === '30719') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'F_pg_prir_gaz',
-          })
-        }
-        if (TextElement.innerHTML === '-93') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'dF_pg_prir_gaz',
-          })
-        }
-        if (TextElement.innerHTML === '1487') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'L4',
-          })
-        }
-        if (TextElement.innerHTML === '49,4') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'H_step_isp',
-          })
-        }
-        if (TextElement.innerHTML === '46,0') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'HCO_step_isp',
-          })
-        }
-        if (TextElement.innerHTML === '216,1') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'V_dyt',
-          })
-        }
-        if (TextElement.innerHTML === '48') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'F_obsh_pyt',
-          })
-        }
-        if (TextElement.innerHTML === '48,1') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'F_tek_pyt',
-          })
-        }
-        if (TextElement.innerHTML === '27') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'fyrm_v_rab',
-          })
-        }
-        if (TextElement.innerHTML === '0,27') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'par_yvlaz',
-          })
-        }
-        if (TextElement.innerHTML === '32,7') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'ydel_tep_18',
-          })
-        }
-        if (TextElement.innerHTML === '60,2') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'ydel_tep_17',
-          })
-        }
-        if (TextElement.innerHTML === '32,4') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'ydel_tep_16',
-          })
-        }
-        if (TextElement.innerHTML === '46,4') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'ydel_tep_15',
-          })
-        }
-        if (TextElement.innerHTML === '75,9') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'ydel_tep_12_14',
-          })
-        }
-        if (TextElement.innerHTML === '33,2') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'ydel_tep_10_11',
-          })
-        }
-        if (TextElement.innerHTML === '19,2') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'ydel_tep_9',
-          })
-        }
-        if (TextElement.innerHTML === '24,9') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'ydel_tep_8',
-          })
-        }
-        if (TextElement.innerHTML === '36,5') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: 'ydel_tep_7',
-          })
-        }
+        if (TextElement.innerHTML === '39') { addSvgElem(Index, TextElement, 'H_prir_gaz'); }
+        if (TextElement.innerHTML === '30626') { addSvgElem(Index, TextElement, 'F_pg_sym_prir_gaz'); }
+        if (TextElement.innerHTML === '8,56') { addSvgElem(Index, TextElement, 'P_pg_prir_gaz'); }
+        if (TextElement.innerHTML === '30719') { addSvgElem(Index, TextElement, 'F_pg_prir_gaz'); }
+        if (TextElement.innerHTML === '-93') { addSvgElem(Index, TextElement, 'dF_pg_prir_gaz'); }
+        if (TextElement.innerHTML === '1487') { addSvgElem(Index, TextElement, 'L4'); }
+        if (TextElement.innerHTML === '49,4') { addSvgElem(Index, TextElement, 'H_step_isp'); }
+        if (TextElement.innerHTML === '46,0') { addSvgElem(Index, TextElement, 'HCO_step_isp'); }
+        if (TextElement.innerHTML === '216,1') { addSvgElem(Index, TextElement, 'V_dyt'); }
+        if (TextElement.innerHTML === '48') { addSvgElem(Index, TextElement, 'F_obsh_pyt'); }
+        if (TextElement.innerHTML === '48,1') { addSvgElem(Index, TextElement, 'F_tek_pyt'); }
+        if (TextElement.innerHTML === '27') { addSvgElem(Index, TextElement, 'fyrm_v_rab'); }
+        if (TextElement.innerHTML === '0,27') { addSvgElem(Index, TextElement, 'par_yvlaz'); }
+        if (TextElement.innerHTML === '32,7') { addSvgElem(Index, TextElement, 'ydel_tep_18'); }
+        if (TextElement.innerHTML === '60,2') { addSvgElem(Index, TextElement, 'ydel_tep_17'); }
+        if (TextElement.innerHTML === '32,4') { addSvgElem(Index, TextElement, 'ydel_tep_16'); }
+        if (TextElement.innerHTML === '46,4') { addSvgElem(Index, TextElement, 'ydel_tep_15'); }
+        if (TextElement.innerHTML === '75,9') { addSvgElem(Index, TextElement, 'ydel_tep_12_14'); }
+        if (TextElement.innerHTML === '33,2') { addSvgElem(Index, TextElement, 'ydel_tep_10_11'); }
+        if (TextElement.innerHTML === '19,2') { addSvgElem(Index, TextElement, 'ydel_tep_9'); }
+        if (TextElement.innerHTML === '24,9') { addSvgElem(Index, TextElement, 'ydel_tep_8'); }
+        if (TextElement.innerHTML === '36,5') { addSvgElem(Index, TextElement, 'ydel_tep_7'); }
         if (TextElement.innerHTML === '0,80') {
           if (TextIndex === 196)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'zadan_yrov_kras',
-            })
-          else
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'zadan_yrov_sin',
-            })
+            addSvgElem(Index, TextElement, 'zadan_yrov_kras'); else
+            addSvgElem(Index, TextElement, 'zadan_yrov_sin');
         }
-        if (TextElement.innerHTML === '0,0') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: TextElement,
-            name: '02_trub',
-          })
-        }
-
+        if (TextElement.innerHTML === '0,0') { addSvgElem(Index, TextElement, '02_trub'); }
         if (TextElement.innerHTML === '0') {
           if (TextIndex === 260)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Fvozdyh_1',
-            })
-          else if (TextIndex === 261)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'Fgaz_1',
-            })
-          else if (TextIndex === 269)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'H001',
-            })
-          else if (TextIndex === 270)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'F_osysh_szat_voz',
-            })
-          else if (TextIndex === 328)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'EVD2_O',
-            })
-          else if (TextIndex === 316)
-            devHelper.svgVals[Index].activeElements.push({
-              element: TextElement,
-              name: 'H_par_yvlaz',
-            })
+            addSvgElem(Index, TextElement, 'Fvozdyh_1'); else if (TextIndex === 261)
+            addSvgElem(Index, TextElement, 'Fgaz_1'); else if (TextIndex === 269)
+            addSvgElem(Index, TextElement, 'H001'); else if (TextIndex === 270)
+            addSvgElem(Index, TextElement, 'F_osysh_szat_voz'); else if (TextIndex === 328)
+            addSvgElem(Index, TextElement, 'EVD2_O'); else if (TextIndex === 316)
+            addSvgElem(Index, TextElement, 'H_par_yvlaz');
         }
       })
     }
-    if (Element.name === 'BVNK_VNK1') {
-      // Element.object.style.left = '0';
-      // Element.object.style.top = '0';
-      // Element.object.style.visibility = 'visible';
-      Element.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
-        if (TextElement.innerHTML === '92') {
-          addSvgElem(Index, TextElement, '3TI_43')
+    if (ObjectSvg.name === 'BVNK_VNK1') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { if (TextElement.innerHTML === '92') { addSvgElem(Index, TextElement, '3TI_43'); } })
+      ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') { addSvgElem(Index, Element, '313'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_1'); }
+      })
+    }
+    if (ObjectSvg.name === 'BVNK_VNK3') {
+      ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'fire_vnk_3'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_3'); }
+      })
+    }
+    if (ObjectSvg.name === 'vnk_main') {
+      ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1301.37 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.37-12.26l-20.56-25.18v-12.46h2.35l-.28-.91v-22.21c0-8.54-6.97-12.27-15.51-12.27h-.39c-8.54 0-15.51 3.73-15.51 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_3'); }
+      })
+    }
 
-        }
-      })
-      Element.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: Element,
-            name: '313'
-          })
-          // Element.addEventListener('click', () => {
-          //   changeSvgElem('3TI_43', { text: '100' });
-          // });
-        }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: Element,
-            name: 'vnk_1'
-          })
-        }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: Element,
-            name: 'fire_vnk_1'
-          })
-        }
-      })
-    }
-    if (Element.name === 'vnk_main') {
-      Element.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') {
-          devHelper.svgVals[Index].activeElements.push({
-            element: Element,
-            name: 'vnk_1'
-          })
-        }
-      })
-    }
   })
 
   devHelper.svgVals.forEach((Element) => {
@@ -793,6 +204,18 @@ window.addEventListener('load', function () {
   })
 });
 
+function addSvgElem(SvgIndex, Element, Name) {
+  // if (devHelper.dev.enable === true) console.log(SvgIndex, Element, Name);
+  devHelper.svgVals[SvgIndex].activeElements.push({
+    element: Element,
+    name: Name,
+  })
+  if (Element.tagName === 'text') {
+    Element.style.textAnchor = 'end';
+    Element.style.transform = `translate(${Element.getBoundingClientRect().width}px, 0px)`;
+  }
+}
+
 function makeDynamicTextureDisplay(ObjectSvg) {
   let outputImage = ObjectSvg.object.nextElementSibling;
   let planeTexture = new BABYLON.DynamicTexture(`texture_${ObjectSvg.name}`, { width: ObjectSvg.svg.getAttribute('width'), height: ObjectSvg.svg.getAttribute('height') }, devHelper.model3DVals.scene, true);
@@ -806,53 +229,89 @@ function makeDynamicTextureDisplay(ObjectSvg) {
   }
 }
 
-function revialSvgObject(CurrentPosition) {
-  if (CurrentPosition === 1) { // вынести повторяемые блкои кода
-    let mainContainer = document.createElement('div');
-    mainContainer.style.position = 'absolute';
-    mainContainer.style.top = '44px';
-    mainContainer.style.left = '223px';
-    mainContainer.style.width = '73%';
-    mainContainer.style.height = '89%';
-    document.body.append(mainContainer);
-
-    for (let i = 0; i < 6; i++) {
+// Появление нужного модуля управления для каждо схемы в зависимости от вида
+function revialSvgObject(CurrentPosition, SvgName = undefined) {
+  if (CurrentPosition !== undefined) {
+    let mainMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === CurrentPosition);
+    let textureSvgName = SvgName === undefined ? mainMesh.material.diffuseTexture.name.substring(mainMesh.material.diffuseTexture.name.indexOf('_') + 1) : SvgName;
+    if (textureSvgName === 'BVNK_VNK1') {
+      let mainContainer = createMainHelperContainer();
+      for (let i = 0; i < 5; i++) {
+        let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
+        if (i === 0) tempObj = { x: 0.5, y: 0.5, w: 6.5, h: 3, name: 'vnk_main', };
+        else if (i === 1) tempObj = { x: 8.5, y: 0.5, w: 6.5, h: 3, name: 'BVNK_VNK1', };
+        else if (i === 2) tempObj = { x: 16, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK2', };
+        else if (i === 3) tempObj = { x: 24, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK3', };
+        else if (i === 4) tempObj = { x: 32, y: 0.5, w: 6.8, h: 3, name: 'vnk_spvg', };
+        mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
+      }
+    } else if (textureSvgName === 'BVNK_VNK2') {
+      let mainContainer = createMainHelperContainer();
+      for (let i = 0; i < 5; i++) {
+        let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
+        if (i === 0) tempObj = { x: 0.5, y: 0.5, w: 6.5, h: 3, name: 'vnk_main', };
+        else if (i === 1) tempObj = { x: 8.5, y: 0.5, w: 6.5, h: 3, name: 'BVNK_VNK1', };
+        else if (i === 2) tempObj = { x: 16, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK2', };
+        else if (i === 3) tempObj = { x: 24, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK3', };
+        else if (i === 4) tempObj = { x: 32, y: 0.5, w: 6.8, h: 3, name: 'vnk_spvg', };
+        mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
+      }
+    } else if (textureSvgName === 'BVNK_VNK3') {
+      let mainContainer = createMainHelperContainer();
+      for (let i = 0; i < 6; i++) {
+        let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
+        if (i === 0) tempObj = { x: 0.5, y: 0.5, w: 6.5, h: 3, name: 'vnk_main', };
+        else if (i === 1) tempObj = { x: 8.5, y: 0.5, w: 6.5, h: 3, name: 'BVNK_VNK1', };
+        else if (i === 2) tempObj = { x: 16, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK2', };
+        else if (i === 3) tempObj = { x: 24, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK3', };
+        else if (i === 4) tempObj = { x: 32, y: 0.5, w: 6.8, h: 3, name: 'vnk_spvg', };
+        else if (i === 5) tempObj = { x: 40.9, y: 25.5, w: 3, h: 11.7, value: { name: 'vnk_3', color: '#000000' }, };
+        mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
+      }
+    }
+    function createMainHelperContainer() {
+      if (document.getElementById('svg-helper')) {
+        document.getElementById('svg-helper').remove();
+      }
+      let mainContainer = document.createElement('div');
+      // TODO поставить на правильное место vw vh
+      // и центрировать в зависимости от положения интерфейса
+      mainContainer.style.position = 'absolute';
+      mainContainer.style.top = '44px';
+      mainContainer.style.left = '223px';
+      mainContainer.style.width = '73%';
+      mainContainer.style.height = '89%';
+      mainContainer.id = 'svg-helper';
+      document.body.querySelector('.game-view').append(mainContainer);
+      return mainContainer;
+    }
+    function createSvgHelperButton(Vals, DisplayMesh) {
       let invisElem = document.createElement('div');
       invisElem.classList.add('invisible-element-svg');
-      let tempObj = { x: 0, y: 0, w: 0, h: 0 };
-      if (i === 0) tempObj = { x: 0.5, y: 0.5, w: 6.5, h: 3 };
-      else if (i === 1) tempObj = { x: 8.5, y: 0.5, w: 6.5, h: 3 };
-      else if (i === 2) tempObj = { x: 16, y: 0.5, w: 7, h: 3 };
-      else if (i === 3) tempObj = { x: 24, y: 0.5, w: 7, h: 3 };
-      else if (i === 4) tempObj = { x: 32, y: 0.5, w: 6.8, h: 3 };
-      else if (i === 5) tempObj = { x: 33.9, y: 23.5, w: 1.5, h: 2.7 };
+      invisElem.style.left = Vals.x + 'vw';
+      invisElem.style.top = Vals.y + 'vh';
+      invisElem.style.width = Vals.w + 'vw';
+      invisElem.style.height = Vals.h + 'vh';
 
       invisElem.addEventListener('click', () => {
-        if (i < 5) {
-          let tempName = 'vnk_main';
-          if (i === 0) tempName = 'vnk_main';
-          else if (i === 1) tempName = 'BVNK_VNK1';
-          else if (i === 2) tempName = 'BVNK_VNK2';
-          else if (i === 3) tempName = 'BVNK_VNK3';
-          else if (i === 4) tempName = 'vnk_spvg';
-          changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], tempName)
-        } else if (i === 5) changeSvgElem('fire_vnk_1', { position: { x: 10, y: 10 } });
+        if (Vals.name) {
+          changeSvgtexture(DisplayMesh, Vals.name, true);
+          revialSvgObject(CurrentPosition, Vals.name);
+        }
+        else changeSvgElem(Vals.value);
       });
-
-      invisElem.style.left = tempObj.x + 'vw';
-      invisElem.style.top = tempObj.y + 'vh';
-      invisElem.style.width = tempObj.w + 'vw';
-      invisElem.style.height = tempObj.h + 'vh';
-      mainContainer.append(invisElem);
+      return invisElem;
     }
+  } else {
+    if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
   }
 }
 // color; text; alpha; position в vw, vh;
-function changeSvgElem(Name = undefined, Val = {}) {
-  if (Name) {
+function changeSvgElem(Val = {}) {
+  if (Val.name) {
     devHelper.svgVals.forEach((svgArrObject) => {
       svgArrObject.activeElements.forEach((activeElemObj) => {
-        if (activeElemObj.name === Name) {
+        if (activeElemObj.name === Val.name) {
           if (Val.text && Val.text !== '')
             activeElemObj.element.innerHTML = Val.text;
           if (Val.color && Val.color !== '')
@@ -865,12 +324,12 @@ function changeSvgElem(Name = undefined, Val = {}) {
             if (Val.position.x && Val.position.x !== '') changeSvgElemPos(activeElemObj.element, Val.position.x, 'translateX');
             if (Val.position.y && Val.position.y !== '') changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
           }
-          updateSvgTexture(svgArrObject.name);
+          updateSvgTexture(svgArrObject.name, true);
         }
       })
     })
   } else {
-    if (devHelper.dev.enable === true) console.warn(`В функцию changeSvgElem передали не все переменные.`);
+    if (devHelper.dev.enable === true) console.warn(`В функцию changeSvgElem не передали имя переменной.`);
     return
   }
 }
@@ -878,7 +337,6 @@ function changeSvgElem(Name = undefined, Val = {}) {
 function changeSvgElemPos(Elem, Val, Type) {
   let tempTransform = Elem.style.transform ? Elem.style.transform : '';
   let endString = Type === 'translateX' ? 'vw' : Type === 'translateY' ? 'vh' : 'deg';
-  console.log(`${Type}(${Val}${endString})`);
   if (tempTransform !== '' && tempTransform.includes(Type)) {
     let oldTrans = tempTransform.split(`${Type}(`)[1].split(endString)[0];
     let newTransform = tempTransform.replace(`${Type}(${oldTrans}${endString})`, `${Type}(${Val}${endString})`);
@@ -888,13 +346,3 @@ function changeSvgElemPos(Elem, Val, Type) {
     Elem.style.transform = tempTransform + `${Type}(${Val}${endString})`;
 }
 
-function addSvgElem(SvgIndex, Element, Name) {
-  devHelper.svgVals[SvgIndex].activeElements.push({
-    element: Element,
-    name: Name,
-  })
-  if (Element.tagName === 'text') {
-    Element.style.textAnchor = 'end';
-    Element.style.transform = `translate(${Element.getBoundingClientRect().width}px, 0px)`;
-  }
-}
