@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     if (devHelper.dev.enable === true) {
       document.getElementById('movePositionX2').addEventListener('click', () => {
-        // changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK1');
         changeSvgElem('fire_vnk_1', { position: { x: 10 } });
       })
       document.getElementById('movePositionY1').addEventListener('click', () => {
@@ -187,12 +186,8 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
         meshArr.forEach(Mesh => {
-          // Mesh.receiveShadows = true;
-          // Mesh.castShadows = true;
-          // if (devHelper.dev.enable === true) {
           Mesh.actionManager = new BABYLON.ActionManager(Scene);
           Mesh.isPickable = true;
-          // }
           if (Mesh.name && Mesh.name === 'Display_flat002') {
             makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
             makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 1 });
@@ -333,8 +328,9 @@ function makeUnicMat(UnicMesh) {
   }
 }
 
-function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false) {
+function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false, Window = undefined, Pos = undefined) {
   if (Mesh && SvgName) {
+    console.log(Mesh, SvgName, ChangeTexture, Window, Pos);
     Mesh.svgName = SvgName;
     let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
     let textureContext = Texture.getContext();
@@ -342,8 +338,20 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture =
     let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[newIndex];
     outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[newIndex]))));
     outputImage.onload = function () {
-      textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
+      if (ChangeTexture === true)
+        textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
       textureContext.drawImage(outputImage, 0, 0);
+      if (Window !== undefined) {
+        let windowIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === Window; })
+        let outputImage2 = devHelper.model3DVals.svgDisplays.tagImgs[windowIndex];
+        outputImage2.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[windowIndex]))));
+        outputImage2.onload = function () {
+          // todo положение переделать в проценты 
+          // textureContext.drawImage(outputImage2, Pos.x * (document.getElementById('renderCanvas').getBoundingClientRect().width / 100), Pos.y * (document.getElementById('renderCanvas').getBoundingClientRect().height / 100));
+          textureContext.drawImage(outputImage2, Pos.x , Pos.y);
+          Texture.update();
+        }
+      }
       Texture.update();
       if (ChangeTexture === true)
         Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = Texture;

@@ -13,13 +13,16 @@ body {
   top: 0;
   left: 0;
   overflow: hidden;
+  background-color: #3a3a3a;
 }
 
 .fon .photo {
   position: absolute;
   top: 50%;
+  /* 
   left: 65%;
-  transform: translate(-35%, -50%);
+   */
+  transform: translate(0%, -50%);
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -90,14 +93,15 @@ body {
 }
 
 .section {
-  width: 63%;
-  height: 63%;
+  width: 70%;
+  height: 70%;
   position: relative;
   left: 1%;
   top: 22%;
   display: flex;
   flex-direction: row;
-  background-color: rgba(255, 255, 255, 0.8);
+  /* background-color: rgba(255, 255, 255, 1); */
+  background-color: #f4f4f4;
   border-radius: 10px;
   align-items: flex-start;
   transition: left 0.5s ease-out;
@@ -297,7 +301,7 @@ body {
 
 .scroll-container .movable-container {
   top: 0px;
-  width: 52vw;
+  width: 98%;
   position: relative;
 }
 
@@ -511,14 +515,16 @@ ul {
 .tren-container {
   visibility: hidden;
   opacity: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
   top: 0px;
   left: 0px;
   background-color: #F4F4F4;
   background-repeat: repeat;
   background-size: auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .model-map-window {
@@ -575,10 +581,15 @@ ul {
   /* pointer-events: none; */
 }
 
-/* Окно с информацией */
+.tren-ui {
+  width: 5vw;
+  height: 100vh;
+}
+
+/* Окно с 3D */
 .game-view {
-  width: 100%;
-  height: 100%;
+  width: 95vw;
+  height: 100vh;
 }
 
 .game-interface {
@@ -774,6 +785,7 @@ ul {
   height: 3vh;
   visibility: hidden;
 }
+
 /* svg схемы 
 ----------------------------------------------------------------------------------------------------------
 

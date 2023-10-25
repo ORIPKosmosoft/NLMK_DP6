@@ -1,3 +1,12 @@
+/*----------TODO----------------------------------------------------
+Разработать появление новых окон на SVG мониторах
+Попробовать добавление кода в SVG? Изменять свг схему добавляя в неё код свг окошка?
+А если нет, то как показать 2 рисунка СВГ на одной текстуре, А!
+Можно загружать сначала рисунок главной схемы, потом не очищать канвас и добавлять рисунок СВГ окошка
+Вот 2 варианта. Проработать.
+--------------------------------------------------------------------
+*/
+
 window.addEventListener('load', function () {
   document.querySelector('.svg-scheme-container').querySelectorAll('object').forEach((ObjSvg) => {
     devHelper.svgVals.push({
@@ -235,52 +244,56 @@ function revialSvgObject(CurrentPosition, SvgName = undefined) {
     let mainMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === CurrentPosition);
     let textureSvgName = SvgName === undefined ? mainMesh.material.diffuseTexture.name.substring(mainMesh.material.diffuseTexture.name.indexOf('_') + 1) : SvgName;
     if (textureSvgName === 'BVNK_VNK1') {
-      let mainContainer = createMainHelperContainer();
+      let mainContainer = createMainHelperContainer({x: 9.5, y: -96, w: 73, h: 88, });
+      let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
       for (let i = 0; i < 5; i++) {
-        let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
-        if (i === 0) tempObj = { x: 0.5, y: 0.5, w: 6.5, h: 3, name: 'vnk_main', };
-        else if (i === 1) tempObj = { x: 8.5, y: 0.5, w: 6.5, h: 3, name: 'BVNK_VNK1', };
-        else if (i === 2) tempObj = { x: 16, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK2', };
-        else if (i === 3) tempObj = { x: 24, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK3', };
-        else if (i === 4) tempObj = { x: 32, y: 0.5, w: 6.8, h: 3, name: 'vnk_spvg', };
+        if (i === 0) tempObj = { x: 0.5, y: 1.5, w: 10, h: 3, name: 'vnk_main', };
+        else if (i === 1) tempObj = { x: 12, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK1', };
+        else if (i === 2) tempObj = { x: 23, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK2', };
+        else if (i === 3) tempObj = { x: 35, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK3', };
+        else if (i === 4) tempObj = { x: 46, y: 1.5, w: 10, h: 3, name: 'vnk_spvg', };
         mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
       }
     } else if (textureSvgName === 'BVNK_VNK2') {
-      let mainContainer = createMainHelperContainer();
+      let mainContainer = createMainHelperContainer({x: 9.5, y: -96, w: 73, h: 88, });
       for (let i = 0; i < 5; i++) {
-        let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
-        if (i === 0) tempObj = { x: 0.5, y: 0.5, w: 6.5, h: 3, name: 'vnk_main', };
-        else if (i === 1) tempObj = { x: 8.5, y: 0.5, w: 6.5, h: 3, name: 'BVNK_VNK1', };
-        else if (i === 2) tempObj = { x: 16, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK2', };
-        else if (i === 3) tempObj = { x: 24, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK3', };
-        else if (i === 4) tempObj = { x: 32, y: 0.5, w: 6.8, h: 3, name: 'vnk_spvg', };
+        if (i === 0) tempObj = { x: 0.5, y: 1.5, w: 10, h: 3, name: 'vnk_main', };
+        else if (i === 1) tempObj = { x: 12, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK1', };
+        else if (i === 2) tempObj = { x: 23, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK2', };
+        else if (i === 3) tempObj = { x: 35, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK3', };
+        else if (i === 4) tempObj = { x: 46, y: 1.5, w: 10, h: 3, name: 'vnk_spvg', };
         mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
       }
     } else if (textureSvgName === 'BVNK_VNK3') {
-      let mainContainer = createMainHelperContainer();
-      for (let i = 0; i < 6; i++) {
-        let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
-        if (i === 0) tempObj = { x: 0.5, y: 0.5, w: 6.5, h: 3, name: 'vnk_main', };
-        else if (i === 1) tempObj = { x: 8.5, y: 0.5, w: 6.5, h: 3, name: 'BVNK_VNK1', };
-        else if (i === 2) tempObj = { x: 16, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK2', };
-        else if (i === 3) tempObj = { x: 24, y: 0.5, w: 7, h: 3, name: 'BVNK_VNK3', };
-        else if (i === 4) tempObj = { x: 32, y: 0.5, w: 6.8, h: 3, name: 'vnk_spvg', };
-        else if (i === 5) tempObj = { x: 40.9, y: 25.5, w: 3, h: 11.7, value: { name: 'vnk_3', color: '#000000' }, };
+      let mainContainer = createMainHelperContainer({x: 9.5, y: -96, w: 73, h: 88, });
+      for (let i = 0; i < 7; i++) {
+        if (i === 0) tempObj = { x: 0.5, y: 1.5, w: 10, h: 3, name: 'vnk_main', };
+        else if (i === 1) tempObj = { x: 12, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK1', };
+        else if (i === 2) tempObj = { x: 23, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK2', };
+        else if (i === 3) tempObj = { x: 35, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK3', };
+        else if (i === 4) tempObj = { x: 46, y: 1.5, w: 10, h: 3, name: 'vnk_spvg', };
+        else if (i === 5) tempObj = { x: 59, y: 28.5, w: 4.5, h: 14.7, value: { name: 'vnk_3', color: '#000000' }, };
+        else if (i === 6) tempObj = { x: 48.9, y: 26.5, w: 2.5, h: 3.5, value: { window: 'O_n_k_na_VNK_posle_1', x: 1000, y: 0, } };
+        mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
+      }
+    } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') {
+      let mainContainer = createMainHelperContainer({x: 37.5, y: -68, w: 15, h: 33, });
+      for (let i = 0; i < 1; i++) {
+        if (i === 0) tempObj = { x: 85.5, y: 1.5, w: 8, h: 5, name: 'BVNK_VNK3', }; // close
         mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
       }
     }
-    function createMainHelperContainer() {
+
+    function createMainHelperContainer(Vals) {
       if (document.getElementById('svg-helper')) {
         document.getElementById('svg-helper').remove();
       }
       let mainContainer = document.createElement('div');
-      // TODO поставить на правильное место vw vh
-      // и центрировать в зависимости от положения интерфейса
-      mainContainer.style.position = 'absolute';
-      mainContainer.style.top = '44px';
-      mainContainer.style.left = '223px';
-      mainContainer.style.width = '73%';
-      mainContainer.style.height = '89%';
+      mainContainer.style.position = 'relative';
+      mainContainer.style.left = Vals.x + '%';
+      mainContainer.style.top = Vals.y + '%';
+      mainContainer.style.width = Vals.w + '%';
+      mainContainer.style.height = Vals.h + '%';
       mainContainer.id = 'svg-helper';
       document.body.querySelector('.game-view').append(mainContainer);
       return mainContainer;
@@ -288,15 +301,18 @@ function revialSvgObject(CurrentPosition, SvgName = undefined) {
     function createSvgHelperButton(Vals, DisplayMesh) {
       let invisElem = document.createElement('div');
       invisElem.classList.add('invisible-element-svg');
-      invisElem.style.left = Vals.x + 'vw';
-      invisElem.style.top = Vals.y + 'vh';
-      invisElem.style.width = Vals.w + 'vw';
-      invisElem.style.height = Vals.h + 'vh';
+      invisElem.style.left = Vals.x + '%';
+      invisElem.style.top = Vals.y + '%';
+      invisElem.style.width = Vals.w + '%';
+      invisElem.style.height = Vals.h + '%';
 
       invisElem.addEventListener('click', () => {
         if (Vals.name) {
           changeSvgtexture(DisplayMesh, Vals.name, true);
           revialSvgObject(CurrentPosition, Vals.name);
+        } else if (Vals.value.window) {
+          changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, Vals.value.window, Vals.value);
+          revialSvgObject(CurrentPosition, Vals.value.window);
         }
         else changeSvgElem(Vals.value);
       });
@@ -336,7 +352,8 @@ function changeSvgElem(Val = {}) {
 
 function changeSvgElemPos(Elem, Val, Type) {
   let tempTransform = Elem.style.transform ? Elem.style.transform : '';
-  let endString = Type === 'translateX' ? 'vw' : Type === 'translateY' ? 'vh' : 'deg';
+  // TODO тут вроде в пикселях можно, чтобы легче ориентироваться внутри SVG
+  let endString = Type === 'translateX' ? 'px' : Type === 'translateY' ? 'px' : 'deg';
   if (tempTransform !== '' && tempTransform.includes(Type)) {
     let oldTrans = tempTransform.split(`${Type}(`)[1].split(endString)[0];
     let newTransform = tempTransform.replace(`${Type}(${oldTrans}${endString})`, `${Type}(${Val}${endString})`);

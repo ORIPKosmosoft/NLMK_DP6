@@ -42,7 +42,7 @@ const devHelper = {
   },
   svgVals: [],
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
   },
 };
