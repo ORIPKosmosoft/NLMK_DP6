@@ -304,6 +304,20 @@ function randomAnswer(radioElements, parent) {
   })
 }
 
+// Перезаполнение массива контейнерами вопросов
+function reviveArray(min) {
+  document.querySelectorAll('.selfcheck-container').forEach((Element) => {
+    devHelper.testVals.containerArray.push(Element);
+    Element.classList.toggle('block-selfcheck-container', false);
+    Element.querySelector('.correct-answer').classList.toggle('correct-answer', false);
+    Element.querySelector('.active-button').classList.toggle('disabled-button', true);
+    Element.querySelector('.active-button').classList.toggle('active-button', false);
+  });
+  randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+  randomContainer.classList.toggle('selfcheck-invisible', false);
+  devHelper.testVals.previousContainer = randomContainer;
+}
+
 function glavTestFun(pressedButton) {
   if (devHelper.testVals.previousContainer != undefined) {
     devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
