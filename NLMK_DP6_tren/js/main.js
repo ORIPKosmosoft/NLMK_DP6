@@ -176,6 +176,20 @@ function domLoaded() {
   loadTrenActions();
 }
 
+window.addEventListener('load', function () {
+  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
+    Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
+    Element.classList.remove('first-drop');
+  })
+  document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
+    Element.addEventListener('click', guideBtnsClick);
+    // if (index === 0) {
+    //   Element.classList.toggle('nav-icon-active', true);
+    //   Array.from(Element.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+    //     if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
+    //   })
+    // }
+  });
   setInterval(() => {
     for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {
       const Element = document.querySelectorAll('.photo')[i];
