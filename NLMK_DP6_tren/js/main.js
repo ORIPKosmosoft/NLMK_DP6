@@ -112,32 +112,12 @@ function domLoaded() {
     })
   })
 
-  // Переход к нужному тесту
-  document.querySelector('.tests-container').querySelectorAll('.tests-button').forEach((Element) => {
-    Element.addEventListener('click', (e) => {
-      let buttonTestsindex = Array.from(e.currentTarget.closest('.tests-selected-buttons').children).indexOf(e.currentTarget.parentElement);
-      console.log(buttonTestsindex);
-      if (buttonTestsindex === 0) {
-        console.log('Самопроверка');
-      } else if (buttonTestsindex === 1) {
-        console.log('Интерактивный тест');
-      }
-    })
-  })
-
   // Правильные ответы для самопроверки
-  const testsAnswerResults = {
-    selfcheck: {
-      0: 0, // 1
-      1: 2, // 2
-      2: 1, // 3
-    },
-    interactive: {
-      0: 1, // 1
-      1: 0, // 2
-      2: 2, // 3
-    },
-  }
+  devHelper.testVals.answersArray = [
+    'Оборудование пылеуловителя',
+    'Оборудование пылеуловителя',
+    'Оборудование пылеуловителя',
+  ]
 
   // Вешаю обработчик нажатия на все <div class="selfcheck-radio">
   document.querySelectorAll('.selfcheck-radio').forEach((Element) => {
@@ -149,9 +129,44 @@ function domLoaded() {
   // Вешаю обработчик на кнопку 'Подтвердить'
   document.querySelectorAll('.selfcheck-confirm-button').forEach((Element) => {
     Element.addEventListener('click', (e) => {
-      confirmSelfcheckButtonClick(e.currentTarget, testsAnswerResults);
+      confirmSelfcheckButtonClick(e.currentTarget, devHelper.testVals.answersArray);
     })
   })
+
+  // Рандомлю ответы в каждом <div class="selfcheck-radio-container">
+  document.querySelectorAll('.selfcheck-radio-container').forEach((Element) => {
+    randomAnswer(Element.querySelectorAll('.radio-elem'), Element);
+  })
+
+  // Заполняю массив контейнерами вопросов
+  document.querySelectorAll('.selfcheck-container').forEach((Element) => {
+    devHelper.testVals.containerArray.push(Element);
+  });
+  //setFuncTest();
+
+  // При переходе на вкладку тесты, появляется случайный вопрос
+  document.querySelectorAll('.nav-icon')[document.querySelectorAll('.nav-icon').length - 1].addEventListener('mouseup', (e) => {
+    if (!e.currentTarget.classList.contains('test-opened')) {
+      setFuncTest(e.currentTarget.classList[0]);
+      e.currentTarget.classList.toggle('test-opened', true);
+    }
+  })
+
+  document.querySelector('.random-answer-button').addEventListener('mouseout', (e) => {
+    e.currentTarget.classList.toggle('answer-button-pressed', false);
+    Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+      if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#939393');
+    })
+  })
+
+  document.querySelector('.random-answer-button').addEventListener('click', (e) => {
+    e.currentTarget.classList.toggle('answer-button-pressed', true);
+    Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+      if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
+    })
+    setFuncTest(e.currentTarget.classList[0]);
+  })
+
   document.querySelector('.section').addEventListener('transitionend', (e) => {
     if (e.propertyName === 'width')
       document.querySelector('.text-container').style.transition = document.querySelector('.section').style.width === '68vw' ? 'margin-top 0.3s ease' : 'none';
@@ -160,21 +175,6 @@ function domLoaded() {
 
   loadTrenActions();
 }
-
-window.addEventListener('load', function () {
-  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
-    Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
-    Element.classList.remove('first-drop');
-  })
-  document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
-    Element.addEventListener('click', guideBtnsClick);
-    // if (index === 0) {
-    //   Element.classList.toggle('nav-icon-active', true);
-    //   Array.from(Element.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
-    //     if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
-    //   })
-    // }
-  });
 
   setInterval(() => {
     for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {
@@ -263,12 +263,26 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
   let selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
   let radioContainer = selfcheckContainer.querySelector('.selfcheck-radio-container');
   let radioButtSelectIndex = Array.from(radioContainer.querySelectorAll('.radio-elem')).indexOf(radioContainer.querySelector('.active-radio'));
-  if (radioButtSelectIndex == selfcheckTrueResults.selfcheck[selfcheckcontainerIndex]) {
+  let textSelectRadioButt = selfcheckContainer.querySelector('.active-radio').querySelector('span').textContent;
+
+  // console.log(textSelectRadioButt + ',     ' + selfcheckTrueResults.selfcheck[selfcheckcontainerIndex]);
+
+  if (textSelectRadioButt == selfcheckTrueResults[selfcheckcontainerIndex]) {
     radioContainer.querySelector('.active-radio').classList.toggle('correct-answer', true);
+    radioContainer.querySelector('.active-radio').classList.toggle('active-radio', false);
     selfcheckContainer.classList.toggle('block-selfcheck-container', true);
   } else {
     radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', true);
+    radioContainer.querySelector('.active-radio').classList.toggle('active-radio', false);
     selfcheckContainer.classList.toggle('block-selfcheck-container', true);
   }
 }
 
+// Функция рандома ответов в вопросе
+function randomAnswer(radioElements, parent) {
+  let max = radioElements.length;
+  let min = 0;
+  radioElements.forEach(() => {
+    parent.insertBefore(radioElements[Math.floor(Math.random() * (max - min) + min)], radioElements[Math.floor(Math.random() * (max - min) + min)]);
+  })
+}
