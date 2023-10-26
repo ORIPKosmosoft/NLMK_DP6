@@ -582,6 +582,7 @@ const COLOR_STATE_BUTTON = {
   })
 
 
+  
   // ЧАТ НАВЕДЕНИЕ
   document.getElementById('b_chat').addEventListener("mouseover", (e) => {
     setStartPosition(document.querySelector('.box-chat-window'));
@@ -623,6 +624,8 @@ const COLOR_STATE_BUTTON = {
   document.getElementById('b_restart').addEventListener("click", (e) => { }); // РЕСТАРТ
   document.getElementById('b_exit').addEventListener("click", (e) => { }); // ВЫХОД
 }
+
+
 
 
 
