@@ -144,12 +144,12 @@ function domLoaded() {
   document.querySelectorAll('.selfcheck-container').forEach((Element) => {
     devHelper.testVals.containerArray.push(Element);
   });
-  //setFuncTest();
+  //glavTestFun();
 
   // При переходе на вкладку тесты, появляется случайный вопрос
   document.querySelectorAll('.nav-icon')[document.querySelectorAll('.nav-icon').length - 1].addEventListener('mouseup', (e) => {
     if (!e.currentTarget.classList.contains('test-opened')) {
-      setFuncTest(e.currentTarget.classList[0]);
+      glavTestFun(e.currentTarget.classList[0]);
       e.currentTarget.classList.toggle('test-opened', true);
     }
   })
@@ -166,7 +166,7 @@ function domLoaded() {
     Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
       if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
     })
-    setFuncTest(e.currentTarget.classList[0]);
+    glavTestFun(e.currentTarget.classList[0]);
   })
 
   document.querySelector('.section').addEventListener('transitionend', (e) => {
@@ -228,10 +228,11 @@ function guideBtnsClick(e) {
     if (document.querySelector('.text-container-active')) {
       document.querySelector('.text-container-active').classList.toggle('text-container-active', false);
     }
-    let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget);
+    let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget) - 1;
     let textConNew = document.querySelector('.info-container').children[newTextIndex];
     textConNew.classList.toggle('text-container-active', true);
-    document.querySelector('.info-container').children[0].style.marginTop = `-${(newTextIndex - 1) * textConNew.getBoundingClientRect().height}px`;
+    console.log(newTextIndex);
+    document.querySelector('.info-container').children[0].style.marginTop = `-${(newTextIndex - 0) * textConNew.getBoundingClientRect().height}px`;
 
     if (document.querySelector('.arrow-text-active')) {
       document.querySelectorAll('.arrow-text-active').forEach((Element) => {
@@ -301,4 +302,68 @@ function randomAnswer(radioElements, parent) {
   radioElements.forEach(() => {
     parent.insertBefore(radioElements[Math.floor(Math.random() * (max - min) + min)], radioElements[Math.floor(Math.random() * (max - min) + min)]);
   })
+}
+
+// Перезаполнение массива контейнерами вопросов
+function reviveArray(min) {
+  document.querySelectorAll('.selfcheck-container').forEach((Element) => {
+    devHelper.testVals.containerArray.push(Element);
+    Element.classList.toggle('block-selfcheck-container', false);
+    Element.querySelector('.correct-answer').classList.toggle('correct-answer', false);
+    Element.querySelector('.active-button').classList.toggle('disabled-button', true);
+    Element.querySelector('.active-button').classList.toggle('active-button', false);
+  });
+  randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+  randomContainer.classList.toggle('selfcheck-invisible', false);
+  devHelper.testVals.previousContainer = randomContainer;
+}
+
+function glavTestFun(pressedButton) {
+  if (devHelper.testVals.previousContainer != undefined) {
+    devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
+  }
+  let min = 0;
+  let randomContainer;
+  let previousContainerIndex;
+
+  if (pressedButton === 'nav-icon') {
+    randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+
+    randomContainer.classList.toggle('selfcheck-invisible', false);
+    devHelper.testVals.previousContainer = randomContainer;
+  }
+
+  if (pressedButton === 'random-answer-button') {
+    if (devHelper.testVals.previousContainer != undefined) {
+      devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
+    }
+    if (devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelector('.correct-answer') != null) {
+      devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
+      previousContainerIndex = devHelper.testVals.containerArray.indexOf(devHelper.testVals.previousContainer);
+      devHelper.testVals.containerArray.splice(previousContainerIndex, 1);
+      if (devHelper.testVals.containerArray.length === 0) {
+        reviveArray(min);
+        return;
+      }
+      randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+      randomContainer.classList.toggle('selfcheck-invisible', false);
+      devHelper.testVals.previousContainer = randomContainer;
+      if (devHelper.testVals.containerArray.length === 0) {
+        devHelper.testVals.previousContainer = undefined;
+      }
+      return;
+    } else if (devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelector('.wrong-answer') != null) {
+      randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+      randomContainer.classList.toggle('selfcheck-invisible', false);
+      devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelector('.wrong-answer').classList.toggle('wrong-answer', false);
+      devHelper.testVals.previousContainer.classList.toggle('block-selfcheck-container', false);
+      devHelper.testVals.previousContainer.querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', true);
+      devHelper.testVals.previousContainer = randomContainer;
+      return;
+    }
+    randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+    randomContainer.classList.toggle('selfcheck-invisible', false);
+    devHelper.testVals.previousContainer = randomContainer;
+    return;
+  }
 }
