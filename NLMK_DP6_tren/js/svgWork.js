@@ -239,7 +239,7 @@ function makeDynamicTextureDisplay(ObjectSvg) {
 }
 
 // Появление нужного модуля управления для каждо схемы в зависимости от вида
-function revialSvgObject(CurrentPosition, SvgName = undefined) {
+function revialSvgObject(CurrentPosition, SvgName = undefined, WindowPosition = undefined) {
   if (CurrentPosition !== undefined) {
     if (CurrentPosition === 1) {
       let mainMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === CurrentPosition);
@@ -249,52 +249,53 @@ function revialSvgObject(CurrentPosition, SvgName = undefined) {
       if (textureSvgName === 'vnk_main') {
         let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
         for (let i = 0; i < 6; i++) {
-          if (i === 0) tempObj = { x: 0.5, y: 1.5, w: 10, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 12, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 23, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 35, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 46, y: 1.5, w: 10, h: 3, name: 'vnk_spvg', };
-          else if (i === 5) tempObj = { x: 48.9, y: 26.5, w: 2.5, h: 3.5, value: { window: 'O_n_k_na_VNK_posle_1', x: 700, y: 300, } };
+          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', forAction: true,};
+          // else if (i === 5) tempObj = { x: 30.5, y: 44.5, w: 1.7, h: 3.5, value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, } };
+          else if (i === 5) tempObj = { x: 30.5, y: 44.5, w: 1.7, h: 3.5, };
           if (i === 5) btnId = 'kl029'
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh, btnId));
         }
       } else if (textureSvgName === 'BVNK_VNK1') {
         let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
         for (let i = 0; i < 5; i++) {
-          if (i === 0) tempObj = { x: 0.5, y: 1.5, w: 10, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 12, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 23, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 35, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 46, y: 1.5, w: 10, h: 3, name: 'vnk_spvg', };
+          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh, btnId));
         }
       } else if (textureSvgName === 'BVNK_VNK2') {
         let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
         for (let i = 0; i < 5; i++) {
-          if (i === 0) tempObj = { x: 0.5, y: 1.5, w: 10, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 12, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 23, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 35, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 46, y: 1.5, w: 10, h: 3, name: 'vnk_spvg', };
+          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh, btnId));
         }
       } else if (textureSvgName === 'BVNK_VNK3') {
         let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
         for (let i = 0; i < 7; i++) {
-          if (i === 0) tempObj = { x: 0.5, y: 1.5, w: 10, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 12, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 23, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 35, y: 1.5, w: 11, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 46, y: 1.5, w: 10, h: 3, name: 'vnk_spvg', };
+          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
           else if (i === 5) tempObj = { x: 59, y: 28.5, w: 4.5, h: 14.7, value: { name: 'vnk_3', color: '#000000' }, };
           else if (i === 6) tempObj = { x: 48.9, y: 26.5, w: 2.5, h: 3.5, value: { window: 'O_n_k_na_VNK_posle_1', x: 700, y: 300, } };
           if (i === 6) btnId = 'kl313'
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh, btnId));
         }
       } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') {
-        let mainContainer = createMainHelperContainer({ x: 36.5, y: -70, w: 14, h: 33, });
+        let mainContainer = createMainHelperContainer(WindowPosition);
         for (let i = 0; i < 1; i++) {
-          if (i === 0) tempObj = { x: 91.5, y: 2.5, w: 8, h: 5, name: 'BVNK_VNK3', }; // close
+          if (i === 0) tempObj = { x: 12, y: 0.1, w: 1, h: 2, name: 'BVNK_VNK3', }; // close
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh, btnId));
         }
       }
@@ -307,10 +308,10 @@ function revialSvgObject(CurrentPosition, SvgName = undefined) {
         }
         let mainContainer = document.createElement('div');
         mainContainer.style.position = 'relative';
-        mainContainer.style.left = Vals.x + '%';
-        mainContainer.style.top = Vals.y + '%';
-        mainContainer.style.width = Vals.w + '%';
-        mainContainer.style.height = Vals.h + '%';
+        mainContainer.style.left = Vals.x + 'vw';
+        mainContainer.style.top = Vals.y + 'vh';
+        mainContainer.style.width = Vals.w + 'vw';
+        mainContainer.style.height = Vals.h + 'vh';
         mainContainer.id = 'svg-helper';
         document.body.querySelector('.game-view').append(mainContainer);
         return mainContainer;
@@ -318,11 +319,20 @@ function revialSvgObject(CurrentPosition, SvgName = undefined) {
       function createSvgHelperButton(Vals, DisplayMesh, DtnId = undefined) {
         let invisElem = document.createElement('div');
         invisElem.classList.add('invisible-element-svg');
-        invisElem.style.left = Vals.x + '%';
-        invisElem.style.top = Vals.y + '%';
-        invisElem.style.width = Vals.w + '%';
-        invisElem.style.height = Vals.h + '%';
-        if (DtnId !== undefined) invisElem.id = DtnId;
+        if (devHelper.dev.enable === true) {
+          invisElem.classList.add('invisible-element-svg-helper');
+          invisElem.innerHTML = DtnId === undefined ? 'test' : DtnId;
+        }
+        invisElem.style.left = Vals.x + 'vw';
+        invisElem.style.top = Vals.y + 'vh';
+        invisElem.style.width = Vals.w + 'vw';
+        invisElem.style.height = Vals.h + 'vh';
+        if (DtnId !== undefined) {
+          invisElem.id = DtnId;
+          invisElem.addEventListener('click', (e) => {
+            trenClickOnSvgElem(invisElem);
+          })
+        } 
         invisElem.addEventListener('click', () => {
           if (Vals.name) {
             changeSvgtexture(DisplayMesh, Vals.name, true);
@@ -330,8 +340,9 @@ function revialSvgObject(CurrentPosition, SvgName = undefined) {
           } else if (Vals.value.window) {
             changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, Vals.value.window, Vals.value);
             revialSvgObject(CurrentPosition, Vals.value.window);
-          }
-          else changeSvgElem(Vals.value);
+          } else if (Vals.value.forAction && Vals.value.forAction === true) {
+
+          } else changeSvgElem(Vals.value);
         });
         return invisElem;
       }

@@ -231,7 +231,6 @@ function guideBtnsClick(e) {
     let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget) - 1;
     let textConNew = document.querySelector('.info-container').children[newTextIndex];
     textConNew.classList.toggle('text-container-active', true);
-    console.log(newTextIndex);
     document.querySelector('.info-container').children[0].style.marginTop = `-${(newTextIndex - 0) * textConNew.getBoundingClientRect().height}px`;
 
     if (document.querySelector('.arrow-text-active')) {
@@ -281,9 +280,6 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
   let radioContainer = selfcheckContainer.querySelector('.selfcheck-radio-container');
   let radioButtSelectIndex = Array.from(radioContainer.querySelectorAll('.radio-elem')).indexOf(radioContainer.querySelector('.active-radio'));
   let textSelectRadioButt = selfcheckContainer.querySelector('.active-radio').querySelector('span').textContent;
-
-  // console.log(textSelectRadioButt + ',     ' + selfcheckTrueResults.selfcheck[selfcheckcontainerIndex]);
-
   if (textSelectRadioButt == selfcheckTrueResults[selfcheckcontainerIndex]) {
     radioContainer.querySelector('.active-radio').classList.toggle('correct-answer', true);
     radioContainer.querySelector('.active-radio').classList.toggle('active-radio', false);

@@ -330,7 +330,6 @@ function makeUnicMat(UnicMesh) {
 
 function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false, Window = undefined, Pos = undefined) {
   if (Mesh && SvgName) {
-    console.log(Mesh, SvgName, ChangeTexture, Window, Pos);
     Mesh.svgName = SvgName;
     let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
     let textureContext = Texture.getContext();

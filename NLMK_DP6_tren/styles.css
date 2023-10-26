@@ -609,8 +609,8 @@ ul {
 .game-view {
   width: 97vw;
   height: 100vh;
-  position: absolute;
-  top: 0;
+  position: relative;
+  /* top: 0; */
   left: 3vw;
 }
 
@@ -824,6 +824,12 @@ ul {
 .invisible-element-svg {
   position: absolute;
   cursor: pointer;
+}
+.invisible-element-svg-helper {
+  background-color: rgba(255, 0, 0, 0.3);
+  font-size: large;
+  color: #ff6600;
+  font-family: 'Circe-ExtraBold', sans-serif;
 }
 
 /* babylon 
@@ -1850,11 +1856,10 @@ ul {
 
 /*  /// Cтраница тренажёра - интерфейс - основная часть ///  */
 .tren-ui{
-  /* background-color: rgba(223, 10, 10, 1); */
   background-color: rgba(255, 255, 255, 1);
   z-index: 909;
-  position: absolute;
-  height: 99%;
+  position: relative;
+  height: 99vh;
   overflow: hidden;
   padding: 5px 5px 5px 10px;
   width: 3vw;
