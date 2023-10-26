@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const scene = createScene();
-  if (devHelper.dev.enable === true) scene.debugLayer.show();
+  // if (devHelper.dev.enable === true) scene.debugLayer.show();
   // engine.runRenderLoop(function () {
   //   scene.render();
   // });

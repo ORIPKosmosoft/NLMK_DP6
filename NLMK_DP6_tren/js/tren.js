@@ -101,7 +101,6 @@ function trenClickOnSvgElem(SvgElemHelper) {
         let displayMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition);
         changeSvgtexture(displayMesh, displayMesh.material.diffuseTexture.name.substring(displayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, currentActonObject.action.window2D.name, posCoors);
         revialSvgObject(devHelper.model3DVals.currentPosition, currentActonObject.action.window2D.name, currentActonObject.action.window2D.helperVals);
-        // console.log(devHelper.model3DVals.currentPosition, currentActonObject.action.window2D.name, posCoors);
       }
     }
   }
