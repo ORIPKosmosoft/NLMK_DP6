@@ -498,7 +498,7 @@ const COLOR_STATE_BUTTON = {
     }
     // ЗАКРЫТ
     else{
-      document.querySelector('.box-collapse').classList.add("opacity-11");
+      // document.querySelector('.box-collapse').classList.add("opacity-11");
 
       if (!document.querySelector('.box-time.opacity-1')) {           
         document.querySelector('.box-time').style.left = document.querySelector('.box-time').getAttribute('sx');
@@ -507,6 +507,7 @@ const COLOR_STATE_BUTTON = {
         document.querySelector('.box-chat-window').style.left = document.querySelector('.box-chat-window').getAttribute('sx');
       }
     }
+
   }); 
   // МЕНЮ НАВЕДЕНИЕ
   document.getElementById('b_collapseMenu').addEventListener("mouseover", (e)=>{
@@ -545,9 +546,7 @@ const COLOR_STATE_BUTTON = {
 
   // ЧАТ НАВЕДЕНИЕ
   document.getElementById('b_chat').addEventListener("mouseover", (e)=>{
-    
     setStartPosition(document.querySelector('.box-chat-window'));
-    
     document.querySelector('.box-chat-window').classList.add("opacity-11");
    
   }); 
