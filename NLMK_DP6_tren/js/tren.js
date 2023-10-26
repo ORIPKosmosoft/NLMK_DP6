@@ -231,27 +231,55 @@ function raiseUpBox(e) {
 }
 
 
+function clickCloseTime(e){
+  document.getElementById('b_oclock').classList.remove('button-tren-active');
+  setNewStateButtonSVG(document.getElementById('b_oclock').querySelector('object'), COLOR_STATE_BUTTON.Normal);
 
+  document.querySelector('.block-button').classList.remove("z-index-1");
+  document.querySelector('.box-time').classList.remove("opacity-1");
+  document.querySelector('.box-time').ontransitionend = (e)=>{
+    document.querySelector('.box-time').classList.remove("box-time-padTop32");
+    document.querySelector('.time-header').classList.remove("time-header-opacity");
+    document.querySelector('.box-time .backArea').classList.remove('backArea-white-100')
+    document.querySelector('.box-time').ontransitionend = (e)=>{}
+    setStartPosition(e.currentTarget);
+  }
+}
+function clickCloseTimer(e){
+  
+  document.getElementsByClassName("dialogMessageWatch")[0].style.display = "none";
+    
+  document.querySelector(".dialogMessageWatch .time-hour").textContent = "00";
+  document.querySelector(".dialogMessageWatch .time-minute").textContent = "00";
+  document.querySelectorAll('.visibleDrooDown').forEach(element => {element.classList.remove("visibleDrooDown");});
+  document.querySelector(".dialogTimers-hours[dropDown='1'] p").textContent = "00"
+  document.querySelector(".dialogTimers-hours[dropDown='2'] p").textContent = "00";
+        
+}
+function clickCloseChat(e){
+  setNewStateButtonSVG(document.getElementById('b_chat').querySelector('object'), COLOR_STATE_BUTTON.Normal);
+    document.getElementById('b_chat').classList.remove('button-tren-active');
 
+    document.querySelector('.box-chat-window').classList.remove("opacity-1"); // БОЛЬШОЕ ОКНО
+    document.querySelector('.box-chat-window .block-button').classList.remove("z-index-1"); // БЛОКИРОВКА КНОПОК
+    document.querySelector('.box-chat-window .box-chat-header').classList.remove("opacity-1"); // ЛИНИЯ С НАЗВАНИЕ И Х
+    
+    document.querySelector('.box-chat-window').ontransitionend = (e)=>{
+      document.querySelector('.box-chat-window').classList.remove("visibility-visible");
+      e.currentTarget.ontransitionend = (e)=>{};
+      document.querySelector('.chat').scrollTop = 0;
+      setStartPosition(e.currentTarget);
+      document.querySelector('.box-chat-window .chat').classList.add("chat-mini");
+      document.querySelector('.box-chat-window').classList.add("box-chat-window-mini");
+      document.querySelector('.box-chat-window .backArea').classList.remove('backArea-white-100')
+      setMiniChat();
+    }
+}
 
 // TIME
 {
-  // КЛИК ЗАКРЫТЬ
-  document.querySelector('.time-header-button').addEventListener("click", (e)=>{
-    document.getElementById('b_oclock').classList.remove('button-tren-active');
-    setNewStateButtonSVG(document.getElementById('b_oclock').querySelector('object'), COLOR_STATE_BUTTON.Normal);
-
-    document.querySelector('.block-button').classList.remove("z-index-1");
-    document.querySelector('.box-time').classList.remove("opacity-1");
-    document.querySelector('.box-time').ontransitionend = (e)=>{
-      document.querySelector('.box-time').classList.remove("box-time-padTop32");
-      document.querySelector('.time-header').classList.remove("time-header-opacity");
-      document.querySelector('.box-time .backArea').classList.remove('backArea-white-100')
-      document.querySelector('.box-time').ontransitionend = (e)=>{}
-      setStartPosition(e.currentTarget);
-    }
-    // document.querySelector('.box-time').addEventListener("transitionend", removeCSSTime);
-  })
+  // КЛИК ЗАКРЫТЬ TME
+  document.querySelector('.time-header-button').addEventListener("click", clickCloseTime)
   // BIND mouseDown
   document.querySelector('.time-header-title').onmousedown = (e) => {
     raiseUpBox(e);
@@ -303,17 +331,7 @@ function raiseUpBox(e) {
     //document.getElementsByClassName("dialogMessageWatch")[0].style.left = "";
   })
   // Закрыть таймер. Обнулить таймер
-  document.querySelector(".dialogHeader p").addEventListener("click", (e) => {
-   
-    document.getElementsByClassName("dialogMessageWatch")[0].style.display = "none";
-    
-    document.querySelector(".dialogMessageWatch .time-hour").textContent = "00";
-    document.querySelector(".dialogMessageWatch .time-minute").textContent = "00";
-    document.querySelectorAll('.visibleDrooDown').forEach(element => {element.classList.remove("visibleDrooDown");});
-    document.querySelector(".dialogTimers-hours[dropDown='1'] p").textContent = "00"
-    document.querySelector(".dialogTimers-hours[dropDown='2'] p").textContent = "00";
-          
-  })
+  document.querySelector(".dialogHeader p").addEventListener("click", clickCloseTimer);
 
   // Открыть выпадающий список
   Array.from(document.getElementsByClassName("dialogTimers-hours")).forEach((item) => {
@@ -451,28 +469,8 @@ function raiseUpBox(e) {
     miniChat.style.height = miniChat.getAttribute('maxHeight');
   }
 
-  // клик закрыть
-  document.querySelector('.box-chat-window .chat-header-button').addEventListener("click", (e)=>{
-    setNewStateButtonSVG(document.getElementById('b_chat').querySelector('object'), COLOR_STATE_BUTTON.Normal);
-    document.getElementById('b_chat').classList.remove('button-tren-active');
-
-    document.querySelector('.box-chat-window').classList.remove("opacity-1"); // БОЛЬШОЕ ОКНО
-    document.querySelector('.box-chat-window .block-button').classList.remove("z-index-1"); // БЛОКИРОВКА КНОПОК
-    document.querySelector('.box-chat-window .box-chat-header').classList.remove("opacity-1"); // ЛИНИЯ С НАЗВАНИЕ И Х
-    
-    document.querySelector('.box-chat-window').ontransitionend = (e)=>{
-      document.querySelector('.box-chat-window').classList.remove("visibility-visible");
-      e.currentTarget.ontransitionend = (e)=>{};
-      document.querySelector('.chat').scrollTop = 0;
-      setStartPosition(e.currentTarget);
-      document.querySelector('.box-chat-window .chat').classList.add("chat-mini");
-      document.querySelector('.box-chat-window').classList.add("box-chat-window-mini");
-      document.querySelector('.box-chat-window .backArea').classList.remove('backArea-white-100')
-      setMiniChat();
-    }
- 
-   
-  });
+  // клик закрыть CHAT
+  document.querySelector('.box-chat-window .chat-header-button').addEventListener("click", clickCloseChat);
 
   // Bind mouseDown
   document.querySelector('.box-chat-window .chat-header-title').onmousedown = (e) => {
@@ -489,15 +487,15 @@ const COLOR_STATE_BUTTON = {
 
 // Main INTEFACE  
 {
-  //  setNewStateButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Active);
-  //  setNewStateButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  
+  // покрасить внутри всг
   function setNewStateButtonSVG(objectSVG, color) {
     Array.from(objectSVG.contentDocument.querySelectorAll('[fill]')).forEach(element => {
       element.setAttribute('fill', color)
     });
   }
   
-
+  // свернуть смена свг
   function newImageCollapseMenu(e) {
     let object = e.currentTarget.querySelector('object');
     if (object.getAttribute('icon') == "svg_menu_2") {
@@ -559,9 +557,19 @@ const COLOR_STATE_BUTTON = {
   // ЧАСЫ ОТВЕДЕНИЕ
   document.getElementById('b_oclock').addEventListener("mouseout", (e) => {
     document.querySelector('.box-time').classList.remove("opacity-11");
+    document.querySelector('.box-time').classList.remove("opacity-0");
+    document.querySelector('.dialogMessageWatch').classList.remove("opacity-0");
   }); 
   // КЛИК ЧАСЫ
   document.getElementById('b_oclock').addEventListener("click", (e)=>{
+    document.querySelector('.box-time').classList.remove("opacity-11");
+    if(e.currentTarget.classList.contains('button-tren-active')){
+      clickCloseTime(e);
+      clickCloseTimer(e);
+      document.querySelector('.box-time').classList.add("opacity-0");
+      return;
+    }
+
     e.currentTarget.classList.add('button-tren-active');
     setNewStateButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Active);
     document.querySelector('.box-time').style.display = 'flex';
@@ -582,11 +590,17 @@ const COLOR_STATE_BUTTON = {
   });
   // ЧАТ ОТВЕДЕНИЕ
   document.getElementById('b_chat').addEventListener("mouseout", (e)=>{
- 
+    document.querySelector('.box-chat-window').classList.remove("opacity-0");
     document.querySelector('.box-chat-window').classList.remove("opacity-11");
   });
   // КЛИК ЧАТ
   document.getElementById('b_chat').addEventListener("click", (e)=>{
+    if(e.currentTarget.classList.contains('button-tren-active')){
+      clickCloseChat(e);
+      document.querySelector('.box-chat-window').classList.add("opacity-0");
+      document.querySelector('.box-chat-window').classList.remove("opacity-11");
+      return;
+    }
     e.currentTarget.classList.add('button-tren-active');
     setNewStateButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Active);
 
