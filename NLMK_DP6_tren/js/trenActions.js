@@ -82,7 +82,17 @@ let tempActions = [
       sender: 'Система',
       action: {
         target2D: 'kl029',
-        // window2D: { name: 'O_n_k_na_VNK_posle_1', x: 700, y: 300 },
+        window2D: {
+          name: 'O_n_k_na_VNK_posle_1',
+          position: { x: 900, y: 473, },
+          helperVals : { x: 43.3, y: -54, w: 13, h: 32.6, }, // не смог связать положение окна в px к размерам на мониторе
+          elements: [
+            { name: 'title', text: 'Управление клапаном 029' },
+            { name: 'status_window_text', text: 'Нет данных' },
+            { name: 'btn_open', color: '#FFFFFF' },
+            { name: 'polozenie_text', text: '51' },
+          ]
+        },
       },
       duration: 1,
       startTime: 0,
