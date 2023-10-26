@@ -146,6 +146,7 @@ body {
   transition: all 0.3s ease;
   cursor: pointer;
   z-index: 2;
+  color: #7C7C7C;
 }
 
 .section .nav-icon-active {

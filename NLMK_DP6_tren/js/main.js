@@ -306,7 +306,6 @@ function randomAnswer(radioElements, parent) {
 
 // Перезаполнение массива контейнерами вопросов
 function reviveArray(min) {
-  // Test comment
   document.querySelectorAll('.selfcheck-container').forEach((Element) => {
     devHelper.testVals.containerArray.push(Element);
     Element.classList.toggle('block-selfcheck-container', false);
