@@ -13,7 +13,7 @@ function loadTrenActions() {
     devHelper.trenVals.scenarioArr.push(tempObjTren);
     if (tempActions[Index]) tempObjTren.actions = tempActions[Index];
   })
-  devHelper.trenVals.activeMeshs = [...tempActions.flatMap(scenarioArr => scenarioArr.map(action => action.action.target))];
+  devHelper.trenVals.activeMeshs = [...tempActions.flatMap(scenarioArr => scenarioArr.map(action => action.action.target3D))];
 }
 
 function startTren() {
@@ -68,7 +68,7 @@ function trenTimeTick(timeStamp) {
 function trenClickOnMesh(Mesh) {
   if (devHelper.trenVals.waitingInput === true) {
     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction];
-    if (currentActonObject.action && currentActonObject.action.target && currentActonObject.action.target === Mesh.name) {
+    if (currentActonObject.action && currentActonObject.action.target3D && currentActonObject.action.target3D === Mesh.name) {
       if (currentActonObject.action.rotation && Object.keys(currentActonObject.action.rotation).length > 0) {
         if (currentActonObject.action.rotation.y && currentActonObject.action.rotation.y !== '')
           moveRotationMesh(Mesh, 'r', currentActonObject.action.rotation.y, 'y');

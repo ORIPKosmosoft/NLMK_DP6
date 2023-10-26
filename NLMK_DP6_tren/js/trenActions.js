@@ -16,10 +16,7 @@ const devHelper = {
     lifeTime: '08:00:00',
     scenarioArr: [],
     scenario: undefined,
-    messages: {
-      normal: [],
-      error: []
-    },
+    messages: [],
     ended: false,
     activeMeshs: [],
   },
@@ -51,7 +48,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
   },
 };
@@ -81,7 +78,7 @@ let tempActions = [
     {
       text: 'Заменить1',
       action: {
-        target: 'kl022', // target2D target3D
+        target3D: 'kl022', // target2D target3D
         position: {}, // 3d 2d
         rotation: { y: 90 }, // 3d 2d
         color: {}, // 2d
@@ -96,7 +93,7 @@ let tempActions = [
     {
       text: 'Заменить1',
       action: {
-        target: 'kl021',
+        target3D: 'kl021',
         position: { x: 0.2 },
         rotation: {},
       },

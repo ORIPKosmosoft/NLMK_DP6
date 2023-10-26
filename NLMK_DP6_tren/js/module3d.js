@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     camera.attachControl(canvas, true);
     camera.minZ = 0.1;
     let light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, -1, 0), scene);
-    light.intensity = 0.5;
+    light.intensity = 1;
     var light2 = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -2, 0), scene);
     light2.position = new BABYLON.Vector3(0, 15, 0);
     light2.intensity = 1;
