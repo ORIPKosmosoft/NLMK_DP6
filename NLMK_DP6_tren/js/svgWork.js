@@ -190,6 +190,29 @@ window.addEventListener('load', function () {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1301.37 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.37-12.26l-20.56-25.18v-12.46h2.35l-.28-.91v-22.21c0-8.54-6.97-12.27-15.51-12.27h-.39c-8.54 0-15.51 3.73-15.51 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_3'); }
       })
     }
+    if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement) => {
+        if (TextElement.innerHTML === 'Управление клапаном 116') { addSvgElem(Index, TextElement, 'title',); }
+        if (TextElement.innerHTML === 'Открыт') { addSvgElem(Index, TextElement, 'status_window_text', false); }
+        if (TextElement.innerHTML === '100') { addSvgElem(Index, TextElement, 'polozenie_text'); }
+        if (TextElement.innerHTML === 'Открыть') { addSvgElem(Index, TextElement, 'polozenie_button_text'); }
+      })
+      ObjectSvg.svg.querySelectorAll('path').forEach((Element) => {
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm58.35 75.18 14.08-7.8 14.07-7.8v31.2l-14.07-7.8z') { addSvgElem(Index, Element, 'right_vn'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm58.69 75.18-14.08-7.8-14.08-7.8v31.2l14.08-7.8z') { addSvgElem(Index, Element, 'left_vn'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
+      })
+      ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element) => {
+        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_1'); }
+        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_2'); }
+      })
+      ObjectSvg.svg.querySelectorAll('rect').forEach((Element) => {
+        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14') { addSvgElem(Index, Element, 'btn_open'); }
+      })
+    }
 
   })
 
@@ -213,15 +236,19 @@ window.addEventListener('load', function () {
   })
 });
 
-function addSvgElem(SvgIndex, Element, Name) {
-  // if (devHelper.dev.enable === true) console.log(SvgIndex, Element, Name);
+function addSvgElem(SvgIndex, Element, Name, Move = true) {
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,
     name: Name,
   })
-  if (Element.tagName === 'text') {
-    Element.style.textAnchor = 'end';
-    Element.style.transform = `translate(${Element.getBoundingClientRect().width}px, 0px)`;
+  if (Move === true) {
+    if (Element.tagName === 'text') {
+      Element.style.textAnchor = 'end';
+      if (Element.hasAttribute('x'))
+        Element.setAttribute('x', Element.getBoundingClientRect().width + parseFloat(Element.getAttribute('x')))
+      else
+        Element.style.transform = `translate(${Element.getBoundingClientRect().width}px, 0px)`;
+    }
   }
 }
 
@@ -246,6 +273,8 @@ function revialSvgObject(CurrentPosition, SvgName = undefined, WindowPosition = 
       let textureSvgName = SvgName === undefined ? mainMesh.material.diffuseTexture.name.substring(mainMesh.material.diffuseTexture.name.indexOf('_') + 1) : SvgName;
       let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
       let btnId = undefined;
+      let currentMeshTexture = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition).material.diffuseTexture;
+      let textureName = currentMeshTexture.name.substring(currentMeshTexture.name.indexOf('_') + 1);
       if (textureSvgName === 'vnk_main') {
         let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
         for (let i = 0; i < 6; i++) {
@@ -288,17 +317,26 @@ function revialSvgObject(CurrentPosition, SvgName = undefined, WindowPosition = 
           else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
           else if (i === 5) tempObj = { x: 59, y: 28.5, w: 4.5, h: 14.7, value: { name: 'vnk_3', color: '#000000' }, };
           else if (i === 6) tempObj = { x: 48.9, y: 26.5, w: 2.5, h: 3.5, value: { window: 'O_n_k_na_VNK_posle_1', x: 700, y: 300, } };
-          if (i === 6) btnId = 'kl313'
+          if (i === 6) btnId = 'kl313';
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh, btnId));
         }
       } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') {
         let mainContainer = createMainHelperContainer(WindowPosition);
-        let currentMeshTexture = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition).material.diffuseTexture;
-        let textureName = currentMeshTexture.name.substring(currentMeshTexture.name.indexOf('_') + 1);
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 2; i++) {
           if (i === 0) tempObj = { x: 12, y: 0.1, w: 1, h: 2, name: textureName, }; // close
+          else if (i === 1) tempObj = { x: 6.4, y: 11.1, w: 3, h: 1.9, forAction: true, }; // open
+          if (i === 1) btnId = 'open_vn';
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh, btnId));
         }
+      } else if (textureSvgName === 'O_n_k_na_VNK_posle_2') {
+        // let mainContainer = createMainHelperContainer(WindowPosition);
+        // for (let i = 0; i < 2; i++) {
+        //   if (i === 0) tempObj = { x: 12, y: 0.1, w: 1, h: 2, name: textureName, }; // open
+        //   else if (i === 1) tempObj = { x: 6.4, y: 11.1, w: 3, h: 1.9, name: textureName, }; // close
+        //   if (i === 0) btnId = 'open_vn';
+        //   else if (i === 1) btnId = 'close_vn';
+        //   mainContainer.append(createSvgHelperButton(tempObj, mainMesh, btnId));
+        // }
       }
 
       // todo Нужно сделать что-то с размерами и положениями. В процентах тоже не верно вроде кака
@@ -353,7 +391,6 @@ function revialSvgObject(CurrentPosition, SvgName = undefined, WindowPosition = 
 }
 // color; text; alpha; position в vw, vh;
 function changeSvgElem(Val = {}) {
-  console.log(Val);
   if (Val.name) {
     devHelper.svgVals.forEach((svgArrObject) => {
       svgArrObject.activeElements.forEach((activeElemObj) => {
@@ -362,6 +399,8 @@ function changeSvgElem(Val = {}) {
             activeElemObj.element.innerHTML = Val.text;
           if (Val.color && Val.color !== '')
             activeElemObj.element.style.fill = Val.color;
+          if (Val.stroke && Val.stroke !== '')
+            activeElemObj.element.style.stroke = Val.stroke;
           if (Val.alpha && Val.alpha !== '')
             activeElemObj.element.style.opacity = Val.alpha;
           if (Val.rotation && Val.rotation !== '')
@@ -370,7 +409,8 @@ function changeSvgElem(Val = {}) {
             if (Val.position.x && Val.position.x !== '') changeSvgElemPos(activeElemObj.element, Val.position.x, 'translateX');
             if (Val.position.y && Val.position.y !== '') changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
           }
-          updateSvgTexture(svgArrObject.name, true);
+          // TODO Вроде как и не нужен
+          // updateSvgTexture(svgArrObject.name, true);
         }
       })
     })

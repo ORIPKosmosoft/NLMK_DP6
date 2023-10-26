@@ -85,17 +85,34 @@ let tempActions = [
         window2D: {
           name: 'O_n_k_na_VNK_posle_1',
           position: { x: 900, y: 473, },
-          helperVals : { x: 43.3, y: -54, w: 13, h: 32.6, }, // не смог связать положение окна в px к размерам на мониторе
+          helperVals: { x: 43.3, y: -54, w: 13, h: 32.6, }, // не смог связать положение окна в px к размерам на мониторе
           elements: [
             { name: 'title', text: 'Управление клапаном 029' },
             { name: 'status_window_text', text: 'Нет данных' },
-            { name: 'btn_open', color: '#FFFFFF' },
+            { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
             { name: 'polozenie_text', text: '51' },
-          ]
+            { name: 'polozenie_button_text', color: '#000000' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_1', stroke: '#8F8F8F' },
+            { name: 'circle_2', stroke: '#8F8F8F' },
+          ],
         },
       },
       duration: 1,
       startTime: 0,
+      human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
+    }, {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          name: 'O_n_k_na_VNK_posle_2',
+          position: { x: 900, y: 473, },
+          helperVals: { x: 43.3, y: -54, w: 13, h: 32.6, }, // не смог связать положение окна в px к размерам на мониторе
+        },
+      },
+      duration: 1,
+      startTime: 2,
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     }, {
       text: 'Заменить1',

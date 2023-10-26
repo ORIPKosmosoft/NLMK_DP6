@@ -94,11 +94,18 @@ function trenClickOnMesh(Mesh) {
 
 function trenClickOnSvgElem(SvgElemHelper) {
   if (devHelper.trenVals.waitingInput === true) {
+    console.log(SvgElemHelper);
     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction];
     if (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id) {
       if (currentActonObject.action.window2D && currentActonObject.action.window2D !== '') {
         let posCoors = currentActonObject.action.window2D.position;
         let displayMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition);
+        if (currentActonObject.action.window2D.elements && currentActonObject.action.window2D.elements !== '') {
+          for (let key in currentActonObject.action.window2D.elements) {
+            if (currentActonObject.action.window2D.elements.hasOwnProperty(key))
+              changeSvgElem(currentActonObject.action.window2D.elements[key]);
+          }
+        }
         changeSvgtexture(displayMesh, displayMesh.material.diffuseTexture.name.substring(displayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, currentActonObject.action.window2D.name, posCoors);
         revialSvgObject(devHelper.model3DVals.currentPosition, currentActonObject.action.window2D.name, currentActonObject.action.window2D.helperVals);
       }
@@ -128,12 +135,12 @@ const Roles = {
   "Работник": "message",
   "Ошибка": "messageError"
 }
-function addTrenValsMessages(elem){
+function addTrenValsMessages(elem) {
   devHelper.trenVals.messages.push(elem);
 }
-function sendMessage(Sender, TextMessage){
-  let message = createCustomElement("div", "", {"class": Roles[Sender]})
-  let top = createCustomElement("div", "", {"class": "topMessage"}, message)
+function sendMessage(Sender, TextMessage) {
+  let message = createCustomElement("div", "", { "class": Roles[Sender] })
+  let top = createCustomElement("div", "", { "class": "topMessage" }, message)
   switch (Roles[Sender]) {
     case "messageError":
       createCustomElement("div", Sender, { "class": "authorMessage" }, top)
@@ -147,7 +154,7 @@ function sendMessage(Sender, TextMessage){
       createCustomElement("div", (String(devHelper.trenVals.lifeTime).substring(0, 5)), { "class": "timeMessage" }, top)
       break;
   }
-  createCustomElement("div", TextMessage, {"class": "textMessage"}, message)
+  createCustomElement("div", TextMessage, { "class": "textMessage" }, message)
   document.querySelector(".chat").insertBefore(message, document.querySelector(".chat").children[0]);
 }
 
@@ -230,49 +237,49 @@ function raiseUpBox(e) {
 }
 
 
-function clickCloseTime(e){
+function clickCloseTime(e) {
   document.getElementById('b_oclock').classList.remove('button-tren-active');
   setNewStateButtonSVG(document.getElementById('b_oclock').querySelector('object'), COLOR_STATE_BUTTON.Normal);
 
   document.querySelector('.block-button').classList.remove("z-index-1");
   document.querySelector('.box-time').classList.remove("opacity-1");
-  document.querySelector('.box-time').ontransitionend = (e)=>{
+  document.querySelector('.box-time').ontransitionend = (e) => {
     document.querySelector('.box-time').classList.remove("box-time-padTop32");
     document.querySelector('.time-header').classList.remove("time-header-opacity");
     document.querySelector('.box-time .backArea').classList.remove('backArea-white-100')
-    document.querySelector('.box-time').ontransitionend = (e)=>{}
+    document.querySelector('.box-time').ontransitionend = (e) => { }
     setStartPosition(e.currentTarget);
   }
 }
-function clickCloseTimer(e){
-  
+function clickCloseTimer(e) {
+
   document.getElementsByClassName("dialogMessageWatch")[0].style.display = "none";
-    
+
   document.querySelector(".dialogMessageWatch .time-hour").textContent = "00";
   document.querySelector(".dialogMessageWatch .time-minute").textContent = "00";
-  document.querySelectorAll('.visibleDrooDown').forEach(element => {element.classList.remove("visibleDrooDown");});
+  document.querySelectorAll('.visibleDrooDown').forEach(element => { element.classList.remove("visibleDrooDown"); });
   document.querySelector(".dialogTimers-hours[dropDown='1'] p").textContent = "00"
   document.querySelector(".dialogTimers-hours[dropDown='2'] p").textContent = "00";
-        
-}
-function clickCloseChat(e){
-  setNewStateButtonSVG(document.getElementById('b_chat').querySelector('object'), COLOR_STATE_BUTTON.Normal);
-    document.getElementById('b_chat').classList.remove('button-tren-active');
 
-    document.querySelector('.box-chat-window').classList.remove("opacity-1"); // БОЛЬШОЕ ОКНО
-    document.querySelector('.box-chat-window .block-button').classList.remove("z-index-1"); // БЛОКИРОВКА КНОПОК
-    document.querySelector('.box-chat-window .box-chat-header').classList.remove("opacity-1"); // ЛИНИЯ С НАЗВАНИЕ И Х
-    
-    document.querySelector('.box-chat-window').ontransitionend = (e)=>{
-      document.querySelector('.box-chat-window').classList.remove("visibility-visible");
-      e.currentTarget.ontransitionend = (e)=>{};
-      document.querySelector('.chat').scrollTop = 0;
-      setStartPosition(e.currentTarget);
-      document.querySelector('.box-chat-window .chat').classList.add("chat-mini");
-      document.querySelector('.box-chat-window').classList.add("box-chat-window-mini");
-      document.querySelector('.box-chat-window .backArea').classList.remove('backArea-white-100')
-      setMiniChat();
-    }
+}
+function clickCloseChat(e) {
+  setNewStateButtonSVG(document.getElementById('b_chat').querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  document.getElementById('b_chat').classList.remove('button-tren-active');
+
+  document.querySelector('.box-chat-window').classList.remove("opacity-1"); // БОЛЬШОЕ ОКНО
+  document.querySelector('.box-chat-window .block-button').classList.remove("z-index-1"); // БЛОКИРОВКА КНОПОК
+  document.querySelector('.box-chat-window .box-chat-header').classList.remove("opacity-1"); // ЛИНИЯ С НАЗВАНИЕ И Х
+
+  document.querySelector('.box-chat-window').ontransitionend = (e) => {
+    document.querySelector('.box-chat-window').classList.remove("visibility-visible");
+    e.currentTarget.ontransitionend = (e) => { };
+    document.querySelector('.chat').scrollTop = 0;
+    setStartPosition(e.currentTarget);
+    document.querySelector('.box-chat-window .chat').classList.add("chat-mini");
+    document.querySelector('.box-chat-window').classList.add("box-chat-window-mini");
+    document.querySelector('.box-chat-window .backArea').classList.remove('backArea-white-100')
+    setMiniChat();
+  }
 }
 
 // TIME
@@ -486,22 +493,22 @@ const COLOR_STATE_BUTTON = {
 
 // Main INTEFACE  
 {
-  
+
   // покрасить внутри всг
   function setNewStateButtonSVG(objectSVG, color) {
     Array.from(objectSVG.contentDocument.querySelectorAll('[fill]')).forEach(element => {
       element.setAttribute('fill', color)
     });
   }
-  
+
   // свернуть смена свг
   function newImageCollapseMenu(e) {
     let object = e.currentTarget.querySelector('object');
     if (object.getAttribute('icon') == "svg_menu_2") {
       object.setAttribute('icon', "svg_menu_1")
-      object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_1').contentDocument.querySelector('svg').innerHTML;     
+      object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_1').contentDocument.querySelector('svg').innerHTML;
     }
-    else{
+    else {
       object.setAttribute('icon', "svg_menu_2")
       object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_2').contentDocument.querySelector('svg').innerHTML;
     }
@@ -558,11 +565,11 @@ const COLOR_STATE_BUTTON = {
     document.querySelector('.box-time').classList.remove("opacity-11");
     document.querySelector('.box-time').classList.remove("opacity-0");
     document.querySelector('.dialogMessageWatch').classList.remove("opacity-0");
-  }); 
+  });
   // КЛИК ЧАСЫ
-  document.getElementById('b_oclock').addEventListener("click", (e)=>{
+  document.getElementById('b_oclock').addEventListener("click", (e) => {
     document.querySelector('.box-time').classList.remove("opacity-11");
-    if(e.currentTarget.classList.contains('button-tren-active')){
+    if (e.currentTarget.classList.contains('button-tren-active')) {
       clickCloseTime(e);
       clickCloseTimer(e);
       document.querySelector('.box-time').classList.add("opacity-0");
@@ -581,7 +588,7 @@ const COLOR_STATE_BUTTON = {
   })
 
 
-  
+
   // ЧАТ НАВЕДЕНИЕ
   document.getElementById('b_chat').addEventListener("mouseover", (e) => {
     setStartPosition(document.querySelector('.box-chat-window'));
@@ -589,13 +596,13 @@ const COLOR_STATE_BUTTON = {
 
   });
   // ЧАТ ОТВЕДЕНИЕ
-  document.getElementById('b_chat').addEventListener("mouseout", (e)=>{
+  document.getElementById('b_chat').addEventListener("mouseout", (e) => {
     document.querySelector('.box-chat-window').classList.remove("opacity-0");
     document.querySelector('.box-chat-window').classList.remove("opacity-11");
   });
   // КЛИК ЧАТ
-  document.getElementById('b_chat').addEventListener("click", (e)=>{
-    if(e.currentTarget.classList.contains('button-tren-active')){
+  document.getElementById('b_chat').addEventListener("click", (e) => {
+    if (e.currentTarget.classList.contains('button-tren-active')) {
       clickCloseChat(e);
       document.querySelector('.box-chat-window').classList.add("opacity-0");
       document.querySelector('.box-chat-window').classList.remove("opacity-11");
