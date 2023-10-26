@@ -112,28 +112,7 @@ function domLoaded() {
     })
   })
 
-  // Переход к нужному тесту
-  // document.querySelector('.tests-container').querySelectorAll('.tests-button').forEach((Element) => {
-  //   Element.addEventListener('click', (e) => {
-  //     let buttonTestsindex = Array.from(e.currentTarget.closest('.tests-selected-buttons').children).indexOf(e.currentTarget.parentElement);
-  //     console.log(buttonTestsindex);
-  //     if (buttonTestsindex === 0) {
-  //       console.log('Самопроверка');
-  //     } else if (buttonTestsindex === 1) {
-  //       console.log('Интерактивный тест');
-  //     }
-  //   })
-  // })
-
   // Правильные ответы для самопроверки
-  const testsAnswerResults = {
-    selfcheck: {
-      0: 'Оборудование пылеуловителя', // 1
-      1: 'Оборудование пылеуловителя', // 2
-      2: 'Оборудование пылеуловителя', // 3
-    },
-  }
-
   devHelper.testVals.answersArray = [
     'Оборудование пылеуловителя',
     'Оборудование пылеуловителя',
@@ -237,7 +216,6 @@ function setFuncTest(pressedButton) {
       randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
       randomContainer.classList.toggle('selfcheck-invisible', false);
       devHelper.testVals.previousContainer = randomContainer;
-      console.log(devHelper.testVals.containerArray.length);
       if (devHelper.testVals.containerArray.length === 0) {
         devHelper.testVals.previousContainer = undefined;
       }
@@ -251,14 +229,11 @@ function setFuncTest(pressedButton) {
       devHelper.testVals.previousContainer = randomContainer;
       return;
     }
-
     randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
     randomContainer.classList.toggle('selfcheck-invisible', false);
     devHelper.testVals.previousContainer = randomContainer;
     return;
   }
-
-
 }
 
 setInterval(() => {
