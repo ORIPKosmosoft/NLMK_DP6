@@ -204,7 +204,7 @@ window.addEventListener('load', function () {
         break
       }
     }
-  }, 4000)
+  }, 8000)
 
   if (devHelper.dev.enable === true) console.log(devHelper);
 });

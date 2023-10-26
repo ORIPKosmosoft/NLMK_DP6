@@ -16,10 +16,7 @@ const devHelper = {
     lifeTime: '08:00:00',
     scenarioArr: [],
     scenario: undefined,
-    messages: {
-      normal: [],
-      error: []
-    },
+    messages: [],
     ended: false,
     activeMeshs: [],
   },
@@ -51,7 +48,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
   },
 };
@@ -73,15 +70,27 @@ devHelper.trenVals.waitingInput меняется только тогда, ког
 будут выполнены все дейтсвия
 таймер сценария будет больше чем максимальное время какого-то действия + 1 сек
 ----------------------------------------------------------------------------------------------
+реализовать проверку на правильную текстуру на мониторе
+----------------------------------------------------------------------------------------------
 duration передавать в анимации  
 --------------------------------------------------------------------------------------------------------------*/
 
 let tempActions = [
   [ // Первый сценарий
     {
+      text: 'Открыть клапан 029 на дымовую трубу.',
+      sender: 'Система',
+      action: {
+        target2D: 'kl029',
+        // window2D: { name: 'O_n_k_na_VNK_posle_1', x: 700, y: 300 },
+      },
+      duration: 1,
+      startTime: 0,
+      human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
+    }, {
       text: 'Заменить1',
       action: {
-        target: 'kl022', // target2D target3D
+        target3D: 'kl022', // target2D target3D
         position: {}, // 3d 2d
         rotation: { y: 90 }, // 3d 2d
         color: {}, // 2d
@@ -94,9 +103,9 @@ let tempActions = [
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     },
     {
-      text: 'Заменить1',
+      text: 'Заменить2',
       action: {
-        target: 'kl021',
+        target3D: 'kl021',
         position: { x: 0.2 },
         rotation: {},
       },

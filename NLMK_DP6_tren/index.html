@@ -492,35 +492,70 @@
     </div>
   </div>
   <div class="tren-container">
-    <div class="game-view">
-      <canvas id="renderCanvas"></canvas>
-    </div>
     <div class="tren-ui">
-      <div class="help-btn-block">
-        <div>
-          <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-evenly;">
-            <div class="value-input">
-              <input type="text" value="0" style="width: 100%;">
-              <input type="text" value="0" style="width: 100%;">
-              <input type="text" value="0" style="width: 100%;">
-            </div>
-            <div class="value-input">
-              <input type="text" value="0" style="width: 100%;">
-              <input type="text" value="0" style="width: 100%;">
-              <input type="text" value="0" style="width: 100%;">
-            </div>
-          </div>
-          <button id="takePosition">Take pos+Rot</button>
-          <button id="movePositionX1">+Х</button>
-          <button id="movePositionX2">-Х</button>
-          <button id="movePositionY1">+Y</button>
-          <button id="movePositionY2">-Y</button>
-          <button id="movePositionZ1">+Z</button>
-          <button id="movePositionZ2">-Z</button>
-          <button id="back-btn">назат!!!!</button>
+      <div class="box-tren-ui">
+        <div class="line-tren">
+          <button class="button-tren" id="b_collapseMenu">
+            <object data="media/images/UI/icons/menu_2.svg" width="30" height="30" type="image/svg+xml"></object>
+            <div class="click-button-tren"></div>
+          </button>
+          <div class="text-button-tren">Свернуть</div>
+        </div>
+        <div class="box-spring-button">"ПРУЖИНА"</div>
+        <div class="line-tren">
+          <button class="button-tren" id="b_oclock">
+            <object data="media/images/UI/icons/clock.svg" width="30" height="30" type="image/svg+xml"></object>
+            <div class="click-button-tren"></div>
+          </button>
+          <div class="text-button-tren">Часы</div>
+        </div>
+        <div class="line-tren">
+          <button class="button-tren" id="b_chat">
+            <object data="media/images/UI/icons/chat.svg" width="30" height="30" type="image/svg+xml"></object>
+            <div class="click-button-tren"></div>
+          </button>
+          <div class="text-button-tren">Чат</div>
+        </div>
+        <div class="line-tren">
+          <button class="button-tren" id="b_scenario">            
+            <object data="media/images/UI/icons/Сценарий.svg" width="30" height="30" type="image/svg+xml"></object>
+            <div class="click-button-tren"></div>
+            </button>
+          <div class="text-button-tren">Сценарий</div>
+        </div>
+        <div class="line-tren">
+          <button class="button-tren" id="b_help">
+            <object data="media/images/UI/icons/Помощь.svg" width="30" height="30" type="image/svg+xml"></object>  
+            <div class="click-button-tren"></div>          
+          </button>
+
+          <div class="text-button-tren">Помощь</div>
+        </div>
+        <div class="line-tren">
+          <button class="button-tren" id="b_reference">
+            <object data="media/images/UI/icons/Справка.svg" width="30" height="30" type="image/svg+xml"></object> 
+            <div class="click-button-tren"></div>
+          </button>
+          <div class="text-button-tren">Справка</div>
+        </div>
+        <div class="box-spring-button">"ПРУЖИНА"</div>
+        <div class="line-tren">
+          <button class="button-tren" id="b_restart">
+            <object data="media/images/UI/icons/Рестарт.svg" width="30" height="30" type="image/svg+xml"></object> 
+            <div class="click-button-tren"></div>
+          </button>
+          <div class="text-button-tren">Рестатр</div>
+        </div>
+        <div class="line-tren">
+          <button class="button-tren" id="b_exit">
+            <object data="media/images/UI/icons/Выход.svg" width="30" height="30" type="image/svg+xml"></object> 
+            <div class="click-button-tren"></div>
+          </button>
+          <div class="text-button-tren">Выход</div>
         </div>
       </div>
-      <button class="back-btn">Вернуться</button>
+
+
     </div>
     <div class="game-view">
       <canvas id="renderCanvas"></canvas>
@@ -555,6 +590,272 @@
     <img src="">
   </div>
 
+
+
+  <!-- РАЗВЕРНУТЬ -->
+  <div class="box-collapse" sx="90px" sy="34px" 
+  style=" top: 34px;  left: 90px; ">
+    РАЗВЕРНУТЬ
+  </div>
+  <!-- TIME -->
+  <div class="box-time" sx="90px" sy="220px" sx2="185px" 
+  style="left: 90px; top: 220px;">
+    <div class="backArea"></div>
+    <div class="time-header">
+      <div class="time-header-title">Часы</div>
+      <p class="time-header-button">×</p>
+    </div>
+    <div class="block-button"></div>
+    <div class="time">
+      <div class="time-hour">10</div>
+      <div class="time-colon">:</div>
+      <div class="time-minute">20</div>
+      <div class="time-colon">:</div>
+      <div class="time-second">02</div>
+      <button class="time-oclock"></button>
+    </div>
+  </div>
+  <!-- TIMER -->
+  <div class="dialogMessageWatch" sx="780px" sy="150px" 
+  style="left: 780px; top: 150px;">
+    <div class="backArea backArea-white-100" ></div>
+    <div class="dialogHeader" >
+      <div class="time-header-title">Установить таймер</div>
+      <p>×</p>
+      <!-- <p class="dialogClosed">х</p> -->
+    </div>
+    <div class="dialogTimers-line">
+      <!-- ЧАСЫ -->
+      <div class="dialogTimers-hours-box">
+        <p class="dialogTimers-title">часы</p>
+        <div class="dialogTimers-hours" dropDown="1">
+          <p>00</p>
+          <img src="media/images/watch/dropDown.png"  width="20px">
+        </div>
+        <div class="section-dropDown" dropDown="1">
+        <div class="section-scroll">
+          <div class="section-menu">
+            <div class="option" value="00">00</div>
+            <div class="option" value="01">01</div>
+            <div class="option" value="02">02</div>
+            <div class="option" value="03">03</div>
+            <div class="option" value="04">04</div>
+            <div class="option" value="05">05</div>
+            <div class="option" value="06">06</div>
+            <div class="option" value="07">07</div>
+            <div class="option" value="08">08</div>
+            <div class="option" value="09">09</div>
+            <div class="option" value="10">10</div>
+            <div class="option" value="11">11</div>
+            <div class="option" value="12">12</div>
+            <div class="option" value="13">13</div>
+            <div class="option" value="14">14</div>
+            <div class="option" value="15">15</div>
+            <div class="option" value="16">16</div>
+            <div class="option" value="17">17</div>
+            <div class="option" value="18">18</div>
+            <div class="option" value="19">19</div>
+            <div class="option" value="20">20</div>
+            <div class="option" value="21">21</div>
+            <div class="option" value="22">22</div>
+            <div class="option" value="23">23</div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <!-- МИНУТЫ -->
+      <div class="dialogTimers-hours-box">
+        <p class="dialogTimers-title">минуты</p>
+        <div class="dialogTimers-hours" dropDown="2">
+          <p>00</p>
+          <img src="media/images/watch/dropDown.png"  width="20px">
+        </div>
+        <div class="section-dropDown" dropDown="2">
+          <div class="section-scroll">
+            <div class="section-menu">
+              <div class="option"  value="00">00</div>
+              <div class="option"  value="01">01</div>
+              <div class="option"  value="02">02</div>
+              <div class="option"  value="03">03</div>
+              <div class="option"  value="04">04</div>
+              <div class="option"  value="05">05</div>
+              <div class="option"  value="06">06</div>
+              <div class="option"  value="07">07</div>
+              <div class="option"  value="08">08</div>
+              <div class="option"  value="09">09</div>
+              <div class="option"  value="10">10</div>
+              <div class="option"  value="11">11</div>
+              <div class="option"  value="12">12</div>
+              <div class="option"  value="13">13</div>
+              <div class="option"  value="14">14</div>
+              <div class="option"  value="15">15</div>
+              <div class="option"  value="16">16</div>
+              <div class="option"  value="17">17</div>
+              <div class="option"  value="18">18</div>
+              <div class="option"  value="19">19</div>
+              <div class="option"  value="20">20</div>
+              <div class="option"  value="21">21</div>
+              <div class="option"  value="22">22</div>
+              <div class="option"  value="23">23</div>
+              <div class="option"  value="24">24</div>
+              <div class="option"  value="25">25</div>
+              <div class="option"  value="26">26</div>
+              <div class="option"  value="27">27</div>
+              <div class="option"  value="28">28</div>
+              <div class="option"  value="29">29</div>
+              <div class="option"  value="30">30</div>
+              <div class="option"  value="31">31</div>
+              <div class="option"  value="32">32</div>
+              <div class="option"  value="33">33</div>
+              <div class="option"  value="34">34</div>
+              <div class="option"  value="35">35</div>
+              <div class="option"  value="36">36</div>
+              <div class="option"  value="37">37</div>
+              <div class="option"  value="38">38</div>
+              <div class="option"  value="39">39</div>
+              <div class="option"  value="40">40</div>
+              <div class="option"  value="41">41</div>
+              <div class="option"  value="42">42</div>
+              <div class="option"  value="43">43</div>
+              <div class="option"  value="44">44</div>
+              <div class="option"  value="45">45</div>
+              <div class="option"  value="46">46</div>
+              <div class="option"  value="47">47</div>
+              <div class="option"  value="48">48</div>
+              <div class="option"  value="49">49</div>
+              <div class="option"  value="50">50</div>
+              <div class="option"  value="51">51</div>
+              <div class="option"  value="52">52</div>
+              <div class="option"  value="53">53</div>
+              <div class="option"  value="54">54</div>
+              <div class="option"  value="55">55</div>
+              <div class="option"  value="56">56</div>
+              <div class="option"  value="57">57</div>
+              <div class="option"  value="58">58</div>
+              <div class="option"  value="59">59</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="dialogTimers-play"></button> 
+    </div>
+    <div class="dialogTimers-line"  >
+      <div class="time">
+        <div class="time-hour noneContent textColorGray" dropDown="1">00</div>
+        <div class="time-colon">:</div>
+        <div class="time-minute noneContent textColorGray" dropDown="2">00</div>
+      </div>
+    </div>
+  </div>
+  <!-- CHAT -->
+  <div  class="box-chat-window box-chat-window-mini" maxHeight="475px" maxWidth="385px" sx="90px" sy="280px" sx2="185px" 
+  style=" top: 280px;  left: 90px; ">   
+    <div class="backArea" ></div>
+    <div class="box-chat-header" >
+      <div class="chat-header-title">Чат</div>
+      <p class="chat-header-button">×</p>
+    </div>
+    <div class="block-button" ></div>
+    <div class="chat-window" >
+      <div class="chat-scroll">
+        <div class="chat chat-mini">
+          <div class="messageError">
+            <div class="topMessage">
+              <div class="authorMessage">Ошибка</div>
+            </div>
+            <div class="textMessage">
+              Сообщение об очень очень большой ошибке.
+            </div>
+          </div>
+          <div class="message">
+            <div class="topMessage">
+              <div class="authorMessage">Работник</div>
+              <div class="timeMessage">14:32</div>
+            </div>
+            <div class="textMessage">
+              Сообщение работника
+            </div>
+          </div>
+          <div class="messageMy">
+            <div class="topMessage">
+              <div class="timeMessage">14:24</div>
+              <div class="authorMessage">Газовщик</div>
+            </div>
+            <div class="textMessage">
+              Открыт вентиль 2, все показатели в норме
+            </div>
+          </div>
+          <div class="messageMy">
+            <div class="topMessage">
+              <div class="timeMessage">14:24</div>
+              <div class="authorMessage">Газовщик</div>
+            </div>
+            <div class="textMessage">
+              Открыт вентиль 2, все показатели в норме
+            </div>
+          </div>
+          <div class="messageMy">
+            <div class="topMessage">
+              <div class="timeMessage">14:24</div>
+              <div class="authorMessage">Газовщик</div>
+            </div>
+            <div class="textMessage">
+              Открыт вентиль 2, все показатели в норме
+            </div>
+          </div>
+          <div class="messageMy">
+            <div class="topMessage">
+              <div class="timeMessage">14:24</div>
+              <div class="authorMessage">Газовщик</div>
+            </div>
+            <div class="textMessage">
+              Открыт вентиль 2, все показатели в норме
+            </div>
+          </div>
+          <div class="messageSystem">
+            <div class="topMessage">
+              <div class="authorMessage">Система</div>
+              <div class="timeMessage">14:20</div>
+            </div>
+            <div class="textMessage">
+              Открыть вентиль 2, и проверить показатели датчиков.
+            </div>
+          </div>
+          
+          
+          
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="help-btn-block">
+    <div>
+      <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-evenly;">
+        <div class="value-input">
+          <input type="text" value="0" style="width: 100%;">
+          <input type="text" value="0" style="width: 100%;">
+          <input type="text" value="0" style="width: 100%;">
+        </div>
+        <div class="value-input">
+          <input type="text" value="0" style="width: 100%;">
+          <input type="text" value="0" style="width: 100%;">
+          <input type="text" value="0" style="width: 100%;">
+        </div>
+      </div>
+      <button id="takePosition">Take pos+Rot</button>
+      <button id="movePositionX1">+Х</button>
+      <button id="movePositionX2">-Х</button>
+      <button id="movePositionY1">+Y</button>
+      <button id="movePositionY2">-Y</button>
+      <button id="movePositionZ1">+Z</button>
+      <button id="movePositionZ2">-Z</button>
+      <button id="back-btn">назат!!!!</button>
+    </div>
+  </div>
+
 </body>
 
 </html>
+
+
