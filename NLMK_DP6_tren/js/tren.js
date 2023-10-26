@@ -114,6 +114,9 @@ const Roles = {
   "Работник": "message",
   "Ошибка": "messageError"
 }
+function addTrenValsMessages(elem){
+  devHelper.trenVals.messages.push(elem);
+}
 function sendMessage(Sender, TextMessage){
   let message = createCustomElement("div", "", {"class": Roles[Sender]})
   let top = createCustomElement("div", "", {"class": "topMessage"}, message)
@@ -130,6 +133,7 @@ function sendMessage(Sender, TextMessage){
       createCustomElement("div", (String(devHelper.trenVals.lifeTime).substring(0, 5)), {"class": "timeMessage"}, top)
       break;
   }
+  addTrenValsMessages(TextMessage)
   createCustomElement("div", TextMessage, {"class": "textMessage"}, message)
   document.querySelector(".chat").insertBefore(message, document.querySelector(".chat").children[0]);
 }
