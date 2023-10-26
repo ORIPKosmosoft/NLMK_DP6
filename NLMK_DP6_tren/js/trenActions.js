@@ -41,8 +41,17 @@ const devHelper = {
     },
   },
   svgVals: [],
+  //---------------------------
+  // Сергей
+  testVals: {
+    questionsArray: [],
+    answersArray: [], // Массив с ответами
+    containerArray: [], // Массив с контейнерами вопросов
+    previousContainer: undefined, // Предыдущий контейнер вопроса
+  },
+  //---------------------------
   dev: {
-    enable: true,
+    enable: false,
     perfomance: undefined,
   },
 };
