@@ -505,7 +505,8 @@ const COLOR_STATE_BUTTON = {
       object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_1').contentDocument.querySelector('svg').innerHTML;     
     }
     else{
-      object.setAttribute('data', `${result[1]}menu_2.svg`)
+      object.setAttribute('icon', "svg_menu_2")
+      object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_2').contentDocument.querySelector('svg').innerHTML;
     }
   }
 
