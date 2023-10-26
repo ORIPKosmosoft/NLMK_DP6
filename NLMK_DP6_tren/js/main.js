@@ -4,12 +4,6 @@
 ----------------------------------------------------
 */
 
-// случайное число от min до (max+1)
-function randomInteger(min, max) {
-  let rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
-}
-
 document.addEventListener("DOMContentLoaded", domLoaded);
 
 function domLoaded() {
@@ -332,7 +326,6 @@ function randomAnswer(radioElements, parent) {
   let max = radioElements.length;
   let min = 0;
   radioElements.forEach(() => {
-    // parent.insertBefore(radioElements[randomInteger(min, max)], radioElements[randomInteger(min, max)]);
     parent.insertBefore(radioElements[Math.floor(Math.random() * (max - min) + min)], radioElements[Math.floor(Math.random() * (max - min) + min)]);
   })
 }
@@ -346,7 +339,6 @@ function reviveArray(min) {
     Element.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', true);
     Element.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').classList.toggle('active-button', false);
   });
-  // randomContainer = devHelper.testVals.containerArray[randomInteger(min, devHelper.testVals.containerArray.length)];
   randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
   randomContainer.classList.toggle('selfcheck-invisible', false);
   devHelper.testVals.previousContainer = randomContainer;
@@ -361,7 +353,6 @@ function glavTestFun(pressedButton) {
   let previousContainerIndex;
 
   if (pressedButton === 'nav-icon') {
-    // randomContainer = devHelper.testVals.containerArray[randomInteger(0, devHelper.testVals.containerArray.length)];
     randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
 
     randomContainer.classList.toggle('selfcheck-invisible', false);
@@ -388,7 +379,6 @@ function glavTestFun(pressedButton) {
         reviveArray(min);
         return;
       }
-      // randomContainer = devHelper.testVals.containerArray[randomInteger(0, devHelper.testVals.containerArray.length)];
       randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
       // если следующий контейнер равен предыдущему, то заменить
       if (devHelper.testVals.previousContainer == randomContainer) {
@@ -405,7 +395,6 @@ function glavTestFun(pressedButton) {
       }
       return;
     } else if (devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelector('.wrong-answer') != null) {
-      // randomContainer = devHelper.testVals.containerArray[randomInteger(0, devHelper.testVals.containerArray.length)];
       randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
       // если следующий контейнер равен предыдущему, то заменить
       if (devHelper.testVals.previousContainer == randomContainer) {
@@ -424,7 +413,6 @@ function glavTestFun(pressedButton) {
       return;
     }
     // randomContainer.querySelector('.active-radio').classList.toggle('active-radio', false);
-    // randomContainer = devHelper.testVals.containerArray[randomInteger(0, devHelper.testVals.containerArray.length)];
     randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
 
     // если следующий контейнер равен предыдущему, то заменить
