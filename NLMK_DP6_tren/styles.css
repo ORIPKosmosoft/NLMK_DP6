@@ -313,7 +313,7 @@ body {
 }
 
 .drop-item .drop-span-active {
-  min-width: 126% !important;
+  min-width: 125% !important;
 }
 
 .scroll-container .movable-container {
