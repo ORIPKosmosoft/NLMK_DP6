@@ -408,8 +408,9 @@ function changeSvgElem(Val = {}) {
             if (Val.position.y) changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
           }
         }
-        let Texture = devHelper.model3DVals.svgDisplays.meshs[0].material.diffuseTexture;
-        Texture.update();
+        // updateSvgTexture(svgArrObject.name, true);
+        // let Texture = devHelper.model3DVals.svgDisplays.meshs[0].material.diffuseTexture;
+        // Texture.update();
       })
     })
   } else {
