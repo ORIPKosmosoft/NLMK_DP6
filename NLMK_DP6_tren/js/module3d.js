@@ -87,6 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById('movePositionX2').addEventListener('click', () => {
         changeSvgElem('fire_vnk_1', { position: { x: 10 } });
       })
+      document.getElementById('movePositionX2').addEventListener('click', () => {
+        changeSvgElem('fire_vnk_1', { position: { x: 10 } });
+      })
       document.getElementById('movePositionY1').addEventListener('click', () => {
         changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK2', true);
       })
@@ -347,7 +350,7 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture =
         outputImage2.onload = function () {
           // todo положение переделать в проценты 
           // textureContext.drawImage(outputImage2, Pos.x * (document.getElementById('renderCanvas').getBoundingClientRect().width / 100), Pos.y * (document.getElementById('renderCanvas').getBoundingClientRect().height / 100));
-          textureContext.drawImage(outputImage2, Pos.x , Pos.y);
+          textureContext.drawImage(outputImage2, Pos.x, Pos.y);
           Texture.update();
         }
       }
@@ -358,6 +361,20 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture =
   } else {
     if (devHelper.dev.enable === true) console.warn(`В функцию changeSvgtexture передали не все переменные.`);
     return
+  }
+}
+
+function addSvgToTextrue(Mesh = undefined, NewSvgVals = undefined) {
+  if (Mesh && NewSvgVals) {
+    let Texture = Mesh.material.diffuseTexture;
+    let textureContext = Texture.getContext();
+    let windowIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === NewSvgVals.window; })
+    let outputImage2 = devHelper.model3DVals.svgDisplays.tagImgs[windowIndex];
+    outputImage2.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[windowIndex]))));
+    outputImage2.onload = function () {
+      textureContext.drawImage(outputImage2, NewSvgVals.x, NewSvgVals.y);
+      Texture.update();
+    }
   }
 }
 
@@ -534,7 +551,7 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   rotationAnimation.setKeys(rotationKeys);
   devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
   devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false, 1, () => {
-    revialSvgObject(CurPos);
+    createSvghelper(CurPos);
   });
 }
 

@@ -855,6 +855,15 @@ ul {
   width: 40px;
 }
 
+.help-btn-block .info-tren {
+  width: 1200px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid black;
+  border-radius: 10px;
+  color: #f4f4f4;
+}
+
 /* babylon 
 -----------------------------------------------------
 */

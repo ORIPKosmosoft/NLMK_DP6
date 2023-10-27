@@ -13,7 +13,12 @@ const devHelper = {
     realTimer: 0,
     type: undefined,
     trenEnded: false,
-    lifeTime: '08:00:00',
+    timers: {
+      lifeTime: '08:00:00',
+      allTime: undefined,
+      actionTime: undefined,
+      scenarioTime: 0,
+    },
     scenarioArr: [],
     scenario: undefined,
     messages: [],
@@ -83,9 +88,6 @@ let tempActions = [
       action: {
         target2D: 'kl029',
         window2D: {
-          name: 'O_n_k_na_VNK_posle_1',
-          position: { x: 900, y: 473, },
-          helperVals: { x: 43.3, y: -54, w: 13, h: 32.6, }, // не смог связать положение окна в px к размерам на мониторе
           elements: [
             { name: 'title', text: 'Управление клапаном 029' },
             { name: 'status_window_text', text: 'Нет данных' },
@@ -99,46 +101,43 @@ let tempActions = [
           ],
         },
       },
-      duration: 1,
+      duration: 0,
       startTime: 0,
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     }, {
       action: {
         target2D: 'open_vn',
-        window2D: {
-          name: 'O_n_k_na_VNK_posle_2',
-          position: { x: 900, y: 473, },
-          helperVals: { x: 43.3, y: -54, w: 13, h: 32.6, }, // не смог связать положение окна в px к размерам на мониторе
-        },
+        window2D: {},
       },
-      duration: 1,
+      duration: 0,
       startTime: 2,
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
-    }, {
-      text: 'Заменить1',
-      action: {
-        target3D: 'kl022', // target2D target3D
-        position: {}, // 3d 2d
-        rotation: { y: 90 }, // 3d 2d
-        color: {}, // 2d
-        text: {}, // 3D 2D
-        alpha: {}, // 2D
-        window2D: { name: '', x: 0, y: 0 }, // 2D - имя окна и позиция, окно появится на текстуре, которая сейчас на активном мониторе
-      },
-      duration: 1, // seconds
-      startTime: 0, // seconds - абсолютное время сценария
-      human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
-    },
-    {
-      text: 'Заменить2',
-      action: {
-        target3D: 'kl021',
-        position: { x: 0.2 },
-        rotation: {},
-      },
-      duration: 1,
-      startTime: 4,
-    },
+    }, 
+    // {
+    //   text: 'Заменить1',
+    //   action: {
+    //     target3D: 'kl022', // target2D target3D
+    //     position: {}, // 3d 2d
+    //     rotation: { y: 90 }, // 3d 2d
+    //     color: {}, // 2d
+    //     text: {}, // 3D 2D
+    //     alpha: {}, // 2D
+    //     window2D: { name: '', x: 0, y: 0 }, // 2D - имя окна и позиция, окно появится на текстуре, которая сейчас на активном мониторе
+    //   },
+    //   duration: 1, // seconds
+    //   startTime: 0, // seconds - абсолютное время сценария
+    //   human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
+    // },
+    // {
+    //   text: 'Заменить2',
+    //   action: {
+    //     target3D: 'kl021',
+    //     position: { x: 0.2 },
+    //     rotation: {},
+    //   },
+    //   duration: 1,
+    //   startTime: 4,
+    // },
   ],
   [ // Второй сценарий
     {
