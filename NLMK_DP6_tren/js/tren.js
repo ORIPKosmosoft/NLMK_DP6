@@ -25,12 +25,9 @@ function startTren() {
   } else {
 
   }
-  devHelper.trenVals.timers.allTime = devHelper.trenVals.timers.actionTime = undefined;
-  devHelper.trenVals.timers.scenarioTime = 0;
-  devHelper.trenVals.realTimer = 0;
+  devHelper.trenVals.timers.allTime = devHelper.trenVals.timers.allTimeHelper = devHelper.trenVals.timers.scenarioTimeHelper =
+    devHelper.trenVals.timers.scenarioTime = devHelper.trenVals.timers.actionTime = devHelper.trenVals.timers.actionTimeHelper = 0;
   devHelper.trenVals.currentAction = 0;
-  devHelper.trenVals.currentActionTime = 0;
-  devHelper.trenVals.scenarioTimer = 0;
   devHelper.trenVals.ended = false;
   devHelper.trenVals.waitingInput = true;
   window.requestAnimationFrame(trenTimeTick);
@@ -39,37 +36,39 @@ function startTren() {
 function trenTimeTick(timeStamp) {
   if (devHelper.trenVals.scenario !== undefined) {
     if (devHelper.trenVals.ended === false) {
-      if (devHelper.trenVals.timers.allTime === undefined) devHelper.trenVals.timers.allTime = timeStamp;
-      devHelper.trenVals.realTimer = Math.round(timeStamp - devHelper.trenVals.timers.allTime);
+      if (devHelper.trenVals.timers.allTimeHelper === 0) devHelper.trenVals.timers.allTimeHelper = timeStamp;
+      devHelper.trenVals.timers.allTime = parseFloat((timeStamp - devHelper.trenVals.timers.allTimeHelper).toFixed(2));
       if (devHelper.trenVals.waitingInput === false) {
-        if (devHelper.trenVals.timers.actionTime === undefined) devHelper.trenVals.timers.scenarioTime = 0;
-        else devHelper.trenVals.timers.scenarioTime = Math.round(timeStamp - devHelper.trenVals.timers.actionTime) - devHelper.trenVals.currentActionTime;
-        if (devHelper.trenVals.timers.actionTime === undefined) devHelper.trenVals.timers.actionTime = timeStamp;
-        devHelper.trenVals.currentActionTime = Math.round(timeStamp - devHelper.trenVals.timers.actionTime);
-        devHelper.trenVals.scenarioTimer += devHelper.trenVals.timers.scenarioTime;
+        if (devHelper.trenVals.timers.actionTimeHelper === 0) {
+          devHelper.trenVals.timers.scenarioTimeHelper = devHelper.trenVals.timers.scenarioTime;
+          devHelper.trenVals.timers.actionTimeHelper = timeStamp;
+        }
+        devHelper.trenVals.timers.actionTime = parseFloat((timeStamp - devHelper.trenVals.timers.actionTimeHelper).toFixed(2));
+        devHelper.trenVals.timers.scenarioTime = devHelper.trenVals.timers.scenarioTimeHelper + devHelper.trenVals.timers.actionTime;
       }
-      if (devHelper.dev.enable === true && document.querySelector('.info-tren')) document.querySelector('.info-tren').innerHTML = `Время действия ${devHelper.trenVals.currentAction} ${devHelper.trenVals.currentActionTime / 1000}. Время сценария ${devHelper.trenVals.scenarioTimer / 1000}.`;
-      let tempVar = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.scenarioTimer / 1000));
-      if (tempVar) {
-        if (tempVar.human && tempVar.human === true) {
-          if (devHelper.trenVals.waitingInput === false) {
-            devHelper.trenVals.waitingInput = true;
-          }
-          // if (devHelper.trenVals.scenarioTimer / 1000 >= devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].startTime) {
-          // devHelper.trenVals.currentActionTime = 0;
-          // if (devHelper.dev.enable === true) console.warn(`Действие ${devHelper.trenVals.currentAction} успешно завершено.`);
-          // if (devHelper.trenVals.currentAction > devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length - 1) trenFinish();
-          // }
+      if (devHelper.dev.enable === true && document.querySelector('.info-tren')) {
+        document.querySelector('.info-tren').innerHTML = `Время действия ${devHelper.trenVals.currentAction} = ${devHelper.trenVals.timers.actionTime / 1000}. Время сценария = ${devHelper.trenVals.timers.scenarioTime / 1000}. Общее время в сценарии = ${devHelper.trenVals.timers.allTime / 1000}.`
+        let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+        if (currentActonObject) document.querySelector('.info-tren').innerHTML += `\nнужно кликнуть на ${currentActonObject.action.target2D}`;
+      }
+      let nextAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+      if (nextAction) {
+        if (nextAction.human && nextAction.human === true) {
+          if (devHelper.trenVals.waitingInput === false) devHelper.trenVals.waitingInput = true;
         } else {
-          // TODO тут должно быть дейтсвие, которое случится без вмешательства человека
+          if (nextAction.action && nextAction.action.window2D) {
+            for (let key in nextAction.action.window2D.elements) {
+              if (nextAction.action.window2D.elements.hasOwnProperty(key))
+                changeSvgElem(nextAction.action.window2D.elements[key]);
+            }
+            devHelper.trenVals.timers.actionTimeHelper = 0;
+            nextAction.passed = true;
+            devHelper.trenVals.waitingInput = false;
+          }
         }
       }
-
-
-
-      // if (devHelper.trenVals.currentActionTime >= devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[devHelper.trenVals.currentAction].duration * 1000) {
-      // }
-
+      let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
+      if (lastAction === undefined) trenFinish();
     }
     window.requestAnimationFrame(trenTimeTick);
   }
@@ -104,13 +103,9 @@ function trenClickOnMesh(Mesh) {
 
 function trenClickOnSvgElem(SvgElemHelper) {
   if (devHelper.trenVals.waitingInput === true) {
-    let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.scenarioTimer / 1000));
+    let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
     if (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id) {
       if (currentActonObject.action.window2D && currentActonObject.action.window2D !== '') {
-        // let posCoors = currentActonObject.action.window2D.position;
-        // let displayMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition);
-        // changeSvgtexture(displayMesh, displayMesh.material.diffuseTexture.name.substring(displayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, currentActonObject.action.window2D.name, posCoors);
-        // createSvghelper(devHelper.model3DVals.currentPosition, currentActonObject.action.window2D.name, currentActonObject.action.window2D.helperVals);
         if (currentActonObject.action.window2D.elements && currentActonObject.action.window2D.elements !== '') {
           for (let key in currentActonObject.action.window2D.elements) {
             if (currentActonObject.action.window2D.elements.hasOwnProperty(key))
@@ -118,7 +113,7 @@ function trenClickOnSvgElem(SvgElemHelper) {
           }
         }
       }
-      devHelper.trenVals.timers.actionTime = undefined;
+      devHelper.trenVals.timers.actionTimeHelper = 0;
       currentActonObject.passed = true;
       devHelper.trenVals.waitingInput = false;
     }
@@ -127,7 +122,9 @@ function trenClickOnSvgElem(SvgElemHelper) {
 
 function trenFinish() {
   devHelper.trenVals.ended = true;
-  if (devHelper.dev.enable === true) console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.realTimer / 1000} сек.`);
+  if (devHelper.dev.enable === true && document.querySelector('.info-tren'))
+    document.querySelector('.info-tren').innerHTML = `Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`;
+  if (devHelper.dev.enable === true) console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`);
 }
 
 
@@ -271,8 +268,8 @@ function clickCloseTime(e) {
   }
   clickCloseTimer(e);
 }
-function clickCloseTimer(e){
-  
+function clickCloseTimer(e) {
+
   document.querySelector('.dialogMessageWatch').classList.remove('opacity-1-Always');
   document.querySelector('.dialogMessageWatch').classList.remove('z-index9');
   document.querySelector('.dialogMessageWatch').classList.add('opacity-0');
@@ -282,7 +279,7 @@ function clickCloseTimer(e){
   document.querySelector(".dialogTimers-hours[dropDown='1'] p").textContent = "00"
   document.querySelector(".dialogTimers-hours[dropDown='2'] p").textContent = "00";
 }
-function clickCloseChat(e){
+function clickCloseChat(e) {
   if (document.getElementById('b_chat').classList.contains('button-tren-active')) {
     document.getElementById('b_chat').classList.remove('button-tren-active')
     setNewFillButtonSVG(document.getElementById('b_chat').querySelector('object'), COLOR_STATE_BUTTON.Normal);
@@ -292,8 +289,8 @@ function clickCloseChat(e){
   document.querySelector('.box-chat-window').classList.remove("opacity-1-Always"); // БОЛЬШОЕ ОКНО
   document.querySelector('.box-chat-window .block-button').classList.remove("z-index-1"); // БЛОКИРОВКА КНОПОК
   document.querySelector('.box-chat-window .box-chat-header').classList.remove("opacity-1-Always"); // ЛИНИЯ С НАЗВАНИЕ И Х
-  
-  document.querySelector('.box-chat-window').ontransitionend = (e)=>{
+
+  document.querySelector('.box-chat-window').ontransitionend = (e) => {
     document.querySelector('.box-chat-window').classList.add('transition-0');
     document.querySelector('.box-chat-window').classList.remove("visibility-visible");
     document.querySelector('.chat').scrollTop = 0;
@@ -355,7 +352,7 @@ function clickCloseChat(e){
     let myBlock = document.querySelector('.box-time');
     let magicW = 1;
     let magicH = 1;
-    if (String(document.querySelector('.box-time').style.left).match('vw') ) {
+    if (String(document.querySelector('.box-time').style.left).match('vw')) {
       magicW = (window.innerWidth / 100);
     }
     document.querySelector('.dialogMessageWatch').style.left = parseInt(document.querySelector('.box-time').style.left) * magicW + 330 + 'px';
@@ -364,13 +361,13 @@ function clickCloseChat(e){
     }
 
 
-    if (String(document.querySelector('.box-time').style.top).match('vh') ) {
+    if (String(document.querySelector('.box-time').style.top).match('vh')) {
       magicH = (window.innerHeight / 100);
     }
     console.log(document.querySelector('.box-time').style.top);
     console.log(magicH);
-    document.querySelector('.dialogMessageWatch').style.top = parseInt(document.querySelector('.box-time').style.top) * magicH  + 'px';
-    if(parseInt(myBlock.style.top) * magicH + 275 >= window.innerHeight){
+    document.querySelector('.dialogMessageWatch').style.top = parseInt(document.querySelector('.box-time').style.top) * magicH + 'px';
+    if (parseInt(myBlock.style.top) * magicH + 275 >= window.innerHeight) {
       document.querySelector('.dialogMessageWatch').style.top = parseInt(window.innerHeight) * magicH - 275 + 'px';
     }
   })
@@ -533,10 +530,10 @@ function newImageCollapseMenu(e) {
   let object = e.currentTarget.querySelector('object');
   if (object.getAttribute('icon') == "svg_menu_2") {
     object.setAttribute('icon', "svg_menu_1")
-    object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_1').contentDocument.querySelector('svg').innerHTML;     
-    
+    object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_1').contentDocument.querySelector('svg').innerHTML;
+
   }
-  else{
+  else {
     object.setAttribute('icon', "svg_menu_2")
     object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_2').contentDocument.querySelector('svg').innerHTML;
   }
@@ -550,14 +547,14 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
       if (e.currentTarget.classList.contains('button-tren-active')) {
         e.currentTarget.classList.remove('button-tren-active');
       }
-      else{
+      else {
         e.currentTarget.classList.add('button-tren-active');
       }
       newImageCollapseMenu(e);
       return;
     }
     else if (e.currentTarget.classList.contains('button-tren-active')) {
-      
+
 
       if (e.currentTarget.hasAttribute('close-func')) {
         e.currentTarget.getAttribute('close-func').split(' ').forEach((item) => {
@@ -569,7 +566,7 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
       setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Normal);
       return;
     }
-  
+
     e.currentTarget.classList.add('button-tren-active');
     setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Active);
   })
@@ -592,7 +589,7 @@ document.getElementById('b_collapseMenu').addEventListener("mouseover", (e) => {
     document.querySelector('.box-collapse').classList.remove('opacity-1-Temp');
     document.querySelector('.box-collapse').classList.remove('opacity-1-Always');
   }
-  else{
+  else {
 
   }
 });
@@ -601,14 +598,14 @@ function setNewPositionWindow(elem, state) {
     elem.style.left = elem.getAttribute('sx2');
     elem.style.top = elem.getAttribute('sy');
   }
-  else{
+  else {
     elem.style.left = elem.getAttribute('sx');
     elem.style.top = elem.getAttribute('sy');
   }
 }
 // ОТКРЫТЬ/ЗАКРЫТЬ МЕНЮ
 document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
-  if(!document.querySelector('.tren-ui').classList.contains('tren-ui-long')) {
+  if (!document.querySelector('.tren-ui').classList.contains('tren-ui-long')) {
     document.querySelector('.tren-ui').classList.add('tren-ui-long');
     document.querySelector('.box-collapse').classList.remove('opacity-1-Temp');
     Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
@@ -616,7 +613,7 @@ document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
       setNewPositionWindow(item, true);
     });
   }
-  else{
+  else {
     document.querySelector('.tren-ui').classList.remove('tren-ui-long');
     Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
       item = document.querySelector(`.${item.getAttribute('window-interface')}`);
@@ -626,7 +623,7 @@ document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
 });
 
 // КЛИК ЧАСЫ
-document.getElementById('b_oclock').addEventListener("click", (e)=>{
+document.getElementById('b_oclock').addEventListener("click", (e) => {
   if (e.currentTarget.classList.contains('button-tren-active')) {
     document.querySelector('.box-time').classList.add("opacity-1-Always");
     document.querySelector('.box-time').classList.add("box-time-padTop32");
@@ -638,7 +635,7 @@ document.getElementById('b_oclock').addEventListener("click", (e)=>{
 
 
 // КЛИК ЧАТ
-document.getElementById('b_chat').addEventListener("click", (e)=>{
+document.getElementById('b_chat').addEventListener("click", (e) => {
   if (e.currentTarget.classList.contains('button-tren-active')) {
     document.querySelector('.box-chat-window').classList.remove("box-chat-window-mini");
     document.querySelector('.box-chat-window .chat').classList.remove("chat-mini");

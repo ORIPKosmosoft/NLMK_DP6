@@ -15,9 +15,12 @@ const devHelper = {
     trenEnded: false,
     timers: {
       lifeTime: '08:00:00',
-      allTime: undefined,
-      actionTime: undefined,
+      allTime: 0,
+      allTimeHelper: 0,
+      actionTime: 0,
+      actionTimeHelper: 0,
       scenarioTime: 0,
+      scenarioTimeHelper: 0,
     },
     scenarioArr: [],
     scenario: undefined,
@@ -101,18 +104,129 @@ let tempActions = [
           ],
         },
       },
-      duration: 0,
       startTime: 0,
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     }, {
       action: {
         target2D: 'open_vn',
-        window2D: {},
       },
-      duration: 0,
+      startTime: 1,
+      human: true,
+    }, {
+      action: {
+        target2D: 'open_vn1',
+      },
       startTime: 2,
-      human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
-    }, 
+      human: true,
+    },
+    {
+      action: {
+        window2D: {
+          name: 'O_n_k_na_VNK_posle_1',
+          elements: [
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'btn_open', color: '', stroke: '' },
+            { name: 'polozenie_text', text: '55' },
+            { name: 'polozenie_button_text', color: '' },
+            { name: 'left_vn', color: '' },
+            { name: 'right_vn', color: '' },
+            { name: 'circle_1', stroke: '' },
+            { name: 'circle_2', stroke: '' },
+          ],
+        },
+      },
+      startTime: 2.1,
+    },
+    {
+      action: {
+        window2D: {
+          name: 'O_n_k_na_VNK_posle_1',
+          elements: [
+            { name: 'polozenie_text', text: '65' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_1', stroke: '#8F8F8F' },
+            { name: 'circle_2', stroke: '#8F8F8F' },
+          ],
+        },
+      },
+      startTime: 3,
+    },
+    {
+      action: {
+        window2D: {
+          name: 'O_n_k_na_VNK_posle_1',
+          elements: [
+            { name: 'polozenie_text', text: '75' },
+            { name: 'left_vn', color: '' },
+            { name: 'right_vn', color: '' },
+            { name: 'circle_1', stroke: '' },
+            { name: 'circle_2', stroke: '' },
+          ],
+        },
+      },
+      startTime: 4,
+    },
+    {
+      action: {
+        window2D: {
+          name: 'O_n_k_na_VNK_posle_1',
+          elements: [
+            { name: 'polozenie_text', text: '85' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_1', stroke: '#8F8F8F' },
+            { name: 'circle_2', stroke: '#8F8F8F' },
+          ],
+        },
+      },
+      startTime: 5,
+    },
+    {
+      action: {
+        window2D: {
+          name: 'O_n_k_na_VNK_posle_1',
+          elements: [
+            { name: 'polozenie_text', text: '95' },
+            { name: 'left_vn', color: '' },
+            { name: 'right_vn', color: '' },
+            { name: 'circle_1', stroke: '' },
+            { name: 'circle_2', stroke: '' },
+          ],
+        },
+      },
+      startTime: 6,
+    },
+    {
+      action: {
+        window2D: {
+          name: 'O_n_k_na_VNK_posle_1',
+          elements: [
+            { name: 'polozenie_text', text: '100' },
+            { name: 'status_window_text', text: 'Открыт' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_1', stroke: '#8F8F8F' },
+            { name: 'circle_2', stroke: '#8F8F8F' },
+          ],
+        },
+      },
+      startTime: 7,
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: 7.1,
+    },
+    // {
+    //   action: {
+    //     target2D: 'open_vn',
+    //     window2D: {},
+    //   },
+    //   duration: 0,
+    //   startTime: 2.1,
+    // }, 
     // {
     //   text: 'Заменить1',
     //   action: {

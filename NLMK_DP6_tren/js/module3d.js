@@ -333,7 +333,7 @@ function makeUnicMat(UnicMesh) {
 
 function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false, Window = undefined, Pos = undefined) {
   if (Mesh && SvgName) {
-    Mesh.svgName = SvgName;
+    if (ChangeTexture === true) Mesh.svgArr = [{ name: SvgName, x: 0, y: 0 }]
     let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
     let textureContext = Texture.getContext();
     let newIndex = devHelper.model3DVals.svgDisplays.textures.indexOf(Texture);
@@ -342,18 +342,7 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture =
     outputImage.onload = function () {
       if (ChangeTexture === true)
         textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
-      textureContext.drawImage(outputImage, 0, 0);
-      if (Window !== undefined) {
-        let windowIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === Window; })
-        let outputImage2 = devHelper.model3DVals.svgDisplays.tagImgs[windowIndex];
-        outputImage2.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[windowIndex]))));
-        outputImage2.onload = function () {
-          // todo положение переделать в проценты 
-          // textureContext.drawImage(outputImage2, Pos.x * (document.getElementById('renderCanvas').getBoundingClientRect().width / 100), Pos.y * (document.getElementById('renderCanvas').getBoundingClientRect().height / 100));
-          textureContext.drawImage(outputImage2, Pos.x, Pos.y);
-          Texture.update();
-        }
-      }
+      textureContext.drawImage(outputImage, Mesh.svgArr[0].x, Mesh.svgArr[0].y);
       Texture.update();
       if (ChangeTexture === true)
         Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = Texture;
@@ -364,36 +353,29 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture =
   }
 }
 
-function addSvgToTextrue(Mesh = undefined, NewSvgVals = undefined) {
+function addSvgToTextrue(Mesh = undefined, NewSvgVals = undefined, ClearCanvas = false, addNewSvg = true) {
   if (Mesh && NewSvgVals) {
+    if (addNewSvg === true) Mesh.svgArr.push({ name: NewSvgVals.window, x: NewSvgVals.x, y: NewSvgVals.y });
     let Texture = Mesh.material.diffuseTexture;
     let textureContext = Texture.getContext();
     let windowIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === NewSvgVals.window; })
-    let outputImage2 = devHelper.model3DVals.svgDisplays.tagImgs[windowIndex];
-    outputImage2.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[windowIndex]))));
-    outputImage2.onload = function () {
-      textureContext.drawImage(outputImage2, NewSvgVals.x, NewSvgVals.y);
+    let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[windowIndex];
+    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[windowIndex]))));
+    outputImage.onload = function () {
+      if (ClearCanvas === true) textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
+      textureContext.drawImage(outputImage, NewSvgVals.x, NewSvgVals.y);
       Texture.update();
     }
   }
 }
-
-function updateSvgTexture(SvgName = undefined, ChangeTexture = false) {
-  if (SvgName) {
-    let SvgIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === SvgName; })
-    let outputImage = devHelper.svgVals[SvgIndex].object.nextElementSibling;
-    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[SvgIndex]))));
-    outputImage.onload = function () {
-      devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
-        if (DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1) !== SvgName)
-          changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), ChangeTexture);
-        else
-          changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), true);
-      })
-    }
-  } else {
-    if (devHelper.dev.enable === true) console.warn(`В функцию updateSvgTexture передали не все переменные.`);
-    return
+function RemoveSvgFromTextrue(Mesh = undefined, RemoveWindowName = undefined) {
+  if (Mesh && RemoveWindowName) {
+    let indexWindow = Mesh.svgArr.findIndex(function (obj) { return obj.name === RemoveWindowName; })
+    if (indexWindow !== -1) Mesh.svgArr.splice(indexWindow, 1);
+    Mesh.svgArr.forEach((element, index) => {
+      addSvgToTextrue(Mesh, { window: element.name, x: element.x, y: element.y }, index === 0 ? true : false, false);
+      if (index === Mesh.svgArr.length - 1) createSvghelper(devHelper.model3DVals.currentPosition, element.name);
+    })
   }
 }
 

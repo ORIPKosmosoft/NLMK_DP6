@@ -13,7 +13,7 @@ window.addEventListener('load', function () {
   })
 
   devHelper.svgVals.forEach((ObjectSvg, Index) => {
-    // if (ObjectSvg.name === 'BVNK_VNK3_obj') {
+    // if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
     //   ObjectSvg.object.style.left = '0';
     //   ObjectSvg.object.style.top = '0';
     //   ObjectSvg.object.style.visibility = 'visible';
@@ -259,7 +259,6 @@ function makeDynamicTextureDisplay(ObjectSvg) {
     textureContext.drawImage(outputImage, 0, 0);
   }
 }
-
 // Появление нужного модуля управления для каждо схемы в зависимости от вида
 function createSvghelper(CurrentPosition, SvgName = undefined) {
   if (CurrentPosition !== undefined) {
@@ -315,15 +314,15 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
       } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') {
         let mainContainer = createMainHelperContainer({ x: 43.3, y: -54, w: 13, h: 32.6, });
         for (let i = 0; i < 2; i++) {
-          if (i === 0) tempObj = { x: 12, y: 0.1, w: 1, h: 2, name: textureName, }; // close
+          if (i === 0) tempObj = { x: 12, y: 0.1, w: 1, h: 2, forAction: true, name: textureName, id: 'close_w1'}; // close
           else if (i === 1) tempObj = { x: 6.4, y: 11.1, w: 3, h: 1.9, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, }; // open
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'O_n_k_na_VNK_posle_2') {
         let mainContainer = createMainHelperContainer({ x: 51.6, y: -47.5, w: 6, h: 5.6, });
         for (let i = 0; i < 2; i++) {
-          if (i === 0) tempObj = { x: 3.1, y: 2.1, w: 2.3, h: 2.3, name: textureName, id: 'close_vn',}; // close
-          else if (i === 1) tempObj = { x: 0.4, y: 2.1, w: 2.3, h: 2.3, name: textureName, forAction: true, id: 'open_vn', }; // open
+          if (i === 0) tempObj = { x: 3.1, y: 2.1, w: 2.3, h: 2.3, removeWindow: textureSvgName, id: 'close_vn', }; // close
+          else if (i === 1) tempObj = { x: 0.4, y: 2.1, w: 2.3, h: 2.3, removeWindow: textureSvgName, forAction: true, id: 'open_vn1', }; // open
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
 
@@ -356,26 +355,30 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
         invisElem.style.top = Vals.y + 'vh';
         invisElem.style.width = Vals.w + 'vw';
         invisElem.style.height = Vals.h + 'vh';
+        invisElem.addEventListener('click', () => {
+          if (devHelper.trenVals.waitingInput === true) {
+            if (Vals.removeWindow) {
+              RemoveSvgFromTextrue(DisplayMesh, Vals.removeWindow);
+            } else if (Vals.forAction && Vals.forAction === true) {
+              if (Vals.value && Vals.value.window) {
+                addSvgToTextrue(DisplayMesh, Vals.value);
+                createSvghelper(CurrentPosition, Vals.value.window);
+              }
+            } else if (Vals.name) {
+              changeSvgtexture(DisplayMesh, Vals.name, true);
+              createSvghelper(CurrentPosition, Vals.name);
+            } else if (Vals.value && Vals.value.window) {
+              createSvghelper(CurrentPosition, Vals.value.window);
+              changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, Vals.value.window, Vals.value);
+            } else changeSvgElem(Vals.value);
+          }
+        });
         if (Vals.id !== undefined) {
           invisElem.id = Vals.id;
           invisElem.addEventListener('click', (e) => {
-            trenClickOnSvgElem(invisElem);
+            if (devHelper.trenVals.waitingInput === true) trenClickOnSvgElem(invisElem);
           })
         }
-        invisElem.addEventListener('click', () => {
-          if (Vals.name) {
-            changeSvgtexture(DisplayMesh, Vals.name, true);
-            createSvghelper(CurrentPosition, Vals.name);
-          } else if (Vals.forAction && Vals.forAction === true) { 
-            if (Vals.value && Vals.value.window) {
-              createSvghelper(CurrentPosition, Vals.value.window);
-              addSvgToTextrue(DisplayMesh, Vals.value);
-            }
-          } else if (Vals.value && Vals.value.window) {
-            changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, Vals.value.window, Vals.value);
-            createSvghelper(CurrentPosition, Vals.value.window);
-          } else changeSvgElem(Vals.value);
-        });
         return invisElem;
       }
     } else {
@@ -385,27 +388,28 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
 }
 // color; text; alpha; position в vw, vh;
 function changeSvgElem(Val = {}) {
+  console.log(Val);
   if (Val.name) {
     devHelper.svgVals.forEach((svgArrObject) => {
       svgArrObject.activeElements.forEach((activeElemObj) => {
         if (activeElemObj.name === Val.name) {
-          if (Val.text && Val.text !== '')
+          if (Val.text)
             activeElemObj.element.innerHTML = Val.text;
-          if (Val.color && Val.color !== '')
+          if (Val.color)
             activeElemObj.element.style.fill = Val.color;
-          if (Val.stroke && Val.stroke !== '')
+          if (Val.stroke)
             activeElemObj.element.style.stroke = Val.stroke;
-          if (Val.alpha && Val.alpha !== '')
+          if (Val.alpha)
             activeElemObj.element.style.opacity = Val.alpha;
-          if (Val.rotation && Val.rotation !== '')
+          if (Val.rotation)
             changeSvgElemPos(activeElemObj.element, Val.rotation, 'rotate');
           if (Val.position) {
-            if (Val.position.x && Val.position.x !== '') changeSvgElemPos(activeElemObj.element, Val.position.x, 'translateX');
-            if (Val.position.y && Val.position.y !== '') changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
+            if (Val.position.x) changeSvgElemPos(activeElemObj.element, Val.position.x, 'translateX');
+            if (Val.position.y) changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
           }
-          // TODO Вроде как и не нужен
-          // updateSvgTexture(svgArrObject.name, true);
         }
+        let Texture = devHelper.model3DVals.svgDisplays.meshs[0].material.diffuseTexture;
+        Texture.update();
       })
     })
   } else {
