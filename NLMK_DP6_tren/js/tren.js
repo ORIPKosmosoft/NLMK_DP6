@@ -161,25 +161,28 @@ function createCustomElement(tag, content, attributes, parrent = null) {
   if (parrent) parrent.append(element);
   return element
 }
-function setNewStateButtonSVG(objectSVG, color) {
+
+function setNewFillButtonSVG(objectSVG, color) {
   Array.from(objectSVG.contentDocument.querySelectorAll('[fill]')).forEach(element => {
     element.setAttribute('fill', color)
   });
 }
 
 
+
 function dragAndDrop(e, moveWindow) {
+  // let vW = window.screen.width / 100;
+  // let vH = window.screen.height / 100;
+
   moveWindow.classList.add('transition-0');
   let coords = getCoords(moveWindow);
   let shiftX = e.pageX - coords.left;
   let shiftY = e.pageY - coords.top;
   moveAt(e);
   function moveAt(e) {
-    moveWindow.style.left = e.pageX - shiftX + 'px';
-    moveWindow.style.top = e.pageY - shiftY + 'px';
+    moveWindow.style.left = (e.pageX - shiftX) /*/ vW*/ + 'px';
+    moveWindow.style.top = (e.pageY - shiftY) /*/ vH*/ + 'px';
     fixEdge(e);
-
-
   }
   function fixEdge(e) {
     if (parseInt(moveWindow.style.left) <= document.querySelector('.tren-ui').offsetWidth) {
@@ -232,53 +235,65 @@ function raiseUpBox(e) {
 
 
 function clickCloseTime(e){
-  document.getElementById('b_oclock').classList.remove('button-tren-active');
-  setNewStateButtonSVG(document.getElementById('b_oclock').querySelector('object'), COLOR_STATE_BUTTON.Normal);
-
-  document.querySelector('.block-button').classList.remove("z-index-1");
-  document.querySelector('.box-time').classList.remove("opacity-1");
+  if (document.getElementById('b_oclock').classList.contains('button-tren-active')) {
+    document.getElementById('b_oclock').classList.remove('button-tren-active')
+    setNewFillButtonSVG(document.getElementById('b_oclock').querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  }
+  document.querySelector('.box-time').classList.remove('z-index9');
+  document.querySelector('.box-time').classList.remove("opacity-1-Always");
+  document.querySelector('.box-time').classList.remove("opacity-1-Temp");
   document.querySelector('.box-time').ontransitionend = (e)=>{
+    document.querySelector('.box-chat-window').classList.add('transition-0');
+    document.querySelector('.block-button').classList.remove("z-index-1");
     document.querySelector('.box-time').classList.remove("box-time-padTop32");
     document.querySelector('.time-header').classList.remove("time-header-opacity");
     document.querySelector('.box-time .backArea').classList.remove('backArea-white-100')
-    document.querySelector('.box-time').ontransitionend = (e)=>{}
     setStartPosition(e.currentTarget);
+    document.querySelector('.box-time').ontransitionend = null;
   }
+  clickCloseTimer(e);
 }
 function clickCloseTimer(e){
   
-  document.getElementsByClassName("dialogMessageWatch")[0].style.display = "none";
-    
+  document.querySelector('.dialogMessageWatch').classList.remove('opacity-1-Always');
+  document.querySelector('.dialogMessageWatch').classList.remove('z-index9');
+  document.querySelector('.dialogMessageWatch').classList.add('opacity-0');
   document.querySelector(".dialogMessageWatch .time-hour").textContent = "00";
   document.querySelector(".dialogMessageWatch .time-minute").textContent = "00";
   document.querySelectorAll('.visibleDrooDown').forEach(element => {element.classList.remove("visibleDrooDown");});
   document.querySelector(".dialogTimers-hours[dropDown='1'] p").textContent = "00"
   document.querySelector(".dialogTimers-hours[dropDown='2'] p").textContent = "00";
-        
 }
 function clickCloseChat(e){
-  setNewStateButtonSVG(document.getElementById('b_chat').querySelector('object'), COLOR_STATE_BUTTON.Normal);
-    document.getElementById('b_chat').classList.remove('button-tren-active');
-
-    document.querySelector('.box-chat-window').classList.remove("opacity-1"); // БОЛЬШОЕ ОКНО
-    document.querySelector('.box-chat-window .block-button').classList.remove("z-index-1"); // БЛОКИРОВКА КНОПОК
-    document.querySelector('.box-chat-window .box-chat-header').classList.remove("opacity-1"); // ЛИНИЯ С НАЗВАНИЕ И Х
-    
-    document.querySelector('.box-chat-window').ontransitionend = (e)=>{
-      document.querySelector('.box-chat-window').classList.remove("visibility-visible");
-      e.currentTarget.ontransitionend = (e)=>{};
-      document.querySelector('.chat').scrollTop = 0;
-      setStartPosition(e.currentTarget);
-      document.querySelector('.box-chat-window .chat').classList.add("chat-mini");
-      document.querySelector('.box-chat-window').classList.add("box-chat-window-mini");
-      document.querySelector('.box-chat-window .backArea').classList.remove('backArea-white-100')
-      setMiniChat();
-    }
+  if (document.getElementById('b_chat').classList.contains('button-tren-active')) {
+    document.getElementById('b_chat').classList.remove('button-tren-active')
+    setNewFillButtonSVG(document.getElementById('b_chat').querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  }
+  document.querySelector('.box-chat-window').classList.remove('z-index9');
+  document.querySelector('.box-chat-window').classList.remove("opacity-1-Temp"); // БОЛЬШОЕ ОКНО
+  document.querySelector('.box-chat-window').classList.remove("opacity-1-Always"); // БОЛЬШОЕ ОКНО
+  document.querySelector('.box-chat-window .block-button').classList.remove("z-index-1"); // БЛОКИРОВКА КНОПОК
+  document.querySelector('.box-chat-window .box-chat-header').classList.remove("opacity-1-Always"); // ЛИНИЯ С НАЗВАНИЕ И Х
+  
+  document.querySelector('.box-chat-window').ontransitionend = (e)=>{
+    document.querySelector('.box-chat-window').classList.add('transition-0');
+    document.querySelector('.box-chat-window').classList.remove("visibility-visible");
+    document.querySelector('.chat').scrollTop = 0;
+    setStartPosition(e.currentTarget);
+    document.querySelector('.box-chat-window .chat').classList.add("chat-mini");
+    document.querySelector('.box-chat-window').classList.add("box-chat-window-mini");
+    document.querySelector('.box-chat-window .backArea').classList.remove('backArea-white-100')
+    e.currentTarget.ontransitionend = null;
+    setMiniChat();
+    setTimeout(() => {
+      document.querySelector('.box-chat-window').classList.remove('transition-0');
+    }, 500);
+  }
 }
 
 // TIME
 {
-  // КЛИК ЗАКРЫТЬ TME
+  // КЛИК ЗАКРЫТЬ TIME
   document.querySelector('.time-header-button').addEventListener("click", clickCloseTime)
   // BIND mouseDown
   document.querySelector('.time-header-title').onmousedown = (e) => {
@@ -313,25 +328,36 @@ function clickCloseChat(e){
   }
 
   setLifeTime(devHelper.trenVals.lifeTime);
-  // Открыть таймер
+
+  // Открыть таймер // FIX
   document.querySelector(".time-oclock").addEventListener('click', (e) => {
-    document.getElementsByClassName("dialogMessageWatch")[0].style.display = "flex";
+    document.querySelector(".dialogMessageWatch").classList.add('opacity-1-Always');
+    document.querySelector('.dialogMessageWatch').classList.remove('opacity-0');
+
     let myBlock = document.querySelector('.box-time');
-
-    console.log(myBlock.style.left);
-    console.log(window.innerWidth);
-    if (parseInt(myBlock.style.left) + 330 + 300 >= window.innerWidth) {
-      document.querySelector('.dialogMessageWatch').style.left = parseInt(document.querySelector('.box-time').style.left) - 330 + 'px';
+    let magicW = 1;
+    let magicH = 1;
+    if (String(document.querySelector('.box-time').style.left).match('vw') ) {
+      magicW = (window.innerWidth / 100);
     }
-    else {
-      document.querySelector('.dialogMessageWatch').style.left = parseInt(document.querySelector('.box-time').style.left) + 330 + 'px';
+    document.querySelector('.dialogMessageWatch').style.left = parseInt(document.querySelector('.box-time').style.left) * magicW + 330 + 'px';
+    if (parseInt(myBlock.style.left) * magicW + 330 + 300 >= window.innerWidth) {
+      document.querySelector('.dialogMessageWatch').style.left = parseInt(document.querySelector('.box-time').style.left) * magicW - 330 + 'px';
     }
-    document.querySelector('.dialogMessageWatch').style.top = document.querySelector('.box-time').style.top;
 
-    //document.getElementsByClassName("dialogMessageWatch")[0].style.left = "";
+
+    if (String(document.querySelector('.box-time').style.top).match('vh') ) {
+      magicH = (window.innerHeight / 100);
+    }
+    console.log(document.querySelector('.box-time').style.top);
+    console.log(magicH);
+    document.querySelector('.dialogMessageWatch').style.top = parseInt(document.querySelector('.box-time').style.top) * magicH  + 'px';
+    if(parseInt(myBlock.style.top) * magicH + 275 >= window.innerHeight){
+      document.querySelector('.dialogMessageWatch').style.top = parseInt(window.innerHeight) * magicH - 275 + 'px';
+    }
   })
   // Закрыть таймер. Обнулить таймер
-  document.querySelector(".dialogHeader p").addEventListener("click", clickCloseTimer);
+  document.getElementById("timer-close").addEventListener("click", clickCloseTimer);
 
   // Открыть выпадающий список
   Array.from(document.getElementsByClassName("dialogTimers-hours")).forEach((item) => {
@@ -484,148 +510,125 @@ const COLOR_STATE_BUTTON = {
   Active: "#ffffff",
   Normal: "#939393"
 }
-
-// Main INTEFACE  
-{
-  
-  // покрасить внутри всг
-  function setNewStateButtonSVG(objectSVG, color) {
-    Array.from(objectSVG.contentDocument.querySelectorAll('[fill]')).forEach(element => {
-      element.setAttribute('fill', color)
-    });
+// Смена СВГ в кнопке
+function newImageCollapseMenu(e) {
+  let object = e.currentTarget.querySelector('object');
+  if (object.getAttribute('icon') == "svg_menu_2") {
+    object.setAttribute('icon', "svg_menu_1")
+    object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_1').contentDocument.querySelector('svg').innerHTML;     
+    
   }
-  
-  // свернуть смена свг
-  function newImageCollapseMenu(e) {
-    let object = e.currentTarget.querySelector('object');
-    if (object.getAttribute('icon') == "svg_menu_2") {
-      object.setAttribute('icon', "svg_menu_1")
-      object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_1').contentDocument.querySelector('svg').innerHTML;     
-    }
-    else{
-      object.setAttribute('icon', "svg_menu_2")
-      object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_2').contentDocument.querySelector('svg').innerHTML;
-    }
+  else{
+    object.setAttribute('icon', "svg_menu_2")
+    object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_2').contentDocument.querySelector('svg').innerHTML;
   }
+}
 
-  // ОТКРЫТЬ/ЗАКРЫТЬ МЕНЮ
-  document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
-    document.querySelector('.tren-ui').classList.toggle('tren-ui-long');
-    newImageCollapseMenu(e)
-    // ОТКРЫТ
-    if (document.querySelector('.tren-ui-long')) {
-      document.querySelector('.box-collapse').classList.remove("opacity-11");
-
-      if (!document.querySelector('.box-time.opacity-1')) {
-        document.querySelector('.box-time').style.left = document.querySelector('.box-time').getAttribute('sx2');
+// БОЛЬШОЙ БИНД НА СМЕНУ ЦВЕТА КНОПОК // НОВОЕ СВП В 1Ю КНОПКУ
+Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) => {
+  item = item.querySelector('button');
+  item.addEventListener('click', (e) => {
+    if (e.currentTarget.id == "b_collapseMenu") { // ОСОБОЕ УСЛОВИЕ ДЛЯ "РАЗВЕРНУТЬ"
+      if (e.currentTarget.classList.contains('button-tren-active')) {
+        e.currentTarget.classList.remove('button-tren-active');
       }
-      if (!document.querySelector('.box-chat-window.opacity-1')) {
-        document.querySelector('.box-chat-window').style.left = document.querySelector('.box-chat-window').getAttribute('sx2');
+      else{
+        e.currentTarget.classList.add('button-tren-active');
       }
-
-    }
-    // ЗАКРЫТ
-    else {
-      // document.querySelector('.box-collapse').classList.add("opacity-11");
-
-      if (!document.querySelector('.box-time.opacity-1')) {
-        document.querySelector('.box-time').style.left = document.querySelector('.box-time').getAttribute('sx');
-      }
-      if (!document.querySelector('.box-chat-window.opacity-1')) {
-        document.querySelector('.box-chat-window').style.left = document.querySelector('.box-chat-window').getAttribute('sx');
-      }
-    }
-
-  });
-  // МЕНЮ НАВЕДЕНИЕ
-  document.getElementById('b_collapseMenu').addEventListener("mouseover", (e) => {
-    if (!document.querySelector('.tren-ui-long')) {
-      document.querySelector('.box-collapse').classList.add("opacity-11");
-    }
-  });
-  // МЕНЮ ОТВЕДЕНИЕ
-  document.getElementById('b_collapseMenu').addEventListener("mouseout", (e) => {
-    document.querySelector('.box-collapse').classList.remove("opacity-11");
-  });
-
-
-  // ЧАСЫ НАВЕДЕНИЕ
-  document.getElementById('b_oclock').addEventListener("mouseover", (e) => {
-    setStartPosition(document.querySelector('.box-time'));
-    document.querySelector('.box-time').classList.add("opacity-11");
-  });
-  // ЧАСЫ ОТВЕДЕНИЕ
-  document.getElementById('b_oclock').addEventListener("mouseout", (e) => {
-    document.querySelector('.box-time').classList.remove("opacity-11");
-    document.querySelector('.box-time').classList.remove("opacity-0");
-    document.querySelector('.dialogMessageWatch').classList.remove("opacity-0");
-  }); 
-  // КЛИК ЧАСЫ
-  document.getElementById('b_oclock').addEventListener("click", (e)=>{
-    document.querySelector('.box-time').classList.remove("opacity-11");
-    if(e.currentTarget.classList.contains('button-tren-active')){
-      clickCloseTime(e);
-      clickCloseTimer(e);
-      document.querySelector('.box-time').classList.add("opacity-0");
+      newImageCollapseMenu(e);
       return;
     }
+    else if (e.currentTarget.classList.contains('button-tren-active')) {
+      
 
+      if (e.currentTarget.hasAttribute('close-func')) {
+        e.currentTarget.getAttribute('close-func').split(' ').forEach((item) => {
+          window[item](e);
+        })
+      }
+
+      e.currentTarget.classList.remove('button-tren-active');
+      setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Normal);
+      return;
+    }
+  
     e.currentTarget.classList.add('button-tren-active');
-    setNewStateButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Active);
-    document.querySelector('.box-time').style.display = 'flex';
-    document.querySelector('.box-time').classList.add("opacity-1");
+    setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Active);
+  })
+});
+//  // БОЛЬШОЙ БИНД НА СМЕНУ ЦВЕТА КНОПОК
+Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
+  item.addEventListener('mouseover', (e) => {
+    document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
+    document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.remove('transition-0');
+  });
+  item.addEventListener('mouseout', (e) => {
+    document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.remove('opacity-1-Temp');
+  });
+})
+
+
+// Отображение РАЗВЕРНУТЬ
+document.getElementById('b_collapseMenu').addEventListener("mouseover", (e) => {
+  if (document.querySelector('.tren-ui-long')) {
+    document.querySelector('.box-collapse').classList.remove('opacity-1-Temp');
+    document.querySelector('.box-collapse').classList.remove('opacity-1-Always');
+  }
+  else{
+
+  }
+});
+function setNewPositionWindow(elem, state) {
+  if (state) {
+    elem.style.left = elem.getAttribute('sx2');
+    elem.style.top = elem.getAttribute('sy');
+  }
+  else{
+    elem.style.left = elem.getAttribute('sx');
+    elem.style.top = elem.getAttribute('sy');
+  }
+}
+// ОТКРЫТЬ/ЗАКРЫТЬ МЕНЮ
+document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
+  if(!document.querySelector('.tren-ui').classList.contains('tren-ui-long')) {
+    document.querySelector('.tren-ui').classList.add('tren-ui-long');
+    document.querySelector('.box-collapse').classList.remove('opacity-1-Temp');
+    Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
+      item = document.querySelector(`.${item.getAttribute('window-interface')}`);
+      setNewPositionWindow(item, true);
+    });
+  }
+  else{
+    document.querySelector('.tren-ui').classList.remove('tren-ui-long');
+    Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
+      item = document.querySelector(`.${item.getAttribute('window-interface')}`);
+      setNewPositionWindow(item, false);
+    });
+  }
+});
+
+// КЛИК ЧАСЫ
+document.getElementById('b_oclock').addEventListener("click", (e)=>{
+  if (e.currentTarget.classList.contains('button-tren-active')) {
+    document.querySelector('.box-time').classList.add("opacity-1-Always");
     document.querySelector('.box-time').classList.add("box-time-padTop32");
     document.querySelector('.box-time .block-button').classList.add("z-index-1");
     document.querySelector('.box-time .backArea').classList.add('backArea-white-100')
-
     document.querySelector('.time-header').classList.add("time-header-opacity");
-  })
+  }
+});
 
 
-  
-  // ЧАТ НАВЕДЕНИЕ
-  document.getElementById('b_chat').addEventListener("mouseover", (e) => {
-    setStartPosition(document.querySelector('.box-chat-window'));
-    document.querySelector('.box-chat-window').classList.add("opacity-11");
-
-  });
-  // ЧАТ ОТВЕДЕНИЕ
-  document.getElementById('b_chat').addEventListener("mouseout", (e)=>{
-    document.querySelector('.box-chat-window').classList.remove("opacity-0");
-    document.querySelector('.box-chat-window').classList.remove("opacity-11");
-  });
-  // КЛИК ЧАТ
-  document.getElementById('b_chat').addEventListener("click", (e)=>{
-    if(e.currentTarget.classList.contains('button-tren-active')){
-      clickCloseChat(e);
-      document.querySelector('.box-chat-window').classList.add("opacity-0");
-      document.querySelector('.box-chat-window').classList.remove("opacity-11");
-      return;
-    }
-    e.currentTarget.classList.add('button-tren-active');
-    setNewStateButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Active);
-
+// КЛИК ЧАТ
+document.getElementById('b_chat').addEventListener("click", (e)=>{
+  if (e.currentTarget.classList.contains('button-tren-active')) {
     document.querySelector('.box-chat-window').classList.remove("box-chat-window-mini");
-
     document.querySelector('.box-chat-window .chat').classList.remove("chat-mini");
-
     document.querySelector('.box-chat-window').classList.add("visibility-visible");
-    document.querySelector('.box-chat-window').classList.add("opacity-1");
+    document.querySelector('.box-chat-window').classList.add("opacity-1-Always");
     document.querySelector('.box-chat-window .block-button').classList.add("z-index-1");
-    document.querySelector('.box-chat-window .box-chat-header').classList.add("opacity-1");
+    document.querySelector('.box-chat-window .box-chat-header').classList.add("opacity-1-Always");
     document.querySelector('.box-chat-window .backArea').classList.add('backArea-white-100')
     setNormalChat();
-  });
-
-
-  document.getElementById('b_scenario').addEventListener("click", (e) => { }); // СЦЕНАРИЙ
-  document.getElementById('b_help').addEventListener("click", (e) => { }); // ПОМОЩЬ
-  document.getElementById('b_reference').addEventListener("click", (e) => { }); // СПРАВКА
-  document.getElementById('b_restart').addEventListener("click", (e) => { }); // РЕСТАРТ
-  document.getElementById('b_exit').addEventListener("click", (e) => { }); // ВЫХОД
-}
-
-
-
-
-
+  }
+});

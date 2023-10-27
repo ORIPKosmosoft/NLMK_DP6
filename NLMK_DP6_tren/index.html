@@ -44,7 +44,7 @@
     <img class="logoK" src="media/images/UI/logo_kosmosft.png">
     <img class="logoN" src="media/images/UI/logo_NLMK.png">
   </div>
-  <div class="start-container">
+  <div class="start-container" style="display: none;">
     <div class="header">
       <span class="bebas">ТРЕНАЖЕР ОБУЧЕНИЯ ГАЗОВЩИКА ДОМЕННОЙ ПЕЧИ </span>
       <span class="roboto">№</span><span class="bebas">6</span>
@@ -491,11 +491,12 @@
       <span>Контроль</span>
     </div>
   </div>
-  <div class="tren-container">
+
+  <div class="tren-container" style="opacity: 1;  visibility: visible;">
     <div class="tren-ui">
       <div class="box-tren-ui">
         <div class="line-tren">
-          <button class="button-tren" id="b_collapseMenu">
+          <button class="button-tren" id="b_collapseMenu" window-interface="box-collapse">
             <object data="media/images/UI/icons/menu_2.svg" icon="svg_menu_2" width="30" height="30" type="image/svg+xml"></object>
             <div class="click-button-tren"></div>
           </button>
@@ -503,14 +504,14 @@
         </div>
         <div class="box-spring-button">"ПРУЖИНА"</div>
         <div class="line-tren">
-          <button class="button-tren" id="b_oclock">
+          <button class="button-tren" id="b_oclock" window-interface="box-time" close-func="clickCloseTime">
             <object data="media/images/UI/icons/clock.svg" width="30" height="30" type="image/svg+xml"></object>
             <div class="click-button-tren"></div>
           </button>
           <div class="text-button-tren">Часы</div>
         </div>
         <div class="line-tren">
-          <button class="button-tren" id="b_chat">
+          <button class="button-tren" id="b_chat" window-interface="box-chat-window" close-func="clickCloseChat">
             <object data="media/images/UI/icons/chat.svg" width="30" height="30" type="image/svg+xml"></object>
             <div class="click-button-tren"></div>
           </button>
@@ -593,13 +594,13 @@
 
 
   <!-- РАЗВЕРНУТЬ -->
-  <div class="box-collapse" sx="90px" sy="34px" 
-  style=" top: 34px;  left: 90px; ">
+  <div class="box-collapse" sx="4vw" sy="4vh" 
+  style=" top: 4vh;  left: 4vw; ">
     РАЗВЕРНУТЬ
   </div>
   <!-- TIME -->
-  <div class="box-time" sx="90px" sy="220px" sx2="185px" 
-  style="left: 90px; top: 220px;">
+  <div class="box-time" sx="4vw" sy="24vh" sx2="20vh" 
+  style="left: 4vw; top: 220px;">
     <div class="backArea"></div>
     <div class="time-header">
       <div class="time-header-title">Часы</div>
@@ -612,16 +613,15 @@
       <div class="time-minute">20</div>
       <div class="time-colon">:</div>
       <div class="time-second">02</div>
-      <button class="time-oclock"></button>
+      <button class="time-oclock" id="time-oclock"></button>
     </div>
   </div>
-  <!-- TIMER -->
-  <div class="dialogMessageWatch" sx="780px" sy="150px" 
-  style="left: 780px; top: 150px;">
+  <!-- TIMER  -->
+  <div class="dialogMessageWatch" sx="22vw" sy="24vh" style="left: 22vw; top: 24vh;">
     <div class="backArea backArea-white-100" ></div>
     <div class="dialogHeader" >
       <div class="time-header-title">Установить таймер</div>
-      <p class="time-header-button">×</p>
+      <p class="time-header-button" id="timer-close">×</p>
       <!-- <p class="dialogClosed">х</p> -->
     </div>
     <div class="dialogTimers-line">
@@ -748,8 +748,8 @@
     </div>
   </div>
   <!-- CHAT -->
-  <div  class="box-chat-window box-chat-window-mini" maxHeight="475px" maxWidth="385px" sx="90px" sy="280px" sx2="185px" 
-  style=" top: 280px;  left: 90px; ">   
+  <div  class="box-chat-window box-chat-window-mini" maxHeight="48vh" maxWidth="20vw" sx="4vw" sy="14.5vw" sx2="20vh" 
+  style=" top: 31vh;  left: 4vw; ">   
     <div class="backArea" ></div>
     <div class="box-chat-header" >
       <div class="chat-header-title">Чат</div>
