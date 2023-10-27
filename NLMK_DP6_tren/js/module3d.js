@@ -379,6 +379,26 @@ function RemoveSvgFromTextrue(Mesh = undefined, RemoveWindowName = undefined) {
   }
 }
 
+function updateSvgTexture(SvgName = undefined, ChangeTexture = false) {
+  if (SvgName) {
+    let SvgIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === SvgName; })
+    let outputImage = devHelper.svgVals[SvgIndex].object.nextElementSibling;
+    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[SvgIndex]))));
+    outputImage.onload = function () {
+      devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
+        if (DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1) !== SvgName)
+          changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), ChangeTexture);
+        else
+          changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), true);
+      })
+    }
+  } else {
+    if (devHelper.dev.enable === true) console.warn(`В функцию updateSvgTexture передали не все переменные.`);
+    return
+  }
+}
+
+
 function changeColorTexture(Mesh = undefined, State = undefined) {
   let tempBool = false;
   if (devHelper.model3DVals.movePointMesh.indexOf(Mesh) !== -1) {

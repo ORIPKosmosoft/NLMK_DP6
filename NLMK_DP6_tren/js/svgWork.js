@@ -314,7 +314,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
       } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') {
         let mainContainer = createMainHelperContainer({ x: 43.3, y: -54, w: 13, h: 32.6, });
         for (let i = 0; i < 2; i++) {
-          if (i === 0) tempObj = { x: 12, y: 0.1, w: 1, h: 2, forAction: true, name: textureName, id: 'close_w1'}; // close
+          if (i === 0) tempObj = { x: 12, y: 0.1, w: 1, h: 2, forAction: true, name: textureName, id: 'close_w1' }; // close
           else if (i === 1) tempObj = { x: 6.4, y: 11.1, w: 3, h: 1.9, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, }; // open
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
@@ -355,8 +355,13 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
         invisElem.style.top = Vals.y + 'vh';
         invisElem.style.width = Vals.w + 'vw';
         invisElem.style.height = Vals.h + 'vh';
+
         invisElem.addEventListener('click', () => {
           if (devHelper.trenVals.waitingInput === true) {
+            if (Vals.id !== undefined) {
+              invisElem.id = Vals.id;
+              trenClickOnSvgElem(invisElem);
+            }
             if (Vals.removeWindow) {
               RemoveSvgFromTextrue(DisplayMesh, Vals.removeWindow);
             } else if (Vals.forAction && Vals.forAction === true) {
@@ -371,14 +376,9 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
               createSvghelper(CurrentPosition, Vals.value.window);
               changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, Vals.value.window, Vals.value);
             } else changeSvgElem(Vals.value);
+
           }
         });
-        if (Vals.id !== undefined) {
-          invisElem.id = Vals.id;
-          invisElem.addEventListener('click', (e) => {
-            if (devHelper.trenVals.waitingInput === true) trenClickOnSvgElem(invisElem);
-          })
-        }
         return invisElem;
       }
     } else {
