@@ -45,6 +45,10 @@ const devHelper = {
     answersArray: [], // Массив с ответами
     containerArray: [], // Массив с контейнерами вопросов
     previousContainer: undefined, // Предыдущий контейнер вопроса
+    dragElement: undefined, // Элемент, который перетаскиваем
+    dragElementText: '', // Текст элемента, который перетаскиваем
+    dragoverElement: undefined, // Элемент, на который навелись
+    dragoverElementText: '', // Текст элемента, на который навелись
   },
   //---------------------------
   dev: {
