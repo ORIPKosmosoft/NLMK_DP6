@@ -1,11 +1,65 @@
 /*----------TODO----------------------------------------------------
-Сделать размеры хелпера в пикселях
-Сделать зависимость ширина экрана в пикселях и точноых размеров.
+Сделать размеы хелпера в пикселях
+
+w 1427 - 1307 (91.57%)  
+h 840 - 743 (88,45%)
+x 33 (2,31)
+y -800
+
+w 1816 - 1404(77,29%)
+h 900 - 800 (88,89%)
+x 179 (9,85)
+y -862
+
+w 1816 - 1165 (64.16%)
+h 748 - 664 (88,77%)
+x 303 (16.68)
+y -718
+
+
+
+
+
+
+58,86 - 91.57 * 88,45
+49,55 - 77,29 * 88,89 
+41,18 - 64,16 * 88,77
+
+58.86, 49.45, 41.17
+2.31, 9.85, 16.68
+
+58,86 - -95,24
+49,45 - -95,78
+41,17 - -96,12
+
+
+
+
+
+Сделать зависимость ширина зоны рендера в пикселях и точноых размеров.
+--------------------------------------------------------------------
 Так смогу найти нужное уравнение для изменения размеров.
 А внутри окна хелпера помогаторы можно делать в процентах? Или так же в пикселях?
 Ну и продолжить джелать действия без человека
 --------------------------------------------------------------------
 */
+
+// console.log(calculateDynamicLeftHelper(49.45));
+
+function findVal(y, q) {
+  return (y / q) * 100;
+}
+
+let x = findVal(58.86, 100);
+// x === 2.31;
+console.log(x);
+
+x = findVal(49.55, 100);
+// x === 9.85;
+console.log(x);
+
+x = findVal(41.1, 100);
+console.log(x);
 
 window.addEventListener('load', function () {
   document.querySelector('.svg-scheme-container').querySelectorAll('object').forEach((ObjSvg) => {
@@ -234,7 +288,27 @@ window.addEventListener('load', function () {
       Element2.element.id = `${Element.name}_${Element2.name}`;
     })
   })
+
+
 });
+
+function calculateDynamicLeftHelper(x1) {
+  const coefficients = findLineByLeastSquares([58.86, 49.45, 41.17], [2.31, 9.85, 16.68]);
+  const x2 = coefficients[0] * x1 + coefficients[1];
+  return x2;
+  function findLineByLeastSquares(valuesX, valuesY) {
+    const xBar = valuesX.reduce((sum, x) => sum + x, 0) / valuesX.length;
+    const yBar = valuesY.reduce((sum, y) => sum + y, 0) / valuesY.length;
+
+    const num = valuesX.map((x, i) => (x - xBar) * (valuesY[i] - yBar)).reduce((sum, x) => sum + x, 0);
+    const den = valuesX.map(x => Math.pow(x - xBar, 2)).reduce((sum, x) => sum + x, 0);
+
+    const slope = num / den;
+    const intercept = yBar - slope * xBar;
+
+    return [slope, intercept];
+  }
+}
 
 function addSvgElem(SvgIndex, Element, Name, Move = true) {
   devHelper.svgVals[SvgIndex].activeElements.push({
@@ -273,51 +347,87 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
       let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
       let currentMeshTexture = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition).material.diffuseTexture;
       let textureName = currentMeshTexture.name.substring(currentMeshTexture.name.indexOf('_') + 1);
+      /* Высчитывание значений для хелперов
+        ------------------------------------------------------------------------------
+        Y всегда в процентах от высоты рендера
+        ------------------------------------------------------------------------------
+        высота всегда в процентах от высоты рендера
+        ------------------------------------------------------------------------------
+        ширина изменяется в соотношении примерно 1,56 к ширине рендера
+        Уравнение получения значения W для ширины прозрачного окна хелпера
+          Wpx   => W%;    (1.56 * W%) / 77.31 = w: W
+          254рх => 14%; (1.56 * 14) / 77.31 = w: 0.284
+        ------------------------------------------------------------------------------
+        положение по X найти логом
+        console.log(calculateDynamicLeftHelper(ЗАМЕНИТЬ) * ШИРИНА_РЕНДЕРА / 100 + 'px')
+        ------------------------------------------------------------------------------
+        Нужно создать формулу, которая будет высчитывать значение x, если известные следующие значения:
+        49.45(y), 58.86(q) = 2.31(x) ----- 135,9666 49,45 * 2.74
+        49.45(y), 49.45(q) = 9.85(x) ----- 487,0825 49,45 * 9.85
+        49.45(y), 41.17(q) = 16.68(x) ---- 686,7156 49.45 * 13.88
+        Формула должна быть одна и высчитывать динамически значение х, если известны y и q/
+        ------------------------------
+        Это придумл нейростека
+        32.5 - 23.51
+        24.03 - 30.34
+        15.56 - 37.17
+        ----------------------------------
+      */
+
+      function findVal(i1, i2) {
+        // i1 = 58.86, i2 = 100
+        // return 2.31
+         ///x = findVal(49.55, 100);
+        //x === 9.85;
+        //x = findVal(41.1, 100);
+        //x === 16.68;
+      }
+
+      let renderRationProc = parseFloat(document.getElementById('renderCanvas').getAttribute('height')) / parseFloat(document.getElementById('renderCanvas').getAttribute('width')) * 100;
+
       if (textureSvgName === 'vnk_main') {
-        let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
+        let mainContainer = createMainHelperContainer({ x: renderRationProc, y: -95.71, w: 1.56, h: 88.7, });
         for (let i = 0; i < 6; i++) {
-          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
-          else if (i === 5) tempObj = { x: 30.5, y: 44.5, w: 1.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, } };
+          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
+          else if (i === 5) tempObj = { x: 41.5, y: 50, w: 2.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, } };
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'BVNK_VNK1') {
-        let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
+        let mainContainer = createMainHelperContainer({ x: renderRationProc, y: -95.71, w: 1.56, h: 88.7, });
         for (let i = 0; i < 5; i++) {
-          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
+          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'BVNK_VNK2') {
-        let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
+        let mainContainer = createMainHelperContainer({ x: renderRationProc, y: -95.71, w: 1.56, h: 88.7, });
         for (let i = 0; i < 5; i++) {
-          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
+          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'BVNK_VNK3') {
-        let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
+        let mainContainer = createMainHelperContainer({ x: renderRationProc, y: -95.71, w: 1.56, h: 88.7, });
         for (let i = 0; i < 7; i++) {
-          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
-          else if (i === 5) tempObj = { x: 59, y: 28.5, w: 4.5, h: 14.7, value: { name: 'vnk_3', color: '#000000' }, };
-          else if (i === 6) tempObj = { x: 48.9, y: 26.5, w: 2.5, h: 3.5, value: { window: 'O_n_k_na_VNK_posle_1', x: 700, y: 300, }, id: 'kl313', };
+          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') {
-        let mainContainer = createMainHelperContainer({ x: 43.3, y: -54, w: 13, h: 32.6, });
+        let mainContainer = createMainHelperContainer({ x: 6.8, y: -54, w: 0.284, h: 32.6, });
         for (let i = 0; i < 2; i++) {
           if (i === 0) tempObj = { x: 12, y: 0.1, w: 1, h: 2, forAction: true, name: textureName, id: 'close_w1' }; // close
           else if (i === 1) tempObj = { x: 6.4, y: 11.1, w: 3, h: 1.9, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, }; // open
@@ -339,12 +449,14 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
         if (document.getElementById('svg-helper')) {
           document.getElementById('svg-helper').remove();
         }
+        let renderRationProc = parseFloat(document.getElementById('renderCanvas').getAttribute('height')) / parseFloat(document.getElementById('renderCanvas').getAttribute('width')) * 100;
         let mainContainer = document.createElement('div');
         mainContainer.style.position = 'relative';
-        mainContainer.style.left = Vals.x + 'vw';
-        mainContainer.style.top = Vals.y + 'vh';
-        mainContainer.style.width = Vals.w + 'vw';
-        mainContainer.style.height = Vals.h + 'vh';
+        mainContainer.style.left = calculateDynamicLeftHelper(Vals.x) + '%';
+        // mainContainer.style.left = (calculateDynamicLeftHelper(Vals.x) * parseFloat(document.getElementById('renderCanvas').getAttribute('width'))) / 100 + 'px';
+        mainContainer.style.top = Vals.y + '%';
+        mainContainer.style.width = (Vals.w * renderRationProc) + '%';
+        mainContainer.style.height = Vals.h + '%';
         mainContainer.id = 'svg-helper';
         document.body.querySelector('.game-view').append(mainContainer);
         return mainContainer;
@@ -356,10 +468,10 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           invisElem.classList.add('invisible-element-svg-helper');
           invisElem.innerHTML = Vals.id === undefined ? 'test' : Vals.id;
         }
-        invisElem.style.left = Vals.x + 'vw';
-        invisElem.style.top = Vals.y + 'vh';
-        invisElem.style.width = Vals.w + 'vw';
-        invisElem.style.height = Vals.h + 'vh';
+        invisElem.style.left = Vals.x + '%';
+        invisElem.style.top = Vals.y + '%';
+        invisElem.style.width = Vals.w + '%';
+        invisElem.style.height = Vals.h + '%';
 
         invisElem.addEventListener('click', () => {
           if (devHelper.trenVals.waitingInput === true) {
