@@ -84,8 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ----------------------------------------------------------------------------------------------------------
      */
     if (devHelper.dev.enable === true) {
-      document.getElementById('movePositionX2').addEventListener('click', () => {
-        changeSvgElem('fire_vnk_1', { position: { x: 10 } });
+      document.getElementById('movePositionX1').addEventListener('click', () => {
+        // changeSvgElem('fire_vnk_1', { position: { x: 10 } });
+        // getMeshTopLeftCornerCoordinates(devHelper.model3DVals.svgDisplays.meshs[0]);
+        // getMeshDimensionsIn2D(devHelper.model3DVals.svgDisplays.meshs[0]);
+        testTssh(devHelper.model3DVals.svgDisplays.meshs[0]);
+
       })
       document.getElementById('movePositionX2').addEventListener('click', () => {
         changeSvgElem('fire_vnk_1', { position: { x: 10 } });

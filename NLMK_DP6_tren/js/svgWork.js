@@ -43,16 +43,16 @@ y -718
 Ну и продолжить джелать действия без человека
 --------------------------------------------------------------------
 */
-//1427 - 2.31%(1427)
-//1816 - 9,85%(1427)
-//1816 - 9,85%(16.68)
 // нужно знать ширину хелпера в % и ширину рендера в рх
 // 95.5 Размер монитора wMonitorPx = (95.5 / 2) * (1427 / 100)
 // настроить вид так, чтобы центр монитора был по цетру экрана
 // перевести рх в проценты
 // (0.5 * 1427) - (95.5/ 2) * (1427 / 100) / (1427 / 100)
 // console.log(((0.5 * 1427) - (95.5/ 2) * (1427 / 100)) / (1427 / 100));
-// console.log(calculateDynamicLeftHelper(1427, 95.5, 0));
+//1427 - 2.31%(1427) - 58,86
+//1816 - 9,85%(1427) - 49,55
+//1816 - 9,85%(16.68) - 41,18
+// console.log(calculateDynamicLeftHelper(1427, 840, 95.38, 0));
 
 window.addEventListener('load', function () {
   document.querySelector('.svg-scheme-container').querySelectorAll('object').forEach((ObjSvg) => {
@@ -285,20 +285,143 @@ window.addEventListener('load', function () {
 
 });
 
-function calculateDynamicLeftHelper(WRenderPx, WMonitorProc, diffXProc) {
-  let newWRenderPx = parseFloat(document.getElementById('renderCanvas').getAttribute('width'));
-  let renderCenterPx = 0.5 * newWRenderPx;
-  let monitorWPx = (WMonitorProc * WRenderPx) / 100;
-  let diffXPx = monitorWPx * diffXProc / 100;
-  // TODO вот тут изменить diffXPx, он считает его не верно, нужно указывать верно
-  // проценты на сколько сдвигать, типа если 0, то на -50%
-  // если 100, то на +50%
-  //вывести ого, изменив newWRenderPx
-  let newPosXPx = renderCenterPx - diffXPx;
-  let newposXProc = newPosXPx / (newWRenderPx / 100);
-  console.log(`renderCenterPx ${renderCenterPx}, monitorWPx ${monitorWPx}, diffXPx ${diffXPx}, newPosXPx ${newPosXPx}, newposXProc ${newposXProc}`);
-  // минус половина монитора любого (WMonitorProc / (2 - (diffXProc / 100) * 4)) * (WRenderPx / 100)
-  return ((0.5 * newWRenderPx) - (WMonitorProc / (2 - (diffXProc / 100) * 4)) * (WRenderPx / 100)) / (newWRenderPx / 100);
+// Получение координат меша в 2D координатах окна
+function getMeshScreenCoordinates(mesh) {
+  let scene = devHelper.model3DVals.scene;
+  var worldMatrix = mesh.getWorldMatrix();
+  var meshPosition = mesh.position.clone();
+  meshPosition = BABYLON.Vector3.TransformCoordinates(meshPosition, worldMatrix);
+  console.log(meshPosition, BABYLON.Matrix.Identity(), scene.getTransformMatrix(), scene.activeCamera.viewport.toGlobal(scene.getEngine().getRenderWidth(), scene.getEngine().getRenderHeight()));
+  var projectedPosition = BABYLON.Vector3.Project(meshPosition, BABYLON.Matrix.Identity(), scene.getTransformMatrix(), scene.activeCamera.viewport.toGlobal(scene.getEngine().getRenderWidth(), scene.getEngine().getRenderHeight()));
+  console.log("X: " + projectedPosition.x + ", Y: " + projectedPosition.y);
+}
+
+function testTssh(mesh) {
+  let scene = devHelper.model3DVals.scene;
+  var worldMatrix = mesh.getWorldMatrix();
+
+  // Получение размеров меша в мировых координатах
+  var meshWidth = mesh.scaling.x * mesh.getBoundingInfo().boundingBox.maximum.x * 2;
+  var meshHeight = mesh.scaling.y * mesh.getBoundingInfo().boundingBox.maximum.y * 2;
+
+  // Преобразование размеров меша в пиксели на экране
+  var screenSize = BABYLON.Vector3.Project(
+    new BABYLON.Vector3(meshWidth, meshHeight, 0),
+    BABYLON.Matrix.Identity(),
+    scene.getTransformMatrix(),
+    scene.activeCamera.viewport.toGlobal(scene.getEngine().getRenderWidth(), scene.getEngine().getRenderHeight())
+  );
+    console.log(scene.activeCamera.viewport.toGlobal(devHelper.model3DVals.engine), scene.activeCamera.viewport.toGlobal(scene.getEngine()));
+  // Размеры меша на экране в пикселях
+  var screenWidthInPixels = screenSize.x;
+  var screenHeightInPixels = screenSize.y;
+  console.log(screenWidthInPixels, screenHeightInPixels);
+  // // Получение размеров меша в 3D координатах
+  // console.log(mesh.getBoundingInfo());
+  // var meshWidth = mesh.getBoundingInfo().boundingBox.maximumWorld.x - mesh.getBoundingInfo().boundingBox.minimumWorld.x;
+  // var meshHeight = mesh.getBoundingInfo().boundingBox.maximumWorld.y - mesh.getBoundingInfo().boundingBox.minimumWorld.y;
+
+  // // Создание div элемента
+  // var divElement = document.createElement("div");
+
+  // // Установка размеров div, соответствующих размерам меша
+  // divElement.style.width = meshWidth + "px";
+  // divElement.style.height = meshHeight + "px";
+
+  // // Установка позиции div, чтобы он находился в тех же координатах, что и меш
+  // var meshPosition = mesh.getAbsolutePosition();
+  // divElement.style.position = "absolute";
+  // divElement.style.left = meshPosition.x + "px";
+  // divElement.style.top = meshPosition.y + "px";
+
+  // // Добавление div на страницу
+  // document.body.appendChild(divElement);
+
+}
+
+// Получение размеров меша в 2D координатах для создания div
+function getMeshDimensionsIn2D(mesh) {
+  let scene = devHelper.model3DVals.scene;
+  // Получение размеров меша в 3D координатах
+  var meshDimensions = mesh.getBoundingInfo().boundingBox.maximumWorld.subtract(mesh.getBoundingInfo().boundingBox.minimumWorld);
+
+  // Преобразование 3D координат в 2D координаты
+  var projectedPosition = BABYLON.Vector3.Project(mesh.getAbsolutePosition(),
+    BABYLON.Matrix.Identity(),
+    scene.getTransformMatrix(),
+    scene.activeCamera.viewport.toGlobal(scene.getEngine().getRenderWidth(), scene.getEngine().getRenderHeight()));
+
+  // Получение размеров меша в 2D координатах
+  var widthIn2D = meshDimensions.x * projectedPosition.z;
+  var heightIn2D = meshDimensions.y * projectedPosition.z;
+
+  // Вывод размеров меша в 2D координатах в консоль
+  console.log("Ширина: " + widthIn2D + ", Высота: " + heightIn2D);
+
+  // Возвращение размеров для использования при создании div
+  return { width: widthIn2D, height: heightIn2D };
+}
+
+// Пример использования функции для меша mesh в сцене scene
+
+// Теперь переменная dimensions содержит ширину и высоту меша в 2D координатах, которые вы можете использовать для создания div.
+
+
+function calculateDynamicLeftHelper(mesh) {
+  // function calculateDynamicLeftHelper(WRenderPx, HRenderPx, WMonitorProc, diffXProc) {
+  // let newWRenderPx = 1427;
+  // let newHRenderPx = 840;
+  // let diffMon = newWRenderPx / newHRenderPx;
+  // console.log(diffMon);
+
+  // при соотношении 58,86(1.698), и ширине рендера 1427, размер половины экрана 713.5px
+  // при соотношении 58,86(1.698), ширина монитора 95.38% 1361рх
+
+
+  // при соотношении 49.45, и ширине рендера 1816, размер половины экрана 905px
+  // при соотношении 41.18, и ширине рендера 1816, размер половины экрана 905px
+  console.log(mesh.name);
+  let scene = devHelper.model3DVals.scene;
+  let engine = devHelper.model3DVals.engine;
+  // Координаты меша в мировой системе координат
+  var worldPosition = mesh.getAbsolutePosition();
+  console.log("World Position: ", worldPosition);
+
+  // Координаты меша в локальной системе координат
+  var localPosition = mesh.position;
+  console.log("Local Position: ", localPosition);
+
+  // Координаты меша на плоскости (координаты X и Z)
+  var planePosition = new BABYLON.Vector2(mesh.position.x, mesh.position.z);
+  console.log("Plane Position: ", planePosition);
+
+  // Координаты меша в системе координат окна
+  var windowPosition = BABYLON.Vector3.Project(
+    worldPosition,
+    BABYLON.Matrix.Identity(),
+    scene.getTransformMatrix(),
+    engine.getRenderWidth(),
+    engine.getRenderHeight()
+  );
+  console.log("Window Position: ", windowPosition);
+
+
+
+  // let newWRenderPx = parseFloat(document.getElementById('renderCanvas').getAttribute('width'));
+  // let newHRenderPx = parseFloat(document.getElementById('renderCanvas').getAttribute('height'));
+  // let renderCenterPx = 0.5 * newWRenderPx;
+  // let monitorWPx = (WMonitorProc * WRenderPx) / 100;
+  // let diffXPx = monitorWPx * ((2 - (diffXProc / 100) * 4) * 25) / 100;
+  // let newPosXPx = renderCenterPx - diffXPx;
+  // let newposXProc = newPosXPx / (newWRenderPx / 100);
+  // let startPx = renderCenterPx - monitorWPx / 2;
+  // let startProc = startPx / (newWRenderPx / 100);
+  //перевести проценты монитора в проценты редера
+  // diffXProc * monitorWPx / 100
+  // ((diffXProc * monitorWPx / 100) / (newWRenderPx / 100))
+  // console.log(startProc + ((diffXProc * monitorWPx / 100) / (newWRenderPx / 100)), `renderCenterPx ${renderCenterPx}, monitorWPx ${monitorWPx}, diffXPx ${diffXPx}, newPosXPx ${newPosXPx}, newposXProc ${newposXProc}`);
+  // return startProc + ((diffXProc * monitorWPx / 100) / (newWRenderPx / 100));
+  // return ((renderCenterPx - diffXPx) * (WRenderPx / 100)) / (newWRenderPx / 100));
   // let renderRationProc = (tempW !== undefined ? (tempH / tempW) : (parseFloat(document.getElementById('renderCanvas').getAttribute('height')) / parseFloat(document.getElementById('renderCanvas').getAttribute('width')))) * 100;
   // const coefficients = findLineByLeastSquares([58.86, 49.45, 41.17], [2.31, 9.85, 16.68]);
   // function findLineByLeastSquares(valuesX, valuesY) {
@@ -370,7 +493,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           //console.log(calculateDynamicLeftHelper(1915 , 1427, 840)  + '%')//43.542%
         ------------------------------------------------------------------------------
         ширина изменяется в соотношении примерно 1,56 к ширине рендера
-        Уравнение получения значения W для ширины прозрачного окна хелпера
+        Уравнение получения значения W для ширины прозрачного окна хеx:\ 0, y: -95.71лпера
           W%;    (1.56 * W%) / 77.31 = w: W
           14%; (1.56 * 14) / 77.31 = w: 0.284
           ------------------------------------------------------------------------------
@@ -384,7 +507,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
 
 
       if (textureSvgName === 'vnk_main') {
-        let mainContainer = createMainHelperContainer({ x: 0, y: -95.71, w: 1.56, h: 88.7, wOld: 1816, wMaxProc: 95.5, });
+        let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95.5, });
         for (let i = 0; i < 6; i++) {
           if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
           else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
@@ -395,17 +518,17 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'BVNK_VNK1') {
-        let mainContainer = createMainHelperContainer({ x: 0, y: -95.71, w: 1.56, h: 88.7, wOld: 1816, wMaxProc: 95.5, });
-        for (let i = 0; i < 5; i++) {
-          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
-          mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
-        }
+        // let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95, });
+        // for (let i = 0; i < 5; i++) {
+        //   if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
+        //   else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
+        //   else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
+        //   else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
+        //   else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
+        //   mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
+        // }
       } else if (textureSvgName === 'BVNK_VNK2') {
-        let mainContainer = createMainHelperContainer({ x: 0, y: -95.71, w: 1.56, h: 88.7, wOld: 1816, wMaxProc: 95.5, });
+        let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95.5, });
         for (let i = 0; i < 5; i++) {
           if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
           else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
@@ -415,7 +538,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'BVNK_VNK3') {
-        let mainContainer = createMainHelperContainer({ x: 0, y: -95.71, w: 1.56, h: 88.7, wOld: 1816, wMaxProc: 95.5, });
+        let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95.5, });
         for (let i = 0; i < 7; i++) {
           if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
           else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
@@ -425,14 +548,14 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') { //43,8 -54 16,7 32,6
-        let mainContainer = createMainHelperContainer({ x: 20, y: -54, w: 0.284, h: 32.6, wOld: 1816, wMaxProc: 95.5,});
+        let mainContainer = createMainHelperContainer({ x: 20, y: -54, w: 0.284, h: 32.6, wOld: 1427, wMaxProc: 95.5, });
         for (let i = 0; i < 2; i++) {
           if (i === 0) tempObj = { x: 88, y: 0.1, w: 9, h: 7, forAction: true, name: textureName, id: 'close_w1' }; // close
           else if (i === 1) tempObj = { x: 47, y: 33.1, w: 22, h: 7, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, }; // open
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'O_n_k_na_VNK_posle_2') {
-        let mainContainer = createMainHelperContainer({ x: 51.6, y: -47.5, w: 6, h: 5.6, wOld: 1816, wMaxProc: 95.5,});
+        let mainContainer = createMainHelperContainer({ x: 51.6, y: -47.5, w: 6, h: 5.6, wOld: 1427, wMaxProc: 95.5, });
         for (let i = 0; i < 2; i++) {
           if (i === 0) tempObj = { x: 3.1, y: 2.1, w: 2.3, h: 2.3, removeWindow: textureSvgName, id: 'close_vn', }; // close
           else if (i === 1) tempObj = { x: 0.4, y: 2.1, w: 2.3, h: 2.3, removeWindow: textureSvgName, forAction: true, id: 'open_vn1', }; // open
