@@ -1,41 +1,6 @@
 /*----------TODO----------------------------------------------------
 Сделать размеы хелпера в пикселях
 
-w 1427 - 1307 (91.57%)  
-h 840 - 743 (88,45%)
-x 33 (2,31)
-y -800
-
-w 1816 - 1404(77,29%)
-h 900 - 800 (88,89%)
-x 179 (9,85)
-y -862
-
-w 1816 - 1165 (64.16%)
-h 748 - 664 (88,77%)
-x 303 (16.68)
-y -718
-
-
-
-
-
-
-58,86 - 91.57 * 88,45
-49,55 - 77,29 * 88,89 
-41,18 - 64,16 * 88,77
-
-58.86, 49.45, 41.17
-2.31, 9.85, 16.68
-
-58,86 - -95,24
-49,45 - -95,78
-41,17 - -96,12
-
-
-
-
-
 Сделать зависимость ширина зоны рендера в пикселях и точноых размеров.
 --------------------------------------------------------------------
 Так смогу найти нужное уравнение для изменения размеров.
@@ -43,16 +8,6 @@ y -718
 Ну и продолжить джелать действия без человека
 --------------------------------------------------------------------
 */
-// нужно знать ширину хелпера в % и ширину рендера в рх
-// 95.5 Размер монитора wMonitorPx = (95.5 / 2) * (1427 / 100)
-// настроить вид так, чтобы центр монитора был по цетру экрана
-// перевести рх в проценты
-// (0.5 * 1427) - (95.5/ 2) * (1427 / 100) / (1427 / 100)
-// console.log(((0.5 * 1427) - (95.5/ 2) * (1427 / 100)) / (1427 / 100));
-//1427 - 2.31%(1427) - 58,86
-//1816 - 9,85%(1427) - 49,55
-//1816 - 9,85%(16.68) - 41,18
-// console.log(calculateDynamicLeftHelper(1427, 840, 95.38, 0));
 
 window.addEventListener('load', function () {
   document.querySelector('.svg-scheme-container').querySelectorAll('object').forEach((ObjSvg) => {
@@ -284,82 +239,56 @@ window.addEventListener('load', function () {
 
 
 });
+// TODO Это главная функция, которая возвращает размеры меша в видимой области как гетбаундингклиентрект
+function getClientRectFromMesh() {
 
-// Получение координат меша в 2D координатах окна
-function getMeshScreenCoordinates(mesh) {
-  let scene = devHelper.model3DVals.scene;
-  var worldMatrix = mesh.getWorldMatrix();
-  var meshPosition = mesh.position.clone();
-  meshPosition = BABYLON.Vector3.TransformCoordinates(meshPosition, worldMatrix);
-  console.log(meshPosition, BABYLON.Matrix.Identity(), scene.getTransformMatrix(), scene.activeCamera.viewport.toGlobal(scene.getEngine().getRenderWidth(), scene.getEngine().getRenderHeight()));
-  var projectedPosition = BABYLON.Vector3.Project(meshPosition, BABYLON.Matrix.Identity(), scene.getTransformMatrix(), scene.activeCamera.viewport.toGlobal(scene.getEngine().getRenderWidth(), scene.getEngine().getRenderHeight()));
-  console.log("X: " + projectedPosition.x + ", Y: " + projectedPosition.y);
-}
+  // get bounding box of the mesh
+  const meshVectors = devHelper.model3DVals.svgDisplays.meshs[0].getBoundingInfo().boundingBox.vectors
 
-function testTssh(mesh) {
-  let scene = devHelper.model3DVals.scene;
-  var worldMatrix = mesh.getWorldMatrix();
+  // get the matrix and viewport needed to project the vectors onto the screen
+  const worldMatrix = devHelper.model3DVals.svgDisplays.meshs[0].getWorldMatrix()
+  const transformMatrix = devHelper.model3DVals.scene.getTransformMatrix()
+  const viewport = devHelper.model3DVals.camera.viewport
 
-  // Получение размеров меша в мировых координатах
-  var meshWidth = mesh.scaling.x * mesh.getBoundingInfo().boundingBox.maximum.x * 2;
-  var meshHeight = mesh.scaling.y * mesh.getBoundingInfo().boundingBox.maximum.y * 2;
+  const coordinates = meshVectors.map(v => {
+    const proj = BABYLON.Vector3.Project(v, worldMatrix, transformMatrix, viewport)
+    proj.x = proj.x * devHelper.model3DVals.engine.getRenderWidth()
+    proj.y = proj.y * devHelper.model3DVals.engine.getRenderHeight()
+    return proj
+  })
 
-  // Преобразование размеров меша в пиксели на экране
-  var screenSize = BABYLON.Vector3.Project(
-    new BABYLON.Vector3(meshWidth, meshHeight, 0),
-    BABYLON.Matrix.Identity(),
-    scene.getTransformMatrix(),
-    scene.activeCamera.viewport.toGlobal(scene.getEngine().getRenderWidth(), scene.getEngine().getRenderHeight())
-  );
-    console.log(scene.activeCamera.viewport.toGlobal(devHelper.model3DVals.engine), scene.activeCamera.viewport.toGlobal(scene.getEngine()));
-  // Размеры меша на экране в пикселях
-  var screenWidthInPixels = screenSize.x;
-  var screenHeightInPixels = screenSize.y;
-  console.log(screenWidthInPixels, screenHeightInPixels);
-  // // Получение размеров меша в 3D координатах
-  // console.log(mesh.getBoundingInfo());
-  // var meshWidth = mesh.getBoundingInfo().boundingBox.maximumWorld.x - mesh.getBoundingInfo().boundingBox.minimumWorld.x;
-  // var meshHeight = mesh.getBoundingInfo().boundingBox.maximumWorld.y - mesh.getBoundingInfo().boundingBox.minimumWorld.y;
+  const [minX, maxX] = extent(coordinates, c => c.x)
+  const [minY, maxY] = extent(coordinates, c => c.y)
 
-  // // Создание div элемента
-  // var divElement = document.createElement("div");
+  // return a ClientRect from this
+  const rect = {
+    width: maxX - minX,
+    height: maxY - minY,
+    left: minX,
+    top: minY,
+    right: maxX,
+    bottom: maxY,
+  }
 
-  // // Установка размеров div, соответствующих размерам меша
-  // divElement.style.width = meshWidth + "px";
-  // divElement.style.height = meshHeight + "px";
+  // console.timeEnd('rectfrommesh') // on average 0.05ms
 
-  // // Установка позиции div, чтобы он находился в тех же координатах, что и меш
-  // var meshPosition = mesh.getAbsolutePosition();
-  // divElement.style.position = "absolute";
-  // divElement.style.left = meshPosition.x + "px";
-  // divElement.style.top = meshPosition.y + "px";
-
-  // // Добавление div на страницу
-  // document.body.appendChild(divElement);
-
-}
-
-// Получение размеров меша в 2D координатах для создания div
-function getMeshDimensionsIn2D(mesh) {
-  let scene = devHelper.model3DVals.scene;
-  // Получение размеров меша в 3D координатах
-  var meshDimensions = mesh.getBoundingInfo().boundingBox.maximumWorld.subtract(mesh.getBoundingInfo().boundingBox.minimumWorld);
-
-  // Преобразование 3D координат в 2D координаты
-  var projectedPosition = BABYLON.Vector3.Project(mesh.getAbsolutePosition(),
-    BABYLON.Matrix.Identity(),
-    scene.getTransformMatrix(),
-    scene.activeCamera.viewport.toGlobal(scene.getEngine().getRenderWidth(), scene.getEngine().getRenderHeight()));
-
-  // Получение размеров меша в 2D координатах
-  var widthIn2D = meshDimensions.x * projectedPosition.z;
-  var heightIn2D = meshDimensions.y * projectedPosition.z;
-
-  // Вывод размеров меша в 2D координатах в консоль
-  console.log("Ширина: " + widthIn2D + ", Высота: " + heightIn2D);
-
-  // Возвращение размеров для использования при создании div
-  return { width: widthIn2D, height: heightIn2D };
+  function extent(array, accessor) {
+    let min = Infinity;
+    let max = -Infinity;
+    for (let i = 0, n = array.length; i < n; ++i) {
+      const value = accessor(array[i], i, array);
+      if (value != null) {
+        if (value < min) min = value;
+        if (value > max) max = value;
+      }
+    }
+    if (min === Infinity || max === -Infinity) {
+      return undefined;
+    }
+    return [min, max];
+  }
+  console.log(rect);
+  return rect
 }
 
 // Пример использования функции для меша mesh в сцене scene
