@@ -84,8 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ----------------------------------------------------------------------------------------------------------
      */
     if (devHelper.dev.enable === true) {
-      document.getElementById('movePositionX2').addEventListener('click', () => {
-        changeSvgElem('fire_vnk_1', { position: { x: 10 } });
+      document.getElementById('movePositionX1').addEventListener('click', () => {
+        getClientRectFromMesh();
       })
       document.getElementById('movePositionX2').addEventListener('click', () => {
         changeSvgElem('fire_vnk_1', { position: { x: 10 } });

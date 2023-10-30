@@ -1,4 +1,11 @@
 /*----------TODO----------------------------------------------------
+Сделать размеы хелпера в пикселях
+
+Сделать зависимость ширина зоны рендера в пикселях и точноых размеров.
+--------------------------------------------------------------------
+Так смогу найти нужное уравнение для изменения размеров.
+А внутри окна хелпера помогаторы можно делать в процентах? Или так же в пикселях?
+Ну и продолжить джелать действия без человека
 --------------------------------------------------------------------
 */
 
@@ -229,8 +236,135 @@ window.addEventListener('load', function () {
       Element2.element.id = `${Element.name}_${Element2.name}`;
     })
   })
-});
 
+
+});
+// TODO Это главная функция, которая возвращает размеры меша в видимой области как гетбаундингклиентрект
+function getClientRectFromMesh() {
+
+  // get bounding box of the mesh
+  const meshVectors = devHelper.model3DVals.svgDisplays.meshs[0].getBoundingInfo().boundingBox.vectors
+
+  // get the matrix and viewport needed to project the vectors onto the screen
+  const worldMatrix = devHelper.model3DVals.svgDisplays.meshs[0].getWorldMatrix()
+  const transformMatrix = devHelper.model3DVals.scene.getTransformMatrix()
+  const viewport = devHelper.model3DVals.camera.viewport
+
+  const coordinates = meshVectors.map(v => {
+    const proj = BABYLON.Vector3.Project(v, worldMatrix, transformMatrix, viewport)
+    proj.x = proj.x * devHelper.model3DVals.engine.getRenderWidth()
+    proj.y = proj.y * devHelper.model3DVals.engine.getRenderHeight()
+    return proj
+  })
+
+  const [minX, maxX] = extent(coordinates, c => c.x)
+  const [minY, maxY] = extent(coordinates, c => c.y)
+
+  // return a ClientRect from this
+  const rect = {
+    width: maxX - minX,
+    height: maxY - minY,
+    left: minX,
+    top: minY,
+    right: maxX,
+    bottom: maxY,
+  }
+
+  // console.timeEnd('rectfrommesh') // on average 0.05ms
+
+  function extent(array, accessor) {
+    let min = Infinity;
+    let max = -Infinity;
+    for (let i = 0, n = array.length; i < n; ++i) {
+      const value = accessor(array[i], i, array);
+      if (value != null) {
+        if (value < min) min = value;
+        if (value > max) max = value;
+      }
+    }
+    if (min === Infinity || max === -Infinity) {
+      return undefined;
+    }
+    return [min, max];
+  }
+  console.log(rect);
+  return rect
+}
+
+// Пример использования функции для меша mesh в сцене scene
+
+// Теперь переменная dimensions содержит ширину и высоту меша в 2D координатах, которые вы можете использовать для создания div.
+
+
+function calculateDynamicLeftHelper(mesh) {
+  // function calculateDynamicLeftHelper(WRenderPx, HRenderPx, WMonitorProc, diffXProc) {
+  // let newWRenderPx = 1427;
+  // let newHRenderPx = 840;
+  // let diffMon = newWRenderPx / newHRenderPx;
+  // console.log(diffMon);
+
+  // при соотношении 58,86(1.698), и ширине рендера 1427, размер половины экрана 713.5px
+  // при соотношении 58,86(1.698), ширина монитора 95.38% 1361рх
+
+
+  // при соотношении 49.45, и ширине рендера 1816, размер половины экрана 905px
+  // при соотношении 41.18, и ширине рендера 1816, размер половины экрана 905px
+  console.log(mesh.name);
+  let scene = devHelper.model3DVals.scene;
+  let engine = devHelper.model3DVals.engine;
+  // Координаты меша в мировой системе координат
+  var worldPosition = mesh.getAbsolutePosition();
+  console.log("World Position: ", worldPosition);
+
+  // Координаты меша в локальной системе координат
+  var localPosition = mesh.position;
+  console.log("Local Position: ", localPosition);
+
+  // Координаты меша на плоскости (координаты X и Z)
+  var planePosition = new BABYLON.Vector2(mesh.position.x, mesh.position.z);
+  console.log("Plane Position: ", planePosition);
+
+  // Координаты меша в системе координат окна
+  var windowPosition = BABYLON.Vector3.Project(
+    worldPosition,
+    BABYLON.Matrix.Identity(),
+    scene.getTransformMatrix(),
+    engine.getRenderWidth(),
+    engine.getRenderHeight()
+  );
+  console.log("Window Position: ", windowPosition);
+
+
+
+  // let newWRenderPx = parseFloat(document.getElementById('renderCanvas').getAttribute('width'));
+  // let newHRenderPx = parseFloat(document.getElementById('renderCanvas').getAttribute('height'));
+  // let renderCenterPx = 0.5 * newWRenderPx;
+  // let monitorWPx = (WMonitorProc * WRenderPx) / 100;
+  // let diffXPx = monitorWPx * ((2 - (diffXProc / 100) * 4) * 25) / 100;
+  // let newPosXPx = renderCenterPx - diffXPx;
+  // let newposXProc = newPosXPx / (newWRenderPx / 100);
+  // let startPx = renderCenterPx - monitorWPx / 2;
+  // let startProc = startPx / (newWRenderPx / 100);
+  //перевести проценты монитора в проценты редера
+  // diffXProc * monitorWPx / 100
+  // ((diffXProc * monitorWPx / 100) / (newWRenderPx / 100))
+  // console.log(startProc + ((diffXProc * monitorWPx / 100) / (newWRenderPx / 100)), `renderCenterPx ${renderCenterPx}, monitorWPx ${monitorWPx}, diffXPx ${diffXPx}, newPosXPx ${newPosXPx}, newposXProc ${newposXProc}`);
+  // return startProc + ((diffXProc * monitorWPx / 100) / (newWRenderPx / 100));
+  // return ((renderCenterPx - diffXPx) * (WRenderPx / 100)) / (newWRenderPx / 100));
+  // let renderRationProc = (tempW !== undefined ? (tempH / tempW) : (parseFloat(document.getElementById('renderCanvas').getAttribute('height')) / parseFloat(document.getElementById('renderCanvas').getAttribute('width')))) * 100;
+  // const coefficients = findLineByLeastSquares([58.86, 49.45, 41.17], [2.31, 9.85, 16.68]);
+  // function findLineByLeastSquares(valuesX, valuesY) {
+  //   const xBar = valuesX.reduce((sum, x) => sum + x, 0) / valuesX.length;
+  //   const yBar = valuesY.reduce((sum, y) => sum + y, 0) / valuesY.length;
+  //   const num = valuesX.map((x, i) => (x - xBar) * (valuesY[i] - yBar)).reduce((sum, x) => sum + x, 0);
+  //   const den = valuesX.map(x => Math.pow(x - xBar, 2)).reduce((sum, x) => sum + x, 0);
+  //   const slope = num / den;
+  //   const intercept = yBar - slope * xBar;
+  //   return [slope, intercept];
+  // }
+  // const x = ((coefficients[0] * renderRationProc + coefficients[1]) / 100) * i1;
+  // return parseFloat(x.toFixed(3));
+}
 function addSvgElem(SvgIndex, Element, Name, Move = true) {
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,
@@ -268,58 +402,89 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
       let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
       let currentMeshTexture = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition).material.diffuseTexture;
       let textureName = currentMeshTexture.name.substring(currentMeshTexture.name.indexOf('_') + 1);
+      /* Высчитывание значений для хелперов
+        ------------------------------------------------------------------------------
+        Y всегда в процентах от высоты рендера
+        ------------------------------------------------------------------------------
+        высота всегда в процентах от высоты рендера
+        ------------------------------------------------------------------------------
+        Чтобы найти нуное значение положение по X нужно:
+          1) Создать окно хелпер и расположить его где-нить на сцене, в нужный момент работы
+          2) Расположить на нужное место с помощью F12, меняя размеры и положние в %
+          3) Записать значения, которые понравились
+          4) Записать размеры окна рендера в рх
+          5) Вывести следующий ЛОГ, с значениями:
+            а) Какое-то значение, чем больше, тем больше % по Х
+            б) ширина окна рендера
+            в) высота окна рендера
+          6) в логе будут проценты, нужно методом подбора значения "а" найти нужное значение % по Х
+          7) В функции createMainHelperContainer атрибуту Х дать значение А из лога, wOld и hOld - размеры рендера при замерах. 
+          //console.log(calculateDynamicLeftHelper(1915 , 1427, 840)  + '%')//43.542%
+        ------------------------------------------------------------------------------
+        ширина изменяется в соотношении примерно 1,56 к ширине рендера
+        Уравнение получения значения W для ширины прозрачного окна хеx:\ 0, y: -95.71лпера
+          W%;    (1.56 * W%) / 77.31 = w: W
+          14%; (1.56 * 14) / 77.31 = w: 0.284
+          ------------------------------------------------------------------------------
+          Окна внутри хелперов зависят от размеров их главного окна хелпера.
+          Поэтому их значения описаны в процентах. Для них нет нужды искать специальные значения.
+          Просто создайте окно, размести его в нужном месте и настройте его размеры.
+          И потом запишите значения в tempObj.
+          ------------------------------------------------------------------------------
+      */
+
+
+
       if (textureSvgName === 'vnk_main') {
-        let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
+        let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95.5, });
         for (let i = 0; i < 6; i++) {
-          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
-          else if (i === 5) tempObj = { x: 30.5, y: 44.5, w: 1.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, } };
+          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
+          else if (i === 5) tempObj = { x: 41.5, y: 50, w: 2.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, } };
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'BVNK_VNK1') {
-        let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
-        for (let i = 0; i < 5; i++) {
-          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
-          mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
-        }
+        // let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95, });
+        // for (let i = 0; i < 5; i++) {
+        //   if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
+        //   else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
+        //   else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
+        //   else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
+        //   else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
+        //   mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
+        // }
       } else if (textureSvgName === 'BVNK_VNK2') {
-        let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
+        let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95.5, });
         for (let i = 0; i < 5; i++) {
-          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
+          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'BVNK_VNK3') {
-        let mainContainer = createMainHelperContainer({ x: 10.5, y: -96, w: 76, h: 88, });
+        let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95.5, });
         for (let i = 0; i < 7; i++) {
-          if (i === 0) tempObj = { x: 0, y: 1, w: 7, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 8, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 15.9, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 23.5, y: 1, w: 7.5, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 31.5, y: 1, w: 7.5, h: 3, name: 'vnk_spvg', };
-          else if (i === 5) tempObj = { x: 59, y: 28.5, w: 4.5, h: 14.7, value: { name: 'vnk_3', color: '#000000' }, };
-          else if (i === 6) tempObj = { x: 48.9, y: 26.5, w: 2.5, h: 3.5, value: { window: 'O_n_k_na_VNK_posle_1', x: 700, y: 300, }, id: 'kl313', };
+          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
+          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
+          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
+          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
+          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
-      } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') {
-        let mainContainer = createMainHelperContainer({ x: 43.3, y: -54, w: 13, h: 32.6, });
+      } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') { //43,8 -54 16,7 32,6
+        let mainContainer = createMainHelperContainer({ x: 20, y: -54, w: 0.284, h: 32.6, wOld: 1427, wMaxProc: 95.5, });
         for (let i = 0; i < 2; i++) {
-          if (i === 0) tempObj = { x: 12, y: 0.1, w: 1, h: 2, forAction: true, name: textureName, id: 'close_w1' }; // close
-          else if (i === 1) tempObj = { x: 6.4, y: 11.1, w: 3, h: 1.9, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, }; // open
+          if (i === 0) tempObj = { x: 88, y: 0.1, w: 9, h: 7, forAction: true, name: textureName, id: 'close_w1' }; // close
+          else if (i === 1) tempObj = { x: 47, y: 33.1, w: 22, h: 7, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, }; // open
           mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
         }
       } else if (textureSvgName === 'O_n_k_na_VNK_posle_2') {
-        let mainContainer = createMainHelperContainer({ x: 51.6, y: -47.5, w: 6, h: 5.6, });
+        let mainContainer = createMainHelperContainer({ x: 51.6, y: -47.5, w: 6, h: 5.6, wOld: 1427, wMaxProc: 95.5, });
         for (let i = 0; i < 2; i++) {
           if (i === 0) tempObj = { x: 3.1, y: 2.1, w: 2.3, h: 2.3, removeWindow: textureSvgName, id: 'close_vn', }; // close
           else if (i === 1) tempObj = { x: 0.4, y: 2.1, w: 2.3, h: 2.3, removeWindow: textureSvgName, forAction: true, id: 'open_vn1', }; // open
@@ -334,12 +499,14 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
         if (document.getElementById('svg-helper')) {
           document.getElementById('svg-helper').remove();
         }
+        let renderRationProc = parseFloat(document.getElementById('renderCanvas').getAttribute('height')) / parseFloat(document.getElementById('renderCanvas').getAttribute('width')) * 100;
         let mainContainer = document.createElement('div');
         mainContainer.style.position = 'relative';
-        mainContainer.style.left = Vals.x + 'vw';
-        mainContainer.style.top = Vals.y + 'vh';
-        mainContainer.style.width = Vals.w + 'vw';
-        mainContainer.style.height = Vals.h + 'vh';
+        mainContainer.style.left = calculateDynamicLeftHelper(Vals.wOld, Vals.wMaxProc, Vals.x) + '%';
+        // mainContainer.style.left = calculateDynamicLeftHelper(Vals.x, Vals.wOld ? Vals.wOld : undefined, Vals.hOld ? Vals.hOld : undefined) + '%';
+        mainContainer.style.top = Vals.y + '%';
+        mainContainer.style.width = (Vals.w * renderRationProc) + '%';
+        mainContainer.style.height = Vals.h + '%';
         mainContainer.id = 'svg-helper';
         document.body.querySelector('.game-view').append(mainContainer);
         return mainContainer;
@@ -351,10 +518,10 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           invisElem.classList.add('invisible-element-svg-helper');
           invisElem.innerHTML = Vals.id === undefined ? 'test' : Vals.id;
         }
-        invisElem.style.left = Vals.x + 'vw';
-        invisElem.style.top = Vals.y + 'vh';
-        invisElem.style.width = Vals.w + 'vw';
-        invisElem.style.height = Vals.h + 'vh';
+        invisElem.style.left = Vals.x + '%';
+        invisElem.style.top = Vals.y + '%';
+        invisElem.style.width = Vals.w + '%';
+        invisElem.style.height = Vals.h + '%';
 
         invisElem.addEventListener('click', () => {
           if (devHelper.trenVals.waitingInput === true) {
