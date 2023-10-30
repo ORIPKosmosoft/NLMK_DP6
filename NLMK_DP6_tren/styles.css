@@ -856,12 +856,17 @@ ul {
 }
 
 .help-btn-block .info-tren {
-  width: 1200px;
-  height: 50px;
+  width: 250px;
+  height: 150px;
+  margin-left: 70px;
+  margin-top: 600px;
   background-color: rgba(0, 0, 0, 0.2);
   border: 1px solid black;
   border-radius: 10px;
   color: #f4f4f4;
+  line-height: 10px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* babylon 
@@ -1047,17 +1052,78 @@ ul {
   color: #7c7c7c7a;
 }
 
-.toDrop-elem {
+.selfcheck-radio-dragDrop {
   display: flex;
   padding: 0.5vh 0 0.5vh;
+  justify-content: left;
 }
 
-.toDrop-elem span {
+.selfcheck-radio-dragDrop span {
   font-size: 2ch;
   font-family: 'Circe-Bold', sans-serif;
   color: #7C7C7C;
-  width: 55%;
+  width: 50%;
+  pointer-events: none;
+  /* padding-top: 0.5vh; */
 }
+
+.drag-drop-elem {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  background: #f8f8f8 !important;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
+  border: 2px solid #f8f8f8;
+  transition: all 0.3s ease;
+  color: #7C7C7C;
+  font-size: 2.2ch;
+  font-weight: 700;
+  font-family: 'Circe-Bold', sans-serif;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  z-index: 100;
+}
+
+.drag-drop-elem:hover {
+  border: 2px solid #2c5289;
+  cursor: pointer !important;
+}
+
+.drag-drop-elem span {
+  color: #7C7C7C !important;
+  width: auto;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.drag-drop-elem > * {
+  transition: all 0.3s ease;
+}
+
+.current-drag-elem {
+  border: 2px solid #2c5289;
+}
+.current-drag-elem > * {
+  pointer-events: none;
+}
+
+.current-dragStart-elem {
+  opacity: 0.4;
+  border: 2px solid #f8f8f8;
+}
+
+.current-dragStart-elem > * {
+  pointer-events: none;
+}
+
+
 
 .selfcheck-radio {
   padding: 4px;
