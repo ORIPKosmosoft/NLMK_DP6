@@ -276,7 +276,7 @@ function setImageOnMonitor(url, Scene) {
           }
           else if (Mesh.name && Mesh.name === 'Display_TV001') {  // TV 3 // белый экран на дубликатах
             makeSvgDisplay(Mesh, Scene, 'dp');
-            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 8 });
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 5 });
           }
 
 
