@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const scene = createScene();
-  // if (devHelper.dev.enable === true) scene.debugLayer.show();
+  if (devHelper.dev.enable === true) scene.debugLayer.show(); // QWER
   // engine.runRenderLoop(function () {
   //   scene.render();
   // });
@@ -175,7 +175,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
-
+function setImageOnMonitor(url, Scene) {
+  let m_material = new BABYLON.StandardMaterial(url.match(new RegExp("(.+)\/(.+)((\.jpg)|(.png))"))[2], Scene);
+  m_material.diffuseTexture = new BABYLON.Texture(url, Scene);
+  return m_material;
+}
   function loadModel(Name, Scene, ShadowGenerator) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
       if (Name === 'All') {
@@ -194,7 +198,8 @@ document.addEventListener("DOMContentLoaded", () => {
           if (Mesh.name && Mesh.name === 'Display_flat002') {
             makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
             makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 1 });
-          } else if (Mesh.name && Mesh.name === 'Display_flat003') {
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat003') {
             makeSvgDisplay(Mesh, Scene, 'vnk_main');
             makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 2 });
           } else if (Mesh.id && Mesh.id === '25408591-8ddd-4b64-a7ad-499aaa995ae6') {
@@ -219,6 +224,55 @@ document.addEventListener("DOMContentLoaded", () => {
           } else if (Mesh.name && Mesh.name === 'Console_UGKS') {
 
           }
+          else if (Mesh.name && Mesh.name === 'Display_flat004') {  // 3
+            Mesh.material = setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat009') {  // 4
+            Mesh.material = setImageOnMonitor("media/images/monitors/windows.jpg", Scene);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat010') {  // 5
+            Mesh.material = setImageOnMonitor("media/images/monitors/Sloi_shihty.jpg", Scene);
+          }
+          // 6 NETU
+          else if (Mesh.name && Mesh.name === 'Display_flat011') {  // 7
+            Mesh.material = setImageOnMonitor("media/images/monitors/Obzor_sred_akusticheskoy.jpg", Scene);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat012') {  // 8
+            makeSvgDisplay(Mesh, Scene, 'vnk_spvg');
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 4 });
+          } 
+          else if (Mesh.name && Mesh.name === 'Display_flat013') {  // 9
+            Mesh.material = setImageOnMonitor("media/images/monitors/Diagnozy_A_PUT.jpg", Scene);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat016') {  // 10
+            Mesh.material = setImageOnMonitor("media/images/monitors/Registratsiya_vypuska_chuguna.jpg", Scene);
+          } 
+          else if (Mesh.name && Mesh.name === 'Display_flat014') {  // 11
+            makeSvgDisplay(Mesh, Scene, 'dp');
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 4 });
+          } 
+          else if (Mesh.name && Mesh.name === 'Display_flat015') {  // 12
+            makeSvgDisplay(Mesh, Scene, 'bzu');
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 4 });
+          } 
+          else if (Mesh.name && Mesh.name === 'Display_flat007') {  // 13
+            Mesh.material = setImageOnMonitor("media/images/monitors/Podacha_shikhty.jpg", Scene);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat008') {  // 14
+            Mesh.material = setImageOnMonitor("media/images/monitors/windows.jpg", Scene);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat005') {  // 15
+            Mesh.material = setImageOnMonitor("media/images/monitors/Skhema_PUT.jpg", Scene);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat006') {  // 16
+            Mesh.material = setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene);
+          }
+
+
+
+
+
+
         })
         change3DTime();
       } else {

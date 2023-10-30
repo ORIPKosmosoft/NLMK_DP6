@@ -613,18 +613,10 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   b_action.addEventListener('mouseover', (e) => {
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0');
-    if(document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')){
-
-    }else{
-
-      setCenterWindow(item)
+    if(!document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')){
+      setCenterWindow(item);
     }
-    if (e.currentTarget.classList.contains('button-tren-active')) {
-      
-    }
-    else{
-      // setNewPositionWindow(item, true);
-    }
+    
   });
   b_action.addEventListener('mouseout', (e) => {
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('opacity-1-Temp');
@@ -645,6 +637,10 @@ document.getElementById('b_collapseMenu').addEventListener("mouseover", (e) => {
 function setNewPositionWindow(elem, state = false) {
   if (state) {
     if (elem.classList.contains('opacity-1-Always') && 8 > ConvertPxToVw(parseFloat(elem.getBoundingClientRect().left))){
+      if (elem.classList.contains('dialogMessageWatch')) {  // частный случай
+        elem.style.left = document.querySelector('.box-time').style.left;
+        return;
+      }
       elem.style.left = elem.getAttribute('sx2');
     }
     else if (elem.classList.contains('opacity-1-Always')) {return;}
@@ -669,6 +665,7 @@ document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
       item = document.querySelector(`.${item.getAttribute('window-interface')}`);
       setNewPositionWindow(item, true);
     });
+    setNewPositionWindow(document.querySelector('.dialogMessageWatch'), true);
   }
   else {
     document.querySelector('.tren-ui').classList.remove('tren-ui-long');
@@ -703,8 +700,3 @@ document.getElementById('b_chat').addEventListener("click", (e) => {
   }
 });
 
-
-
-document.getElementById('b_exit').addEventListener("click", (e)=>{
-  // setTimeSvgSheme();
-})

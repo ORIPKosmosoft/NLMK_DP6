@@ -185,7 +185,7 @@ window.addEventListener('load', function () {
     }
     if (ObjectSvg.name === 'BVNK_VNK2') {
       ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
-        // if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }  // TEMP
+        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }  // TEMP
       });
     }
     if (ObjectSvg.name === 'BVNK_VNK3') {
@@ -194,7 +194,7 @@ window.addEventListener('load', function () {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_3'); }
       })
       ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
-        // if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }   // TEMP
+        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }   // TEMP
       });
     }
     if (ObjectSvg.name === 'vnk_main') {
@@ -208,7 +208,7 @@ window.addEventListener('load', function () {
     }
     if (ObjectSvg.name === 'vnk_spvg') {
       ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
-        // if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }   // TEMP
+        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }   // TEMP
       });
     }
     if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
@@ -239,7 +239,7 @@ window.addEventListener('load', function () {
         if (TextElement.innerHTML === 'Закрыть') { addSvgElem(Index, TextElement, 'title_open_vn',); }
       })
     }
-
+    
   })
 
   devHelper.svgVals.forEach((Element) => {
@@ -479,7 +479,7 @@ function changeSvgElem(Val = {}) {
       svgArrObject.activeElements.forEach((activeElemObj) => {
         if (activeElemObj.name === Val.name) {
           if (Val.text) {
-            console.log(activeElemObj.element, Val.text);
+            // console.log(activeElemObj.element, Val.text);
 
             activeElemObj.element.innerHTML = Val.text;
           }
