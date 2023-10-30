@@ -240,27 +240,19 @@ window.addEventListener('load', function () {
 
 });
 // TODO Это главная функция, которая возвращает размеры меша в видимой области как гетбаундингклиентрект
-function getClientRectFromMesh() {
-
-  // get bounding box of the mesh
-  const meshVectors = devHelper.model3DVals.svgDisplays.meshs[0].getBoundingInfo().boundingBox.vectors
-
-  // get the matrix and viewport needed to project the vectors onto the screen
-  const worldMatrix = devHelper.model3DVals.svgDisplays.meshs[0].getWorldMatrix()
+function getClientRectFromMesh(Mesh) {
+  const meshVectors = Mesh.getBoundingInfo().boundingBox.vectors
+  const worldMatrix = Mesh.getWorldMatrix()
   const transformMatrix = devHelper.model3DVals.scene.getTransformMatrix()
   const viewport = devHelper.model3DVals.camera.viewport
-
   const coordinates = meshVectors.map(v => {
     const proj = BABYLON.Vector3.Project(v, worldMatrix, transformMatrix, viewport)
     proj.x = proj.x * devHelper.model3DVals.engine.getRenderWidth()
     proj.y = proj.y * devHelper.model3DVals.engine.getRenderHeight()
     return proj
   })
-
   const [minX, maxX] = extent(coordinates, c => c.x)
   const [minY, maxY] = extent(coordinates, c => c.y)
-
-  // return a ClientRect from this
   const rect = {
     width: maxX - minX,
     height: maxY - minY,
@@ -269,8 +261,6 @@ function getClientRectFromMesh() {
     right: maxX,
     bottom: maxY,
   }
-
-  // console.timeEnd('rectfrommesh') // on average 0.05ms
 
   function extent(array, accessor) {
     let min = Infinity;
@@ -287,7 +277,6 @@ function getClientRectFromMesh() {
     }
     return [min, max];
   }
-  console.log(rect);
   return rect
 }
 
@@ -365,6 +354,7 @@ function calculateDynamicLeftHelper(mesh) {
   // const x = ((coefficients[0] * renderRationProc + coefficients[1]) / 100) * i1;
   // return parseFloat(x.toFixed(3));
 }
+
 function addSvgElem(SvgIndex, Element, Name, Move = true) {
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,
@@ -396,164 +386,126 @@ function makeDynamicTextureDisplay(ObjectSvg) {
 // Появление нужного модуля управления для каждо схемы в зависимости от вида
 function createSvghelper(CurrentPosition, SvgName = undefined) {
   if (CurrentPosition !== undefined) {
-    if (CurrentPosition === 1) {
-      let mainMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === CurrentPosition);
-      let textureSvgName = SvgName === undefined ? mainMesh.material.diffuseTexture.name.substring(mainMesh.material.diffuseTexture.name.indexOf('_') + 1) : SvgName;
-      let tempObj = { x: 0, y: 0, w: 0, h: 0, name: 'vnk_main', };
-      let currentMeshTexture = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition).material.diffuseTexture;
-      let textureName = currentMeshTexture.name.substring(currentMeshTexture.name.indexOf('_') + 1);
-      /* Высчитывание значений для хелперов
-        ------------------------------------------------------------------------------
-        Y всегда в процентах от высоты рендера
-        ------------------------------------------------------------------------------
-        высота всегда в процентах от высоты рендера
-        ------------------------------------------------------------------------------
-        Чтобы найти нуное значение положение по X нужно:
-          1) Создать окно хелпер и расположить его где-нить на сцене, в нужный момент работы
-          2) Расположить на нужное место с помощью F12, меняя размеры и положние в %
-          3) Записать значения, которые понравились
-          4) Записать размеры окна рендера в рх
-          5) Вывести следующий ЛОГ, с значениями:
-            а) Какое-то значение, чем больше, тем больше % по Х
-            б) ширина окна рендера
-            в) высота окна рендера
-          6) в логе будут проценты, нужно методом подбора значения "а" найти нужное значение % по Х
-          7) В функции createMainHelperContainer атрибуту Х дать значение А из лога, wOld и hOld - размеры рендера при замерах. 
-          //console.log(calculateDynamicLeftHelper(1915 , 1427, 840)  + '%')//43.542%
-        ------------------------------------------------------------------------------
-        ширина изменяется в соотношении примерно 1,56 к ширине рендера
-        Уравнение получения значения W для ширины прозрачного окна хеx:\ 0, y: -95.71лпера
-          W%;    (1.56 * W%) / 77.31 = w: W
-          14%; (1.56 * 14) / 77.31 = w: 0.284
-          ------------------------------------------------------------------------------
-          Окна внутри хелперов зависят от размеров их главного окна хелпера.
-          Поэтому их значения описаны в процентах. Для них нет нужды искать специальные значения.
-          Просто создайте окно, размести его в нужном месте и настройте его размеры.
-          И потом запишите значения в tempObj.
-          ------------------------------------------------------------------------------
-      */
-
-
-
-      if (textureSvgName === 'vnk_main') {
-        let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95.5, });
-        for (let i = 0; i < 6; i++) {
-          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
-          else if (i === 5) tempObj = { x: 41.5, y: 50, w: 2.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, } };
-          mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
+    setTimeout(() => {
+      if (CurrentPosition === 1) {
+        let mainMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === CurrentPosition);
+        let textureSvgName = SvgName === undefined ? mainMesh.material.diffuseTexture.name.substring(mainMesh.material.diffuseTexture.name.indexOf('_') + 1) : SvgName;
+        let currentMeshTexture = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition).material.diffuseTexture;
+        let textureName = currentMeshTexture.name.substring(currentMeshTexture.name.indexOf('_') + 1);
+        if (textureSvgName === 'vnk_main') {
+          let tempArrHelperButtons = [
+            { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
+            { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+            { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+            { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+            { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+            { x: 41.5, y: 50, w: 2.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, } },
+          ];
+          createSvgHelperButtons(tempArrHelperButtons);
+        } else if (textureSvgName === 'BVNK_VNK1') {
+          let tempArrHelperButtons = [
+            { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
+            { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+            { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+            { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+            { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+          ];
+          createSvgHelperButtons(tempArrHelperButtons);
+        } else if (textureSvgName === 'BVNK_VNK2') {
+          let tempArrHelperButtons = [
+            { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
+            { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+            { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+            { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+            { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+          ];
+          createSvgHelperButtons(tempArrHelperButtons);
+        } else if (textureSvgName === 'BVNK_VNK3') {
+          let tempArrHelperButtons = [
+            { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
+            { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+            { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+            { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+            { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+          ];
+          createSvgHelperButtons(tempArrHelperButtons);
+        } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') {
+          let tempArrHelperButtons = [
+            { x: 61, y: 47.2, w: 1.5, h: 2.4, forAction: true, name: textureName, id: 'close_w1' },// close
+            { x: 53.4, y: 59.1, w: 4, h: 2.6, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, } },// open
+          ];
+          createSvgHelperButtons(tempArrHelperButtons);
+        } else if (textureSvgName === 'O_n_k_na_VNK_posle_2') {
+          let tempArrHelperButtons = [
+            { x: 60.2, y: 57, w: 3.2, h: 2.4, removeWindow: textureSvgName, id: 'close_vn', }, // close
+            { x: 56.5, y: 57, w: 3.2, h: 2.4, removeWindow: textureSvgName, forAction: true, id: 'open_vn1', }, // open
+          ];
+          createSvgHelperButtons(tempArrHelperButtons);
         }
-      } else if (textureSvgName === 'BVNK_VNK1') {
-        // let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95, });
-        // for (let i = 0; i < 5; i++) {
-        //   if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
-        //   else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
-        //   else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
-        //   else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
-        //   else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
-        //   mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
-        // }
-      } else if (textureSvgName === 'BVNK_VNK2') {
-        let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95.5, });
-        for (let i = 0; i < 5; i++) {
-          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
-          mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
-        }
-      } else if (textureSvgName === 'BVNK_VNK3') {
-        let mainContainer = createMainHelperContainer({ x: 4, y: -95.71, w: 1.56, h: 88.7, wOld: 1427, wMaxProc: 95.5, });
-        for (let i = 0; i < 7; i++) {
-          if (i === 0) tempObj = { x: 0.5, y: 1, w: 10, h: 3, name: 'vnk_main', };
-          else if (i === 1) tempObj = { x: 11, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK1', };
-          else if (i === 2) tempObj = { x: 21.8, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK2', };
-          else if (i === 3) tempObj = { x: 32.5, y: 1, w: 10.3, h: 3, name: 'BVNK_VNK3', };
-          else if (i === 4) tempObj = { x: 43.1, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', };
-          mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
-        }
-      } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') { //43,8 -54 16,7 32,6
-        let mainContainer = createMainHelperContainer({ x: 20, y: -54, w: 0.284, h: 32.6, wOld: 1427, wMaxProc: 95.5, });
-        for (let i = 0; i < 2; i++) {
-          if (i === 0) tempObj = { x: 88, y: 0.1, w: 9, h: 7, forAction: true, name: textureName, id: 'close_w1' }; // close
-          else if (i === 1) tempObj = { x: 47, y: 33.1, w: 22, h: 7, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, }; // open
-          mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
-        }
-      } else if (textureSvgName === 'O_n_k_na_VNK_posle_2') {
-        let mainContainer = createMainHelperContainer({ x: 51.6, y: -47.5, w: 6, h: 5.6, wOld: 1427, wMaxProc: 95.5, });
-        for (let i = 0; i < 2; i++) {
-          if (i === 0) tempObj = { x: 3.1, y: 2.1, w: 2.3, h: 2.3, removeWindow: textureSvgName, id: 'close_vn', }; // close
-          else if (i === 1) tempObj = { x: 0.4, y: 2.1, w: 2.3, h: 2.3, removeWindow: textureSvgName, forAction: true, id: 'open_vn1', }; // open
-          mainContainer.append(createSvgHelperButton(tempObj, mainMesh));
-        }
-
-      }
-
-      // todo Нужно сделать что-то с размерами и положениями. В процентах тоже не верно вроде кака
-
-      function createMainHelperContainer(Vals) {
-        if (document.getElementById('svg-helper')) {
-          document.getElementById('svg-helper').remove();
-        }
-        let renderRationProc = parseFloat(document.getElementById('renderCanvas').getAttribute('height')) / parseFloat(document.getElementById('renderCanvas').getAttribute('width')) * 100;
-        let mainContainer = document.createElement('div');
-        mainContainer.style.position = 'relative';
-        mainContainer.style.left = calculateDynamicLeftHelper(Vals.wOld, Vals.wMaxProc, Vals.x) + '%';
-        // mainContainer.style.left = calculateDynamicLeftHelper(Vals.x, Vals.wOld ? Vals.wOld : undefined, Vals.hOld ? Vals.hOld : undefined) + '%';
-        mainContainer.style.top = Vals.y + '%';
-        mainContainer.style.width = (Vals.w * renderRationProc) + '%';
-        mainContainer.style.height = Vals.h + '%';
-        mainContainer.id = 'svg-helper';
-        document.body.querySelector('.game-view').append(mainContainer);
-        return mainContainer;
-      }
-      function createSvgHelperButton(Vals, DisplayMesh) {
-        let invisElem = document.createElement('div');
-        invisElem.classList.add('invisible-element-svg');
-        if (devHelper.dev.enable === true) {
-          invisElem.classList.add('invisible-element-svg-helper');
-          invisElem.innerHTML = Vals.id === undefined ? 'test' : Vals.id;
-        }
-        invisElem.style.left = Vals.x + '%';
-        invisElem.style.top = Vals.y + '%';
-        invisElem.style.width = Vals.w + '%';
-        invisElem.style.height = Vals.h + '%';
-
-        invisElem.addEventListener('click', () => {
-          if (devHelper.trenVals.waitingInput === true) {
-            if (Vals.id !== undefined) {
-              invisElem.id = Vals.id;
-              trenClickOnSvgElem(invisElem);
-            }
-            if (Vals.removeWindow) {
-              RemoveSvgFromTextrue(DisplayMesh, Vals.removeWindow);
-            } else if (Vals.forAction && Vals.forAction === true) {
-              if (Vals.value && Vals.value.window) {
-                addSvgToTextrue(DisplayMesh, Vals.value);
-                createSvghelper(CurrentPosition, Vals.value.window);
-              }
-            } else if (Vals.name) {
-              changeSvgtexture(DisplayMesh, Vals.name, true);
-              createSvghelper(CurrentPosition, Vals.name);
-            } else if (Vals.value && Vals.value.window) {
-              createSvghelper(CurrentPosition, Vals.value.window);
-              changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, Vals.value.window, Vals.value);
-            } else changeSvgElem(Vals.value);
-
+        function createMainHelperContainer() {
+          if (document.getElementById('svg-helper')) {
+            document.getElementById('svg-helper').remove();
           }
-        });
-        return invisElem;
+          let mesh2DVals = getClientRectFromMesh(devHelper.model3DVals.svgDisplays.meshs.find(m => m.positionIndex === devHelper.model3DVals.currentPosition));
+          let mainContainer = document.createElement('div');
+          mainContainer.style.position = 'absolute';
+          mainContainer.style.left = (mesh2DVals.left / (document.getElementById('renderCanvas').width / 100)) + '%';
+          mainContainer.style.top = (mesh2DVals.top / (document.getElementById('renderCanvas').height / 100)) + '%';
+          mainContainer.style.width = (mesh2DVals.width / (document.getElementById('renderCanvas').width / 100)) + '%';
+          mainContainer.style.height = (mesh2DVals.height / (document.getElementById('renderCanvas').height / 100)) + '%';
+          mainContainer.id = 'svg-helper';
+          document.body.querySelector('.game-view').append(mainContainer);
+          return mainContainer;
+        }
+        function createSvgHelperButton(Vals, DisplayMesh) {
+          let invisElem = document.createElement('div');
+          invisElem.classList.add('invisible-element-svg');
+          if (devHelper.dev.enable === true) {
+            invisElem.classList.add('invisible-element-svg-helper');
+            invisElem.innerHTML = Vals.id === undefined ? 'test' : Vals.id;
+          }
+          invisElem.style.left = Vals.x + '%';
+          invisElem.style.top = Vals.y + '%';
+          invisElem.style.width = Vals.w + '%';
+          invisElem.style.height = Vals.h + '%';
+
+          invisElem.addEventListener('click', () => {
+            if (devHelper.trenVals.waitingInput === true) {
+              if (Vals.id !== undefined) {
+                invisElem.id = Vals.id;
+                trenClickOnSvgElem(invisElem);
+              }
+              if (Vals.removeWindow) {
+                RemoveSvgFromTextrue(DisplayMesh, Vals.removeWindow);
+              } else if (Vals.forAction && Vals.forAction === true) {
+                if (Vals.value && Vals.value.window) {
+                  addSvgToTextrue(DisplayMesh, Vals.value);
+                  createSvghelper(CurrentPosition, Vals.value.window);
+                }
+              } else if (Vals.name) {
+                changeSvgtexture(DisplayMesh, Vals.name, true);
+                createSvghelper(CurrentPosition, Vals.name);
+              } else if (Vals.value && Vals.value.window) {
+                createSvghelper(CurrentPosition, Vals.value.window);
+                changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, Vals.value.window, Vals.value);
+              } else changeSvgElem(Vals.value);
+
+            }
+          });
+          return invisElem;
+        }
+        function createSvgHelperButtons(Arr) {
+          let mainContainer = createMainHelperContainer();
+          Arr.forEach((element) => {
+            mainContainer.append(createSvgHelperButton(element, mainMesh));
+          })
+        }
+      } else {
+        if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
       }
-    } else {
-      if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
-    }
+    }, 150);
   }
 }
-// color; text; alpha; position в vw, vh;
 function changeSvgElem(Val = {}) {
   console.log(Val);
   if (Val.name) {
