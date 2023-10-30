@@ -224,6 +224,8 @@ function dragAndDrop(e, moveWindow) {
     document.onmousemove = null;
     moveWindow.onmouseup = null;
     moveWindow.classList.remove('transition-0');
+    moveWindow.style.left = ConvertPxToVw(parseFloat(moveWindow.style.left)) +'vw';
+    moveWindow.style.top = ConvertPxToVh(parseFloat(moveWindow.style.top)) +'vh';
   };
   moveWindow.ondragstart = function () {
     return false;
@@ -261,14 +263,15 @@ function clickCloseTime(e) {
   document.querySelector('.box-time').classList.remove("opacity-1-Always");
   document.querySelector('.box-time').classList.remove("opacity-1-Temp");
   document.querySelector('.box-time').ontransitionend = (e) => {
-    document.querySelector('.box-chat-window').classList.add('transition-0');
+    document.querySelector('.box-time').classList.add('transition-0');
     document.querySelector('.block-button').classList.remove("z-index-1");
     document.querySelector('.box-time').classList.remove("box-time-padTop32");
     document.querySelector('.time-header').classList.remove("time-header-opacity");
     document.querySelector('.box-time .backArea').classList.remove('backArea-white-100')
-    setStartPosition(e.currentTarget);
+    setStartPosition(document.querySelector('.box-time'));
     document.querySelector('.box-time').ontransitionend = null;
   }
+  
   clickCloseTimer(e);
 }
 function clickCloseTimer(e){
@@ -303,9 +306,6 @@ function clickCloseChat(e){
     document.querySelector('.box-chat-window .backArea').classList.remove('backArea-white-100')
     e.currentTarget.ontransitionend = null;
     setMiniChat();
-    setTimeout(() => {
-      document.querySelector('.box-chat-window').classList.remove('transition-0');
-    }, 500);
   }
 }
 
@@ -337,6 +337,12 @@ function clickCloseChat(e){
     document.querySelector(".dialogMessageWatch .time-hour").textContent = time.split(":")[0];
     document.querySelector(".dialogMessageWatch .time-minute").textContent = time.split(":")[1];
   }
+  function ConvertPxToVw(px) {
+    return px / (window.innerWidth / 100);
+  }
+  function ConvertPxToVh(px) {
+    return px / (window.innerHeight / 100);
+  }
   function newStateTimer() {
     document.querySelector(".dialogMessageWatch .time-hour").classList.toggle("textColorGreen");
     document.querySelector(".dialogMessageWatch .time-colon").classList.toggle("textColorGreen");
@@ -347,31 +353,23 @@ function clickCloseChat(e){
 
   setLifeTime(devHelper.trenVals.timers.lifeTime);
 
-  // Открыть таймер // FIX
+  // Открыть таймер
   document.querySelector(".time-oclock").addEventListener('click', (e) => {
     document.querySelector(".dialogMessageWatch").classList.add('opacity-1-Always');
     document.querySelector('.dialogMessageWatch').classList.remove('opacity-0');
 
     let myBlock = document.querySelector('.box-time');
-    let magicW = 1;
-    let magicH = 1;
-    if (String(document.querySelector('.box-time').style.left).match('vw') ) {
-      magicW = (window.innerWidth / 100);
-    }
-    document.querySelector('.dialogMessageWatch').style.left = parseInt(document.querySelector('.box-time').style.left) * magicW + 330 + 'px';
-    if (parseInt(myBlock.style.left) * magicW + 330 + 300 >= window.innerWidth) {
-      document.querySelector('.dialogMessageWatch').style.left = parseInt(document.querySelector('.box-time').style.left) * magicW - 330 + 'px';
-    }
 
-
-    if (String(document.querySelector('.box-time').style.top).match('vh') ) {
-      magicH = (window.innerHeight / 100);
+    document.querySelector('.dialogMessageWatch').style.left = ConvertPxToVw(parseInt(document.querySelector('.box-time').getBoundingClientRect().right)) + 1 + 'vw';
+    document.querySelector('.dialogMessageWatch').style.top = document.querySelector('.box-time').style.top;
+    
+    if (ConvertPxToVw(parseInt(document.querySelector('.box-time').getBoundingClientRect().right)) + 1 + 
+        ConvertPxToVw(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().width))
+       >= 100) {
+       document.querySelector('.dialogMessageWatch').style.left = ConvertPxToVw(parseInt(document.querySelector('.box-time').getBoundingClientRect().left)) - 1 - ConvertPxToVw(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().width)) + 'vw';
     }
-    console.log(document.querySelector('.box-time').style.top);
-    console.log(magicH);
-    document.querySelector('.dialogMessageWatch').style.top = parseInt(document.querySelector('.box-time').style.top) * magicH  + 'px';
-    if(parseInt(myBlock.style.top) * magicH + 275 >= window.innerHeight){
-      document.querySelector('.dialogMessageWatch').style.top = parseInt(window.innerHeight) * magicH - 275 + 'px';
+    if (ConvertPxToVh(parseInt(document.querySelector('.box-time').getBoundingClientRect().bottom)) >= ConvertPxToVh(window.innerHeight)) {
+      document.querySelector('.dialogMessageWatch').style.top = ConvertPxToVh(window.innerHeight) - ConvertPxToVh(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().height)) + 'vh';
     }
   })
   // Закрыть таймер. Обнулить таймер
@@ -488,6 +486,8 @@ function clickCloseChat(e){
 
 // CHAT
 {
+
+  
   setMiniChat();
 
   function setMiniChat() {
@@ -496,6 +496,11 @@ function clickCloseChat(e){
       return;
     }
     let mes = document.querySelector('.box-chat-window .chat-mini').children;
+    if (mes.length == 0) {
+      miniChat.style.width  = ConvertPxToVw(385) + "vw";
+      miniChat.style.height = ConvertPxToVw(100) + "vh"
+      return;
+    }
     for (let i = 0; i < mes.length; i++) {
       mes[i].classList.add('display-none');
     }
@@ -524,17 +529,17 @@ function clickCloseChat(e){
 
 }
 
+// ЦВЕТА КНОПОК
 const COLOR_STATE_BUTTON = {
   Active: "#ffffff",
   Normal: "#939393"
 }
-// Смена СВГ в кнопке
+// Смена СВГ в кнопке МЕНЮ
 function newImageCollapseMenu(e) {
   let object = e.currentTarget.querySelector('object');
   if (object.getAttribute('icon') == "svg_menu_2") {
     object.setAttribute('icon', "svg_menu_1")
     object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_1').contentDocument.querySelector('svg').innerHTML;     
-    
   }
   else{
     object.setAttribute('icon', "svg_menu_2")
@@ -542,51 +547,79 @@ function newImageCollapseMenu(e) {
   }
 }
 
-// БОЛЬШОЙ БИНД НА СМЕНУ ЦВЕТА КНОПОК // НОВОЕ СВП В 1Ю КНОПКУ
-Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) => {
-  item = item.querySelector('button');
-  item.addEventListener('click', (e) => {
-    if (e.currentTarget.id == "b_collapseMenu") { // ОСОБОЕ УСЛОВИЕ ДЛЯ "РАЗВЕРНУТЬ"
-      if (e.currentTarget.classList.contains('button-tren-active')) {
-        e.currentTarget.classList.remove('button-tren-active');
-      }
-      else{
-        e.currentTarget.classList.add('button-tren-active');
-      }
-      newImageCollapseMenu(e);
-      return;
-    }
-    else if (e.currentTarget.classList.contains('button-tren-active')) {
-      
 
-      if (e.currentTarget.hasAttribute('close-func')) {
-        e.currentTarget.getAttribute('close-func').split(' ').forEach((item) => {
+// ЦЕНТРОВАТЬ ОКНА от КНОПКИ
+function setCenterWindow(item) {
+  let window = document.querySelector(`.${item.getAttribute('window-interface')}`)
+  window.classList.add('transition-0');
+  let b_center = item.getBoundingClientRect().height / 2;
+  let w_center = window.getBoundingClientRect().height / 2;
+  window.style.top = ConvertPxToVh(item.getBoundingClientRect().y + (b_center - w_center)) + 'vh';
+  setTimeout(() => {window.classList.remove('transition-0');}, 50);
+}
+
+// БОЛЬШОЙ БИНД НА СМЕНУ ЦВЕТА КНОПОК // НОВОЕ СВП В 1Ю КНОПКУ  // КЛИК
+Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) => {
+  let b_action = item.querySelector('.click-button-tren');
+  item = item.querySelector('button');
+  b_action.addEventListener('click', (e) => {
+    if(document.querySelector(`.${item.getAttribute('window-interface')}`)){  // включить анимацию
+      document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0'); // включить анимацию
+    }
+    if (item.classList.contains('button-tren-active')) {
+      
+      if (item.getAttribute('window-interface')) {
+        document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('box-time-padTop32');
+      }
+
+      if (item.hasAttribute('close-func')) {
+        item.getAttribute('close-func').split(' ').forEach((item) => {
           window[item](e);
         })
       }
 
-      e.currentTarget.classList.remove('button-tren-active');
+      item.classList.remove('button-tren-active');
       setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Normal);
       return;
     }
   
-    e.currentTarget.classList.add('button-tren-active');
+    item.classList.add('button-tren-active');
     setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Active);
   })
 });
-//  // БОЛЬШОЙ БИНД НА СМЕНУ ЦВЕТА КНОПОК
+//  // БОЛЬШОЙ БИНД НА СМЕНУ ОТОБРАЖЕНИЕ ОКОШЕК // НАВЕДЕНИЕ
 Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
-  item.addEventListener('mouseover', (e) => {
-    document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
-    document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.remove('transition-0');
+  // СХ СУ - БАЗА
+  setCenterWindow(item);
+  let _item = document.querySelector(`.${item.getAttribute('window-interface')}`)
+  _item.setAttribute('sx', _item.style.left);
+  _item.setAttribute('sy', _item.style.top);
+  // СХ СУ - БАЗА
+
+
+  let b_action = item.querySelector('.click-button-tren');
+  b_action.addEventListener('mouseover', (e) => {
+    document.querySelector(`.${item.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
+    document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0');
+    if(document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')){
+
+    }else{
+
+      setCenterWindow(item)
+    }
+    if (e.currentTarget.classList.contains('button-tren-active')) {
+      
+    }
+    else{
+      // setNewPositionWindow(item, true);
+    }
   });
-  item.addEventListener('mouseout', (e) => {
-    document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.remove('opacity-1-Temp');
+  b_action.addEventListener('mouseout', (e) => {
+    document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('opacity-1-Temp');
   });
 })
 
-
-// Отображение РАЗВЕРНУТЬ
+// Отображение "РАЗВЕРНУТЬ"
 document.getElementById('b_collapseMenu').addEventListener("mouseover", (e) => {
   if (document.querySelector('.tren-ui-long')) {
     document.querySelector('.box-collapse').classList.remove('opacity-1-Temp');
@@ -596,18 +629,27 @@ document.getElementById('b_collapseMenu').addEventListener("mouseover", (e) => {
 
   }
 });
-function setNewPositionWindow(elem, state) {
+// НОВЫЕ ПОЗИЦИИ ОКНО ПРИ ОТКРЫТИИ МЕНЮ
+function setNewPositionWindow(elem, state = false) {
   if (state) {
-    elem.style.left = elem.getAttribute('sx2');
-    elem.style.top = elem.getAttribute('sy');
+    if (elem.classList.contains('opacity-1-Always') && 8 > ConvertPxToVw(parseFloat(elem.getBoundingClientRect().left))){
+      elem.style.left = elem.getAttribute('sx2');
+    }
+    else if (elem.classList.contains('opacity-1-Always')) {return;}
+    else{
+      elem.style.left = elem.getAttribute('sx2');
+      elem.style.top = elem.getAttribute('sy');
+    }
   }
   else{
+    if (elem.classList.contains('opacity-1-Always')) {return;}
     elem.style.left = elem.getAttribute('sx');
     elem.style.top = elem.getAttribute('sy');
   }
 }
 // ОТКРЫТЬ/ЗАКРЫТЬ МЕНЮ
 document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
+  newImageCollapseMenu(e);
   if(!document.querySelector('.tren-ui').classList.contains('tren-ui-long')) {
     document.querySelector('.tren-ui').classList.add('tren-ui-long');
     document.querySelector('.box-collapse').classList.remove('opacity-1-Temp');
@@ -625,7 +667,7 @@ document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
   }
 });
 
-// КЛИК ЧАСЫ
+// КЛИК ЧАСЫ  //  
 document.getElementById('b_oclock').addEventListener("click", (e)=>{
   if (e.currentTarget.classList.contains('button-tren-active')) {
     document.querySelector('.box-time').classList.add("opacity-1-Always");
@@ -635,8 +677,6 @@ document.getElementById('b_oclock').addEventListener("click", (e)=>{
     document.querySelector('.time-header').classList.add("time-header-opacity");
   }
 });
-
-
 // КЛИК ЧАТ
 document.getElementById('b_chat').addEventListener("click", (e)=>{
   if (e.currentTarget.classList.contains('button-tren-active')) {
@@ -650,3 +690,7 @@ document.getElementById('b_chat').addEventListener("click", (e)=>{
     setNormalChat();
   }
 });
+
+
+
+
