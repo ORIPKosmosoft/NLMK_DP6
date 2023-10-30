@@ -249,11 +249,11 @@ function setImageOnMonitor(url, Scene) {
           } 
           else if (Mesh.name && Mesh.name === 'Display_flat014') {  // 11
             makeSvgDisplay(Mesh, Scene, 'dp');
-            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 4 });
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 5 });
           } 
           else if (Mesh.name && Mesh.name === 'Display_flat015') {  // 12
             makeSvgDisplay(Mesh, Scene, 'bzu');
-            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 4 });
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex:  6 });
           } 
           else if (Mesh.name && Mesh.name === 'Display_flat007') {  // 13
             Mesh.material = setImageOnMonitor("media/images/monitors/Podacha_shikhty.jpg", Scene);
@@ -267,8 +267,17 @@ function setImageOnMonitor(url, Scene) {
           else if (Mesh.name && Mesh.name === 'Display_flat006') {  // 16
             Mesh.material = setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene);
           }
-
-
+          else if (Mesh.name && Mesh.name === 'Display_TV002') {  // TV 1
+            Mesh.material = setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_TV') {  // TV 2  // белый экран на дубликатах
+            makeSvgDisplay(Mesh, Scene, 'bzu');
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 6 });
+          }
+          else if (Mesh.name && Mesh.name === 'Display_TV001') {  // TV 3 // белый экран на дубликатах
+            makeSvgDisplay(Mesh, Scene, 'dp');
+            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 8 });
+          }
 
 
 
