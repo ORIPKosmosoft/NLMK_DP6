@@ -635,3 +635,16 @@ function startRender() {
 }
 
 
+// SET TIME //  Странное поведение  // исправить
+function Temp_Func(params) {
+  if (params == 0) {
+    return;
+  }
+  setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
+  change3DTime(devHelper.trenVals.timers.lifeTime); // 3d
+}
+
+setTimeout(() => {
+  Temp_Func(0);
+}, 3000);
+// SET TIME //  Странное поведение  // исправить

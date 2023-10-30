@@ -320,6 +320,12 @@ function clickCloseChat(e){
   };
 }
 
+function setLifeTime(time) {
+  devHelper.trenVals.timers.lifeTime = time;
+  document.querySelector(".time-hour").textContent = time.split(":")[0];
+  document.querySelector(".time-minute").textContent = time.split(":")[1];
+  document.querySelector(".time-second").textContent = time.split(":")[2];
+}
 // TIMER
 {
   // BIND mouseDown
@@ -327,12 +333,7 @@ function clickCloseChat(e){
     raiseUpBox(e);
     dragAndDrop(e, e.currentTarget.parentElement.parentElement);
   };
-  function setLifeTime(time) {
-    devHelper.trenVals.timers.lifeTime = time;
-    document.querySelector(".time-hour").textContent = time.split(":")[0];
-    document.querySelector(".time-minute").textContent = time.split(":")[1];
-    document.querySelector(".time-second").textContent = time.split(":")[2];
-  }
+  
   function setCounterTime(time) {
     document.querySelector(".dialogMessageWatch .time-hour").textContent = time.split(":")[0];
     document.querySelector(".dialogMessageWatch .time-minute").textContent = time.split(":")[1];
@@ -351,8 +352,7 @@ function clickCloseChat(e){
     document.querySelector(".dialogTimers-play").classList.toggle("disabled-play");
   }
 
-  setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
-  change3DTime(devHelper.trenVals.timers.lifeTime); // 3d
+  
 
   // Открыть таймер
   document.querySelector(".time-oclock").addEventListener('click', (e) => {
@@ -699,10 +699,3 @@ document.getElementById('b_chat').addEventListener("click", (e)=>{
 
 
 
-
-document.getElementById('b_exit').addEventListener("click", (e) => {
-  let digit1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits000');
-  change3DTime("12:05:50");
-  
-  console.log("press");
-})
