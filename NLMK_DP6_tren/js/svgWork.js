@@ -176,17 +176,33 @@ window.addEventListener('load', function () {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_1'); }
       })
     }
+    if (ObjectSvg.name === 'BVNK_VNK2') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
+        // if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }  // TEMP
+      });
+    }
     if (ObjectSvg.name === 'BVNK_VNK3') {
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'fire_vnk_3'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_3'); }
       })
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
+        // if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }   // TEMP
+      });
     }
     if (ObjectSvg.name === 'vnk_main') {
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1301.37 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.37-12.26l-20.56-25.18v-12.46h2.35l-.28-.91v-22.21c0-8.54-6.97-12.27-15.51-12.27h-.39c-8.54 0-15.51 3.73-15.51 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_3'); }
       })
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
+        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }   // TEMP
+      });
+    }
+    if (ObjectSvg.name === 'vnk_spvg') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
+        // if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }   // TEMP
+      });
     }
     if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
       ObjectSvg.svg.querySelectorAll('text').forEach((TextElement) => {
@@ -232,23 +248,23 @@ window.addEventListener('load', function () {
       Element2.element.id = `${Element.name}_${Element2.name}`;
     })
   })
-  setTimeSvgSheme()
+  setTimeSvgScheme()
 });
-function setTimeSvgSheme() {
+function setTimeSvgScheme() {
+  let _indexMonitor = 0;
     devHelper.svgVals.forEach((ObjectSvg, Index) => {
-      // if (ObjectSvg.name === 'BVNK_VNK1') {
-        ObjectSvg.activeElements.forEach((Element) => {
-          if (Element.name === "lifetime") {
-            console.log(devHelper.trenVals.timers.lifeTime);
-            Element.innerHTML = devHelper.trenVals.timers.lifeTime;
-            changeSvgElem({
-              name: Element.name, 
-              text: devHelper.trenVals.timers.lifeTime
-            });
-            return;
-          }
-        })
-      // }
+      ObjectSvg.activeElements.forEach((Element) => {
+        if (Element.name === "lifetime") {
+          Element.innerHTML = devHelper.trenVals.timers.lifeTime;
+          changeSvgElem({
+            name: Element.name, 
+            text: devHelper.trenVals.timers.lifeTime
+          });
+          console.log(Index);
+          changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[_indexMonitor], ObjectSvg.name, true); // В будущем возможно придётся поменять _indexMonitor
+          _indexMonitor++;
+        }
+      })  
       
     })
 }

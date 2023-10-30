@@ -490,7 +490,7 @@ function setLifeTime(time) {
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
-      setTimeSvgSheme();                                                      // время на схемах
+      setTimeSvgScheme();                                                      // время на схемах
 
 
 

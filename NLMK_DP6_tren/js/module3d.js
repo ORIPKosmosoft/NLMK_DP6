@@ -242,7 +242,13 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
       }
+      try{
+        setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
+        change3DTime(devHelper.trenVals.timers.lifeTime); // 3d
+      }
+      catch{}
     });
+    
   }
 });
 
@@ -442,30 +448,12 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
 }
 //TODO тут сделать часы 3Д
 function change3DTime(Time = '00:00:00') {
-  // Пример кода часов 3Д
- /* let unicOff = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_0');
-  let unic0 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_001');
-  let unic1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_002');
-  let unic2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_003');
-  let unic3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_004');
-  let unic4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_005');
-  let unic5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_006');
-  let unic6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_007');
-  let unic7 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_008');
-  let unic8 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_009');
-  let unic9 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_off');*/
   let digit1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits000');
   let digit2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits001');
   let digit3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits002');
   let digit4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits003');
   let digit5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits004');
   let digit6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits005');
-/*  digit1.material = unic0.material.clone();
-  digit2.material = unic7.material.clone();
-  digit3.material = unic3.material.clone();
-  digit4.material = unic4.material.clone();
-  digit5.material = unic5.material.clone();
-  digit6.material = unic4.material.clone();*/
   let arrayDigit = [digit1, digit2, digit3, digit4, digit5, digit6];
   
   for (let i = 0, j = 0; i < Time.length; i++) {
@@ -582,16 +570,6 @@ function startRender() {
 }
 
 
-// SET TIME //  Странное поведение  // исправить
-function Temp_Func(params) {
-  if (params == 0) {
-    return;
-  }
-  setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
-  change3DTime(devHelper.trenVals.timers.lifeTime); // 3d
-}
-
-
 function switc3DTime(digit, digitTime) {
   let unicOff = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_0');
   let unic0 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_001');
@@ -638,8 +616,3 @@ function switc3DTime(digit, digitTime) {
       break;
   }
 }
-
-setTimeout(() => {
-  Temp_Func(0);
-}, 3000);
-// SET TIME //  Странное поведение  // исправить
