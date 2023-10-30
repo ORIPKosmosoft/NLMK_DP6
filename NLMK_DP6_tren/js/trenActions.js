@@ -96,7 +96,7 @@ let tempActions = [
         target2D: 'kl029',
         window2D: {
           elements: [
-            { name: 'title', text: 'Управление клапаном 029' },
+            { name: 'title_work_vn', text: 'Управление клапаном 029' },
             { name: 'status_window_text', text: 'Нет данных' },
             { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
             { name: 'polozenie_text', text: '51' },
@@ -113,6 +113,11 @@ let tempActions = [
     }, {
       action: {
         target2D: 'open_vn',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
       },
       startTime: 1,
       human: true,

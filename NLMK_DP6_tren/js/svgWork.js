@@ -194,7 +194,7 @@ window.addEventListener('load', function () {
     }
     if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
       ObjectSvg.svg.querySelectorAll('text').forEach((TextElement) => {
-        if (TextElement.innerHTML === 'Управление клапаном 116') { addSvgElem(Index, TextElement, 'title',); }
+        if (TextElement.innerHTML === 'Управление клапаном 116') { addSvgElem(Index, TextElement, 'title_work_vn',); }
         if (TextElement.innerHTML === 'Открыт') { addSvgElem(Index, TextElement, 'status_window_text', false); }
         if (TextElement.innerHTML === '100') { addSvgElem(Index, TextElement, 'polozenie_text'); }
         if (TextElement.innerHTML === 'Открыть') { addSvgElem(Index, TextElement, 'polozenie_button_text'); }
@@ -213,6 +213,11 @@ window.addEventListener('load', function () {
       })
       ObjectSvg.svg.querySelectorAll('rect').forEach((Element) => {
         if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14') { addSvgElem(Index, Element, 'btn_open'); }
+      })
+    }
+    if (ObjectSvg.name === 'O_n_k_na_VNK_posle_2') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement) => {
+        if (TextElement.innerHTML === 'Закрыть') { addSvgElem(Index, TextElement, 'title_open_vn',); }
       })
     }
 
@@ -280,81 +285,6 @@ function getClientRectFromMesh(Mesh) {
   return rect
 }
 
-// Пример использования функции для меша mesh в сцене scene
-
-// Теперь переменная dimensions содержит ширину и высоту меша в 2D координатах, которые вы можете использовать для создания div.
-
-
-function calculateDynamicLeftHelper(mesh) {
-  // function calculateDynamicLeftHelper(WRenderPx, HRenderPx, WMonitorProc, diffXProc) {
-  // let newWRenderPx = 1427;
-  // let newHRenderPx = 840;
-  // let diffMon = newWRenderPx / newHRenderPx;
-  // console.log(diffMon);
-
-  // при соотношении 58,86(1.698), и ширине рендера 1427, размер половины экрана 713.5px
-  // при соотношении 58,86(1.698), ширина монитора 95.38% 1361рх
-
-
-  // при соотношении 49.45, и ширине рендера 1816, размер половины экрана 905px
-  // при соотношении 41.18, и ширине рендера 1816, размер половины экрана 905px
-  console.log(mesh.name);
-  let scene = devHelper.model3DVals.scene;
-  let engine = devHelper.model3DVals.engine;
-  // Координаты меша в мировой системе координат
-  var worldPosition = mesh.getAbsolutePosition();
-  console.log("World Position: ", worldPosition);
-
-  // Координаты меша в локальной системе координат
-  var localPosition = mesh.position;
-  console.log("Local Position: ", localPosition);
-
-  // Координаты меша на плоскости (координаты X и Z)
-  var planePosition = new BABYLON.Vector2(mesh.position.x, mesh.position.z);
-  console.log("Plane Position: ", planePosition);
-
-  // Координаты меша в системе координат окна
-  var windowPosition = BABYLON.Vector3.Project(
-    worldPosition,
-    BABYLON.Matrix.Identity(),
-    scene.getTransformMatrix(),
-    engine.getRenderWidth(),
-    engine.getRenderHeight()
-  );
-  console.log("Window Position: ", windowPosition);
-
-
-
-  // let newWRenderPx = parseFloat(document.getElementById('renderCanvas').getAttribute('width'));
-  // let newHRenderPx = parseFloat(document.getElementById('renderCanvas').getAttribute('height'));
-  // let renderCenterPx = 0.5 * newWRenderPx;
-  // let monitorWPx = (WMonitorProc * WRenderPx) / 100;
-  // let diffXPx = monitorWPx * ((2 - (diffXProc / 100) * 4) * 25) / 100;
-  // let newPosXPx = renderCenterPx - diffXPx;
-  // let newposXProc = newPosXPx / (newWRenderPx / 100);
-  // let startPx = renderCenterPx - monitorWPx / 2;
-  // let startProc = startPx / (newWRenderPx / 100);
-  //перевести проценты монитора в проценты редера
-  // diffXProc * monitorWPx / 100
-  // ((diffXProc * monitorWPx / 100) / (newWRenderPx / 100))
-  // console.log(startProc + ((diffXProc * monitorWPx / 100) / (newWRenderPx / 100)), `renderCenterPx ${renderCenterPx}, monitorWPx ${monitorWPx}, diffXPx ${diffXPx}, newPosXPx ${newPosXPx}, newposXProc ${newposXProc}`);
-  // return startProc + ((diffXProc * monitorWPx / 100) / (newWRenderPx / 100));
-  // return ((renderCenterPx - diffXPx) * (WRenderPx / 100)) / (newWRenderPx / 100));
-  // let renderRationProc = (tempW !== undefined ? (tempH / tempW) : (parseFloat(document.getElementById('renderCanvas').getAttribute('height')) / parseFloat(document.getElementById('renderCanvas').getAttribute('width')))) * 100;
-  // const coefficients = findLineByLeastSquares([58.86, 49.45, 41.17], [2.31, 9.85, 16.68]);
-  // function findLineByLeastSquares(valuesX, valuesY) {
-  //   const xBar = valuesX.reduce((sum, x) => sum + x, 0) / valuesX.length;
-  //   const yBar = valuesY.reduce((sum, y) => sum + y, 0) / valuesY.length;
-  //   const num = valuesX.map((x, i) => (x - xBar) * (valuesY[i] - yBar)).reduce((sum, x) => sum + x, 0);
-  //   const den = valuesX.map(x => Math.pow(x - xBar, 2)).reduce((sum, x) => sum + x, 0);
-  //   const slope = num / den;
-  //   const intercept = yBar - slope * xBar;
-  //   return [slope, intercept];
-  // }
-  // const x = ((coefficients[0] * renderRationProc + coefficients[1]) / 100) * i1;
-  // return parseFloat(x.toFixed(3));
-}
-
 function addSvgElem(SvgIndex, Element, Name, Move = true) {
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,
@@ -383,7 +313,7 @@ function makeDynamicTextureDisplay(ObjectSvg) {
     textureContext.drawImage(outputImage, 0, 0);
   }
 }
-// Появление нужного модуля управления для каждо схемы в зависимости от вида
+
 function createSvghelper(CurrentPosition, SvgName = undefined) {
   if (CurrentPosition !== undefined) {
     setTimeout(() => {
@@ -507,13 +437,15 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
   }
 }
 function changeSvgElem(Val = {}) {
-  console.log(Val);
   if (Val.name) {
     devHelper.svgVals.forEach((svgArrObject) => {
       svgArrObject.activeElements.forEach((activeElemObj) => {
         if (activeElemObj.name === Val.name) {
-          if (Val.text)
+          if (Val.text) {
+            console.log(activeElemObj.element, Val.text);
+
             activeElemObj.element.innerHTML = Val.text;
+          }
           if (Val.color)
             activeElemObj.element.style.fill = Val.color;
           if (Val.stroke)
