@@ -85,7 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     if (devHelper.dev.enable === true) {
       document.getElementById('movePositionX1').addEventListener('click', () => {
-        changeSvgElem({name: 'vnk_1', color: '#000000'});
+        changeSvgElem({ name: 'vnk_1', color: '#000000' });
+        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_main');
       })
       document.getElementById('movePositionX2').addEventListener('click', () => {
         changeSvgElem('fire_vnk_1', { position: { x: 10 } });
@@ -242,13 +243,13 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
       }
-      try{
+      try {
         setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
         change3DTime(devHelper.trenVals.timers.lifeTime); // 3d
       }
-      catch{}
+      catch { }
     });
-    
+
   }
 });
 
@@ -346,16 +347,53 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture =
     let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[newIndex];
     outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[newIndex]))));
     outputImage.onload = function () {
-      if (ChangeTexture === true)
+      if (ChangeTexture === true) {
         textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
-      textureContext.drawImage(outputImage, Mesh.svgArr[0].x, Mesh.svgArr[0].y);
-      Texture.update();
-      if (ChangeTexture === true)
+        textureContext.drawImage(outputImage, Mesh.svgArr[0].x, Mesh.svgArr[0].y);
         Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = Texture;
+        Texture.update();
+      } else {
+        devHelper.model3DVals.svgDisplays.meshs.forEach(displayMesh => {
+          if (displayMesh.material.diffuseTexture.name.substring(displayMesh.material.diffuseTexture.name.indexOf('_') + 1) === outputImage.previousElementSibling.getAttribute('data').substring(outputImage.previousElementSibling.getAttribute('data').lastIndexOf('/') + 1).replace('.svg', '')) {
+            if (displayMesh.svgArr && displayMesh.svgArr.length > 0) {
+              updateSvgTexture(displayMesh, 0)
+              // displayMesh.svgArr.forEach((element) => {
+              //   addSvgToTextrue(displayMesh, { window: element.name, x: element.x, y: element.y });
+              // })
+            }
+          }
+        })
+      }
     }
   } else {
     if (devHelper.dev.enable === true) console.warn(`В функцию changeSvgtexture передали не все переменные.`);
     return
+  }
+}
+
+function updateSvgTexture(Mesh = undefined, Index = undefined) {
+  if (Mesh !== undefined && Index !== undefined) {
+    let Texture = Mesh.material.diffuseTexture;
+    let textureContext = Texture.getContext();
+    let objectSvgIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === Mesh.svgArr[Index].name; })
+    let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[objectSvgIndex];
+    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[objectSvgIndex]))));
+    outputImage.onload = function () {
+      Mesh = devHelper.model3DVals.svgDisplays.meshs[0];
+      textureContext.drawImage(outputImage, Mesh.svgArr[Index].x, Mesh.svgArr[Index].y);
+      // Texture.update();
+      // TODO Разобрать как обновлять все меши, а не отлько второй монитор.
+      // сейчас назначил изменять жётско только первый моник и всё супер ок!
+      if (Mesh.svgArr.length - 1 > Index) {
+        console.log(1, Mesh.name, Index, Mesh.svgArr);
+        updateSvgTexture(Mesh, Index + 1);
+      } else if (Mesh.svgArr.length - 1 === Index) {
+        console.log(2, Mesh.name, Index, Mesh.svgArr);
+        Texture.update();
+      }
+    }
+  } else {
+
   }
 }
 
@@ -385,24 +423,24 @@ function RemoveSvgFromTextrue(Mesh = undefined, RemoveWindowName = undefined) {
   }
 }
 
-function updateSvgTexture(SvgName = undefined, ChangeTexture = false) {
-  if (SvgName) {
-    let SvgIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === SvgName; })
-    let outputImage = devHelper.svgVals[SvgIndex].object.nextElementSibling;
-    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[SvgIndex]))));
-    outputImage.onload = function () {
-      devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
-        if (DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1) !== SvgName)
-          changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), ChangeTexture);
-        else
-          changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), true);
-      })
-    }
-  } else {
-    if (devHelper.dev.enable === true) console.warn(`В функцию updateSvgTexture передали не все переменные.`);
-    return
-  }
-}
+// function updateSvgTexture(SvgName = undefined, ChangeTexture = false) {
+//   if (SvgName) {
+//     let SvgIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === SvgName; })
+//     let outputImage = devHelper.svgVals[SvgIndex].object.nextElementSibling;
+//     outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[SvgIndex]))));
+//     outputImage.onload = function () {
+//       devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
+//         if (DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1) !== SvgName)
+//           changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), ChangeTexture);
+//         else
+//           changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), true);
+//       })
+//     }
+//   } else {
+//     if (devHelper.dev.enable === true) console.warn(`В функцию updateSvgTexture передали не все переменные.`);
+//     return
+//   }
+// }
 
 
 function changeColorTexture(Mesh = undefined, State = undefined) {
@@ -455,7 +493,7 @@ function change3DTime(Time = '00:00:00') {
   let digit5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits004');
   let digit6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits005');
   let arrayDigit = [digit1, digit2, digit3, digit4, digit5, digit6];
-  
+
   for (let i = 0, j = 0; i < Time.length; i++) {
     if (Time[i] == ":") {
       continue;
@@ -577,10 +615,10 @@ function switc3DTime(digit, digitTime) {
   let unic7 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_008');
   let unic8 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_009');
   let unic9 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_off');
-  
+
   switch (digit) {
     case '0':
-      digitTime.material = unic0.material.clone();  
+      digitTime.material = unic0.material.clone();
       break;
     case '1':
       digitTime.material = unic1.material.clone();
@@ -595,7 +633,7 @@ function switc3DTime(digit, digitTime) {
       digitTime.material = unic4.material.clone();
       break;
     case '5':
-      digitTime.material = unic5.material.clone();  
+      digitTime.material = unic5.material.clone();
       break;
     case '6':
       digitTime.material = unic6.material.clone();

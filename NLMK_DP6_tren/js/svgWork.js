@@ -256,7 +256,7 @@ window.addEventListener('load', function () {
       Element2.element.id = `${Element.name}_${Element2.name}`;
     })
   })
-  setTimeSvgScheme()
+  setTimeSvgScheme();
 });
 function setTimeSvgScheme() {
   let _indexMonitor = 0;
@@ -269,8 +269,8 @@ function setTimeSvgScheme() {
             text: devHelper.trenVals.timers.lifeTime
           });
 
-          changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[_indexMonitor], ObjectSvg.name, true); // В будущем возможно придётся поменять _indexMonitor
-          _indexMonitor++;
+          // changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[_indexMonitor], ObjectSvg.name, true); // В будущем возможно придётся поменять _indexMonitor
+          // _indexMonitor++;
         }
       })  
       
