@@ -84,8 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ----------------------------------------------------------------------------------------------------------
      */
     if (devHelper.dev.enable === true) {
-      document.getElementById('movePositionX2').addEventListener('click', () => {
-        changeSvgElem('fire_vnk_1', { position: { x: 10 } });
+      document.getElementById('movePositionX1').addEventListener('click', () => {
+        getClientRectFromMesh();
       })
       document.getElementById('movePositionX2').addEventListener('click', () => {
         changeSvgElem('fire_vnk_1', { position: { x: 10 } });
@@ -333,7 +333,7 @@ function makeUnicMat(UnicMesh) {
 
 function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false, Window = undefined, Pos = undefined) {
   if (Mesh && SvgName) {
-    Mesh.svgName = SvgName;
+    if (ChangeTexture === true) Mesh.svgArr = [{ name: SvgName, x: 0, y: 0 }]
     let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
     let textureContext = Texture.getContext();
     let newIndex = devHelper.model3DVals.svgDisplays.textures.indexOf(Texture);
@@ -342,18 +342,7 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture =
     outputImage.onload = function () {
       if (ChangeTexture === true)
         textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
-      textureContext.drawImage(outputImage, 0, 0);
-      if (Window !== undefined) {
-        let windowIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === Window; })
-        let outputImage2 = devHelper.model3DVals.svgDisplays.tagImgs[windowIndex];
-        outputImage2.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[windowIndex]))));
-        outputImage2.onload = function () {
-          // todo положение переделать в проценты 
-          // textureContext.drawImage(outputImage2, Pos.x * (document.getElementById('renderCanvas').getBoundingClientRect().width / 100), Pos.y * (document.getElementById('renderCanvas').getBoundingClientRect().height / 100));
-          textureContext.drawImage(outputImage2, Pos.x, Pos.y);
-          Texture.update();
-        }
-      }
+      textureContext.drawImage(outputImage, Mesh.svgArr[0].x, Mesh.svgArr[0].y);
       Texture.update();
       if (ChangeTexture === true)
         Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = Texture;
@@ -364,17 +353,29 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture =
   }
 }
 
-function addSvgToTextrue(Mesh = undefined, NewSvgVals = undefined) {
+function addSvgToTextrue(Mesh = undefined, NewSvgVals = undefined, ClearCanvas = false, addNewSvg = true) {
   if (Mesh && NewSvgVals) {
+    if (addNewSvg === true) Mesh.svgArr.push({ name: NewSvgVals.window, x: NewSvgVals.x, y: NewSvgVals.y });
     let Texture = Mesh.material.diffuseTexture;
     let textureContext = Texture.getContext();
     let windowIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === NewSvgVals.window; })
-    let outputImage2 = devHelper.model3DVals.svgDisplays.tagImgs[windowIndex];
-    outputImage2.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[windowIndex]))));
-    outputImage2.onload = function () {
-      textureContext.drawImage(outputImage2, NewSvgVals.x, NewSvgVals.y);
+    let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[windowIndex];
+    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[windowIndex]))));
+    outputImage.onload = function () {
+      if (ClearCanvas === true) textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
+      textureContext.drawImage(outputImage, NewSvgVals.x, NewSvgVals.y);
       Texture.update();
     }
+  }
+}
+function RemoveSvgFromTextrue(Mesh = undefined, RemoveWindowName = undefined) {
+  if (Mesh && RemoveWindowName) {
+    let indexWindow = Mesh.svgArr.findIndex(function (obj) { return obj.name === RemoveWindowName; })
+    if (indexWindow !== -1) Mesh.svgArr.splice(indexWindow, 1);
+    Mesh.svgArr.forEach((element, index) => {
+      addSvgToTextrue(Mesh, { window: element.name, x: element.x, y: element.y }, index === 0 ? true : false, false);
+      if (index === Mesh.svgArr.length - 1) createSvghelper(devHelper.model3DVals.currentPosition, element.name);
+    })
   }
 }
 
@@ -396,6 +397,7 @@ function updateSvgTexture(SvgName = undefined, ChangeTexture = false) {
     return
   }
 }
+
 
 function changeColorTexture(Mesh = undefined, State = undefined) {
   let tempBool = false;
@@ -474,61 +476,6 @@ function change3DTime(Time = '00:00:00') {
     j++;
   }
 }
-
-
-
-
-function switc3DTime(digit, digitTime) {
-  let unicOff = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_0');
-  let unic0 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_001');
-  let unic1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_002');
-  let unic2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_003');
-  let unic3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_004');
-  let unic4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_005');
-  let unic5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_006');
-  let unic6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_007');
-  let unic7 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_008');
-  let unic8 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_009');
-  let unic9 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_off');
-  
-  switch (digit) {
-    case '0':
-      digitTime.material = unic0.material.clone();  
-      break;
-    case '1':
-      digitTime.material = unic1.material.clone();
-      break;
-    case '2':
-      digitTime.material = unic2.material.clone();
-      break;
-    case '3':
-      digitTime.material = unic3.material.clone();
-      break;
-    case '4':
-      digitTime.material = unic4.material.clone();
-      break;
-    case '5':
-      
-      digitTime.material = unic5.material.clone();  
-     
-      break;
-    case '6':
-      digitTime.material = unic6.material.clone();
-      break;
-    case '7':
-      digitTime.material = unic7.material.clone();
-      break;
-    case '8':
-      digitTime.material = unic8.material.clone();
-      break;
-    case '9':
-      digitTime.material = unic9.material.clone();
-      break;
-  }
-}
-
-
-
 
 function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefined, Duration = 1, Scene = devHelper.model3DVals.scene) {
   if (devHelper.dev.enable === true) {
@@ -642,6 +589,54 @@ function Temp_Func(params) {
   }
   setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
   change3DTime(devHelper.trenVals.timers.lifeTime); // 3d
+}
+
+
+function switc3DTime(digit, digitTime) {
+  let unicOff = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_0');
+  let unic0 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_001');
+  let unic1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_002');
+  let unic2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_003');
+  let unic3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_004');
+  let unic4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_005');
+  let unic5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_006');
+  let unic6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_007');
+  let unic7 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_008');
+  let unic8 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_009');
+  let unic9 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_off');
+  
+  switch (digit) {
+    case '0':
+      digitTime.material = unic0.material.clone();  
+      break;
+    case '1':
+      digitTime.material = unic1.material.clone();
+      break;
+    case '2':
+      digitTime.material = unic2.material.clone();
+      break;
+    case '3':
+      digitTime.material = unic3.material.clone();
+      break;
+    case '4':
+      digitTime.material = unic4.material.clone();
+      break;
+    case '5':
+      digitTime.material = unic5.material.clone();  
+      break;
+    case '6':
+      digitTime.material = unic6.material.clone();
+      break;
+    case '7':
+      digitTime.material = unic7.material.clone();
+      break;
+    case '8':
+      digitTime.material = unic8.material.clone();
+      break;
+    case '9':
+      digitTime.material = unic9.material.clone();
+      break;
+  }
 }
 
 setTimeout(() => {
