@@ -202,10 +202,10 @@ window.addEventListener('load', function () {
       ObjectSvg.svg.querySelectorAll('path').forEach((Element) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm58.35 75.18 14.08-7.8 14.07-7.8v31.2l-14.07-7.8z') { addSvgElem(Index, Element, 'right_vn'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm58.69 75.18-14.08-7.8-14.08-7.8v31.2l14.08-7.8z') { addSvgElem(Index, Element, 'left_vn'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
+        // if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
+        // if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
+        // if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
+        // if (Element.hasAttribute('d') && Element.getAttribute('d') === '') { addSvgElem(Index, Element, 'vnk_1'); }
       })
       ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element) => {
         if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_1'); }
@@ -372,21 +372,6 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           ];
           createSvgHelperButtons(tempArrHelperButtons);
         }
-        function createMainHelperContainer() {
-          if (document.getElementById('svg-helper')) {
-            document.getElementById('svg-helper').remove();
-          }
-          let mesh2DVals = getClientRectFromMesh(devHelper.model3DVals.svgDisplays.meshs.find(m => m.positionIndex === devHelper.model3DVals.currentPosition));
-          let mainContainer = document.createElement('div');
-          mainContainer.style.position = 'absolute';
-          mainContainer.style.left = (mesh2DVals.left / (document.getElementById('renderCanvas').width / 100)) + '%';
-          mainContainer.style.top = (mesh2DVals.top / (document.getElementById('renderCanvas').height / 100)) + '%';
-          mainContainer.style.width = (mesh2DVals.width / (document.getElementById('renderCanvas').width / 100)) + '%';
-          mainContainer.style.height = (mesh2DVals.height / (document.getElementById('renderCanvas').height / 100)) + '%';
-          mainContainer.id = 'svg-helper';
-          document.body.querySelector('.game-view').append(mainContainer);
-          return mainContainer;
-        }
         function createSvgHelperButton(Vals, DisplayMesh) {
           let invisElem = document.createElement('div');
           invisElem.classList.add('invisible-element-svg');
@@ -429,6 +414,21 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           Arr.forEach((element) => {
             mainContainer.append(createSvgHelperButton(element, mainMesh));
           })
+          function createMainHelperContainer() {
+            if (document.getElementById('svg-helper')) {
+              document.getElementById('svg-helper').remove();
+            }
+            let mesh2DVals = getClientRectFromMesh(devHelper.model3DVals.svgDisplays.meshs.find(m => m.positionIndex === devHelper.model3DVals.currentPosition));
+            let mainContainer = document.createElement('div');
+            mainContainer.style.position = 'absolute';
+            mainContainer.style.left = (mesh2DVals.left / (document.getElementById('renderCanvas').width / 100)) + '%';
+            mainContainer.style.top = (mesh2DVals.top / (document.getElementById('renderCanvas').height / 100)) + '%';
+            mainContainer.style.width = (mesh2DVals.width / (document.getElementById('renderCanvas').width / 100)) + '%';
+            mainContainer.style.height = (mesh2DVals.height / (document.getElementById('renderCanvas').height / 100)) + '%';
+            mainContainer.id = 'svg-helper';
+            document.body.querySelector('.game-view').append(mainContainer);
+            return mainContainer;
+          }
         }
       } else {
         if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
@@ -436,32 +436,22 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
     }, 150);
   }
 }
+
 function changeSvgElem(Val = {}) {
   if (Val.name) {
     devHelper.svgVals.forEach((svgArrObject) => {
       svgArrObject.activeElements.forEach((activeElemObj) => {
         if (activeElemObj.name === Val.name) {
-          if (Val.text) {
-            console.log(activeElemObj.element, Val.text);
-
-            activeElemObj.element.innerHTML = Val.text;
-          }
-          if (Val.color)
-            activeElemObj.element.style.fill = Val.color;
-          if (Val.stroke)
-            activeElemObj.element.style.stroke = Val.stroke;
-          if (Val.alpha)
-            activeElemObj.element.style.opacity = Val.alpha;
-          if (Val.rotation)
-            changeSvgElemPos(activeElemObj.element, Val.rotation, 'rotate');
+          if (Val.text) activeElemObj.element.innerHTML = Val.text;
+          if (Val.color) activeElemObj.element.style.fill = Val.color;
+          if (Val.stroke) activeElemObj.element.style.stroke = Val.stroke;
+          if (Val.alpha) activeElemObj.element.style.opacity = Val.alpha;
+          if (Val.rotation) changeSvgElemPos(activeElemObj.element, Val.rotation, 'rotate');
           if (Val.position) {
             if (Val.position.x) changeSvgElemPos(activeElemObj.element, Val.position.x, 'translateX');
             if (Val.position.y) changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
           }
         }
-        // updateSvgTexture(svgArrObject.name, true);
-        // let Texture = devHelper.model3DVals.svgDisplays.meshs[0].material.diffuseTexture;
-        // Texture.update();
       })
     })
   } else {
@@ -472,7 +462,6 @@ function changeSvgElem(Val = {}) {
 
 function changeSvgElemPos(Elem, Val, Type) {
   let tempTransform = Elem.style.transform ? Elem.style.transform : '';
-  // TODO тут вроде в пикселях можно, чтобы легче ориентироваться внутри SVG
   let endString = Type === 'translateX' ? 'px' : Type === 'translateY' ? 'px' : 'deg';
   if (tempTransform !== '' && tempTransform.includes(Type)) {
     let oldTrans = tempTransform.split(`${Type}(`)[1].split(endString)[0];

@@ -34,6 +34,7 @@ function startTren() {
 }
 function trenTimeTick(timeStamp) {
   if (devHelper.trenVals.scenario !== undefined) {
+    devHelper.model3DVals.scene.render();
     if (devHelper.trenVals.ended === false) {
       if (devHelper.trenVals.timers.allTimeHelper === 0) devHelper.trenVals.timers.allTimeHelper = timeStamp;
       devHelper.trenVals.timers.allTime = Number(timeStamp - devHelper.trenVals.timers.allTimeHelper).toFixed(2);
@@ -58,10 +59,17 @@ function trenTimeTick(timeStamp) {
           if (devHelper.trenVals.waitingInput === false) devHelper.trenVals.waitingInput = true;
         } else {
           if (nextAction.action && nextAction.action.window2D) {
-            for (let key in nextAction.action.window2D.elements) {
-              if (nextAction.action.window2D.elements.hasOwnProperty(key))
-                changeSvgElem(nextAction.action.window2D.elements[key]);
-            }
+            changeSvgElem({name: 'vnk_1', color: '#000000'});
+            // let mesh = devHelper.model3DVals.svgDisplays.meshs.find(m => m.positionIndex === devHelper.model3DVals.currentPosition);
+            // mesh.material.diffuseTexture = mesh.material.emissiveTexture = devHelper.model3DVals.svgDisplays.textures[8];
+            // devHelper.model3DVals.svgDisplays.textures[8].update();
+            // mesh.material.diffuseTexture = mesh.material.emissiveTexture = devHelper.model3DVals.svgDisplays.textures[5];
+            // devHelper.model3DVals.svgDisplays.textures[5].update();
+            // console.log(mesh);
+            // for (let key in nextAction.action.window2D.elements) {
+            //   if (nextAction.action.window2D.elements.hasOwnProperty(key))
+            //     changeSvgElem(nextAction.action.window2D.elements[key]);
+            // }
             devHelper.trenVals.timers.actionTimeHelper = 0;
             nextAction.passed = true;
             devHelper.trenVals.waitingInput = false;
@@ -102,10 +110,10 @@ function trenClickOnMesh(Mesh) {
   }
 }
 
-function trenClickOnSvgElem(SvgElemHelper) {
-  if (devHelper.trenVals.waitingInput === true) {
+function trenClickOnSvgElem(SvgElemHelper = undefined, GhostClick = undefined) {
+  if (devHelper.trenVals.waitingInput === true || GhostClick === true) {
     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-    if (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id) {
+    if (GhostClick === true || (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id)) {
       if (currentActonObject.action.window2D && currentActonObject.action.window2D.elements) {
         for (let key in currentActonObject.action.window2D.elements) {
           if (currentActonObject.action.window2D.elements.hasOwnProperty(key))

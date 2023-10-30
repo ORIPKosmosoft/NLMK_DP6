@@ -131,16 +131,15 @@ let tempActions = [
     {
       action: {
         window2D: {
-          name: 'O_n_k_na_VNK_posle_1',
           elements: [
             { name: 'status_window_text', text: 'Открывается' },
             { name: 'btn_open', color: '', stroke: '' },
             { name: 'polozenie_text', text: '55' },
             { name: 'polozenie_button_text', color: '' },
-            { name: 'left_vn', color: '' },
-            { name: 'right_vn', color: '' },
-            { name: 'circle_1', stroke: '' },
-            { name: 'circle_2', stroke: '' },
+            { name: 'left_vn', color: '#6DE90B' },
+            { name: 'right_vn', color: '#6DE90B' },
+            { name: 'circle_1', stroke: '#6DE90B' },
+            { name: 'circle_2', stroke: '#6DE90B' },
           ],
         },
       },
@@ -149,7 +148,6 @@ let tempActions = [
     {
       action: {
         window2D: {
-          name: 'O_n_k_na_VNK_posle_1',
           elements: [
             { name: 'polozenie_text', text: '65' },
             { name: 'left_vn', color: '#8F8F8F' },
@@ -164,7 +162,6 @@ let tempActions = [
     {
       action: {
         window2D: {
-          name: 'O_n_k_na_VNK_posle_1',
           elements: [
             { name: 'polozenie_text', text: '75' },
             { name: 'left_vn', color: '' },
@@ -179,7 +176,6 @@ let tempActions = [
     {
       action: {
         window2D: {
-          name: 'O_n_k_na_VNK_posle_1',
           elements: [
             { name: 'polozenie_text', text: '85' },
             { name: 'left_vn', color: '#8F8F8F' },
@@ -194,7 +190,6 @@ let tempActions = [
     {
       action: {
         window2D: {
-          name: 'O_n_k_na_VNK_posle_1',
           elements: [
             { name: 'polozenie_text', text: '95' },
             { name: 'left_vn', color: '' },
@@ -209,7 +204,6 @@ let tempActions = [
     {
       action: {
         window2D: {
-          name: 'O_n_k_na_VNK_posle_1',
           elements: [
             { name: 'polozenie_text', text: '100' },
             { name: 'status_window_text', text: 'Открыт' },
@@ -227,15 +221,8 @@ let tempActions = [
         target2D: 'close_w1',
       },
       startTime: 7.1,
+      human: true,
     },
-    // {
-    //   action: {
-    //     target2D: 'open_vn',
-    //     window2D: {},
-    //   },
-    //   duration: 0,
-    //   startTime: 2.1,
-    // }, 
     // {
     //   text: 'Заменить1',
     //   action: {
