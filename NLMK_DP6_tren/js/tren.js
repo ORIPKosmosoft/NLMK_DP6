@@ -37,19 +37,21 @@ function trenTimeTick(timeStamp) {
   if (devHelper.trenVals.scenario !== undefined) {
     if (devHelper.trenVals.ended === false) {
       if (devHelper.trenVals.timers.allTimeHelper === 0) devHelper.trenVals.timers.allTimeHelper = timeStamp;
-      devHelper.trenVals.timers.allTime = parseFloat((timeStamp - devHelper.trenVals.timers.allTimeHelper).toFixed(2));
+      devHelper.trenVals.timers.allTime = Number(timeStamp - devHelper.trenVals.timers.allTimeHelper).toPrecision(3);
       if (devHelper.trenVals.waitingInput === false) {
         if (devHelper.trenVals.timers.actionTimeHelper === 0) {
           devHelper.trenVals.timers.scenarioTimeHelper = devHelper.trenVals.timers.scenarioTime;
           devHelper.trenVals.timers.actionTimeHelper = timeStamp;
         }
-        devHelper.trenVals.timers.actionTime = parseFloat((timeStamp - devHelper.trenVals.timers.actionTimeHelper).toFixed(2));
-        devHelper.trenVals.timers.scenarioTime = devHelper.trenVals.timers.scenarioTimeHelper + devHelper.trenVals.timers.actionTime;
+        devHelper.trenVals.timers.actionTime = Number((timeStamp - devHelper.trenVals.timers.actionTimeHelper).toPrecision(3));
+        devHelper.trenVals.timers.scenarioTime = Number((devHelper.trenVals.timers.scenarioTimeHelper + devHelper.trenVals.timers.actionTime).toPrecision(3));
       }
       if (devHelper.dev.enable === true && document.querySelector('.info-tren')) {
-        document.querySelector('.info-tren').innerHTML = `Время действия ${devHelper.trenVals.currentAction} = ${devHelper.trenVals.timers.actionTime / 1000}. Время сценария = ${devHelper.trenVals.timers.scenarioTime / 1000}. Общее время в сценарии = ${devHelper.trenVals.timers.allTime / 1000}.`
+        document.querySelector('.info-tren').innerHTML = `<p>Время действия ${devHelper.trenVals.currentAction} = ${devHelper.trenVals.timers.actionTime / 1000};</p>`
+        document.querySelector('.info-tren').innerHTML += `<p>Время сценария = ${devHelper.trenVals.timers.scenarioTime / 1000};</p>`
+        document.querySelector('.info-tren').innerHTML += `<p>Общее время в сценарии = ${devHelper.trenVals.timers.allTime / 1000};</p>`
         let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-        if (currentActonObject) document.querySelector('.info-tren').innerHTML += `\nнужно кликнуть на ${currentActonObject.action.target2D}`;
+        if (currentActonObject) document.querySelector('.info-tren').innerHTML += `<p>нужно кликнуть на ${currentActonObject.action.target2D};</p>`;
       }
       let nextAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
       if (nextAction) {
