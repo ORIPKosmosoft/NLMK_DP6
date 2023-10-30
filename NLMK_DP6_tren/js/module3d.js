@@ -242,7 +242,13 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
       }
+      try{
+        setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
+        change3DTime(devHelper.trenVals.timers.lifeTime); // 3d
+      }
+      catch{}
     });
+    
   }
 });
 
@@ -442,30 +448,21 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
 }
 //TODO тут сделать часы 3Д
 function change3DTime(Time = '00:00:00') {
-  // Пример кода часов 3Д
-  let unicOff = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_0');
-  let unic0 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_001');
-  let unic1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_002');
-  let unic2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_003');
-  let unic3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_004');
-  let unic4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_005');
-  let unic5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_006');
-  let unic6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_007');
-  let unic7 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_008');
-  let unic8 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_009');
-  let unic9 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_off');
   let digit1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits000');
   let digit2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits001');
   let digit3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits002');
   let digit4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits003');
   let digit5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits004');
   let digit6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits005');
-  digit1.material = unic0.material.clone();
-  digit2.material = unic7.material.clone();
-  digit3.material = unic3.material.clone();
-  digit4.material = unic4.material.clone();
-  digit5.material = unic5.material.clone();
-  digit6.material = unic4.material.clone();
+  let arrayDigit = [digit1, digit2, digit3, digit4, digit5, digit6];
+  
+  for (let i = 0, j = 0; i < Time.length; i++) {
+    if (Time[i] == ":") {
+      continue;
+    }
+    switc3DTime(Time[i], arrayDigit[j])
+    j++;
+  }
 }
 
 function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefined, Duration = 1, Scene = devHelper.model3DVals.scene) {
@@ -568,3 +565,49 @@ function clickOnMesh(Mesh = undefined) {
 
 
 
+function switc3DTime(digit, digitTime) {
+  let unicOff = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_0');
+  let unic0 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_001');
+  let unic1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_002');
+  let unic2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_003');
+  let unic3 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_004');
+  let unic4 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_005');
+  let unic5 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_006');
+  let unic6 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_007');
+  let unic7 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_008');
+  let unic8 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_009');
+  let unic9 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_off');
+  
+  switch (digit) {
+    case '0':
+      digitTime.material = unic0.material.clone();  
+      break;
+    case '1':
+      digitTime.material = unic1.material.clone();
+      break;
+    case '2':
+      digitTime.material = unic2.material.clone();
+      break;
+    case '3':
+      digitTime.material = unic3.material.clone();
+      break;
+    case '4':
+      digitTime.material = unic4.material.clone();
+      break;
+    case '5':
+      digitTime.material = unic5.material.clone();  
+      break;
+    case '6':
+      digitTime.material = unic6.material.clone();
+      break;
+    case '7':
+      digitTime.material = unic7.material.clone();
+      break;
+    case '8':
+      digitTime.material = unic8.material.clone();
+      break;
+    case '9':
+      digitTime.material = unic9.material.clone();
+      break;
+  }
+}
