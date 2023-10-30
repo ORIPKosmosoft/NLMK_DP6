@@ -351,14 +351,15 @@ function clickCloseChat(e){
     document.querySelector(".dialogTimers-play").classList.toggle("disabled-play");
   }
 
-  setLifeTime(devHelper.trenVals.timers.lifeTime);
+  setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
+  change3DTime(devHelper.trenVals.timers.lifeTime); // 3d
 
   // Открыть таймер
   document.querySelector(".time-oclock").addEventListener('click', (e) => {
     document.querySelector(".dialogMessageWatch").classList.add('opacity-1-Always');
     document.querySelector('.dialogMessageWatch').classList.remove('opacity-0');
 
-    let myBlock = document.querySelector('.box-time');
+    // let myBlock = document.querySelector('.box-time');
 
     document.querySelector('.dialogMessageWatch').style.left = ConvertPxToVw(parseInt(document.querySelector('.box-time').getBoundingClientRect().right)) + 1 + 'vw';
     document.querySelector('.dialogMessageWatch').style.top = document.querySelector('.box-time').style.top;
@@ -368,7 +369,10 @@ function clickCloseChat(e){
        >= 100) {
        document.querySelector('.dialogMessageWatch').style.left = ConvertPxToVw(parseInt(document.querySelector('.box-time').getBoundingClientRect().left)) - 1 - ConvertPxToVw(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().width)) + 'vw';
     }
-    if (ConvertPxToVh(parseInt(document.querySelector('.box-time').getBoundingClientRect().bottom)) >= ConvertPxToVh(window.innerHeight)) {
+    // FIX GO
+    if (ConvertPxToVh(parseInt(document.querySelector('.box-time').getBoundingClientRect().top)) + 
+        ConvertPxToVh(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().height)) 
+    >= ConvertPxToVh(window.innerHeight)) {
       document.querySelector('.dialogMessageWatch').style.top = ConvertPxToVh(window.innerHeight) - ConvertPxToVh(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().height)) + 'vh';
     }
   })
@@ -404,6 +408,7 @@ function clickCloseChat(e){
     document.querySelector(".dialogMessageWatch .time-minute").textContent = document.querySelector('.dialogMessageWatch .dialogTimers-hours[dropDown="2"] p').textContent;
     newStateTimer();
     startTimer();
+    
   })
 
   function getLifeTime_Date() {
@@ -473,10 +478,11 @@ function clickCloseChat(e){
 
       currentDateTime += counterStep;
       counterDateTime -= counterStep;
-
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
-      function setLifeTimeOn3D() { }  // время 3D системы
+      change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
+
+
 
       timePassed += _stepInteval;
     }, _stepInteval);
@@ -694,3 +700,9 @@ document.getElementById('b_chat').addEventListener("click", (e)=>{
 
 
 
+document.getElementById('b_exit').addEventListener("click", (e) => {
+  let digit1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits000');
+  change3DTime("12:05:50");
+  
+  console.log("press");
+})
