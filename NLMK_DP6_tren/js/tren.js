@@ -58,11 +58,10 @@ function trenTimeTick(timeStamp) {
           if (devHelper.trenVals.waitingInput === false) devHelper.trenVals.waitingInput = true;
         } else {
           if (nextAction.action && nextAction.action.window2D) {
-            // for (let key in nextAction.action.window2D.elements) {
-            //   console.log(nextAction.action.window2D.elements[key]);
-            //   if (nextAction.action.window2D.elements.hasOwnProperty(key))
-            //     changeSvgElem(nextAction.action.window2D.elements[key]);
-            // }
+            for (let key in nextAction.action.window2D.elements) {
+              if (nextAction.action.window2D.elements.hasOwnProperty(key))
+                changeSvgElem(nextAction.action.window2D.elements[key]);
+            }
             devHelper.trenVals.timers.actionTimeHelper = 0;
             nextAction.passed = true;
             devHelper.trenVals.waitingInput = false;
