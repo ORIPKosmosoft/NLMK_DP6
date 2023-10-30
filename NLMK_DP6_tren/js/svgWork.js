@@ -167,7 +167,10 @@ window.addEventListener('load', function () {
       })
     }
     if (ObjectSvg.name === 'BVNK_VNK1') {
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { if (TextElement.innerHTML === '92') { addSvgElem(Index, TextElement, '3TI_43'); } })
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
+        if (TextElement.innerHTML === '92') { addSvgElem(Index, TextElement, '3TI_43'); } 
+        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); } 
+      })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') { addSvgElem(Index, Element, '313'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_1'); }
@@ -229,8 +232,26 @@ window.addEventListener('load', function () {
       Element2.element.id = `${Element.name}_${Element2.name}`;
     })
   })
+  setTimeSvgSheme()
 });
-
+function setTimeSvgSheme() {
+    devHelper.svgVals.forEach((ObjectSvg, Index) => {
+      // if (ObjectSvg.name === 'BVNK_VNK1') {
+        ObjectSvg.activeElements.forEach((Element) => {
+          if (Element.name === "lifetime") {
+            console.log(devHelper.trenVals.timers.lifeTime);
+            Element.innerHTML = devHelper.trenVals.timers.lifeTime;
+            changeSvgElem({
+              name: Element.name, 
+              text: devHelper.trenVals.timers.lifeTime
+            });
+            return;
+          }
+        })
+      // }
+      
+    })
+}
 function addSvgElem(SvgIndex, Element, Name, Move = true) {
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,

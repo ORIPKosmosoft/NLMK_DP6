@@ -1885,7 +1885,7 @@ ul {
 /*  /// Cтраница тренажёра - интерфейс - основная часть ///  */
 .tren-ui{
   background-color: rgba(255, 255, 255, 1);
-  z-index: 909;
+  z-index: 1;
   position: relative;
   height: 99vh;
   overflow: hidden;

@@ -320,14 +320,20 @@ function clickCloseChat(e){
   };
 }
 
+
 function setLifeTime(time) {
   devHelper.trenVals.timers.lifeTime = time;
   document.querySelector(".time-hour").textContent = time.split(":")[0];
   document.querySelector(".time-minute").textContent = time.split(":")[1];
   document.querySelector(".time-second").textContent = time.split(":")[2];
+
+  // 3d?
+  // schemes?
+
 }
 // TIMER
 {
+  setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
   // BIND mouseDown
   document.querySelector('.dialogHeader .time-header-title').onmousedown = (e) => {
     raiseUpBox(e);
@@ -400,10 +406,13 @@ function setLifeTime(time) {
     })
   })
   // Клик Плей таймер
-  document.querySelector(".dialogTimers-play").addEventListener('click', (e) => {
+  document.querySelector(".dialogMessageWatch .dialogTimers-play").addEventListener('click', (e) => {
     if (e.currentTarget.classList.contains("disabled-play")) {
       return;
     }
+    Array.from(document.querySelectorAll('.visibleDrooDown')).forEach(element => {
+      element.classList.remove('visibleDrooDown')
+    });
     document.querySelector(".dialogMessageWatch .time-hour").textContent = document.querySelector('.dialogMessageWatch .dialogTimers-hours[dropDown="1"] p').textContent;
     document.querySelector(".dialogMessageWatch .time-minute").textContent = document.querySelector('.dialogMessageWatch .dialogTimers-hours[dropDown="2"] p').textContent;
     newStateTimer();
@@ -481,6 +490,7 @@ function setLifeTime(time) {
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
+      setTimeSvgSheme();                                                      // время на схемах
 
 
 
@@ -699,3 +709,6 @@ document.getElementById('b_chat').addEventListener("click", (e)=>{
 
 
 
+document.getElementById('b_exit').addEventListener("click", (e)=>{
+  // setTimeSvgSheme();
+})
