@@ -734,6 +734,7 @@ document.getElementById('b_oclock').addEventListener("click", (e) => {
   if (e.currentTarget.classList.contains('button-tren-active')) {
     document.querySelector('.box-time').classList.add("opacity-1-Always");
     document.querySelector('.box-time').classList.add("box-time-padTop32");
+    document.querySelector('.box-time').classList.add("border-white1");
     document.querySelector('.box-time .block-button').classList.add("z-index-1");
     document.querySelector('.box-time .backArea').classList.add('backArea-white-100')
     document.querySelector('.time-header').classList.add("time-header-opacity");
