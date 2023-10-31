@@ -205,6 +205,7 @@ window.addEventListener('load', function () {
       })
       ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
         if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
+        // if (TextElement.innerHTML === '51') { addSvgElem(Index, TextElement, 'lifetime'); }
       });
     }
     if (ObjectSvg.name === 'vnk_spvg') {
@@ -443,9 +444,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
             mainContainer.append(createSvgHelperButton(element, mainMesh));
           })
           function createMainHelperContainer() {
-            if (document.getElementById('svg-helper')) {
-              document.getElementById('svg-helper').remove();
-            }
+            if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
             let mesh2DVals = getClientRectFromMesh(devHelper.model3DVals.svgDisplays.meshs.find(m => m.positionIndex === devHelper.model3DVals.currentPosition));
             let mainContainer = document.createElement('div');
             mainContainer.style.position = 'absolute';
