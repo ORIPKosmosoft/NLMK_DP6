@@ -453,9 +453,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
             mainContainer.append(createSvgHelperButton(element, mainMesh));
           })
           function createMainHelperContainer() {
-            if (document.getElementById('svg-helper')) {
-              document.getElementById('svg-helper').remove();
-            }
+            if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
             let mesh2DVals = getClientRectFromMesh(devHelper.model3DVals.svgDisplays.meshs.find(m => m.positionIndex === devHelper.model3DVals.currentPosition));
             let mainContainer = document.createElement('div');
             mainContainer.style.position = 'absolute';
