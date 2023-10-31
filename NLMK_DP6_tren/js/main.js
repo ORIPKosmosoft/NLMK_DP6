@@ -116,11 +116,21 @@ function domLoaded() {
   devHelper.testVals.answersArray = [
     // 'Оборудование пылеуловителя',
     // 'Ответ 2',
-    'Ответ 5',
+    ['Ответ 1', 'Ответ 2', 'Ответ 3', 'Ответ 5'],
     {
       0: ['1. ФААФАФАФАФ','ответ 1'],
       1: ['2. ФААФАФАФАФ', 'Длинный ответ номер 2'],
       2: ['3. ФААФАФАФАФ', 'ответ 3'],
+    },
+    {
+      0: ['1 ФААФАФАФАФ','ответ 1'],
+      1: ['2 ФААФАФАФАФ', 'Длинный ответ номер 2'],
+      2: ['3 ФААФАФАФАФ', 'ответ 3'],
+    },
+    {
+      0: ['1 ФААФАФАФАФ','Длинный ответ номер 1'],
+      1: ['2 ФААФАФАФАФ', 'Длинный ответ номер 2'],
+      2: ['3 ФААФАФАФАФ', 'ответ 3'],
     },
   ];
 
@@ -184,8 +194,31 @@ function domLoaded() {
     setDragEvents(Element);
   });
 
+  // Наведение на кнопку 'Помощь'
+  document.querySelector('.helper-answer').addEventListener('mouseover', (e) => {
+    showhelperTooltip(e.currentTarget, e.currentTarget.getBoundingClientRect());
+  });
+  document.querySelector('.helper-answer').addEventListener('mouseout', (e) => {
+    document.querySelector('.helper-tooltip').classList.toggle('visible-tiiltip', false);
+  });
+
 
   loadTrenActions();
+}
+
+// Показать текст при наведении на 'Помощь'
+function showhelperTooltip(elem, elemRect) {
+  const helperTooltip = document.querySelector('.helper-tooltip');
+  if (document.querySelector('.selfcheck-visible').classList.contains('container-dragDrop')) {
+    helperTooltip.querySelector('span').textContent = devHelper.testVals.dragDropHelperText;
+  } else {
+    helperTooltip.querySelector('span').textContent = devHelper.testVals.radioSelfcheckHelperText;
+  }
+  // console.log(elem.offsetTop + ', ' + elem.offsetLeft);
+  helperTooltip.classList.toggle('visible-tiiltip', true);
+  helperTooltip.style.left  = elem.offsetLeft + elem.getBoundingClientRect().width - helperTooltip.getBoundingClientRect().width + 'px';
+  helperTooltip.style.top = elem.offsetTop - helperTooltip.getBoundingClientRect().height - 10 + 'px';
+  // console.log(elem);
 }
 
 // Работа с ивентами перетаскивания
@@ -319,17 +352,15 @@ function guideBtnsClick(e) {
 
 // Функция работы с radioButton
 function radioButtonChange(elem) {
-  if (elem.parentElement.classList.contains('active-radio')) return;
+  // if (elem.parentElement.classList.contains('active-radio')) return;
   let confirmButton = elem.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button');
   let radioContainer = elem.closest('.selfcheck-radio-container');
   if (!elem.parentElement.classList.contains('active-radio')) {
-    if (radioContainer.contains(radioContainer.querySelector('.active-radio'))) {
-      radioContainer.querySelector('.active-radio').classList.toggle('active-radio', false);
-    }
     elem.parentElement.classList.toggle('active-radio', true);
     confirmButton.classList.toggle('disabled-button', false)
     confirmButton.classList.toggle('active-button', true)
   } else {
+    console.log(elem);
     elem.parentElement.classList.toggle('active-radio', false);
     confirmButton.classList.toggle('disabled-button', true)
     confirmButton.classList.toggle('active-button', false)
@@ -339,63 +370,132 @@ function radioButtonChange(elem) {
 // Подтверждение ответа в тестах
 function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
   let selfcheckContainer = elem.closest('.tests-container-elem').querySelector('.selfcheck-visible');
-  // elem.closest('.tests-container-elem').querySelectorAll('.selfcheck-container').forEach((Element) => {
-  //   if (Element.classList.contains('selfcheck-invisible') === false) {
-  //     selfcheckContainer = Element;
-  //   }
-  // });
 
   let selfcheckcontainerIndex;
   let radioContainer;
   let radioButtSelectIndex;
   let textSelectRadioButt;
 
+  // Если DragDrop элемент
   if (selfcheckContainer.classList.contains('container-dragDrop') === true) {
     selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
-    console.log(selfcheckContainer.querySelectorAll('.selfcheck-radio-dragDrop'));
-    // selfcheckContainer.querySelectorAll('.selfcheck-radio-dragDrop').forEach((Element, index) => {
-    //   console.log(devHelper.testVals.answersArray[selfcheckcontainerIndex][index]);
-    // });
-    // devHelper.testVals.answersArray[selfcheckcontainerIndex] = elem.querySelector('span').textContent;
+    let dragDropElem = [];
+    selfcheckContainer.querySelectorAll('.selfcheck-radio-dragDrop').forEach((Element) => {
+      dragDropElem.push(Element.querySelectorAll('span'));
+    })
+    const answers = selfcheckTrueResults[selfcheckcontainerIndex];
 
+    if (elem.querySelector('span').textContent === 'Подтвердить') {
+      for (let i = 0; i < dragDropElem.length; i++) {
+      const elementDrag = dragDropElem[i];
+      for (let ii = 0; ii < Object.keys(answers).length; ii++) {
+        const elementAnswers = answers[ii];
+        if (elementDrag[0].textContent === elementAnswers[0]) {
+          if (elementDrag[1].textContent === elementAnswers[1]) {
+            elementDrag[0].parentElement.classList.toggle('correct-dragDrop', true);
+          } else {
+            elementDrag[0].parentElement.classList.toggle('wrong-dragDrop', true);
+          }
+        }
+      }
+    }
+    selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+    if (selfcheckContainer.querySelector('.wrong-dragDrop') != null) {
+      elem.querySelector('span').textContent = 'Повторить';
+    } else {
+      elem.classList.toggle('disabled-button', true);
+      selfcheckContainer.classList.toggle('correct-dragDrop-container', true);
+    }
 
+    } else if (elem.querySelector('span').textContent === 'Повторить') {
+      selfcheckContainer.querySelectorAll('.correct-dragDrop').forEach((Element) => {
+        Element.classList.toggle('correct-dragDrop', false);
+      });
+      selfcheckContainer.querySelectorAll('.wrong-dragDrop').forEach((Element) => {
+        Element.classList.toggle('wrong-dragDrop', false);
+      })
+      selfcheckContainer.classList.toggle('block-selfcheck-container', false);
+      elem.querySelector('span').textContent = 'Подтвердить';
+    }
+    
+
+    // Если не DragDrop элемент
   } else if (selfcheckContainer.classList.contains('container-dragDrop') === false) {
     selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
     radioContainer = selfcheckContainer.querySelector('.selfcheck-radio-container');
     radioButtSelectIndex = Array.from(radioContainer.querySelectorAll('.radio-elem')).indexOf(radioContainer.querySelector('.active-radio'));
-    textSelectRadioButt = selfcheckContainer.querySelector('.active-radio').querySelector('span').textContent;
+    // textSelectRadioButt = selfcheckContainer.querySelector('.active-radio').querySelector('span').textContent;
 
     if (elem.querySelector('span').textContent === 'Подтвердить') {
-      if (textSelectRadioButt == selfcheckTrueResults[selfcheckcontainerIndex]) {
-        radioContainer.querySelector('.active-radio').classList.toggle('correct-answer', true);
-        selfcheckContainer.classList.toggle('block-selfcheck-container', true);
-        elem.classList.toggle('disabled-button', true);
-        radioContainer.querySelectorAll('.radio-elem').forEach((Element) => {
-          if (!Element.classList.contains('active-radio')) {
-            Element.classList.toggle('radio-elem-disabled', true);
-          }
+      radioContainer.querySelectorAll('.active-radio').forEach((Element) => {
+        for (let i = 0; i < selfcheckTrueResults[selfcheckcontainerIndex].length; i++) {
+          const element = selfcheckTrueResults[selfcheckcontainerIndex][i];
+          if (Element.querySelector('span').textContent === element) {
+            Element.classList.toggle('correct-answer', true);
+            Element.classList.toggle('active-radio', false);
+          } 
+        }
+      });
+      radioContainer.querySelectorAll('.active-radio').forEach((Element) => {
+        Element.classList.toggle('wrong-answer', true);
+        Element.classList.toggle('active-radio', false);
+      });
+
+      if (selfcheckTrueResults[selfcheckcontainerIndex].length != radioContainer.querySelectorAll('.correct-answer').length || radioContainer.querySelector('.wrong-answer') != null) {
+        // radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', true);
+        selfcheckTrueResults[selfcheckcontainerIndex].forEach((Element) => {
+          selfcheckContainer.querySelectorAll('.radio-elem').forEach((elem) => {
+            if (elem.querySelector('span').textContent === Element) {
+              if (!elem.classList.contains('correct-answer') && !elem.classList.contains('wrong-answer')) {
+                elem.classList.toggle('wrong-answer', true);
+              }
+            }
+          });
         });
-      } else {
-        radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', true);
         selfcheckContainer.classList.toggle('block-selfcheck-container', true);
         elem.querySelector('span').textContent = 'Повторить';
-        radioContainer.querySelectorAll('.radio-elem').forEach((Element) => {
-          if (!Element.classList.contains('active-radio')) {
-            Element.classList.toggle('radio-elem-disabled', true);
-          }
-        });
+      } else {
+        selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+        elem.classList.toggle('disabled-button', true);
       }
+
+      // if (textSelectRadioButt == selfcheckTrueResults[selfcheckcontainerIndex]) {
+      //   radioContainer.querySelector('.active-radio').classList.toggle('correct-answer', true);
+      //   selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+      //   elem.classList.toggle('disabled-button', true);
+      //   radioContainer.querySelectorAll('.radio-elem').forEach((Element) => {
+      //     if (!Element.classList.contains('active-radio')) {
+      //       Element.classList.toggle('radio-elem-disabled', true);
+      //     }
+      //   });
+      // } else {
+      //   radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', true);
+      //   selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+      //   elem.querySelector('span').textContent = 'Повторить';
+      //   radioContainer.querySelectorAll('.radio-elem').forEach((Element) => {
+      //     if (!Element.classList.contains('active-radio')) {
+      //       Element.classList.toggle('radio-elem-disabled', true);
+      //     }
+      //   });
+      // }
+
     } else if (elem.querySelector('span').textContent === 'Повторить') {
-      radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', false);
-      radioContainer.querySelector('.active-radio').classList.toggle('active-radio', false);
+      radioContainer.querySelectorAll('.correct-answer').forEach((Element) => {
+        Element.classList.toggle('correct-answer', false);
+      });
+      radioContainer.querySelectorAll('.wrong-answer').forEach((Element) => {
+        Element.classList.toggle('wrong-answer', false);
+      });
+      // radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', false);
+      // radioContainer.querySelector('.active-radio').classList.toggle('active-radio', false);
       selfcheckContainer.classList.toggle('block-selfcheck-container', false);
       elem.querySelector('span').textContent = 'Подтвердить';
       elem.classList.toggle('disabled-button', true);
-      radioContainer.querySelectorAll('.radio-elem').forEach((Element) => {
-        if (!Element.classList.contains('active-radio')) {
-          Element.classList.toggle('radio-elem-disabled', false);
-        }
-      });
+      // radioContainer.querySelectorAll('.radio-elem').forEach((Element) => {
+      //   if (!Element.classList.contains('active-radio')) {
+      //     Element.classList.toggle('radio-elem-disabled', false);
+      //   }
+      // });
     }
   }
 
@@ -442,7 +542,18 @@ function reviveArray(min) {
   document.querySelectorAll('.selfcheck-container').forEach((Element) => {
     devHelper.testVals.containerArray.push(Element);
     Element.classList.toggle('block-selfcheck-container', false);
-    Element.querySelector('.correct-answer').classList.toggle('correct-answer', false);
+    if (Element.classList.contains('container-dragDrop')) {
+      Element.classList.toggle('correct-dragDrop-container', false);
+      Element.querySelectorAll('.correct-dragDrop').forEach((elem) => {
+        elem.classList.toggle('correct-dragDrop', false);
+      });
+    } else {
+      // Element.querySelector('.correct-answer').classList.toggle('correct-answer', false);
+      Element.querySelectorAll('.correct-answer').forEach((elem) => {
+        elem.classList.toggle('correct-answer', false);
+      });
+    }
+    
     Element.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', true);
     Element.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').classList.toggle('active-button', false);
   });
@@ -467,19 +578,25 @@ function navIconClick(randomContainer, min) {
 }
 
 function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
+  const prevContClasslist = devHelper.testVals.previousContainer;
   devHelper.testVals.previousContainer.querySelectorAll('.radio-elem').forEach((Element) => {
     if (!Element.classList.contains('active-radio')) {
       Element.classList.toggle('radio-elem-disabled', false);
     }
   });
-  if (document.querySelector('.active-radio') != null) {
-    document.querySelector('.active-radio').classList.toggle('active-radio', false);
+  if (document.querySelectorAll('.active-radio').length != 0) {
+    document.querySelectorAll('.active-radio').forEach((Element) => {
+      Element.classList.toggle('active-radio', false);
+    });
   }
   if (devHelper.testVals.previousContainer != undefined) {
     devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
     devHelper.testVals.previousContainer.classList.toggle('selfcheck-visible', false);
   }
-  if (devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelector('.correct-answer') != null) {
+
+  // Если в dragDrop элементе ответы верны
+  if (prevContClasslist.classList.contains('container-dragDrop') && prevContClasslist.classList.contains('correct-dragDrop-container')) {
+    // console.log(devHelper.testVals.previousContainer);
     devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
     devHelper.testVals.previousContainer.classList.toggle('selfcheck-visible', false);
     previousContainerIndex = devHelper.testVals.containerArray.indexOf(devHelper.testVals.previousContainer);
@@ -504,6 +621,61 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
       devHelper.testVals.previousContainer = undefined;
     }
     return;
+
+
+    // Если в dragDrop элементе ответы неверны
+  } else if (prevContClasslist.classList.contains('container-dragDrop') && !prevContClasslist.classList.contains('correct-dragDrop-container')) {
+    // console.log('неверный ответ');
+    randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+    // если следующий контейнер равен предыдущему, то заменить
+    if (devHelper.testVals.previousContainer == randomContainer) {
+      if (devHelper.testVals.containerArray.length > 1) {
+        while (devHelper.testVals.previousContainer == randomContainer) {
+          randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+        }
+      }
+    }
+    randomContainer.classList.toggle('selfcheck-invisible', false);
+    randomContainer.classList.toggle('selfcheck-invisible', true);
+    devHelper.testVals.previousContainer.querySelectorAll('.selfcheck-radio-dragDrop').forEach((Element) => {
+      Element.classList.toggle('correct-dragDrop', false);
+      Element.classList.toggle('wrong-dragDrop', false);
+    });
+    devHelper.testVals.previousContainer.classList.toggle('block-selfcheck-container', false);
+    devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
+    devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', true);
+    devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').querySelector('span').textContent = 'Подтвердить';
+  }
+
+  // Если radio ответы правильные
+  if (devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelector('.wrong-answer') === null && devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelectorAll('.correct-answer').length === devHelper.testVals.answersArray[devHelper.testVals.containerArray.indexOf(devHelper.testVals.previousContainer)].length) {
+    devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
+    devHelper.testVals.previousContainer.classList.toggle('selfcheck-visible', false);
+    previousContainerIndex = devHelper.testVals.containerArray.indexOf(devHelper.testVals.previousContainer);
+    devHelper.testVals.containerArray.splice(previousContainerIndex, 1);
+    if (devHelper.testVals.containerArray.length === 0) {
+      reviveArray(min);
+      return;
+    }
+    randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+    // если следующий контейнер равен предыдущему, то заменить
+    if (devHelper.testVals.previousContainer == randomContainer) {
+      if (devHelper.testVals.containerArray.length > 1) {
+        while (devHelper.testVals.previousContainer == randomContainer) {
+          randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+        }
+      }
+    }
+    randomContainer.classList.toggle('selfcheck-invisible', false);
+    randomContainer.classList.toggle('selfcheck-visible', true);
+    devHelper.testVals.previousContainer = randomContainer;
+    if (devHelper.testVals.containerArray.length === 0) {
+      devHelper.testVals.previousContainer = undefined;
+    }
+    return;
+
+
+    // Если в radio ответы неправильные
   } else if (devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelector('.wrong-answer') != null) {
     randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
     // если следующий контейнер равен предыдущему, то заменить
@@ -516,7 +688,15 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     }
     randomContainer.classList.toggle('selfcheck-invisible', false);
     randomContainer.classList.toggle('selfcheck-visible', true);
-    devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelector('.wrong-answer').classList.toggle('wrong-answer', false);
+
+    devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelectorAll('.wrong-answer').forEach((Element) => {
+      Element.classList.toggle('wrong-answer', false);
+    });
+    devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelectorAll('.correct-answer').forEach((Element) => {
+      Element.classList.toggle('correct-answer', false);
+    });
+
+    // devHelper.testVals.previousContainer.querySelector('.selfcheck-radio-container').querySelector('.wrong-answer').classList.toggle('wrong-answer', false);
     devHelper.testVals.previousContainer.classList.toggle('block-selfcheck-container', false);
     devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', true);
     devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').querySelector('span').textContent = 'Подтвердить';
@@ -524,9 +704,8 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     devHelper.testVals.previousContainer = randomContainer;
     return;
   }
-  // randomContainer.querySelector('.active-radio').classList.toggle('active-radio', false);
-  randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
 
+  randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
   // если следующий контейнер равен предыдущему, то заменить
   if (devHelper.testVals.previousContainer == randomContainer) {
     if (devHelper.testVals.containerArray.length > 1) {
