@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (camera.rotation.x >= 0.18) camera.rotation.x = 0.18;
             if (camera.rotation.x <= -0.23) camera.rotation.x = -0.23;
           }
-          if (devHelper.dev.enable === true) console.log('X: ' + camera.rotation.x, 'Y: ' + camera.rotation.y);
+          // if (devHelper.dev.enable === true) console.log('X: ' + camera.rotation.x, 'Y: ' + camera.rotation.y);
         }
       )
     );
