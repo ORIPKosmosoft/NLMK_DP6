@@ -247,61 +247,61 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         else if (Mesh.name && Mesh.name === 'Display_flat004') {  // 3
-          setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat009') {  // 4
-          setImageOnMonitor("media/images/monitors/windows.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/windows.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat017') {  // 5
-          setImageOnMonitor("media/images/monitors/Obzor_sred_akusticheskoy.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/Obzor_sred_akusticheskoy.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat010') {  // 6
-          makeUnicMat(Mesh);
-          makeSvgDisplay(Mesh, Scene, 'Osnovnye_parametry_DP');
+          // makeUnicMat(Mesh);
+          // makeSvgDisplay(Mesh, Scene, 'Osnovnye_parametry_DP');
         }
         else if (Mesh.name && Mesh.name === 'Display_flat011') {  // 7
-          setImageOnMonitor("media/images/monitors/Sloi_shihty.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/Sloi_shihty.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat012') {  // 8
-          makeUnicMat(Mesh);
-          makeSvgDisplay(Mesh, Scene, 'vnk_spvg');
+          // makeUnicMat(Mesh);
+          // makeSvgDisplay(Mesh, Scene, 'vnk_spvg');
         } 
         else if (Mesh.name && Mesh.name === 'Display_flat013') {  // 9
-          setImageOnMonitor("media/images/monitors/Diagnozy_A_PUT.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/Diagnozy_A_PUT.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat016') {  // 10
-          setImageOnMonitor("media/images/monitors/Registratsiya_vypuska_chuguna.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/Registratsiya_vypuska_chuguna.jpg", Scene, Mesh);
         } 
         else if (Mesh.name && Mesh.name === 'Display_flat014') {  // 11
-          makeUnicMat(Mesh);
-          makeSvgDisplay(Mesh, Scene, 'dp');
+          // makeUnicMat(Mesh);
+          // makeSvgDisplay(Mesh, Scene, 'dp');
         } 
         else if (Mesh.name && Mesh.name === 'Display_flat015') {  // 12
-          makeUnicMat(Mesh);
-          makeSvgDisplay(Mesh, Scene, 'bzu');
+          // makeUnicMat(Mesh);
+          // makeSvgDisplay(Mesh, Scene, 'bzu');
         } 
         else if (Mesh.name && Mesh.name === 'Display_flat007') {  // 13
-          setImageOnMonitor("media/images/monitors/Podacha_shikhty.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/Podacha_shikhty.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat008') {  // 14
-          setImageOnMonitor("media/images/monitors/windows.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/windows.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat005') {  // 15
-          setImageOnMonitor("media/images/monitors/Skhema_PUT.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/Skhema_PUT.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat006') {  // 16
-          setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_TV002') {  // TV 1
-          setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene, Mesh);
+          // setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_TV') {  // TV 2  // белый экран на дубликатах
-          makeUnicMat(Mesh);
-          makeSvgDisplay(Mesh, Scene, 'bzu');
+          // makeUnicMat(Mesh);
+          // makeSvgDisplay(Mesh, Scene, 'bzu');
         }
         else if (Mesh.name && Mesh.name === 'Display_TV001') {  // TV 3 // белый экран на дубликатах
-          makeUnicMat(Mesh);
-          makeSvgDisplay(Mesh, Scene, 'dp');
+          // makeUnicMat(Mesh);
+          // makeSvgDisplay(Mesh, Scene, 'dp');
         }
         })
         change3DTime();
