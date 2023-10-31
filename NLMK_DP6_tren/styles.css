@@ -2092,7 +2092,6 @@ ul {
 .opacity-1-Always{
   opacity: 1;
   z-index: 1;
-  border: solid 2px white;
   /* visibility: visible; */
 }
 .opacity-1-Temp{
