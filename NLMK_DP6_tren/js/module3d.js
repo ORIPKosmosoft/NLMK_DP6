@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const scene = createScene();
-  if (devHelper.dev.enable === true) scene.debugLayer.show(); // QWER
+  // if (devHelper.dev.enable === true) scene.debugLayer.show(); // QWER
   // engine.runRenderLoop(function () {
   //   scene.render();
   // });
@@ -314,7 +314,7 @@ function setImageOnMonitor(url, Scene) {
     
   }
 });
-
+let _ii = "0";
 function makeSvgDisplay(Mesh, Scene, SvgName) {
   let tempMat = new BABYLON.StandardMaterial(`material_${Mesh.name}`, Scene);
   Mesh.material = tempMat;
@@ -402,8 +402,18 @@ function makeUnicMat(UnicMesh) {
 
 function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false, Window = undefined, Pos = undefined) {
   if (Mesh && SvgName) {
+    if (Mesh.name == "Display_TV") {
+      Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
+      return;
+    }
+    else if (Mesh.name == "Display_TV001") {
+      Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
+      return;
+    }
+    
     if (ChangeTexture === true) Mesh.svgArr = [{ name: SvgName, x: 0, y: 0 }]
     let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
+  
     let textureContext = Texture.getContext();
     let newIndex = devHelper.model3DVals.svgDisplays.textures.indexOf(Texture);
     let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[newIndex];

@@ -112,6 +112,10 @@ function trenClickOnSvgElem(SvgElemHelper) {
             changeSvgElem(currentActonObject.action.window2D.elements[key]);
         }
       }
+      // function изменить время
+      if (currentActonObject.action.lifetime && currentActonObject.action.lifetime !== '') {
+        startTimerToStep(currentActonObject.action.lifetime);
+      }
       devHelper.trenVals.timers.actionTimeHelper = 0;
       currentActonObject.passed = true;
       devHelper.trenVals.waitingInput = false;
@@ -412,10 +416,17 @@ function setLifeTime(time) {
     document.querySelector(".dialogMessageWatch .time-hour").textContent = document.querySelector('.dialogMessageWatch .dialogTimers-hours[dropDown="1"] p').textContent;
     document.querySelector(".dialogMessageWatch .time-minute").textContent = document.querySelector('.dialogMessageWatch .dialogTimers-hours[dropDown="2"] p').textContent;
     newStateTimer();
-    startTimer();
+    startTimerToFinish();
     
   })
-
+function setNormalTime(Time){
+  // закладка для оптимизации
+  let currentDateTime = new Date();
+  currentDateTime.setSeconds(Number(Time.split(":")[2]));
+  currentDateTime.setMinutes(Number(Time.split(":")[1]));
+  currentDateTime.setHours(Number(Time.split(":")[0]));
+  return currentDateTime;
+}
   function getLifeTime_Date() {
     let currentDateTime = new Date();
     currentDateTime.setSeconds(Number(devHelper.trenVals.timers.lifeTime.split(":")[2]));
@@ -423,11 +434,18 @@ function setLifeTime(time) {
     currentDateTime.setHours(Number(devHelper.trenVals.timers.lifeTime.split(":")[0]));
     return currentDateTime;
   }
-  function getCounterTime_Date() {
+  function getCounterTime_Date(specTime = "") {
+    // state = podsos param
     let currentDateTime = new Date();
     currentDateTime.setSeconds(Number(0));
-    currentDateTime.setMinutes(Number(document.querySelector(".dialogMessageWatch .time-minute").textContent));
-    currentDateTime.setHours(Number(document.querySelector(".dialogMessageWatch .time-hour").textContent));
+    if (specTime == "") {
+      currentDateTime.setMinutes(Number(document.querySelector(".dialogMessageWatch .time-minute").textContent));
+      currentDateTime.setHours(Number(document.querySelector(".dialogMessageWatch .time-hour").textContent));
+    }
+    else{
+      currentDateTime.setMinutes(Number(specTime.split(":")[1]));
+      currentDateTime.setHours(Number(specTime.split(":")[0]));
+    }
     return currentDateTime;
   }
   function getFinishTime_Date(currentDateTime, counterDateTime) {
@@ -460,7 +478,7 @@ function setLifeTime(time) {
     clearInterval(timerInterval);
     newStateTimer();
   }
-  function startTimer() {
+  function startTimerToFinish() {
     timePassed = 0;
     timerInterval = null;
 
@@ -469,30 +487,44 @@ function setLifeTime(time) {
     let finishDateTime = getFinishTime_Date(currentDateTime, counterDateTime).getTime();
     let counterStep = (finishDateTime - currentDateTime) / _step;
 
-    // console.log(currentDateTime);
-    // console.log(counterDateTime);
-    // console.log(finishDateTime);
-    // console.log(counterStep);
-
     timerInterval = setInterval(() => {
       if (_timeInteval === timePassed) {
         //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
         onTimesUp();
         return;
       }
-
       currentDateTime += counterStep;
       counterDateTime -= counterStep;
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
       setTimeSvgScheme();                                                      // время на схемах
-
-
-
       timePassed += _stepInteval;
     }, _stepInteval);
   }
+  function startTimerToStep(finishTime){
+    timePassed = 0;
+    timerInterval = null;
+
+    let currentDateTime = getLifeTime_Date().getTime();
+    let finishDateTime  = getCounterTime_Date(finishTime).getTime();
+    let counterStep = (finishDateTime - currentDateTime) / _step;
+    timerInterval = setInterval(() => {
+      if (_timeInteval === timePassed) {
+        //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
+        onTimesUp();
+        return;
+      }
+      currentDateTime += counterStep;
+      // counterDateTime -= counterStep;
+      setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
+      // setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
+      change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
+      setTimeSvgScheme();                                                      // время на схемах
+      timePassed += _stepInteval;
+    }, _stepInteval);
+  }
+
 
 }
 

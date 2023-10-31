@@ -263,21 +263,30 @@ window.addEventListener('load', function () {
   setTimeSvgScheme()
 });
 function setTimeSvgScheme() {
-  let _indexMonitor = 0;
-    devHelper.svgVals.forEach((ObjectSvg, Index) => {
-      ObjectSvg.activeElements.forEach((Element) => {
-        if (Element.name === "lifetime") {
-          Element.innerHTML = devHelper.trenVals.timers.lifeTime;
-          changeSvgElem({
-            name: Element.name, 
-            text: devHelper.trenVals.timers.lifeTime
-          });
 
-          changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[_indexMonitor], ObjectSvg.name, true); // В будущем возможно придётся поменять _indexMonitor
-          _indexMonitor++;
-        }
-      })  
-      
+  // console.log(devHelper.model3DVals.svgDisplays.svgs);
+  // console.log(devHelper.svgVals);
+  // for (let i = 0; i < devHelper.model3DVals.svgDisplays.meshs.length; i++) {
+  //   let elem = devHelper.model3DVals.svgDisplays.meshs[i];
+  //   let svg = devHelper.model3DVals.svgDisplays.svgs[i];
+  //   console.log(elem);
+  //   console.log(elem.name);
+  //   console.log("____________________________");
+  // }
+    let _indexMonitor = 0;
+    devHelper.svgVals.forEach((ObjectSvg, Index) => {
+        ObjectSvg.activeElements.forEach((Element) => {
+          if (Element.name === "lifetime") {
+            Element.innerHTML = devHelper.trenVals.timers.lifeTime;
+            changeSvgElem({
+              name: Element.name, 
+              text: devHelper.trenVals.timers.lifeTime
+            });
+  
+            // changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], ObjectSvg.name, true); // В будущем возможно придётся поменять _indexMonitor
+            // _indexMonitor++;
+          }
+        })  
     })
 }
 

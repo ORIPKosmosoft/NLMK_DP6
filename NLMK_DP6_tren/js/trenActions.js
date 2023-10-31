@@ -94,6 +94,7 @@ let tempActions = [
       sender: 'Система',
       action: {
         target2D: 'kl029',
+        lifetime: '10:00:00',
         window2D: {
           elements: [
             { name: 'title_work_vn', text: 'Управление клапаном 029' },
@@ -113,6 +114,7 @@ let tempActions = [
     }, {
       action: {
         target2D: 'open_vn',
+        lifetime: '11:00:00',
         window2D: {
           elements: [
             { name: 'title_open_vn', text: 'Открыть' },
