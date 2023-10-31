@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const scene = createScene();
-  // if (devHelper.dev.enable === true) scene.debugLayer.show();
+  // if (devHelper.dev.enable === true) scene.debugLayer.show(); // inspector 
   // engine.runRenderLoop(function () {
   //   scene.render();
   // });
@@ -181,7 +181,27 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
-
+  function setImageOnMonitor(url, Scene, UnicMesh) {
+    if (UnicMesh instanceof BABYLON.InstancedMesh) {
+      let tempMesh = UnicMesh.sourceMesh.clone();
+      tempMesh.name = UnicMesh.name;
+  
+      tempMesh.setParent(UnicMesh.parent);
+      tempMesh.rotation = new BABYLON.Vector3(0, 0, 0);
+  
+      tempMesh.setAbsolutePosition(new BABYLON.Vector3(UnicMesh.absolutePosition._x, UnicMesh.absolutePosition._y, UnicMesh.absolutePosition._z));
+      UnicMesh.dispose();
+      UnicMesh = tempMesh;
+    }
+    if(!UnicMesh.material || UnicMesh.material.name != 'material_' + UnicMesh.name) {
+      UnicMesh.material = new BABYLON.StandardMaterial('material_' + UnicMesh.name, Scene);
+      UnicMesh.material.diffuseTexture = new BABYLON.Texture(url, Scene)
+    }
+    else{
+      UnicMesh.material.diffuseTexture.updateURL(url);
+    }
+  
+  }
   function loadModel(Name, Scene, ShadowGenerator) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
       if (Name === 'All') {
@@ -196,38 +216,96 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         meshArr.forEach(Mesh => {
           Mesh.actionManager = new BABYLON.ActionManager(Scene);
-          Mesh.isPickable = true;
-          if (Mesh.name && Mesh.name === 'Display_flat002') {
-            makeActiveMesh(Mesh, 1);
-            makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
-          } else if (Mesh.name && Mesh.name === 'Display_flat003') {
-            makeActiveMesh(Mesh, 2);
-            makeSvgDisplay(Mesh, Scene, 'vnk_main');
-          } else if (Mesh.id && Mesh.id === '25408591-8ddd-4b64-a7ad-499aaa995ae6') {
-            makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
-          } else if (Mesh.id && Mesh.id === '8d7497bf-6a8b-4906-8a35-1dc986e6e655') {
-            makeActiveMesh(Mesh, { name: 'kl021', posIndex: 3 });
-          } else if (Mesh.name && Mesh.name === 'Rectangle001') {
-            if (Mesh.id && Mesh.id === 'c4938c6e-adb9-4618-8fe0-76497fa5e0a7') {
-              Mesh.receiveShadows = true;
-              ShadowGenerator.getShadowMap().renderList.push(Mesh);
-            }
-          } else if (Mesh.name && Mesh.name === 'Room') {
+        Mesh.isPickable = true;
+        if (Mesh.name && Mesh.name === 'Display_flat002') {
+          makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 1 });
+          makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
+        } else if (Mesh.name && Mesh.name === 'Display_flat003') {
+          makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 2 });
+          makeSvgDisplay(Mesh, Scene, 'vnk_main');
+        } else if (Mesh.id && Mesh.id === '25408591-8ddd-4b64-a7ad-499aaa995ae6') {
+          makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
+        } else if (Mesh.id && Mesh.id === '8d7497bf-6a8b-4906-8a35-1dc986e6e655') {
+          makeActiveMesh(Mesh, { name: 'kl021', posIndex: 3 });
+        } else if (Mesh.name && Mesh.name === 'Rectangle001') {
+          if (Mesh.id && Mesh.id === 'c4938c6e-adb9-4618-8fe0-76497fa5e0a7') {
             Mesh.receiveShadows = true;
-          } else if (Mesh.name && Mesh.name === 'Monitor_flat021') {
             ShadowGenerator.getShadowMap().renderList.push(Mesh);
-          } else if (Mesh.name && Mesh.name === 'Monitor_flat023') {
-            ShadowGenerator.getShadowMap().renderList.push(Mesh);
-          } else if (Mesh.name && Mesh.name === 'Console_PSODP6') {
-
-          } else if (Mesh.name && Mesh.name === 'Console_BVNK') {
-
-          } else if (Mesh.name && Mesh.name === 'Console_UGKS') {
-
           }
+        } else if (Mesh.name && Mesh.name === 'Room') {
+          Mesh.receiveShadows = true;
+        } else if (Mesh.name && Mesh.name === 'Monitor_flat021') {
+          ShadowGenerator.getShadowMap().renderList.push(Mesh);
+        } else if (Mesh.name && Mesh.name === 'Monitor_flat023') {
+          ShadowGenerator.getShadowMap().renderList.push(Mesh);
+        } else if (Mesh.name && Mesh.name === 'Console_PSODP6') {
+
+        } else if (Mesh.name && Mesh.name === 'Console_BVNK') {
+
+        } else if (Mesh.name && Mesh.name === 'Console_UGKS') {
+
+        }
+
+        else if (Mesh.name && Mesh.name === 'Display_flat004') {  // 3
+          setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene, Mesh);
+        }
+        else if (Mesh.name && Mesh.name === 'Display_flat009') {  // 4
+          setImageOnMonitor("media/images/monitors/windows.jpg", Scene, Mesh);
+        }
+        else if (Mesh.name && Mesh.name === 'Display_flat017') {  // 5
+          setImageOnMonitor("media/images/monitors/Obzor_sred_akusticheskoy.jpg", Scene, Mesh);
+        }
+        else if (Mesh.name && Mesh.name === 'Display_flat010') {  // 6
+          makeUnicMat(Mesh);
+          makeSvgDisplay(Mesh, Scene, 'Osnovnye_parametry_DP');
+        }
+        else if (Mesh.name && Mesh.name === 'Display_flat011') {  // 7
+          setImageOnMonitor("media/images/monitors/Sloi_shihty.jpg", Scene, Mesh);
+        }
+        else if (Mesh.name && Mesh.name === 'Display_flat012') {  // 8
+          makeUnicMat(Mesh);
+          makeSvgDisplay(Mesh, Scene, 'vnk_spvg');
+        } 
+        else if (Mesh.name && Mesh.name === 'Display_flat013') {  // 9
+          setImageOnMonitor("media/images/monitors/Diagnozy_A_PUT.jpg", Scene, Mesh);
+        }
+        else if (Mesh.name && Mesh.name === 'Display_flat016') {  // 10
+          setImageOnMonitor("media/images/monitors/Registratsiya_vypuska_chuguna.jpg", Scene, Mesh);
+        } 
+        else if (Mesh.name && Mesh.name === 'Display_flat014') {  // 11
+          makeUnicMat(Mesh);
+          makeSvgDisplay(Mesh, Scene, 'dp');
+        } 
+        else if (Mesh.name && Mesh.name === 'Display_flat015') {  // 12
+          makeUnicMat(Mesh);
+          makeSvgDisplay(Mesh, Scene, 'bzu');
+        } 
+        else if (Mesh.name && Mesh.name === 'Display_flat007') {  // 13
+          setImageOnMonitor("media/images/monitors/Podacha_shikhty.jpg", Scene, Mesh);
+        }
+        else if (Mesh.name && Mesh.name === 'Display_flat008') {  // 14
+          setImageOnMonitor("media/images/monitors/windows.jpg", Scene, Mesh);
+        }
+        else if (Mesh.name && Mesh.name === 'Display_flat005') {  // 15
+          setImageOnMonitor("media/images/monitors/Skhema_PUT.jpg", Scene, Mesh);
+        }
+        else if (Mesh.name && Mesh.name === 'Display_flat006') {  // 16
+          setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene, Mesh);
+        }
+        else if (Mesh.name && Mesh.name === 'Display_TV002') {  // TV 1
+          setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene, Mesh);
+        }
+        else if (Mesh.name && Mesh.name === 'Display_TV') {  // TV 2  // белый экран на дубликатах
+          makeUnicMat(Mesh);
+          makeSvgDisplay(Mesh, Scene, 'bzu');
+        }
+        else if (Mesh.name && Mesh.name === 'Display_TV001') {  // TV 3 // белый экран на дубликатах
+          makeUnicMat(Mesh);
+          makeSvgDisplay(Mesh, Scene, 'dp');
+        }
         })
         change3DTime();
-      } else if (Name === 'Highlight') {
+      } else {
         meshes.forEach(element => {
           element.actionManager = new BABYLON.ActionManager(Scene);
           element.isPickable = true;
@@ -236,16 +314,18 @@ document.addEventListener("DOMContentLoaded", () => {
           lightMat.alpha = 0;
           element.material = lightMat;
           if (element.name && element.name === 'Console_BVNK_highlight') {
-            makeActiveMesh(element, 3);
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
           } else if (element.name && element.name === 'Console_BZU_highlight') {
-            makeActiveMesh(element, 3);
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
           } else if (element.name && element.name === 'Console_DP6_highlight') {
-            makeActiveMesh(element, 3);
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
           } else if (element.name && element.name === 'Console_UGKS_highlight') {
-            makeActiveMesh(element, 3);
+            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
           } else if (element.name && element.name === 'Console_PSODP6_highlight') {
             element.dispose();
           }
+
+
         })
       }
       try {
@@ -255,9 +335,10 @@ document.addEventListener("DOMContentLoaded", () => {
       catch { }
     });
 
-  }
+}
 });
 
+let _ii = "0";
 function makeSvgDisplay(Mesh, Scene, SvgName) {
   let planeTexture = new BABYLON.DynamicTexture(`texture_${Mesh.name}`, { width: 2000, height: 993 }, Scene, true);
   planeTexture.update();
@@ -343,7 +424,7 @@ function makeUnicMat(UnicMesh) {
 }
 
 function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false, Window = undefined, Pos = undefined) {
-  if (Mesh && SvgName) {
+  if (Mesh && SvgName) {   
     if (ChangeTexture === true) Mesh.svgArr = [{ name: SvgName, x: 0, y: 0 }];
     let svgIndex = devHelper.model3DVals.svgDisplays.svgNames.findIndex(function (obj) { return obj === SvgName; })
     let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[svgIndex];
@@ -546,6 +627,9 @@ function animMoveCamera(Vals, Speed = 2) {
   devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, speed, false, 1, () => {
     devHelper.model3DVals.currentPosition = Vals.position;
     createSvghelper(Vals.position);
+    if (devHelper.model3DVals.currentPosition !== undefined) {
+      disableGeneralView();
+    }
   });
 }
 

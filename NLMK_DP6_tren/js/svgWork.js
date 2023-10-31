@@ -239,7 +239,7 @@ window.addEventListener('load', function () {
         if (TextElement.innerHTML === 'Закрыть') { addSvgElem(Index, TextElement, 'title_open_vn',); }
       })
     }
-
+    
   })
 
   devHelper.svgVals.forEach((Element) => {
@@ -263,7 +263,17 @@ window.addEventListener('load', function () {
   setTimeSvgScheme();
 });
 function setTimeSvgScheme() {
-  let _indexMonitor = 0;
+
+  // console.log(devHelper.model3DVals.svgDisplays.svgs);
+  // console.log(devHelper.svgVals);
+  // for (let i = 0; i < devHelper.model3DVals.svgDisplays.meshs.length; i++) {
+  //   let elem = devHelper.model3DVals.svgDisplays.meshs[i];
+  //   let svg = devHelper.model3DVals.svgDisplays.svgs[i];
+  //   console.log(elem);
+  //   console.log(elem.name);
+  //   console.log("____________________________");
+  // }
+    let _indexMonitor = 0;
     devHelper.svgVals.forEach((ObjectSvg, Index) => {
       ObjectSvg.activeElements.forEach((Element) => {
         if (Element.name === "lifetime") {
@@ -471,11 +481,17 @@ function changeSvgElem(Val = {}) {
     devHelper.svgVals.forEach((svgArrObject) => {
       svgArrObject.activeElements.forEach((activeElemObj) => {
         if (activeElemObj.name === Val.name) {
-          if (Val.text) activeElemObj.element.innerHTML = Val.text;
-          if (Val.color) activeElemObj.element.style.fill = Val.color;
-          if (Val.stroke) activeElemObj.element.style.stroke = Val.stroke;
-          if (Val.alpha) activeElemObj.element.style.opacity = Val.alpha;
-          if (Val.rotation) changeSvgElemPos(activeElemObj.element, Val.rotation, 'rotate');
+          if (Val.text) {
+            activeElemObj.element.innerHTML = Val.text;
+          }
+          if (Val.color)
+            activeElemObj.element.style.fill = Val.color;
+          if (Val.stroke)
+            activeElemObj.element.style.stroke = Val.stroke;
+          if (Val.alpha)
+            activeElemObj.element.style.opacity = Val.alpha;
+          if (Val.rotation)
+            changeSvgElemPos(activeElemObj.element, Val.rotation, 'rotate');
           if (Val.position) {
             if (Val.position.x) changeSvgElemPos(activeElemObj.element, Val.position.x, 'translateX');
             if (Val.position.y) changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
