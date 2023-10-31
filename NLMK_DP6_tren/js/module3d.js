@@ -50,6 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         loadModel('All', scene, shadowGenerator);
         loadModel('Highlight', scene);
+        loadModel('Console_BVNK', scene);
+        loadModel('Console_BZU', scene);
+        loadModel('Console_DP6', scene);
+        loadModel('Console_PSODP6', scene);
+        loadModel('Console_UGKS', scene);
       }, 1000);
     });
 
@@ -225,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
         change3DTime();
-      } else {
+      } else if (Name === 'Highlight') {
         meshes.forEach(element => {
           element.actionManager = new BABYLON.ActionManager(Scene);
           element.isPickable = true;
@@ -245,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
             element.dispose();
           }
         })
-      }
+      } 
       try {
         setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
         change3DTime(devHelper.trenVals.timers.lifeTime); // 3d
