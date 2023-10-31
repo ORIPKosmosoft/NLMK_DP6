@@ -202,9 +202,12 @@ window.addEventListener('load', function () {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1301.37 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.37-12.26l-20.56-25.18v-12.46h2.35l-.28-.91v-22.21c0-8.54-6.97-12.27-15.51-12.27h-.39c-8.54 0-15.51 3.73-15.51 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_3'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M841.6 529.43v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl029'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M733.76 579.16V557.7l33.12 21.46V557.7z') { addSvgElem(Index, Element, 'kl028'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M985.26 579.16V557.7l33.12 21.46V557.7z') { addSvgElem(Index, Element, 'kl007'); }
       })
       ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
         if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
+        if (TextElement.innerHTML === '51') { addSvgElem(Index, TextElement, 'kl029_proc'); }
       });
     }
     if (ObjectSvg.name === 'vnk_spvg') {
@@ -260,17 +263,6 @@ window.addEventListener('load', function () {
   setTimeSvgScheme();
 });
 function setTimeSvgScheme() {
-
-  // console.log(devHelper.model3DVals.svgDisplays.svgs);
-  // console.log(devHelper.svgVals);
-  // for (let i = 0; i < devHelper.model3DVals.svgDisplays.meshs.length; i++) {
-  //   let elem = devHelper.model3DVals.svgDisplays.meshs[i];
-  //   let svg = devHelper.model3DVals.svgDisplays.svgs[i];
-  //   console.log(elem);
-  //   console.log(elem.name);
-  //   console.log("____________________________");
-  // }
-    let _indexMonitor = 0;
     devHelper.svgVals.forEach((ObjectSvg, Index) => {
       ObjectSvg.activeElements.forEach((Element) => {
         if (Element.name === "lifetime") {
@@ -279,9 +271,6 @@ function setTimeSvgScheme() {
             name: Element.name, 
             text: devHelper.trenVals.timers.lifeTime
           });
-
-          // changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[_indexMonitor], ObjectSvg.name, true); // В будущем возможно придётся поменять _indexMonitor
-          // _indexMonitor++;
         }
       })  
       
@@ -421,11 +410,11 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           invisElem.style.top = Vals.y + '%';
           invisElem.style.width = Vals.w + '%';
           invisElem.style.height = Vals.h + '%';
+          invisElem.id = Vals.id;
 
           invisElem.addEventListener('click', () => {
             if (devHelper.trenVals.waitingInput === true) {
               if (Vals.id !== undefined) {
-                invisElem.id = Vals.id;
                 trenClickOnSvgElem(invisElem);
               }
               if (Vals.removeWindow) {

@@ -104,24 +104,23 @@ function trenClickOnMesh(Mesh) {
   }
 }
 
-function trenClickOnSvgElem(SvgElemHelper = undefined, GhostClick = undefined) {
-  if (devHelper.trenVals.waitingInput === true || GhostClick === true) {
+function trenClickOnSvgElem(SvgElemHelper = undefined) {
+  if (devHelper.trenVals.waitingInput === true) {
     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-    if (GhostClick === true || (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id)) {
+    if (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id) {
       if (currentActonObject.action.window2D && currentActonObject.action.window2D.elements) {
         for (let key in currentActonObject.action.window2D.elements) {
           if (currentActonObject.action.window2D.elements.hasOwnProperty(key))
-            changeSvgElem(currentActonObject.action.window2D.elements[key]);
-        }
+          changeSvgElem(currentActonObject.action.window2D.elements[key]);
       }
+    }
       // function изменить время
       if (currentActonObject.action.lifetime && currentActonObject.action.lifetime !== '') {
         startTimerToStep(currentActonObject.action.lifetime);
-        console.log("ok");
       }
-      devHelper.trenVals.timers.actionTimeHelper = 0;
-      currentActonObject.passed = true;
-      devHelper.trenVals.waitingInput = false;
+    devHelper.trenVals.timers.actionTimeHelper = 0;
+    currentActonObject.passed = true;
+    devHelper.trenVals.waitingInput = false;
     }
   }
 }
@@ -419,7 +418,6 @@ function setLifeTime(time) {
   Array.from(document.getElementsByClassName("option")).forEach((item) => {
     item.addEventListener('click', (e) => {
       let parrent = e.currentTarget.parentElement.parentElement.parentElement;
-      // console.log(document.querySelector(`.dialogTimers-hours[dropDown="${parrent.getAttribute("dropDown")}"]`).children[0]);
       document.querySelector(`.dialogTimers-hours[dropDown="${parrent.getAttribute("dropDown")}"]`).children[0].textContent = e.currentTarget.textContent; // P - text
       document.querySelector(`.section-dropDown[dropDown="${parrent.getAttribute("dropDown")}"]`).classList.remove("visibleDrooDown");
       document.querySelector(".dialogMessageWatch .time")
@@ -508,7 +506,6 @@ function setNormalTime(Time){
     let counterDateTime = getCounterTime_Date().getTime();
     let finishDateTime = getFinishTime_Date(currentDateTime, counterDateTime).getTime();
     let counterStep = (finishDateTime - currentDateTime) / _step;
-
     timerInterval = setInterval(() => {
       if (_timeInteval === timePassed) {
         //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
@@ -770,7 +767,7 @@ function disableGeneralView(state = true){
 // КЛИК ОБРАТНО
 document.getElementById('b_GeneralView').addEventListener("click", (e) => {
   e.currentTarget.classList.remove('button-tren-active');
-  animMoveCamera([0.35, 2.15, -3.4], [0.1913, -0.0046, 0], undefined);
+  animMoveCamera(devHelper.model3DVals.cameraPositions[0]);
   setNewFillButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Normal);
   document.getElementById('b_GeneralView').setAttribute('disabled', "");
 })

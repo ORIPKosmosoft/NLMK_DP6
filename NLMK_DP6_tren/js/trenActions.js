@@ -65,7 +65,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: true,
+    enable: false,
     perfomance: undefined,
   },
 };
@@ -141,6 +141,7 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'kl029', color: '#6DE90B' },
+            { name: 'kl029_proc', text: '55' },
           ],
         },
       },
@@ -168,6 +169,7 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'kl029', color: '#8F8F8F' },
+            { name: 'kl029_proc', text: '65' },
           ],
         },
       },
@@ -192,6 +194,7 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'kl029', color: '#6DE90B' },
+            { name: 'kl029_proc', text: '75' },
           ],
         },
       },
@@ -216,6 +219,7 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'kl029', color: '#8F8F8F' },
+            { name: 'kl029_proc', text: '85' },
           ],
         },
       },
@@ -240,6 +244,7 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'kl029', color: '#6DE90B' },
+            { name: 'kl029_proc', text: '100' },
           ],
         },
       },
@@ -250,6 +255,9 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'polozenie_text', text: '100' },
+            { name: 'status_window_text', text: 'Открыт' },
+            { name: 'polozenie_button_text', color: '#6E6E6E' },
+            { name: 'btn_open', color: '#E6E6E6', stroke: '#C4C4C4' },
             { name: 'left_vn', color: '#6DE90B' },
             { name: 'right_vn', color: '#6DE90B' },
             { name: 'circle_1', stroke: '#6DE90B' },
@@ -266,28 +274,28 @@ let tempActions = [
       startTime: 6,
       human: true,
     },
-    {
-      text: 'Открыть клапан 029 на дымовую трубу.',
-      sender: 'Система',
-      action: {
-        target2D: 'kl029',
-        window2D: {
-          elements: [
-            { name: 'title_work_vn', text: 'Управление клапаном 029' },
-            { name: 'status_window_text', text: 'Нет данных' },
-            { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
-            { name: 'polozenie_text', text: '51' },
-            { name: 'polozenie_button_text', color: '#000000' },
-            { name: 'left_vn', color: '#8F8F8F' },
-            { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1', stroke: '#8F8F8F' },
-            { name: 'circle_2', stroke: '#8F8F8F' },
-          ],
-        },
-      },
-      startTime: 0,
-      human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
-    },
+    // {
+    //   text: 'Открыть клапан 029 на дымовую трубу.',
+    //   sender: 'Система',
+    //   action: {
+    //     target2D: 'kl029',
+    //     window2D: {
+    //       elements: [
+    //         { name: 'title_work_vn', text: 'Управление клапаном 029' },
+    //         { name: 'status_window_text', text: 'Нет данных' },
+    //         { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
+    //         { name: 'polozenie_text', text: '51' },
+    //         { name: 'polozenie_button_text', color: '#000000' },
+    //         { name: 'left_vn', color: '#8F8F8F' },
+    //         { name: 'right_vn', color: '#8F8F8F' },
+    //         { name: 'circle_1', stroke: '#8F8F8F' },
+    //         { name: 'circle_2', stroke: '#8F8F8F' },
+    //       ],
+    //     },
+    //   },
+    //   startTime: 0,
+    //   human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
+    // },
     //--------------------------------2----------------------------------------
     // {
     //   text: 'Открыть клапан 029 на дымовую трубу.',

@@ -124,7 +124,6 @@ function domLoaded() {
     },
   ];
 
-  console.log(devHelper.testVals.answersArray[1][1]);
 
   // Вешаю обработчик нажатия на все <div class="selfcheck-radio">
   document.querySelectorAll('.radio-elem').forEach((Element) => {
@@ -352,12 +351,6 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
 
   if (selfcheckContainer.classList.contains('container-dragDrop') === true) {
     selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
-    console.log(selfcheckContainer.querySelectorAll('.selfcheck-radio-dragDrop'));
-    // selfcheckContainer.querySelectorAll('.selfcheck-radio-dragDrop').forEach((Element, index) => {
-    //   console.log(devHelper.testVals.answersArray[selfcheckcontainerIndex][index]);
-    // });
-    // devHelper.testVals.answersArray[selfcheckcontainerIndex] = elem.querySelector('span').textContent;
-
 
   } else if (selfcheckContainer.classList.contains('container-dragDrop') === false) {
     selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
