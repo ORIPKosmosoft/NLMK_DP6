@@ -43,6 +43,7 @@ const devHelper = {
       tagImgs: [],
       svgs: [],
       materials: [],
+      svgNames: [],
     },
   },
   svgVals: [],
@@ -119,14 +120,24 @@ let tempActions = [
           ],
         },
       },
-      startTime: 1,
+      startTime: 0.5,
       human: true,
     }, {
       action: {
         target2D: 'open_vn1',
       },
-      startTime: 2,
+      startTime: 1,
       human: true,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl029', color: '#6DE90B' },
+          ],
+        },
+      },
+      startTime: 1.01,
     },
     {
       action: {
@@ -143,7 +154,17 @@ let tempActions = [
           ],
         },
       },
-      startTime: 2.1,
+      startTime: 1.02,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl029', color: '#8F8F8F' },
+          ],
+        },
+      },
+      startTime: 2.01,
     },
     {
       action: {
@@ -157,21 +178,41 @@ let tempActions = [
           ],
         },
       },
-      startTime: 3,
+      startTime: 2.02,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl029', color: '#6DE90B' },
+          ],
+        },
+      },
+      startTime: 3.01,
     },
     {
       action: {
         window2D: {
           elements: [
             { name: 'polozenie_text', text: '75' },
-            { name: 'left_vn', color: '' },
-            { name: 'right_vn', color: '' },
-            { name: 'circle_1', stroke: '' },
-            { name: 'circle_2', stroke: '' },
+            { name: 'left_vn', color: '#6DE90B' },
+            { name: 'right_vn', color: '#6DE90B' },
+            { name: 'circle_1', stroke: '#6DE90B' },
+            { name: 'circle_2', stroke: '#6DE90B' },
           ],
         },
       },
-      startTime: 4,
+      startTime: 3.02,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl029', color: '#8F8F8F' },
+          ],
+        },
+      },
+      startTime: 4.01,
     },
     {
       action: {
@@ -185,42 +226,37 @@ let tempActions = [
           ],
         },
       },
-      startTime: 5,
+      startTime: 4.02,
     },
     {
       action: {
         window2D: {
           elements: [
-            { name: 'polozenie_text', text: '95' },
-            { name: 'left_vn', color: '' },
-            { name: 'right_vn', color: '' },
-            { name: 'circle_1', stroke: '' },
-            { name: 'circle_2', stroke: '' },
+            { name: 'kl029', color: '#6DE90B' },
           ],
         },
       },
-      startTime: 6,
+      startTime: 5.01,
     },
     {
       action: {
         window2D: {
           elements: [
             { name: 'polozenie_text', text: '100' },
-            { name: 'status_window_text', text: 'Открыт' },
-            { name: 'left_vn', color: '#8F8F8F' },
-            { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1', stroke: '#8F8F8F' },
-            { name: 'circle_2', stroke: '#8F8F8F' },
+            { name: 'left_vn', color: '#6DE90B' },
+            { name: 'right_vn', color: '#6DE90B' },
+            { name: 'circle_1', stroke: '#6DE90B' },
+            { name: 'circle_2', stroke: '#6DE90B' },
           ],
         },
       },
-      startTime: 7,
+      startTime: 5.02,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: 7.1,
+      startTime: 6,
       human: true,
     },
     // {

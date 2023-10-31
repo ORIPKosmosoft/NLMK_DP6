@@ -63,12 +63,7 @@ function trenTimeTick(timeStamp) {
               if (nextAction.action.window2D.elements.hasOwnProperty(key))
                 changeSvgElem(nextAction.action.window2D.elements[key]);
             }
-            devHelper.model3DVals.svgDisplays.textures.forEach(texture => {
-              devHelper.model3DVals.svgDisplays.meshs.forEach(displayMesh => {
-                if (texture === displayMesh.material.diffuseTexture) 
-                  changeSvgtexture(displayMesh,texture.name.substring(texture.name.indexOf('_') + 1), false);
-              })
-            })
+            updateSvgTextures();
             devHelper.trenVals.timers.actionTimeHelper = 0;
             nextAction.passed = true;
             devHelper.trenVals.waitingInput = false;

@@ -201,6 +201,7 @@ window.addEventListener('load', function () {
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1301.37 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.37-12.26l-20.56-25.18v-12.46h2.35l-.28-.91v-22.21c0-8.54-6.97-12.27-15.51-12.27h-.39c-8.54 0-15.51 3.73-15.51 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_3'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M841.6 529.43v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl029'); }
       })
       ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
         if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
@@ -239,7 +240,7 @@ window.addEventListener('load', function () {
   })
 
   devHelper.svgVals.forEach((Element) => {
-    makeDynamicTextureDisplay(Element);
+    pushSvgDisplaysArr(Element);
     //let tempUnicArr = [];
     Element.activeElements.forEach((Element2) => {
       // Element2.element.innerHTML = 'ВЗЯЛ';
@@ -334,17 +335,11 @@ function addSvgElem(SvgIndex, Element, Name, Move = true) {
   }
 }
 
-function makeDynamicTextureDisplay(ObjectSvg) {
+function pushSvgDisplaysArr(ObjectSvg) {
   let outputImage = ObjectSvg.object.nextElementSibling;
-  let planeTexture = new BABYLON.DynamicTexture(`texture_${ObjectSvg.name}`, { width: ObjectSvg.svg.getAttribute('width'), height: ObjectSvg.svg.getAttribute('height') }, devHelper.model3DVals.scene, true);
-  devHelper.model3DVals.svgDisplays.textures.push(planeTexture);
   devHelper.model3DVals.svgDisplays.tagImgs.push(outputImage);
   devHelper.model3DVals.svgDisplays.svgs.push(ObjectSvg.svg);
-  let textureContext = planeTexture.getContext();
-  outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(ObjectSvg.svg))));
-  outputImage.onload = function () {
-    textureContext.drawImage(outputImage, 0, 0);
-  }
+  devHelper.model3DVals.svgDisplays.svgNames.push(ObjectSvg.name);
 }
 
 function createSvghelper(CurrentPosition, SvgName = undefined) {
@@ -352,7 +347,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
     setTimeout(() => {
       if (CurrentPosition === 1) {
         let mainMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === CurrentPosition);
-        let textureSvgName = SvgName === undefined ? mainMesh.material.diffuseTexture.name.substring(mainMesh.material.diffuseTexture.name.indexOf('_') + 1) : SvgName;
+        let textureSvgName = SvgName === undefined ? mainMesh.svgArr[mainMesh.svgArr.length - 1].name : SvgName;
         let currentMeshTexture = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition).material.diffuseTexture;
         let textureName = currentMeshTexture.name.substring(currentMeshTexture.name.indexOf('_') + 1);
         if (textureSvgName === 'vnk_main') {
@@ -394,7 +389,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           createSvgHelperButtons(tempArrHelperButtons);
         } else if (textureSvgName === 'O_n_k_na_VNK_posle_1') {
           let tempArrHelperButtons = [
-            { x: 61, y: 47.2, w: 1.5, h: 2.4, forAction: true, name: textureName, id: 'close_w1' },// close
+            { x: 61, y: 47.2, w: 1.5, h: 2.4, forAction: true, name: textureName, id: 'close_w1', removeWindow: textureSvgName, },// close
             { x: 53.4, y: 59.1, w: 4, h: 2.6, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, } },// open
           ];
           createSvgHelperButtons(tempArrHelperButtons);
