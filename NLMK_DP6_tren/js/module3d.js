@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const scene = createScene();
-  // if (devHelper.dev.enable === true) scene.debugLayer.show(); // QWER
+  // if (devHelper.dev.enable === true) scene.debugLayer.show(); // inspector 
   // engine.runRenderLoop(function () {
   //   scene.render();
   // });
@@ -179,10 +179,26 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
-function setImageOnMonitor(url, Scene) {
-  let m_material = new BABYLON.StandardMaterial(url.match(new RegExp("(.+)\/(.+)((\.jpg)|(.png))"))[2], Scene);
-  m_material.diffuseTexture = new BABYLON.Texture(url, Scene);
-  return m_material;
+function setImageOnMonitor(url, Scene, UnicMesh) {
+  if (UnicMesh instanceof BABYLON.InstancedMesh) {
+    let tempMesh = UnicMesh.sourceMesh.clone();
+    tempMesh.name = UnicMesh.name;
+
+    tempMesh.setParent(UnicMesh.parent);
+    tempMesh.rotation = new BABYLON.Vector3(0, 0, 0);
+
+    tempMesh.setAbsolutePosition(new BABYLON.Vector3(UnicMesh.absolutePosition._x, UnicMesh.absolutePosition._y, UnicMesh.absolutePosition._z));
+    UnicMesh.dispose();
+    UnicMesh = tempMesh;
+  }
+  if(!UnicMesh.material || UnicMesh.material.name != 'material_' + UnicMesh.name) {
+    UnicMesh.material = new BABYLON.StandardMaterial('material_' + UnicMesh.name, Scene);
+    UnicMesh.material.diffuseTexture = new BABYLON.Texture(url, Scene)
+  }
+  else{
+    UnicMesh.material.diffuseTexture.updateURL(url);
+  }
+
 }
 function loadModel(Name, Scene, ShadowGenerator) {
   BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
@@ -229,57 +245,60 @@ function loadModel(Name, Scene, ShadowGenerator) {
         }
 
         else if (Mesh.name && Mesh.name === 'Display_flat004') {  // 3
-          Mesh.material = setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene);
+          setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat009') {  // 4
-          Mesh.material = setImageOnMonitor("media/images/monitors/windows.jpg", Scene);
+          setImageOnMonitor("media/images/monitors/windows.jpg", Scene, Mesh);
         }
-        else if (Mesh.name && Mesh.name === 'Display_flat010') {  // 5
-          Mesh.material = setImageOnMonitor("media/images/monitors/Sloi_shihty.jpg", Scene);
+        else if (Mesh.name && Mesh.name === 'Display_flat017') {  // 5
+          setImageOnMonitor("media/images/monitors/Obzor_sred_akusticheskoy.jpg", Scene, Mesh);
         }
-        // 6 NETU
+        else if (Mesh.name && Mesh.name === 'Display_flat010') {  // 6
+          makeUnicMat(Mesh);
+          makeSvgDisplay(Mesh, Scene, 'Osnovnye_parametry_DP');
+        }
         else if (Mesh.name && Mesh.name === 'Display_flat011') {  // 7
-          Mesh.material = setImageOnMonitor("media/images/monitors/Obzor_sred_akusticheskoy.jpg", Scene);
+          setImageOnMonitor("media/images/monitors/Sloi_shihty.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat012') {  // 8
-          
+          makeUnicMat(Mesh);
           makeSvgDisplay(Mesh, Scene, 'vnk_spvg');
         } 
         else if (Mesh.name && Mesh.name === 'Display_flat013') {  // 9
-          Mesh.material = setImageOnMonitor("media/images/monitors/Diagnozy_A_PUT.jpg", Scene);
+          setImageOnMonitor("media/images/monitors/Diagnozy_A_PUT.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat016') {  // 10
-          Mesh.material = setImageOnMonitor("media/images/monitors/Registratsiya_vypuska_chuguna.jpg", Scene);
+          setImageOnMonitor("media/images/monitors/Registratsiya_vypuska_chuguna.jpg", Scene, Mesh);
         } 
         else if (Mesh.name && Mesh.name === 'Display_flat014') {  // 11
-          
+          makeUnicMat(Mesh);
           makeSvgDisplay(Mesh, Scene, 'dp');
         } 
         else if (Mesh.name && Mesh.name === 'Display_flat015') {  // 12
-          
+          makeUnicMat(Mesh);
           makeSvgDisplay(Mesh, Scene, 'bzu');
         } 
         else if (Mesh.name && Mesh.name === 'Display_flat007') {  // 13
-          Mesh.material = setImageOnMonitor("media/images/monitors/Podacha_shikhty.jpg", Scene);
+          setImageOnMonitor("media/images/monitors/Podacha_shikhty.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat008') {  // 14
-          Mesh.material = setImageOnMonitor("media/images/monitors/windows.jpg", Scene);
+          setImageOnMonitor("media/images/monitors/windows.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat005') {  // 15
-          Mesh.material = setImageOnMonitor("media/images/monitors/Skhema_PUT.jpg", Scene);
+          setImageOnMonitor("media/images/monitors/Skhema_PUT.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_flat006') {  // 16
-          Mesh.material = setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene);
+          setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_TV002') {  // TV 1
-          Mesh.material = setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene);
+          setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene, Mesh);
         }
         else if (Mesh.name && Mesh.name === 'Display_TV') {  // TV 2  // белый экран на дубликатах
-         
+          makeUnicMat(Mesh);
           makeSvgDisplay(Mesh, Scene, 'bzu');
         }
         else if (Mesh.name && Mesh.name === 'Display_TV001') {  // TV 3 // белый экран на дубликатах
-         
+          makeUnicMat(Mesh);
           makeSvgDisplay(Mesh, Scene, 'dp');
         }
       })
@@ -403,15 +422,7 @@ function makeUnicMat(UnicMesh) {
 }
 
 function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false, Window = undefined, Pos = undefined) {
-  if (Mesh && SvgName) {
-    // if (Mesh.name == "Display_TV") {
-    //   Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
-    //   return;
-    // }
-    // else if (Mesh.name == "Display_TV001") {
-    //   Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
-    //   return;
-    // }
+  if (Mesh && SvgName) {   
     if (ChangeTexture === true) Mesh.svgArr = [{ name: SvgName, x: 0, y: 0 }];
     let svgIndex = devHelper.model3DVals.svgDisplays.svgNames.findIndex(function (obj) { return obj === SvgName; })
     let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[svgIndex];
@@ -612,6 +623,9 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
   devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
   devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false, 1, () => {
     createSvghelper(CurPos);
+    if (devHelper.model3DVals.currentPosition !== undefined) {
+      disableGeneralView();
+    }
   });
 }
 

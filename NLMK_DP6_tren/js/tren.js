@@ -312,6 +312,25 @@ function clickCloseChat(e) {
   }
 }
 
+// Рамки вокруг окон
+{
+Array.from(document.querySelectorAll('.time-header-title')).forEach(element => {
+  element.onmouseover = (e) => {
+    element.parentElement.parentElement.classList.add('border-window')
+  }
+  element.onmouseout = (e) => {
+    element.parentElement.parentElement.classList.remove('border-window')
+  }
+});
+Array.from(document.querySelectorAll('.chat-header-title')).forEach(element => {
+  element.onmouseover = (e) => {
+    element.parentElement.parentElement.classList.add('border-window')
+  }
+  element.onmouseout = (e) => {
+    element.parentElement.parentElement.classList.remove('border-window')
+  }
+});
+}
 // TIME
 {
   // КЛИК ЗАКРЫТЬ TIME
@@ -533,8 +552,6 @@ function setNormalTime(Time){
 
 // CHAT
 {
-
-
   setMiniChat();
 
   function setMiniChat() {
@@ -610,6 +627,10 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
   let b_action = item.querySelector('.click-button-tren');
   item = item.querySelector('button');
   b_action.addEventListener('click', (e) => {
+    if (item.hasAttribute('disabled')) {
+      return;
+    }
+
     if (document.querySelector(`.${item.getAttribute('window-interface')}`)) {  // включить анимацию
       document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0'); // включить анимацию
     }
@@ -735,3 +756,21 @@ document.getElementById('b_chat').addEventListener("click", (e) => {
   }
 });
 
+
+function disableGeneralView(state = true){
+  if (state) {
+    if (document.getElementById('b_GeneralView').hasAttribute('disabled')) {
+      document.getElementById('b_GeneralView').removeAttribute('disabled')
+    }
+  }
+  else{
+    document.getElementById('b_GeneralView').setAttribute('disabled', "");
+  }
+}
+// КЛИК ОБРАТНО
+document.getElementById('b_GeneralView').addEventListener("click", (e) => {
+  e.currentTarget.classList.remove('button-tren-active');
+  animMoveCamera([0.35, 2.15, -3.4], [0.1913, -0.0046, 0], undefined);
+  setNewFillButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  document.getElementById('b_GeneralView').setAttribute('disabled', "");
+})
