@@ -34,6 +34,7 @@ function startTren() {
 }
 function trenTimeTick(timeStamp) {
   if (devHelper.trenVals.scenario !== undefined) {
+    devHelper.model3DVals.scene.render();
     if (devHelper.trenVals.ended === false) {
       if (devHelper.trenVals.timers.allTimeHelper === 0) devHelper.trenVals.timers.allTimeHelper = timeStamp;
       devHelper.trenVals.timers.allTime = Number(timeStamp - devHelper.trenVals.timers.allTimeHelper).toFixed(2);
@@ -62,6 +63,7 @@ function trenTimeTick(timeStamp) {
               if (nextAction.action.window2D.elements.hasOwnProperty(key))
                 changeSvgElem(nextAction.action.window2D.elements[key]);
             }
+            updateSvgTextures();
             devHelper.trenVals.timers.actionTimeHelper = 0;
             nextAction.passed = true;
             devHelper.trenVals.waitingInput = false;
@@ -102,10 +104,10 @@ function trenClickOnMesh(Mesh) {
   }
 }
 
-function trenClickOnSvgElem(SvgElemHelper) {
-  if (devHelper.trenVals.waitingInput === true) {
+function trenClickOnSvgElem(SvgElemHelper = undefined, GhostClick = undefined) {
+  if (devHelper.trenVals.waitingInput === true || GhostClick === true) {
     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-    if (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id) {
+    if (GhostClick === true || (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id)) {
       if (currentActonObject.action.window2D && currentActonObject.action.window2D.elements) {
         for (let key in currentActonObject.action.window2D.elements) {
           if (currentActonObject.action.window2D.elements.hasOwnProperty(key))
@@ -224,8 +226,8 @@ function dragAndDrop(e, moveWindow) {
     document.onmousemove = null;
     moveWindow.onmouseup = null;
     moveWindow.classList.remove('transition-0');
-    moveWindow.style.left = ConvertPxToVw(parseFloat(moveWindow.style.left)) +'vw';
-    moveWindow.style.top = ConvertPxToVh(parseFloat(moveWindow.style.top)) +'vh';
+    moveWindow.style.left = ConvertPxToVw(parseFloat(moveWindow.style.left)) + 'vw';
+    moveWindow.style.top = ConvertPxToVh(parseFloat(moveWindow.style.top)) + 'vh';
   };
   moveWindow.ondragstart = function () {
     return false;
@@ -271,7 +273,7 @@ function clickCloseTime(e) {
     setStartPosition(document.querySelector('.box-time'));
     document.querySelector('.box-time').ontransitionend = null;
   }
-  
+
   clickCloseTimer(e);
 }
 function clickCloseTimer(e) {
@@ -339,7 +341,7 @@ function setLifeTime(time) {
     raiseUpBox(e);
     dragAndDrop(e, e.currentTarget.parentElement.parentElement);
   };
-  
+
   function setCounterTime(time) {
     document.querySelector(".dialogMessageWatch .time-hour").textContent = time.split(":")[0];
     document.querySelector(".dialogMessageWatch .time-minute").textContent = time.split(":")[1];
@@ -358,7 +360,7 @@ function setLifeTime(time) {
     document.querySelector(".dialogTimers-play").classList.toggle("disabled-play");
   }
 
-  
+
 
   // Открыть таймер
   document.querySelector(".time-oclock").addEventListener('click', (e) => {
@@ -369,16 +371,16 @@ function setLifeTime(time) {
 
     document.querySelector('.dialogMessageWatch').style.left = ConvertPxToVw(parseInt(document.querySelector('.box-time').getBoundingClientRect().right)) + 1 + 'vw';
     document.querySelector('.dialogMessageWatch').style.top = document.querySelector('.box-time').style.top;
-    
-    if (ConvertPxToVw(parseInt(document.querySelector('.box-time').getBoundingClientRect().right)) + 1 + 
-        ConvertPxToVw(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().width))
-       >= 100) {
-       document.querySelector('.dialogMessageWatch').style.left = ConvertPxToVw(parseInt(document.querySelector('.box-time').getBoundingClientRect().left)) - 1 - ConvertPxToVw(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().width)) + 'vw';
+
+    if (ConvertPxToVw(parseInt(document.querySelector('.box-time').getBoundingClientRect().right)) + 1 +
+      ConvertPxToVw(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().width))
+      >= 100) {
+      document.querySelector('.dialogMessageWatch').style.left = ConvertPxToVw(parseInt(document.querySelector('.box-time').getBoundingClientRect().left)) - 1 - ConvertPxToVw(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().width)) + 'vw';
     }
     // FIX GO
-    if (ConvertPxToVh(parseInt(document.querySelector('.box-time').getBoundingClientRect().top)) + 
-        ConvertPxToVh(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().height)) 
-    >= ConvertPxToVh(window.innerHeight)) {
+    if (ConvertPxToVh(parseInt(document.querySelector('.box-time').getBoundingClientRect().top)) +
+      ConvertPxToVh(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().height))
+      >= ConvertPxToVh(window.innerHeight)) {
       document.querySelector('.dialogMessageWatch').style.top = ConvertPxToVh(window.innerHeight) - ConvertPxToVh(parseInt(document.querySelector('.dialogMessageWatch').getBoundingClientRect().height)) + 'vh';
     }
   })
@@ -531,7 +533,7 @@ function setNormalTime(Time){
 // CHAT
 {
 
-  
+
   setMiniChat();
 
   function setMiniChat() {
@@ -541,7 +543,7 @@ function setNormalTime(Time){
     }
     let mes = document.querySelector('.box-chat-window .chat-mini').children;
     if (mes.length == 0) {
-      miniChat.style.width  = ConvertPxToVw(385) + "vw";
+      miniChat.style.width = ConvertPxToVw(385) + "vw";
       miniChat.style.height = ConvertPxToVw(100) + "vh"
       return;
     }
@@ -583,7 +585,7 @@ function newImageCollapseMenu(e) {
   let object = e.currentTarget.querySelector('object');
   if (object.getAttribute('icon') == "svg_menu_2") {
     object.setAttribute('icon', "svg_menu_1")
-    object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_1').contentDocument.querySelector('svg').innerHTML;     
+    object.contentDocument.querySelector('svg').innerHTML = document.getElementById('svg_menu_1').contentDocument.querySelector('svg').innerHTML;
   }
   else {
     object.setAttribute('icon', "svg_menu_2")
@@ -599,7 +601,7 @@ function setCenterWindow(item) {
   let b_center = item.getBoundingClientRect().height / 2;
   let w_center = window.getBoundingClientRect().height / 2;
   window.style.top = ConvertPxToVh(item.getBoundingClientRect().y + (b_center - w_center)) + 'vh';
-  setTimeout(() => {window.classList.remove('transition-0');}, 50);
+  setTimeout(() => { window.classList.remove('transition-0'); }, 50);
 }
 
 // БОЛЬШОЙ БИНД НА СМЕНУ ЦВЕТА КНОПОК // НОВОЕ СВП В 1Ю КНОПКУ  // КЛИК
@@ -607,11 +609,11 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
   let b_action = item.querySelector('.click-button-tren');
   item = item.querySelector('button');
   b_action.addEventListener('click', (e) => {
-    if(document.querySelector(`.${item.getAttribute('window-interface')}`)){  // включить анимацию
+    if (document.querySelector(`.${item.getAttribute('window-interface')}`)) {  // включить анимацию
       document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0'); // включить анимацию
     }
     if (item.classList.contains('button-tren-active')) {
-      
+
       if (item.getAttribute('window-interface')) {
         document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('box-time-padTop32');
       }
@@ -626,7 +628,7 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
       setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Normal);
       return;
     }
-  
+
     item.classList.add('button-tren-active');
     setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Active);
   })
@@ -675,14 +677,14 @@ function setNewPositionWindow(elem, state = false) {
       }
       elem.style.left = elem.getAttribute('sx2');
     }
-    else if (elem.classList.contains('opacity-1-Always')) {return;}
-    else{
+    else if (elem.classList.contains('opacity-1-Always')) { return; }
+    else {
       elem.style.left = elem.getAttribute('sx2');
       elem.style.top = elem.getAttribute('sy');
     }
   }
-  else{
-    if (elem.classList.contains('opacity-1-Always')) {return;}
+  else {
+    if (elem.classList.contains('opacity-1-Always')) { return; }
     elem.style.left = elem.getAttribute('sx');
     elem.style.top = elem.getAttribute('sy');
   }
@@ -690,7 +692,7 @@ function setNewPositionWindow(elem, state = false) {
 // ОТКРЫТЬ/ЗАКРЫТЬ МЕНЮ
 document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
   newImageCollapseMenu(e);
-  if(!document.querySelector('.tren-ui').classList.contains('tren-ui-long')) {
+  if (!document.querySelector('.tren-ui').classList.contains('tren-ui-long')) {
     document.querySelector('.tren-ui').classList.add('tren-ui-long');
     document.querySelector('.box-collapse').classList.remove('opacity-1-Temp');
     Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
@@ -709,7 +711,7 @@ document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
 });
 
 // КЛИК ЧАСЫ  //  
-document.getElementById('b_oclock').addEventListener("click", (e)=>{
+document.getElementById('b_oclock').addEventListener("click", (e) => {
   if (e.currentTarget.classList.contains('button-tren-active')) {
     document.querySelector('.box-time').classList.add("opacity-1-Always");
     document.querySelector('.box-time').classList.add("box-time-padTop32");
