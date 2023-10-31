@@ -90,6 +90,7 @@ duration передавать в анимации
 
 let tempActions = [
   [ // Первый сценарий
+      //--------------------------------1----------------------------------------
     {
       text: 'Открыть клапан 029 на дымовую трубу.',
       sender: 'Система',
@@ -261,6 +262,29 @@ let tempActions = [
       startTime: 6,
       human: true,
     },
+    //--------------------------------2----------------------------------------
+    // {
+    //   text: 'Открыть клапан 029 на дымовую трубу.',
+    //   sender: 'Система',
+    //   action: {
+    //     target2D: 'kl029',
+    //     window2D: {
+    //       elements: [
+    //         { name: 'title_work_vn', text: 'Управление клапаном 029' },
+    //         { name: 'status_window_text', text: 'Нет данных' },
+    //         { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
+    //         { name: 'polozenie_text', text: '51' },
+    //         { name: 'polozenie_button_text', color: '#000000' },
+    //         { name: 'left_vn', color: '#8F8F8F' },
+    //         { name: 'right_vn', color: '#8F8F8F' },
+    //         { name: 'circle_1', stroke: '#8F8F8F' },
+    //         { name: 'circle_2', stroke: '#8F8F8F' },
+    //       ],
+    //     },
+    //   },
+    //   startTime: 0,
+    //   human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
+    // }
     // {
     //   text: 'Заменить1',
     //   action: {
