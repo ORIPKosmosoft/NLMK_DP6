@@ -117,6 +117,7 @@ function trenClickOnSvgElem(SvgElemHelper = undefined, GhostClick = undefined) {
       // function изменить время
       if (currentActonObject.action.lifetime && currentActonObject.action.lifetime !== '') {
         startTimerToStep(currentActonObject.action.lifetime);
+        console.log("ok");
       }
       devHelper.trenVals.timers.actionTimeHelper = 0;
       currentActonObject.passed = true;
