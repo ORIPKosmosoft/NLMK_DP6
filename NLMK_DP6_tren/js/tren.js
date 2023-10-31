@@ -59,7 +59,6 @@ function trenTimeTick(timeStamp) {
           if (devHelper.trenVals.waitingInput === false) devHelper.trenVals.waitingInput = true;
         } else {
           if (nextAction.action && nextAction.action.window2D) {
-            console.log(devHelper.trenVals.waitingInput, );
             for (let key in nextAction.action.window2D.elements) {
               if (nextAction.action.window2D.elements.hasOwnProperty(key))
                 changeSvgElem(nextAction.action.window2D.elements[key]);
@@ -768,7 +767,7 @@ function disableGeneralView(state = true){
 // КЛИК ОБРАТНО
 document.getElementById('b_GeneralView').addEventListener("click", (e) => {
   e.currentTarget.classList.remove('button-tren-active');
-  animMoveCamera([0.35, 2.15, -3.4], [0.1913, -0.0046, 0], undefined);
+  animMoveCamera(devHelper.model3DVals.cameraPositions[0]);
   setNewFillButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Normal);
   document.getElementById('b_GeneralView').setAttribute('disabled', "");
 })

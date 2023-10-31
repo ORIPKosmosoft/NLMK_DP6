@@ -218,10 +218,10 @@ document.addEventListener("DOMContentLoaded", () => {
           Mesh.actionManager = new BABYLON.ActionManager(Scene);
         Mesh.isPickable = true;
         if (Mesh.name && Mesh.name === 'Display_flat002') {
-          makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 1 });
+          makeActiveMesh(Mesh, 1);
           makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
         } else if (Mesh.name && Mesh.name === 'Display_flat003') {
-          makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 2 });
+          makeActiveMesh(Mesh, 2);
           makeSvgDisplay(Mesh, Scene, 'vnk_main');
         } else if (Mesh.id && Mesh.id === '25408591-8ddd-4b64-a7ad-499aaa995ae6') {
           makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
@@ -314,18 +314,16 @@ document.addEventListener("DOMContentLoaded", () => {
           lightMat.alpha = 0;
           element.material = lightMat;
           if (element.name && element.name === 'Console_BVNK_highlight') {
-            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+            makeActiveMesh(element, 3);
           } else if (element.name && element.name === 'Console_BZU_highlight') {
-            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+            makeActiveMesh(element, 3);
           } else if (element.name && element.name === 'Console_DP6_highlight') {
-            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+            makeActiveMesh(element, 3);
           } else if (element.name && element.name === 'Console_UGKS_highlight') {
-            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+            makeActiveMesh(element, 3);
           } else if (element.name && element.name === 'Console_PSODP6_highlight') {
             element.dispose();
           }
-
-
         })
       }
       try {
