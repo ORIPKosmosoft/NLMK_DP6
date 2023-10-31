@@ -1395,7 +1395,7 @@ ul {
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
-  border: solid 2px white;
+  border: none;
 }
 .box-time .block-button{
   width: 100%;
@@ -1755,6 +1755,7 @@ ul {
   height: 100px;
   padding-top: 0px;
   padding-bottom: 0px;
+  border: none;
 }
 .box-chat-window .block-button{
   z-index: 6;
@@ -2091,6 +2092,7 @@ ul {
 .opacity-1-Always{
   opacity: 1;
   z-index: 1;
+  border: solid 2px white;
   /* visibility: visible; */
 }
 .opacity-1-Temp{
