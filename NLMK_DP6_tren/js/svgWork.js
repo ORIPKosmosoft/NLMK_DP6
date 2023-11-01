@@ -20,7 +20,7 @@ window.addEventListener('load', function () {
   })
 
   devHelper.svgVals.forEach((ObjectSvg, Index) => {
-    if (ObjectSvg.name === 'vnk_main') {
+    if (ObjectSvg.name === 'O_n_k_na_VNK_posle_11') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -205,6 +205,7 @@ window.addEventListener('load', function () {
         if (Element.hasAttribute('cy') && Element.getAttribute('cy') === '568.43' && Element.hasAttribute('cx') && Element.getAttribute('cx') === '750.32' && Element.hasAttribute('r') && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl028'); }
         if (Element.hasAttribute('cy') && Element.getAttribute('cy') === '568.43' && Element.hasAttribute('cx') && Element.getAttribute('cx') === '1001.82' && Element.hasAttribute('r') && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl007'); }
         if (Element.hasAttribute('cy') && Element.getAttribute('cy') === '568.43' && Element.hasAttribute('cx') && Element.getAttribute('cx') === '1001.82' && Element.hasAttribute('r') && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl007'); }
+        if (Element.hasAttribute('cy') && Element.getAttribute('cy') === '629.53' && Element.hasAttribute('cx') && Element.getAttribute('cx') === '1000.92' && Element.hasAttribute('r') && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl025'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
@@ -215,9 +216,9 @@ window.addEventListener('load', function () {
       })
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
-        if (Element.innerHTML === '51') { addSvgElem(Index, Element, 'kl029_proc'); }
-        if (Element.innerHTML === '0' && Element.hasAttribute('x') && Element.getAttribute('x') === '746.9' && Element.hasAttribute('y') && Element.getAttribute('y') === '592.85') { addSvgElem(Index, Element, 'kl029_proc'); }
-        if (Element.innerHTML === '0' && Element.hasAttribute('x') && Element.getAttribute('x') === '998.47' && Element.hasAttribute('y') && Element.getAttribute('y') === '592.85') { addSvgElem(Index, Element, 'kl007_proc'); }
+        if (Element.innerHTML === '51') { addSvgElem(Index, Element, 'kl029_proc', 'middle'); }
+        if (Element.innerHTML === '0' && Element.hasAttribute('x') && Element.getAttribute('x') === '746.9' && Element.hasAttribute('y') && Element.getAttribute('y') === '592.85') { addSvgElem(Index, Element, 'kl028_proc', 'center'); }
+        if (Element.innerHTML === '0' && Element.hasAttribute('x') && Element.getAttribute('x') === '998.47' && Element.hasAttribute('y') && Element.getAttribute('y') === '592.85') { addSvgElem(Index, Element, 'kl007_proc', 'center'); }
       });
     }
     if (ObjectSvg.name === 'vnk_spvg') {
@@ -316,18 +317,22 @@ function getClientRectFromMesh(Mesh) {
   return rect
 }
 
-function addSvgElem(SvgIndex, Element, Name, Move = true) {
+function addSvgElem(SvgIndex, Element, Name, Move = 'middle') {//start middle end
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,
     name: Name,
   })
-  if (Move === true) {
+  if (Move !== false) {
     if (Element.tagName === 'text') {
-      Element.style.textAnchor = 'end';
-      if (Element.hasAttribute('x'))
-        Element.setAttribute('x', Element.getBoundingClientRect().width + parseFloat(Element.getAttribute('x')))
-      else
-        Element.style.transform = `translate(${Element.getBoundingClientRect().width}px, 0px)`;
+      let moveAtrribute = Move === 'end' ? 'end' : Move === 'right' ? 'end' : Move === 'left' ? 'start' : Move === 'start' ? 'start' : Move === 'center' ? 'middle' : Move === 'middle' ? 'middle' : 'end';
+      Element.style.textAnchor = moveAtrribute;
+      if (Element.hasAttribute('x')) {
+        let diffX1 = moveAtrribute === 'end' ? Element.getBoundingClientRect().width : moveAtrribute === 'start' ? 0 : (Element.getBoundingClientRect().width / 2);
+        Element.setAttribute('x', Number(Element.getAttribute('x')) + diffX1);
+      } else {
+        let diffX1 = moveAtrribute === 'end' ? (Element.getBoundingClientRect().width * 2) : moveAtrribute === 'start' ? 0 : (Element.getBoundingClientRect().width / 2);
+        Element.style.transform = `translate(${diffX1}px, 0px)`;
+      }
     }
   }
 }

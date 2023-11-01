@@ -2130,6 +2130,14 @@ ul {
   padding-bottom: 7px;
 }
 
+.notification-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22%;
+  visibility: hidden;
+}
+
 
 /*  /// КОНЕЦCтраница тренажёра - интерфейс - основная часть ///  */
 

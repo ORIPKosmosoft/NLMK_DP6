@@ -170,7 +170,6 @@ function addTrenValsMessages(elem) {
   devHelper.trenVals.messages.push(elem);
 }
 function sendMessage(Sender, TextMessage) {
-  console.log(Sender, TextMessage);
   let message = createCustomElement("div", "", { "class": Roles[Sender] })
   let top = createCustomElement("div", "", { "class": "topMessage" }, message)
   switch (Roles[Sender]) {
@@ -188,6 +187,12 @@ function sendMessage(Sender, TextMessage) {
   }
   createCustomElement("div", TextMessage, { "class": "textMessage" }, message)
   document.querySelector(".chat").insertBefore(message, document.querySelector(".chat").children[0]);
+  if (!document.querySelector('.box-chat-window').classList.contains('opacity-1-Temp') && !document.querySelector('.box-chat-window').classList.contains('opacity-1-Always')) {
+    let notIcon = document.querySelector('.notification-icon');
+    notIcon.style.visibility = "visible";
+    notIcon.style.left = (document.getElementById('b_chat').getBoundingClientRect().right - notIcon.getBoundingClientRect().width / 1.5) + 'px';
+    notIcon.style.top = (document.getElementById('b_chat').getBoundingClientRect().top - notIcon.getBoundingClientRect().height / 3) + 'px';
+  }
 }
 
 function createCustomElement(tag, content, attributes, parrent = null) {
@@ -773,6 +778,12 @@ document.getElementById('b_chat').addEventListener("click", (e) => {
     document.querySelector('.box-chat-window .box-chat-header').classList.add("opacity-1-Always");
     document.querySelector('.box-chat-window .backArea').classList.add('backArea-white-100')
     setNormalChat();
+  }
+});
+
+document.getElementById('b_chat').addEventListener("mouseover", (e) => {
+  if (document.querySelector('.notification-icon').style.visibility && document.querySelector('.notification-icon').style.visibility === 'visible') {
+    document.querySelector('.notification-icon').style.visibility = 'hidden';
   }
 });
 
