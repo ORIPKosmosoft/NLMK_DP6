@@ -174,9 +174,9 @@ window.addEventListener('load', function () {
       })
     }
     if (ObjectSvg.name === 'BVNK_VNK1') {
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
-        if (TextElement.innerHTML === '92') { addSvgElem(Index, TextElement, '3TI_43'); } 
-        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); } 
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
+        if (TextElement.innerHTML === '92') { addSvgElem(Index, TextElement, '3TI_43'); }
+        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') { addSvgElem(Index, Element, '313'); }
@@ -184,7 +184,7 @@ window.addEventListener('load', function () {
       })
     }
     if (ObjectSvg.name === 'BVNK_VNK2') {
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
         if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
       });
     }
@@ -193,7 +193,7 @@ window.addEventListener('load', function () {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'fire_vnk_3'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_3'); }
       })
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
         if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
       });
     }
@@ -205,13 +205,13 @@ window.addEventListener('load', function () {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M733.76 579.16V557.7l33.12 21.46V557.7z') { addSvgElem(Index, Element, 'kl028'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M985.26 579.16V557.7l33.12 21.46V557.7z') { addSvgElem(Index, Element, 'kl007'); }
       })
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
         if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
         if (TextElement.innerHTML === '51') { addSvgElem(Index, TextElement, 'kl029_proc'); }
       });
     }
     if (ObjectSvg.name === 'vnk_spvg') {
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
+      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
         if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
       });
     }
@@ -239,7 +239,7 @@ window.addEventListener('load', function () {
         if (TextElement.innerHTML === 'Закрыть') { addSvgElem(Index, TextElement, 'title_open_vn',); }
       })
     }
-    
+
   })
 
   devHelper.svgVals.forEach((Element) => {
@@ -260,22 +260,10 @@ window.addEventListener('load', function () {
       Element2.element.id = `${Element.name}_${Element2.name}`;
     })
   })
-  setTimeSvgScheme();
+
+  changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
 });
-function setTimeSvgScheme() {
-    devHelper.svgVals.forEach((ObjectSvg, Index) => {
-      ObjectSvg.activeElements.forEach((Element) => {
-        if (Element.name === "lifetime") {
-          Element.innerHTML = devHelper.trenVals.timers.lifeTime;
-          changeSvgElem({
-            name: Element.name, 
-            text: devHelper.trenVals.timers.lifeTime
-          });
-        }
-      })  
-      
-    })
-}
+
 
 // TODO Это главная функция, которая возвращает размеры меша в видимой области как гетбаундингклиентрект
 function getClientRectFromMesh(Mesh) {
@@ -467,9 +455,9 @@ function changeSvgElem(Val = {}) {
     devHelper.svgVals.forEach((svgArrObject) => {
       svgArrObject.activeElements.forEach((activeElemObj) => {
         if (activeElemObj.name === Val.name) {
-          if (Val.text) {
+          svgArrObject.object.nextElementSibling.svgReload = false;
+          if (Val.text)
             activeElemObj.element.innerHTML = Val.text;
-          }
           if (Val.color)
             activeElemObj.element.style.fill = Val.color;
           if (Val.stroke)

@@ -19,9 +19,9 @@ function loadTrenActions() {
 }
 
 function startTren() {
-  // расписать поведение интерфейса при начале тренажёра в зависимости от обучения/контроля
   if (devHelper.trenVals.type === 'learn') {
-
+    if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text) 
+      sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text);
   } else {
 
   }
@@ -56,13 +56,19 @@ function trenTimeTick(timeStamp) {
       let nextAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
       if (nextAction) {
         if (nextAction.human && nextAction.human === true) {
-          if (devHelper.trenVals.waitingInput === false) devHelper.trenVals.waitingInput = true;
+          if (devHelper.trenVals.waitingInput === false) {
+            if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+            devHelper.trenVals.waitingInput = true;
+          } 
         } else {
+          if (nextAction.lifeTime) startTimerToStep(nextAction.lifeTime, false);
           if (nextAction.action && nextAction.action.window2D) {
             for (let key in nextAction.action.window2D.elements) {
               if (nextAction.action.window2D.elements.hasOwnProperty(key))
                 changeSvgElem(nextAction.action.window2D.elements[key]);
             }
+            // Найти в каких СВГ была замена и обновлять толкьо те текстуры
+            // в которых етсь эта СВГ
             updateSvgTextures();
             devHelper.trenVals.timers.actionTimeHelper = 0;
             nextAction.passed = true;
@@ -107,20 +113,17 @@ function trenClickOnMesh(Mesh) {
 function trenClickOnSvgElem(SvgElemHelper = undefined) {
   if (devHelper.trenVals.waitingInput === true) {
     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+    if (currentActonObject.lifeTime) startTimerToStep(currentActonObject.lifeTime);
     if (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id) {
       if (currentActonObject.action.window2D && currentActonObject.action.window2D.elements) {
         for (let key in currentActonObject.action.window2D.elements) {
           if (currentActonObject.action.window2D.elements.hasOwnProperty(key))
-          changeSvgElem(currentActonObject.action.window2D.elements[key]);
+            changeSvgElem(currentActonObject.action.window2D.elements[key]);
+        }
       }
-    }
-      // function изменить время
-      if (currentActonObject.action.lifetime && currentActonObject.action.lifetime !== '') {
-        startTimerToStep(currentActonObject.action.lifetime);
-      }
-    devHelper.trenVals.timers.actionTimeHelper = 0;
-    currentActonObject.passed = true;
-    devHelper.trenVals.waitingInput = false;
+      devHelper.trenVals.timers.actionTimeHelper = 0;
+      currentActonObject.passed = true;
+      devHelper.trenVals.waitingInput = false;
     }
   }
 }
@@ -153,6 +156,7 @@ function addTrenValsMessages(elem) {
   devHelper.trenVals.messages.push(elem);
 }
 function sendMessage(Sender, TextMessage) {
+  console.log(Sender, TextMessage);
   let message = createCustomElement("div", "", { "class": Roles[Sender] })
   let top = createCustomElement("div", "", { "class": "topMessage" }, message)
   switch (Roles[Sender]) {
@@ -313,22 +317,22 @@ function clickCloseChat(e) {
 
 // Рамки вокруг окон
 {
-Array.from(document.querySelectorAll('.time-header-title')).forEach(element => {
-  element.onmouseover = (e) => {
-    element.parentElement.parentElement.classList.add('border-window')
-  }
-  element.onmouseout = (e) => {
-    element.parentElement.parentElement.classList.remove('border-window')
-  }
-});
-Array.from(document.querySelectorAll('.chat-header-title')).forEach(element => {
-  element.onmouseover = (e) => {
-    element.parentElement.parentElement.classList.add('border-window')
-  }
-  element.onmouseout = (e) => {
-    element.parentElement.parentElement.classList.remove('border-window')
-  }
-});
+  Array.from(document.querySelectorAll('.time-header-title')).forEach(element => {
+    element.onmouseover = (e) => {
+      element.parentElement.parentElement.classList.add('border-window')
+    }
+    element.onmouseout = (e) => {
+      element.parentElement.parentElement.classList.remove('border-window')
+    }
+  });
+  Array.from(document.querySelectorAll('.chat-header-title')).forEach(element => {
+    element.onmouseover = (e) => {
+      element.parentElement.parentElement.classList.add('border-window')
+    }
+    element.onmouseout = (e) => {
+      element.parentElement.parentElement.classList.remove('border-window')
+    }
+  });
 }
 // TIME
 {
@@ -437,16 +441,16 @@ function setLifeTime(time) {
     document.querySelector(".dialogMessageWatch .time-minute").textContent = document.querySelector('.dialogMessageWatch .dialogTimers-hours[dropDown="2"] p').textContent;
     newStateTimer();
     startTimerToFinish();
-    
+
   })
-function setNormalTime(Time){
-  // закладка для оптимизации
-  let currentDateTime = new Date();
-  currentDateTime.setSeconds(Number(Time.split(":")[2]));
-  currentDateTime.setMinutes(Number(Time.split(":")[1]));
-  currentDateTime.setHours(Number(Time.split(":")[0]));
-  return currentDateTime;
-}
+  function setNormalTime(Time) {
+    // закладка для оптимизации
+    let currentDateTime = new Date();
+    currentDateTime.setSeconds(Number(Time.split(":")[2]));
+    currentDateTime.setMinutes(Number(Time.split(":")[1]));
+    currentDateTime.setHours(Number(Time.split(":")[0]));
+    return currentDateTime;
+  }
   function getLifeTime_Date() {
     let currentDateTime = new Date();
     currentDateTime.setSeconds(Number(devHelper.trenVals.timers.lifeTime.split(":")[2]));
@@ -462,7 +466,7 @@ function setNormalTime(Time){
       currentDateTime.setMinutes(Number(document.querySelector(".dialogMessageWatch .time-minute").textContent));
       currentDateTime.setHours(Number(document.querySelector(".dialogMessageWatch .time-hour").textContent));
     }
-    else{
+    else {
       currentDateTime.setMinutes(Number(specTime.split(":")[1]));
       currentDateTime.setHours(Number(specTime.split(":")[0]));
     }
@@ -510,6 +514,8 @@ function setNormalTime(Time){
       if (_timeInteval === timePassed) {
         //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
         onTimesUp();
+        // changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
+        // updateSvgTextures();
         return;
       }
       currentDateTime += counterStep;
@@ -517,21 +523,24 @@ function setNormalTime(Time){
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
-      setTimeSvgScheme();                                                      // время на схемах
+      // setTimeSvgScheme();                                                      // время на схемах
       timePassed += _stepInteval;
     }, _stepInteval);
   }
-  function startTimerToStep(finishTime){
+  function startTimerToStep(finishTime, UpdateSvg = true) {
     timePassed = 0;
     timerInterval = null;
-
+    changeSvgElem({ name: 'lifetime', text: finishTime, });
+    if (UpdateSvg === true) updateSvgTextures();
     let currentDateTime = getLifeTime_Date().getTime();
-    let finishDateTime  = getCounterTime_Date(finishTime).getTime();
+    let finishDateTime = getCounterTime_Date(finishTime).getTime();
     let counterStep = (finishDateTime - currentDateTime) / _step;
     timerInterval = setInterval(() => {
       if (_timeInteval === timePassed) {
         //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
         onTimesUp();
+        // changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
+        // updateSvgTextures();
         return;
       }
       currentDateTime += counterStep;
@@ -539,7 +548,7 @@ function setNormalTime(Time){
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       // setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
-      setTimeSvgScheme();                                                      // время на схемах
+      // setTimeSvgScheme();                                                      // время на схемах
       timePassed += _stepInteval;
     }, _stepInteval);
   }
@@ -666,10 +675,10 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   b_action.addEventListener('mouseover', (e) => {
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0');
-    if(!document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')){
+    if (!document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')) {
       setCenterWindow(item);
     }
-    
+
   });
   b_action.addEventListener('mouseout', (e) => {
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('opacity-1-Temp');
@@ -689,7 +698,7 @@ document.getElementById('b_collapseMenu').addEventListener("mouseover", (e) => {
 // НОВЫЕ ПОЗИЦИИ ОКНО ПРИ ОТКРЫТИИ МЕНЮ
 function setNewPositionWindow(elem, state = false) {
   if (state) {
-    if (elem.classList.contains('opacity-1-Always') && 8 > ConvertPxToVw(parseFloat(elem.getBoundingClientRect().left))){
+    if (elem.classList.contains('opacity-1-Always') && 8 > ConvertPxToVw(parseFloat(elem.getBoundingClientRect().left))) {
       if (elem.classList.contains('dialogMessageWatch')) {  // частный случай
         elem.style.left = document.querySelector('.box-time').style.left;
         return;
@@ -754,13 +763,13 @@ document.getElementById('b_chat').addEventListener("click", (e) => {
 });
 
 
-function disableGeneralView(state = true){
+function disableGeneralView(state = true) {
   if (state) {
     if (document.getElementById('b_GeneralView').hasAttribute('disabled')) {
       document.getElementById('b_GeneralView').removeAttribute('disabled')
     }
   }
-  else{
+  else {
     document.getElementById('b_GeneralView').setAttribute('disabled', "");
   }
 }
