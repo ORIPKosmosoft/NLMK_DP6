@@ -95,10 +95,8 @@ duration передавать в анимации
 let tempActions = [
   [ // Первый сценарий
     //--------------------------------1----------------------------------------
-    // Добавить измегнение кругов на клапане 029 на вкн_мейн
-    // изменить верно цвет кнопки открыть на O_n_k_na_VNK_posle_1
     {
-      text: 'Открыть клапан 029 на дымовую трубу.',
+      scenarioText: 'Открыть клапан 029 на дымовую трубу.',
       sender: 'Система',
       action: {
         target2D: 'kl029',
@@ -119,7 +117,7 @@ let tempActions = [
       lifeTime: '10:00:00',
       startTime: 0,
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
-    }, 
+    },
     {
       action: {
         target2D: 'open_vn',
@@ -131,7 +129,7 @@ let tempActions = [
       },
       startTime: 0.5,
       human: true,
-    }, 
+    },
     {
       action: {
         target2D: 'open_vn1',
@@ -307,4 +305,18 @@ let tempActions = [
       duration: 3
     },
   ],
+]
+
+// Массив исходных состояний
+let startState2D = [
+  [// Первый сценарий
+    { name: 'kl028', color: '#6DE90B' },
+    { name: 'circle_1_kl028', stroke: '#6DE90B' },
+    { name: 'circle_2_kl028', stroke: '#6DE90B' },
+    { name: 'kl007', color: '#6DE90B' },
+    { name: 'circle_1_kl007', stroke: '#6DE90B' },
+    { name: 'circle_2_kl007', stroke: '#6DE90B' },
+    { name: 'kl029_proc', text: '100' },
+    { name: 'kl007_proc', text: '100' },
+  ]
 ]

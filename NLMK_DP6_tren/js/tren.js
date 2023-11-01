@@ -24,6 +24,8 @@ function startTren() {
   if (devHelper.trenVals.type === 'learn') {
     if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text)
       sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text);
+    if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].scenarioText)
+      sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].scenarioText);
   } else {
 
   }
@@ -32,6 +34,7 @@ function startTren() {
   devHelper.trenVals.currentAction = 0;
   devHelper.trenVals.ended = false;
   devHelper.trenVals.waitingInput = true;
+  takeStartingState();
   window.requestAnimationFrame(trenTimeTick);
 }
 function trenTimeTick(timeStamp) {
@@ -60,6 +63,7 @@ function trenTimeTick(timeStamp) {
         if (nextAction.human && nextAction.human === true) {
           if (devHelper.trenVals.waitingInput === false) {
             if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+            if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
             devHelper.trenVals.waitingInput = true;
           }
         } else {
@@ -72,6 +76,7 @@ function trenTimeTick(timeStamp) {
             updateSvgTextures();
           }
           if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+          if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
           devHelper.trenVals.timers.actionTimeHelper = 0;
           nextAction.passed = true;
           devHelper.trenVals.waitingInput = false;
@@ -134,6 +139,14 @@ function trenFinish() {
   if (devHelper.dev.enable === true && document.querySelector('.info-tren'))
     document.querySelector('.info-tren').innerHTML = `Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`;
   if (devHelper.dev.enable === true) console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`);
+}
+
+function takeStartingState() {
+  if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
+    startState2D[devHelper.trenVals.scenario].forEach(element => {
+      if (element.name) changeSvgElem(element);
+    });
+  }
 }
 
 
