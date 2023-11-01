@@ -15,12 +15,14 @@ function loadTrenActions() {
       tempObjTren.actions = tempActions[Index];
     }
   })
-  devHelper.trenVals.activeMeshs = [...tempActions.flatMap(scenarioArr => scenarioArr.map(action => action.action.target3D))];
+  devHelper.trenVals.activeMeshs = tempActions.flatMap(scenarioArr =>
+    scenarioArr.map(action => action.action?.target3D)
+  ).filter(item => item !== null);
 }
 
 function startTren() {
   if (devHelper.trenVals.type === 'learn') {
-    if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text) 
+    if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text)
       sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text);
   } else {
 
@@ -59,7 +61,7 @@ function trenTimeTick(timeStamp) {
           if (devHelper.trenVals.waitingInput === false) {
             if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
             devHelper.trenVals.waitingInput = true;
-          } 
+          }
         } else {
           if (nextAction.lifeTime) startTimerToStep(nextAction.lifeTime, false);
           if (nextAction.action && nextAction.action.window2D) {
@@ -67,13 +69,12 @@ function trenTimeTick(timeStamp) {
               if (nextAction.action.window2D.elements.hasOwnProperty(key))
                 changeSvgElem(nextAction.action.window2D.elements[key]);
             }
-            // Найти в каких СВГ была замена и обновлять толкьо те текстуры
-            // в которых етсь эта СВГ
             updateSvgTextures();
-            devHelper.trenVals.timers.actionTimeHelper = 0;
-            nextAction.passed = true;
-            devHelper.trenVals.waitingInput = false;
           }
+          if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+          devHelper.trenVals.timers.actionTimeHelper = 0;
+          nextAction.passed = true;
+          devHelper.trenVals.waitingInput = false;
         }
       }
       let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));

@@ -20,11 +20,11 @@ window.addEventListener('load', function () {
   })
 
   devHelper.svgVals.forEach((ObjectSvg, Index) => {
-    // if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
-    //   ObjectSvg.object.style.left = '0';
-    //   ObjectSvg.object.style.top = '0';
-    //   ObjectSvg.object.style.visibility = 'visible';
-    // }
+    if (ObjectSvg.name === 'vnk_main1') {
+      ObjectSvg.object.style.left = '0';
+      ObjectSvg.object.style.top = '0';
+      ObjectSvg.object.style.visibility = 'visible';
+    }
 
     if (ObjectSvg.name === 'dp') {
       ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
@@ -198,6 +198,10 @@ window.addEventListener('load', function () {
       });
     }
     if (ObjectSvg.name === 'vnk_main') {
+      ObjectSvg.svg.querySelectorAll('circle').forEach((Element) => {
+        if (Element.hasAttribute('cx') && Element.getAttribute('cx') === '858.16' && Element.hasAttribute('r') && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl029'); }
+        if (Element.hasAttribute('cx') && Element.getAttribute('cx') === '858.16' && Element.hasAttribute('r') && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl029'); }
+      })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1301.37 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.37-12.26l-20.56-25.18v-12.46h2.35l-.28-.91v-22.21c0-8.54-6.97-12.27-15.51-12.27h-.39c-8.54 0-15.51 3.73-15.51 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_3'); }
@@ -227,11 +231,11 @@ window.addEventListener('load', function () {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm58.69 75.18-14.08-7.8-14.08-7.8v31.2l14.08-7.8z') { addSvgElem(Index, Element, 'left_vn'); }
       })
       ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element) => {
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_1'); }
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_2'); }
+        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_1_kl029'); }
+        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_2_kl029'); }
       })
       ObjectSvg.svg.querySelectorAll('rect').forEach((Element) => {
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14') { addSvgElem(Index, Element, 'btn_open'); }
+        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') && Element.getAttribute('x') === '169.84' && Element.getAttribute('y') && Element.getAttribute('y') === '121.6') { addSvgElem(Index, Element, 'btn_open'); }
       })
     }
     if (ObjectSvg.name === 'O_n_k_na_VNK_posle_2') {

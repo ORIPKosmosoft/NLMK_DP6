@@ -95,6 +95,8 @@ duration передавать в анимации
 let tempActions = [
   [ // Первый сценарий
     //--------------------------------1----------------------------------------
+    // Добавить измегнение кругов на клапане 029 на вкн_мейн
+    // изменить верно цвет кнопки открыть на O_n_k_na_VNK_posle_1
     {
       text: 'Открыть клапан 029 на дымовую трубу.',
       sender: 'Система',
@@ -109,8 +111,8 @@ let tempActions = [
             { name: 'polozenie_button_text', color: '#000000' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1', stroke: '#8F8F8F' },
-            { name: 'circle_2', stroke: '#8F8F8F' },
+            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
           ],
         },
       },
@@ -141,25 +143,16 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl029', color: '#6DE90B' },
-            { name: 'kl029_proc', text: '55' },
-          ],
-        },
-      },
-      startTime: 1.01,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
             { name: 'status_window_text', text: 'Открывается' },
             { name: 'btn_open', color: '', stroke: '' },
             { name: 'polozenie_text', text: '55' },
             { name: 'polozenie_button_text', color: '' },
             { name: 'left_vn', color: '#6DE90B' },
             { name: 'right_vn', color: '#6DE90B' },
-            { name: 'circle_1', stroke: '#6DE90B' },
-            { name: 'circle_2', stroke: '#6DE90B' },
+            { name: 'kl029', color: '#6DE90B' },
+            { name: 'kl029_proc', text: '55' },
+            { name: 'circle_1_kl029', stroke: '#6DE90B' },
+            { name: 'circle_2_kl029', stroke: '#6DE90B' },
           ],
         },
       },
@@ -171,20 +164,11 @@ let tempActions = [
           elements: [
             { name: 'kl029', color: '#8F8F8F' },
             { name: 'kl029_proc', text: '65' },
-          ],
-        },
-      },
-      startTime: 2.01,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
             { name: 'polozenie_text', text: '65' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1', stroke: '#8F8F8F' },
-            { name: 'circle_2', stroke: '#8F8F8F' },
+            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
           ],
         },
       },
@@ -196,20 +180,11 @@ let tempActions = [
           elements: [
             { name: 'kl029', color: '#6DE90B' },
             { name: 'kl029_proc', text: '75' },
-          ],
-        },
-      },
-      startTime: 3.01,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
             { name: 'polozenie_text', text: '75' },
             { name: 'left_vn', color: '#6DE90B' },
             { name: 'right_vn', color: '#6DE90B' },
-            { name: 'circle_1', stroke: '#6DE90B' },
-            { name: 'circle_2', stroke: '#6DE90B' },
+            { name: 'circle_1_kl029', stroke: '#6DE90B' },
+            { name: 'circle_2_kl029', stroke: '#6DE90B' },
           ],
         },
       },
@@ -221,20 +196,11 @@ let tempActions = [
           elements: [
             { name: 'kl029', color: '#8F8F8F' },
             { name: 'kl029_proc', text: '85' },
-          ],
-        },
-      },
-      startTime: 4.01,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
             { name: 'polozenie_text', text: '85' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1', stroke: '#8F8F8F' },
-            { name: 'circle_2', stroke: '#8F8F8F' },
+            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
           ],
         },
       },
@@ -246,27 +212,23 @@ let tempActions = [
           elements: [
             { name: 'kl029', color: '#6DE90B' },
             { name: 'kl029_proc', text: '100' },
-          ],
-        },
-      },
-      startTime: 5.01,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
             { name: 'polozenie_text', text: '100' },
             { name: 'status_window_text', text: 'Открыт' },
             { name: 'polozenie_button_text', color: '#6E6E6E' },
             { name: 'btn_open', color: '#E6E6E6', stroke: '#C4C4C4' },
             { name: 'left_vn', color: '#6DE90B' },
             { name: 'right_vn', color: '#6DE90B' },
-            { name: 'circle_1', stroke: '#6DE90B' },
-            { name: 'circle_2', stroke: '#6DE90B' },
+            { name: 'circle_1_kl029', stroke: '#6DE90B' },
+            { name: 'circle_2_kl029', stroke: '#6DE90B' },
           ],
         },
       },
       startTime: 5.02,
+    },
+    {
+      text: 'Клапан 029 на дымовую трубу открыт.',
+      sender: 'Система',
+      startTime: 5.03,
     },
     {
       action: {
