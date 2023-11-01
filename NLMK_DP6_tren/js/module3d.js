@@ -290,10 +290,10 @@ document.addEventListener("DOMContentLoaded", () => {
             setImageOnMonitor("media/images/monitors/Skhema_PUT.jpg", Scene, Mesh);
           }
           else if (Mesh.name && Mesh.name === 'Display_flat006') {  // 16
-            setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene, Mesh);
+            setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya_3.jpg", Scene, Mesh);
           }
           else if (Mesh.name && Mesh.name === 'Display_TV002') {  // TV 1
-            setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya.jpg", Scene, Mesh);
+            setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya_3.jpg", Scene, Mesh);
           }
           else if (Mesh.name && Mesh.name === 'Display_TV') {  // TV 2  // белый экран на дубликатах
             makeUnicMat(Mesh);
