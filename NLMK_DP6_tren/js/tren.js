@@ -23,7 +23,9 @@ function loadTrenActions() {
 function startTren() {
   if (devHelper.trenVals.type === 'learn') {
     if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text)
-      {} //sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text);
+      sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text);
+    if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].scenarioText)
+      sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].scenarioText);
   } else {
 
   }
@@ -32,6 +34,7 @@ function startTren() {
   devHelper.trenVals.currentAction = 0;
   devHelper.trenVals.ended = false;
   devHelper.trenVals.waitingInput = true;
+  takeStartingState();
   window.requestAnimationFrame(trenTimeTick);
 }
 function trenTimeTick(timeStamp) {
@@ -60,6 +63,7 @@ function trenTimeTick(timeStamp) {
         if (nextAction.human && nextAction.human === true) {
           if (devHelper.trenVals.waitingInput === false) {
             if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+            if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
             devHelper.trenVals.waitingInput = true;
           }
         } else {
@@ -72,6 +76,7 @@ function trenTimeTick(timeStamp) {
             updateSvgTextures();
           }
           if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+          if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
           devHelper.trenVals.timers.actionTimeHelper = 0;
           nextAction.passed = true;
           devHelper.trenVals.waitingInput = false;
@@ -136,6 +141,14 @@ function trenFinish() {
   if (devHelper.dev.enable === true) console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`);
 }
 
+function takeStartingState() {
+  if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
+    startState2D[devHelper.trenVals.scenario].forEach(element => {
+      if (element.name) changeSvgElem(element);
+    });
+  }
+}
+
 
 
 
@@ -177,6 +190,12 @@ function sendMessage(Sender, TextMessage) {
   }
   createCustomElement("div", TextMessage, { "class": "textMessage" }, message)
   document.querySelector(".chat").insertBefore(message, document.querySelector(".chat").children[0]);
+  if (!document.querySelector('.box-chat-window').classList.contains('opacity-1-Temp') && !document.querySelector('.box-chat-window').classList.contains('opacity-1-Always')) {
+    let notIcon = document.querySelector('.notification-icon');
+    notIcon.style.visibility = "visible";
+    notIcon.style.left = (document.getElementById('b_chat').getBoundingClientRect().right - notIcon.getBoundingClientRect().width / 1.5) + 'px';
+    notIcon.style.top = (document.getElementById('b_chat').getBoundingClientRect().top - notIcon.getBoundingClientRect().height / 3) + 'px';
+  }
 }
 
 document.getElementById('b_exit').addEventListener('click', (e) => {
@@ -779,6 +798,11 @@ document.getElementById('b_chat').addEventListener("click", (e) => {
   }
 });
 
+document.getElementById('b_chat').addEventListener("mouseover", (e) => {
+  if (document.querySelector('.notification-icon').style.visibility && document.querySelector('.notification-icon').style.visibility === 'visible') {
+    document.querySelector('.notification-icon').style.visibility = 'hidden';
+  }
+});
 
 function disableGeneralView(state = true) {
   if (state) {

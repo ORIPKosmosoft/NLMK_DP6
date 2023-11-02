@@ -20,163 +20,163 @@ window.addEventListener('load', function () {
   })
 
   devHelper.svgVals.forEach((ObjectSvg, Index) => {
-    // if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
-    //   ObjectSvg.object.style.left = '0';
-    //   ObjectSvg.object.style.top = '0';
-    //   ObjectSvg.object.style.visibility = 'visible';
-    // }
+    if (ObjectSvg.name === 'O_n_k_na_VNK_posle_11') {
+      ObjectSvg.object.style.left = '0';
+      ObjectSvg.object.style.top = '0';
+      ObjectSvg.object.style.visibility = 'visible';
+    }
 
     if (ObjectSvg.name === 'dp') {
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
-        if (TextElement.innerHTML === '4,32') { addSvgElem(Index, TextElement, 'P_1'); }
-        if (TextElement.innerHTML === '4,22') { addSvgElem(Index, TextElement, 'P_2'); }
-        if (TextElement.innerHTML === '30') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML === '4,32') { addSvgElem(Index, Element, 'P_1'); }
+        if (Element.innerHTML === '4,22') { addSvgElem(Index, Element, 'P_2'); }
+        if (Element.innerHTML === '30') {
           if (TextIndex < 307)
-            addSvgElem(Index, TextElement, 'EKZ_H' + (TextIndex - 222)); else
-            addSvgElem(Index, TextElement, 'kol_furm');
+            addSvgElem(Index, Element, 'EKZ_H' + (TextIndex - 222)); else
+            addSvgElem(Index, Element, 'kol_furm');
         }
-        if (TextElement.innerHTML === '0,70') { addSvgElem(Index, TextElement, 'radar1_text'); }
-        if (TextElement.innerHTML === '0,97') { addSvgElem(Index, TextElement, 'radar2_text'); }
-        if (TextElement.innerHTML === '-1,67') { addSvgElem(Index, TextElement, 'radar3_text'); }
-        if (TextElement.innerHTML === '97') { addSvgElem(Index, TextElement, 'H_tryba'); }
-        if (TextElement.innerHTML === '582084') { addSvgElem(Index, TextElement, 'F_tryba'); }
-        if (TextElement.innerHTML === '2,30') { if (TextIndex === 201) { addSvgElem(Index, TextElement, 'P_col_gaza'); } else { addSvgElem(Index, TextElement, 'P_tryba_1_' + (TextIndex - 287)); } }
-        if (TextElement.innerHTML === '1,40') { addSvgElem(Index, TextElement, 'Dp_obsh'); }
-        if (TextElement.innerHTML === '1210') {
+        if (Element.innerHTML === '0,70') { addSvgElem(Index, Element, 'radar1_text'); }
+        if (Element.innerHTML === '0,97') { addSvgElem(Index, Element, 'radar2_text'); }
+        if (Element.innerHTML === '-1,67') { addSvgElem(Index, Element, 'radar3_text'); }
+        if (Element.innerHTML === '97') { addSvgElem(Index, Element, 'H_tryba'); }
+        if (Element.innerHTML === '582084') { addSvgElem(Index, Element, 'F_tryba'); }
+        if (Element.innerHTML === '2,30') { if (TextIndex === 201) { addSvgElem(Index, Element, 'P_col_gaza'); } else { addSvgElem(Index, Element, 'P_tryba_1_' + (TextIndex - 287)); } }
+        if (Element.innerHTML === '1,40') { addSvgElem(Index, Element, 'Dp_obsh'); }
+        if (Element.innerHTML === '1210') {
           if (TextIndex === 198)
-            addSvgElem(Index, TextElement, 'T_gor_dyt_tryb_kras'); else if (TextIndex === 203)
-            addSvgElem(Index, TextElement, 'T_gor_dyt_table'); else if (TextIndex === 258)
-            addSvgElem(Index, TextElement, 'T_gor_dyt_tryb_sin');
+            addSvgElem(Index, Element, 'T_gor_dyt_tryb_kras'); else if (TextIndex === 203)
+            addSvgElem(Index, Element, 'T_gor_dyt_table'); else if (TextIndex === 258)
+            addSvgElem(Index, Element, 'T_gor_dyt_tryb_sin');
         }
-        if (TextElement.innerHTML === '30708') {
+        if (Element.innerHTML === '30708') {
           if (TextIndex === 199)
-            addSvgElem(Index, TextElement, 'F_prir_gaz_tryb'); else
-            addSvgElem(Index, TextElement, 'F_prir_gaz_table');
+            addSvgElem(Index, Element, 'F_prir_gaz_tryb'); else
+            addSvgElem(Index, Element, 'F_prir_gaz_table');
         }
-        if (TextElement.innerHTML === '2120') { if (TextIndex === 200) { addSvgElem(Index, TextElement, 'TTG'); } else { addSvgElem(Index, TextElement, 'TTG_zadanie'); } }
-        if (TextElement.innerHTML === '1,00') { addSvgElem(Index, TextElement, 'F_par_yvl'); }
-        if (TextElement.innerHTML === '5,0') { if (TextIndex === 197) { addSvgElem(Index, TextElement, 'W_par_yvl'); } else { addSvgElem(Index, TextElement, 'Vlaznost'); } }
-        if (TextIndex >= 292 && TextIndex <= 295) { addSvgElem(Index, TextElement, 'P_tryba_2_' + (296 - TextIndex)); }
-        if (TextElement.innerHTML === '2,47') { addSvgElem(Index, TextElement, 'P_tryba_3_' + (TextIndex - 295)); }
-        if (TextIndex >= 298 && TextIndex <= 301) { addSvgElem(Index, TextElement, 'P_tryba_4_' + (TextIndex - 297)); }
-        if (TextElement.innerHTML === '2,79') { addSvgElem(Index, TextElement, 'P_tryba_5_1'); }
-        if (TextElement.innerHTML === '2,76') { addSvgElem(Index, TextElement, 'P_tryba_5_2'); }
-        if (TextElement.innerHTML === '3,07') { addSvgElem(Index, TextElement, 'P_tryba_5_3'); }
-        if (TextElement.innerHTML === '3,59') { addSvgElem(Index, TextElement, 'P_tryba_5_4'); }
-        if (TextElement.innerHTML === '2,25') { addSvgElem(Index, TextElement, 'P_vbls'); }
-        if (TextElement.innerHTML === '0,24') { addSvgElem(Index, TextElement, 'dP_verh'); }
-        if (TextElement.innerHTML === '1,93') { addSvgElem(Index, TextElement, 'dP_obsh_tryba'); }
-        if (TextElement.innerHTML === '1,69') { addSvgElem(Index, TextElement, 'dP_nish_tryba'); }
-        if (TextElement.innerHTML === '2084') { addSvgElem(Index, TextElement, 'TTG_raschet'); }
-        if (TextElement.innerHTML === '43,0') { addSvgElem(Index, TextElement, 'N2'); }
-        if (TextElement.innerHTML === '26,9') { addSvgElem(Index, TextElement, 'CO'); }
-        if (TextElement.innerHTML === '21,9') { addSvgElem(Index, TextElement, 'CO2'); }
-        if (TextElement.innerHTML === '52577') { addSvgElem(Index, TextElement, 'EVS_DP7_O'); }
-        if (TextElement.innerHTML === '7174') { addSvgElem(Index, TextElement, 'EVS_DP7_F'); }
-        if (TextElement.innerHTML === '42753') { addSvgElem(Index, TextElement, 'EVD1_O'); }
-        if (TextElement.innerHTML === '365177') { addSvgElem(Index, TextElement, 'EVD1_F'); }
-        if (TextElement.innerHTML === '364389') { addSvgElem(Index, TextElement, 'EVD_F'); }
-        if (TextElement.innerHTML === '6081') { addSvgElem(Index, TextElement, 'F_evd'); }
-        if (TextElement.innerHTML === '5925') { addSvgElem(Index, TextElement, 'F_hol_dyt'); }
-        if (TextElement.innerHTML === '80') { addSvgElem(Index, TextElement, 'T_hol_dyt'); }
-        if (TextElement.innerHTML === '30,1') { addSvgElem(Index, TextElement, 'O_hol_dyt'); }
-        if (TextElement.innerHTML === '1847') { addSvgElem(Index, TextElement, 'FO2_hol_dyt'); }
-        if (TextElement.innerHTML === '8,2') { addSvgElem(Index, TextElement, 'H2_tryb'); }
-        if (TextElement.innerHTML === '44,8') { addSvgElem(Index, TextElement, 'Nco_tryb'); }
-        if (TextElement.innerHTML === '1052') { addSvgElem(Index, TextElement, 'Q_domG_tryb'); }
-        if (TextElement.innerHTML === '-0') { addSvgElem(Index, TextElement, 'H_snotr'); }
-        if (TextElement.innerHTML === '1327') { addSvgElem(Index, TextElement, 'Tkyp_3'); }
-        if (TextElement.innerHTML === '102016') { addSvgElem(Index, TextElement, 'Fvozdyh_3'); }
-        if (TextElement.innerHTML === '80994') { addSvgElem(Index, TextElement, 'Fgaz_3'); }
-        if (TextElement.innerHTML === '1328') { addSvgElem(Index, TextElement, 'Tkyp_2'); }
-        if (TextElement.innerHTML === '120222') { addSvgElem(Index, TextElement, 'Fvozdyh_2'); }
-        if (TextElement.innerHTML === '101351') { addSvgElem(Index, TextElement, 'Fgaz_2'); }
-        if (TextElement.innerHTML === '1297') { addSvgElem(Index, TextElement, 'Tkyp_1'); }
-        if (TextElement.innerHTML === '141') { addSvgElem(Index, TextElement, 'Tdym_3'); }
-        if (TextElement.innerHTML === '306') { addSvgElem(Index, TextElement, 'Tdym_2'); }
-        if (TextElement.innerHTML === '174') { addSvgElem(Index, TextElement, 'Tdym_1'); }
-        if (TextElement.innerHTML === 'НАГРЕВ') { addSvgElem(Index, TextElement, 'Sostoynie_' + (59 - TextIndex)); }
-        if (TextElement.innerHTML === 'ДУТЬЕ') { addSvgElem(Index, TextElement, 'Sostoynie_1'); }
-        if (TextElement.innerHTML === '68') { addSvgElem(Index, TextElement, 'Temp_peref_1'); }
-        if (TextElement.innerHTML === '63') {
+        if (Element.innerHTML === '2120') { if (TextIndex === 200) { addSvgElem(Index, Element, 'TTG'); } else { addSvgElem(Index, Element, 'TTG_zadanie'); } }
+        if (Element.innerHTML === '1,00') { addSvgElem(Index, Element, 'F_par_yvl'); }
+        if (Element.innerHTML === '5,0') { if (TextIndex === 197) { addSvgElem(Index, Element, 'W_par_yvl'); } else { addSvgElem(Index, Element, 'Vlaznost'); } }
+        if (TextIndex >= 292 && TextIndex <= 295) { addSvgElem(Index, Element, 'P_tryba_2_' + (296 - TextIndex)); }
+        if (Element.innerHTML === '2,47') { addSvgElem(Index, Element, 'P_tryba_3_' + (TextIndex - 295)); }
+        if (TextIndex >= 298 && TextIndex <= 301) { addSvgElem(Index, Element, 'P_tryba_4_' + (TextIndex - 297)); }
+        if (Element.innerHTML === '2,79') { addSvgElem(Index, Element, 'P_tryba_5_1'); }
+        if (Element.innerHTML === '2,76') { addSvgElem(Index, Element, 'P_tryba_5_2'); }
+        if (Element.innerHTML === '3,07') { addSvgElem(Index, Element, 'P_tryba_5_3'); }
+        if (Element.innerHTML === '3,59') { addSvgElem(Index, Element, 'P_tryba_5_4'); }
+        if (Element.innerHTML === '2,25') { addSvgElem(Index, Element, 'P_vbls'); }
+        if (Element.innerHTML === '0,24') { addSvgElem(Index, Element, 'dP_verh'); }
+        if (Element.innerHTML === '1,93') { addSvgElem(Index, Element, 'dP_obsh_tryba'); }
+        if (Element.innerHTML === '1,69') { addSvgElem(Index, Element, 'dP_nish_tryba'); }
+        if (Element.innerHTML === '2084') { addSvgElem(Index, Element, 'TTG_raschet'); }
+        if (Element.innerHTML === '43,0') { addSvgElem(Index, Element, 'N2'); }
+        if (Element.innerHTML === '26,9') { addSvgElem(Index, Element, 'CO'); }
+        if (Element.innerHTML === '21,9') { addSvgElem(Index, Element, 'CO2'); }
+        if (Element.innerHTML === '52577') { addSvgElem(Index, Element, 'EVS_DP7_O'); }
+        if (Element.innerHTML === '7174') { addSvgElem(Index, Element, 'EVS_DP7_F'); }
+        if (Element.innerHTML === '42753') { addSvgElem(Index, Element, 'EVD1_O'); }
+        if (Element.innerHTML === '365177') { addSvgElem(Index, Element, 'EVD1_F'); }
+        if (Element.innerHTML === '364389') { addSvgElem(Index, Element, 'EVD_F'); }
+        if (Element.innerHTML === '6081') { addSvgElem(Index, Element, 'F_evd'); }
+        if (Element.innerHTML === '5925') { addSvgElem(Index, Element, 'F_hol_dyt'); }
+        if (Element.innerHTML === '80') { addSvgElem(Index, Element, 'T_hol_dyt'); }
+        if (Element.innerHTML === '30,1') { addSvgElem(Index, Element, 'O_hol_dyt'); }
+        if (Element.innerHTML === '1847') { addSvgElem(Index, Element, 'FO2_hol_dyt'); }
+        if (Element.innerHTML === '8,2') { addSvgElem(Index, Element, 'H2_tryb'); }
+        if (Element.innerHTML === '44,8') { addSvgElem(Index, Element, 'Nco_tryb'); }
+        if (Element.innerHTML === '1052') { addSvgElem(Index, Element, 'Q_domG_tryb'); }
+        if (Element.innerHTML === '-0') { addSvgElem(Index, Element, 'H_snotr'); }
+        if (Element.innerHTML === '1327') { addSvgElem(Index, Element, 'Tkyp_3'); }
+        if (Element.innerHTML === '102016') { addSvgElem(Index, Element, 'Fvozdyh_3'); }
+        if (Element.innerHTML === '80994') { addSvgElem(Index, Element, 'Fgaz_3'); }
+        if (Element.innerHTML === '1328') { addSvgElem(Index, Element, 'Tkyp_2'); }
+        if (Element.innerHTML === '120222') { addSvgElem(Index, Element, 'Fvozdyh_2'); }
+        if (Element.innerHTML === '101351') { addSvgElem(Index, Element, 'Fgaz_2'); }
+        if (Element.innerHTML === '1297') { addSvgElem(Index, Element, 'Tkyp_1'); }
+        if (Element.innerHTML === '141') { addSvgElem(Index, Element, 'Tdym_3'); }
+        if (Element.innerHTML === '306') { addSvgElem(Index, Element, 'Tdym_2'); }
+        if (Element.innerHTML === '174') { addSvgElem(Index, Element, 'Tdym_1'); }
+        if (Element.innerHTML === 'НАГРЕВ') { addSvgElem(Index, Element, 'Sostoynie_' + (59 - TextIndex)); }
+        if (Element.innerHTML === 'ДУТЬЕ') { addSvgElem(Index, Element, 'Sostoynie_1'); }
+        if (Element.innerHTML === '68') { addSvgElem(Index, Element, 'Temp_peref_1'); }
+        if (Element.innerHTML === '63') {
           if (TextIndex === 241)
-            addSvgElem(Index, TextElement, 'Temp_peref_2'); else
-            addSvgElem(Index, TextElement, 'Temp_peref_13');
+            addSvgElem(Index, Element, 'Temp_peref_2'); else
+            addSvgElem(Index, Element, 'Temp_peref_13');
         }
-        if (TextElement.innerHTML === '56') { addSvgElem(Index, TextElement, 'Temp_peref_3'); }
-        if (TextElement.innerHTML === '62') {
+        if (Element.innerHTML === '56') { addSvgElem(Index, Element, 'Temp_peref_3'); }
+        if (Element.innerHTML === '62') {
           if (TextIndex === 243)
-            addSvgElem(Index, TextElement, 'Temp_peref_4'); else if (TextIndex === 246)
-            addSvgElem(Index, TextElement, 'Temp_peref_8'); else
-            addSvgElem(Index, TextElement, 'Temp_peref_11');
+            addSvgElem(Index, Element, 'Temp_peref_4'); else if (TextIndex === 246)
+            addSvgElem(Index, Element, 'Temp_peref_8'); else
+            addSvgElem(Index, Element, 'Temp_peref_11');
         }
-        if (TextElement.innerHTML === '61') {
+        if (Element.innerHTML === '61') {
           if (TextIndex === 245)
-            addSvgElem(Index, TextElement, 'Temp_peref_5'); else if (TextIndex === 247)
-            addSvgElem(Index, TextElement, 'Temp_peref_7'); else
-            addSvgElem(Index, TextElement, 'Temp_peref_9');
+            addSvgElem(Index, Element, 'Temp_peref_5'); else if (TextIndex === 247)
+            addSvgElem(Index, Element, 'Temp_peref_7'); else
+            addSvgElem(Index, Element, 'Temp_peref_9');
         }
-        if (TextElement.innerHTML === '57') { addSvgElem(Index, TextElement, 'Temp_peref_6'); }
-        if (TextElement.innerHTML === '58') { addSvgElem(Index, TextElement, 'Temp_peref_10'); }
-        if (TextElement.innerHTML === '59') { addSvgElem(Index, TextElement, 'Temp_peref_12'); }
-        if (TextElement.innerHTML === '66') { addSvgElem(Index, TextElement, 'Temp_peref_14'); }
-        if (TextElement.innerHTML === '65') { addSvgElem(Index, TextElement, 'Temp_peref_15'); }
-        if (TextElement.innerHTML === '64') { addSvgElem(Index, TextElement, 'Temp_peref_16'); }
-        if (TextElement.innerHTML === '117') { addSvgElem(Index, TextElement, 'T1'); }
-        if (TextElement.innerHTML === '101') { addSvgElem(Index, TextElement, 'T2'); }
-        if (TextElement.innerHTML === '114') { addSvgElem(Index, TextElement, 'T3'); }
-        if (TextElement.innerHTML === '112') { addSvgElem(Index, TextElement, 'T4'); }
-        if (TextElement.innerHTML === '9,7') { addSvgElem(Index, TextElement, 'W_sinij_hol_dyt'); }
-        if (TextElement.innerHTML === '8,14') { addSvgElem(Index, TextElement, 'P_Os_szat_voz'); }
-        if (TextElement.innerHTML === '34') { addSvgElem(Index, TextElement, 'T_Os_szat_voz'); }
-        if (TextElement.innerHTML === '35') { addSvgElem(Index, TextElement, 'H_Os_szat_voz'); }
-        if (TextElement.innerHTML === '15') {
+        if (Element.innerHTML === '57') { addSvgElem(Index, Element, 'Temp_peref_6'); }
+        if (Element.innerHTML === '58') { addSvgElem(Index, Element, 'Temp_peref_10'); }
+        if (Element.innerHTML === '59') { addSvgElem(Index, Element, 'Temp_peref_12'); }
+        if (Element.innerHTML === '66') { addSvgElem(Index, Element, 'Temp_peref_14'); }
+        if (Element.innerHTML === '65') { addSvgElem(Index, Element, 'Temp_peref_15'); }
+        if (Element.innerHTML === '64') { addSvgElem(Index, Element, 'Temp_peref_16'); }
+        if (Element.innerHTML === '117') { addSvgElem(Index, Element, 'T1'); }
+        if (Element.innerHTML === '101') { addSvgElem(Index, Element, 'T2'); }
+        if (Element.innerHTML === '114') { addSvgElem(Index, Element, 'T3'); }
+        if (Element.innerHTML === '112') { addSvgElem(Index, Element, 'T4'); }
+        if (Element.innerHTML === '9,7') { addSvgElem(Index, Element, 'W_sinij_hol_dyt'); }
+        if (Element.innerHTML === '8,14') { addSvgElem(Index, Element, 'P_Os_szat_voz'); }
+        if (Element.innerHTML === '34') { addSvgElem(Index, Element, 'T_Os_szat_voz'); }
+        if (Element.innerHTML === '35') { addSvgElem(Index, Element, 'H_Os_szat_voz'); }
+        if (Element.innerHTML === '15') {
           if (TextIndex === 273)
-            addSvgElem(Index, TextElement, 'T_prir_gaz');
+            addSvgElem(Index, Element, 'T_prir_gaz');
         }
-        if (TextElement.innerHTML === '39') { addSvgElem(Index, TextElement, 'H_prir_gaz'); }
-        if (TextElement.innerHTML === '30626') { addSvgElem(Index, TextElement, 'F_pg_sym_prir_gaz'); }
-        if (TextElement.innerHTML === '8,56') { addSvgElem(Index, TextElement, 'P_pg_prir_gaz'); }
-        if (TextElement.innerHTML === '30719') { addSvgElem(Index, TextElement, 'F_pg_prir_gaz'); }
-        if (TextElement.innerHTML === '-93') { addSvgElem(Index, TextElement, 'dF_pg_prir_gaz'); }
-        if (TextElement.innerHTML === '1487') { addSvgElem(Index, TextElement, 'L4'); }
-        if (TextElement.innerHTML === '49,4') { addSvgElem(Index, TextElement, 'H_step_isp'); }
-        if (TextElement.innerHTML === '46,0') { addSvgElem(Index, TextElement, 'HCO_step_isp'); }
-        if (TextElement.innerHTML === '216,1') { addSvgElem(Index, TextElement, 'V_dyt'); }
-        if (TextElement.innerHTML === '48') { addSvgElem(Index, TextElement, 'F_obsh_pyt'); }
-        if (TextElement.innerHTML === '48,1') { addSvgElem(Index, TextElement, 'F_tek_pyt'); }
-        if (TextElement.innerHTML === '27') { addSvgElem(Index, TextElement, 'fyrm_v_rab'); }
-        if (TextElement.innerHTML === '0,27') { addSvgElem(Index, TextElement, 'par_yvlaz'); }
-        if (TextElement.innerHTML === '32,7') { addSvgElem(Index, TextElement, 'ydel_tep_18'); }
-        if (TextElement.innerHTML === '60,2') { addSvgElem(Index, TextElement, 'ydel_tep_17'); }
-        if (TextElement.innerHTML === '32,4') { addSvgElem(Index, TextElement, 'ydel_tep_16'); }
-        if (TextElement.innerHTML === '46,4') { addSvgElem(Index, TextElement, 'ydel_tep_15'); }
-        if (TextElement.innerHTML === '75,9') { addSvgElem(Index, TextElement, 'ydel_tep_12_14'); }
-        if (TextElement.innerHTML === '33,2') { addSvgElem(Index, TextElement, 'ydel_tep_10_11'); }
-        if (TextElement.innerHTML === '19,2') { addSvgElem(Index, TextElement, 'ydel_tep_9'); }
-        if (TextElement.innerHTML === '24,9') { addSvgElem(Index, TextElement, 'ydel_tep_8'); }
-        if (TextElement.innerHTML === '36,5') { addSvgElem(Index, TextElement, 'ydel_tep_7'); }
-        if (TextElement.innerHTML === '0,80') {
+        if (Element.innerHTML === '39') { addSvgElem(Index, Element, 'H_prir_gaz'); }
+        if (Element.innerHTML === '30626') { addSvgElem(Index, Element, 'F_pg_sym_prir_gaz'); }
+        if (Element.innerHTML === '8,56') { addSvgElem(Index, Element, 'P_pg_prir_gaz'); }
+        if (Element.innerHTML === '30719') { addSvgElem(Index, Element, 'F_pg_prir_gaz'); }
+        if (Element.innerHTML === '-93') { addSvgElem(Index, Element, 'dF_pg_prir_gaz'); }
+        if (Element.innerHTML === '1487') { addSvgElem(Index, Element, 'L4'); }
+        if (Element.innerHTML === '49,4') { addSvgElem(Index, Element, 'H_step_isp'); }
+        if (Element.innerHTML === '46,0') { addSvgElem(Index, Element, 'HCO_step_isp'); }
+        if (Element.innerHTML === '216,1') { addSvgElem(Index, Element, 'V_dyt'); }
+        if (Element.innerHTML === '48') { addSvgElem(Index, Element, 'F_obsh_pyt'); }
+        if (Element.innerHTML === '48,1') { addSvgElem(Index, Element, 'F_tek_pyt'); }
+        if (Element.innerHTML === '27') { addSvgElem(Index, Element, 'fyrm_v_rab'); }
+        if (Element.innerHTML === '0,27') { addSvgElem(Index, Element, 'par_yvlaz'); }
+        if (Element.innerHTML === '32,7') { addSvgElem(Index, Element, 'ydel_tep_18'); }
+        if (Element.innerHTML === '60,2') { addSvgElem(Index, Element, 'ydel_tep_17'); }
+        if (Element.innerHTML === '32,4') { addSvgElem(Index, Element, 'ydel_tep_16'); }
+        if (Element.innerHTML === '46,4') { addSvgElem(Index, Element, 'ydel_tep_15'); }
+        if (Element.innerHTML === '75,9') { addSvgElem(Index, Element, 'ydel_tep_12_14'); }
+        if (Element.innerHTML === '33,2') { addSvgElem(Index, Element, 'ydel_tep_10_11'); }
+        if (Element.innerHTML === '19,2') { addSvgElem(Index, Element, 'ydel_tep_9'); }
+        if (Element.innerHTML === '24,9') { addSvgElem(Index, Element, 'ydel_tep_8'); }
+        if (Element.innerHTML === '36,5') { addSvgElem(Index, Element, 'ydel_tep_7'); }
+        if (Element.innerHTML === '0,80') {
           if (TextIndex === 196)
-            addSvgElem(Index, TextElement, 'zadan_yrov_kras'); else
-            addSvgElem(Index, TextElement, 'zadan_yrov_sin');
+            addSvgElem(Index, Element, 'zadan_yrov_kras'); else
+            addSvgElem(Index, Element, 'zadan_yrov_sin');
         }
-        if (TextElement.innerHTML === '0,0') { addSvgElem(Index, TextElement, '02_trub'); }
-        if (TextElement.innerHTML === '0') {
+        if (Element.innerHTML === '0,0') { addSvgElem(Index, Element, '02_trub'); }
+        if (Element.innerHTML === '0') {
           if (TextIndex === 260)
-            addSvgElem(Index, TextElement, 'Fvozdyh_1'); else if (TextIndex === 261)
-            addSvgElem(Index, TextElement, 'Fgaz_1'); else if (TextIndex === 269)
-            addSvgElem(Index, TextElement, 'H001'); else if (TextIndex === 270)
-            addSvgElem(Index, TextElement, 'F_osysh_szat_voz'); else if (TextIndex === 328)
-            addSvgElem(Index, TextElement, 'EVD2_O'); else if (TextIndex === 316)
-            addSvgElem(Index, TextElement, 'H_par_yvlaz');
+            addSvgElem(Index, Element, 'Fvozdyh_1'); else if (TextIndex === 261)
+            addSvgElem(Index, Element, 'Fgaz_1'); else if (TextIndex === 269)
+            addSvgElem(Index, Element, 'H001'); else if (TextIndex === 270)
+            addSvgElem(Index, Element, 'F_osysh_szat_voz'); else if (TextIndex === 328)
+            addSvgElem(Index, Element, 'EVD2_O'); else if (TextIndex === 316)
+            addSvgElem(Index, Element, 'H_par_yvlaz');
         }
       })
     }
     if (ObjectSvg.name === 'BVNK_VNK1') {
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
-        if (TextElement.innerHTML === '92') { addSvgElem(Index, TextElement, '3TI_43'); } 
-        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); } 
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML === '92') { addSvgElem(Index, Element, '3TI_43'); }
+        if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') { addSvgElem(Index, Element, '313'); }
@@ -184,8 +184,8 @@ window.addEventListener('load', function () {
       })
     }
     if (ObjectSvg.name === 'BVNK_VNK2') {
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
-        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
       });
     }
     if (ObjectSvg.name === 'BVNK_VNK3') {
@@ -193,8 +193,8 @@ window.addEventListener('load', function () {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'fire_vnk_3'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_3'); }
       })
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
-        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
       });
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -258,35 +258,35 @@ window.addEventListener('load', function () {
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     if (ObjectSvg.name === 'vnk_spvg') {
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
-        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
       });
     }
     if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement) => {
-        if (TextElement.innerHTML === 'Управление клапаном 116') { addSvgElem(Index, TextElement, 'title_work_vn',); }
-        if (TextElement.innerHTML === 'Открыт') { addSvgElem(Index, TextElement, 'status_window_text', false); }
-        if (TextElement.innerHTML === '100') { addSvgElem(Index, TextElement, 'polozenie_text'); }
-        if (TextElement.innerHTML === 'Открыть') { addSvgElem(Index, TextElement, 'polozenie_button_text'); }
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
+        if (Element.innerHTML === 'Управление клапаном 116') { addSvgElem(Index, Element, 'title_work_vn',); }
+        if (Element.innerHTML === 'Открыт') { addSvgElem(Index, Element, 'status_window_text', false); }
+        if (Element.innerHTML === '100') { addSvgElem(Index, Element, 'polozenie_text'); }
+        if (Element.innerHTML === 'Открыть') { addSvgElem(Index, Element, 'polozenie_button_text'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm58.35 75.18 14.08-7.8 14.07-7.8v31.2l-14.07-7.8z') { addSvgElem(Index, Element, 'right_vn'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm58.69 75.18-14.08-7.8-14.08-7.8v31.2l14.08-7.8z') { addSvgElem(Index, Element, 'left_vn'); }
       })
       ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element) => {
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_1'); }
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_2'); }
+        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_1_kl029'); }
+        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_2_kl029'); }
       })
       ObjectSvg.svg.querySelectorAll('rect').forEach((Element) => {
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14') { addSvgElem(Index, Element, 'btn_open'); }
+        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') && Element.getAttribute('x') === '169.84' && Element.getAttribute('y') && Element.getAttribute('y') === '121.6') { addSvgElem(Index, Element, 'btn_open'); }
       })
     }
     if (ObjectSvg.name === 'O_n_k_na_VNK_posle_2') {
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement) => {
-        if (TextElement.innerHTML === 'Закрыть') { addSvgElem(Index, TextElement, 'title_open_vn',); }
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
+        if (Element.innerHTML === 'Закрыть') { addSvgElem(Index, Element, 'title_open_vn',); }
       })
     }
-    
+
   })
 
   devHelper.svgVals.forEach((Element) => {
@@ -307,22 +307,10 @@ window.addEventListener('load', function () {
       Element2.element.id = `${Element.name}_${Element2.name}`;
     })
   })
-  setTimeSvgScheme();
+
+  changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
 });
-function setTimeSvgScheme() {
-    devHelper.svgVals.forEach((ObjectSvg, Index) => {
-      ObjectSvg.activeElements.forEach((Element) => {
-        if (Element.name === "lifetime") {
-          Element.innerHTML = devHelper.trenVals.timers.lifeTime;
-          changeSvgElem({
-            name: Element.name, 
-            text: devHelper.trenVals.timers.lifeTime
-          });
-        }
-      })  
-      
-    })
-}
+
 
 // TODO Это главная функция, которая возвращает размеры меша в видимой области как гетбаундингклиентрект
 function getClientRectFromMesh(Mesh) {
@@ -365,18 +353,22 @@ function getClientRectFromMesh(Mesh) {
   return rect
 }
 
-function addSvgElem(SvgIndex, Element, Name, Move = true) {
+function addSvgElem(SvgIndex, Element, Name, Move = 'middle') {//start middle end
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,
     name: Name,
   })
-  if (Move === true) {
+  if (Move !== false) {
     if (Element.tagName === 'text') {
-      Element.style.textAnchor = 'end';
-      if (Element.hasAttribute('x'))
-        Element.setAttribute('x', Element.getBoundingClientRect().width + parseFloat(Element.getAttribute('x')))
-      else
-        Element.style.transform = `translate(${Element.getBoundingClientRect().width}px, 0px)`;
+      let moveAtrribute = Move === 'end' ? 'end' : Move === 'right' ? 'end' : Move === 'left' ? 'start' : Move === 'start' ? 'start' : Move === 'center' ? 'middle' : Move === 'middle' ? 'middle' : 'end';
+      Element.style.textAnchor = moveAtrribute;
+      if (Element.hasAttribute('x')) {
+        let diffX1 = moveAtrribute === 'end' ? Element.getBoundingClientRect().width : moveAtrribute === 'start' ? 0 : (Element.getBoundingClientRect().width / 2);
+        Element.setAttribute('x', Number(Element.getAttribute('x')) + diffX1);
+      } else {
+        let diffX1 = moveAtrribute === 'end' ? (Element.getBoundingClientRect().width * 2) : moveAtrribute === 'start' ? 0 : (Element.getBoundingClientRect().width / 2);
+        Element.style.transform = `translate(${diffX1}px, 0px)`;
+      }
     }
   }
 }
@@ -515,9 +507,9 @@ function changeSvgElem(Val = {}) {
     devHelper.svgVals.forEach((svgArrObject) => {
       svgArrObject.activeElements.forEach((activeElemObj) => {
         if (activeElemObj.name === Val.name) {
-          if (Val.text) {
+          svgArrObject.object.nextElementSibling.svgReload = false;
+          if (Val.text)
             activeElemObj.element.innerHTML = Val.text;
-          }
           if (Val.color)
             activeElemObj.element.style.fill = Val.color;
           if (Val.stroke)
