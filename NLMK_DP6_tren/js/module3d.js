@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const scene = createScene();
-  if (devHelper.dev.enable === true) scene.debugLayer.show(); // inspector 
+  // if (devHelper.dev.enable === true) scene.debugLayer.show(); // inspector 
   // engine.runRenderLoop(function () {
   //   scene.render();
   // });
@@ -191,7 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadModel(Name, Scene, ShadowGenerator) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
       if (Name === 'All') {
-        console.log(Name, meshes);
         let meshArr = [];
         meshes.forEach(element => {
           meshArr.push(element);

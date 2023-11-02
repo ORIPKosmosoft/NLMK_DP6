@@ -399,7 +399,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           createSvgHelperButtons(tempArrHelperButtons);
         } else if (textureSvgName === 'O_n_k_na_VNK_posle_2') {
           let tempArrHelperButtons = [
-            { x: 60.2, y: 57, w: 3.2, h: 2.4, removeWindow: textureSvgName, id: 'close_vn', }, // close
+            { x: 60.2, y: 57, w: 3.2, h: 2.4, removeWindow: textureSvgName, forAction: true, id: 'close_vn', }, // close
             { x: 56.5, y: 57, w: 3.2, h: 2.4, removeWindow: textureSvgName, forAction: true, id: 'open_vn1', }, // open
           ];
           createSvgHelperButtons(tempArrHelperButtons);
@@ -418,24 +418,41 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           invisElem.id = Vals.id;
 
           invisElem.addEventListener('click', () => {
+            let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
             if (devHelper.trenVals.waitingInput === true) {
-              if (Vals.id !== undefined) {
-                trenClickOnSvgElem(invisElem);
-              }
-              if (Vals.removeWindow) {
-                RemoveSvgFromTextrue(DisplayMesh, Vals.removeWindow);
-              } else if (Vals.forAction && Vals.forAction === true) {
-                if (Vals.value && Vals.value.window) {
-                  addSvgToTextrue(DisplayMesh, Vals.value);
-                  createSvghelper(CurrentPosition, Vals.value.window);
+              if (Vals.forAction && Vals.forAction === true) {
+                if (currentActonObject && currentActonObject.action && currentActonObject.action.target2D) {
+                  if (invisElem.id === currentActonObject.action.target2D) {
+                    console.log(currentActonObject.action.target2D);
+                    trenClickOnSvgElem(invisElem);
+                    if (Vals.removeWindow) {
+                      RemoveSvgFromTextrue(DisplayMesh, Vals.removeWindow);
+                    } else if (Vals.value && Vals.value.window) {
+                      addSvgToTextrue(DisplayMesh, Vals.value);
+                      createSvghelper(CurrentPosition, Vals.value.window);
+                    } else if (Vals.name) {
+                      changeSvgtexture(DisplayMesh, Vals.name, true);
+                      createSvghelper(CurrentPosition, Vals.name);
+                    }
+                  } else console.warn('неверный клик по элементу', invisElem.id);
                 }
-              } else if (Vals.name) {
-                changeSvgtexture(DisplayMesh, Vals.name, true);
-                createSvghelper(CurrentPosition, Vals.name);
-              } else if (Vals.value && Vals.value.window) {
-                createSvghelper(CurrentPosition, Vals.value.window);
-                changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, Vals.value.window, Vals.value);
-              } else changeSvgElem(Vals.value);
+              } else {
+                // if (Vals.id !== undefined) trenClickOnSvgElem(invisElem);
+                if (Vals.removeWindow) {
+                  RemoveSvgFromTextrue(DisplayMesh, Vals.removeWindow);
+                } else if (Vals.forAction && Vals.forAction === true) {
+                  if (Vals.value && Vals.value.window) {
+                    addSvgToTextrue(DisplayMesh, Vals.value);
+                    createSvghelper(CurrentPosition, Vals.value.window);
+                  }
+                } else if (Vals.name) {
+                  changeSvgtexture(DisplayMesh, Vals.name, true);
+                  createSvghelper(CurrentPosition, Vals.name);
+                } else if (Vals.value && Vals.value.window) {
+                  createSvghelper(CurrentPosition, Vals.value.window);
+                  changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), false, Vals.value.window, Vals.value);
+                } else changeSvgElem(Vals.value);
+              }
 
             }
           });
@@ -519,6 +536,6 @@ function changeSvgElemPos(Elem, Val, Type) {
     Elem.style.transform = tempTransform + `${Type}(${Val}${endString})`;
 }
 
-function setBaseScheme(param = {}){
+function setBaseScheme(param = {}) {
 
 }
