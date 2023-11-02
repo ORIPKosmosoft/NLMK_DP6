@@ -134,7 +134,6 @@ function domLoaded() {
     },
   ];
 
-  console.log(devHelper.testVals.answersArray[1][1]);
 
   // Вешаю обработчик нажатия на все <div class="selfcheck-radio">
   document.querySelectorAll('.radio-elem').forEach((Element) => {

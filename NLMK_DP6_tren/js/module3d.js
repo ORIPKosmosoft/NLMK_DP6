@@ -19,6 +19,9 @@ change3DTime
 --------------------------------------------------------------------
 При приблежении к хотспотам разрешить обзор немного, но при отпускании мышки камера вернётся в начальное положение
 --------------------------------------------------------------------
+Сделать текстуры для каждого монитора
+И уже обновлять сами текстуры
+--------------------------------------------------------------------
 */
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("renderCanvas");
@@ -47,6 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         loadModel('All', scene, shadowGenerator);
         loadModel('Highlight', scene);
+        // loadModel('Console_BVNK', scene);
+        // loadModel('Console_BZU', scene);
+        // loadModel('Console_DP6', scene);
+        // loadModel('Console_PSODP6', scene);
+        // loadModel('Console_UGKS', scene);
       }, 1000);
     });
 
@@ -55,22 +63,25 @@ document.addEventListener("DOMContentLoaded", () => {
       new BABYLON.ExecuteCodeAction(
         BABYLON.ActionManager.OnEveryFrameTrigger,
         function () {
-          // TODO Добавить органичесние на поворот камеры на главном виде и щитов
-          // if (devHelper.model3DVals.currentPosition === undefined) {
-          //   if (camera.rotation.y >= 1.01)
-          //     camera.rotation.y = 1.01;
-          //   if (camera.rotation.y <= -0.93)
-          //     camera.rotation.y = -0.93;
-          //   if (camera.rotation.x >= 0.608)
-          //     camera.rotation.x = 0.608;
-          //   if (camera.rotation.x <= -0.12) {
-          //     camera.rotation.x = -0.12;
-          //   }
-          //   console.log('X: ' + camera.rotation.x, 'Y: ' + camera.rotation.y);
-          // }
+          if (devHelper.model3DVals.currentPosition === undefined) {
+            if (camera.rotation.y >= 1.01) camera.rotation.y = 1.01;
+            if (camera.rotation.y <= -0.93) camera.rotation.y = -0.93;
+            if (camera.rotation.x >= 0.608) camera.rotation.x = 0.608;
+            if (camera.rotation.x <= -0.12) camera.rotation.x = -0.12;
+          } else if (devHelper.model3DVals.currentPosition === 1) {
+            if (camera.rotation.y >= 0.55) camera.rotation.y = 0.55;
+            if (camera.rotation.y <= -1.3) camera.rotation.y = -1.3;
+            if (camera.rotation.x >= 0.18) camera.rotation.x = 0.18;
+            if (camera.rotation.x <= -0.23) camera.rotation.x = -0.23;
+          }
+          // if (devHelper.dev.enable === true) console.log('X: ' + camera.rotation.x, 'Y: ' + camera.rotation.y);
         }
       )
     );
+    scene.onPointerUp = function (evt, pickResult) {
+      if (devHelper.model3DVals.currentPosition !== undefined)
+        animMoveCamera(devHelper.model3DVals.cameraPositions[devHelper.model3DVals.currentPosition], 0.5);
+    };
     /* Положения камеры на объекты
     начальное положение
     0.35, 2.15, -3.4
@@ -79,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     -6.56, 1.12, -0.79
     -0.0165, -0.7836, 0
     */
-
     /* Блок кнопопк для камеры
     ----------------------------------------------------------------------------------------------------------
      */
@@ -112,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.value-input')[1].children[2].value = camera.rotation.z;
       })
       document.querySelector('#back-btn').addEventListener('click', () => {
-        animMoveCamera([0.35, 2.15, -3.4], [0.1913, -0.0046, 0], undefined);
+        animMoveCamera(devHelper.model3DVals.cameraPositions[0]);
       })
       const keys = {
         W: 87,
@@ -150,11 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       document.querySelector('.help-btn-block').remove();
     }
-    // var material = new BABYLON.StandardMaterial("material", scene);
-    // var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, scene);
-    // ground.receiveShadows = true;
-    // ground.material = material;
-
     //----------------------------------------------------------------------------------------------------------
     return scene;
   };
@@ -168,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const scene = createScene();
-  // if (devHelper.dev.enable === true) scene.debugLayer.show();
+  // if (devHelper.dev.enable === true) scene.debugLayer.show(); // inspector 
   // engine.runRenderLoop(function () {
   //   scene.render();
   // });
@@ -176,7 +181,27 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
+  function setImageOnMonitor(url, Scene, UnicMesh) {
+    if (UnicMesh instanceof BABYLON.InstancedMesh) {
+      let tempMesh = UnicMesh.sourceMesh.clone();
+      tempMesh.name = UnicMesh.name;
 
+      tempMesh.setParent(UnicMesh.parent);
+      tempMesh.rotation = new BABYLON.Vector3(0, 0, 0);
+
+      tempMesh.setAbsolutePosition(new BABYLON.Vector3(UnicMesh.absolutePosition._x, UnicMesh.absolutePosition._y, UnicMesh.absolutePosition._z));
+      UnicMesh.dispose();
+      UnicMesh = tempMesh;
+    }
+    if (!UnicMesh.material || UnicMesh.material.name != 'material_' + UnicMesh.name) {
+      UnicMesh.material = new BABYLON.StandardMaterial('material_' + UnicMesh.name, Scene);
+      UnicMesh.material.diffuseTexture = new BABYLON.Texture(url, Scene)
+    }
+    else {
+      UnicMesh.material.diffuseTexture.updateURL(url);
+    }
+
+  }
   function loadModel(Name, Scene, ShadowGenerator) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
       if (Name === 'All') {
@@ -193,11 +218,11 @@ document.addEventListener("DOMContentLoaded", () => {
           Mesh.actionManager = new BABYLON.ActionManager(Scene);
           Mesh.isPickable = true;
           if (Mesh.name && Mesh.name === 'Display_flat002') {
+            makeActiveMesh(Mesh, 1);
             makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
-            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 1 });
           } else if (Mesh.name && Mesh.name === 'Display_flat003') {
+            makeActiveMesh(Mesh, 2);
             makeSvgDisplay(Mesh, Scene, 'vnk_main');
-            makeActiveMesh(Mesh, { posCoors: [-6.56, 1.12, -0.79], lookAtCoors: [-0.0165, -0.7836, 0], posIndex: 2 });
           } else if (Mesh.id && Mesh.id === '25408591-8ddd-4b64-a7ad-499aaa995ae6') {
             makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
           } else if (Mesh.id && Mesh.id === '8d7497bf-6a8b-4906-8a35-1dc986e6e655') {
@@ -220,6 +245,64 @@ document.addEventListener("DOMContentLoaded", () => {
           } else if (Mesh.name && Mesh.name === 'Console_UGKS') {
 
           }
+
+          else if (Mesh.name && Mesh.name === 'Display_flat004') {  // 3
+            setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat009') {  // 4
+            setImageOnMonitor("media/images/monitors/windows.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat017') {  // 5
+            setImageOnMonitor("media/images/monitors/Obzor_sred_akusticheskoy.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat010') {  // 6
+            makeUnicMat(Mesh);
+            makeSvgDisplay(Mesh, Scene, 'Osnovnye_parametry_DP');
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat011') {  // 7
+            setImageOnMonitor("media/images/monitors/Sloi_shihty.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat012') {  // 8
+            makeUnicMat(Mesh);
+            makeSvgDisplay(Mesh, Scene, 'vnk_spvg');
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat013') {  // 9
+            setImageOnMonitor("media/images/monitors/Diagnozy_A_PUT.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat016') {  // 10
+            setImageOnMonitor("media/images/monitors/Registratsiya_vypuska_chuguna.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat014') {  // 11
+            makeUnicMat(Mesh);
+            makeSvgDisplay(Mesh, Scene, 'dp');
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat015') {  // 12
+            makeUnicMat(Mesh);
+            makeSvgDisplay(Mesh, Scene, 'bzu');
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat007') {  // 13
+            setImageOnMonitor("media/images/monitors/Podacha_shikhty.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat008') {  // 14
+            setImageOnMonitor("media/images/monitors/windows.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat005') {  // 15
+            setImageOnMonitor("media/images/monitors/Skhema_PUT.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat006') {  // 16
+            setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya_3.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_TV002') {  // TV 1
+            setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya_3.jpg", Scene, Mesh);
+          }
+          else if (Mesh.name && Mesh.name === 'Display_TV') {  // TV 2  // белый экран на дубликатах
+            makeUnicMat(Mesh);
+            makeSvgDisplay(Mesh, Scene, 'bzu');
+          }
+          else if (Mesh.name && Mesh.name === 'Display_TV001') {  // TV 3 // белый экран на дубликатах
+            makeUnicMat(Mesh);
+            makeSvgDisplay(Mesh, Scene, 'dp');
+          }
         })
         change3DTime();
       } else {
@@ -231,13 +314,13 @@ document.addEventListener("DOMContentLoaded", () => {
           lightMat.alpha = 0;
           element.material = lightMat;
           if (element.name && element.name === 'Console_BVNK_highlight') {
-            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+            makeActiveMesh(element, 3);
           } else if (element.name && element.name === 'Console_BZU_highlight') {
-            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+            makeActiveMesh(element, 3);
           } else if (element.name && element.name === 'Console_DP6_highlight') {
-            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+            makeActiveMesh(element, 3);
           } else if (element.name && element.name === 'Console_UGKS_highlight') {
-            makeActiveMesh(element, { posCoors: [-3.56, 1.73, -1], lookAtCoors: [0.5216195764415446, 0.007373100235868478, 0], posIndex: 3 });
+            makeActiveMesh(element, 3);
           } else if (element.name && element.name === 'Console_PSODP6_highlight') {
             element.dispose();
           }
@@ -253,12 +336,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+let _ii = "0";
 function makeSvgDisplay(Mesh, Scene, SvgName) {
-  let tempMat = new BABYLON.StandardMaterial(`material_${Mesh.name}`, Scene);
-  Mesh.material = tempMat;
+  let planeTexture = new BABYLON.DynamicTexture(`texture_${Mesh.name}`, { width: 2000, height: 993 }, Scene, true);
+  planeTexture.update();
+  Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = planeTexture;
   devHelper.model3DVals.svgDisplays.meshs.push(Mesh);
   let tempInterval = setInterval(() => {
-    if (devHelper.model3DVals.svgDisplays.textures.length === document.querySelector('.svg-scheme-container').querySelectorAll('object').length) {
+    if (devHelper.model3DVals.svgDisplays.tagImgs.length === document.querySelector('.svg-scheme-container').querySelectorAll('object').length) {
       changeSvgtexture(Mesh, SvgName, true);
       clearInterval(tempInterval);
     }
@@ -279,19 +364,17 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
       Mesh = tempMesh;
     }
     Mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
-
     if (Vals.name) {
       Mesh.name = Vals.name;
-      Mesh.currentPosition = Vals.posIndex;
+      Mesh.currentPosition = Vals;
       Mesh.isPickable = false;
-      if (devHelper.model3DVals.activeMeshs[Vals.posIndex] === undefined)
-        devHelper.model3DVals.activeMeshs[Vals.posIndex] = [Mesh];
-      else
-        devHelper.model3DVals.activeMeshs[Vals.posIndex].push(Mesh);
-    } else if (Vals.posCoors) {
+      if (devHelper.model3DVals.activeMeshs[Vals] === undefined)
+        devHelper.model3DVals.activeMeshs[Vals] = [Mesh];
+      else devHelper.model3DVals.activeMeshs[Vals].push(Mesh);
+    } else if (typeof Vals === 'number') {
       Mesh.isPickable = true;
       devHelper.model3DVals.movePointMesh.push(Mesh);
-      Mesh.positionIndex = Vals.posIndex;
+      Mesh.positionIndex = Vals;
     }
     Mesh.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
@@ -299,8 +382,8 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
         function () {
           if (Vals.name) {
             clickOnMesh(Mesh);
-          } else if (Vals.posCoors) {
-            clickOnPointMesh(Mesh, Vals);
+          } else if (typeof Vals === 'number') {
+            clickOnPointMesh(Mesh, devHelper.model3DVals.cameraPositions[Vals]);
           }
         }
       )
@@ -327,7 +410,7 @@ function clickOnPointMesh(Mesh = undefined, Vals = undefined) {
     return;
   } else {
     changeColorTexture(Mesh, false);
-    animMoveCamera(Vals.posCoors, Vals.lookAtCoors, Vals.posIndex);
+    animMoveCamera(Vals);
   }
 }
 
@@ -340,30 +423,13 @@ function makeUnicMat(UnicMesh) {
 
 function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false, Window = undefined, Pos = undefined) {
   if (Mesh && SvgName) {
-    if (ChangeTexture === true) Mesh.svgArr = [{ name: SvgName, x: 0, y: 0 }]
-    let Texture = devHelper.model3DVals.svgDisplays.textures.find(ele => ele.name.indexOf(SvgName) !== -1);
-    let textureContext = Texture.getContext();
-    let newIndex = devHelper.model3DVals.svgDisplays.textures.indexOf(Texture);
-    let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[newIndex];
-    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[newIndex]))));
-    outputImage.onload = function () {
-      if (ChangeTexture === true) {
-        textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
-        textureContext.drawImage(outputImage, Mesh.svgArr[0].x, Mesh.svgArr[0].y);
-        Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = Texture;
-        Texture.update();
-      } else {
-        devHelper.model3DVals.svgDisplays.meshs.forEach(displayMesh => {
-          if (displayMesh.material.diffuseTexture.name.substring(displayMesh.material.diffuseTexture.name.indexOf('_') + 1) === outputImage.previousElementSibling.getAttribute('data').substring(outputImage.previousElementSibling.getAttribute('data').lastIndexOf('/') + 1).replace('.svg', '')) {
-            if (displayMesh.svgArr && displayMesh.svgArr.length > 0) {
-              updateSvgTexture(displayMesh, 0)
-              // displayMesh.svgArr.forEach((element) => {
-              //   addSvgToTextrue(displayMesh, { window: element.name, x: element.x, y: element.y });
-              // })
-            }
-          }
-        })
-      }
+    if (ChangeTexture === true) Mesh.svgArr = [{ name: SvgName, x: 0, y: 0 }];
+    let svgIndex = devHelper.model3DVals.svgDisplays.svgNames.findIndex(function (obj) { return obj === SvgName; })
+    let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[svgIndex];
+    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[svgIndex]))));
+    outputImage.onload = function tempF() {
+      updateMeshTextureSvg(SvgName);
+      outputImage.svgReload = true;
     }
   } else {
     if (devHelper.dev.enable === true) console.warn(`В функцию changeSvgtexture передали не все переменные.`);
@@ -371,44 +437,42 @@ function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture =
   }
 }
 
-function updateSvgTexture(Mesh = undefined, Index = undefined) {
-  if (Mesh !== undefined && Index !== undefined) {
-    let Texture = Mesh.material.diffuseTexture;
-    let textureContext = Texture.getContext();
-    let objectSvgIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === Mesh.svgArr[Index].name; })
-    let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[objectSvgIndex];
-    outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[objectSvgIndex]))));
-    outputImage.onload = function () {
-      Mesh = devHelper.model3DVals.svgDisplays.meshs[0];
-      textureContext.drawImage(outputImage, Mesh.svgArr[Index].x, Mesh.svgArr[Index].y);
-      // Texture.update();
-      // TODO Разобрать как обновлять все меши, а не отлько второй монитор.
-      // сейчас назначил изменять жётско только первый моник и всё супер ок!
-      if (Mesh.svgArr.length - 1 > Index) {
-        console.log(1, Mesh.name, Index, Mesh.svgArr);
-        updateSvgTexture(Mesh, Index + 1);
-      } else if (Mesh.svgArr.length - 1 === Index) {
-        console.log(2, Mesh.name, Index, Mesh.svgArr);
-        Texture.update();
-      }
+function updateSvgTextures() {
+  let tempArr = devHelper.model3DVals.svgDisplays.tagImgs.filter(function (element) {
+    return element.svgReload === false;
+  });
+  tempArr.forEach((element) => {
+    if (!element.svgReload || element.svgReload === false) {
+      element.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(element.previousElementSibling.contentDocument.querySelector('svg')))));
+      element.svgReload = true;
     }
-  } else {
+  });
+}
 
-  }
+function updateMeshTextureSvg(SvgName) {
+  devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
+    if (DisplayMesh.svgArr.find(element => element.name === SvgName)) {
+      let textureContext = DisplayMesh.material.diffuseTexture.getContext();
+      textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
+      DisplayMesh.svgArr.forEach(element => {
+        let svgIndex = devHelper.model3DVals.svgDisplays.svgNames.findIndex(function (obj) { return obj === element.name; });
+        let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[svgIndex];
+        textureContext.drawImage(outputImage, element.x, element.y);
+      })
+      DisplayMesh.material.diffuseTexture.update();
+    }
+  })
 }
 
 function addSvgToTextrue(Mesh = undefined, NewSvgVals = undefined, ClearCanvas = false, addNewSvg = true) {
   if (Mesh && NewSvgVals) {
     if (addNewSvg === true) Mesh.svgArr.push({ name: NewSvgVals.window, x: NewSvgVals.x, y: NewSvgVals.y });
-    let Texture = Mesh.material.diffuseTexture;
-    let textureContext = Texture.getContext();
     let windowIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === NewSvgVals.window; })
     let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[windowIndex];
     outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[windowIndex]))));
-    outputImage.onload = function () {
-      if (ClearCanvas === true) textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
-      textureContext.drawImage(outputImage, NewSvgVals.x, NewSvgVals.y);
-      Texture.update();
+    outputImage.onload = function tempF() {
+      updateMeshTextureSvg(NewSvgVals.window);
+      outputImage.svgReload = true;
     }
   }
 }
@@ -422,26 +486,6 @@ function RemoveSvgFromTextrue(Mesh = undefined, RemoveWindowName = undefined) {
     })
   }
 }
-
-// function updateSvgTexture(SvgName = undefined, ChangeTexture = false) {
-//   if (SvgName) {
-//     let SvgIndex = devHelper.svgVals.findIndex(function (obj) { return obj.name === SvgName; })
-//     let outputImage = devHelper.svgVals[SvgIndex].object.nextElementSibling;
-//     outputImage.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.model3DVals.svgDisplays.svgs[SvgIndex]))));
-//     outputImage.onload = function () {
-//       devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
-//         if (DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1) !== SvgName)
-//           changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), ChangeTexture);
-//         else
-//           changeSvgtexture(DisplayMesh, DisplayMesh.material.diffuseTexture.name.substring(DisplayMesh.material.diffuseTexture.name.indexOf('_') + 1), true);
-//       })
-//     }
-//   } else {
-//     if (devHelper.dev.enable === true) console.warn(`В функцию updateSvgTexture передали не все переменные.`);
-//     return
-//   }
-// }
-
 
 function changeColorTexture(Mesh = undefined, State = undefined) {
   let tempBool = false;
@@ -533,18 +577,19 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
   } else return
 }
 
-function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
-  devHelper.model3DVals.currentPosition = CurPos;
-  if (CurPos === undefined)
+function animMoveCamera(Vals, Speed = 2) {
+  let speed = Speed * 60;
+  if (Vals.position === undefined) {
     devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = true);
+    if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
+  }
   else {
     devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
-    if (devHelper.model3DVals.activeMeshs[CurPos])
-      devHelper.model3DVals.activeMeshs[CurPos].forEach(mesh => mesh.isPickable = true);
+    if (devHelper.model3DVals.activeMeshs[Vals.position])
+      devHelper.model3DVals.activeMeshs[Vals.position].forEach(mesh => mesh.isPickable = true);
   }
-  // if (CurPos === 1) { // все мониторы
+  // if (Vals.position === 1) { // все мониторы
   //   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = false;
-  //   // тут сделать появление экрана 2Д
   // } else {
   //   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = true;
   // }
@@ -563,8 +608,8 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
     value: devHelper.model3DVals.camera.position.clone()
   });
   positionKeys.push({
-    frame: 120,
-    value: new BABYLON.Vector3(PosCoors[0], PosCoors[1], PosCoors[2])
+    frame: speed,
+    value: new BABYLON.Vector3(Vals.positionCoordinates[0], Vals.positionCoordinates[1], Vals.positionCoordinates[2])
   });
   positionAnimation.setKeys(positionKeys);
 
@@ -582,13 +627,17 @@ function animMoveCamera(PosCoors, LookAtCoors, CurPos) {
     value: devHelper.model3DVals.camera.rotation.clone()
   });
   rotationKeys.push({
-    frame: 120,
-    value: new BABYLON.Vector3(LookAtCoors[0], LookAtCoors[1], LookAtCoors[2])
+    frame: speed,
+    value: new BABYLON.Vector3(Vals.lookAt[0], Vals.lookAt[1], Vals.lookAt[2])
   });
   rotationAnimation.setKeys(rotationKeys);
   devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
-  devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, 120, false, 1, () => {
-    createSvghelper(CurPos);
+  devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, speed, false, 1, () => {
+    devHelper.model3DVals.currentPosition = Vals.position;
+    createSvghelper(Vals.position);
+    if (devHelper.model3DVals.currentPosition !== undefined) {
+      disableGeneralView();
+    }
   });
 }
 
@@ -600,8 +649,6 @@ function clickOnMesh(Mesh = undefined) {
     trenClickOnMesh(Mesh);
   }
 }
-
-
 
 function switc3DTime(digit, digitTime) {
   let unicOff = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Unic_Digit_donor_0');

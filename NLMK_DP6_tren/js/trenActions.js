@@ -8,9 +8,6 @@ const devHelper = {
   trenVals: {
     waitingInput: true,
     currentAction: 0,
-    currentActionTime: 0,
-    scenarioTimer: 0,
-    realTimer: 0,
     type: undefined,
     trenEnded: false,
     timers: {
@@ -43,7 +40,15 @@ const devHelper = {
       tagImgs: [],
       svgs: [],
       materials: [],
+      svgNames: [],
     },
+    cameraPositions: [
+      { positionCoordinates: [0.35, 2.15, -3.4], lookAt: [0.1913, -0.0046, 0], position: undefined },
+      { positionCoordinates: [-6.56, 1.12, -0.79], lookAt: [-0.0165, -0.7836, 0], position: 1 },
+      { positionCoordinates: [-6.56, 1.12, -0.79], lookAt: [-0.0165, -0.7836, 0], position: 2 },
+      { positionCoordinates: [-3.56, 1.73, -1], lookAt: [0.5216195764415446, 0.007373100235868478, 0], position: 3 },
+    ]
+
   },
   svgVals: [],
   //---------------------------
@@ -62,7 +67,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: true,
+    enable: false,
     perfomance: undefined,
   },
 };
@@ -91,8 +96,9 @@ duration передавать в анимации
 
 let tempActions = [
   [ // Первый сценарий
+    //--------------------------------1----------------------------------------
     {
-      text: 'Открыть клапан 029 на дымовую трубу.',
+      scenarioText: 'Открыть клапан 029 на дымовую трубу.',
       sender: 'Система',
       action: {
         target2D: 'kl029',
@@ -105,14 +111,16 @@ let tempActions = [
             { name: 'polozenie_button_text', color: '#000000' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1', stroke: '#8F8F8F' },
-            { name: 'circle_2', stroke: '#8F8F8F' },
+            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
           ],
         },
       },
+      lifeTime: '10:00:00',
       startTime: 0,
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
-    }, {
+    },
+    {
       action: {
         target2D: 'open_vn',
         window2D: {
@@ -121,13 +129,14 @@ let tempActions = [
           ],
         },
       },
-      startTime: 1,
+      startTime: 0.5,
       human: true,
-    }, {
+    },
+    {
       action: {
         target2D: 'open_vn1',
       },
-      startTime: 2,
+      startTime: 1,
       human: true,
     },
     {
@@ -138,93 +147,120 @@ let tempActions = [
             { name: 'btn_open', color: '', stroke: '' },
             { name: 'polozenie_text', text: '55' },
             { name: 'polozenie_button_text', color: '' },
-            { name: 'left_vn', color: '#6DE90B' },
-            { name: 'right_vn', color: '#6DE90B' },
-            { name: 'circle_1', stroke: '#6DE90B' },
-            { name: 'circle_2', stroke: '#6DE90B' },
+            { name: 'left_vn', color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'kl029', color: '#00FF00' },
+            { name: 'kl029_proc', text: '55' },
+            { name: 'circle_1_kl029', stroke: '#00FF00' },
+            { name: 'circle_2_kl029', stroke: '#00FF00' },
           ],
         },
       },
-      startTime: 2.1,
+      startTime: 1.02,
     },
     {
       action: {
         window2D: {
           elements: [
+            { name: 'kl029', color: '#8F8F8F' },
+            { name: 'kl029_proc', text: '65' },
             { name: 'polozenie_text', text: '65' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1', stroke: '#8F8F8F' },
-            { name: 'circle_2', stroke: '#8F8F8F' },
+            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
           ],
         },
       },
-      startTime: 3,
+      startTime: 2.02,
     },
     {
       action: {
         window2D: {
           elements: [
+            { name: 'kl029', color: '#00FF00' },
+            { name: 'kl029_proc', text: '75' },
             { name: 'polozenie_text', text: '75' },
-            { name: 'left_vn', color: '' },
-            { name: 'right_vn', color: '' },
-            { name: 'circle_1', stroke: '' },
-            { name: 'circle_2', stroke: '' },
+            { name: 'left_vn', color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_1_kl029', stroke: '#00FF00' },
+            { name: 'circle_2_kl029', stroke: '#00FF00' },
           ],
         },
       },
-      startTime: 4,
+      startTime: 3.02,
     },
     {
       action: {
         window2D: {
           elements: [
+            { name: 'kl029', color: '#8F8F8F' },
+            { name: 'kl029_proc', text: '85' },
             { name: 'polozenie_text', text: '85' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1', stroke: '#8F8F8F' },
-            { name: 'circle_2', stroke: '#8F8F8F' },
+            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
           ],
         },
       },
-      startTime: 5,
+      startTime: 4.02,
     },
     {
       action: {
         window2D: {
           elements: [
-            { name: 'polozenie_text', text: '95' },
-            { name: 'left_vn', color: '' },
-            { name: 'right_vn', color: '' },
-            { name: 'circle_1', stroke: '' },
-            { name: 'circle_2', stroke: '' },
-          ],
-        },
-      },
-      startTime: 6,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
+            { name: 'kl029', color: '#00FF00' },
+            { name: 'kl029_proc', text: '100' },
             { name: 'polozenie_text', text: '100' },
             { name: 'status_window_text', text: 'Открыт' },
-            { name: 'left_vn', color: '#8F8F8F' },
-            { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1', stroke: '#8F8F8F' },
-            { name: 'circle_2', stroke: '#8F8F8F' },
+            { name: 'polozenie_button_text', color: '#6E6E6E' },
+            { name: 'btn_open', color: '#E6E6E6', stroke: '#C4C4C4' },
+            { name: 'left_vn', color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_1_kl029', stroke: '#00FF00' },
+            { name: 'circle_2_kl029', stroke: '#00FF00' },
           ],
         },
       },
-      startTime: 7,
+      startTime: 5.02,
+    },
+    {
+      text: 'Клапан 029 на дымовую трубу открыт.',
+      sender: 'Система',
+      startTime: 5.03,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: 7.1,
+      startTime: 6,
       human: true,
     },
+    //--------------------------------2----------------------------------------
+
+    // {
+    //   text: 'Открыть клапан 029 на дымовую трубу.',
+    //   sender: 'Система',
+    //   action: {
+    //     target2D: 'kl029',
+    //     window2D: {
+    //       elements: [
+    //         { name: 'title_work_vn', text: 'Управление клапаном 029' },
+    //         { name: 'status_window_text', text: 'Нет данных' },
+    //         { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
+    //         { name: 'polozenie_text', text: '51' },
+    //         { name: 'polozenie_button_text', color: '#000000' },
+    //         { name: 'left_vn', color: '#8F8F8F' },
+    //         { name: 'right_vn', color: '#8F8F8F' },
+    //         { name: 'circle_1', stroke: '#8F8F8F' },
+    //         { name: 'circle_2', stroke: '#8F8F8F' },
+    //       ],
+    //     },
+    //   },
+    //   startTime: 10,
+    //   human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
+    // }
     // {
     //   text: 'Заменить1',
     //   action: {
@@ -271,4 +307,19 @@ let tempActions = [
       duration: 3
     },
   ],
+]
+
+// Массив исходных состояний
+let startState2D = [
+  [// Первый сценарий
+    { name: 'kl028', color: '#00FF00' },
+    { name: 'circle_1_kl028', stroke: '#00FF00' },
+    { name: 'circle_2_kl028', stroke: '#00FF00' },
+    { name: 'kl028_proc', text: '100' },
+    { name: 'kl007', color: '#00FF00' },
+    { name: 'circle_1_kl007', stroke: '#00FF00' },
+    { name: 'circle_2_kl007', stroke: '#00FF00' },
+    { name: 'kl007_proc', text: '100' },
+    { name: 'circle_1_kl025', stroke: '#00FF00' },
+  ]
 ]

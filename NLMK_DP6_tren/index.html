@@ -537,8 +537,8 @@
       <span>Контроль</span>
     </div>
   </div>
-
-  <div class="tren-container">
+  
+  <div class="tren-container" >
     <div class="tren-ui">
       <div class="box-tren-ui">
         <div class="line-tren">
@@ -550,6 +550,13 @@
           <div class="text-button-tren">Свернуть</div>
         </div>
         <div class="box-spring-button">"ПРУЖИНА"</div>
+        <div class="line-tren">
+          <button class="button-tren" disabled id="b_GeneralView">
+            <object data="media/images/UI/icons/back.svg" width="30" height="30" type="image/svg+xml" ></object>
+            <div class="click-button-tren"></div>
+          </button>
+          <div class="text-button-tren">Обратно</div>
+        </div>
         <div class="line-tren">
           <button class="button-tren" id="b_oclock" window-interface="box-time" close-func="clickCloseTime">
             <object data="media/images/UI/icons/clock.svg" width="30" height="30" type="image/svg+xml"></object>
@@ -601,6 +608,8 @@
           </button>
           <div class="text-button-tren">Выход</div>
         </div>
+        <object class="notification-icon" data="media/images/UI/icons/exclamation-mark.svg" type="image/svg+xml"></object>
+
       </div>
 
 
@@ -612,8 +621,7 @@
   <div class="svg-scheme-container">
     <object data="media/images/schemes/dp.svg" type="image/svg+xml"></object>
     <img src="">
-    <!-- <object data="media/images/schemes/BVNK_VNK1.svg" type="image/svg+xml" style="top: 0; left: 0; visibility: visible;"></object> -->
-    <object data="media/images/schemes/BVNK_VNK1.svg" type="image/svg+xml"></object>
+    <object data="media/images/schemes/BVNK_VNK1.svg" type="image/svg+xml" ></object>
     <img src="">
     <object data="media/images/schemes/BVNK_VNK2.svg" type="image/svg+xml"></object>
     <img src="">
@@ -637,6 +645,8 @@
     <img src="">
     <object data="media/images/schemes/vvod_znachenij.svg" type="image/svg+xml"></object>
     <img src="">
+    <object data="media/images/schemes/Osnovnye_parametry_DP.svg" type="image/svg+xml"></object>
+    <img src="">
   </div>
 
 
@@ -646,7 +656,7 @@
     РАЗВЕРНУТЬ
   </div>
   <!-- TIME -->
-  <div class="box-time" sx="4vw" sy="24vh" sx2="20vh" style="left: 4vw; top: 24vh;">
+  <div  class="box-time" sx="4vw" sy="24vh" sx2="9vw" style="left: 4vw; top: 24vh;">
     <div class="backArea"></div>
     <div class="time-header">
       <div class="time-header-title">Часы</div>
@@ -794,10 +804,9 @@
     </div>
   </div>
   <!-- CHAT -->
-  <div class="box-chat-window box-chat-window-mini" maxHeight="48vh" maxWidth="20vw" sx="4vw" sy="14.5vh" sx2="20vh"
-    style=" top: 14.5vh;  left: 4vw; ">
-    <div class="backArea"></div>
-    <div class="box-chat-header">
+  <div  class="box-chat-window box-chat-window-mini" maxHeight="48vh" maxWidth="20vw" sx="4vw" sy="14.5vh" sx2="9vw"  style=" top: 14.5vh;  left: 4vw; ">   
+    <div class="backArea" ></div>
+    <div class="box-chat-header" >
       <div class="chat-header-title">Чат</div>
       <p class="chat-header-button">×</p>
     </div>

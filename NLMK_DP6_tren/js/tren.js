@@ -15,13 +15,17 @@ function loadTrenActions() {
       tempObjTren.actions = tempActions[Index];
     }
   })
-  devHelper.trenVals.activeMeshs = [...tempActions.flatMap(scenarioArr => scenarioArr.map(action => action.action.target3D))];
+  devHelper.trenVals.activeMeshs = tempActions.flatMap(scenarioArr =>
+    scenarioArr.map(action => action.action?.target3D)
+  ).filter(item => item !== null);
 }
 
 function startTren() {
-  // расписать поведение интерфейса при начале тренажёра в зависимости от обучения/контроля
   if (devHelper.trenVals.type === 'learn') {
-
+    if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text)
+      sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text);
+    if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].scenarioText)
+      sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].scenarioText);
   } else {
 
   }
@@ -30,6 +34,7 @@ function startTren() {
   devHelper.trenVals.currentAction = 0;
   devHelper.trenVals.ended = false;
   devHelper.trenVals.waitingInput = true;
+  takeStartingState();
   window.requestAnimationFrame(trenTimeTick);
 }
 function trenTimeTick(timeStamp) {
@@ -56,23 +61,25 @@ function trenTimeTick(timeStamp) {
       let nextAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
       if (nextAction) {
         if (nextAction.human && nextAction.human === true) {
-          if (devHelper.trenVals.waitingInput === false) devHelper.trenVals.waitingInput = true;
+          if (devHelper.trenVals.waitingInput === false) {
+            if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+            if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
+            devHelper.trenVals.waitingInput = true;
+          }
         } else {
+          if (nextAction.lifeTime) startTimerToStep(nextAction.lifeTime, false);
           if (nextAction.action && nextAction.action.window2D) {
             for (let key in nextAction.action.window2D.elements) {
               if (nextAction.action.window2D.elements.hasOwnProperty(key))
                 changeSvgElem(nextAction.action.window2D.elements[key]);
             }
-            devHelper.model3DVals.svgDisplays.textures.forEach(texture => {
-              devHelper.model3DVals.svgDisplays.meshs.forEach(displayMesh => {
-                if (texture === displayMesh.material.diffuseTexture) 
-                  changeSvgtexture(displayMesh,texture.name.substring(texture.name.indexOf('_') + 1), false);
-              })
-            })
-            devHelper.trenVals.timers.actionTimeHelper = 0;
-            nextAction.passed = true;
-            devHelper.trenVals.waitingInput = false;
+            updateSvgTextures();
           }
+          if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+          if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
+          devHelper.trenVals.timers.actionTimeHelper = 0;
+          nextAction.passed = true;
+          devHelper.trenVals.waitingInput = false;
         }
       }
       let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
@@ -109,10 +116,11 @@ function trenClickOnMesh(Mesh) {
   }
 }
 
-function trenClickOnSvgElem(SvgElemHelper = undefined, GhostClick = undefined) {
-  if (devHelper.trenVals.waitingInput === true || GhostClick === true) {
+function trenClickOnSvgElem(SvgElemHelper = undefined) {
+  if (devHelper.trenVals.waitingInput === true) {
     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-    if (GhostClick === true || (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id)) {
+    if (currentActonObject.lifeTime) startTimerToStep(currentActonObject.lifeTime);
+    if (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id) {
       if (currentActonObject.action.window2D && currentActonObject.action.window2D.elements) {
         for (let key in currentActonObject.action.window2D.elements) {
           if (currentActonObject.action.window2D.elements.hasOwnProperty(key))
@@ -131,6 +139,14 @@ function trenFinish() {
   if (devHelper.dev.enable === true && document.querySelector('.info-tren'))
     document.querySelector('.info-tren').innerHTML = `Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`;
   if (devHelper.dev.enable === true) console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`);
+}
+
+function takeStartingState() {
+  if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
+    startState2D[devHelper.trenVals.scenario].forEach(element => {
+      if (element.name) changeSvgElem(element);
+    });
+  }
 }
 
 
@@ -171,6 +187,12 @@ function sendMessage(Sender, TextMessage) {
   }
   createCustomElement("div", TextMessage, { "class": "textMessage" }, message)
   document.querySelector(".chat").insertBefore(message, document.querySelector(".chat").children[0]);
+  if (!document.querySelector('.box-chat-window').classList.contains('opacity-1-Temp') && !document.querySelector('.box-chat-window').classList.contains('opacity-1-Always')) {
+    let notIcon = document.querySelector('.notification-icon');
+    notIcon.style.visibility = "visible";
+    notIcon.style.left = (document.getElementById('b_chat').getBoundingClientRect().right - notIcon.getBoundingClientRect().width / 1.5) + 'px';
+    notIcon.style.top = (document.getElementById('b_chat').getBoundingClientRect().top - notIcon.getBoundingClientRect().height / 3) + 'px';
+  }
 }
 
 function createCustomElement(tag, content, attributes, parrent = null) {
@@ -312,6 +334,25 @@ function clickCloseChat(e) {
   }
 }
 
+// Рамки вокруг окон
+{
+  Array.from(document.querySelectorAll('.time-header-title')).forEach(element => {
+    element.onmouseover = (e) => {
+      element.parentElement.parentElement.classList.add('border-window')
+    }
+    element.onmouseout = (e) => {
+      element.parentElement.parentElement.classList.remove('border-window')
+    }
+  });
+  Array.from(document.querySelectorAll('.chat-header-title')).forEach(element => {
+    element.onmouseover = (e) => {
+      element.parentElement.parentElement.classList.add('border-window')
+    }
+    element.onmouseout = (e) => {
+      element.parentElement.parentElement.classList.remove('border-window')
+    }
+  });
+}
 // TIME
 {
   // КЛИК ЗАКРЫТЬ TIME
@@ -400,7 +441,6 @@ function setLifeTime(time) {
   Array.from(document.getElementsByClassName("option")).forEach((item) => {
     item.addEventListener('click', (e) => {
       let parrent = e.currentTarget.parentElement.parentElement.parentElement;
-      // console.log(document.querySelector(`.dialogTimers-hours[dropDown="${parrent.getAttribute("dropDown")}"]`).children[0]);
       document.querySelector(`.dialogTimers-hours[dropDown="${parrent.getAttribute("dropDown")}"]`).children[0].textContent = e.currentTarget.textContent; // P - text
       document.querySelector(`.section-dropDown[dropDown="${parrent.getAttribute("dropDown")}"]`).classList.remove("visibleDrooDown");
       document.querySelector(".dialogMessageWatch .time")
@@ -419,10 +459,17 @@ function setLifeTime(time) {
     document.querySelector(".dialogMessageWatch .time-hour").textContent = document.querySelector('.dialogMessageWatch .dialogTimers-hours[dropDown="1"] p').textContent;
     document.querySelector(".dialogMessageWatch .time-minute").textContent = document.querySelector('.dialogMessageWatch .dialogTimers-hours[dropDown="2"] p').textContent;
     newStateTimer();
-    startTimer();
+    startTimerToFinish();
 
   })
-
+  function setNormalTime(Time) {
+    // закладка для оптимизации
+    let currentDateTime = new Date();
+    currentDateTime.setSeconds(Number(Time.split(":")[2]));
+    currentDateTime.setMinutes(Number(Time.split(":")[1]));
+    currentDateTime.setHours(Number(Time.split(":")[0]));
+    return currentDateTime;
+  }
   function getLifeTime_Date() {
     let currentDateTime = new Date();
     currentDateTime.setSeconds(Number(devHelper.trenVals.timers.lifeTime.split(":")[2]));
@@ -430,11 +477,18 @@ function setLifeTime(time) {
     currentDateTime.setHours(Number(devHelper.trenVals.timers.lifeTime.split(":")[0]));
     return currentDateTime;
   }
-  function getCounterTime_Date() {
+  function getCounterTime_Date(specTime = "") {
+    // state = podsos param
     let currentDateTime = new Date();
     currentDateTime.setSeconds(Number(0));
-    currentDateTime.setMinutes(Number(document.querySelector(".dialogMessageWatch .time-minute").textContent));
-    currentDateTime.setHours(Number(document.querySelector(".dialogMessageWatch .time-hour").textContent));
+    if (specTime == "") {
+      currentDateTime.setMinutes(Number(document.querySelector(".dialogMessageWatch .time-minute").textContent));
+      currentDateTime.setHours(Number(document.querySelector(".dialogMessageWatch .time-hour").textContent));
+    }
+    else {
+      currentDateTime.setMinutes(Number(specTime.split(":")[1]));
+      currentDateTime.setHours(Number(specTime.split(":")[0]));
+    }
     return currentDateTime;
   }
   function getFinishTime_Date(currentDateTime, counterDateTime) {
@@ -467,7 +521,7 @@ function setLifeTime(time) {
     clearInterval(timerInterval);
     newStateTimer();
   }
-  function startTimer() {
+  function startTimerToFinish() {
     timePassed = 0;
     timerInterval = null;
 
@@ -475,38 +529,54 @@ function setLifeTime(time) {
     let counterDateTime = getCounterTime_Date().getTime();
     let finishDateTime = getFinishTime_Date(currentDateTime, counterDateTime).getTime();
     let counterStep = (finishDateTime - currentDateTime) / _step;
-
-    // console.log(currentDateTime);
-    // console.log(counterDateTime);
-    // console.log(finishDateTime);
-    // console.log(counterStep);
-
     timerInterval = setInterval(() => {
       if (_timeInteval === timePassed) {
         //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
         onTimesUp();
+        // changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
+        // updateSvgTextures();
         return;
       }
-
       currentDateTime += counterStep;
       counterDateTime -= counterStep;
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
-      setTimeSvgScheme();                                                      // время на схемах
-
-
-
+      // setTimeSvgScheme();                                                      // время на схемах
       timePassed += _stepInteval;
     }, _stepInteval);
   }
+  function startTimerToStep(finishTime, UpdateSvg = true) {
+    timePassed = 0;
+    timerInterval = null;
+    changeSvgElem({ name: 'lifetime', text: finishTime, });
+    if (UpdateSvg === true) updateSvgTextures();
+    let currentDateTime = getLifeTime_Date().getTime();
+    let finishDateTime = getCounterTime_Date(finishTime).getTime();
+    let counterStep = (finishDateTime - currentDateTime) / _step;
+    timerInterval = setInterval(() => {
+      if (_timeInteval === timePassed) {
+        //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
+        onTimesUp();
+        // changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
+        // updateSvgTextures();
+        return;
+      }
+      currentDateTime += counterStep;
+      // counterDateTime -= counterStep;
+      setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
+      // setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
+      change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
+      // setTimeSvgScheme();                                                      // время на схемах
+      timePassed += _stepInteval;
+    }, _stepInteval);
+  }
+
 
 }
 
 // CHAT
 {
-
-
   setMiniChat();
 
   function setMiniChat() {
@@ -582,6 +652,10 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
   let b_action = item.querySelector('.click-button-tren');
   item = item.querySelector('button');
   b_action.addEventListener('click', (e) => {
+    if (item.hasAttribute('disabled')) {
+      return;
+    }
+
     if (document.querySelector(`.${item.getAttribute('window-interface')}`)) {  // включить анимацию
       document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0'); // включить анимацию
     }
@@ -620,18 +694,10 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   b_action.addEventListener('mouseover', (e) => {
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0');
-    if (document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')) {
-
-    } else {
-
-      setCenterWindow(item)
+    if (!document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')) {
+      setCenterWindow(item);
     }
-    if (e.currentTarget.classList.contains('button-tren-active')) {
 
-    }
-    else {
-      // setNewPositionWindow(item, true);
-    }
   });
   b_action.addEventListener('mouseout', (e) => {
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('opacity-1-Temp');
@@ -652,6 +718,10 @@ document.getElementById('b_collapseMenu').addEventListener("mouseover", (e) => {
 function setNewPositionWindow(elem, state = false) {
   if (state) {
     if (elem.classList.contains('opacity-1-Always') && 8 > ConvertPxToVw(parseFloat(elem.getBoundingClientRect().left))) {
+      if (elem.classList.contains('dialogMessageWatch')) {  // частный случай
+        elem.style.left = document.querySelector('.box-time').style.left;
+        return;
+      }
       elem.style.left = elem.getAttribute('sx2');
     }
     else if (elem.classList.contains('opacity-1-Always')) { return; }
@@ -676,6 +746,7 @@ document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
       item = document.querySelector(`.${item.getAttribute('window-interface')}`);
       setNewPositionWindow(item, true);
     });
+    setNewPositionWindow(document.querySelector('.dialogMessageWatch'), true);
   }
   else {
     document.querySelector('.tren-ui').classList.remove('tren-ui-long');
@@ -710,8 +781,27 @@ document.getElementById('b_chat').addEventListener("click", (e) => {
   }
 });
 
+document.getElementById('b_chat').addEventListener("mouseover", (e) => {
+  if (document.querySelector('.notification-icon').style.visibility && document.querySelector('.notification-icon').style.visibility === 'visible') {
+    document.querySelector('.notification-icon').style.visibility = 'hidden';
+  }
+});
 
 
-document.getElementById('b_exit').addEventListener("click", (e) => {
-  // setTimeSvgSheme();
+function disableGeneralView(state = true) {
+  if (state) {
+    if (document.getElementById('b_GeneralView').hasAttribute('disabled')) {
+      document.getElementById('b_GeneralView').removeAttribute('disabled')
+    }
+  }
+  else {
+    document.getElementById('b_GeneralView').setAttribute('disabled', "");
+  }
+}
+// КЛИК ОБРАТНО
+document.getElementById('b_GeneralView').addEventListener("click", (e) => {
+  e.currentTarget.classList.remove('button-tren-active');
+  animMoveCamera(devHelper.model3DVals.cameraPositions[0]);
+  setNewFillButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  document.getElementById('b_GeneralView').setAttribute('disabled', "");
 })
