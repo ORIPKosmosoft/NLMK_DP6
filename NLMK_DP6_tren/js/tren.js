@@ -35,6 +35,11 @@ function startTren() {
   devHelper.trenVals.ended = false;
   devHelper.trenVals.waitingInput = true;
   takeStartingState();
+  if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human && devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human &&
+    devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].startTime === 0) {
+    devHelper.trenVals.waitingInput = true;
+  } else devHelper.trenVals.waitingInput = false;
+
   window.requestAnimationFrame(trenTimeTick);
 }
 function trenTimeTick(timeStamp) {
@@ -174,10 +179,10 @@ function sendMessage(Sender, TextMessage) {
   // if (document.querySelector('.box-spring-button.display-none')) {
   //   document.querySelector('.box-spring-button.display-none').classList.remove('display-none');
   // }
-  
-  
+
+
   let message = createCustomElement("div", "", { "class": Roles[Sender] })
-  message.setAttribute('mes','');
+  message.setAttribute('mes', '');
   let top = createCustomElement("div", "", { "class": "topMessage" }, message)
   switch (Roles[Sender]) {
     case "messageError":
@@ -818,7 +823,7 @@ document.getElementById('b_GeneralView').addEventListener("click", (e) => {
   document.getElementById('b_GeneralView').setAttribute('disabled', "");
 })
 // mouseOver chat
-document.getElementById('b_chat').addEventListener("mouseover", (e) => {setMiniChat();})
+document.getElementById('b_chat').addEventListener("mouseover", (e) => { setMiniChat(); })
 
 // ПОМОЩЬ
 document.getElementById('b_help').addEventListener("click", (e) => {
@@ -867,7 +872,7 @@ document.getElementById('b_exit').addEventListener("click", (e) => {
   document.querySelector('.tren-container').style.visibility = "hidden";
   document.querySelector('.tren-container').style.transition = "none";
   document.querySelector('.tren-container').style.opacity = 1;
-  
+
   setNewFillButtonSVG(document.querySelector('.nav-icon.nav-icon-active').querySelector('object'), COLOR_STATE_BUTTON.Normal);
   document.querySelector('.nav-icon.nav-icon-active').classList.remove('nav-icon-active');
 
@@ -896,7 +901,7 @@ document.getElementById('b_scenario').addEventListener("click", (e) => {
     // document.querySelector('.box-scenario').classList.add("visibility-visible");
     document.querySelector('.box-scenario').classList.add('backArea-white-100')
   }
-  else{
+  else {
     document.querySelector('.box-scenario').classList.remove("opacity-1-Always");
     document.querySelector('.box-scenario').classList.remove("opacity-1-Temp");
     document.querySelector('.box-scenario').classList.remove('backArea-white-100')
@@ -904,7 +909,7 @@ document.getElementById('b_scenario').addEventListener("click", (e) => {
 })
 
 setTextScenario(0);
-function setTextScenario(numberScenario){
+function setTextScenario(numberScenario) {
   let listItem = document.querySelector('.box-scenario-list')
   while (listItem.lastElementChild) {
     listItem.removeChild(listItem.lastElementChild);
@@ -914,7 +919,7 @@ function setTextScenario(numberScenario){
       createCustomElement("div", element.text, { "class": "box-scenario-text" }, listItem);
     }
   });
-  
-  
-  
+
+
+
 }

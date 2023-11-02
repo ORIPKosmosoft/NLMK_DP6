@@ -67,7 +67,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
   },
 };
@@ -116,7 +116,7 @@ let tempActions = [
           ],
         },
       },
-      lifeTime: '10:00:00',
+      // lifeTime: '10:00:00',
       startTime: 0,
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     },

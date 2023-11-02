@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector('.help-btn-block').remove();
     }
     //----------------------------------------------------------------------------------------------------------
+    // scene.freezeActiveMeshes();
     return scene;
   };
   canvas.addEventListener("pointermove", function () {
@@ -217,6 +218,8 @@ document.addEventListener("DOMContentLoaded", () => {
         meshArr.forEach(Mesh => {
           Mesh.actionManager = new BABYLON.ActionManager(Scene);
           Mesh.isPickable = true;
+          // оптимизация
+          if (Mesh.material) Mesh.material.freeze();
           if (Mesh.name && Mesh.name === 'Display_flat002') {
             makeActiveMesh(Mesh, 1);
             makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
@@ -418,6 +421,8 @@ function makeUnicMat(UnicMesh) {
   if (UnicMesh.material) {
     let tempMaterial = UnicMesh.material.clone(`material_${UnicMesh.name}`);
     UnicMesh.material = tempMaterial;
+    // оптимизация
+    UnicMesh.material.freeze();
   }
 }
 
@@ -588,11 +593,6 @@ function animMoveCamera(Vals, Speed = 2) {
     if (devHelper.model3DVals.activeMeshs[Vals.position])
       devHelper.model3DVals.activeMeshs[Vals.position].forEach(mesh => mesh.isPickable = true);
   }
-  // if (Vals.position === 1) { // все мониторы
-  //   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = false;
-  // } else {
-  //   devHelper.model3DVals.camera.inputs.attached.mouse._allowCameraRotation = true;
-  // }
 
   let positionAnimation = new BABYLON.Animation(
     "positionAnimation",
