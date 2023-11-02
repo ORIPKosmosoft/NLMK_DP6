@@ -197,65 +197,30 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
       });
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
     if (ObjectSvg.name === 'vnk_main') {
-      // PATH
+      ObjectSvg.svg.querySelectorAll('circle').forEach((Element) => {
+        if (Element.hasAttribute('cx') && Element.getAttribute('cx') === '858.16' && Element.hasAttribute('r') && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl029'); }
+        if (Element.hasAttribute('cx') && Element.getAttribute('cx') === '858.16' && Element.hasAttribute('r') && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl029'); }
+        if (Element.hasAttribute('cy') && Element.getAttribute('cy') === '568.43' && Element.hasAttribute('cx') && Element.getAttribute('cx') === '750.32' && Element.hasAttribute('r') && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl028'); }
+        if (Element.hasAttribute('cy') && Element.getAttribute('cy') === '568.43' && Element.hasAttribute('cx') && Element.getAttribute('cx') === '750.32' && Element.hasAttribute('r') && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl028'); }
+        if (Element.hasAttribute('cy') && Element.getAttribute('cy') === '568.43' && Element.hasAttribute('cx') && Element.getAttribute('cx') === '1001.82' && Element.hasAttribute('r') && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl007'); }
+        if (Element.hasAttribute('cy') && Element.getAttribute('cy') === '568.43' && Element.hasAttribute('cx') && Element.getAttribute('cx') === '1001.82' && Element.hasAttribute('r') && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl007'); }
+        if (Element.hasAttribute('cy') && Element.getAttribute('cy') === '629.53' && Element.hasAttribute('cx') && Element.getAttribute('cx') === '1000.92' && Element.hasAttribute('r') && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl025'); }
+      })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
         if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1301.37 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.37-12.26l-20.56-25.18v-12.46h2.35l-.28-.91v-22.21c0-8.54-6.97-12.27-15.51-12.27h-.39c-8.54 0-15.51 3.73-15.51 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_3'); }
-        /////////////////////////////////
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M848.12 340.68v-21.47l33.12 21.47v-21.47z') { addSvgElem(Index, Element, 'kl048');  } // 48
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M725.84 404.38v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl039');  } // 39
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M983.46 404.76V383.3l33.13 21.46V383.3z')   { addSvgElem(Index, Element, 'kl030');  } // 30
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M727.32 463.57v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl038');  } // 38
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M986.48 462.94v-21.46l33.13 21.46v-21.46z') { addSvgElem(Index, Element, 'kl037');  } // 37
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M841.6 529.43v-21.46l33.12 21.46v-21.46z')  { addSvgElem(Index, Element, 'kl029');  } // 29
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M733.76 579.16V557.7l33.12 21.46V557.7z')   { addSvgElem(Index, Element, 'kl028');  } // 28
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M985.26 579.16V557.7l33.12 21.46V557.7z')   { addSvgElem(Index, Element, 'kl007');  } // 07
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M841.6 529.43v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl029'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M733.76 579.16V557.7l33.12 21.46V557.7z') { addSvgElem(Index, Element, 'kl028'); }
+        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M985.26 579.16V557.7l33.12 21.46V557.7z') { addSvgElem(Index, Element, 'kl007'); }
       })
-      // TEXT
-      ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => { 
-        if (TextElement.innerHTML === '11:05:39') { addSvgElem(Index, TextElement, 'lifetime'); }
-        ////////////////////////////////
-        if (TextElement.innerHTML === '0' && TextElement.getAttribute('x') == '860.96' && TextElement.getAttribute('y') == '355.11')    { addSvgElem(Index, TextElement, 'kl048_proc'); }  // 48
-        if (TextElement.innerHTML === '100' && TextElement.getAttribute('x') == '732.24' && TextElement.getAttribute('y') == '477.86')  { addSvgElem(Index, TextElement, 'kl038_proc'); }  // 38
-        if (TextElement.innerHTML === '63' && TextElement.getAttribute('x') == '996.87' && TextElement.getAttribute('y') == '477.86')   { addSvgElem(Index, TextElement, 'kl037_proc'); }  // 37
-        if (TextElement.innerHTML === '51') { addSvgElem(Index, TextElement, 'kl029_proc'); }                                                                                              // 29
-        if (TextElement.innerHTML === '0' && TextElement.getAttribute('x') == '746.9' && TextElement.getAttribute('y') == '592.85')     { addSvgElem(Index, TextElement, 'kl028_proc'); }  // 28
-        if (TextElement.innerHTML === '0' && TextElement.getAttribute('x') == '746.9' && TextElement.getAttribute('y') == '592.85')     { addSvgElem(Index, TextElement, 'kl007_proc'); }  // 07
-
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
+        if (Element.innerHTML === '51') { addSvgElem(Index, Element, 'kl029_proc', 'middle'); }
+        if (Element.innerHTML === '0' && Element.hasAttribute('x') && Element.getAttribute('x') === '746.9' && Element.hasAttribute('y') && Element.getAttribute('y') === '592.85') { addSvgElem(Index, Element, 'kl028_proc', 'center'); }
+        if (Element.innerHTML === '0' && Element.hasAttribute('x') && Element.getAttribute('x') === '998.47' && Element.hasAttribute('y') && Element.getAttribute('y') === '592.85') { addSvgElem(Index, Element, 'kl007_proc', 'center'); }
       });
-      //  CIRCLE
-      ObjectSvg.svg.querySelectorAll('circle').forEach((TextElement, TextIndex) => { 
-        if (TextElement.getAttribute('cx') == '864.68' && TextElement.getAttribute('cy') == '329.95' && TextElement.getAttribute('xr') == '5.61')   { addSvgElem(Index, TextElement, 'kl048_circle1');  }  // 48-1
-        if (TextElement.getAttribute('cx') == '864.68' && TextElement.getAttribute('cy') == '329.95' && TextElement.getAttribute('xr') == '9.18')   { addSvgElem(Index, TextElement, 'kl048_circle2');  }  // 48-2
-
-        if (TextElement.getAttribute('cx') == '742.4' && TextElement.getAttribute('cy') == '393.65' && TextElement.getAttribute('xr') == '5.61')    { addSvgElem(Index, TextElement, 'kl039_circle1');  }  // 39-1
-        if (TextElement.getAttribute('cx') == '742.4' && TextElement.getAttribute('cy') == '393.65' && TextElement.getAttribute('xr') == '9.18')    { addSvgElem(Index, TextElement, 'kl039_circle2');  }  // 39-2
-
-        if (TextElement.getAttribute('cx') == '1000.03' && TextElement.getAttribute('cy') == '394.03' && TextElement.getAttribute('xr') == '5.61')  { addSvgElem(Index, TextElement, 'kl030_circle1');  }  // 30-1
-        if (TextElement.getAttribute('cx') == '1000.03' && TextElement.getAttribute('cy') == '394.03' && TextElement.getAttribute('xr') == '9.18')  { addSvgElem(Index, TextElement, 'kl030_circle2');  }  // 30-2
-
-        if (TextElement.getAttribute('cx') == '743.93' && TextElement.getAttribute('cy') == '452.81' && TextElement.getAttribute('xr') == '5.61')   { addSvgElem(Index, TextElement, 'kl038_circle1');  }  // 38-1
-        if (TextElement.getAttribute('cx') == '743.93' && TextElement.getAttribute('cy') == '452.81' && TextElement.getAttribute('xr') == '9.18')   { addSvgElem(Index, TextElement, 'kl038_circle2');  }  // 38-2
-        
-        if (TextElement.getAttribute('cx') == '1003.04' && TextElement.getAttribute('cy') == '452.21' && TextElement.getAttribute('xr') == '5.61')  { addSvgElem(Index, TextElement, 'kl037_circle1');  }  // 37-1
-        if (TextElement.getAttribute('cx') == '1003.04' && TextElement.getAttribute('cy') == '452.21' && TextElement.getAttribute('xr') == '9.18')  { addSvgElem(Index, TextElement, 'kl037_circle2');  }  // 37-1
-
-        if (TextElement.getAttribute('cx') == '858.16' && TextElement.getAttribute('cy') == '518.7' && TextElement.getAttribute('xr') == '5.61')    { addSvgElem(Index, TextElement, 'kl029_circle1');  }  // 29-1
-        if (TextElement.getAttribute('cx') == '858.16' && TextElement.getAttribute('cy') == '518.7' && TextElement.getAttribute('xr') == '9.18')    { addSvgElem(Index, TextElement, 'kl029_circle2');  }  // 29-2
-
-        if (TextElement.getAttribute('cx') == '750.32' && TextElement.getAttribute('cy') == '568.43' && TextElement.getAttribute('xr') == '5.61')   { addSvgElem(Index, TextElement, 'kl028_circle1');  }  // 28-1
-        if (TextElement.getAttribute('cx') == '750.32' && TextElement.getAttribute('cy') == '568.43' && TextElement.getAttribute('xr') == '9.18')   { addSvgElem(Index, TextElement, 'kl028_circle2');  }  // 28-2
-
-        if (TextElement.getAttribute('cx') == '1001.82' && TextElement.getAttribute('cy') == '568.43' && TextElement.getAttribute('xr') == '5.61')  { addSvgElem(Index, TextElement, 'kl007_circle1');  }  // 07-1
-        if (TextElement.getAttribute('cx') == '1001.82' && TextElement.getAttribute('cy') == '568.43' && TextElement.getAttribute('xr') == '9.18')  { addSvgElem(Index, TextElement, 'kl007_circle2');  }  // 07-2
-
-
-      });
-    
     }
-    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     if (ObjectSvg.name === 'vnk_spvg') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {

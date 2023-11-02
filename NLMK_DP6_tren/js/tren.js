@@ -171,9 +171,9 @@ function addTrenValsMessages(elem) {
 }
 //sendMessage("Система","TESTYRWE")
 function sendMessage(Sender, TextMessage) {
-  if (document.querySelector('.box-spring-button.display-none')) {
-    document.querySelector('.box-spring-button.display-none').classList.remove('display-none');
-  }
+  // if (document.querySelector('.box-spring-button.display-none')) {
+  //   document.querySelector('.box-spring-button.display-none').classList.remove('display-none');
+  // }
   
   
   let message = createCustomElement("div", "", { "class": Roles[Sender] })

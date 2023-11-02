@@ -2298,6 +2298,10 @@ ul {
   visibility: hidden;
   height: 10vh;
 }
+.box-spring-button-chat{
+  height: 100vh;
+  visibility: hidden;
+}
 
 .button-tren object {
   cursor: pointer;
