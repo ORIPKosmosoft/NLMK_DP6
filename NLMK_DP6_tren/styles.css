@@ -2037,6 +2037,7 @@ ul {
   opacity: 0;
   z-index: 3;
   transition: all 0.3s ease;
+  border: none !important;
 }
 
 .chat-header-title {
