@@ -202,14 +202,6 @@ function sendMessage(Sender, TextMessage) {
   }
 }
 
-document.getElementById('b_exit').addEventListener('click', (e) => {
-  sendMessage("Система","TESTYRWE")
-  sendMessage("Газовщик","TESTYRWE")
-  sendMessage("Работник","TESTYRWE")
-  sendMessage("Ошибка","TESTYRWE")
-})
-
-
 function createCustomElement(tag, content, attributes, parrent = null) {
   const element = document.createElement(tag)
   element.innerHTML = content
