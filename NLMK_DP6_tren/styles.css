@@ -1489,7 +1489,7 @@ ul {
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
-  border: solid 2px white;
+  border: solid 2px rgba(255, 255, 255, 0.8);
 }
 
 .box-time .block-button {
@@ -1868,7 +1868,7 @@ ul {
   padding-bottom: 15px;
   display: flex;
   flex-direction: column;
-  border: solid 2px white;
+  border: solid 2px rgba(255, 255, 255, 0.8);
 }
 
 .box-chat-window-mini {
@@ -2118,7 +2118,7 @@ ul {
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
-  border: solid 2px white;
+  border: solid 2px rgba(255, 255, 255, 0.8);
 }
 .help-text-block{
   width: 100%;
@@ -2176,6 +2176,7 @@ ul {
   opacity: 0;
   transition: all 0.3s ease;
   z-index: -1;
+  border: solid 2px rgba(255, 255, 255, 0.8);
 }
 .box-scenario-top{
   margin-top: 40px;
@@ -2385,6 +2386,7 @@ ul {
 .opacity-1-Always {
   opacity: 1;
   z-index: 1;
+  border: 2px solid rgba(255,255,255,1);
   /* visibility: visible; */
 }
 
