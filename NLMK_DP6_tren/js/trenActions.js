@@ -115,6 +115,9 @@ let tempActions = [
             { name: 'circle_2_kl029', stroke: '#8F8F8F' },
           ],
         },
+        // helper2D : [
+        //   { x: 60, y: 59.1, w: 4, h: 2.6, id: 'open_vn'},
+        // ]
       },
       // lifeTime: '10:00:00',
       startTime: 0,

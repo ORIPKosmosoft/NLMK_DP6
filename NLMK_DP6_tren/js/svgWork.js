@@ -443,7 +443,18 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
         }
         function createSvgHelperButtons(Arr) {
           let mainContainer = createMainHelperContainer();
+          let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === true && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
           Arr.forEach((element) => {
+            if (currentActonObject && currentActonObject.action.helper2D && currentActonObject.action.helper2D.length > 0) {
+              currentActonObject.action.helper2D.forEach(element2 => {
+                if (element.id === element2.id) {
+                  if (element2.x) element.x = element2.x;
+                  if (element2.y) element.y = element2.y;
+                  if (element2.w) element.w = element2.w;
+                  if (element2.h) element.h = element2.h;
+                }
+              })
+            }
             mainContainer.append(createSvgHelperButton(element, mainMesh));
           })
           function createMainHelperContainer() {
