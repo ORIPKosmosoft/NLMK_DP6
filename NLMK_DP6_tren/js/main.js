@@ -743,3 +743,12 @@ function glavTestFun(pressedButtonName, pressedButton) {
     }
   }
 }
+
+function findLast(array, predicate) {
+  for (let i = array.length - 1; i >= 0; i--) {
+    if (predicate(array[i])) {
+      return array[i];
+    }
+  }
+  return undefined;
+}

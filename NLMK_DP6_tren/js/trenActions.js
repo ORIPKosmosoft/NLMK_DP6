@@ -118,9 +118,9 @@ let tempActions = [
             { name: 'circle_2_kl029', stroke: '#8F8F8F' },
           ],
         },
-        // helper2D : [
-        //   { x: 60, y: 59.1, w: 4, h: 2.6, id: 'open_vn'},
-        // ]
+        helper2D : [
+          { x: 60, y: 59.1, w: 4, h: 2.6, id: 'open_vn'},
+        ]
       },
       // lifeTime: '10:00:00',
       startTime: 0,
@@ -134,6 +134,9 @@ let tempActions = [
             { name: 'title_open_vn', text: 'Открыть' },
           ],
         },
+        helper2D : [
+          { x: 60, y: 59.1, w: 4, h: 2.6, id: 'open_vn1'},
+        ]
       },
       startTime: 0.5,
       human: true,
