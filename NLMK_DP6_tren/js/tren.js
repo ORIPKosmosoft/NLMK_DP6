@@ -15,13 +15,15 @@ function loadTrenActions() {
       tempObjTren.actions = tempActions[Index];
     }
   })
-  devHelper.trenVals.activeMeshs = [...tempActions.flatMap(scenarioArr => scenarioArr.map(action => action.action.target3D))];
+  devHelper.trenVals.activeMeshs = tempActions.flatMap(scenarioArr =>
+    scenarioArr.map(action => action.action?.target3D)
+  ).filter(item => item !== null);
 }
 
 function startTren() {
-  // расписать поведение интерфейса при начале тренажёра в зависимости от обучения/контроля
   if (devHelper.trenVals.type === 'learn') {
-
+    if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text)
+      {} //sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text);
   } else {
 
   }
@@ -56,18 +58,23 @@ function trenTimeTick(timeStamp) {
       let nextAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
       if (nextAction) {
         if (nextAction.human && nextAction.human === true) {
-          if (devHelper.trenVals.waitingInput === false) devHelper.trenVals.waitingInput = true;
+          if (devHelper.trenVals.waitingInput === false) {
+            if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+            devHelper.trenVals.waitingInput = true;
+          }
         } else {
+          if (nextAction.lifeTime) startTimerToStep(nextAction.lifeTime, false);
           if (nextAction.action && nextAction.action.window2D) {
             for (let key in nextAction.action.window2D.elements) {
               if (nextAction.action.window2D.elements.hasOwnProperty(key))
                 changeSvgElem(nextAction.action.window2D.elements[key]);
             }
             updateSvgTextures();
-            devHelper.trenVals.timers.actionTimeHelper = 0;
-            nextAction.passed = true;
-            devHelper.trenVals.waitingInput = false;
           }
+          if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+          devHelper.trenVals.timers.actionTimeHelper = 0;
+          nextAction.passed = true;
+          devHelper.trenVals.waitingInput = false;
         }
       }
       let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
@@ -107,20 +114,17 @@ function trenClickOnMesh(Mesh) {
 function trenClickOnSvgElem(SvgElemHelper = undefined) {
   if (devHelper.trenVals.waitingInput === true) {
     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+    if (currentActonObject.lifeTime) startTimerToStep(currentActonObject.lifeTime);
     if (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id) {
       if (currentActonObject.action.window2D && currentActonObject.action.window2D.elements) {
         for (let key in currentActonObject.action.window2D.elements) {
           if (currentActonObject.action.window2D.elements.hasOwnProperty(key))
-          changeSvgElem(currentActonObject.action.window2D.elements[key]);
+            changeSvgElem(currentActonObject.action.window2D.elements[key]);
+        }
       }
-    }
-      // function изменить время
-      if (currentActonObject.action.lifetime && currentActonObject.action.lifetime !== '') {
-        startTimerToStep(currentActonObject.action.lifetime);
-      }
-    devHelper.trenVals.timers.actionTimeHelper = 0;
-    currentActonObject.passed = true;
-    devHelper.trenVals.waitingInput = false;
+      devHelper.trenVals.timers.actionTimeHelper = 0;
+      currentActonObject.passed = true;
+      devHelper.trenVals.waitingInput = false;
     }
   }
 }
@@ -152,8 +156,11 @@ const Roles = {
 function addTrenValsMessages(elem) {
   devHelper.trenVals.messages.push(elem);
 }
+//sendMessage("Система","TESTYRWE")
 function sendMessage(Sender, TextMessage) {
+  document.querySelector('.box-spring-button.display-none').classList.remove('display-none');
   let message = createCustomElement("div", "", { "class": Roles[Sender] })
+  message.setAttribute('mes','');
   let top = createCustomElement("div", "", { "class": "topMessage" }, message)
   switch (Roles[Sender]) {
     case "messageError":
@@ -171,6 +178,14 @@ function sendMessage(Sender, TextMessage) {
   createCustomElement("div", TextMessage, { "class": "textMessage" }, message)
   document.querySelector(".chat").insertBefore(message, document.querySelector(".chat").children[0]);
 }
+
+document.getElementById('b_exit').addEventListener('click', (e) => {
+  sendMessage("Система","TESTYRWE")
+  sendMessage("Газовщик","TESTYRWE")
+  sendMessage("Работник","TESTYRWE")
+  sendMessage("Ошибка","TESTYRWE")
+})
+
 
 function createCustomElement(tag, content, attributes, parrent = null) {
   const element = document.createElement(tag)
@@ -313,22 +328,22 @@ function clickCloseChat(e) {
 
 // Рамки вокруг окон
 {
-Array.from(document.querySelectorAll('.time-header-title')).forEach(element => {
-  element.onmouseover = (e) => {
-    element.parentElement.parentElement.classList.add('border-window')
-  }
-  element.onmouseout = (e) => {
-    element.parentElement.parentElement.classList.remove('border-window')
-  }
-});
-Array.from(document.querySelectorAll('.chat-header-title')).forEach(element => {
-  element.onmouseover = (e) => {
-    element.parentElement.parentElement.classList.add('border-window')
-  }
-  element.onmouseout = (e) => {
-    element.parentElement.parentElement.classList.remove('border-window')
-  }
-});
+  Array.from(document.querySelectorAll('.time-header-title')).forEach(element => {
+    element.onmouseover = (e) => {
+      element.parentElement.parentElement.classList.add('border-window')
+    }
+    element.onmouseout = (e) => {
+      element.parentElement.parentElement.classList.remove('border-window')
+    }
+  });
+  Array.from(document.querySelectorAll('.chat-header-title')).forEach(element => {
+    element.onmouseover = (e) => {
+      element.parentElement.parentElement.classList.add('border-window')
+    }
+    element.onmouseout = (e) => {
+      element.parentElement.parentElement.classList.remove('border-window')
+    }
+  });
 }
 // TIME
 {
@@ -437,16 +452,16 @@ function setLifeTime(time) {
     document.querySelector(".dialogMessageWatch .time-minute").textContent = document.querySelector('.dialogMessageWatch .dialogTimers-hours[dropDown="2"] p').textContent;
     newStateTimer();
     startTimerToFinish();
-    
+
   })
-function setNormalTime(Time){
-  // закладка для оптимизации
-  let currentDateTime = new Date();
-  currentDateTime.setSeconds(Number(Time.split(":")[2]));
-  currentDateTime.setMinutes(Number(Time.split(":")[1]));
-  currentDateTime.setHours(Number(Time.split(":")[0]));
-  return currentDateTime;
-}
+  function setNormalTime(Time) {
+    // закладка для оптимизации
+    let currentDateTime = new Date();
+    currentDateTime.setSeconds(Number(Time.split(":")[2]));
+    currentDateTime.setMinutes(Number(Time.split(":")[1]));
+    currentDateTime.setHours(Number(Time.split(":")[0]));
+    return currentDateTime;
+  }
   function getLifeTime_Date() {
     let currentDateTime = new Date();
     currentDateTime.setSeconds(Number(devHelper.trenVals.timers.lifeTime.split(":")[2]));
@@ -462,7 +477,7 @@ function setNormalTime(Time){
       currentDateTime.setMinutes(Number(document.querySelector(".dialogMessageWatch .time-minute").textContent));
       currentDateTime.setHours(Number(document.querySelector(".dialogMessageWatch .time-hour").textContent));
     }
-    else{
+    else {
       currentDateTime.setMinutes(Number(specTime.split(":")[1]));
       currentDateTime.setHours(Number(specTime.split(":")[0]));
     }
@@ -510,6 +525,8 @@ function setNormalTime(Time){
       if (_timeInteval === timePassed) {
         //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
         onTimesUp();
+        // changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
+        // updateSvgTextures();
         return;
       }
       currentDateTime += counterStep;
@@ -517,21 +534,24 @@ function setNormalTime(Time){
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
-      setTimeSvgScheme();                                                      // время на схемах
+      // setTimeSvgScheme();                                                      // время на схемах
       timePassed += _stepInteval;
     }, _stepInteval);
   }
-  function startTimerToStep(finishTime){
+  function startTimerToStep(finishTime, UpdateSvg = true) {
     timePassed = 0;
     timerInterval = null;
-
+    changeSvgElem({ name: 'lifetime', text: finishTime, });
+    if (UpdateSvg === true) updateSvgTextures();
     let currentDateTime = getLifeTime_Date().getTime();
-    let finishDateTime  = getCounterTime_Date(finishTime).getTime();
+    let finishDateTime = getCounterTime_Date(finishTime).getTime();
     let counterStep = (finishDateTime - currentDateTime) / _step;
     timerInterval = setInterval(() => {
       if (_timeInteval === timePassed) {
         //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
         onTimesUp();
+        // changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
+        // updateSvgTextures();
         return;
       }
       currentDateTime += counterStep;
@@ -539,7 +559,7 @@ function setNormalTime(Time){
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       // setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
-      setTimeSvgScheme();                                                      // время на схемах
+      // setTimeSvgScheme();                                                      // время на схемах
       timePassed += _stepInteval;
     }, _stepInteval);
   }
@@ -547,28 +567,29 @@ function setNormalTime(Time){
 
 }
 
+
+// CHAT
+function setMiniChat() {
+  let miniChat = document.querySelector('.box-chat-window-mini');
+  if (!miniChat) {
+    return;
+  }
+  let mes = document.querySelector('.box-chat-window .chat-mini').children;
+  if (mes.length == 0) {
+    miniChat.style.width = ConvertPxToVw(385) + "vw";
+    miniChat.style.height = ConvertPxToVw(100) + "vh"
+    return;
+  }
+  for (let i = 0; i < mes.length; i++) {
+    mes[i].classList.add('display-none');
+  }
+  mes[0].classList.remove('display-none');
+  miniChat.style.width = miniChat.querySelector('.chat').children[0].getBoundingClientRect().width + 15 + 26 + 'px';
+  miniChat.style.height = miniChat.querySelector('.chat').children[0].getBoundingClientRect().height + 35 + 18 + 'px';
+}
 // CHAT
 {
   setMiniChat();
-
-  function setMiniChat() {
-    let miniChat = document.querySelector('.box-chat-window-mini');
-    if (!miniChat) {
-      return;
-    }
-    let mes = document.querySelector('.box-chat-window .chat-mini').children;
-    if (mes.length == 0) {
-      miniChat.style.width = ConvertPxToVw(385) + "vw";
-      miniChat.style.height = ConvertPxToVw(100) + "vh"
-      return;
-    }
-    for (let i = 0; i < mes.length; i++) {
-      mes[i].classList.add('display-none');
-    }
-    mes[0].classList.remove('display-none');
-    miniChat.style.width = miniChat.querySelector('.chat').children[0].getBoundingClientRect().width + 15 + 26 + 'px';
-    miniChat.style.height = miniChat.querySelector('.chat').children[0].getBoundingClientRect().height + 35 + 18 + 'px';
-  }
   function setNormalChat() {
     let miniChat = document.querySelector('.box-chat-window');
     let mes = document.querySelector('.box-chat-window .chat').children;
@@ -624,7 +645,7 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
   let b_action = item.querySelector('.click-button-tren');
   item = item.querySelector('button');
   b_action.addEventListener('click', (e) => {
-    if (item.hasAttribute('disabled')) {
+    if (item.hasAttribute('disabled')) {  // отключен
       return;
     }
 
@@ -666,17 +687,17 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   b_action.addEventListener('mouseover', (e) => {
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0');
-    if(!document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')){
+    if (!document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')) {
       setCenterWindow(item);
     }
-    
+
   });
   b_action.addEventListener('mouseout', (e) => {
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('opacity-1-Temp');
   });
 })
 
-// Отображение "РАЗВЕРНУТЬ"
+// Отображение "РАЗВЕРНУТЬ" /// ЕСЛИ УДАЛИТЬ, БУДЕТ ЛАГАТЬ НАДПИСЬ  // FIX NOW
 document.getElementById('b_collapseMenu').addEventListener("mouseover", (e) => {
   if (document.querySelector('.tren-ui-long')) {
     document.querySelector('.box-collapse').classList.remove('opacity-1-Temp');
@@ -689,7 +710,7 @@ document.getElementById('b_collapseMenu').addEventListener("mouseover", (e) => {
 // НОВЫЕ ПОЗИЦИИ ОКНО ПРИ ОТКРЫТИИ МЕНЮ
 function setNewPositionWindow(elem, state = false) {
   if (state) {
-    if (elem.classList.contains('opacity-1-Always') && 8 > ConvertPxToVw(parseFloat(elem.getBoundingClientRect().left))){
+    if (elem.classList.contains('opacity-1-Always') && 8 > ConvertPxToVw(parseFloat(elem.getBoundingClientRect().left))) {
       if (elem.classList.contains('dialogMessageWatch')) {  // частный случай
         elem.style.left = document.querySelector('.box-time').style.left;
         return;
@@ -703,6 +724,11 @@ function setNewPositionWindow(elem, state = false) {
     }
   }
   else {
+    if (elem.classList.contains('box-scenario')) {
+      elem.style.left = elem.getAttribute('sx');
+      elem.style.top = elem.getAttribute('sy');
+      return;
+    }
     if (elem.classList.contains('opacity-1-Always')) { return; }
     elem.style.left = elem.getAttribute('sx');
     elem.style.top = elem.getAttribute('sy');
@@ -734,7 +760,6 @@ document.getElementById('b_oclock').addEventListener("click", (e) => {
   if (e.currentTarget.classList.contains('button-tren-active')) {
     document.querySelector('.box-time').classList.add("opacity-1-Always");
     document.querySelector('.box-time').classList.add("box-time-padTop32");
-    document.querySelector('.box-time').classList.add("border-white1");
     document.querySelector('.box-time .block-button').classList.add("z-index-1");
     document.querySelector('.box-time .backArea').classList.add('backArea-white-100')
     document.querySelector('.time-header').classList.add("time-header-opacity");
@@ -755,13 +780,13 @@ document.getElementById('b_chat').addEventListener("click", (e) => {
 });
 
 
-function disableGeneralView(state = true){
+function disableGeneralView(state = true) {
   if (state) {
     if (document.getElementById('b_GeneralView').hasAttribute('disabled')) {
       document.getElementById('b_GeneralView').removeAttribute('disabled')
     }
   }
-  else{
+  else {
     document.getElementById('b_GeneralView').setAttribute('disabled', "");
   }
 }
@@ -772,3 +797,104 @@ document.getElementById('b_GeneralView').addEventListener("click", (e) => {
   setNewFillButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Normal);
   document.getElementById('b_GeneralView').setAttribute('disabled', "");
 })
+// mouseOver chat
+document.getElementById('b_chat').addEventListener("mouseover", (e) => {setMiniChat();})
+
+// ПОМОЩЬ
+document.getElementById('b_help').addEventListener("click", (e) => {
+  if (e.currentTarget.classList.contains('button-tren-active')) {
+    document.querySelector('.box-help').classList.add("opacity-1-Always");
+    document.querySelector('.box-help').classList.add("box-time-padTop32");
+    document.querySelector('.box-help .block-button').classList.add("z-index-1");
+    document.querySelector('.box-help .backArea').classList.add('backArea-white-100')
+    document.querySelector('.box-help .time-header').classList.add("time-header-opacity");
+  }
+})
+// КЛИК ЗАКРЫТЬ ПОМОЩЬ
+document.querySelector('.box-help .time-header-button').addEventListener("click", clickCloseHelp)
+document.querySelector('.help-buttons-no').addEventListener("click", clickCloseHelp)
+// BIND mouseDown
+document.querySelector('.box-help .time-header-title').onmousedown = (e) => {
+  raiseUpBox(e);
+  dragAndDrop(e, e.currentTarget.parentElement.parentElement /*box-time*/);
+};
+
+function clickCloseHelp(e) {
+  if (document.getElementById('b_help').classList.contains('button-tren-active')) {
+    document.getElementById('b_help').classList.remove('button-tren-active')
+    setNewFillButtonSVG(document.getElementById('b_help').querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  }
+  document.querySelector('.box-help').classList.remove('z-index9');
+  document.querySelector('.box-help').classList.remove("opacity-1-Always");
+  document.querySelector('.box-help').classList.remove("opacity-1-Temp");
+  document.querySelector('.box-help').ontransitionend = (e) => {
+    document.querySelector('.box-help').classList.add('transition-0');
+    document.querySelector('.box-help .block-button').classList.remove("z-index-1");
+    document.querySelector('.box-help').classList.remove("box-time-padTop32");
+    document.querySelector('.box-help .time-header').classList.remove("time-header-opacity");
+    document.querySelector('.box-help .backArea').classList.remove('backArea-white-100')
+    setStartPosition(document.querySelector('.box-help'));
+    document.querySelector('.box-help').ontransitionend = null;
+  }
+
+}
+
+
+document.getElementById('b_exit').addEventListener("click", (e) => {
+  document.querySelector('.section').style.left = 0;
+  document.querySelector('.header').style.top = 0;
+  document.querySelector('.section').style.width = "8vw";
+  document.querySelector('.tren-container').style.visibility = "hidden";
+  document.querySelector('.tren-container').style.transition = "none";
+  document.querySelector('.tren-container').style.opacity = 1;
+  
+  setNewFillButtonSVG(document.querySelector('.nav-icon.nav-icon-active').querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  document.querySelector('.nav-icon.nav-icon-active').classList.remove('nav-icon-active');
+
+  Array.from(document.querySelectorAll('.opacity-1-Always')).forEach(element => {
+    element.classList.remove('box-time-padTop32');
+    element.classList.remove('opacity-1-Always');
+    element.classList.remove('visibility-visible');
+    element.classList.remove('z-index9');
+    element.classList.remove('backArea-white-100');
+  });
+  Array.from(document.querySelectorAll('.backArea-white-100')).forEach(element => {
+    element.classList.remove('backArea-white-100');
+  });
+  Array.from(document.querySelectorAll('.time-header-opacity')).forEach(element => {
+    element.classList.remove('backArea-white-100');
+  });
+  Array.from(document.querySelectorAll('.button-tren-active')).forEach(element => {
+    element.classList.remove('button-tren-active');
+    setNewFillButtonSVG(element.querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  });
+
+})
+document.getElementById('b_scenario').addEventListener("click", (e) => {
+  if (e.currentTarget.classList.contains('button-tren-active')) {
+    document.querySelector('.box-scenario').classList.add("opacity-1-Always");
+    // document.querySelector('.box-scenario').classList.add("visibility-visible");
+    document.querySelector('.box-scenario').classList.add('backArea-white-100')
+  }
+  else{
+    document.querySelector('.box-scenario').classList.remove("opacity-1-Always");
+    document.querySelector('.box-scenario').classList.remove("opacity-1-Temp");
+    document.querySelector('.box-scenario').classList.remove('backArea-white-100')
+  }
+})
+
+setTextScenario(0);
+function setTextScenario(numberScenario){
+  let listItem = document.querySelector('.box-scenario-list')
+  while (listItem.lastElementChild) {
+    listItem.removeChild(listItem.lastElementChild);
+  }
+  tempActions[numberScenario].forEach(element => {
+    if (element.text !== undefined) {
+      createCustomElement("div", element.text, { "class": "box-scenario-text" }, listItem);
+    }
+  });
+  
+  
+  
+}
