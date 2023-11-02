@@ -423,8 +423,13 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
               if (Vals.forAction && Vals.forAction === true) {
                 if (currentActonObject && currentActonObject.action && currentActonObject.action.target2D) {
                   if (invisElem.id === currentActonObject.action.target2D) {
-                    console.log(currentActonObject.action.target2D);
                     trenClickOnSvgElem(invisElem);
+                    if (currentActonObject.action.window2D && currentActonObject.action.window2D.newPositionWindow) {
+                      if (Vals.value && Vals.value.window) {
+                        if (currentActonObject.action.window2D.newPositionWindow.x) Vals.value.x = currentActonObject.action.window2D.newPositionWindow.x;
+                        if (currentActonObject.action.window2D.newPositionWindow.y) Vals.value.y = currentActonObject.action.window2D.newPositionWindow.y;
+                      }
+                    }
                     if (Vals.removeWindow) {
                       RemoveSvgFromTextrue(DisplayMesh, Vals.removeWindow);
                     } else if (Vals.value && Vals.value.window) {

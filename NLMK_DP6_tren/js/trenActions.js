@@ -103,6 +103,9 @@ let tempActions = [
       action: {
         target2D: 'kl029',
         window2D: {
+          // newPositionWindow: {
+          //   x: 500,
+          // },
           elements: [
             { name: 'title_work_vn', text: 'Управление клапаном 029' },
             { name: 'status_window_text', text: 'Нет данных' },

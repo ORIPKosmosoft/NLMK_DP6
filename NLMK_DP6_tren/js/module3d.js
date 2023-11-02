@@ -166,6 +166,11 @@ document.addEventListener("DOMContentLoaded", () => {
     //   console.log('Запустил остановку');
     //   devHelper.model3DVals.scene.freezeActiveMeshes();
     // }, 15000)
+    // scene.createOrUpdateSelectionOctree();
+    // material.checkReadyOnEveryCall = false;
+    // sphere.setEnabled(false);
+    // var octree = scene.createOrUpdateSelectionOctree(64, 2)
+
     return scene;
   };
   canvas.addEventListener("pointermove", function () {
@@ -203,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
         meshArr.forEach(Mesh => {
           // оптимизация
           meshOptimization(Mesh);
+          // Mesh.setEnabled(true);
           Mesh.actionManager = new BABYLON.ActionManager(Scene);
           Mesh.isPickable = true;
           if (Mesh.name && Mesh.name === 'Room') {
@@ -337,6 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (Mesh.material) Mesh.material.freeze();
       Mesh.freezeWorldMatrix();
       Mesh.doNotSyncBoundingInfo = true;
+      // Mesh.setEnabled(false);
     }
     function setImageOnMonitor(url, Scene, UnicMesh) {
       if (UnicMesh instanceof BABYLON.InstancedMesh) {
