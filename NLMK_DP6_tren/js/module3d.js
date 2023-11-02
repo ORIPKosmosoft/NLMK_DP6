@@ -23,17 +23,14 @@ change3DTime
 И уже обновлять сами текстуры
 --------------------------------------------------------------------
 */
-document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById("renderCanvas");
-  devHelper.model3DVals.engine = new BABYLON.Engine(canvas, true);
-
+window.addEventListener('load', function () {
   const createScene = function () {
     let scene = new BABYLON.Scene(devHelper.model3DVals.engine);
     devHelper.model3DVals.scene = scene;
     let camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0.35, 2.15, -3.4), scene);
     devHelper.model3DVals.camera = camera;
     camera.rotation = new BABYLON.Vector3(0.1913, -0.0046, 0);
-    camera.attachControl(canvas, true);
+    camera.attachControl(devHelper.model3DVals.canvas, true);
     camera.minZ = 0.1;
     let light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, -1, 0), scene);
     light.intensity = 1;
@@ -46,18 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     light3.intensity = 1;
     var shadowGenerator = new BABYLON.ShadowGenerator(1024, light2);
     shadowGenerator.useContactHardeningShadow = true;
-    window.addEventListener('load', function () {
-      setTimeout(() => {
-        loadModel('All', scene, shadowGenerator);
-        loadModel('Highlight', scene);
-        loadModel('Console_BVNK', scene);
-        loadModel('Console_BZU', scene);
-        loadModel('Console_DP6', scene);
-        loadModel('Console_PSODP6', scene);
-        loadModel('Console_UGKS', scene);
-      }, 1000);
-    });
-
+    loadModel(devHelper.model3DVals.loadModels[0], scene, shadowGenerator);
     scene.actionManager = new BABYLON.ActionManager(scene);
     scene.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
@@ -162,37 +148,24 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector('.help-btn-block').remove();
     }
     //----------------------------------------------------------------------------------------------------------
-    // setTimeout(() => {
-    //   console.log('Запустил остановку');
-    //   devHelper.model3DVals.scene.freezeActiveMeshes();
-    // }, 15000)
+    // devHelper.model3DVals.octree = scene.createOrUpdateSelectionOctree();
+    setTimeout(() => {
+      console.log(devHelper.model3DVals.octree);
+      //   devHelper.model3DVals.scene.freezeActiveMeshes();
+    }, 10000)
     // scene.createOrUpdateSelectionOctree();
     // material.checkReadyOnEveryCall = false;
     // sphere.setEnabled(false);
-    // var octree = scene.createOrUpdateSelectionOctree(64, 2)
+    // devHelper.model3DVals.octree = new BABYLON.Octree(scene);
+
 
     return scene;
   };
-  canvas.addEventListener("pointermove", function () {
-    var pickResult = scene.pick(scene.pointerX, scene.pointerY);
-    if (pickResult.hit) {
-      // if (devHelper.dev.enable === true) console.log(pickResult.pickedMesh.name, pickResult.pickedMesh.uniqueId);
-      devHelper.model3DVals.meshUnderPointer = pickResult.pickedMesh.name;
-    }
-    else devHelper.model3DVals.meshUnderPointer = undefined;
-  });
-
   const scene = createScene();
-  // if (devHelper.dev.enable === true) scene.debugLayer.show(); // inspector 
-  // engine.runRenderLoop(function () {
-  //   scene.render();
-  // });
-
+  if (devHelper.dev.enable === true) scene.debugLayer.show();
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
-
-
   function loadModel(Name, Scene, ShadowGenerator) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
       if (Name === 'All') {
@@ -208,7 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
         meshArr.forEach(Mesh => {
           // оптимизация
           meshOptimization(Mesh);
-          // Mesh.setEnabled(true);
           Mesh.actionManager = new BABYLON.ActionManager(Scene);
           Mesh.isPickable = true;
           if (Mesh.name && Mesh.name === 'Room') {
@@ -340,10 +312,10 @@ document.addEventListener("DOMContentLoaded", () => {
       catch { }
     });
     function meshOptimization(Mesh) {
+      devHelper.model3DVals.octree.dynamicContent.push(Mesh);
       if (Mesh.material) Mesh.material.freeze();
       Mesh.freezeWorldMatrix();
       Mesh.doNotSyncBoundingInfo = true;
-      // Mesh.setEnabled(false);
     }
     function setImageOnMonitor(url, Scene, UnicMesh) {
       if (UnicMesh instanceof BABYLON.InstancedMesh) {
@@ -360,8 +332,29 @@ document.addEventListener("DOMContentLoaded", () => {
         UnicMesh.material = new BABYLON.StandardMaterial('material_' + UnicMesh.name, Scene);
         UnicMesh.material.diffuseTexture = new BABYLON.Texture(url, Scene)
       } else UnicMesh.material.diffuseTexture.updateURL(url);
+      if (devHelper.model3DVals.octree.dynamicContent.indexOf(UnicMesh) === -1) 
+        devHelper.model3DVals.octree.dynamicContent.push(UnicMesh);
     }
+
+    if (devHelper.model3DVals.loadModels.length > 1) {
+      devHelper.model3DVals.loadModels.shift();
+      loadModel(devHelper.model3DVals.loadModels[0], Scene, ShadowGenerator);
+    } else devHelper.model3DVals.octree = Scene.createOrUpdateSelectionOctree();
   }
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("renderCanvas");
+  devHelper.model3DVals.engine = new BABYLON.Engine(canvas, true);
+  canvas.addEventListener("pointermove", function () {
+    var pickResult = devHelper.model3DVals.scene.pick(devHelper.model3DVals.scene.pointerX, devHelper.model3DVals.scene.pointerY);
+    if (pickResult.hit) {
+      // if (devHelper.dev.enable === true) console.log(pickResult.pickedMesh.name, pickResult.pickedMesh.uniqueId);
+      devHelper.model3DVals.meshUnderPointer = pickResult.pickedMesh.name;
+    }
+    else devHelper.model3DVals.meshUnderPointer = undefined;
+  });
+
 });
 
 let _ii = "0";

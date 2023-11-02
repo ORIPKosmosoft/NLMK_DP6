@@ -47,7 +47,10 @@ const devHelper = {
       { positionCoordinates: [-6.56, 1.12, -0.79], lookAt: [-0.0165, -0.7836, 0], position: 1 },
       { positionCoordinates: [-6.56, 1.12, -0.79], lookAt: [-0.0165, -0.7836, 0], position: 2 },
       { positionCoordinates: [-3.56, 1.73, -1], lookAt: [0.5216195764415446, 0.007373100235868478, 0], position: 3 },
-    ]
+    ],
+    loadModels: [
+      'All', 'Highlight', 'Console_BVNK', 'Console_BZU', 'Console_DP6', 'Console_PSODP6', 'Console_UGKS',
+    ],
 
   },
   svgVals: [],
@@ -67,7 +70,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: true,
+    enable: false,
     perfomance: undefined,
   },
 };
@@ -118,9 +121,9 @@ let tempActions = [
             { name: 'circle_2_kl029', stroke: '#8F8F8F' },
           ],
         },
-        helper2D : [
-          { x: 60, y: 59.1, w: 4, h: 2.6, id: 'open_vn'},
-        ]
+        // helper2D : [
+        //   { x: 60, y: 59.1, w: 4, h: 2.6, id: 'open_vn'},
+        // ]
       },
       // lifeTime: '10:00:00',
       startTime: 0,
@@ -134,9 +137,6 @@ let tempActions = [
             { name: 'title_open_vn', text: 'Открыть' },
           ],
         },
-        helper2D : [
-          { x: 60, y: 59.1, w: 4, h: 2.6, id: 'open_vn1'},
-        ]
       },
       startTime: 0.5,
       human: true,
