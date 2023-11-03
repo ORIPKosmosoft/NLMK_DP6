@@ -818,6 +818,10 @@ function disableGeneralView(state = true) {
 // КЛИК ОБРАТНО
 document.getElementById('b_GeneralView').addEventListener("click", (e) => {
   e.currentTarget.classList.remove('button-tren-active');
+  devHelper.model3DVals.movePointMesh.forEach(mesh => {
+    mesh.isPickable = false;
+    if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(false);
+  })
   animMoveCamera(devHelper.model3DVals.cameraPositions[0]);
   setNewFillButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Normal);
   document.getElementById('b_GeneralView').setAttribute('disabled', "");

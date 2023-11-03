@@ -9,18 +9,9 @@
 */
 
 /*----------TODO----------------------------------------------------
-Добавить изменение времени на3Д к главному изменении времени
-change3DTime
---------------------------------------------------------------------
 Добавить всплывающую подсказку при наведении на хотспот
 --------------------------------------------------------------------
-не отрисовывать рендер пока не перешли в тренажёр
-проблема в другом?
---------------------------------------------------------------------
-При приблежении к хотспотам разрешить обзор немного, но при отпускании мышки камера вернётся в начальное положение
---------------------------------------------------------------------
-Сделать текстуры для каждого монитора
-И уже обновлять сами текстуры
+Запретить нажимать на хотспоты пока камера не вернулась в undefined
 --------------------------------------------------------------------
 */
 window.addEventListener('load', function () {
@@ -164,6 +155,21 @@ window.addEventListener('load', function () {
           Mesh.actionManager = new BABYLON.ActionManager(Scene);
           Mesh.isPickable = true;
           if (Mesh.name && Mesh.name === 'Room') {
+          } else if (Mesh.name && Mesh.name === 'Telephone') {
+            if (!Mesh.subMeshes) {
+              var box = BABYLON.MeshBuilder.CreateBox("Telephone_highlight", { size: 1 }, Scene);
+              box.position = new BABYLON.Vector3(0.021, 0.951, 0.11);
+              box.scaling = new BABYLON.Vector3(0.300, 0.07, 0.25);
+              box.rotation.y = BABYLON.Tools.ToRadians(339.7);
+              const lightMat = new BABYLON.StandardMaterial("lightMat");
+              lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
+              lightMat.alpha = 0;
+              box.material = lightMat;
+              meshOptimization(box);
+              makeActiveMesh(box, 6);
+            }
+          } else if (Mesh.name && Mesh.name.indexOf('PhoneButton') !== -1) {
+            makeActiveMesh(Mesh, { name: Mesh.name, posIndex: 6 });
           } else if (Mesh.name && Mesh.name === 'Display_flat002') {
             makeActiveMesh(Mesh, 1);
             makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
@@ -300,37 +306,9 @@ window.addEventListener('load', function () {
       mesh.freezeWorldMatrix();
       mesh.doNotSyncBoundingInfo = mesh instanceof BABYLON.InstancedMesh ? false : true;
     }
-    function createCloneInstancedMesh(mesh, url = undefined, scene = undefined) {
-      if (mesh instanceof BABYLON.InstancedMesh) {
-        let newMesh = mesh.sourceMesh.clone();
-        newMesh.name = mesh.name;
-        newMesh.setParent(mesh.parent);
-        newMesh.rotation = new BABYLON.Vector3(0, 0, 0);
-        if (url !== undefined) {
-          if (!newMesh.material || newMesh.material.name !== 'material_' + newMesh.name) {
-            newMesh.material = new BABYLON.StandardMaterial('material_' + newMesh.name, scene);
-            newMesh.material.diffuseTexture = new BABYLON.Texture(url, scene);
-          } else {
-            newMesh.material.diffuseTexture.updateURL(url);
-          }
-        } else {
-          newMesh.material = mesh.material.clone(`material_${mesh.name}`);
-        }
-        newMesh.setAbsolutePosition(
-          new BABYLON.Vector3(
-            mesh.absolutePosition._x,
-            mesh.absolutePosition._y,
-            mesh.absolutePosition._z
-          )
-        );
-        mesh.dispose();
-        mesh = newMesh;
-        mesh.doNotSyncBoundingInfo = false;
-        return mesh;
-      }
-    }
+
     function setImageOnMonitor(url, scene, mesh) {
-      if (mesh instanceof BABYLON.InstancedMesh) createCloneInstancedMesh(mesh, url, scene);
+      if (mesh instanceof BABYLON.InstancedMesh) mesh = createCloneInstancedMesh(mesh, url, scene);
       else {
         if (!mesh.material || mesh.material.name !== 'material_' + mesh.name) {
           mesh.material = new BABYLON.StandardMaterial('material_' + mesh.name, scene);
@@ -367,6 +345,36 @@ window.addEventListener('load', function () {
   }
 })
 
+function createCloneInstancedMesh(mesh, url = undefined, scene = undefined) {
+  if (mesh instanceof BABYLON.InstancedMesh) {
+    let newMesh = mesh.sourceMesh.clone();
+    newMesh.name = mesh.name;
+    newMesh.setParent(mesh.parent);
+    newMesh.rotation = new BABYLON.Vector3(0, 0, 0);
+    if (url !== undefined) {
+      if (!newMesh.material || newMesh.material.name !== 'material_' + newMesh.name) {
+        newMesh.material = new BABYLON.StandardMaterial('material_' + newMesh.name, scene);
+        newMesh.material.diffuseTexture = new BABYLON.Texture(url, scene);
+      } else {
+        newMesh.material.diffuseTexture.updateURL(url);
+      }
+    } else {
+      newMesh.material = mesh.material.clone(`material_${mesh.name}`);
+    }
+    newMesh.setAbsolutePosition(
+      new BABYLON.Vector3(
+        mesh.absolutePosition._x,
+        mesh.absolutePosition._y,
+        mesh.absolutePosition._z
+      )
+    );
+    mesh.dispose();
+    mesh = newMesh;
+    mesh.doNotSyncBoundingInfo = false;
+    return mesh;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("renderCanvas");
   devHelper.model3DVals.engine = new BABYLON.Engine(canvas, true);
@@ -401,12 +409,11 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции makeActiveMesh.');
     return;
   } else {
-    if (Mesh instanceof BABYLON.InstancedMesh) createCloneInstancedMesh(mesh);
+    if (Mesh instanceof BABYLON.InstancedMesh) Mesh = createCloneInstancedMesh(Mesh);
     Mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
     if (Vals.name) {
       Mesh.name = Vals.name;
       Mesh.currentPosition = Vals;
-      Mesh.isPickable = false;
       if (devHelper.model3DVals.activeMeshs[Vals] === undefined)
         devHelper.model3DVals.activeMeshs[Vals] = [Mesh];
       else devHelper.model3DVals.activeMeshs[Vals].push(Mesh);
@@ -449,6 +456,10 @@ function clickOnPointMesh(Mesh = undefined, Vals = undefined) {
     if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции clickOnPointMesh.');
     return;
   } else {
+    devHelper.model3DVals.movePointMesh.forEach(mesh => {
+      mesh.isPickable = false;
+      if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(false);
+    })
     changeColorTexture(Mesh, false);
     animMoveCamera(Vals);
   }
@@ -588,6 +599,7 @@ function change3DTime(Time = '00:00:00') {
 }
 
 function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefined, Duration = 1, Scene = devHelper.model3DVals.scene) {
+  console.log('moveRotationMesh');
   if (devHelper.dev.enable === true) {
     if (Mesh === undefined) console.warn(`В функцию rotateMesh не передали меш.`);
     if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
@@ -620,7 +632,6 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
 function animMoveCamera(Vals, Speed = 2) {
   let speed = Speed * 60;
   if (Vals.position === undefined) {
-    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = true);
     if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
   }
   else {
@@ -669,9 +680,14 @@ function animMoveCamera(Vals, Speed = 2) {
   devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
   devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, speed, false, 1, () => {
     devHelper.model3DVals.currentPosition = Vals.position;
-    createSvghelper(Vals.position);
     if (devHelper.model3DVals.currentPosition !== undefined) {
+      createSvghelper(Vals.position);
       disableGeneralView();
+    } else {
+      devHelper.model3DVals.movePointMesh.forEach(mesh => {
+        mesh.isPickable = true;
+        if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(true);
+      })
     }
   });
 }
