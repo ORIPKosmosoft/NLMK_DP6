@@ -848,7 +848,7 @@ ul {
 .help-btn-block {
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: 100px;
   width: 150px;
   height: 500px;
 }
@@ -860,7 +860,7 @@ ul {
 .help-btn-block .info-tren {
   width: 250px;
   height: 150px;
-  margin-left: 70px;
+  /* margin-left: 70px; */
   margin-top: 600px;
   background-color: rgba(0, 0, 0, 0.2);
   border: 1px solid black;

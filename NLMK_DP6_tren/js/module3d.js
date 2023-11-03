@@ -60,7 +60,6 @@ window.addEventListener('load', function () {
             if (camera.rotation.x >= 0.18) camera.rotation.x = 0.18;
             if (camera.rotation.x <= -0.23) camera.rotation.x = -0.23;
           }
-          // if (devHelper.dev.enable === true) console.log('X: ' + camera.rotation.x, 'Y: ' + camera.rotation.y);
         }
       )
     );
@@ -69,14 +68,6 @@ window.addEventListener('load', function () {
         animMoveCamera(devHelper.model3DVals.cameraPositions[devHelper.model3DVals.currentPosition], 0.5);
       }
     };
-    /* Положения камеры на объекты
-    начальное положение
-    0.35, 2.15, -3.4
-    0.1913, -0.0046, 0
-    Монитор1
-    -6.56, 1.12, -0.79
-    -0.0165, -0.7836, 0
-    */
     /* Блок кнопопк для камеры
     ----------------------------------------------------------------------------------------------------------
      */
@@ -148,17 +139,6 @@ window.addEventListener('load', function () {
       document.querySelector('.help-btn-block').remove();
     }
     //----------------------------------------------------------------------------------------------------------
-    // devHelper.model3DVals.octree = scene.createOrUpdateSelectionOctree();
-    setTimeout(() => {
-      console.log(devHelper.model3DVals.octree);
-      //   devHelper.model3DVals.scene.freezeActiveMeshes();
-    }, 10000)
-    // scene.createOrUpdateSelectionOctree();
-    // material.checkReadyOnEveryCall = false;
-    // sphere.setEnabled(false);
-    // devHelper.model3DVals.octree = new BABYLON.Octree(scene);
-
-
     return scene;
   };
   const scene = createScene();
@@ -232,11 +212,11 @@ window.addEventListener('load', function () {
             setImageOnMonitor("media/images/monitors/Registratsiya_vypuska_chuguna.jpg", Scene, Mesh);
           }
           else if (Mesh.name && Mesh.name === 'Display_flat014') {  // 11
-            makeUnicMat(Mesh);
+            makeActiveMesh(Mesh, 4);
             makeSvgDisplay(Mesh, Scene, 'dp');
           }
           else if (Mesh.name && Mesh.name === 'Display_flat015') {  // 12
-            makeUnicMat(Mesh);
+            makeActiveMesh(Mesh, 5);
             makeSvgDisplay(Mesh, Scene, 'bzu');
           }
           else if (Mesh.name && Mesh.name === 'Display_flat007') {  // 13
@@ -266,6 +246,7 @@ window.addEventListener('load', function () {
         change3DTime();
       } else if (Name === 'Highlight') {
         meshes.forEach(element => {
+          meshOptimization(element);
           element.actionManager = new BABYLON.ActionManager(Scene);
           element.isPickable = true;
           const lightMat = new BABYLON.StandardMaterial("lightMat");
@@ -275,18 +256,18 @@ window.addEventListener('load', function () {
           if (element.name && element.name === 'Console_BVNK_highlight') {
             makeActiveMesh(element, 3);
           } else if (element.name && element.name === 'Console_BZU_highlight') {
-            makeActiveMesh(element, 3);
+            makeActiveMesh(element, 8);
           } else if (element.name && element.name === 'Console_DP6_highlight') {
-            makeActiveMesh(element, 3);
+            makeActiveMesh(element, 9);
           } else if (element.name && element.name === 'Console_UGKS_highlight') {
-            makeActiveMesh(element, 3);
+            element.dispose();
           } else if (element.name && element.name === 'Console_PSODP6_highlight') {
             element.dispose();
           }
         })
       } else if (Name === 'Console_BVNK') {
         meshes.forEach(Mesh => {
-          meshOptimization(Mesh);
+          meshOptimization(Mesh, 'Console_BVNK');
         })
       } else if (Name === 'Console_BZU') {
         meshes.forEach(Mesh => {
@@ -311,29 +292,72 @@ window.addEventListener('load', function () {
       }
       catch { }
     });
-    function meshOptimization(Mesh) {
-      devHelper.model3DVals.octree.dynamicContent.push(Mesh);
-      if (Mesh.material) Mesh.material.freeze();
-      Mesh.freezeWorldMatrix();
-      Mesh.doNotSyncBoundingInfo = true;
+    function meshOptimization(mesh, name = undefined) {
+      if (mesh._children && mesh._children.length > 0)
+        mesh._children.forEach(child => meshOptimization(child));
+      devHelper.model3DVals.octree.dynamicContent.push(mesh);
+      if (mesh.material) mesh.material.freeze();
+      mesh.freezeWorldMatrix();
+      mesh.doNotSyncBoundingInfo = mesh instanceof BABYLON.InstancedMesh ? false : true;
     }
-    function setImageOnMonitor(url, Scene, UnicMesh) {
-      if (UnicMesh instanceof BABYLON.InstancedMesh) {
-        let tempMesh = UnicMesh.sourceMesh.clone();
-        tempMesh.name = UnicMesh.name;
-        tempMesh.setParent(UnicMesh.parent);
-        tempMesh.rotation = new BABYLON.Vector3(0, 0, 0);
-        tempMesh.setAbsolutePosition(new BABYLON.Vector3(UnicMesh.absolutePosition._x, UnicMesh.absolutePosition._y, UnicMesh.absolutePosition._z));
-        UnicMesh.dispose();
-        UnicMesh = tempMesh;
-        UnicMesh.doNotSyncBoundingInfo = false;
+    function createCloneInstancedMesh(mesh, url = undefined, scene = undefined) {
+      if (mesh instanceof BABYLON.InstancedMesh) {
+        let newMesh = mesh.sourceMesh.clone();
+        newMesh.name = mesh.name;
+        newMesh.setParent(mesh.parent);
+        newMesh.rotation = new BABYLON.Vector3(0, 0, 0);
+        if (url !== undefined) {
+          if (!newMesh.material || newMesh.material.name !== 'material_' + newMesh.name) {
+            newMesh.material = new BABYLON.StandardMaterial('material_' + newMesh.name, scene);
+            newMesh.material.diffuseTexture = new BABYLON.Texture(url, scene);
+          } else {
+            newMesh.material.diffuseTexture.updateURL(url);
+          }
+        } else {
+          newMesh.material = mesh.material.clone(`material_${mesh.name}`);
+        }
+        newMesh.setAbsolutePosition(
+          new BABYLON.Vector3(
+            mesh.absolutePosition._x,
+            mesh.absolutePosition._y,
+            mesh.absolutePosition._z
+          )
+        );
+        mesh.dispose();
+        mesh = newMesh;
+        mesh.doNotSyncBoundingInfo = false;
+        return mesh;
       }
-      if (!UnicMesh.material || UnicMesh.material.name != 'material_' + UnicMesh.name) {
-        UnicMesh.material = new BABYLON.StandardMaterial('material_' + UnicMesh.name, Scene);
-        UnicMesh.material.diffuseTexture = new BABYLON.Texture(url, Scene)
-      } else UnicMesh.material.diffuseTexture.updateURL(url);
-      if (devHelper.model3DVals.octree.dynamicContent.indexOf(UnicMesh) === -1) 
-        devHelper.model3DVals.octree.dynamicContent.push(UnicMesh);
+    }
+    function setImageOnMonitor(url, scene, mesh) {
+      if (mesh instanceof BABYLON.InstancedMesh) createCloneInstancedMesh(mesh, url, scene);
+      else {
+        if (!mesh.material || mesh.material.name !== 'material_' + mesh.name) {
+          mesh.material = new BABYLON.StandardMaterial('material_' + mesh.name, scene);
+          mesh.material.diffuseTexture = new BABYLON.Texture(url, scene);
+        } else {
+          mesh.material.diffuseTexture.updateURL(url);
+        }
+      }
+      // {
+      //   let newMesh = mesh.sourceMesh.clone();
+      //   newMesh.name = mesh.name;
+      //   newMesh.setParent(mesh.parent);
+      //   newMesh.rotation = new BABYLON.Vector3(0, 0, 0);
+      //   newMesh.setAbsolutePosition(
+      //     new BABYLON.Vector3(
+      //       mesh.absolutePosition._x,
+      //       mesh.absolutePosition._y,
+      //       mesh.absolutePosition._z
+      //     )
+      //   );
+      //   mesh.dispose();
+      //   mesh = newMesh;
+      //   mesh.doNotSyncBoundingInfo = false;
+      // }
+      if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1) {
+        devHelper.model3DVals.octree.dynamicContent.push(mesh);
+      }
     }
 
     if (devHelper.model3DVals.loadModels.length > 1) {
@@ -377,15 +401,7 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции makeActiveMesh.');
     return;
   } else {
-    if (Mesh instanceof BABYLON.InstancedMesh) {
-      let tempMesh = Mesh.sourceMesh.clone();
-      tempMesh.name = Mesh.name;
-      tempMesh.material = Mesh.material.clone(`material_${tempMesh.name}`);
-      tempMesh.setAbsolutePosition(new BABYLON.Vector3(Mesh.absolutePosition._x, Mesh.absolutePosition._y, Mesh.absolutePosition._z));
-      Mesh.dispose();
-      Mesh = tempMesh;
-      Mesh.doNotSyncBoundingInfo = false;
-    }
+    if (Mesh instanceof BABYLON.InstancedMesh) createCloneInstancedMesh(mesh);
     Mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
     if (Vals.name) {
       Mesh.name = Vals.name;
@@ -438,13 +454,10 @@ function clickOnPointMesh(Mesh = undefined, Vals = undefined) {
   }
 }
 
-function makeUnicMat(UnicMesh) {
-  if (UnicMesh.material) {
-    let tempMaterial = UnicMesh.material.clone(`material_${UnicMesh.name}`);
-    UnicMesh.material = tempMaterial;
-    // оптимизация
-    // UnicMesh.material.unfreeze();
-    // UnicMesh.material.freeze();
+function makeUnicMat(mesh) {
+  if (mesh.material) {
+    let tempMaterial = mesh.material.clone(`material_${mesh.name}`);
+    mesh.material = tempMaterial;
   }
 }
 
