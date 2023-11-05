@@ -11,8 +11,6 @@
 /*----------TODO----------------------------------------------------
 Добавить всплывающую подсказку при наведении на хотспот
 --------------------------------------------------------------------
-Запретить нажимать на хотспоты пока камера не вернулась в undefined
---------------------------------------------------------------------
 */
 window.addEventListener('load', function () {
   const createScene = function () {
@@ -502,15 +500,17 @@ function updateSvgTextures() {
 
 function updateMeshTextureSvg(SvgName) {
   devHelper.model3DVals.svgDisplays.meshs.forEach(DisplayMesh => {
-    if (DisplayMesh.svgArr.find(element => element.name === SvgName)) {
-      let textureContext = DisplayMesh.material.diffuseTexture.getContext();
-      textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
-      DisplayMesh.svgArr.forEach(element => {
-        let svgIndex = devHelper.model3DVals.svgDisplays.svgNames.findIndex(function (obj) { return obj === element.name; });
-        let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[svgIndex];
-        textureContext.drawImage(outputImage, element.x, element.y);
-      })
-      DisplayMesh.material.diffuseTexture.update();
+    if (DisplayMesh.svgArr) {
+      if (DisplayMesh.svgArr.find(element => element.name === SvgName)) {
+        let textureContext = DisplayMesh.material.diffuseTexture.getContext();
+        textureContext.clearRect(0, 0, textureContext.width, textureContext.height);
+        DisplayMesh.svgArr.forEach(element => {
+          let svgIndex = devHelper.model3DVals.svgDisplays.svgNames.findIndex(function (obj) { return obj === element.name; });
+          let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[svgIndex];
+          textureContext.drawImage(outputImage, element.x, element.y);
+        })
+        DisplayMesh.material.diffuseTexture.update();
+      }
     }
   })
 }
@@ -635,9 +635,12 @@ function animMoveCamera(Vals, Speed = 2) {
     if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
   }
   else {
-    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
-    if (devHelper.model3DVals.activeMeshs[Vals.position])
-      devHelper.model3DVals.activeMeshs[Vals.position].forEach(mesh => mesh.isPickable = true);
+    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false); 
+    // if (devHelper.model3DVals.activeMeshs[Vals.position])
+    //   devHelper.model3DVals.activeMeshs[Vals.position].forEach(mesh => mesh.isPickable = true);
+    // todo завтра разобрать с массивом активныхмешей и массивом мешей для перехода
+    if (devHelper.model3DVals.movePointMesh[Vals.position])
+      devHelper.model3DVals.movePointMesh[Vals.position].forEach(mesh => mesh.isPickable = true);
   }
 
   let positionAnimation = new BABYLON.Animation(

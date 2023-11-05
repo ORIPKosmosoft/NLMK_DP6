@@ -1,7 +1,6 @@
 
 /*                 TODO
 ----------------------------------------------------
-Обозначить начальные состояния 3Д и 2Д объектов
 ----------------------------------------------------
 */
 const devHelper = {
@@ -76,7 +75,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
   },
 };
@@ -91,16 +90,27 @@ let tempActions = [
   [ // Первый сценарий
     //--------------------------------1----------------------------------------
     {
-      text: 'Заменить1',
+      sender: 'Система',
+      text: 'ЗАМЕНИТЬ_нажать на первую кнопку на телефоне',
       action: {
         target3D: 'PhoneButton000',
-        position: {y: 0.0144}, // 3d 2d
+        position: {y: 0.0144}, // 3d 2d 0.0144
         rotation: {}, // 3d 2d
         text: {}, // 3D 2D
       },
-      duration: 0.1,
+      duration: 0.2,
       startTime: 0, // seconds - абсолютное время сценария
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
+    },
+    {
+      action: {
+        target3D: 'PhoneButton000',
+        position: {y: 0.016}, // 3d 2d
+        rotation: {}, // 3d 2d
+        text: {}, // 3D 2D
+      },
+      duration: 0.2,
+      startTime: 0.1,
     },
     {
       scenarioText: 'Открыть клапан 029 на дымовую трубу.',
