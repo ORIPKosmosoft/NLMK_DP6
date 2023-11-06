@@ -378,10 +378,8 @@ document.addEventListener("DOMContentLoaded", () => {
   devHelper.model3DVals.engine = new BABYLON.Engine(canvas, true);
   canvas.addEventListener("pointermove", function () {
     var pickResult = devHelper.model3DVals.scene.pick(devHelper.model3DVals.scene.pointerX, devHelper.model3DVals.scene.pointerY);
-    if (pickResult.hit) {
-      // if (devHelper.dev.enable === true) console.log(pickResult.pickedMesh.name, pickResult.pickedMesh.uniqueId);
+    if (pickResult.hit) 
       devHelper.model3DVals.meshUnderPointer = pickResult.pickedMesh.name;
-    }
     else devHelper.model3DVals.meshUnderPointer = undefined;
   });
 
@@ -411,14 +409,14 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     Mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
     if (Vals.name) {
       Mesh.name = Vals.name;
-      Mesh.currentPosition = Vals;
-      if (devHelper.model3DVals.activeMeshs[Vals] === undefined)
-        devHelper.model3DVals.activeMeshs[Vals] = [Mesh];
-      else devHelper.model3DVals.activeMeshs[Vals].push(Mesh);
+      Mesh.currentPosition = Vals.posIndex;
+      if (devHelper.model3DVals.activeMeshs[Vals.posIndex] === undefined) 
+        devHelper.model3DVals.activeMeshs[Vals.posIndex] = []; 
+      devHelper.model3DVals.activeMeshs[Vals.posIndex].push(Mesh);
     } else if (typeof Vals === 'number') {
       Mesh.isPickable = true;
       devHelper.model3DVals.movePointMesh.push(Mesh);
-      Mesh.positionIndex = Vals;
+      Mesh.positionIndex = Vals.posIndex;
     }
     Mesh.material.unfreeze();
     Mesh.actionManager.registerAction(
@@ -599,7 +597,6 @@ function change3DTime(Time = '00:00:00') {
 }
 
 function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefined, Duration = 1, Scene = devHelper.model3DVals.scene) {
-  console.log('moveRotationMesh');
   if (devHelper.dev.enable === true) {
     if (Mesh === undefined) console.warn(`В функцию rotateMesh не передали меш.`);
     if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
@@ -636,11 +633,8 @@ function animMoveCamera(Vals, Speed = 2) {
   }
   else {
     devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false); 
-    // if (devHelper.model3DVals.activeMeshs[Vals.position])
-    //   devHelper.model3DVals.activeMeshs[Vals.position].forEach(mesh => mesh.isPickable = true);
-    // todo завтра разобрать с массивом активныхмешей и массивом мешей для перехода
-    if (devHelper.model3DVals.movePointMesh[Vals.position])
-      devHelper.model3DVals.movePointMesh[Vals.position].forEach(mesh => mesh.isPickable = true);
+    if (devHelper.model3DVals.activeMeshs[Vals.position])
+      devHelper.model3DVals.activeMeshs[Vals.position].forEach(mesh => mesh.isPickable = true);
   }
 
   let positionAnimation = new BABYLON.Animation(

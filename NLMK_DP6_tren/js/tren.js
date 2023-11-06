@@ -14,14 +14,6 @@ function loadTrenActions() {
       tempObjTren.actions = tempActions[Index];
     }
   })
-  devHelper.trenVals.activeMeshs = tempActions
-    .flatMap(arr => arr)
-    .filter(action => action.action && action.action.target3D) 
-    .map(action => action.action.target3D) 
-    .reduce((unique, target) => {
-      if (!unique.includes(target))  unique.push(target); 
-      return unique;
-    }, []);
 }
 
 function startTren() {
@@ -85,12 +77,9 @@ function trenTimeTick(timeStamp) {
             updateSvgTextures();
           }
           if (nextAction.action && nextAction.action.target3D) {
-
-
-            // if (currentAction.action && currentAction.action.target3D === Mesh.name) {
-            //   handleRotation(currentAction, Mesh);
-            //   handlePosition(currentAction, Mesh);
-            // }
+            let mesh = devHelper.model3DVals.activeMeshs[devHelper.model3DVals.currentPosition].find(mesh => (mesh.name === nextAction.action.target3D));
+            handleRotation(nextAction, mesh);
+            handlePosition(nextAction, mesh);
           }
           if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
           if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
@@ -126,52 +115,22 @@ function trenClickOnMesh(Mesh) {
 
 function handleRotation(currentAction, Mesh) {
   const rotation = currentAction.action.rotation || {};
-  if (rotation.y !== undefined) moveRotationMesh(Mesh, 'r', rotation.y, 'y');
-  if (rotation.z !== undefined) moveRotationMesh(Mesh, 'r', rotation.z, 'z');
-  if (rotation.x !== undefined) moveRotationMesh(Mesh, 'r', rotation.x, 'x');
+  if (rotation.y !== undefined) moveRotationMesh(Mesh, 'r', rotation.y, 'y', currentAction.duration || 1);
+  if (rotation.z !== undefined) moveRotationMesh(Mesh, 'r', rotation.z, 'z', currentAction.duration || 1);
+  if (rotation.x !== undefined) moveRotationMesh(Mesh, 'r', rotation.x, 'x', currentAction.duration || 1);
 }
 
 function handlePosition(currentAction, Mesh) {
   const position = currentAction.action.position || {};
-  if (position.x !== undefined) moveRotationMesh(Mesh, 'p', position.x, 'x');
-  if (position.y !== undefined) moveRotationMesh(Mesh, 'p', position.y, 'y');
-  if (position.z !== undefined) moveRotationMesh(Mesh, 'p', position.z, 'z');
+  if (position.x !== undefined) moveRotationMesh(Mesh, 'p', position.x, 'x', currentAction.duration || 1);
+  if (position.y !== undefined) moveRotationMesh(Mesh, 'p', position.y, 'y', currentAction.duration || 1);
+  if (position.z !== undefined) moveRotationMesh(Mesh, 'p', position.z, 'z', currentAction.duration || 1);
 }
 
 function handleError(Mesh) {
   if (devHelper.dev.enable === true) console.warn(`Клик на ${Mesh.name} в действии ${devHelper.trenVals.currentAction} неверный.`);
   sendMessage("Ошибка", "Вы совершили неверное действие.");
 }
-// function trenClickOnMesh(Mesh) {
-//   if (devHelper.trenVals.waitingInput === true) {
-//     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-//     if (currentActonObject.action && currentActonObject.action.target3D && currentActonObject.action.target3D === Mesh.name) {
-//       if (currentActonObject.action.rotation && Object.keys(currentActonObject.action.rotation).length > 0) {
-//         if (currentActonObject.action.rotation.y)
-//           moveRotationMesh(Mesh, 'r', currentActonObject.action.rotation.y, 'y');
-//         if (currentActonObject.action.rotation.z)
-//           moveRotationMesh(Mesh, 'r', currentActonObject.action.rotation.z, 'z');
-//         if (currentActonObject.action.rotation.x)
-//           moveRotationMesh(Mesh, 'r', currentActonObject.action.rotation.x, 'x');
-//       }
-//       if (currentActonObject.action.position && Object.keys(currentActonObject.action.position).length > 0) {
-//         console.log(currentActonObject.action.position);
-//         // if (currentActonObject.action.position.x )
-//           // moveRotationMesh(Mesh, 'p', currentActonObject.action.position.x, 'x');
-//         // if (currentActonObject.action.position.y)
-//           moveRotationMesh(Mesh, 'p', currentActonObject.action.position.y, 'y');
-//         // if (currentActonObject.action.position.z)
-//           // moveRotationMesh(Mesh, 'p', currentActonObject.action.position.z, 'z');
-//       }
-//       devHelper.trenVals.timers.actionTimeHelper = 0;
-//       currentActonObject.passed = true;
-//       devHelper.trenVals.waitingInput = false;
-//     } else {
-//       if (devHelper.dev.enable === true) console.warn(`Клик на ${Mesh.name} в действии ${devHelper.trenVals.currentAction} неверный.`);
-//       sendMessage("Ошибка", "Вы совершили неверное действие.")
-//     }
-//   }
-// }
 
 function trenClickOnSvgElem(SvgElemHelper = undefined) {
   if (devHelper.trenVals.waitingInput === true) {
