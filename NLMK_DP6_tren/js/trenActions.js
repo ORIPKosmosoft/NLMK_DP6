@@ -54,8 +54,8 @@ const devHelper = {
       { positionCoordinates: [2.96, 1.95, -1.0], lookAt: [0.6879109600288498, 0.001624744992681849, 0], position: 9 }, // пульт ДП6
     ],
     loadModels: [
-      'All', 
-      'Highlight', 
+      'All',
+      'Highlight',
       // 'Console_BVNK', 
       // 'Console_BZU', 
       // 'Console_DP6', 
@@ -99,8 +99,8 @@ let tempActions = [
       sender: 'Система',
       text: 'ЗАМЕНИТЬ_нажать на первую кнопку на телефоне',
       action: {
-        target3D: 'PhoneButton000',
-        position: {y: 0.0144}, // 3d 2d 0.0144
+        target3D: 'PhoneButton002',
+        position: { y: 0.0144 }, // 3d 2d 0.0144
         rotation: {}, // 3d 2d
         text: {}, // 3D 2D
       },
@@ -110,8 +110,8 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'PhoneButton000',
-        position: {y: 0.015}, // 3d 2d
+        target3D: 'PhoneButton002',
+        position: { y: 0.015 }, // 3d 2d
         rotation: {}, // 3d 2d
         text: {}, // 3D 2D
       },
@@ -348,5 +348,11 @@ let startState2D = [
     { name: 'circle_2_kl007', stroke: '#00FF00' },
     { name: 'kl007_proc', text: '100' },
     { name: 'circle_1_kl025', stroke: '#00FF00' },
+  ]
+]
+let startState3D = [
+  [// Первый сценарий
+    { name: 'PhoneButton000', position: { x: 0.2 } },
+    { name: 'PhoneButton002', rotation: { y: 90 } },
   ]
 ]

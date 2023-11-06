@@ -148,10 +148,7 @@ window.addEventListener('load', function () {
           }
         })
         meshArr.forEach(Mesh => {
-          // оптимизация
-          meshOptimization(Mesh);
-          Mesh.actionManager = new BABYLON.ActionManager(Scene);
-          Mesh.isPickable = true;
+
           if (Mesh.name && Mesh.name === 'Room') {
           } else if (Mesh.name && Mesh.name === 'Telephone') {
             if (!Mesh.subMeshes) {
@@ -246,13 +243,13 @@ window.addEventListener('load', function () {
             makeUnicMat(Mesh);
             makeSvgDisplay(Mesh, Scene, 'dp');
           }
+          meshOptimization(Mesh);
+          Mesh.actionManager = new BABYLON.ActionManager(Scene);
+          Mesh.isPickable = true;
         })
         change3DTime();
       } else if (Name === 'Highlight') {
         meshes.forEach(element => {
-          meshOptimization(element);
-          element.actionManager = new BABYLON.ActionManager(Scene);
-          element.isPickable = true;
           const lightMat = new BABYLON.StandardMaterial("lightMat");
           lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
           lightMat.alpha = 0;
@@ -268,6 +265,9 @@ window.addEventListener('load', function () {
           } else if (element.name && element.name === 'Console_PSODP6_highlight') {
             element.dispose();
           }
+          meshOptimization(element);
+          element.actionManager = new BABYLON.ActionManager(Scene);
+          element.isPickable = true;
         })
       } else if (Name === 'Console_BVNK') {
         meshes.forEach(Mesh => {
@@ -299,14 +299,15 @@ window.addEventListener('load', function () {
     function meshOptimization(mesh, name = undefined) {
       if (mesh._children && mesh._children.length > 0)
         mesh._children.forEach(child => meshOptimization(child));
-      devHelper.model3DVals.octree.dynamicContent.push(mesh);
+      if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
+        devHelper.model3DVals.octree.dynamicContent.push(mesh);
       if (mesh.material) mesh.material.freeze();
       mesh.freezeWorldMatrix();
       mesh.doNotSyncBoundingInfo = mesh instanceof BABYLON.InstancedMesh ? false : true;
     }
 
     function setImageOnMonitor(url, scene, mesh) {
-      if (mesh instanceof BABYLON.InstancedMesh) mesh = createCloneInstancedMesh(mesh, url, scene);
+      if (mesh._sourceMesh !== undefined) mesh = createCloneInstancedMesh(mesh, url, scene);
       else {
         if (!mesh.material || mesh.material.name !== 'material_' + mesh.name) {
           mesh.material = new BABYLON.StandardMaterial('material_' + mesh.name, scene);
@@ -331,46 +332,45 @@ window.addEventListener('load', function () {
       //   mesh = newMesh;
       //   mesh.doNotSyncBoundingInfo = false;
       // }
-      if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1) {
+      if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
         devHelper.model3DVals.octree.dynamicContent.push(mesh);
-      }
+
     }
 
     if (devHelper.model3DVals.loadModels.length > 1) {
       devHelper.model3DVals.loadModels.shift();
       loadModel(devHelper.model3DVals.loadModels[0], Scene, ShadowGenerator);
-    } else devHelper.model3DVals.octree = Scene.createOrUpdateSelectionOctree();
+    }
+    else devHelper.model3DVals.octree = Scene.createOrUpdateSelectionOctree();
   }
 })
 
 function createCloneInstancedMesh(mesh, url = undefined, scene = undefined) {
-  if (mesh instanceof BABYLON.InstancedMesh) {
-    let newMesh = mesh.sourceMesh.clone();
-    newMesh.name = mesh.name;
-    newMesh.setParent(mesh.parent);
-    newMesh.rotation = new BABYLON.Vector3(0, 0, 0);
-    if (url !== undefined) {
-      if (!newMesh.material || newMesh.material.name !== 'material_' + newMesh.name) {
-        newMesh.material = new BABYLON.StandardMaterial('material_' + newMesh.name, scene);
-        newMesh.material.diffuseTexture = new BABYLON.Texture(url, scene);
-      } else {
-        newMesh.material.diffuseTexture.updateURL(url);
-      }
+  let newMesh = mesh.sourceMesh.clone();
+  newMesh.name = mesh.name;
+  newMesh.setParent(mesh.parent);
+  newMesh.rotation = new BABYLON.Vector3(0, 0, 0);
+  if (url !== undefined) {
+    if (!newMesh.material || newMesh.material.name !== 'material_' + newMesh.name) {
+      newMesh.material = new BABYLON.StandardMaterial('material_' + newMesh.name, scene);
+      newMesh.material.diffuseTexture = new BABYLON.Texture(url, scene);
     } else {
-      newMesh.material = mesh.material.clone(`material_${mesh.name}`);
+      newMesh.material.diffuseTexture.updateURL(url);
     }
-    newMesh.setAbsolutePosition(
-      new BABYLON.Vector3(
-        mesh.absolutePosition._x,
-        mesh.absolutePosition._y,
-        mesh.absolutePosition._z
-      )
-    );
-    mesh.dispose();
-    mesh = newMesh;
-    mesh.doNotSyncBoundingInfo = false;
-    return mesh;
+  } else {
+    newMesh.material = mesh.material.clone(`material_${mesh.name}`);
   }
+  newMesh.setAbsolutePosition(
+    new BABYLON.Vector3(
+      mesh.absolutePosition._x,
+      mesh.absolutePosition._y,
+      mesh.absolutePosition._z
+    )
+  );
+  mesh.dispose();
+  mesh = newMesh;
+  mesh.doNotSyncBoundingInfo = false;
+  return mesh;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -378,14 +378,13 @@ document.addEventListener("DOMContentLoaded", () => {
   devHelper.model3DVals.engine = new BABYLON.Engine(canvas, true);
   canvas.addEventListener("pointermove", function () {
     var pickResult = devHelper.model3DVals.scene.pick(devHelper.model3DVals.scene.pointerX, devHelper.model3DVals.scene.pointerY);
-    if (pickResult.hit) 
+    if (pickResult.hit)
       devHelper.model3DVals.meshUnderPointer = pickResult.pickedMesh.name;
     else devHelper.model3DVals.meshUnderPointer = undefined;
   });
 
 });
 
-let _ii = "0";
 function makeSvgDisplay(Mesh, Scene, SvgName) {
   let planeTexture = new BABYLON.DynamicTexture(`texture_${Mesh.name}`, { width: 2000, height: 993 }, Scene, true);
   planeTexture.update();
@@ -402,48 +401,50 @@ function makeSvgDisplay(Mesh, Scene, SvgName) {
 
 function makeActiveMesh(Mesh = undefined, Vals = undefined) {
   if (Mesh === undefined || Vals === undefined) {
-    if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции makeActiveMesh.');
+    if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции makeActivemesh.');
     return;
   } else {
-    if (Mesh instanceof BABYLON.InstancedMesh) Mesh = createCloneInstancedMesh(Mesh);
-    Mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
+    const mesh = Mesh._sourceMesh !== undefined ? createCloneInstancedMesh(Mesh) : Mesh;
+    mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
     if (Vals.name) {
-      Mesh.name = Vals.name;
-      Mesh.currentPosition = Vals.posIndex;
-      if (devHelper.model3DVals.activeMeshs[Vals.posIndex] === undefined) 
-        devHelper.model3DVals.activeMeshs[Vals.posIndex] = []; 
-      devHelper.model3DVals.activeMeshs[Vals.posIndex].push(Mesh);
+      mesh.name = Vals.name;
+      mesh.currentPosition = Vals.posIndex;
+      if (devHelper.model3DVals.activeMeshs[Vals.posIndex] === undefined)
+        devHelper.model3DVals.activeMeshs[Vals.posIndex] = [];
+      devHelper.model3DVals.activeMeshs[Vals.posIndex].push(mesh);
     } else if (typeof Vals === 'number') {
-      Mesh.isPickable = true;
-      devHelper.model3DVals.movePointMesh.push(Mesh);
-      Mesh.positionIndex = Vals.posIndex;
+      mesh.isPickable = true;
+      devHelper.model3DVals.movePointMesh.push(mesh);
+      mesh.positionIndex = Vals.posIndex;
     }
-    Mesh.material.unfreeze();
-    Mesh.actionManager.registerAction(
+    if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
+      devHelper.model3DVals.octree.dynamicContent.push(mesh);
+    mesh.material.unfreeze();
+    mesh.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
         BABYLON.ActionManager.OnPickTrigger,
         function () {
           if (Vals.name) {
-            clickOnMesh(Mesh);
+            clickOnMesh(mesh);
           } else if (typeof Vals === 'number') {
-            clickOnPointMesh(Mesh, devHelper.model3DVals.cameraPositions[Vals]);
+            clickOnPointMesh(mesh, devHelper.model3DVals.cameraPositions[Vals]);
           }
         }
       )
     );
-    Mesh.actionManager.registerAction(
+    mesh.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
         BABYLON.ActionManager.OnPointerOverTrigger,
-        function () { changeColorTexture(Mesh, true); }
+        function () { changeColorTexture(mesh, true); }
       )
     );
-    Mesh.actionManager.registerAction(
+    mesh.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
         BABYLON.ActionManager.OnPointerOutTrigger,
-        function () { changeColorTexture(Mesh, false); }
+        function () { changeColorTexture(mesh, false); }
       )
     );
-    makeUnicMat(Mesh);
+    makeUnicMat(mesh);
   }
 }
 
@@ -602,8 +603,9 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
     if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
   }
   if (Mesh !== undefined || Axis !== undefined) {
-    if (Mesh.rotation._isDirty === false) Mesh.rotation = new BABYLON.Vector3(0, 0, 0);
-    if (Type === 'r') Val = Val * (Math.PI / 180);
+    if (!Mesh.rotation._isDirty || Mesh.rotation._isDirty === false)
+      Mesh.rotation = new BABYLON.Vector3(0, 0, 0);
+    //   // if (Type === 'r') Val = Val * (Math.PI / 180);
     let animation = new BABYLON.Animation(
       Type === 'r' ? "rotationAnimation" : "positionAnimation",
       Type === 'r' ? `rotation.${Axis}` : `position.${Axis}`,
@@ -622,6 +624,9 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
       }
     ];
     animation.setKeys(keys);
+    // if (Duration === 0) 
+    //   Mesh.position.x = 0.2
+    // else
     Scene.beginDirectAnimation(Mesh, [animation], 0, Duration * 60, false);
   } else return
 }
@@ -632,7 +637,7 @@ function animMoveCamera(Vals, Speed = 2) {
     if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
   }
   else {
-    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false); 
+    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
     if (devHelper.model3DVals.activeMeshs[Vals.position])
       devHelper.model3DVals.activeMeshs[Vals.position].forEach(mesh => mesh.isPickable = true);
   }

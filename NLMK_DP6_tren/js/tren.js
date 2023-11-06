@@ -115,16 +115,16 @@ function trenClickOnMesh(Mesh) {
 
 function handleRotation(currentAction, Mesh) {
   const rotation = currentAction.action.rotation || {};
-  if (rotation.y !== undefined) moveRotationMesh(Mesh, 'r', rotation.y, 'y', currentAction.duration || 1);
-  if (rotation.z !== undefined) moveRotationMesh(Mesh, 'r', rotation.z, 'z', currentAction.duration || 1);
-  if (rotation.x !== undefined) moveRotationMesh(Mesh, 'r', rotation.x, 'x', currentAction.duration || 1);
+  if (rotation.y !== undefined) moveRotationMesh(Mesh, 'r', rotation.y, 'y', currentAction.duration !== undefined ? currentAction.duration : 1);
+  if (rotation.z !== undefined) moveRotationMesh(Mesh, 'r', rotation.z, 'z', currentAction.duration !== undefined ? currentAction.duration : 1);
+  if (rotation.x !== undefined) moveRotationMesh(Mesh, 'r', rotation.x, 'x', currentAction.duration !== undefined ? currentAction.duration : 1);
 }
 
 function handlePosition(currentAction, Mesh) {
   const position = currentAction.action.position || {};
-  if (position.x !== undefined) moveRotationMesh(Mesh, 'p', position.x, 'x', currentAction.duration || 1);
-  if (position.y !== undefined) moveRotationMesh(Mesh, 'p', position.y, 'y', currentAction.duration || 1);
-  if (position.z !== undefined) moveRotationMesh(Mesh, 'p', position.z, 'z', currentAction.duration || 1);
+  if (position.x !== undefined) moveRotationMesh(Mesh, 'p', position.x, 'x', currentAction.duration !== undefined ? currentAction.duration : 1);
+  if (position.y !== undefined) moveRotationMesh(Mesh, 'p', position.y, 'y', currentAction.duration !== undefined ? currentAction.duration : 1);
+  if (position.z !== undefined) moveRotationMesh(Mesh, 'p', position.z, 'z', currentAction.duration !== undefined ? currentAction.duration : 1);
 }
 
 function handleError(Mesh) {
@@ -161,6 +161,19 @@ function takeStartingState() {
   if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
     startState2D[devHelper.trenVals.scenario].forEach(element => {
       if (element.name) changeSvgElem(element);
+    });
+  }
+  if (startState3D[devHelper.trenVals.scenario] && startState3D[devHelper.trenVals.scenario].length > 0) {
+    startState3D[devHelper.trenVals.scenario].forEach(element => {
+      const mesh = devHelper.model3DVals.activeMeshs.flat().find(mesh => mesh.name === element.name);
+      let tempobj = { action: element };
+      tempobj.duration = 0.1;
+      if (mesh !== undefined) {
+        handleRotation(tempobj, mesh);
+        handlePosition(tempobj, mesh);
+      } else {
+        if (devHelper.dev.enable === true) console.warn(`Не найден объект ${element.name} в тренажёре.`);
+      }
     });
   }
 }
