@@ -402,7 +402,7 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     } else if (typeof Vals === 'number') {
       mesh.isPickable = true;
       devHelper.model3DVals.movePointMesh.push(mesh);
-      mesh.positionIndex = Vals.posIndex;
+      mesh.positionIndex = Vals;
     }
     mesh.material.unfreeze();
     mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);

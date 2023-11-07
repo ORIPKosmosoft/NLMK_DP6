@@ -352,7 +352,7 @@ let startState2D = [
 ]
 let startState3D = [
   [// Первый сценарий
-    { name: 'PhoneButton000', position: { x: 0.2 } },
-    { name: 'PhoneButton002', rotation: { y: 90 } },
+    // { name: 'PhoneButton000', position: { x: 0.2 } },
+    // { name: 'PhoneButton002', rotation: { y: 90 } },
   ]
 ]
