@@ -148,7 +148,7 @@ window.addEventListener('load', function () {
           }
         })
         meshArr.forEach(Mesh => {
-
+          meshOptimization(Mesh);
           if (Mesh.name && Mesh.name === 'Room') {
           } else if (Mesh.name && Mesh.name === 'Telephone') {
             if (!Mesh.subMeshes) {
@@ -243,9 +243,6 @@ window.addEventListener('load', function () {
             makeUnicMat(Mesh);
             makeSvgDisplay(Mesh, Scene, 'dp');
           }
-          meshOptimization(Mesh);
-          Mesh.actionManager = new BABYLON.ActionManager(Scene);
-          Mesh.isPickable = true;
         })
         change3DTime();
       } else if (Name === 'Highlight') {
@@ -304,6 +301,9 @@ window.addEventListener('load', function () {
       if (mesh.material) mesh.material.freeze();
       mesh.freezeWorldMatrix();
       mesh.doNotSyncBoundingInfo = mesh instanceof BABYLON.InstancedMesh ? false : true;
+
+      mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
+      mesh.isPickable = true;
     }
 
     function setImageOnMonitor(url, scene, mesh) {
@@ -316,25 +316,8 @@ window.addEventListener('load', function () {
           mesh.material.diffuseTexture.updateURL(url);
         }
       }
-      // {
-      //   let newMesh = mesh.sourceMesh.clone();
-      //   newMesh.name = mesh.name;
-      //   newMesh.setParent(mesh.parent);
-      //   newMesh.rotation = new BABYLON.Vector3(0, 0, 0);
-      //   newMesh.setAbsolutePosition(
-      //     new BABYLON.Vector3(
-      //       mesh.absolutePosition._x,
-      //       mesh.absolutePosition._y,
-      //       mesh.absolutePosition._z
-      //     )
-      //   );
-      //   mesh.dispose();
-      //   mesh = newMesh;
-      //   mesh.doNotSyncBoundingInfo = false;
-      // }
       if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
         devHelper.model3DVals.octree.dynamicContent.push(mesh);
-
     }
 
     if (devHelper.model3DVals.loadModels.length > 1) {
@@ -354,12 +337,11 @@ function createCloneInstancedMesh(mesh, url = undefined, scene = undefined) {
     if (!newMesh.material || newMesh.material.name !== 'material_' + newMesh.name) {
       newMesh.material = new BABYLON.StandardMaterial('material_' + newMesh.name, scene);
       newMesh.material.diffuseTexture = new BABYLON.Texture(url, scene);
-    } else {
+    } else
       newMesh.material.diffuseTexture.updateURL(url);
-    }
-  } else {
+  } else
     newMesh.material = mesh.material.clone(`material_${mesh.name}`);
-  }
+
   newMesh.setAbsolutePosition(
     new BABYLON.Vector3(
       mesh.absolutePosition._x,
@@ -367,9 +349,15 @@ function createCloneInstancedMesh(mesh, url = undefined, scene = undefined) {
       mesh.absolutePosition._z
     )
   );
+  if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) !== -1) {
+    const index = devHelper.model3DVals.octree.dynamicContent.indexOf(mesh);
+    devHelper.model3DVals.octree.dynamicContent.splice(index, 1);
+  }
   mesh.dispose();
   mesh = newMesh;
   mesh.doNotSyncBoundingInfo = false;
+  if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
+    devHelper.model3DVals.octree.dynamicContent.push(mesh);
   return mesh;
 }
 
@@ -405,7 +393,6 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     return;
   } else {
     const mesh = Mesh._sourceMesh !== undefined ? createCloneInstancedMesh(Mesh) : Mesh;
-    mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
     if (Vals.name) {
       mesh.name = Vals.name;
       mesh.currentPosition = Vals.posIndex;
@@ -417,9 +404,10 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
       devHelper.model3DVals.movePointMesh.push(mesh);
       mesh.positionIndex = Vals.posIndex;
     }
+    mesh.material.unfreeze();
+    mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
     if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
       devHelper.model3DVals.octree.dynamicContent.push(mesh);
-    mesh.material.unfreeze();
     mesh.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
         BABYLON.ActionManager.OnPickTrigger,
