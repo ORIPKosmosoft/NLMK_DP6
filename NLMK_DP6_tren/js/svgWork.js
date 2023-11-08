@@ -13,13 +13,13 @@ window.addEventListener('load', function () {
   })
 
   devHelper.svgVals.forEach((ObjectSvg, Index) => {
-    // if (ObjectSvg.name === 'dp') {
-    //   ObjectSvg.object.style.left = '0';
-    //   ObjectSvg.object.style.top = '0';
-    //   ObjectSvg.object.style.visibility = 'visible';
-    //   ObjectSvg.object.style.zIndex = 999;
-    //   ObjectSvg.object.style.width = '80%';
-    // }
+    if (ObjectSvg.name === 'vnk_main') {
+      ObjectSvg.object.style.left = '0';
+      ObjectSvg.object.style.top = '500px';
+      ObjectSvg.object.style.visibility = 'visible';
+      // ObjectSvg.object.style.zIndex = 999;
+      ObjectSvg.object.style.width = '50%';
+    }
 
     if (ObjectSvg.name === 'dp') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
@@ -462,9 +462,10 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
         }
         function createSvgHelperButtons(Arr) {
           let mainContainer = createMainHelperContainer();
-          let currentActonObject = findLast(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions, action => (action.passed === true && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+          let currentActonObject = findLast(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions, action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+          // let currentActonObject = findLast(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions, action => (action.passed === true && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
           Arr.forEach((element) => {
-            if (currentActonObject && currentActonObject.action.helper2D && currentActonObject.action.helper2D.length > 0) {
+            if (currentActonObject && currentActonObject.action.helper2D) {
               currentActonObject.action.helper2D.forEach(element2 => {
                 if (element.id === element2.id) {
                   if (element2.x) element.x = element2.x;

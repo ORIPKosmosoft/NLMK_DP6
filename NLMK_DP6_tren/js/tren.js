@@ -172,52 +172,38 @@ function takeStartingState() {
     }
   }
   else {
+    let reloadImg = [];
+    devHelper.model3DVals.svgDisplays.meshs.forEach((mesh) => {
+      mesh.svgArr.length = 0;
+      mesh.svgArr.push(mesh.startSvg);
+      if (!reloadImg.includes(mesh.startSvg.name))
+        reloadImg.push(mesh.startSvg.name);
+    })
     devHelper.startPos.IF2D.forEach(activeElement => {
       devHelper.svgVals.forEach((element, index) => {
         element.activeElements.forEach((oldActiveElement) => {
           if (oldActiveElement.element.id === activeElement.id) {
-            oldActiveElement.element = activeElement;
-            element.svg.querySelector(`#${activeElement.id}`).replaceWith(activeElement);
-            console.log(oldActiveElement.element);
+            let cloneNode = activeElement.cloneNode(true);
+            oldActiveElement.element = cloneNode;
+            element.svg.querySelector(`#${activeElement.id}`).replaceWith(cloneNode);
           }
         })
       })
     })
-    
-    
-      if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
-        startState2D[devHelper.trenVals.scenario].forEach(element => {
-          if (element.name) {
-            changeSvgElem(element);
-          }
-        });
-      }
-
-    // TODO добавить приведение начальных состояний
-    // Добавить обновление СВГ текстур
-    // Добавить отрисуко только первой начальнйо схемы на монике
-
-
-    // devHelper.model3DVals.svgDisplays.meshs.forEach((mesh) => {
-    //   mesh.svgArr.length = 0;
-    //   mesh.svgArr.push(mesh.startSvg);
-    // })
-    // devHelper.svgVals.forEach((element, index) => {
-    //   element.svg = devHelper.startPos.IF2D[index];
-
-    //   element.activeElements.forEach((activeElement) => {
-    //     if (element.svg.querySelector(`#${activeElement.element.id}`)) {
-    //       activeElement.element = element.svg.querySelector(`#${activeElement.element.id}`);
-    //       console.log(activeElement);
-    //     }
-    //   })
-
-
-    //   element.object.innerHTML = '';
-    //   element.object.append(element.svg)
-    //   if (element.object.nextElementSibling.getAttribute('src') !== '')
-    //     element.object.nextElementSibling.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.startPos.IF2D[index]))));
-    // })
+    if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
+      startState2D[devHelper.trenVals.scenario].forEach(element => {
+        if (element.name) {
+          changeSvgElem(element);
+        }
+      });
+    }
+    reloadImg.forEach(name => {
+      devHelper.svgVals.forEach((element, index) => {
+        if (element.name === name) {
+          element.object.nextElementSibling.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(element.svg))));
+        }
+      })
+    })
   }
   saveStart3DIF();
   if (startState3D[devHelper.trenVals.scenario] && startState3D[devHelper.trenVals.scenario].length > 0) {

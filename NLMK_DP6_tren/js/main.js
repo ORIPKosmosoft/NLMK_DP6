@@ -213,11 +213,9 @@ function showhelperTooltip(elem, elemRect) {
   } else {
     helperTooltip.querySelector('span').textContent = devHelper.testVals.radioSelfcheckHelperText;
   }
-  // console.log(elem.offsetTop + ', ' + elem.offsetLeft);
   helperTooltip.classList.toggle('visible-tiiltip', true);
   helperTooltip.style.left  = elem.offsetLeft + elem.getBoundingClientRect().width - helperTooltip.getBoundingClientRect().width + 'px';
   helperTooltip.style.top = elem.offsetTop - helperTooltip.getBoundingClientRect().height - 10 + 'px';
-  // console.log(elem);
 }
 
 // Работа с ивентами перетаскивания
@@ -351,7 +349,6 @@ function guideBtnsClick(e) {
 
 // Функция работы с radioButton
 function radioButtonChange(elem) {
-  // if (elem.parentElement.classList.contains('active-radio')) return;
   let confirmButton = elem.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button');
   let radioContainer = elem.closest('.selfcheck-radio-container');
   if (!elem.parentElement.classList.contains('active-radio')) {
@@ -359,7 +356,6 @@ function radioButtonChange(elem) {
     confirmButton.classList.toggle('disabled-button', false)
     confirmButton.classList.toggle('active-button', true)
   } else {
-    console.log(elem);
     elem.parentElement.classList.toggle('active-radio', false);
     confirmButton.classList.toggle('disabled-button', true)
     confirmButton.classList.toggle('active-button', false)
@@ -595,7 +591,6 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
 
   // Если в dragDrop элементе ответы верны
   if (prevContClasslist.classList.contains('container-dragDrop') && prevContClasslist.classList.contains('correct-dragDrop-container')) {
-    // console.log(devHelper.testVals.previousContainer);
     devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
     devHelper.testVals.previousContainer.classList.toggle('selfcheck-visible', false);
     previousContainerIndex = devHelper.testVals.containerArray.indexOf(devHelper.testVals.previousContainer);
@@ -624,7 +619,6 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
 
     // Если в dragDrop элементе ответы неверны
   } else if (prevContClasslist.classList.contains('container-dragDrop') && !prevContClasslist.classList.contains('correct-dragDrop-container')) {
-    // console.log('неверный ответ');
     randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
     // если следующий контейнер равен предыдущему, то заменить
     if (devHelper.testVals.previousContainer == randomContainer) {
