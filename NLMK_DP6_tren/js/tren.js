@@ -772,32 +772,27 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
   let b_action = item.querySelector('.click-button-tren');
   item = item.querySelector('button');
   b_action.addEventListener('click', (e) => {
-    if (item.hasAttribute('disabled')) {  // отключен
-      return;
-    }
-
+    if (item.hasAttribute('disabled')) return; // отключен
     if (document.querySelector(`.${item.getAttribute('window-interface')}`)) {  // включить анимацию
       document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0'); // включить анимацию
     }
     if (item.classList.contains('button-tren-active')) {
-
       if (item.getAttribute('window-interface')) {
         document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('box-time-padTop32');
       }
-
       if (item.hasAttribute('close-func')) {
         item.getAttribute('close-func').split(' ').forEach((item) => {
           window[item](e);
         })
       }
-
       item.classList.remove('button-tren-active');
       setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Normal);
       return;
     }
-
-    item.classList.add('button-tren-active');
-    setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Active);
+    if (item.id !== 'b_restart' && item.id !== 'b_exit') {
+      item.classList.add('button-tren-active');
+      setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Active);
+    }
   })
 });
 //  // БОЛЬШОЙ БИНД НА СМЕНУ ОТОБРАЖЕНИЕ ОКОШЕК // НАВЕДЕНИЕ
@@ -984,33 +979,33 @@ function clickCloseHelp(e) {
 
 
 document.getElementById('b_exit').addEventListener("click", (e) => {
-  document.querySelector('.section').style.left = 0;
-  document.querySelector('.header').style.top = 0;
-  document.querySelector('.section').style.width = "8vw";
-  document.querySelector('.tren-container').style.visibility = "hidden";
-  document.querySelector('.tren-container').style.transition = "none";
-  document.querySelector('.tren-container').style.opacity = 1;
+  document.querySelector('.tren-container').style.opacity = 0;
+  // document.querySelector('.section').style.left = 0;
+  // document.querySelector('.header').style.top = 0;
+  // document.querySelector('.section').style.width = "8vw";
+  // document.querySelector('.tren-container').style.visibility = "hidden";
+  // document.querySelector('.tren-container').style.transition = "none";
 
-  setNewFillButtonSVG(document.querySelector('.nav-icon.nav-icon-active').querySelector('object'), COLOR_STATE_BUTTON.Normal);
-  document.querySelector('.nav-icon.nav-icon-active').classList.remove('nav-icon-active');
+  // setNewFillButtonSVG(document.querySelector('.nav-icon.nav-icon-active').querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  // document.querySelector('.nav-icon.nav-icon-active').classList.remove('nav-icon-active');
 
-  Array.from(document.querySelectorAll('.opacity-1-Always')).forEach(element => {
-    element.classList.remove('box-time-padTop32');
-    element.classList.remove('opacity-1-Always');
-    element.classList.remove('visibility-visible');
-    element.classList.remove('z-index9');
-    element.classList.remove('backArea-white-100');
-  });
-  Array.from(document.querySelectorAll('.backArea-white-100')).forEach(element => {
-    element.classList.remove('backArea-white-100');
-  });
-  Array.from(document.querySelectorAll('.time-header-opacity')).forEach(element => {
-    element.classList.remove('backArea-white-100');
-  });
-  Array.from(document.querySelectorAll('.button-tren-active')).forEach(element => {
-    element.classList.remove('button-tren-active');
-    setNewFillButtonSVG(element.querySelector('object'), COLOR_STATE_BUTTON.Normal);
-  });
+  // Array.from(document.querySelectorAll('.opacity-1-Always')).forEach(element => {
+  //   element.classList.remove('box-time-padTop32');
+  //   element.classList.remove('opacity-1-Always');
+  //   element.classList.remove('visibility-visible');
+  //   element.classList.remove('z-index9');
+  //   element.classList.remove('backArea-white-100');
+  // });
+  // Array.from(document.querySelectorAll('.backArea-white-100')).forEach(element => {
+  //   element.classList.remove('backArea-white-100');
+  // });
+  // Array.from(document.querySelectorAll('.time-header-opacity')).forEach(element => {
+  //   element.classList.remove('backArea-white-100');
+  // });
+  // Array.from(document.querySelectorAll('.button-tren-active')).forEach(element => {
+  //   element.classList.remove('button-tren-active');
+  //   setNewFillButtonSVG(element.querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  // });
 
 })
 document.getElementById('b_scenario').addEventListener("click", (e) => {

@@ -14,7 +14,6 @@ function domLoaded() {
         e.currentTarget.style.visibility = 'hidden';
         document.querySelector('.header').style.top = '0px';
         document.querySelectorAll('.section')[0].style.left = '0px';
-        document.querySelectorAll('.section')[1].style.left = '0px';
         document.querySelector('.start-container').style.visibility = 'visible';
       } else e.currentTarget.style.visibility = 'visible';
     }
@@ -83,19 +82,20 @@ function domLoaded() {
   document.querySelectorAll('.scenarion-button').forEach((Element) => {
     Element.addEventListener('click', (e) => {
       if (!e.currentTarget.classList.contains('scenarion-button-active')) {
-        document.querySelectorAll('.scenarion-button').forEach((Element2) => {
-          if (Element2 !== e.currentTarget) {
-            Element2.classList.toggle('scenarion-button-active', false);
-            Array.from(Element2.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
-              if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#7c7c7c');
-            })
-          }
-        })
-        e.currentTarget.classList.toggle('scenarion-button-active', true);
-        Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
-          if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
-        })
         prepareTren(e.currentTarget.querySelector('span').innerText === 'Обучение' ? 'learn' : 'test', document.querySelector('.drop-item-active').querySelector('span').innerText, Array.from(document.querySelectorAll('.drop-item')).indexOf(document.querySelector('.drop-item-active')));
+        document.querySelector('.drop-item-active').dispatchEvent(new Event('click'));
+        // document.querySelectorAll('.scenarion-button').forEach((Element2) => {
+        //   if (Element2 !== e.currentTarget) {
+        //     Element2.classList.toggle('scenarion-button-active', false);
+        //     Array.from(Element2.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+        //       if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#7c7c7c');
+        //     })
+        //   }
+        // })
+        // e.currentTarget.classList.toggle('scenarion-button-active', true);
+        // Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
+        //   if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
+        // })
       }
     });
   })
