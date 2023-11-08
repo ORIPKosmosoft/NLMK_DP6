@@ -974,44 +974,20 @@ function clickCloseHelp(e) {
     setStartPosition(document.querySelector('.box-help'));
     document.querySelector('.box-help').ontransitionend = null;
   }
-
 }
-
 
 document.getElementById('b_exit').addEventListener("click", (e) => {
   document.querySelector('.tren-container').style.opacity = 0;
-  // document.querySelector('.section').style.left = 0;
-  // document.querySelector('.header').style.top = 0;
-  // document.querySelector('.section').style.width = "8vw";
-  // document.querySelector('.tren-container').style.visibility = "hidden";
-  // document.querySelector('.tren-container').style.transition = "none";
-
-  // setNewFillButtonSVG(document.querySelector('.nav-icon.nav-icon-active').querySelector('object'), COLOR_STATE_BUTTON.Normal);
-  // document.querySelector('.nav-icon.nav-icon-active').classList.remove('nav-icon-active');
-
-  // Array.from(document.querySelectorAll('.opacity-1-Always')).forEach(element => {
-  //   element.classList.remove('box-time-padTop32');
-  //   element.classList.remove('opacity-1-Always');
-  //   element.classList.remove('visibility-visible');
-  //   element.classList.remove('z-index9');
-  //   element.classList.remove('backArea-white-100');
-  // });
-  // Array.from(document.querySelectorAll('.backArea-white-100')).forEach(element => {
-  //   element.classList.remove('backArea-white-100');
-  // });
-  // Array.from(document.querySelectorAll('.time-header-opacity')).forEach(element => {
-  //   element.classList.remove('backArea-white-100');
-  // });
-  // Array.from(document.querySelectorAll('.button-tren-active')).forEach(element => {
-  //   element.classList.remove('button-tren-active');
-  //   setNewFillButtonSVG(element.querySelector('object'), COLOR_STATE_BUTTON.Normal);
-  // });
-
+  Array.from(document.querySelectorAll('.button-tren-active')).forEach(btn => {
+    btn.querySelector('.click-button-tren').dispatchEvent(new Event('click'));
+    btn.dispatchEvent(new Event('click'));
+    console.log(btn);
+  })
 })
+
 document.getElementById('b_scenario').addEventListener("click", (e) => {
   if (e.currentTarget.classList.contains('button-tren-active')) {
     document.querySelector('.box-scenario').classList.add("opacity-1-Always");
-    // document.querySelector('.box-scenario').classList.add("visibility-visible");
     document.querySelector('.box-scenario').classList.add('backArea-white-100')
   }
   else {
