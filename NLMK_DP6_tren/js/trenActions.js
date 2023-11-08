@@ -57,11 +57,11 @@ const devHelper = {
     loadModels: [
       'All',
       'Highlight',
-      // 'Console_BVNK', 
-      // 'Console_BZU', 
-      // 'Console_DP6', 
-      // 'Console_PSODP6', 
-      // 'Console_UGKS',
+      'Console_BVNK', 
+      'Console_BZU', 
+      'Console_DP6', 
+      'Console_PSODP6', 
+      'Console_UGKS',
     ],
 
   },
@@ -381,7 +381,7 @@ let startState2D = [
 ]
 let startState3D = [
   [// Первый сценарий
-    { name: 'PhoneButton000', position: { x: 0.2 } },
+    // { name: 'PhoneButton000', position: { x: 0.2 } },
     // { name: 'PhoneButton002', rotation: { y: 90 } },
   ]
 ]

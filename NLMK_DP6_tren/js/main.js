@@ -15,6 +15,7 @@ function domLoaded() {
         document.querySelector('.header').style.top = '0px';
         document.querySelectorAll('.section')[0].style.left = '0px';
         document.querySelector('.start-container').style.visibility = 'visible';
+        animMoveCamera(devHelper.model3DVals.cameraPositions[0], 0);
       } else e.currentTarget.style.visibility = 'visible';
     }
   })

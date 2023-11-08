@@ -22,7 +22,7 @@ function startTren(Restart = false) {
   } else {
 
   }
-  takeStartingState();
+  takeStartingState(Restart);
   setTextScenario(devHelper.trenVals.scenario);
   if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human && devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human &&
     devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].startTime === 0) {
@@ -151,7 +151,7 @@ function trenFinish() {
   if (devHelper.dev.enable === true) console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`);
 }
 
-function takeStartingState() {
+function takeStartingState(Restart = false) {
   devHelper.trenVals.timers.allTime = devHelper.trenVals.timers.allTimeHelper = devHelper.trenVals.timers.scenarioTimeHelper =
     devHelper.trenVals.timers.scenarioTime = devHelper.trenVals.timers.actionTime = devHelper.trenVals.timers.actionTimeHelper = 0;
   devHelper.trenVals.currentAction = 0;
@@ -981,7 +981,6 @@ document.getElementById('b_exit').addEventListener("click", (e) => {
   Array.from(document.querySelectorAll('.button-tren-active')).forEach(btn => {
     btn.querySelector('.click-button-tren').dispatchEvent(new Event('click'));
     btn.dispatchEvent(new Event('click'));
-    console.log(btn);
   })
 })
 

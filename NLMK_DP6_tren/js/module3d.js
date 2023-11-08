@@ -128,10 +128,21 @@ window.addEventListener('load', function () {
       document.querySelector('.help-btn-block').remove();
     }
     //----------------------------------------------------------------------------------------------------------
+
+    let options = new BABYLON.SceneOptimizerOptions(60, 1000);
+    // options.addOptimization(new BABYLON.HardwareScalingOptimization(0, 1));
+    let optimizer = new BABYLON.SceneOptimizer(scene, options);
+    BABYLON.SceneOptimizer.OptimizeAsync(scene, BABYLON.SceneOptimizerOptions.HighDegradationAllowed(),
+      function () {
+        // On success
+      }, function () {
+        // FPS target not reached
+      });
+
     return scene;
   };
   const scene = createScene();
-  // if (devHelper.dev.enable === true) scene.debugLayer.show();
+  if (devHelper.dev.enable === true) scene.debugLayer.show();
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
@@ -324,7 +335,9 @@ window.addEventListener('load', function () {
       devHelper.model3DVals.loadModels.shift();
       loadModel(devHelper.model3DVals.loadModels[0], Scene, ShadowGenerator);
     }
-    else devHelper.model3DVals.octree = Scene.createOrUpdateSelectionOctree();
+    else {
+      devHelper.model3DVals.octree = Scene.createOrUpdateSelectionOctree();
+    }
   }
 })
 
@@ -608,7 +621,7 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
       if (Mesh.startState.rotation === undefined)
         Mesh.startState.rotation = Mesh.rotation.clone();
     } else {
-      if (Mesh.startState.position === undefined) 
+      if (Mesh.startState.position === undefined)
         Mesh.startState.position = Mesh.position.clone();
     }
     //   // if (Type === 'r') Val = Val * (Math.PI / 180);
