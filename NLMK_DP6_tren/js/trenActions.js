@@ -105,7 +105,7 @@ let tempActions = [
     //   text: 'ЗАМЕНИТЬ_нажать на первую кнопку на телефоне',
     //   action: {
     //     target3D: 'PhoneButton002',
-    //     position: { y: 0.0144 }, // 3d 2d 0.0144
+    //     position: { y: 0.0144, x: 0.1 }, // 3d 2d 0.0144
     //     rotation: {}, // 3d 2d
     //     text: {}, // 3D 2D
     //   },
@@ -123,6 +123,30 @@ let tempActions = [
     //   duration: 0.15,
     //   startTime: 0.15,
     // },
+    // {
+    //   sender: 'Система',
+    //   text: 'ЗАМЕНИТЬ_нажать на первую кнопку на телефоне',
+    //   action: {
+    //     target3D: 'PhoneButton000',
+    //     position: { y: 0.0144 }, // 3d 2d 0.0144
+    //     rotation: {}, // 3d 2d
+    //     text: {}, // 3D 2D
+    //   },
+    //   duration: 0.15,
+    //   startTime: 1, // seconds - абсолютное время сценария
+    //   human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
+    // },
+    // {
+    //   action: {
+    //     target3D: 'PhoneButton000',
+    //     position: { y: 0.0 }, // 3d 2d
+    //     rotation: {}, // 3d 2d
+    //     text: {}, // 3D 2D
+    //   },
+    //   duration: 0.15,
+    //   startTime: 1.15,
+    // },
+    
     {
       scenarioText: 'Открыть клапан 029 на дымовую трубу.',
       sender: 'Система',
@@ -357,7 +381,7 @@ let startState2D = [
 ]
 let startState3D = [
   [// Первый сценарий
-    // { name: 'PhoneButton000', position: { x: 0.2 } },
+    { name: 'PhoneButton000', position: { x: 0.2 } },
     // { name: 'PhoneButton002', rotation: { y: 90 } },
   ]
 ]

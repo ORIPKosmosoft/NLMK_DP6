@@ -13,13 +13,13 @@ window.addEventListener('load', function () {
   })
 
   devHelper.svgVals.forEach((ObjectSvg, Index) => {
-    if (ObjectSvg.name === 'vnk_main') {
-      ObjectSvg.object.style.left = '0';
-      ObjectSvg.object.style.top = '500px';
-      ObjectSvg.object.style.visibility = 'visible';
-      // ObjectSvg.object.style.zIndex = 999;
-      ObjectSvg.object.style.width = '50%';
-    }
+    // if (ObjectSvg.name === 'vnk_main') {
+    //   ObjectSvg.object.style.left = '0';
+    //   ObjectSvg.object.style.top = '500px';
+    //   ObjectSvg.object.style.visibility = 'visible';
+    //   // ObjectSvg.object.style.zIndex = 999;
+    //   ObjectSvg.object.style.width = '50%';
+    // }
 
     if (ObjectSvg.name === 'dp') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {

@@ -433,6 +433,15 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
       )
     );
     makeUnicMat(mesh);
+    mesh.startState = {
+      enable: false,
+      position: undefined,
+      rotation: undefined,
+      scale: undefined,
+      material: undefined,
+      diffuseTexture: undefined,
+      emissiveTexture: undefined,
+    }
   }
 }
 
@@ -594,6 +603,14 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
   if (Mesh !== undefined || Axis !== undefined) {
     if (!Mesh.rotation._isDirty || Mesh.rotation._isDirty === false)
       Mesh.rotation = new BABYLON.Vector3(0, 0, 0);
+    Mesh.startState.enable = true;
+    if (Type === 'r') {
+      if (Mesh.startState.rotation === undefined)
+        Mesh.startState.rotation = Mesh.rotation.clone();
+    } else {
+      if (Mesh.startState.position === undefined) 
+        Mesh.startState.position = Mesh.position.clone();
+    }
     //   // if (Type === 'r') Val = Val * (Math.PI / 180);
     let animation = new BABYLON.Animation(
       Type === 'r' ? "rotationAnimation" : "positionAnimation",

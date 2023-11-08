@@ -165,31 +165,36 @@ function takeStartingState() {
   })
   if (devHelper.startPos.IF2D.length === 0) {
     saveStart2DIF();
-    if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
-      startState2D[devHelper.trenVals.scenario].forEach(element => {
-        if (element.name) changeSvgElem(element);
-      });
-    }
+    makeStart2DVisual(true);
   }
-  else {
+  else makeStart2DVisual();
+  if (devHelper.startPos.IF3D.length === 0) {
+    makeStart3DVisual();
+  } else makeStart3DVisual();
+
+  animMoveCamera(devHelper.model3DVals.cameraPositions[0], 1);
+
+  function makeStart2DVisual(firstTime = false) {
     let reloadImg = [];
-    devHelper.model3DVals.svgDisplays.meshs.forEach((mesh) => {
-      mesh.svgArr.length = 0;
-      mesh.svgArr.push(mesh.startSvg);
-      if (!reloadImg.includes(mesh.startSvg.name))
-        reloadImg.push(mesh.startSvg.name);
-    })
-    devHelper.startPos.IF2D.forEach(activeElement => {
-      devHelper.svgVals.forEach((element, index) => {
-        element.activeElements.forEach((oldActiveElement) => {
-          if (oldActiveElement.element.id === activeElement.id) {
-            let cloneNode = activeElement.cloneNode(true);
-            oldActiveElement.element = cloneNode;
-            element.svg.querySelector(`#${activeElement.id}`).replaceWith(cloneNode);
-          }
+    if (firstTime === false) {
+      devHelper.model3DVals.svgDisplays.meshs.forEach((mesh) => {
+        mesh.svgArr.length = 0;
+        mesh.svgArr.push(mesh.startSvg);
+        if (!reloadImg.includes(mesh.startSvg.name))
+          reloadImg.push(mesh.startSvg.name);
+      })
+      devHelper.startPos.IF2D.forEach(activeElement => {
+        devHelper.svgVals.forEach((element, index) => {
+          element.activeElements.forEach((oldActiveElement) => {
+            if (oldActiveElement.element.id === activeElement.id) {
+              let cloneNode = activeElement.cloneNode(true);
+              oldActiveElement.element = cloneNode;
+              element.svg.querySelector(`#${activeElement.id}`).replaceWith(cloneNode);
+            }
+          })
         })
       })
-    })
+    }
     if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
       startState2D[devHelper.trenVals.scenario].forEach(element => {
         if (element.name) {
@@ -197,30 +202,54 @@ function takeStartingState() {
         }
       });
     }
-    reloadImg.forEach(name => {
-      devHelper.svgVals.forEach((element, index) => {
-        if (element.name === name) {
-          element.object.nextElementSibling.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(element.svg))));
-        }
+    if (firstTime === false) {
+      reloadImg.forEach(name => {
+        devHelper.svgVals.forEach((element, index) => {
+          if (element.name === name) {
+            element.object.nextElementSibling.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(element.svg))));
+          }
+        })
       })
-    })
+    }
   }
-  saveStart3DIF();
-  if (startState3D[devHelper.trenVals.scenario] && startState3D[devHelper.trenVals.scenario].length > 0) {
-    startState3D[devHelper.trenVals.scenario].forEach(element => {
-      const mesh = devHelper.model3DVals.activeMeshs.flat().find(mesh => mesh.name === element.name);
-      let tempobj = { action: element };
-      tempobj.duration = 0.1;
-      if (mesh !== undefined) {
-        handleRotation(tempobj, mesh);
-        handlePosition(tempobj, mesh);
-      } else {
-        if (devHelper.dev.enable === true) console.warn(`Не найден объект ${element.name} в тренажёре.`);
+  function makeStart3DVisual() {
+    devHelper.model3DVals.activeMeshs.flat().forEach(mesh => {
+      if (mesh.startState.enable === true) {
+        if (mesh.startState.position !== undefined) {
+          let tempOnject = { action: { position: mesh.startState.position }, duration: 0.1 };
+          handlePosition(tempOnject, mesh);
+        }
+        if (mesh.startState.rotation !== undefined) {
+          let tempOnject = { action: { rotation: mesh.startState.rotation }, duration: 0.1 };
+          handleRotation(tempOnject, mesh);
+        }
+        if (mesh.startState.scale !== undefined) // не встречал такого
+          mesh.scaling = mesh.startState.scale;
+        if (mesh.startState.material !== undefined) // не встречал такого
+          mesh.material = mesh.startState.material;
+        if (mesh.startState.diffuseTexture !== undefined) // не встречал такого
+          mesh.material.diffuseTexture = mesh.startState.texture;
+        if (mesh.startState.emissiveTexture !== undefined) // не встречал такого
+          mesh.material.emissiveTexture = mesh.startState.texture;
       }
-    });
+    })
+    if (startState3D[devHelper.trenVals.scenario] && startState3D[devHelper.trenVals.scenario].length > 0) {
+      startState3D[devHelper.trenVals.scenario].forEach(element => {
+        const mesh = devHelper.model3DVals.activeMeshs.flat().find(mesh => mesh.name === element.name);
+        let tempobj = { action: element };
+        tempobj.duration = 0.1;
+        if (mesh !== undefined) {
+          handleRotation(tempobj, mesh);
+          handlePosition(tempobj, mesh);
+        } else {
+          if (devHelper.dev.enable === true) console.warn(`Не найден объект ${element.name} в тренажёре.`);
+        }
+      });
+    }
   }
-  animMoveCamera(devHelper.model3DVals.cameraPositions[0], 1);
 }
+
+
 
 function saveStart2DIF() {
   if (devHelper.startPos.IF2D.length === 0) {
@@ -233,9 +262,7 @@ function saveStart2DIF() {
     })
   }
 }
-function saveStart3DIF() {
 
-}
 
 
 
@@ -466,10 +493,6 @@ function setLifeTime(time) {
   document.querySelector(".time-hour").textContent = time.split(":")[0];
   document.querySelector(".time-minute").textContent = time.split(":")[1];
   document.querySelector(".time-second").textContent = time.split(":")[2];
-
-  // 3d?
-  // schemes?
-
 }
 // TIMER
 {
