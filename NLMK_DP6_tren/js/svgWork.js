@@ -51,7 +51,7 @@ window.addEventListener('load', function () {
             addSvgElem(Index, Element, 'F_prir_gaz_table', 'start');
         }
         if (Element.innerHTML === '2120') { if (TextIndex === 211) { addSvgElem(Index, Element, 'TTG'); } else { addSvgElem(Index, Element, 'TTG_zadanie'); } }
-        if (Element.innerHTML === '1,00') { addSvgElem(Index, Element, 'F_par_yvl'); }
+        if (Element.innerHTML === '1,00') { addSvgElem(Index, Element, 'F_par_yvl'); } // 2 раза находит. Исправить
         if (Element.innerHTML === '5,0') { if (TextIndex === 208) { addSvgElem(Index, Element, 'W_par_yvl'); } else { addSvgElem(Index, Element, 'Vlaznost'); } }
         if (TextIndex >= 303 && TextIndex <= 306) { addSvgElem(Index, Element, 'P_tryba_2_' + (307 - TextIndex), 'start'); }
         if (Element.innerHTML === '2,47') { addSvgElem(Index, Element, 'P_tryba_3_' + (TextIndex - 306), 'start'); }

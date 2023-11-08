@@ -131,7 +131,7 @@ window.addEventListener('load', function () {
     return scene;
   };
   const scene = createScene();
-  if (devHelper.dev.enable === true) scene.debugLayer.show();
+  // if (devHelper.dev.enable === true) scene.debugLayer.show();
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
@@ -459,6 +459,7 @@ function makeUnicMat(mesh) {
 
 function changeSvgtexture(Mesh = undefined, SvgName = undefined, ChangeTexture = false, Window = undefined, Pos = undefined) {
   if (Mesh && SvgName) {
+    if (!Mesh.svgArr) Mesh.startSvg = { name: SvgName, x: 0, y: 0 };
     if (ChangeTexture === true) Mesh.svgArr = [{ name: SvgName, x: 0, y: 0 }];
     let svgIndex = devHelper.model3DVals.svgDisplays.svgNames.findIndex(function (obj) { return obj === SvgName; })
     let outputImage = devHelper.model3DVals.svgDisplays.tagImgs[svgIndex];

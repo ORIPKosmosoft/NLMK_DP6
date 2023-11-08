@@ -16,27 +16,20 @@ function loadTrenActions() {
   })
 }
 
-function startTren() {
+function startTren(Restart = false) {
+  clearChat();
   if (devHelper.trenVals.type === 'learn') {
-    if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text)
-      sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].text);
-    if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].scenarioText)
-      sendMessage(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].sender, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].scenarioText);
   } else {
 
   }
-  devHelper.trenVals.timers.allTime = devHelper.trenVals.timers.allTimeHelper = devHelper.trenVals.timers.scenarioTimeHelper =
-    devHelper.trenVals.timers.scenarioTime = devHelper.trenVals.timers.actionTime = devHelper.trenVals.timers.actionTimeHelper = 0;
-  devHelper.trenVals.currentAction = 0;
-  devHelper.trenVals.ended = false;
-  devHelper.trenVals.waitingInput = true;
   takeStartingState();
+  setTextScenario(devHelper.trenVals.scenario);
   if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human && devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human &&
     devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].startTime === 0) {
     devHelper.trenVals.waitingInput = true;
   } else devHelper.trenVals.waitingInput = false;
-
-  window.requestAnimationFrame(trenTimeTick);
+  if (Restart === false)
+    window.requestAnimationFrame(trenTimeTick);
 }
 function trenTimeTick(timeStamp) {
   if (devHelper.trenVals.scenario !== undefined) {
@@ -91,6 +84,7 @@ function trenTimeTick(timeStamp) {
       let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
       if (lastAction === undefined) trenFinish();
     }
+    // TODO Тут остановить при выходе из сценария
     window.requestAnimationFrame(trenTimeTick);
   }
 }
@@ -158,11 +152,74 @@ function trenFinish() {
 }
 
 function takeStartingState() {
-  if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
-    startState2D[devHelper.trenVals.scenario].forEach(element => {
-      if (element.name) changeSvgElem(element);
-    });
+  devHelper.trenVals.timers.allTime = devHelper.trenVals.timers.allTimeHelper = devHelper.trenVals.timers.scenarioTimeHelper =
+    devHelper.trenVals.timers.scenarioTime = devHelper.trenVals.timers.actionTime = devHelper.trenVals.timers.actionTimeHelper = 0;
+  devHelper.trenVals.currentAction = 0;
+  devHelper.trenVals.ended = false;
+  devHelper.trenVals.waitingInput = true;
+  setLifeTime(devHelper.trenVals.timers.startLifeTime);
+  tempActions.forEach(scenarioActions => {
+    scenarioActions.forEach(action => {
+      action.passed = false;
+    })
+  })
+  if (devHelper.startPos.IF2D.length === 0) {
+    saveStart2DIF();
+    if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
+      startState2D[devHelper.trenVals.scenario].forEach(element => {
+        if (element.name) changeSvgElem(element);
+      });
+    }
   }
+  else {
+    devHelper.startPos.IF2D.forEach(activeElement => {
+      devHelper.svgVals.forEach((element, index) => {
+        element.activeElements.forEach((oldActiveElement) => {
+          if (oldActiveElement.element.id === activeElement.id) {
+            oldActiveElement.element = activeElement;
+            element.svg.querySelector(`#${activeElement.id}`).replaceWith(activeElement);
+            console.log(oldActiveElement.element);
+          }
+        })
+      })
+    })
+    
+    
+      if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
+        startState2D[devHelper.trenVals.scenario].forEach(element => {
+          if (element.name) {
+            changeSvgElem(element);
+          }
+        });
+      }
+
+    // TODO добавить приведение начальных состояний
+    // Добавить обновление СВГ текстур
+    // Добавить отрисуко только первой начальнйо схемы на монике
+
+
+    // devHelper.model3DVals.svgDisplays.meshs.forEach((mesh) => {
+    //   mesh.svgArr.length = 0;
+    //   mesh.svgArr.push(mesh.startSvg);
+    // })
+    // devHelper.svgVals.forEach((element, index) => {
+    //   element.svg = devHelper.startPos.IF2D[index];
+
+    //   element.activeElements.forEach((activeElement) => {
+    //     if (element.svg.querySelector(`#${activeElement.element.id}`)) {
+    //       activeElement.element = element.svg.querySelector(`#${activeElement.element.id}`);
+    //       console.log(activeElement);
+    //     }
+    //   })
+
+
+    //   element.object.innerHTML = '';
+    //   element.object.append(element.svg)
+    //   if (element.object.nextElementSibling.getAttribute('src') !== '')
+    //     element.object.nextElementSibling.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(devHelper.startPos.IF2D[index]))));
+    // })
+  }
+  saveStart3DIF();
   if (startState3D[devHelper.trenVals.scenario] && startState3D[devHelper.trenVals.scenario].length > 0) {
     startState3D[devHelper.trenVals.scenario].forEach(element => {
       const mesh = devHelper.model3DVals.activeMeshs.flat().find(mesh => mesh.name === element.name);
@@ -176,6 +233,22 @@ function takeStartingState() {
       }
     });
   }
+  animMoveCamera(devHelper.model3DVals.cameraPositions[0], 1);
+}
+
+function saveStart2DIF() {
+  if (devHelper.startPos.IF2D.length === 0) {
+    devHelper.svgVals.forEach((element, index) => {
+      const duplicates = element.activeElements.map(originalElementObj => {
+        const originalElement = originalElementObj.element;
+        return originalElement.cloneNode(true);
+      });
+      devHelper.startPos.IF2D.push(...duplicates);
+    })
+  }
+}
+function saveStart3DIF() {
+
 }
 
 
@@ -200,11 +273,6 @@ function addTrenValsMessages(elem) {
 }
 //sendMessage("Система","TESTYRWE")
 function sendMessage(Sender, TextMessage) {
-  // if (document.querySelector('.box-spring-button.display-none')) {
-  //   document.querySelector('.box-spring-button.display-none').classList.remove('display-none');
-  // }
-
-
   let message = createCustomElement("div", "", { "class": Roles[Sender] })
   message.setAttribute('mes', '');
   let top = createCustomElement("div", "", { "class": "topMessage" }, message)
@@ -228,6 +296,12 @@ function sendMessage(Sender, TextMessage) {
     notIcon.style.visibility = "visible";
     notIcon.style.left = (document.getElementById('b_chat').getBoundingClientRect().right - notIcon.getBoundingClientRect().width / 1.5) + 'px';
     notIcon.style.top = (document.getElementById('b_chat').getBoundingClientRect().top - notIcon.getBoundingClientRect().height / 3) + 'px';
+  }
+}
+
+function clearChat() {
+  while (document.querySelector('.chat').children.length > 1) {
+    document.querySelector('.chat').removeChild(document.querySelector('.chat').children[0]);
   }
 }
 
@@ -829,6 +903,13 @@ document.getElementById('b_chat').addEventListener("mouseover", (e) => {
   }
 });
 
+// КЛИК рестарт  //  
+document.getElementById('b_restart').addEventListener("click", (e) => {
+  if (e.currentTarget.classList.contains('button-tren-active')) {
+    startTren(true);
+  }
+});
+
 function disableGeneralView(state = true) {
   if (state) {
     if (document.getElementById('b_GeneralView').hasAttribute('disabled')) {
@@ -936,7 +1017,7 @@ document.getElementById('b_scenario').addEventListener("click", (e) => {
   }
 })
 
-setTextScenario(0);
+
 function setTextScenario(numberScenario) {
   let listItem = document.querySelector('.box-scenario-list')
   while (listItem.lastElementChild) {

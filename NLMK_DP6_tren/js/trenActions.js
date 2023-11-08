@@ -10,6 +10,7 @@ const devHelper = {
     type: undefined,
     trenEnded: false,
     timers: {
+      startLifeTime: '08:00:00',
       lifeTime: '08:00:00',
       allTime: 0,
       allTimeHelper: 0,
@@ -65,6 +66,10 @@ const devHelper = {
 
   },
   svgVals: [],
+  startPos: {
+    IF2D: [],
+    IF3D: [],
+  },
   //---------------------------
   // Сергей
   testVals: {
@@ -95,175 +100,175 @@ const devHelper = {
 let tempActions = [
   [ // Первый сценарий
     //--------------------------------1----------------------------------------
-    {
-      sender: 'Система',
-      text: 'ЗАМЕНИТЬ_нажать на первую кнопку на телефоне',
-      action: {
-        target3D: 'PhoneButton002',
-        position: { y: 0.0144 }, // 3d 2d 0.0144
-        rotation: {}, // 3d 2d
-        text: {}, // 3D 2D
-      },
-      duration: 0.15,
-      startTime: 0, // seconds - абсолютное время сценария
-      human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
-    },
-    {
-      action: {
-        target3D: 'PhoneButton002',
-        position: { y: 0.015 }, // 3d 2d
-        rotation: {}, // 3d 2d
-        text: {}, // 3D 2D
-      },
-      duration: 0.15,
-      startTime: 0.15,
-    },
     // {
-    //   scenarioText: 'Открыть клапан 029 на дымовую трубу.',
     //   sender: 'Система',
+    //   text: 'ЗАМЕНИТЬ_нажать на первую кнопку на телефоне',
     //   action: {
-    //     target2D: 'kl029',
-    //     window2D: {
-    //       // newPositionWindow: {
-    //       //   x: 500,
-    //       // },
-    //       elements: [
-    //         { name: 'title_work_vn', text: 'Управление клапаном 029' },
-    //         { name: 'status_window_text', text: 'Нет данных' },
-    //         { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
-    //         { name: 'polozenie_text', text: '51' },
-    //         { name: 'polozenie_button_text', color: '#000000' },
-    //         { name: 'left_vn', color: '#8F8F8F' },
-    //         { name: 'right_vn', color: '#8F8F8F' },
-    //         { name: 'circle_1_kl029', stroke: '#8F8F8F' },
-    //         { name: 'circle_2_kl029', stroke: '#8F8F8F' },
-    //       ],
-    //     },
-    //     // helper2D : [
-    //     //   { x: 60, y: 59.1, w: 4, h: 2.6, id: 'open_vn'},
-    //     // ]
+    //     target3D: 'PhoneButton002',
+    //     position: { y: 0.0144 }, // 3d 2d 0.0144
+    //     rotation: {}, // 3d 2d
+    //     text: {}, // 3D 2D
     //   },
-    //   // lifeTime: '10:00:00',
-    //   startTime: 0.2,
+    //   duration: 0.15,
+    //   startTime: 0, // seconds - абсолютное время сценария
     //   human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     // },
     // {
     //   action: {
-    //     target2D: 'open_vn',
-    //     window2D: {
-    //       elements: [
-    //         { name: 'title_open_vn', text: 'Открыть' },
-    //       ],
-    //     },
+    //     target3D: 'PhoneButton002',
+    //     position: { y: 0.015 }, // 3d 2d
+    //     rotation: {}, // 3d 2d
+    //     text: {}, // 3D 2D
     //   },
-    //   startTime: 0.5,
-    //   human: true,
+    //   duration: 0.15,
+    //   startTime: 0.15,
     // },
-    // {
-    //   action: {
-    //     target2D: 'open_vn1',
-    //   },
-    //   startTime: 1,
-    //   human: true,
-    // },
-    // {
-    //   action: {
-    //     window2D: {
-    //       elements: [
-    //         { name: 'status_window_text', text: 'Открывается' },
-    //         { name: 'btn_open', color: '', stroke: '' },
-    //         { name: 'polozenie_text', text: '55' },
-    //         { name: 'polozenie_button_text', color: '' },
-    //         { name: 'left_vn', color: '#00FF00' },
-    //         { name: 'right_vn', color: '#00FF00' },
-    //         { name: 'kl029', color: '#00FF00' },
-    //         { name: 'kl029_proc', text: '55' },
-    //         { name: 'circle_1_kl029', stroke: '#00FF00' },
-    //         { name: 'circle_2_kl029', stroke: '#00FF00' },
-    //       ],
-    //     },
-    //   },
-    //   startTime: 1.02,
-    // },
-    // {
-    //   action: {
-    //     window2D: {
-    //       elements: [
-    //         { name: 'kl029', color: '#8F8F8F' },
-    //         { name: 'kl029_proc', text: '65' },
-    //         { name: 'polozenie_text', text: '65' },
-    //         { name: 'left_vn', color: '#8F8F8F' },
-    //         { name: 'right_vn', color: '#8F8F8F' },
-    //         { name: 'circle_1_kl029', stroke: '#8F8F8F' },
-    //         { name: 'circle_2_kl029', stroke: '#8F8F8F' },
-    //       ],
-    //     },
-    //   },
-    //   startTime: 2.02,
-    // },
-    // {
-    //   action: {
-    //     window2D: {
-    //       elements: [
-    //         { name: 'kl029', color: '#00FF00' },
-    //         { name: 'kl029_proc', text: '75' },
-    //         { name: 'polozenie_text', text: '75' },
-    //         { name: 'left_vn', color: '#00FF00' },
-    //         { name: 'right_vn', color: '#00FF00' },
-    //         { name: 'circle_1_kl029', stroke: '#00FF00' },
-    //         { name: 'circle_2_kl029', stroke: '#00FF00' },
-    //       ],
-    //     },
-    //   },
-    //   startTime: 3.02,
-    // },
-    // {
-    //   action: {
-    //     window2D: {
-    //       elements: [
-    //         { name: 'kl029', color: '#8F8F8F' },
-    //         { name: 'kl029_proc', text: '85' },
-    //         { name: 'polozenie_text', text: '85' },
-    //         { name: 'left_vn', color: '#8F8F8F' },
-    //         { name: 'right_vn', color: '#8F8F8F' },
-    //         { name: 'circle_1_kl029', stroke: '#8F8F8F' },
-    //         { name: 'circle_2_kl029', stroke: '#8F8F8F' },
-    //       ],
-    //     },
-    //   },
-    //   startTime: 4.02,
-    // },
-    // {
-    //   action: {
-    //     window2D: {
-    //       elements: [
-    //         { name: 'kl029', color: '#00FF00' },
-    //         { name: 'kl029_proc', text: '100' },
-    //         { name: 'polozenie_text', text: '100' },
-    //         { name: 'status_window_text', text: 'Открыт' },
-    //         { name: 'polozenie_button_text', color: '#6E6E6E' },
-    //         { name: 'btn_open', color: '#E6E6E6', stroke: '#C4C4C4' },
-    //         { name: 'left_vn', color: '#00FF00' },
-    //         { name: 'right_vn', color: '#00FF00' },
-    //         { name: 'circle_1_kl029', stroke: '#00FF00' },
-    //         { name: 'circle_2_kl029', stroke: '#00FF00' },
-    //       ],
-    //     },
-    //   },
-    //   startTime: 5.02,
-    // },
-    // {
-    //   text: 'Клапан 029 на дымовую трубу открыт.',
-    //   sender: 'Система',
-    //   startTime: 5.03,
-    // },
-    // {
-    //   action: {
-    //     target2D: 'close_w1',
-    //   },
-    //   startTime: 6,
-    //   human: true,
-    // },
+    {
+      scenarioText: 'Открыть клапан 029 на дымовую трубу.',
+      sender: 'Система',
+      action: {
+        target2D: 'kl029',
+        window2D: {
+          // newPositionWindow: {
+          //   x: 500,
+          // },
+          elements: [
+            { name: 'title_work_vn', text: 'Управление клапаном 029' },
+            { name: 'status_window_text', text: 'Нет данных' },
+            { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
+            { name: 'polozenie_text', text: '51' },
+            { name: 'polozenie_button_text', color: '#000000' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
+          ],
+        },
+        // helper2D : [
+        //   { x: 60, y: 59.1, w: 4, h: 2.6, id: 'open_vn'},
+        // ]
+      },
+      // lifeTime: '10:00:00',
+      startTime: 0.2,
+      human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
+    },
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+      },
+      startTime: 0.5,
+      human: true,
+    },
+    {
+      action: {
+        target2D: 'open_vn1',
+      },
+      startTime: 1,
+      human: true,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'btn_open', color: '', stroke: '' },
+            { name: 'polozenie_text', text: '55' },
+            { name: 'polozenie_button_text', color: '' },
+            { name: 'left_vn', color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'kl029', color: '#00FF00' },
+            { name: 'kl029_proc', text: '55' },
+            { name: 'circle_1_kl029', stroke: '#00FF00' },
+            { name: 'circle_2_kl029', stroke: '#00FF00' },
+          ],
+        },
+      },
+      startTime: 1.02,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl029', color: '#8F8F8F' },
+            { name: 'kl029_proc', text: '65' },
+            { name: 'polozenie_text', text: '65' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
+          ],
+        },
+      },
+      startTime: 2.02,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl029', color: '#00FF00' },
+            { name: 'kl029_proc', text: '75' },
+            { name: 'polozenie_text', text: '75' },
+            { name: 'left_vn', color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_1_kl029', stroke: '#00FF00' },
+            { name: 'circle_2_kl029', stroke: '#00FF00' },
+          ],
+        },
+      },
+      startTime: 3.02,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl029', color: '#8F8F8F' },
+            { name: 'kl029_proc', text: '85' },
+            { name: 'polozenie_text', text: '85' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
+          ],
+        },
+      },
+      startTime: 4.02,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl029', color: '#00FF00' },
+            { name: 'kl029_proc', text: '100' },
+            { name: 'polozenie_text', text: '100' },
+            { name: 'status_window_text', text: 'Открыт' },
+            { name: 'polozenie_button_text', color: '#6E6E6E' },
+            { name: 'btn_open', color: '#E6E6E6', stroke: '#C4C4C4' },
+            { name: 'left_vn', color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_1_kl029', stroke: '#00FF00' },
+            { name: 'circle_2_kl029', stroke: '#00FF00' },
+          ],
+        },
+      },
+      startTime: 5.02,
+    },
+    {
+      text: 'Клапан 029 на дымовую трубу открыт.',
+      sender: 'Система',
+      startTime: 5.03,
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: 6,
+      human: true,
+    },
     //--------------------------------2----------------------------------------
 
     // {
