@@ -142,7 +142,7 @@ window.addEventListener('load', function () {
     return scene;
   };
   const scene = createScene();
-  if (devHelper.dev.enable === true) scene.debugLayer.show();
+  // if (devHelper.dev.enable === true) scene.debugLayer.show();
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });

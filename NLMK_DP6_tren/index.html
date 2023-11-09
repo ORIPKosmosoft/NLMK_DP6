@@ -565,7 +565,6 @@
             <object data="media/images/UI/icons/Помощь.svg" width="30" height="30" type="image/svg+xml"></object>  
             <div class="click-button-tren"></div>          
           </button>
-
           <div class="text-button-tren">Помощь</div>
         </div>
         <div class="line-tren">
@@ -577,14 +576,14 @@
         </div>
         <div class="box-spring-button">"ПРУЖИНА"</div>
         <div class="line-tren">
-          <button class="button-tren" id="b_restart">
+          <button class="button-tren" id="b_restart" window-interface="box-restart">
             <object data="media/images/UI/icons/Рестарт.svg" width="30" height="30" type="image/svg+xml"></object>
             <div class="click-button-tren"></div>
           </button>
           <div class="text-button-tren">Рестатр</div>
         </div>
         <div class="line-tren">
-          <button class="button-tren" id="b_exit">
+          <button class="button-tren" id="b_exit" window-interface="box-exit">
             <object data="media/images/UI/icons/Выход.svg" width="30" height="30" type="image/svg+xml"></object>
             <div class="click-button-tren"></div>
           </button>
@@ -875,7 +874,41 @@
       <div class="help-text">Вы точно хотите <b>перезапустить</b> последнее дейсвие?</div>
       <div class="help-buttons">
         <button class="help-buttons-no">Отмена</button>
-        <button class="help-buttons-ok">Да</button>
+        <button class="help-buttons-yes">Да</button>
+      </div>
+    </div>
+  </div>
+  <!-- restart window -->
+  <div  class="box-restart" sx="4vw" sy="55vh" sx2="9vw" style="left: 4vw; top: 55vh;">
+    <div class="backArea" style="position: absolute;    top: -5px;    left: -3px;"></div>
+    <div class="time-header">
+      <div class="time-header-title" style="visibility: hidden;"></div>
+      <p class="time-header-button">×</p>
+    </div>
+    <div class="block-button"></div>
+    <div class="help-text-block">
+      <div class="help-text-attention">Внимание!</div>
+      <div class="help-text">Вы точно хотите <b>перезапустить</b> сценарий тренажёра?</div>
+      <div class="help-buttons">
+        <button class="help-buttons-no">Отмена</button>
+        <button class="help-buttons-yes">Да</button>
+      </div>
+    </div>
+  </div>
+  <!-- exit window -->
+  <div  class="box-exit" sx="4vw" sy="55vh" sx2="9vw" style="left: 4vw; top: 55vh;">
+    <div class="backArea" style="position: absolute;    top: -5px;    left: -3px;"></div>
+    <div class="time-header">
+      <div class="time-header-title" style="visibility: hidden;"></div>
+      <p class="time-header-button">×</p>
+    </div>
+    <div class="block-button"></div>
+    <div class="help-text-block">
+      <div class="help-text-attention">Внимание!</div>
+      <div class="help-text">Вы точно хотите <b>выйти</b> из тренажёра? Все ваши действия <b>не</b> будут сохранены.</div>
+      <div class="help-buttons">
+        <button class="help-buttons-no">Отмена</button>
+        <button class="help-buttons-yes">Да</button>
       </div>
     </div>
   </div>

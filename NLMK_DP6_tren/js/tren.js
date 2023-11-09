@@ -772,12 +772,17 @@ function newImageCollapseMenu(e) {
 
 // ЦЕНТРОВАТЬ ОКНА от КНОПКИ
 function setCenterWindow(item) {
-  let window = document.querySelector(`.${item.getAttribute('window-interface')}`)
-  window.classList.add('transition-0');
+  let helperWindow = document.querySelector(`.${item.getAttribute('window-interface')}`)
+  helperWindow.classList.add('transition-0');
   let b_center = item.getBoundingClientRect().height / 2;
-  let w_center = window.getBoundingClientRect().height / 2;
-  window.style.top = ConvertPxToVh(item.getBoundingClientRect().y + (b_center - w_center)) + 'vh';
-  setTimeout(() => { window.classList.remove('transition-0'); }, 50);
+  let w_center = helperWindow.getBoundingClientRect().height / 2;
+  helperWindow.style.top = ConvertPxToVh(item.getBoundingClientRect().y + (b_center - w_center)) + 'vh';
+
+  if (helperWindow.getBoundingClientRect().bottom >= window.innerHeight * 0.99) {
+    helperWindow.style.top = (99 - ConvertPxToVh(helperWindow.getBoundingClientRect().height)) + 'vh';
+    helperWindow.setAttribute('sy', helperWindow.style.top);
+  }
+  setTimeout(() => { helperWindow.classList.remove('transition-0'); }, 50);
 }
 
 // БОЛЬШОЙ БИНД НА СМЕНУ ЦВЕТА КНОПОК // НОВОЕ СВП В 1Ю КНОПКУ  // КЛИК
@@ -802,10 +807,10 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
       setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Normal);
       return;
     }
-    if (item.id !== 'b_restart' && item.id !== 'b_exit') {
-      item.classList.add('button-tren-active');
-      setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Active);
-    }
+    // if (item.id !== 'b_restart' && item.id !== 'b_exit') {
+    item.classList.add('button-tren-active');
+    setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Active);
+    // }
   })
 });
 //  // БОЛЬШОЙ БИНД НА СМЕНУ ОТОБРАЖЕНИЕ ОКОШЕК // НАВЕДЕНИЕ
@@ -816,8 +821,6 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   _item.setAttribute('sx', _item.style.left);
   _item.setAttribute('sy', _item.style.top);
   // СХ СУ - БАЗА
-
-
   let b_action = item.querySelector('.click-button-tren');
   b_action.addEventListener('mouseover', (e) => {
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
@@ -922,7 +925,15 @@ document.getElementById('b_chat').addEventListener("mouseover", (e) => {
 
 // КЛИК рестарт  //  
 document.getElementById('b_restart').addEventListener("click", (e) => {
-  startTren(true);
+  if (e.currentTarget.classList.contains('button-tren-active')) {
+    document.querySelector('.box-restart').classList.add("opacity-1-Always");
+    document.querySelector('.box-restart').classList.add('backArea-white-100')
+  }
+  else {
+    document.querySelector('.box-restart').classList.remove("opacity-1-Always");
+    document.querySelector('.box-restart').classList.remove("opacity-1-Temp");
+    document.querySelector('.box-restart').classList.remove('backArea-white-100')
+  }
 });
 
 function disableGeneralView(state = true) {
@@ -961,12 +972,68 @@ document.getElementById('b_help').addEventListener("click", (e) => {
 })
 // КЛИК ЗАКРЫТЬ ПОМОЩЬ
 document.querySelector('.box-help .time-header-button').addEventListener("click", clickCloseHelp)
-document.querySelector('.help-buttons-no').addEventListener("click", clickCloseHelp)
+Array.from(document.querySelectorAll('.help-buttons-no')).forEach((item) => {
+  item.addEventListener("click", clickCloseHelperWIndow);
+});
+Array.from(document.querySelectorAll('.help-buttons-yes')).forEach((item) => {
+  item.addEventListener("click", clickYesHelperWIndow);
+});
 // BIND mouseDown
 document.querySelector('.box-help .time-header-title').onmousedown = (e) => {
   raiseUpBox(e);
   dragAndDrop(e, e.currentTarget.parentElement.parentElement /*box-time*/);
 };
+
+function clickCloseHelperWIndow(e) {
+  let helperWindow = e.target.closest('.opacity-1-Always');
+  helperWindow.classList.remove('z-index9');
+  helperWindow.classList.remove("opacity-1-Always");
+  helperWindow.classList.remove("opacity-1-Temp");
+
+  helperWindow.ontransitionend = (e) => {
+    helperWindow.classList.add('transition-0');
+    helperWindow.querySelector('.block-button').classList.remove("z-index-1");
+    helperWindow.classList.remove("box-time-padTop32");
+    helperWindow.querySelector('.time-header').classList.remove("time-header-opacity");
+    helperWindow.querySelector('.backArea').classList.remove("backArea-white-100");
+    setStartPosition(helperWindow);
+    helperWindow.ontransitionend = null;
+  }
+
+  let btnName = helperWindow.classList[0].substring(helperWindow.classList[0].indexOf('-') + 1);
+  document.getElementById('b_' + btnName).classList.remove('button-tren-active');
+  setNewFillButtonSVG(document.getElementById('b_' + btnName).querySelector('object'), COLOR_STATE_BUTTON.Normal);
+}
+function clickYesHelperWIndow(e) {
+  let helperWindow = e.target.closest('.opacity-1-Always');
+  helperWindow.classList.remove('z-index9');
+  helperWindow.classList.remove("opacity-1-Always");
+  helperWindow.classList.remove("opacity-1-Temp");
+
+  helperWindow.ontransitionend = (e) => {
+    helperWindow.classList.add('transition-0');
+    helperWindow.querySelector('.block-button').classList.remove("z-index-1");
+    helperWindow.classList.remove("box-time-padTop32");
+    helperWindow.querySelector('.time-header').classList.remove("time-header-opacity");
+    helperWindow.querySelector('.backArea').classList.remove("backArea-white-100");
+    setStartPosition(helperWindow);
+    helperWindow.ontransitionend = null;
+  }
+
+  let btnName = helperWindow.classList[0].substring(helperWindow.classList[0].indexOf('-') + 1);
+  document.getElementById('b_' + btnName).classList.remove('button-tren-active');
+  setNewFillButtonSVG(document.getElementById('b_' + btnName).querySelector('object'), COLOR_STATE_BUTTON.Normal);
+
+  if (btnName === 'restart') {
+    startTren(true);
+  } else if (btnName === 'exit') {
+    document.querySelector('.tren-container').style.opacity = 0;
+    Array.from(document.querySelectorAll('.button-tren-active')).forEach(btn => {
+      btn.querySelector('.click-button-tren').dispatchEvent(new Event('click'));
+      btn.dispatchEvent(new Event('click'));
+    })
+  }
+}
 
 function clickCloseHelp(e) {
   if (document.getElementById('b_help').classList.contains('button-tren-active')) {
@@ -988,11 +1055,15 @@ function clickCloseHelp(e) {
 }
 
 document.getElementById('b_exit').addEventListener("click", (e) => {
-  document.querySelector('.tren-container').style.opacity = 0;
-  Array.from(document.querySelectorAll('.button-tren-active')).forEach(btn => {
-    btn.querySelector('.click-button-tren').dispatchEvent(new Event('click'));
-    btn.dispatchEvent(new Event('click'));
-  })
+  if (e.currentTarget.classList.contains('button-tren-active')) {
+    document.querySelector('.box-exit').classList.add("opacity-1-Always");
+    document.querySelector('.box-exit').classList.add('backArea-white-100')
+  }
+  else {
+    document.querySelector('.box-exit').classList.remove("opacity-1-Always");
+    document.querySelector('.box-exit').classList.remove("opacity-1-Temp");
+    document.querySelector('.box-exit').classList.remove('backArea-white-100')
+  }
 })
 
 document.getElementById('b_scenario').addEventListener("click", (e) => {

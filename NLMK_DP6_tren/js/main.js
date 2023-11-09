@@ -314,7 +314,6 @@ function guideBtnsClick(e) {
     let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget) - 1;
     let textConNew = document.querySelector('.info-container').children[newTextIndex];
     textConNew.classList.toggle('text-container-active', true);
-    console.log(textConNew.parentElement.getBoundingClientRect().height);
     document.querySelector('.info-container').children[0].style.marginTop = `-${(newTextIndex - 0) * textConNew.getBoundingClientRect().height}px`;
     if (document.querySelector('.info-container').querySelector('.drop-item-active')) {
       document.querySelector('.info-container').querySelector('.drop-item-active').classList.toggle('drop-item-active', false);
