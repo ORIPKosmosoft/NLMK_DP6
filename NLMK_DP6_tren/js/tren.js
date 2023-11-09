@@ -432,11 +432,9 @@ function clickCloseTime(e) {
     setStartPosition(document.querySelector('.box-time'));
     document.querySelector('.box-time').ontransitionend = null;
   }
-
   clickCloseTimer(e);
 }
 function clickCloseTimer(e) {
-
   document.querySelector('.dialogMessageWatch').classList.remove('opacity-1-Always');
   document.querySelector('.dialogMessageWatch').classList.remove('z-index9');
   document.querySelector('.dialogMessageWatch').classList.add('opacity-0');
@@ -777,7 +775,6 @@ function setCenterWindow(item) {
   let b_center = item.getBoundingClientRect().height / 2;
   let w_center = helperWindow.getBoundingClientRect().height / 2;
   helperWindow.style.top = ConvertPxToVh(item.getBoundingClientRect().y + (b_center - w_center)) + 'vh';
-
   if (helperWindow.getBoundingClientRect().bottom >= window.innerHeight * 0.99) {
     helperWindow.style.top = (99 - ConvertPxToVh(helperWindow.getBoundingClientRect().height)) + 'vh';
     helperWindow.setAttribute('sy', helperWindow.style.top);
@@ -823,8 +820,10 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   // СХ СУ - БАЗА
   let b_action = item.querySelector('.click-button-tren');
   b_action.addEventListener('mouseover', (e) => {
-    document.querySelector(`.${item.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
-    document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0');
+    if (b_action.closest('.button-tren-active') === null) {
+      document.querySelector(`.${item.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
+      document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0');
+    }
     if (!document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')) {
       setCenterWindow(item);
     }
@@ -876,6 +875,7 @@ function setNewPositionWindow(elem, state = false) {
 document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
   newImageCollapseMenu(e);
   if (!document.querySelector('.tren-ui').classList.contains('tren-ui-long')) {
+    document.querySelector('.section-copy').style.left = '9vw';
     document.querySelector('.tren-ui').classList.add('tren-ui-long');
     document.querySelector('.box-collapse').classList.remove('opacity-1-Temp');
     Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
@@ -883,8 +883,8 @@ document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
       setNewPositionWindow(item, true);
     });
     setNewPositionWindow(document.querySelector('.dialogMessageWatch'), true);
-  }
-  else {
+  } else {
+    document.querySelector('.section-copy').style.left = '';
     document.querySelector('.tren-ui').classList.remove('tren-ui-long');
     Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
       item = document.querySelector(`.${item.getAttribute('window-interface')}`);
@@ -1053,6 +1053,18 @@ function clickCloseHelp(e) {
     document.querySelector('.box-help').ontransitionend = null;
   }
 }
+document.getElementById('b_reference').addEventListener("click", (e) => {
+  document.querySelector('.section-copy').style.opacity = e.currentTarget.classList.contains('button-tren-active') ? 1 : 0;
+  document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.toggle('opacity-1-Temp', false);
+  document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.toggle('transition-0', true);
+})
+document.getElementById('b_reference').addEventListener("mouseover", (e) => {
+  if (document.querySelector('.tren-ui-long')) {
+    document.querySelector('.box-info').classList.remove('opacity-1-Temp');
+    document.querySelector('.box-info').classList.remove('opacity-1-Always');
+  }
+});
+
 
 document.getElementById('b_exit').addEventListener("click", (e) => {
   if (e.currentTarget.classList.contains('button-tren-active')) {

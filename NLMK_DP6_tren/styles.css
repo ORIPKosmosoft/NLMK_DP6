@@ -94,15 +94,11 @@ body {
 }
 
 .section {
-  /* width: 70%; */
   width: 8vw;
   height: 70%;
   position: relative;
   left: 1%;
   top: 22%;
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* background-color: rgba(255, 255, 255, 1); */
   background-color: #f4f4f4;
   border-radius: 10px;
   align-items: flex-start;
@@ -110,6 +106,18 @@ body {
   box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   transition: all 0.3s ease;
+}
+
+.section.section-copy {
+  position: absolute;
+  visibility: visible;
+  opacity: 0;
+  top: 29vh;
+  left: 4vw;
+  height: 70vh;
+  width: 6vw;
+  z-index: 1;
+  pointer-events: none; 
 }
 
 .section .nav-bar {
@@ -597,22 +605,15 @@ ul {
   top: 0%;
   left: 0%;
   visibility: hidden;
-  /* display: none; */
-  /* transform: translate(0, 0); */
-  /* pointer-events: none; */
 }
 
-/* .tren-ui {
-  width: 5vw;
-  height: 100vh;
-} */
+
 
 /* Окно с 3D */
 .game-view {
   width: 97vw;
   height: 100vh;
   position: relative;
-  /* top: 0; */
   left: 3vw;
 }
 
@@ -2300,7 +2301,7 @@ ul {
 
 /*  /// Cтраница тренажёра - интерфейс - основная часть ///  */
 .tren-ui {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(244, 244, 244);
   z-index: 1;
   position: relative;
   height: 99vh;
@@ -2318,17 +2319,8 @@ ul {
 }
 
 .box-tren-ui {
-  /* width: 10vw;
-  height: calc(100% - 4vh);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  background: rgba(96, 65, 0, 0.1); */
   height: 100%;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(244, 244, 244, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -2420,11 +2412,26 @@ ul {
   padding-bottom: 7px;
 }
 
+.box-info {
+  position: fixed;
+  color: #6e6e6e;
+  line-height: 30px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
+  font-family: 'Circe-Bold', sans-serif;
+  transition: all 0.3s ease;
+  opacity: 0;
+  padding-bottom: 7px;
+}
+
 .notification-icon {
   position: absolute;
   left: 0;
   top: 0;
-  width: 22%;
+  width: 0.8vw;
   visibility: hidden;
 }
 

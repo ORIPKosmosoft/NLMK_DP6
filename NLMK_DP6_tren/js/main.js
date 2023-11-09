@@ -2,10 +2,26 @@
 ----------------------------------------------------
 Сделать ресайзер для 2Д
 ----------------------------------------------------
+//TODO Сделать копию section
+Чтобы на 3Д показывать
+----------------------------------------------------
 */
 
 document.addEventListener("DOMContentLoaded", domLoaded);
 function domLoaded() {
+
+  let sectionCopy = document.querySelector('.section').cloneNode(true);
+  sectionCopy.classList.toggle('section-copy', true);
+  sectionCopy.querySelector('.nav-bar').style.width = '6vw';
+  sectionCopy.querySelector('.nav-bar').children[1].remove();
+  sectionCopy.querySelector('.nav-bar').children[sectionCopy.querySelector('.nav-bar').children.length - 1].remove();
+  sectionCopy.querySelectorAll('.text-container')[0].remove();
+  sectionCopy.querySelectorAll('.text-container')[sectionCopy.querySelectorAll('.text-container').length - 1].remove();
+  sectionCopy.addEventListener('transitionend', (e) => {
+    if (e.propertyName === 'opacity')
+      e.currentTarget.style.pointerEvents = e.currentTarget.style.opacity === '1' ? 'all' : '';
+  })
+  document.querySelector('.tren-ui').before(sectionCopy);
   document.querySelector('.tren-container').addEventListener('transitionend', (e) => {
     if (e.propertyName === 'opacity') {
       e.currentTarget.style.visibility = e.currentTarget.style.opacity === '0' ? 'hidden' : 'visible';
@@ -23,7 +39,6 @@ function domLoaded() {
     document.querySelector('.header').style.top = -document.querySelector('.header').getBoundingClientRect().bottom - 10 + 'px';
     document.querySelector('.section').style.left = -document.querySelector('.section').getBoundingClientRect().width * 1.1 + 'px';
   }
-
   function revialTrenScreen() {
     document.querySelector('.tren-container').style.visibility = 'visible';
     document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
@@ -123,7 +138,6 @@ function domLoaded() {
     },
   ];
 
-
   // Вешаю обработчик нажатия на все <div class="selfcheck-radio">
   document.querySelectorAll('.radio-elem').forEach((Element) => {
     Element.addEventListener('click', (e) => {
@@ -171,10 +185,12 @@ function domLoaded() {
     glavTestFun(e.currentTarget.classList[0], e.currentTarget);
   })
 
-  document.querySelector('.section').addEventListener('transitionend', (e) => {
-    if (e.propertyName === 'width')
-      document.querySelector('.text-container').style.transition = document.querySelector('.section').style.width === '68vw' ? 'margin-top 0.3s ease' : 'none';
-  });
+  Array.from(document.querySelectorAll('.section')).forEach((Element) => {
+    Element.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'width')
+        Element.querySelector('.text-container').style.transition = Element.style.width === '68vw' ? 'margin-top 0.3s ease' : 'none';
+    });
+  })
 
 
   // Вешаю евенты на контейнеры перетаскивания текста
@@ -267,12 +283,6 @@ window.addEventListener('load', function () {
   })
   document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
     Element.addEventListener('click', guideBtnsClick);
-    // if (index === 0) {
-    //   Element.classList.toggle('nav-icon-active', true);
-    //   Array.from(Element.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
-    //     if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
-    //   })
-    // }
   });
   setInterval(() => {
     for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {
@@ -294,10 +304,11 @@ window.addEventListener('load', function () {
 
 
 function guideBtnsClick(e) {
+  const section = e.currentTarget.closest('.section');
   if (!e.currentTarget.classList.contains('nav-icon-active')) {
-    document.querySelector('.info-container').style.left = '';
-    document.querySelector('.section').style.width = '68vw';
-    document.querySelectorAll('.section .nav-icon').forEach((Element2) => {
+    section.querySelector('.info-container').style.left = '';
+    section.style.width = '68vw';
+    section.querySelectorAll('.nav-icon').forEach((Element2) => {
       Element2.classList.toggle('nav-icon-active', false);
       Array.from(Element2.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
         if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#7c7c7c');
@@ -308,20 +319,21 @@ function guideBtnsClick(e) {
       if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#f4f4f4');
     })
 
-    if (document.querySelector('.text-container-active')) {
-      document.querySelector('.text-container-active').classList.toggle('text-container-active', false);
+    if (section.querySelector('.text-container-active')) {
+      section.querySelector('.text-container-active').classList.toggle('text-container-active', false);
     }
     let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget) - 1;
-    let textConNew = document.querySelector('.info-container').children[newTextIndex];
+    let textConNew = section.querySelector('.info-container').children[newTextIndex];
     textConNew.classList.toggle('text-container-active', true);
-    document.querySelector('.info-container').children[0].style.marginTop = `-${(newTextIndex - 0) * textConNew.getBoundingClientRect().height}px`;
-    if (document.querySelector('.info-container').querySelector('.drop-item-active')) {
-      document.querySelector('.info-container').querySelector('.drop-item-active').classList.toggle('drop-item-active', false);
-      document.querySelector('.scenarion-buttons-container').style.visibility = 'hidden';
+    section.querySelector('.info-container').children[0].style.marginTop = `-${(newTextIndex - 0) * textConNew.getBoundingClientRect().height}px`;
+    if (section.querySelector('.info-container').querySelector('.drop-item-active')) {
+      section.querySelector('.info-container').querySelector('.drop-item-active').classList.toggle('drop-item-active', false);
+      section.querySelector('.scenarion-buttons-container').style.visibility = 'hidden';
     }
   } else {
-    document.querySelector('.section').style.width = '';
-    document.querySelector('.info-container').style.left = '-52vw';
+
+    section.style.width = section.closest('.tren-container') ? '6vw' : '';
+    section.querySelector('.info-container').style.left = '-52vw';
     e.currentTarget.classList.toggle('nav-icon-active', false);
     Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
       if (SvgElem.hasAttribute('fill')) SvgElem.setAttribute('fill', '#7c7c7c');
