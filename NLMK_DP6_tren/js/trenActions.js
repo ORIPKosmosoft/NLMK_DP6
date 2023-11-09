@@ -177,6 +177,8 @@ let tempActions = [
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     },
     {
+      scenarioText: 'Открыть клапан 029 на дымовую трубу2.',
+      sender: 'Система',
       action: {
         target2D: 'open_vn',
         window2D: {
@@ -189,6 +191,8 @@ let tempActions = [
       human: true,
     },
     {
+      scenarioText: 'Открыть клапан 029 на дымовую трубу3.',
+      sender: 'Система',
       action: {
         target2D: 'open_vn1',
       },

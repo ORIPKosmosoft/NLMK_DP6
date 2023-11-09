@@ -22,8 +22,8 @@ function startTren(Restart = false) {
   } else {
 
   }
-  takeStartingState(Restart);
   setTextScenario(devHelper.trenVals.scenario);
+  takeStartingState(Restart);
   if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human && devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human &&
     devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].startTime === 0) {
     devHelper.trenVals.waitingInput = true;
@@ -76,9 +76,7 @@ function trenTimeTick(timeStamp) {
           }
           if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
           if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
-          devHelper.trenVals.timers.actionTimeHelper = 0;
-          nextAction.passed = true;
-          devHelper.trenVals.waitingInput = false;
+          newActionStartHelper(nextAction);
         }
       }
       let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
@@ -98,10 +96,7 @@ function trenClickOnMesh(Mesh) {
   if (currentAction.action && currentAction.action.target3D === Mesh.name) {
     handleRotation(currentAction, Mesh);
     handlePosition(currentAction, Mesh);
-
-    devHelper.trenVals.timers.actionTimeHelper = 0;
-    currentAction.passed = true;
-    devHelper.trenVals.waitingInput = false;
+    newActionStartHelper(currentAction);
   } else {
     handleError(Mesh);
   }
@@ -137,9 +132,7 @@ function trenClickOnSvgElem(SvgElemHelper = undefined) {
             changeSvgElem(currentActonObject.action.window2D.elements[key]);
         }
       }
-      devHelper.trenVals.timers.actionTimeHelper = 0;
-      currentActonObject.passed = true;
-      devHelper.trenVals.waitingInput = false;
+      newActionStartHelper(currentActonObject);
     }
   }
 }
@@ -154,6 +147,11 @@ function trenFinish() {
 function takeStartingState(Restart = false) {
   devHelper.trenVals.timers.allTime = devHelper.trenVals.timers.allTimeHelper = devHelper.trenVals.timers.scenarioTimeHelper =
     devHelper.trenVals.timers.scenarioTime = devHelper.trenVals.timers.actionTime = devHelper.trenVals.timers.actionTimeHelper = 0;
+  Array.from(document.querySelectorAll('.box-scenario-text')).forEach(element => {
+    element.classList.toggle('current', false);
+    element.classList.toggle('passed', false);
+  })
+  document.querySelector('.box-scenario-text').classList.toggle('current', true);
   devHelper.trenVals.currentAction = 0;
   devHelper.trenVals.ended = false;
   devHelper.trenVals.waitingInput = true;
@@ -249,8 +247,6 @@ function takeStartingState(Restart = false) {
   }
 }
 
-
-
 function saveStart2DIF() {
   if (devHelper.startPos.IF2D.length === 0) {
     devHelper.svgVals.forEach((element, index) => {
@@ -260,6 +256,23 @@ function saveStart2DIF() {
       });
       devHelper.startPos.IF2D.push(...duplicates);
     })
+  }
+}
+
+function newActionStartHelper(Action) {
+  devHelper.trenVals.timers.actionTimeHelper = 0;
+  Action.passed = true;
+  devHelper.trenVals.waitingInput = false;
+
+  const currentElement = document.querySelector('.box-scenario-text.current');
+  if (currentElement) {
+    currentElement.classList.replace('current', 'passed');
+    const nextElement = currentElement.nextElementSibling;
+    if (nextElement && nextElement.classList.contains('box-scenario-text')) {
+      nextElement.classList.toggle('current', true);
+    }
+  } else {
+    document.querySelector('.box-scenario-text').classList.toggle('current', true);
   }
 }
 
@@ -909,9 +922,7 @@ document.getElementById('b_chat').addEventListener("mouseover", (e) => {
 
 // КЛИК рестарт  //  
 document.getElementById('b_restart').addEventListener("click", (e) => {
-  if (e.currentTarget.classList.contains('button-tren-active')) {
-    startTren(true);
-  }
+  startTren(true);
 });
 
 function disableGeneralView(state = true) {
@@ -1003,11 +1014,8 @@ function setTextScenario(numberScenario) {
     listItem.removeChild(listItem.lastElementChild);
   }
   tempActions[numberScenario].forEach(element => {
-    if (element.text !== undefined) {
-      createCustomElement("div", element.text, { "class": "box-scenario-text" }, listItem);
+    if (element.scenarioText !== undefined) {
+      createCustomElement("div", element.scenarioText, { "class": "box-scenario-text" }, listItem);
     }
   });
-
-
-
 }
