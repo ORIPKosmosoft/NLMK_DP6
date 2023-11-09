@@ -463,10 +463,9 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
         }
         function createSvgHelperButtons(Arr) {
           let mainContainer = createMainHelperContainer();
-          let currentActonObject = findLast(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions, action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-          // let currentActonObject = findLast(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions, action => (action.passed === true && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+          let currentActonObject = findLast(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions, action => (action.passed === true && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
           Arr.forEach((element) => {
-            if (currentActonObject && currentActonObject.action.helper2D) {
+            if (currentActonObject && currentActonObject.hasOwnProperty('action') && currentActonObject.action.hasOwnProperty('helper2D')) {
               currentActonObject.action.helper2D.forEach(element2 => {
                 if (element.id === element2.id) {
                   if (element2.x) element.x = element2.x;

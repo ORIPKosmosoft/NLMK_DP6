@@ -5,7 +5,6 @@
 */
 
 document.addEventListener("DOMContentLoaded", domLoaded);
-
 function domLoaded() {
   document.querySelector('.tren-container').addEventListener('transitionend', (e) => {
     if (e.propertyName === 'opacity') {
@@ -90,6 +89,8 @@ function domLoaded() {
   })
 
   document.querySelectorAll('.drop-title').forEach((Element) => {
+    // todo сделать раскрывающиеся списки
+    Element.querySelector('img').classList.toggle('arrow-text-active', true);
     Element.addEventListener('click', (e) => {
       e.currentTarget.querySelector('img').classList.toggle('arrow-text-active');
       e.currentTarget.nextElementSibling.children[0].style.marginTop = e.currentTarget.querySelector('img').classList.contains('arrow-text-active') ? '1vh' :
@@ -261,7 +262,8 @@ function setDragEvents(elem) {
 
 window.addEventListener('load', function () {
   document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
-    Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
+    // Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
+    Element.style.marginTop = `1vh`;
     Element.classList.remove('first-drop');
   })
   document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
