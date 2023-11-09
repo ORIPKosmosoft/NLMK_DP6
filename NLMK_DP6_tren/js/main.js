@@ -89,7 +89,6 @@ function domLoaded() {
   })
 
   document.querySelectorAll('.drop-title').forEach((Element) => {
-    // todo сделать раскрывающиеся списки
     Element.querySelector('img').classList.toggle('arrow-text-active', true);
     Element.addEventListener('click', (e) => {
       e.currentTarget.querySelector('img').classList.toggle('arrow-text-active');
@@ -315,21 +314,14 @@ function guideBtnsClick(e) {
     let newTextIndex = Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget) - 1;
     let textConNew = document.querySelector('.info-container').children[newTextIndex];
     textConNew.classList.toggle('text-container-active', true);
+    console.log(textConNew.parentElement.getBoundingClientRect().height);
     document.querySelector('.info-container').children[0].style.marginTop = `-${(newTextIndex - 0) * textConNew.getBoundingClientRect().height}px`;
-
-    if (document.querySelector('.arrow-text-active')) {
-      document.querySelectorAll('.arrow-text-active').forEach((Element) => {
-        Element.parentElement.dispatchEvent(new Event('click'));
-      })
-    }
-
     if (document.querySelector('.info-container').querySelector('.drop-item-active')) {
       document.querySelector('.info-container').querySelector('.drop-item-active').classList.toggle('drop-item-active', false);
       document.querySelector('.scenarion-buttons-container').style.visibility = 'hidden';
     }
   } else {
     document.querySelector('.section').style.width = '';
-    // document.querySelector('.info-container').style.left = '20vw';
     document.querySelector('.info-container').style.left = '-52vw';
     e.currentTarget.classList.toggle('nav-icon-active', false);
     Array.from(e.currentTarget.querySelector('object').contentDocument.querySelector('svg').children).forEach((SvgElem) => {
@@ -410,8 +402,6 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
     selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
     radioContainer = selfcheckContainer.querySelector('.selfcheck-radio-container');
     radioButtSelectIndex = Array.from(radioContainer.querySelectorAll('.radio-elem')).indexOf(radioContainer.querySelector('.active-radio'));
-    // textSelectRadioButt = selfcheckContainer.querySelector('.active-radio').querySelector('span').textContent;
-
     if (elem.querySelector('span').textContent === 'Подтвердить') {
       radioContainer.querySelectorAll('.active-radio').forEach((Element) => {
         for (let i = 0; i < selfcheckTrueResults[selfcheckcontainerIndex].length; i++) {
@@ -428,7 +418,6 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       });
 
       if (selfcheckTrueResults[selfcheckcontainerIndex].length != radioContainer.querySelectorAll('.correct-answer').length || radioContainer.querySelector('.wrong-answer') != null) {
-        // radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', true);
         selfcheckTrueResults[selfcheckcontainerIndex].forEach((Element) => {
           selfcheckContainer.querySelectorAll('.radio-elem').forEach((elem) => {
             if (elem.querySelector('span').textContent === Element) {
@@ -444,27 +433,6 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
         selfcheckContainer.classList.toggle('block-selfcheck-container', true);
         elem.classList.toggle('disabled-button', true);
       }
-
-      // if (textSelectRadioButt == selfcheckTrueResults[selfcheckcontainerIndex]) {
-      //   radioContainer.querySelector('.active-radio').classList.toggle('correct-answer', true);
-      //   selfcheckContainer.classList.toggle('block-selfcheck-container', true);
-      //   elem.classList.toggle('disabled-button', true);
-      //   radioContainer.querySelectorAll('.radio-elem').forEach((Element) => {
-      //     if (!Element.classList.contains('active-radio')) {
-      //       Element.classList.toggle('radio-elem-disabled', true);
-      //     }
-      //   });
-      // } else {
-      //   radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', true);
-      //   selfcheckContainer.classList.toggle('block-selfcheck-container', true);
-      //   elem.querySelector('span').textContent = 'Повторить';
-      //   radioContainer.querySelectorAll('.radio-elem').forEach((Element) => {
-      //     if (!Element.classList.contains('active-radio')) {
-      //       Element.classList.toggle('radio-elem-disabled', true);
-      //     }
-      //   });
-      // }
-
     } else if (elem.querySelector('span').textContent === 'Повторить') {
       radioContainer.querySelectorAll('.correct-answer').forEach((Element) => {
         Element.classList.toggle('correct-answer', false);
@@ -472,16 +440,9 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       radioContainer.querySelectorAll('.wrong-answer').forEach((Element) => {
         Element.classList.toggle('wrong-answer', false);
       });
-      // radioContainer.querySelector('.active-radio').classList.toggle('wrong-answer', false);
-      // radioContainer.querySelector('.active-radio').classList.toggle('active-radio', false);
       selfcheckContainer.classList.toggle('block-selfcheck-container', false);
       elem.querySelector('span').textContent = 'Подтвердить';
       elem.classList.toggle('disabled-button', true);
-      // radioContainer.querySelectorAll('.radio-elem').forEach((Element) => {
-      //   if (!Element.classList.contains('active-radio')) {
-      //     Element.classList.toggle('radio-elem-disabled', false);
-      //   }
-      // });
     }
   }
 
@@ -534,7 +495,6 @@ function reviveArray(min) {
         elem.classList.toggle('correct-dragDrop', false);
       });
     } else {
-      // Element.querySelector('.correct-answer').classList.toggle('correct-answer', false);
       Element.querySelectorAll('.correct-answer').forEach((elem) => {
         elem.classList.toggle('correct-answer', false);
       });
@@ -558,8 +518,6 @@ function navIconClick(randomContainer, min) {
     document.querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', false);
     document.querySelector('.selfcheck-confirm-button').classList.toggle('active-button', true);
   }
-  // elem.classList.toggle('disabled-button', false);
-  // elem.classList.toggle('active-button', true);
   devHelper.testVals.previousContainer = randomContainer;
 }
 
