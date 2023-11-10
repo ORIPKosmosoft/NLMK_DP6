@@ -12,6 +12,12 @@ function loadTrenActions() {
     if (tempActions[Index]) {
       tempActions[Index].forEach(action => action.passed = false);
       tempObjTren.actions = tempActions[Index];
+      tempObjTren.actions.forEach(action => {
+        if (action.audio) {
+          if (devHelper.audio.find(element => element.name === action.audio) === undefined) 
+            devHelper.audio.push({ name: action.audio, element: new Audio(`/media/audio/${action.audio}.mp3`) });
+        }
+      })
     }
   })
 }
@@ -76,6 +82,7 @@ function trenTimeTick(timeStamp) {
           }
           if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
           if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
+          if (nextAction.audio) playAudio(nextAction.audio);
           newActionStartHelper(nextAction);
         }
       }
@@ -89,17 +96,20 @@ function trenTimeTick(timeStamp) {
 
 function trenClickOnMesh(Mesh) {
   if (!devHelper.trenVals.waitingInput) return;
-
   const currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario]
     .actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-
   if (currentAction.action && currentAction.action.target3D === Mesh.name) {
     handleRotation(currentAction, Mesh);
     handlePosition(currentAction, Mesh);
+    if (currentAction.audio) playAudio(currentAction.audio);
     newActionStartHelper(currentAction);
-  } else {
-    handleError(Mesh);
-  }
+  } else handleError(Mesh);
+}
+
+function playAudio(AudioName) {
+  devHelper.audio.forEach(audio => {
+    if (audio.name === AudioName) audio.element.play();
+  });
 }
 
 function handleRotation(currentAction, Mesh) {
@@ -132,6 +142,7 @@ function trenClickOnSvgElem(SvgElemHelper = undefined) {
             changeSvgElem(currentActonObject.action.window2D.elements[key]);
         }
       }
+      if (currentActonObject.audio) playAudio(currentActonObject.audio);
       newActionStartHelper(currentActonObject);
     }
   }
@@ -151,7 +162,7 @@ function takeStartingState(Restart = false) {
     element.classList.toggle('current', false);
     element.classList.toggle('passed', false);
   })
-  if(document.querySelector('.box-scenario-text'))
+  if (document.querySelector('.box-scenario-text'))
     document.querySelector('.box-scenario-text').classList.toggle('current', true);
   devHelper.trenVals.currentAction = 0;
   devHelper.trenVals.ended = false;
@@ -273,8 +284,8 @@ function newActionStartHelper(Action) {
       nextElement.classList.toggle('current', true);
     }
   } else {
-    if(document.querySelector('.box-scenario-text'))
-     document.querySelector('.box-scenario-text').classList.toggle('current', true);
+    if (document.querySelector('.box-scenario-text'))
+      document.querySelector('.box-scenario-text').classList.toggle('current', true);
   }
 }
 
