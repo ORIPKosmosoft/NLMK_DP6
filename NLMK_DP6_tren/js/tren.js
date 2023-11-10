@@ -85,9 +85,13 @@ function trenTimeTick(timeStamp) {
             updateSvgTextures();
           }
           if (nextAction.action && nextAction.action.target3D) {
-            let mesh = devHelper.model3DVals.activeMeshs[devHelper.model3DVals.currentPosition].find(mesh => (mesh.name === nextAction.action.target3D));
+            let mesh = devHelper.model3DVals.activeMeshs.flat(Infinity).find(mesh => (mesh.name === nextAction.action.target3D));
             handleRotation(nextAction, mesh);
             handlePosition(nextAction, mesh);
+            if (nextAction.action.material) {
+              let tempMat = devHelper.model3DVals.scene.meshes.find(mesh => (mesh.name === nextAction.action.material)).material;
+              mesh.material = tempMat || (devHelper.dev.enable && console.warn(`material ${nextAction.action.material} not found`));
+            }
           }
           if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
           if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
@@ -136,7 +140,7 @@ function handlePosition(currentAction, Mesh) {
 }
 
 function handleError(Mesh) {
-  if (devHelper.dev.enable === true) console.warn(`Клик на ${Mesh.name} в действии ${devHelper.trenVals.currentAction} неверный.`);
+  devHelper.dev.enable && console.warn(`Клик на ${Mesh.name} в действии ${devHelper.trenVals.currentAction} неверный.`);
   sendMessage("Ошибка", "Вы совершили неверное действие.");
 }
 
@@ -161,7 +165,7 @@ function trenFinish() {
   devHelper.trenVals.ended = true;
   if (devHelper.dev.enable === true && document.querySelector('.info-tren'))
     document.querySelector('.info-tren').innerHTML = `Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`;
-  if (devHelper.dev.enable === true) console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`);
+  devHelper.dev.enable && console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`);
 }
 
 function takeStartingState(Restart = false) {
@@ -261,7 +265,7 @@ function takeStartingState(Restart = false) {
           handleRotation(tempobj, mesh);
           handlePosition(tempobj, mesh);
         } else {
-          if (devHelper.dev.enable === true) console.warn(`Не найден объект ${element.name} в тренажёре.`);
+          devHelper.dev.enable && console.warn(`Не найден объект ${element.name} в тренажёре.`);
         }
       });
     }
@@ -295,8 +299,8 @@ function newActionStartHelper(Action) {
       }
     }
   } else {
-  //   if (document.querySelector('.box-scenario-text'))
-  //     document.querySelector('.box-scenario-text').classList.toggle('current', true);
+    //   if (document.querySelector('.box-scenario-text'))
+    //     document.querySelector('.box-scenario-text').classList.toggle('current', true);
   }
 }
 
