@@ -288,7 +288,6 @@ function newActionStartHelper(Action) {
   devHelper.trenVals.timers.actionTimeHelper = 0;
   Action.passed = true;
   devHelper.trenVals.waitingInput = false;
-  // let nextAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   const currentElement = document.querySelector('.box-scenario-text.current');
   if (currentElement) {
     if (Action.scenarioText && Action.scenarioText !== currentElement.innerHTML) {
