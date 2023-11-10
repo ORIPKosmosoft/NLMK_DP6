@@ -14,7 +14,7 @@ function loadTrenActions() {
       tempObjTren.actions = tempActions[Index];
       tempObjTren.actions.forEach(action => {
         if (action.audio) {
-          if (devHelper.audio.find(element => element.name === action.audio) === undefined) 
+          if (devHelper.audio.find(element => element.name === action.audio) === undefined)
             devHelper.audio.push({ name: action.audio, element: new Audio(`/media/audio/${action.audio}.mp3`) });
         }
       })
@@ -67,7 +67,16 @@ function trenTimeTick(timeStamp) {
             devHelper.trenVals.waitingInput = true;
           }
         } else {
-          if (nextAction.lifeTime) startTimerToStep(nextAction.lifeTime, false);
+          if (nextAction.lifeTime) {
+            if (nextAction.startTime === 0) {
+              setLifeTime(nextAction.lifeTime);
+              change3DTime(devHelper.trenVals.timers.lifeTime);
+              changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime, });
+              updateSvgTextures();
+              console.log();
+            } else startTimerToStep(nextAction.lifeTime, false);
+          }
+
           if (nextAction.action && nextAction.action.window2D) {
             for (let key in nextAction.action.window2D.elements) {
               if (nextAction.action.window2D.elements.hasOwnProperty(key))
@@ -275,17 +284,19 @@ function newActionStartHelper(Action) {
   devHelper.trenVals.timers.actionTimeHelper = 0;
   Action.passed = true;
   devHelper.trenVals.waitingInput = false;
-
+  // let nextAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   const currentElement = document.querySelector('.box-scenario-text.current');
   if (currentElement) {
-    currentElement.classList.replace('current', 'passed');
-    const nextElement = currentElement.nextElementSibling;
-    if (nextElement && nextElement.classList.contains('box-scenario-text')) {
-      nextElement.classList.toggle('current', true);
+    if (Action.scenarioText && Action.scenarioText !== currentElement.innerHTML) {
+      currentElement.classList.replace('current', 'passed');
+      const nextElement = currentElement.nextElementSibling;
+      if (nextElement && nextElement.classList.contains('box-scenario-text')) {
+        nextElement.classList.toggle('current', true);
+      }
     }
   } else {
-    if (document.querySelector('.box-scenario-text'))
-      document.querySelector('.box-scenario-text').classList.toggle('current', true);
+  //   if (document.querySelector('.box-scenario-text'))
+  //     document.querySelector('.box-scenario-text').classList.toggle('current', true);
   }
 }
 
@@ -674,10 +685,7 @@ function setLifeTime(time) {
     let counterStep = (finishDateTime - currentDateTime) / _step;
     timerInterval = setInterval(() => {
       if (_timeInteval === timePassed) {
-        //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
         onTimesUp();
-        // changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
-        // updateSvgTextures();
         return;
       }
       currentDateTime += counterStep;
@@ -685,7 +693,6 @@ function setLifeTime(time) {
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
-      // setTimeSvgScheme();                                                      // время на схемах
       timePassed += _stepInteval;
     }, _stepInteval);
   }
@@ -699,18 +706,12 @@ function setLifeTime(time) {
     let counterStep = (finishDateTime - currentDateTime) / _step;
     timerInterval = setInterval(() => {
       if (_timeInteval === timePassed) {
-        //setLifeTime(getMyTime(finishDateTime));   // FINAL TIME VIEW
         onTimesUp();
-        // changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
-        // updateSvgTextures();
         return;
       }
       currentDateTime += counterStep;
-      // counterDateTime -= counterStep;
       setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
-      // setCounterTime(String(getMyTime(new Date(msToTime(counterDateTime))))); // время таймера
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
-      // setTimeSvgScheme();                                                      // время на схемах
       timePassed += _stepInteval;
     }, _stepInteval);
   }
