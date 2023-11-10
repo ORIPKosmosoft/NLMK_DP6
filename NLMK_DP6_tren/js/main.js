@@ -410,13 +410,20 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
     radioContainer = selfcheckContainer.querySelector('.selfcheck-radio-container');
     radioButtSelectIndex = Array.from(radioContainer.querySelectorAll('.radio-elem')).indexOf(radioContainer.querySelector('.active-radio'));
     if (elem.querySelector('span').textContent === 'Подтвердить') {
+      let counts = {
+        error: 0,
+        correct: 0,
+      };
+      // ЗАКРАСИТЬ ВЫБРАНЫЕ ОТВЕТЫ
       radioContainer.querySelectorAll('.active-radio').forEach((Element) => {
-        for (let i = 0; i < selfcheckTrueResults[selfcheckcontainerIndex].length; i++) {
-          const element = selfcheckTrueResults[selfcheckcontainerIndex][i];
-          if (Element.querySelector('span').textContent === element) {
-            Element.classList.toggle('correct-answer', true);
-            Element.classList.toggle('active-radio', false);
-          }
+        let result = selfcheckTrueResults[selfcheckcontainerIndex].find((element) => element == Element.querySelector('span').textContent);
+        if (result == undefined) {
+          Element.classList.add('wrong-answer');
+          counts.error++;
+        }
+        else{
+          Element.classList.add('correct-answer');
+          counts.correct++;
         }
       });
       radioContainer.querySelectorAll('.active-radio').forEach((Element) => {
@@ -439,6 +446,7 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       } else {
         selfcheckContainer.classList.toggle('block-selfcheck-container', true);
         elem.classList.toggle('disabled-button', true);
+        console.log("ALL OK"); // NEXT VOPROS ? 
       }
     } else if (elem.querySelector('span').textContent === 'Повторить') {
       radioContainer.querySelectorAll('.correct-answer').forEach((Element) => {
