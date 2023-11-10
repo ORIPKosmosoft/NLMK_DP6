@@ -132,9 +132,9 @@ let tempActions = [
         // text: {}, // 3D 2D
       },
       // duration: 0.15,
+      lifeTime: '07:30:00',
       audio: 'Zvuk_knopok_na_telefone',
       duration: 0.1,
-      lifeTime: '07:30:00',
       startTime: 0, // seconds - абсолютное время сценария
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     },
