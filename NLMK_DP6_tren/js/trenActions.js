@@ -102,7 +102,11 @@ let tempActions = [
   // Первый сценарий  // MAIN ALL
   [ 
     
-    
+    {
+      lifeTime: '07:30:00',
+      audio: 'tts-1',
+      startTime: 0,
+    },
     ////--------------------------------1----------------------------------------
     //// Клик 29  НЕТ ДАННЫХ
     {
@@ -132,10 +136,9 @@ let tempActions = [
         // text: {}, // 3D 2D
       },
       // duration: 0.15,
+      audio: 'tts-2',
       lifeTime: '07:30:00',
-      audio: 'Zvuk_knopok_na_telefone',
-      duration: 0.1,
-      startTime: 0, // seconds - абсолютное время сценария
+      startTime: 0.1, // seconds - абсолютное время сценария
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     },
     // открыть
@@ -271,6 +274,7 @@ let tempActions = [
     {
       scenarioText: 'Закрыть клапан 038 на подогреватель газа.',
       sender: 'Система',
+      audio: 'tts-3',
       action: {
         target2D: 'kl038',
         window2D: {
@@ -446,6 +450,7 @@ let tempActions = [
     { 
       text: 'Клапан 038 на подогреватель газа закрыт.',
       sender: 'Система',
+      audio: 'tts-3',
       action:{
         window2D:{
           elements: []
@@ -469,6 +474,7 @@ let tempActions = [
     {
       scenarioText: 'Закрыть клапан 037 на подогреватель газа.',
       sender: 'Система',
+      audio: 'tts-4',
       action: {
         target2D: 'kl037',
         window2D: {
@@ -663,6 +669,7 @@ let tempActions = [
     {
       scenarioText: 'Закрыть клапан 007 на подогреватель воздуха.',
       sender: 'Система',
+      audio: 'tts-5',
       action: {
         target2D: 'kl007',
         window2D: {
@@ -717,6 +724,10 @@ let tempActions = [
     {  
         action: {
           target2D: 'open_vn1',
+          helper2D : [
+            { x: 67.5, y: 56, w: 1.5, h: 2.6, id: 'close_w1'},
+            { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
+          ]
         },
         startTime: 18,
         human: true,
@@ -738,7 +749,7 @@ let tempActions = [
         },
         helper2D : [
           { x: 67.5, y: 56, w: 1.5, h: 2.6, id: 'close_w1'},
-          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1
+          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
         startTime: 19,
@@ -760,7 +771,7 @@ let tempActions = [
         },
         helper2D : [
           { x: 67.5, y: 56, w: 1.5, h: 2.6, id: 'close_w1'},
-          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1
+          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
       startTime: 20,
@@ -781,7 +792,7 @@ let tempActions = [
         },
         helper2D : [
           { x: 67.5, y: 56, w: 1.5, h: 2.6, id: 'close_w1'},
-          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1
+          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
       startTime: 21,
@@ -802,7 +813,7 @@ let tempActions = [
         },
         helper2D : [
           { x: 67.5, y: 56, w: 1.5, h: 2.6, id: 'close_w1'},
-          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1
+          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
       startTime: 22,
@@ -828,7 +839,7 @@ let tempActions = [
         },
         helper2D : [
           { x: 67.5, y: 56, w: 1.5, h: 2.6, id: 'close_w1'},
-          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1
+          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
       startTime: 23,
@@ -837,6 +848,12 @@ let tempActions = [
     { 
       text: 'Клапан 007 на подогреватель газа закрыт.',
       sender: 'Система',
+      action: {
+        helper2D : [
+          { x: 67.5, y: 56, w: 1.5, h: 2.6, id: 'close_w1'},
+          { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn'},     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
+        ]
+      },
       startTime: 23.2,
     },
     // закрыть окно ВН
@@ -854,6 +871,7 @@ let tempActions = [
     {
       scenarioText: 'Закрыть клапан 028 на подогреватель воздуха.',
       sender: 'Система',
+      audio: 'tts-6',
       action: {
         target2D: 'kl028',
         window2D: {
@@ -1042,6 +1060,7 @@ let tempActions = [
     },
     { 
       text: 'Подогреватели воздуха и газа отделены.',
+      audio: 'tts-7',
       sender: 'Система',
       startTime: 29.4,
     },
@@ -1054,28 +1073,14 @@ let tempActions = [
       human: true,
     },
 
-
-    // 1.1 
+    ////--------------------------------0----------------------------------------
+    {
+      scenarioText: 'Газовщик сообщает остановку доменной печи.',
+      sender: 'Система',
+      audio: 'tts-8',
+      startTime: 31,
+    },
     ////--------------------------------1----------------------------------------
-    // {
-    //   scenarioText: '2. Взять в руку трубку и нажать на кнопку с надписью: «Насосный цех». После разговора положить трубку.',
-    //   sender: 'Газовщик',
-    //   action: {
-    //     target3D: 'PhoneButton006',
-    //     position: { y: 0.0144 }, 
-    //   },
-    //   duration: 0.15,
-    //   startTime: 1,
-    // },
-    // {
-    //   action: {
-    //     target3D: 'PhoneButton006',
-    //     position: { y: 0.015 }, 
-    //   },
-    //   duration: 0.15,
-    //   startTime: 1.15,
-    // },
-
     {
       scenarioText: '1. Взять в руку трубку и нажать на кнопку с надписью: «Газовый цех». После разговора положить трубку.',
       sender: 'Газовщик',
@@ -1089,11 +1094,11 @@ let tempActions = [
       human: true,
     },
     {
+      audio: 'tts-9',
       action: {
         target3D: 'PhoneButton001',
         position: { y: 0.015 }, 
       },
-<<<<<<< HEAD
       duration: 0.15,
       startTime: 33.15,
     },
@@ -1108,12 +1113,9 @@ let tempActions = [
       duration: 0.15,
       startTime: 34,
       human: true,
-=======
-      duration: 0.1,
-      startTime: 0.1,
->>>>>>> Main
     },
     {
+      audio: 'tts-9',
       action: {
         target3D: 'PhoneButton006',
         position: { y: 0.015 }, 
@@ -1134,6 +1136,7 @@ let tempActions = [
       human: true,
     },
     {
+      audio: 'tts-9',
       action: {
         target3D: 'PhoneButton017',
         position: { y: 0.015 }, 
@@ -1164,6 +1167,7 @@ let tempActions = [
     // 1.2    // DP
     ////--------------------------------1---------------------------------------- 
     {
+      audio: 'tts-10',
       scenarioText: 'произошла остановка вдувания ПУТ. На общей схеме ДП показать, что отсутствует давление в разделе ПУТ в ячейках Fобщ, т/ч – «0» и Fтек, т/ч «0.0»',
       sender: 'Система',
       action: {
@@ -1174,25 +1178,13 @@ let tempActions = [
           ]
         }
       },
-<<<<<<< HEAD
-      lifeTime: '08:00:00',
+      
       startTime: 37,
-=======
-      audio: 'Zvuk_knopok_na_telefone',
-      duration: 0.1,
-      startTime: 1, // seconds - абсолютное время сценария
-      human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     },
     {
-      action: {
-        target3D: 'PhoneButton000',
-        position: { y: 0.015 }, // 3d 2d
-      },
-      duration: 0.1,
-      startTime: 1.1,
->>>>>>> Main
+      audio: 'tts-11',
+      lifeTime: '08:00:00',
     },
-    
     ////--------------------------------2----------------------------------------
     {
       scenarioText: 'Поднять природный газ до 37000',
@@ -1341,7 +1333,7 @@ let tempActions = [
     },
     ////--------------------------------3.1
     {
-      scenarioText: 'нажимаем на значение у ТТГ 22000 на общей схеме',
+      scenarioText: 'нажимаем на значение у ТТГ 22000 на общей схеме. Появляется окошко и вводим значение 2200 вручную. ',
       sender: 'Система',
       action: {
         target2D: 't_r_5',
