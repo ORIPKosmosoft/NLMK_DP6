@@ -70,6 +70,7 @@ const devHelper = {
     IF2D: [],
     IF3D: [],
   },
+  audio: [],
   //---------------------------
   // Сергей
   testVals: {
@@ -107,7 +108,8 @@ let tempActions = [
         target3D: 'PhoneButton001',
         position: { y: 0.0144}, // 3d 2d 0.0144
       },
-      duration: 0.15,
+      audio: 'Zvuk_knopok_na_telefone',
+      duration: 0.1,
       startTime: 0, // seconds - абсолютное время сценария
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     },
@@ -116,8 +118,8 @@ let tempActions = [
         target3D: 'PhoneButton001',
         position: { y: 0.015 }, // 3d 2d
       },
-      duration: 0.15,
-      startTime: 0.15,
+      duration: 0.1,
+      startTime: 0.1,
     },
     {
       sender: 'Система',
@@ -126,7 +128,8 @@ let tempActions = [
         target3D: 'PhoneButton000',
         position: { y: 0.0144 }, // 3d 2d 0.0144
       },
-      duration: 0.15,
+      audio: 'Zvuk_knopok_na_telefone',
+      duration: 0.1,
       startTime: 1, // seconds - абсолютное время сценария
       human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
     },
@@ -135,8 +138,8 @@ let tempActions = [
         target3D: 'PhoneButton000',
         position: { y: 0.015 }, // 3d 2d
       },
-      duration: 0.15,
-      startTime: 1.15,
+      duration: 0.1,
+      startTime: 1.1,
     },
     
     // {
