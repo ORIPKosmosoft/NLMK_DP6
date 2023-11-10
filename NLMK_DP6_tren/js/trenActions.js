@@ -101,13 +101,13 @@ const timeDiff = 0;
 let tempActions = [
   // Первый сценарий  // MAIN ALL
   [
-    {
-      action: {
-        target3D: 'PhoneButton001',
-        material: 'PhoneButton000',
-      },
-      startTime: 0,
-    },
+    // {
+    //   action: {
+    //     target3D: 'PhoneButton001',
+    //     material: 'PhoneButton000',
+    //   },
+    //   startTime: 0,
+    // },
     {
       lifeTime: '07:30:00',
       audio: 'tts-1',
