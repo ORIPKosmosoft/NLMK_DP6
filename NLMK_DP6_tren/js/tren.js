@@ -151,7 +151,8 @@ function takeStartingState(Restart = false) {
     element.classList.toggle('current', false);
     element.classList.toggle('passed', false);
   })
-  document.querySelector('.box-scenario-text').classList.toggle('current', true);
+  if(document.querySelector('.box-scenario-text'))
+    document.querySelector('.box-scenario-text').classList.toggle('current', true);
   devHelper.trenVals.currentAction = 0;
   devHelper.trenVals.ended = false;
   devHelper.trenVals.waitingInput = true;
@@ -272,7 +273,8 @@ function newActionStartHelper(Action) {
       nextElement.classList.toggle('current', true);
     }
   } else {
-    document.querySelector('.box-scenario-text').classList.toggle('current', true);
+    if(document.querySelector('.box-scenario-text'))
+     document.querySelector('.box-scenario-text').classList.toggle('current', true);
   }
 }
 

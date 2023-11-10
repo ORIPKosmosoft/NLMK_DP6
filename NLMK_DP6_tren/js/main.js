@@ -2,14 +2,10 @@
 ----------------------------------------------------
 Сделать ресайзер для 2Д
 ----------------------------------------------------
-//TODO Сделать копию section
-Чтобы на 3Д показывать
-----------------------------------------------------
 */
 
 document.addEventListener("DOMContentLoaded", domLoaded);
 function domLoaded() {
-
   let sectionCopy = document.querySelector('.section').cloneNode(true);
   sectionCopy.classList.toggle('section-copy', true);
   sectionCopy.querySelector('.nav-bar').style.width = '6vw';
@@ -36,8 +32,8 @@ function domLoaded() {
   })
 
   function removeStartScreen() {
-    document.querySelector('.header').style.top = -document.querySelector('.header').getBoundingClientRect().bottom - 10 + 'px';
-    document.querySelector('.section').style.left = -document.querySelector('.section').getBoundingClientRect().width * 1.1 + 'px';
+    document.querySelector('.header').style.top = ConvertPxToVh(-document.querySelector('.header').getBoundingClientRect().bottom - 10) + 'vh';
+    document.querySelector('.section').style.left = ConvertPxToVw(-document.querySelector('.section').getBoundingClientRect().width * 1.1) + 'vw';
   }
   function revialTrenScreen() {
     document.querySelector('.tren-container').style.visibility = 'visible';
@@ -163,7 +159,7 @@ function domLoaded() {
   });
 
   // При переходе на вкладку тесты, появляется случайный вопрос
-  document.querySelectorAll('.nav-icon')[document.querySelectorAll('.nav-icon').length - 1].addEventListener('mouseup', (e) => {
+  document.querySelector('.section').querySelectorAll('.nav-icon')[document.querySelector('.section').querySelectorAll('.nav-icon').length - 1].addEventListener('mouseup', (e) => {
     if (!e.currentTarget.classList.contains('test-opened')) {
       glavTestFun(e.currentTarget.classList[0], e.currentTarget);
       e.currentTarget.classList.toggle('test-opened', true);
@@ -281,7 +277,8 @@ window.addEventListener('load', function () {
     Element.style.marginTop = `1vh`;
     Element.classList.remove('first-drop');
   })
-  document.querySelectorAll('.section .nav-icon').forEach((Element, index) => {
+  
+  document.querySelectorAll('.nav-icon').forEach((Element) => {
     Element.addEventListener('click', guideBtnsClick);
   });
   setInterval(() => {
@@ -331,7 +328,6 @@ function guideBtnsClick(e) {
       section.querySelector('.scenarion-buttons-container').style.visibility = 'hidden';
     }
   } else {
-
     section.style.width = section.closest('.tren-container') ? '6vw' : '';
     section.querySelector('.info-container').style.left = '-52vw';
     e.currentTarget.classList.toggle('nav-icon-active', false);
