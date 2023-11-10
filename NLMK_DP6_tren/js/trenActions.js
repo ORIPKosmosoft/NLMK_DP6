@@ -100,6 +100,7 @@ const devHelper = {
 let tempActions = [
   // Первый сценарий  // MAIN ALL
   [ 
+    
     /*
     ////--------------------------------1----------------------------------------
     //// Клик 29  НЕТ ДАННЫХ
@@ -1052,25 +1053,64 @@ let tempActions = [
 
 */
     // 1.1 
-    ////--------------------------------1---------------------------------------- 
+    ////--------------------------------1----------------------------------------
+    // {
+    //   scenarioText: '2. Взять в руку трубку и нажать на кнопку с надписью: «Насосный цех». После разговора положить трубку.',
+    //   sender: 'Газовщик',
+    //   action: {
+    //     target3D: 'PhoneButton006',
+    //     position: { y: 0.0144 }, 
+    //   },
+    //   duration: 0.15,
+    //   startTime: 1,
+    // },
+    // {
+    //   action: {
+    //     target3D: 'PhoneButton006',
+    //     position: { y: 0.015 }, 
+    //   },
+    //   duration: 0.15,
+    //   startTime: 1.15,
+    // },
+
     {
       scenarioText: '1. Взять в руку трубку и нажать на кнопку с надписью: «Газовый цех». После разговора положить трубку.',
       sender: 'Газовщик',
       action: {
         target3D: 'PhoneButton001',
         position: { y: 0.0144 }, 
-        rotation: {},
       },
       duration: 0.15,
       lifeTime: '07:45:00',
-      startTime: 1,
+      startTime: 2,
       human: true,
     },
     {
       action: {
         target3D: 'PhoneButton001',
         position: { y: 0.015 }, 
-        rotation: {},
+      },
+      duration: 0.15,
+      startTime: 2.15,
+    },
+
+
+    {
+      scenarioText: '1. Взять в руку трубку и нажать на кнопку с надписью: «Газовый цех». После разговора положить трубку.',
+      sender: 'Газовщик',
+      action: {
+        target3D: 'PhoneButton001',
+        position: { y: 0.0144 }, 
+      },
+      duration: 0.15,
+      lifeTime: '07:45:00',
+      startTime: 33,
+      human: true,
+    },
+    {
+      action: {
+        target3D: 'PhoneButton001',
+        position: { y: 0.015 }, 
       },
       duration: 0.15,
       startTime: 33.15,
@@ -1082,7 +1122,6 @@ let tempActions = [
       action: {
         target3D: 'PhoneButton006',
         position: { y: 0.0144 }, 
-        rotation: {},
       },
       duration: 0.15,
       startTime: 34,
@@ -1091,7 +1130,6 @@ let tempActions = [
       action: {
         target3D: 'PhoneButton006',
         position: { y: 0.015 }, 
-        rotation: {},
       },
       duration: 0.15,
       startTime: 34.15,
@@ -1103,7 +1141,6 @@ let tempActions = [
       action: {
         target3D: 'PhoneButton0020',
         position: { y: 0.0144 }, 
-        rotation: {},
       },
       duration: 0.15,
       startTime: 35,
@@ -1112,7 +1149,6 @@ let tempActions = [
       action: {
         target3D: 'PhoneButton0020',
         position: { y: 0.015 }, 
-        rotation: {},
       },
       duration: 0.15,
       startTime: 35.15,
@@ -1124,7 +1160,6 @@ let tempActions = [
       action: {
         target3D: 'PhoneButton0017',
         position: { y: 0.0144 }, 
-        rotation: {},
       },
       duration: 0.15,
       startTime: 36,
@@ -1133,7 +1168,6 @@ let tempActions = [
       action: {
         target3D: 'PhoneButton0017',
         position: { y: 0.015 }, 
-        rotation: {},
       },
       duration: 0.15,
       startTime: 36.15,
