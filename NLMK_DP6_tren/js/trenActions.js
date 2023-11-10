@@ -87,7 +87,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: true,
+    enable: false,
     perfomance: undefined,
   },
 };
@@ -101,7 +101,6 @@ const devHelper = {
 let tempActions = [
   // Первый сценарий  // MAIN ALL
   [ 
-    
     {
       lifeTime: '07:30:00',
       audio: 'tts-1',
