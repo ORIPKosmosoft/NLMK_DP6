@@ -101,7 +101,7 @@ let tempActions = [
   // Первый сценарий  // MAIN ALL
   [ 
     
-    /*
+    
     ////--------------------------------1----------------------------------------
     //// Клик 29  НЕТ ДАННЫХ
     {
@@ -1051,7 +1051,7 @@ let tempActions = [
       human: true,
     },
 
-*/
+
     // 1.1 
     ////--------------------------------1----------------------------------------
     // {
@@ -1072,28 +1072,6 @@ let tempActions = [
     //   duration: 0.15,
     //   startTime: 1.15,
     // },
-
-    {
-      scenarioText: '1. Взять в руку трубку и нажать на кнопку с надписью: «Газовый цех». После разговора положить трубку.',
-      sender: 'Газовщик',
-      action: {
-        target3D: 'PhoneButton001',
-        position: { y: 0.0144 }, 
-      },
-      duration: 0.15,
-      lifeTime: '07:45:00',
-      startTime: 2,
-      human: true,
-    },
-    {
-      action: {
-        target3D: 'PhoneButton001',
-        position: { y: 0.015 }, 
-      },
-      duration: 0.15,
-      startTime: 2.15,
-    },
-
 
     {
       scenarioText: '1. Взять в руку трубку и нажать на кнопку с надписью: «Газовый цех». После разговора положить трубку.',
@@ -1125,6 +1103,7 @@ let tempActions = [
       },
       duration: 0.15,
       startTime: 34,
+      human: true,
     },
     {
       action: {
@@ -1139,15 +1118,16 @@ let tempActions = [
       scenarioText: '3. Взять в руку трубку и нажать на кнопку с надписью: «Кислородный цех». После разговора положить трубку.',
       sender: 'Газовщик',
       action: {
-        target3D: 'PhoneButton0020',
+        target3D: 'PhoneButton017',
         position: { y: 0.0144 }, 
       },
       duration: 0.15,
       startTime: 35,
+      human: true,
     },
     {
       action: {
-        target3D: 'PhoneButton0020',
+        target3D: 'PhoneButton017',
         position: { y: 0.015 }, 
       },
       duration: 0.15,
@@ -1158,15 +1138,16 @@ let tempActions = [
       scenarioText: '4. Взять в руку трубку и нажать на кнопку с надписью: «ЭВС». После разговора положить трубку.',
       sender: 'Газовщик',
       action: {
-        target3D: 'PhoneButton0017',
+        target3D: 'PhoneButton020',
         position: { y: 0.0144 }, 
       },
       duration: 0.15,
       startTime: 36,
+      human: true,
     },
     {
       action: {
-        target3D: 'PhoneButton0017',
+        target3D: 'PhoneButton020',
         position: { y: 0.015 }, 
       },
       duration: 0.15,
@@ -1341,6 +1322,11 @@ let tempActions = [
       sender: 'Система',
       action: {
         target2D: 't_r_5',
+        window2D: {
+          elements: [
+            { name: 'vz_number', text: '0' },
+          ]
+        },
       },
       startTime: 40.4,
       human: true, 
@@ -1933,7 +1919,7 @@ let tempActions = [
    
   
   // 1.4 сценарий
-  ////--------------------------------1---------------------------------------- 
+  ////--------------------------------1---------------------------------------- РАЦИЯ
     {
       scenarioText: '1. Подойти к рации и прожать кнопку «Литейный фурменный поддоменник», когда загорится красный индикатор, то сообщить голосом действия. После выполнения отпустить прожатие кнопки.',
       sender: 'Газовщик',
@@ -1944,6 +1930,7 @@ let tempActions = [
       },
       lifeTime: '08:45:00',
       startTime: 76,
+      human: true,
     },
     ////--------------------------------2---------------------------------------- 
     {
@@ -1956,6 +1943,7 @@ let tempActions = [
       },
 
       startTime: 77,
+      human: true,
     },
     ////--------------------------------3---------------------------------------- 
     {
@@ -1968,6 +1956,7 @@ let tempActions = [
       },
 
       startTime: 78,
+      human: true,
     },
     ////--------------------------------4---------------------------------------- 
     {
@@ -1980,6 +1969,7 @@ let tempActions = [
       },
 
       startTime: 79,
+      human: true,
     },
     ////--------------------------------5---------------------------------------- 
     {
@@ -2004,6 +1994,7 @@ let tempActions = [
       },
 
       startTime: 81,
+      human: true,
     },
     ////--------------------------------7---------------------------------------- 
     {
@@ -2016,6 +2007,7 @@ let tempActions = [
       },
 
       startTime: 82,
+      human: true,
     },
 
 
@@ -2031,6 +2023,7 @@ let tempActions = [
       },
       lifeTime: '09:00:00',
       startTime: 83,
+      human: true,
     },
     ////--------------------------------2---------------------------------------- 
     {

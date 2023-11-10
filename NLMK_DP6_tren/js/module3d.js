@@ -174,7 +174,20 @@ window.addEventListener('load', function () {
               meshOptimization(box);
               makeActiveMesh(box, 6);
             }
-          } else if (Mesh.name && Mesh.name.indexOf('PhoneButton') !== -1) {
+          } /*else if (Mesh.name && Mesh.name === 'Telephone') {
+            if (!Mesh.subMeshes) {
+              var box = BABYLON.MeshBuilder.CreateBox("Telephone_highlight", { size: 1 }, Scene);
+              box.position = new BABYLON.Vector3(0.021, 0.951, 0.11);
+              box.scaling = new BABYLON.Vector3(0.300, 0.07, 0.25);
+              box.rotation.y = BABYLON.Tools.ToRadians(339.7);
+              const lightMat = new BABYLON.StandardMaterial("lightMat");
+              lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
+              lightMat.alpha = 0;
+              box.material = lightMat;
+              meshOptimization(box);
+              makeActiveMesh(box, 6);
+            }
+          }*/ else if (Mesh.name && Mesh.name.indexOf('PhoneButton') !== -1) {
             makeActiveMesh(Mesh, { name: Mesh.name, posIndex: 6 });
           } else if (Mesh.name && Mesh.name === 'Display_flat002') {
             makeActiveMesh(Mesh, 1);
