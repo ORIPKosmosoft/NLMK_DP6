@@ -1,5 +1,16 @@
 /*                TODO
 ----------------------------------------------------
+Создать стили для текста концетрации
+----------------------------------------------------
+Создание эффекта концетрации
+ - в экшене должен быть массив ключ concetration: []
+ - в массиве должны быть объекты {text: '', w: 0, h: 0, x: 0, y: 0}
+ - на основании этих объектов будут создаваться элементы concentration-hole и concentration-line
+ - createConcentrationElement(text, w, h, x, y);
+   - createConcetarationHole(x, y, w, h);
+   - createConcentrationLine(x, y, w, h);
+   - createConcentrationText(text, x, y, w, h);
+ - закодить появление/исчезание Concentration
 ----------------------------------------------------
 */
 function loadTrenActions() {
