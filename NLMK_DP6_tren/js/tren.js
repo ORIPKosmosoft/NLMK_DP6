@@ -3,14 +3,8 @@
 Создать стили для текста концетрации
 ----------------------------------------------------
 Создание эффекта концетрации
- - в экшене должен быть массив ключ concetration: []
- - в массиве должны быть объекты {text: '', w: 0, h: 0, x: 0, y: 0}
- - на основании этих объектов будут создаваться элементы concentration-hole и concentration-line
- - createConcentrationElement(text, w, h, x, y);
-   - createConcetarationHole(x, y, w, h);
-   - createConcentrationLine(x, y, w, h);
-   - createConcentrationText(text, x, y, w, h);
- - закодить появление/исчезание Concentration
+ текст центровать по центру дыры
+
 ----------------------------------------------------
 */
 function loadTrenActions() {
@@ -84,10 +78,8 @@ function trenTimeTick(timeStamp) {
               change3DTime(devHelper.trenVals.timers.lifeTime);
               changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime, });
               updateSvgTextures();
-              console.log();
             } else startTimerToStep(nextAction.lifeTime, false);
           }
-
           if (nextAction.action && nextAction.action.window2D) {
             for (let key in nextAction.action.window2D.elements) {
               if (nextAction.action.window2D.elements.hasOwnProperty(key))
@@ -313,6 +305,92 @@ function newActionStartHelper(Action) {
     //     document.querySelector('.box-scenario-text').classList.toggle('current', true);
   }
 }
+
+function createConcentrationEffectCondition(Arr) {
+  if (Arr[0].position.indexOf(devHelper.model3DVals.currentPosition) === -1) {
+    console.log('Перейти на позицию' + Arr[0].position);
+  } else {
+    if (Arr[0].scheme) {
+      let activeMonitor = devHelper.model3DVals.svgDisplays.meshs.find(m => m.positionIndex === devHelper.model3DVals.currentPosition);
+      const isScheme = activeMonitor.svgArr.some(obj => obj.name === Arr[0].scheme[0]);
+      if (isScheme) {
+        createConcentrationEffect(Arr);
+      } else {
+        console.log('Включить нужную схему', Arr[0].scheme[0]);
+      }
+    }
+  }
+}
+
+function createConcentrationEffect(Arr) {
+  let concentrationDiv = document.querySelector('.concentration');
+  const holeContainer = concentrationDiv?.querySelector('.hole-container');
+  const lineContainer = concentrationDiv?.querySelector('.line-container');
+  if (!concentrationDiv) {
+    concentrationDiv = createCustomElement('div', '', { 'class': 'concentration' });
+    document.querySelector('.tren-container').append(concentrationDiv);
+    concentrationDiv.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'opacity' && e.currentTarget.style.opacity === '1') {
+        Array.from(concentrationDiv.querySelector('.hole-container').children).forEach(element => element.style.opacity = '1')
+        Array.from(concentrationDiv.querySelector('.line-container').children).forEach(element => element.style.opacity = '1')
+      }
+    })
+    concentrationDiv.addEventListener('transitionstart', (e) => {
+      if (e.propertyName === 'opacity' && e.currentTarget.style.opacity === '0') {
+        Array.from(concentrationDiv.querySelector('.hole-container').children).forEach(element => {element.style.trsansition = 'none'; element.style.opacity = '0'; })
+        Array.from(concentrationDiv.querySelector('.line-container').children).forEach(element => {element.style.trsansition = 'none'; element.style.opacity = '0'; })
+      }
+      if (e.propertyName === 'opacity' && e.currentTarget.style.opacity === '1') {
+        Array.from(concentrationDiv.querySelector('.hole-container').children).forEach(element => {element.style.trsansition = '';})
+        Array.from(concentrationDiv.querySelector('.line-container').children).forEach(element => {element.style.trsansition = '';})
+      }
+    })
+    concentrationDiv.append(createCustomElement('div', '', { 'class': 'hole-container' }));
+    concentrationDiv.append(createCustomElement('div', '', { 'class': 'line-container' }));
+    concentrationDiv.currentLight = Arr;
+  } else {
+    if (concentrationDiv.currentLight !== Arr) {
+      while (holeContainer?.children.length > 0) {
+        holeContainer.children[0].remove();
+      }
+      while (lineContainer?.children.length > 0) {
+        lineContainer.children[0].remove();
+      }
+    }
+  }
+  if (concentrationDiv.currentLight !== Arr || concentrationDiv?.querySelector('.hole-container').children.length === 0) {
+    Arr.forEach(Element => {
+      createConcentrationElement(Element);
+    })
+    concentrationDiv.currentLight = Arr;
+  }
+  concentrationDiv.style.opacity = 1;
+  function createConcentrationElement(Variables) {
+    let concentrationDiv = document.querySelector('.tren-container').querySelector('.concentration');
+    concentrationDiv.children[0].append(createConcentrationHoleLine(Variables.x, Variables.y, Variables.w, Variables.h, 'h'));
+    concentrationDiv.children[1].append(createConcentrationHoleLine(Variables.x, Variables.y, Variables.w, Variables.h));
+    let newText = createConcentrationText(Variables.text, Variables.x, Variables.y, Variables.w, Variables.h);
+    concentrationDiv.children[1].append(newText);
+    newText.style.left = (Variables.x - Variables.w / 2) + 'vw';
+    newText.style.top = (Variables.y - ConvertPxToVh(newText.getBoundingClientRect().height)) + 'vh';
+    function createConcentrationHoleLine(x, y, w, h, type = 'l') {
+      let elem = createCustomElement('div', '', { 'class': type === 'h' ? 'concentration-hole' : 'concentration-line' });
+      elem.style.left = x + 'vw';
+      elem.style.top = y + 'vh';
+      elem.style.width = w + 'vw';
+      elem.style.height = h + 'vh';
+      return elem;
+    }
+    function createConcentrationText(text, x, y, w, h) {
+      let elem = createCustomElement('span', '', { 'class': 'concentration-text' });
+      elem.innerHTML = text;
+      return elem;
+    }
+  }
+}
+
+
+
 
 
 
@@ -855,7 +933,6 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
     if (!document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')) {
       setCenterWindow(item);
     }
-
   });
   b_action.addEventListener('mouseout', (e) => {
     document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('opacity-1-Temp');
@@ -990,13 +1067,20 @@ document.getElementById('b_chat').addEventListener("mouseover", (e) => { setMini
 
 // ПОМОЩЬ
 document.getElementById('b_help').addEventListener("click", (e) => {
-  if (e.currentTarget.classList.contains('button-tren-active')) {
-    document.querySelector('.box-help').classList.add("opacity-1-Always");
-    document.querySelector('.box-help').classList.add("box-time-padTop32");
-    document.querySelector('.box-help .block-button').classList.add("z-index-1");
-    document.querySelector('.box-help .backArea').classList.add('backArea-white-100')
-    document.querySelector('.box-help .time-header').classList.add("time-header-opacity");
-  }
+  // if (e.currentTarget.classList.contains('button-tren-active')) {
+  //   document.querySelector('.box-help').classList.add("opacity-1-Always");
+  //   document.querySelector('.box-help').classList.add("box-time-padTop32");
+  //   document.querySelector('.box-help .block-button').classList.add("z-index-1");
+  //   document.querySelector('.box-help .backArea').classList.add('backArea-white-100')
+  //   document.querySelector('.box-help .time-header').classList.add("time-header-opacity");
+  // }
+})
+document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseover", (e) => {
+  let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+  if (currentAction.concentration) createConcentrationEffectCondition(currentAction.concentration);
+})
+document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseout", (e) => {
+  if (document.querySelector('.concentration')) document.querySelector('.concentration').style.opacity = 0;
 })
 // КЛИК ЗАКРЫТЬ ПОМОЩЬ
 document.querySelector('.box-help .time-header-button').addEventListener("click", clickCloseHelp)

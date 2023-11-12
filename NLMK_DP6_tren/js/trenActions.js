@@ -136,16 +136,13 @@ let tempActions = [
             { name: 'circle_2_win1', stroke: '#8F8F8F' },
           ],
         },
-        // target3D: 'PhoneButton002',
-        // position: { y: 0.0144 }, // 3d 2d 0.0144
-        // rotation: {}, // 3d 2d
-        // text: {}, // 3D 2D
       },
-      // duration: 0.15,
       audio: 'tts-2',
-      lifeTime: '07:30:00',
-      startTime: timeDiff + 0.1, // seconds - абсолютное время сценария
-      human: true, // true - нужен клик от человека, false - не нужен; если не писать этот атрибут, то засчитывается false
+      startTime: timeDiff + 0.1,
+      human: true, 
+      concentration: [
+        { text: 'Клапан 029', x: 40.9, y: 48, w: 3, h: 7, position: [1, 2], scheme: ['vnk_main']},
+      ]
     },
     // открыть
     {
