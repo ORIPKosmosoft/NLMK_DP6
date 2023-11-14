@@ -347,8 +347,7 @@ function createConcentrationEffectCondition(Arr) {
       const isScheme = activeMonitor.svgArr.some(obj => obj.name === Arr[0].scheme);
       if (isScheme) {
         createConcentrationEffect(Arr);
-        document.querySelector('.box-help').innerHTML = '';
-        document.querySelector('.box-help').style.opacity = 0;
+        document.querySelector('.box-help').classList.remove('opacity-1-Temp');
       } else {
         document.querySelector('.box-help').innerHTML = 'Включить схему ' + devHelper.svgVals.find(element => element.name === Arr[0].scheme).realName;
         // Добавить выделение на активатор
@@ -591,7 +590,6 @@ function dragAndDrop(e, moveWindow) {
 function setStartPosition(element) {
   element.style.left = element.getAttribute('sx');
   element.style.top = element.getAttribute('sy');
-
   if (document.querySelector('.tren-ui-long')) {
     element.style.left = element.getAttribute('sx2');
   }
@@ -953,7 +951,7 @@ function setCenterWindow(item) {
   helperWindow.classList.add('transition-0');
   let b_center = item.getBoundingClientRect().height / 2;
   let w_center = helperWindow.getBoundingClientRect().height / 2;
-  helperWindow.style.top = ConvertPxToVh(item.getBoundingClientRect().y + (b_center - w_center)) + 'vh';
+  helperWindow.style.top = ConvertPxToVh(item.getBoundingClientRect().y + b_center - w_center) + 'vh';
   if (helperWindow.getBoundingClientRect().bottom >= window.innerHeight * 0.99) {
     helperWindow.style.top = (99 - ConvertPxToVh(helperWindow.getBoundingClientRect().height)) + 'vh';
     helperWindow.setAttribute('sy', helperWindow.style.top);

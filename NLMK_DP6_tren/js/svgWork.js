@@ -17,36 +17,33 @@ window.addEventListener('load', function () {
   })
 
   devHelper.svgVals.forEach((ObjectSvg, Index) => {
-    ObjectSvg.realName = ObjectSvg.name === 'dp' ? 'ДП' : 
-    ObjectSvg.name === 'BVNK_VNK1' ? 'ВНК №1' :
-    ObjectSvg.name === 'BVNK_VNK2' ? 'ВНК №2' : 
-    ObjectSvg.name === 'BVNK_VNK3' ? 'ВНК №3' :
-    ObjectSvg.name === 'bzu' ? 'БЗУ' : 
-    ObjectSvg.name === 'vnk_main' ? 'Общая схема' :
-    ObjectSvg.name === 'vnk_spvg' ? 'СПВГ' : 
-    ObjectSvg.name === 'O_n_k_na_VNK' ? 'Управление клапаном' :
-    ObjectSvg.name === 'O_n_k_na_VNK_posle_1' ? 'Управление клапаном' : 
-    ObjectSvg.name === 'O_n_k_na_VNK_posle_2' ? 'Управление клапаном' :
-    ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK' ? 'Дополнительное окно' :
-    ObjectSvg.name === 'O_p_n_na_k_p_na_VNK' ? 'Перекидка' :
-    ObjectSvg.name === 'vvod_znachenij' ? 'Ввод значений' :
-    ObjectSvg.name === 'Osnovnye_parametry_DP' ? 'Основные параметры доменной печи' :
-    ObjectSvg.name === 'win_sym_302' ? 'Дополнительное окно' :
-    ObjectSvg.name === 'priczvuksinal' ? 'Дополнительное окно' :
-    ObjectSvg.name === 'win_otdel2_na_vnk' ? 'Дополнительное окно' :
-    ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
-    ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
+    ObjectSvg.realName = ObjectSvg.name === 'dp' ? 'ДП' :
+      ObjectSvg.name === 'BVNK_VNK1' ? 'ВНК №1' :
+        ObjectSvg.name === 'BVNK_VNK2' ? 'ВНК №2' :
+          ObjectSvg.name === 'BVNK_VNK3' ? 'ВНК №3' :
+            ObjectSvg.name === 'bzu' ? 'БЗУ' :
+              ObjectSvg.name === 'vnk_main' ? 'Общая схема' :
+                ObjectSvg.name === 'vnk_spvg' ? 'СПВГ' :
+                  ObjectSvg.name === 'O_n_k_na_VNK' ? 'Управление клапаном' :
+                    ObjectSvg.name === 'O_n_k_na_VNK_posle_1' ? 'Управление клапаном' :
+                      ObjectSvg.name === 'O_n_k_na_VNK_posle_2' ? 'Управление клапаном' :
+                        ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK' ? 'Дополнительное окно' :
+                          ObjectSvg.name === 'O_p_n_na_k_p_na_VNK' ? 'Перекидка' :
+                            ObjectSvg.name === 'vvod_znachenij' ? 'Ввод значений' :
+                              ObjectSvg.name === 'Osnovnye_parametry_DP' ? 'Основные параметры доменной печи' :
+                                ObjectSvg.name === 'win_sym_302' ? 'Дополнительное окно' :
+                                  ObjectSvg.name === 'priczvuksinal' ? 'Дополнительное окно' :
+                                    ObjectSvg.name === 'win_otdel2_na_vnk' ? 'Дополнительное окно' :
+                                      ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
+                                        ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    // if (ObjectSvg.name === 'dp') {
-    //   ObjectSvg.realName = 'ДП';
-    // }
-    // if (ObjectSvg.name === 'vnk_main') {
-    //   ObjectSvg.object.style.left = '0';
-    //   ObjectSvg.object.style.top = '500px';
-    //   ObjectSvg.object.style.visibility = 'visible';
-    //   // ObjectSvg.object.style.zIndex = 999;
-    //   ObjectSvg.object.style.width = '50%';
-    // }
+    if (ObjectSvg.name === 'Osnovnye_parametry_DP1') {
+      ObjectSvg.object.style.left = '0';
+      ObjectSvg.object.style.top = '0';
+      ObjectSvg.object.style.visibility = 'visible';
+      // ObjectSvg.object.style.zIndex = 999;
+      ObjectSvg.object.style.width = '95%';
+    }
 
     if (ObjectSvg.name === 'dp') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
@@ -225,14 +222,14 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '0,00' && TextIndex === 246) { addSvgElem(Index, Element, 'CO bor'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1591.67 909.77h72.92v29.16h-72.92z') { addSvgElem(Index, Element, 'field_L1'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1695.84 909.77h72.91v29.16h-72.91z') { addSvgElem(Index, Element, 'field_L2'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1695.84 939.97h72.91v29.17h-72.91z') { addSvgElem(Index, Element, 'field_L3'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1591.67 939.97h72.92v29.17h-72.92z') { addSvgElem(Index, Element, 'field_L4'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1152.61 808.2-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'vn_81'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm939.58 370.18-18.22 10.94v-21.88l18.22 10.94zm.01 0 18.22 10.94v-21.88l-18.22 10.94zm-.01 1.16-17.71 10.63a.995.995 0 0 1-1.51-.85v-21.88a.997.997 0 0 1 1.57-.82l17.65 10.6 17.66-10.6c.16-.11.36-.18.57-.18.55 0 1 .45 1 1v21.88a.995.995 0 0 1-1.51.85l-17.72-10.63z') { addSvgElem(Index, Element, 'vn_002'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1494.27 899.87-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'vn_723'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1494.27 899.87-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'vn_310'); }
+        if (Element.getAttribute('d') === 'M1591.67 909.77h72.92v29.16h-72.92z') { addSvgElem(Index, Element, 'field_L1'); }
+        if (Element.getAttribute('d') === 'M1695.84 909.77h72.91v29.16h-72.91z') { addSvgElem(Index, Element, 'field_L2'); }
+        if (Element.getAttribute('d') === 'M1695.84 939.97h72.91v29.17h-72.91z') { addSvgElem(Index, Element, 'field_L3'); }
+        if (Element.getAttribute('d') === 'M1591.67 939.97h72.92v29.17h-72.92z') { addSvgElem(Index, Element, 'field_L4'); }
+        if (Element.getAttribute('d') === 'm1152.61 808.2-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'vn_81'); }
+        if (Element.getAttribute('d') === 'm939.58 370.18-18.22 10.94v-21.88l18.22 10.94zm.01 0 18.22 10.94v-21.88l-18.22 10.94zm-.01 1.16-17.71 10.63a.995.995 0 0 1-1.51-.85v-21.88a.997.997 0 0 1 1.57-.82l17.65 10.6 17.66-10.6c.16-.11.36-.18.57-.18.55 0 1 .45 1 1v21.88a.995.995 0 0 1-1.51.85l-17.72-10.63z') { addSvgElem(Index, Element, 'vn_002'); }
+        if (Element.getAttribute('d') === 'm1494.27 899.87-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'vn_723'); }
+        if (Element.getAttribute('d') === 'm1494.27 899.87-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'vn_310'); }
       })
     }
     if (ObjectSvg.name === 'BVNK_VNK1') {
@@ -299,8 +296,8 @@ window.addEventListener('load', function () {
 
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') { addSvgElem(Index, Element, '313'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') { addSvgElem(Index, Element, '313'); }
+        if (Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_1'); }
       })
     }
     if (ObjectSvg.name === 'BVNK_VNK2') {
@@ -351,10 +348,10 @@ window.addEventListener('load', function () {
     }
     if (ObjectSvg.name === 'BVNK_VNK3') {
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'fire_vnk_3'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_3'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1482.15 833.43c-2.56-1.57-5.11-3.13-7.67-4.7v19.79l9.3-5.7 2.85-1.75 4-2.44c-1.94-1.19-3.87-2.38-5.81-3.56-.89-.55-1.78-1.1-2.67-1.64z') { addSvgElem(Index, Element, 'vnk3_310_l'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm1506.77 828.73-10.18 6.24-2.85 1.75-3.11 1.91c.71.43 1.42.87 2.13 1.31.9.54 1.79 1.09 2.68 1.64 3.78 2.31 7.55 4.63 11.33 6.94v-19.79z') { addSvgElem(Index, Element, 'vnk3_310_r'); }
+        if (Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'fire_vnk_3'); }
+        if (Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_3'); }
+        if (Element.getAttribute('d') === 'M1482.15 833.43c-2.56-1.57-5.11-3.13-7.67-4.7v19.79l9.3-5.7 2.85-1.75 4-2.44c-1.94-1.19-3.87-2.38-5.81-3.56-.89-.55-1.78-1.1-2.67-1.64z') { addSvgElem(Index, Element, 'vnk3_310_l'); }
+        if (Element.getAttribute('d') === 'm1506.77 828.73-10.18 6.24-2.85 1.75-3.11 1.91c.71.43 1.42.87 2.13 1.31.9.54 1.79 1.09 2.68 1.64 3.78 2.31 7.55 4.63 11.33 6.94v-19.79z') { addSvgElem(Index, Element, 'vnk3_310_r'); }
       })
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
@@ -402,18 +399,18 @@ window.addEventListener('load', function () {
     if (ObjectSvg.name === 'vnk_main') {
       // PATH
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M1301.37 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.37-12.26l-20.56-25.18v-12.46h2.35l-.28-.91v-22.21c0-8.54-6.97-12.27-15.51-12.27h-.39c-8.54 0-15.51 3.73-15.51 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_3'); }
+        if (Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M1301.37 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.37-12.26l-20.56-25.18v-12.46h2.35l-.28-.91v-22.21c0-8.54-6.97-12.27-15.51-12.27h-.39c-8.54 0-15.51 3.73-15.51 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_3'); }
         /////////////////////////////////
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M848.12 340.68v-21.47l33.12 21.47v-21.47z') { addSvgElem(Index, Element, 'kl048'); } // 48
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M725.84 404.38v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl039'); } // 39
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M983.46 404.76V383.3l33.13 21.46V383.3z') { addSvgElem(Index, Element, 'kl030'); } // 30
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M727.32 463.57v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl038'); } // 38
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M986.48 462.94v-21.46l33.13 21.46v-21.46z') { addSvgElem(Index, Element, 'kl037'); } // 37
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M841.6 529.43v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl029'); } // 29
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M733.76 579.16V557.7l33.12 21.46V557.7z') { addSvgElem(Index, Element, 'kl028'); } // 28
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M985.26 579.16V557.7l33.12 21.46V557.7z') { addSvgElem(Index, Element, 'kl007'); } // 07
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M984.36 640.26V618.8l33.12 21.46V618.8z') { addSvgElem(Index, Element, 'kl025'); } // 25
+        if (Element.getAttribute('d') === 'M848.12 340.68v-21.47l33.12 21.47v-21.47z') { addSvgElem(Index, Element, 'kl048'); }
+        if (Element.getAttribute('d') === 'M725.84 404.38v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl039'); }
+        if (Element.getAttribute('d') === 'M983.46 404.76V383.3l33.13 21.46V383.3z') { addSvgElem(Index, Element, 'kl030'); }
+        if (Element.getAttribute('d') === 'M727.32 463.57v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl038'); }
+        if (Element.getAttribute('d') === 'M986.48 462.94v-21.46l33.13 21.46v-21.46z') { addSvgElem(Index, Element, 'kl037'); }
+        if (Element.getAttribute('d') === 'M841.6 529.43v-21.46l33.12 21.46v-21.46z') { addSvgElem(Index, Element, 'kl029'); }
+        if (Element.getAttribute('d') === 'M733.76 579.16V557.7l33.12 21.46V557.7z') { addSvgElem(Index, Element, 'kl028'); }
+        if (Element.getAttribute('d') === 'M985.26 579.16V557.7l33.12 21.46V557.7z') { addSvgElem(Index, Element, 'kl007'); }
+        if (Element.getAttribute('d') === 'M984.36 640.26V618.8l33.12 21.46V618.8z') { addSvgElem(Index, Element, 'kl025'); }
       })
       // TEXT
       ObjectSvg.svg.querySelectorAll('text').forEach((TextElement, TextIndex) => {
@@ -508,26 +505,26 @@ window.addEventListener('load', function () {
 
       //  CIRCLE
       ObjectSvg.svg.querySelectorAll('circle').forEach((Element) => {
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '864.68' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '329.95' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl048'); }  // 48-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '864.68' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '329.95' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl048'); }  // 48-2
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '742.4' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '393.65' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl039'); }  // 39-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '742.4' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '393.65' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl039'); }  // 39-2
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '1000.03' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '394.03' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl030'); }  // 30-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '1000.03' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '394.03' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl030'); }  // 30-2
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '743.93' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '452.81' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl038'); }  // 38-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '743.93' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '452.81' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl038'); }  // 38-2
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '1003.04' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '452.21' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl037'); }  // 37-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '1003.04' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '452.21' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl037'); }  // 37-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '858.16' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '518.7' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl029'); }  // 29-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '858.16' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '518.7' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl029'); }  // 29-2
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '750.32' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '568.43' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl028'); }  // 28-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '750.32' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '568.43' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl028'); }  // 28-2
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '1001.82' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '568.43' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl007'); }  // 07-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '1001.82' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '568.43' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl007'); }  // 07-2
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '1000.92' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '629.53' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl025'); }  // 25-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '1000.92' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '629.53' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl025'); }  // 25-2
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '878.86' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '702.28' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl014'); }  // 14-1
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '878.86' && Element.hasAttribute('cy') && Element.getAttribute('cy') == '702.28' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl014'); }  // 14-2
+        if (Element.getAttribute('cx') == '864.68' && Element.getAttribute('cy') == '329.95' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl048'); }  // 48-1
+        if (Element.getAttribute('cx') == '864.68' && Element.getAttribute('cy') == '329.95' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl048'); }  // 48-2
+        if (Element.getAttribute('cx') == '742.4' && Element.getAttribute('cy') == '393.65' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl039'); }  // 39-1
+        if (Element.getAttribute('cx') == '742.4' && Element.getAttribute('cy') == '393.65' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl039'); }  // 39-2
+        if (Element.getAttribute('cx') == '1000.03' && Element.getAttribute('cy') == '394.03' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl030'); }  // 30-1
+        if (Element.getAttribute('cx') == '1000.03' && Element.getAttribute('cy') == '394.03' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl030'); }  // 30-2
+        if (Element.getAttribute('cx') == '743.93' && Element.getAttribute('cy') == '452.81' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl038'); }  // 38-1
+        if (Element.getAttribute('cx') == '743.93' && Element.getAttribute('cy') == '452.81' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl038'); }  // 38-2
+        if (Element.getAttribute('cx') == '1003.04' && Element.getAttribute('cy') == '452.21' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl037'); }  // 37-1
+        if (Element.getAttribute('cx') == '1003.04' && Element.getAttribute('cy') == '452.21' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl037'); }  // 37-1
+        if (Element.getAttribute('cx') == '858.16' && Element.getAttribute('cy') == '518.7' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl029'); }  // 29-1
+        if (Element.getAttribute('cx') == '858.16' && Element.getAttribute('cy') == '518.7' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl029'); }  // 29-2
+        if (Element.getAttribute('cx') == '750.32' && Element.getAttribute('cy') == '568.43' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl028'); }  // 28-1
+        if (Element.getAttribute('cx') == '750.32' && Element.getAttribute('cy') == '568.43' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl028'); }  // 28-2
+        if (Element.getAttribute('cx') == '1001.82' && Element.getAttribute('cy') == '568.43' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl007'); }  // 07-1
+        if (Element.getAttribute('cx') == '1001.82' && Element.getAttribute('cy') == '568.43' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl007'); }  // 07-2
+        if (Element.getAttribute('cx') == '1000.92' && Element.getAttribute('cy') == '629.53' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl025'); }  // 25-1
+        if (Element.getAttribute('cx') == '1000.92' && Element.getAttribute('cy') == '629.53' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl025'); }  // 25-2
+        if (Element.getAttribute('cx') == '878.86' && Element.getAttribute('cy') == '702.28' && Element.getAttribute('r') == '5.61') { addSvgElem(Index, Element, 'circle_1_kl014'); }  // 14-1
+        if (Element.getAttribute('cx') == '878.86' && Element.getAttribute('cy') == '702.28' && Element.getAttribute('r') == '9.18') { addSvgElem(Index, Element, 'circle_2_kl014'); }  // 14-2
       })
     }
     if (ObjectSvg.name === 'vnk_spvg') {
@@ -631,46 +628,31 @@ window.addEventListener('load', function () {
 
 
       ObjectSvg.svg.querySelectorAll('path').forEach((Element) => {
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm58.35 75.18 14.08-7.8 14.07-7.8v31.2l-14.07-7.8z') { addSvgElem(Index, Element, 'right_vn'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'm58.69 75.18-14.08-7.8-14.08-7.8v31.2l14.08-7.8z') { addSvgElem(Index, Element, 'left_vn'); }
-        if (Element.hasAttribute('d') && Element.getAttribute('d') === 'M9.78 190.88h141.98v21.19H9.78z') { addSvgElem(Index, Element, 'block_scheme_sobr'); }
+        if (Element.getAttribute('d') === 'm58.35 75.18 14.08-7.8 14.07-7.8v31.2l-14.07-7.8z') { addSvgElem(Index, Element, 'right_vn'); }
+        if (Element.getAttribute('d') === 'm58.69 75.18-14.08-7.8-14.08-7.8v31.2l14.08-7.8z') { addSvgElem(Index, Element, 'left_vn'); }
+        if (Element.getAttribute('d') === 'M9.78 190.88h141.98v21.19H9.78z') { addSvgElem(Index, Element, 'block_scheme_sobr'); }
       })
 
       ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element) => {
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '58.51'
-          && Element.hasAttribute('cy') && Element.getAttribute('cy') == '75.04'
-          && Element.hasAttribute('rx') && Element.getAttribute('rx') == '7.8'
-          && Element.hasAttribute('rx') && Element.getAttribute('ry') == '7.75') { addSvgElem(Index, Element, 'circle_1_win1'); }  // cir win1
-
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '58.51'
-          && Element.hasAttribute('cy') && Element.getAttribute('cy') == '75.04'
-          && Element.hasAttribute('rx') && Element.getAttribute('rx') == '16.12'
-          && Element.hasAttribute('rx') && Element.getAttribute('ry') == '16.02') { addSvgElem(Index, Element, 'circle_2_win1'); }  // cir win2
-
-        // if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_1_kl029'); }
-        // if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_2_kl029'); }
+        if (Element.getAttribute('cx') == '58.51' && Element.getAttribute('cy') == '75.04' && Element.getAttribute('rx') == '7.8' && Element.getAttribute('ry') == '7.75') {
+          addSvgElem(Index, Element, 'circle_1_win1');
+        }
+        if (Element.getAttribute('cx') == '58.51' && Element.getAttribute('cy') == '75.04' && Element.getAttribute('rx') == '16.12' && Element.getAttribute('ry') == '16.02') {
+          addSvgElem(Index, Element, 'circle_2_win1');
+        }
       })
 
       ObjectSvg.svg.querySelectorAll('rect').forEach((Element) => {
-        // if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') && Element.getAttribute('x') === '169.84' && Element.getAttribute('y') && Element.getAttribute('y') === '121.6') { addSvgElem(Index, Element, 'btn_close_x'); }
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') && Element.getAttribute('x') === '169.84' && Element.getAttribute('y') && Element.getAttribute('y') === '83.22') { addSvgElem(Index, Element, 'btn_auto'); }
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') && Element.getAttribute('x') === '257.34' && Element.getAttribute('y') && Element.getAttribute('y') === '83.22') { addSvgElem(Index, Element, 'btn_rucnoy'); }
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') && Element.getAttribute('x') === '169.84' && Element.getAttribute('y') && Element.getAttribute('y') === '121.6') { addSvgElem(Index, Element, 'btn_open'); }
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') && Element.getAttribute('x') === '257.34' && Element.getAttribute('y') && Element.getAttribute('y') === '121.6') { addSvgElem(Index, Element, 'btn_close'); }
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '8.48' && Element.getAttribute('x') && Element.getAttribute('x') === '170.17' && Element.getAttribute('y') && Element.getAttribute('y') === '151.08') { addSvgElem(Index, Element, 'btn_stop'); }
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '10.43' && Element.getAttribute('x') && Element.getAttribute('x') === '169.92' && Element.getAttribute('y') && Element.getAttribute('y') === '203.95') { addSvgElem(Index, Element, 'btn_reset'); }
-        if (Element.hasAttribute('rx') && Element.getAttribute('rx') === '10.43' && Element.getAttribute('x') && Element.getAttribute('x') === '169.92' && Element.getAttribute('y') && Element.getAttribute('y') === '257.04') { addSvgElem(Index, Element, 'bypas_block'); }
-        if (Element.hasAttribute('ry') && Element.getAttribute('ry') === '1.98' && Element.getAttribute('x') && Element.getAttribute('x') === '14.72' && Element.getAttribute('y') && Element.getAttribute('y') === '255.8') { addSvgElem(Index, Element, 'blocks_open'); }
-        if (Element.hasAttribute('ry') && Element.getAttribute('ry') === '1.98' && Element.getAttribute('x') && Element.getAttribute('x') === '87.79' && Element.getAttribute('y') && Element.getAttribute('y') === '255.8') { addSvgElem(Index, Element, 'blocks_close'); }
+        if (Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') === '169.84' && Element.getAttribute('y') === '83.22') { addSvgElem(Index, Element, 'btn_auto'); }
+        if (Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') === '257.34' && Element.getAttribute('y') === '83.22') { addSvgElem(Index, Element, 'btn_rucnoy'); }
+        if (Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') === '169.84' && Element.getAttribute('y') === '121.6') { addSvgElem(Index, Element, 'btn_open'); }
+        if (Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') === '257.34' && Element.getAttribute('y') === '121.6') { addSvgElem(Index, Element, 'btn_close'); }
+        if (Element.getAttribute('rx') === '8.48' && Element.getAttribute('x') === '170.17' && Element.getAttribute('y') === '151.08') { addSvgElem(Index, Element, 'btn_stop'); }
+        if (Element.getAttribute('rx') === '10.43' && Element.getAttribute('x') === '169.92' && Element.getAttribute('y') === '203.95') { addSvgElem(Index, Element, 'btn_reset'); }
+        if (Element.getAttribute('rx') === '10.43' && Element.getAttribute('x') === '169.92' && Element.getAttribute('y') === '257.04') { addSvgElem(Index, Element, 'bypas_block'); }
+        if (Element.getAttribute('ry') === '1.98' && Element.getAttribute('x') === '14.72' && Element.getAttribute('y') === '255.8') { addSvgElem(Index, Element, 'blocks_open'); }
+        if (Element.getAttribute('ry') === '1.98' && Element.getAttribute('x') === '87.79' && Element.getAttribute('y') === '255.8') { addSvgElem(Index, Element, 'blocks_close'); }
       })
-
-      //  CIRCLE
-      // ObjectSvg.svg.querySelectorAll('circle').forEach((Element) => {
-      //   if (Element.hasAttribute('cx') && Element.getAttribute('cx') == '58.51'  && Element.hasAttribute('cy') &&  Element.getAttribute('cy') == '75.04' && Element.getAttribute('r') == '5.61')  { addSvgElem(Index, Element, 'circle_1_kl048');  }  // 48-1
-      // })
-
-
-
     }
     if (ObjectSvg.name === 'O_n_k_na_VNK_posle_2') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
@@ -715,6 +697,7 @@ window.addEventListener('load', function () {
     }
     if (ObjectSvg.name === 'Osnovnye_parametry_DP') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
         if (Element.innerHTML === '2.30') { addSvgElem(Index, Element, 'c_1_1'); }
         if (Element.innerHTML === '6003') { addSvgElem(Index, Element, 'c_1_2'); }
         if (Element.innerHTML === '128') { addSvgElem(Index, Element, 'c_1_3'); }
@@ -732,23 +715,23 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '1.80') { addSvgElem(Index, Element, 'c_3_1'); }
         if (Element.innerHTML === '1.60') { addSvgElem(Index, Element, 'c_3_2'); }
         if (Element.innerHTML === '55' && TextIndex === 16) { addSvgElem(Index, Element, 'c_3_3'); }
-        if (Element.innerHTML === '5') { addSvgElem(Index, Element, 'c_3_4'); }
-        if (Element.innerHTML === '9') { addSvgElem(Index, Element, 'c_3_4'); }
+        if (Element.innerHTML === '5' && TextIndex === 22) { addSvgElem(Index, Element, 'c_3_4', 'start'); Element.innerHTML = '59'; }
+        if (Element.innerHTML === '9' && TextIndex === 23) { addSvgElem(Index, Element, 'c_3_4'); Element.innerHTML = ''; }
         if (Element.innerHTML === '61') { addSvgElem(Index, Element, 'c_3_5'); }
         if (Element.innerHTML === '55' && TextIndex === 34) { addSvgElem(Index, Element, 'c_3_6'); }
         if (Element.innerHTML === '2071') { addSvgElem(Index, Element, 'c_3_7'); }
         if (Element.innerHTML === '1.55') { addSvgElem(Index, Element, 'c_4_1'); }
         if (Element.innerHTML === '9.7') { addSvgElem(Index, Element, 'c_4_2'); }
         if (Element.innerHTML === '62' && TextIndex === 17) { addSvgElem(Index, Element, 'c_4_3'); }
-        if (Element.innerHTML === '6' && TextIndex === 24) { addSvgElem(Index, Element, 'c_4_4'); }
-        if (Element.innerHTML === '3') { addSvgElem(Index, Element, 'c_4_4'); }
+        if (Element.innerHTML === '6' && TextIndex === 24) { addSvgElem(Index, Element, 'c_4_4', 'start'); Element.innerHTML = '63'; }
+        if (Element.innerHTML === '3' && TextIndex === 25) { addSvgElem(Index, Element, 'c_4_4'); Element.innerHTML = ''; }
         if (Element.innerHTML === '62' && TextIndex === 30) { addSvgElem(Index, Element, 'c_4_5'); }
-        if (Element.innerHTML === '6' && TextIndex === 35) { addSvgElem(Index, Element, 'c_4_6'); }
-        if (Element.innerHTML === '0' && TextIndex === 36) { addSvgElem(Index, Element, 'c_4_6'); }
+        if (Element.innerHTML === '6' && TextIndex === 35) { addSvgElem(Index, Element, 'c_4_6', 'start'); Element.innerHTML = '60'; }
+        if (Element.innerHTML === '0' && TextIndex === 36) { addSvgElem(Index, Element, 'c_4_6'); Element.innerHTML = ''; }
         if (Element.innerHTML === '4.12') { addSvgElem(Index, Element, 'c_5_1'); }
         if (Element.innerHTML === '30.1') { addSvgElem(Index, Element, 'c_5_2'); }
-        if (Element.innerHTML === '6' && TextIndex === 18) { addSvgElem(Index, Element, 'c_5_3'); }
-        if (Element.innerHTML === '2') { addSvgElem(Index, Element, 'c_5_3'); }
+        if (Element.innerHTML === '6' && TextIndex === 18) { addSvgElem(Index, Element, 'c_5_3', 'start'); Element.innerHTML = '62'; }
+        if (Element.innerHTML === '2' && TextIndex === 19) { addSvgElem(Index, Element, 'c_5_3'); Element.innerHTML = ''; }
         if (Element.innerHTML === '57') { addSvgElem(Index, Element, 'c_5_4'); }
         if (Element.innerHTML === '64' && TextIndex === 31) { addSvgElem(Index, Element, 'c_5_5'); }
         if (Element.innerHTML === '65') { addSvgElem(Index, Element, 'c_5_6'); }
@@ -773,7 +756,7 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '40' && TextIndex === 53) { addSvgElem(Index, Element, 'c_8_2'); }
         if (Element.innerHTML === '40' && TextIndex === 54) { addSvgElem(Index, Element, 'c_8_3'); }
         if (Element.innerHTML === '40' && TextIndex === 55) { addSvgElem(Index, Element, 'c_8_4'); }
-      })
+      });
     }
     if (ObjectSvg.name === 'bzu') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
@@ -987,7 +970,7 @@ function pushSvgDisplaysArr(ObjectSvg) {
 function createSvghelper(CurrentPosition, SvgName = undefined) {
   if (CurrentPosition !== undefined) {
     setTimeout(() => {
-      if (CurrentPosition === 1) {
+      if (CurrentPosition === 1 || CurrentPosition === 2 || CurrentPosition === 4 || CurrentPosition === 5) {
         let mainMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === CurrentPosition);
         let textureSvgName = SvgName === undefined ? mainMesh.svgArr[mainMesh.svgArr.length - 1].name : SvgName;
         let currentMeshTexture = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition).material.diffuseTexture;
@@ -1097,16 +1080,16 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           let tempArrHelperButtons = [
             { x: 58.4, y: 48, w: 1.5, h: 2, removeWindow: textureSvgName, forAction: true, id: 'vz_close', }, // close
             { x: 47.6, y: 96, w: 4.0, h: 4, removeWindow: textureSvgName, forAction: true, id: 'vz_ok', },    // ok
-            { x: 47.7, y: 82.2, w: 3.0, h: 4, forAction: true, id: 'vz_0', },    
-            { x: 47.7, y: 77.5, w: 3.0, h: 4, forAction: true, id: 'vz_1', },    
-            { x: 51.1, y: 77.5, w: 3.0, h: 4, forAction: true, id: 'vz_2', },    
-            { x: 54.4, y: 77.5, w: 3.0, h: 4, forAction: true, id: 'vz_3', },    
-            { x: 47.7, y: 72.9, w: 3.0, h: 4, forAction: true, id: 'vz_4', },    
-            { x: 51.1, y: 72.9, w: 3.0, h: 4, forAction: true, id: 'vz_5', },    
-            { x: 54.4, y: 72.9, w: 3.0, h: 4, forAction: true, id: 'vz_6', },    
-            { x: 47.7, y: 68, w: 3.0, h: 4, forAction: true, id: 'vz_7', },    
-            { x: 51.1, y: 68, w: 3.0, h: 4, forAction: true, id: 'vz_8', },    
-            { x: 54.4, y: 68, w: 3.0, h: 4, forAction: true, id: 'vz_9', },   
+            { x: 47.7, y: 82.2, w: 3.0, h: 4, forAction: true, id: 'vz_0', },
+            { x: 47.7, y: 77.5, w: 3.0, h: 4, forAction: true, id: 'vz_1', },
+            { x: 51.1, y: 77.5, w: 3.0, h: 4, forAction: true, id: 'vz_2', },
+            { x: 54.4, y: 77.5, w: 3.0, h: 4, forAction: true, id: 'vz_3', },
+            { x: 47.7, y: 72.9, w: 3.0, h: 4, forAction: true, id: 'vz_4', },
+            { x: 51.1, y: 72.9, w: 3.0, h: 4, forAction: true, id: 'vz_5', },
+            { x: 54.4, y: 72.9, w: 3.0, h: 4, forAction: true, id: 'vz_6', },
+            { x: 47.7, y: 68, w: 3.0, h: 4, forAction: true, id: 'vz_7', },
+            { x: 51.1, y: 68, w: 3.0, h: 4, forAction: true, id: 'vz_8', },
+            { x: 54.4, y: 68, w: 3.0, h: 4, forAction: true, id: 'vz_9', },
           ];
           createSvgHelperButtons(tempArrHelperButtons);
         } else if (textureSvgName === 'O_p_n_na_k_p_na_VNK') {

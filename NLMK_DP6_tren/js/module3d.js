@@ -13,6 +13,9 @@
 --------------------------------------------------------------------
 */
 window.addEventListener('load', function () {
+  document.querySelector('#renderCanvas').addEventListener('mouseout', e => {
+    devHelper.model3DVals.highlightMesh && changeColorTexture(devHelper.model3DVals.highlightMesh, false);
+  })
   const createScene = function () {
     let scene = new BABYLON.Scene(devHelper.model3DVals.engine);
     devHelper.model3DVals.scene = scene;
@@ -419,7 +422,6 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
     if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
       devHelper.model3DVals.octree.dynamicContent.push(mesh);
-    console.log(mesh.name);
     mesh.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
         BABYLON.ActionManager.OnPickTrigger,
@@ -579,6 +581,7 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
     let newBlue1 = State === true ? 0 : 1;
     let newBlue2 = State === true ? -1 : 0;
     let newAlpha = State === true ? 0.5 : 0;
+    devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
     if (Mesh.material.alpha !== 1) {
       Mesh.material.alpha = newAlpha;
     } else {
