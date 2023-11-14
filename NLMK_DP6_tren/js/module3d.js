@@ -144,7 +144,7 @@ window.addEventListener('load', function () {
     return scene;
   };
   const scene = createScene();
-  // if (devHelper.dev.enable === true) scene.debugLayer.show();  // INSPECTOR
+  if (devHelper.dev.enable === true) scene.debugLayer.show();  // INSPECTOR
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
@@ -289,6 +289,11 @@ window.addEventListener('load', function () {
       } else if (Name === 'Console_DP6') {
         meshes.forEach(Mesh => {
           meshOptimization(Mesh);
+          if (Mesh.name) {
+            if (Mesh.name === 'Handle_015') {
+              makeActiveMesh(Mesh, { name: 'Handle_015', posIndex: 9 });
+            }
+          }
         })
       } else if (Name === 'Console_PSODP6') {
         meshes.forEach(Mesh => {
@@ -313,7 +318,6 @@ window.addEventListener('load', function () {
       if (mesh.material) mesh.material.freeze();
       mesh.freezeWorldMatrix();
       mesh.doNotSyncBoundingInfo = mesh instanceof BABYLON.InstancedMesh ? false : true;
-
       mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
       mesh.isPickable = true;
     }
@@ -377,7 +381,7 @@ function createCloneInstancedMesh(mesh, url = undefined, scene = undefined) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("renderCanvas");
-  devHelper.model3DVals.engine = new BABYLON.Engine(canvas, true);
+  devHelper.model3DVals.engine = new BABYLON.Engine(canvas, true, { stencil: true });
   canvas.addEventListener("pointermove", function () {
     var pickResult = devHelper.model3DVals.scene.pick(devHelper.model3DVals.scene.pointerX, devHelper.model3DVals.scene.pointerY);
     if (pickResult.hit)
@@ -419,6 +423,7 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
       mesh.positionIndex = Vals;
     }
     mesh.material.unfreeze();
+    mesh.unfreezeWorldMatrix();
     mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
     if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
       devHelper.model3DVals.octree.dynamicContent.push(mesh);
@@ -560,7 +565,6 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
   }
 
   if (tempBool === true) {
-
     // if (State === true) {
     // //   Mesh.enableEdgesRendering();
     // //   Mesh.edgesColor = new BABYLON.Color4(1, 1, 0, 0.5);
@@ -577,18 +581,32 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
     // //     Mesh.material.emissiveColor = Mesh.material.oldEmissiveColor;
     // //   }
     // }
-
-    let newBlue1 = State === true ? 0 : 1;
-    let newBlue2 = State === true ? -1 : 0;
-    let newAlpha = State === true ? 0.5 : 0;
     devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
-    if (Mesh.material.alpha !== 1) {
-      Mesh.material.alpha = newAlpha;
+    if (Mesh.highlightLayer) {
+      Mesh.highlightLayer.removeMesh(Mesh);
+      Mesh.highlightLayer.dispose();
+      Mesh.highlightLayer = undefined;
     } else {
-      if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
-      else if (Mesh.material._emissiveColor)
-        Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
+      // var hexColor = "#2c5289";
+      // var r = parseInt(hexColor.substring(1, 3), 16) / 255; // Получение значения R и его нормализация
+      // var g = parseInt(hexColor.substring(3, 5), 16) / 255; // Получение значения G и его нормализация
+      // var b = parseInt(hexColor.substring(5, 7), 16) / 255; // Получение значения B и его нормализация
+      // var color = new BABYLON.Color3(r, g, b);
+      const hl = new BABYLON.HighlightLayer("hl1", devHelper.model3DVals.scene);
+      hl.addMesh(Mesh, BABYLON.Color3.Yellow());
+      Mesh.highlightLayer = hl;
     }
+    // let newBlue1 = State === true ? 0 : 1;
+    // let newBlue2 = State === true ? -1 : 0;
+    // let newAlpha = State === true ? 0.5 : 0;
+    // devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
+    // if (Mesh.material.alpha !== 1) {
+    //   Mesh.material.alpha = newAlpha;
+    // } else {
+    // if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
+    // else if (Mesh.material._emissiveColor)
+    //   Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
+    // }
   }
 }
 //TODO тут сделать часы 3Д
@@ -610,7 +628,7 @@ function change3DTime(Time = '00:00:00') {
   }
 }
 
-function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefined, Duration = 1, Scene = devHelper.model3DVals.scene) {
+function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefined, Duration = 1, Scene = devHelper.model3DVals.scene,) {
   if (devHelper.dev.enable === true) {
     if (Mesh === undefined) console.warn(`В функцию rotateMesh не передали меш.`);
     if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
@@ -626,7 +644,7 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
       if (Mesh.startState.position === undefined)
         Mesh.startState.position = Mesh.position.clone();
     }
-    //   // if (Type === 'r') Val = Val * (Math.PI / 180);
+    // if (Type === 'r') Val = Val * (Math.PI / 180);
     let animation = new BABYLON.Animation(
       Type === 'r' ? "rotationAnimation" : "positionAnimation",
       Type === 'r' ? `rotation.${Axis}` : `position.${Axis}`,
@@ -641,7 +659,7 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
       },
       {
         frame: Duration * 60,
-        value: Val
+        value: Val,
       }
     ];
     animation.setKeys(keys);

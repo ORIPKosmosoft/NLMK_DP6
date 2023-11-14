@@ -100,7 +100,7 @@ body {
   left: 1%;
   top: 22%;
   background-color: #f4f4f4;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   align-items: flex-start;
   transition: left 0.5s ease-out;
   box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
@@ -143,7 +143,7 @@ body {
 .section .nav-icon {
   height: 9vh;
   width: 9vh;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   background: #f8f8f8;
   display: flex;
   flex-direction: column;
@@ -267,7 +267,7 @@ body {
   position: relative;
   text-align: initial;
   background-color: #f4f4f4;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   padding-left: 1%;
   padding-right: 1%;
   margin-bottom: 2vh;
@@ -350,7 +350,7 @@ body {
   height: 8vh;
   position: absolute;
   background-color: #f8f8f8;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -372,13 +372,13 @@ body {
 }
 
 .scenarion-buttons-container .border-right {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 0.52vw;
+  border-bottom-right-radius: 0.52vw;
 }
 
 .scenarion-buttons-container .border-left {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 0.52vw;
+  border-bottom-left-radius: 0.52vw;
 }
 
 .scenarion-buttons-container .scenarion-button:hover {
@@ -430,7 +430,7 @@ body {
   padding: 20px;
   border: 1px solid;
   border-color: #a39e9e;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   overflow: auto;
 }
 
@@ -442,10 +442,10 @@ body {
 .scenario-box {
   cursor: pointer;
   border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 0.52vw;
+  margin-bottom: 0.52vw;
   text-align: left;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -457,10 +457,10 @@ body {
 .scenario-box-clicked {
   cursor: default;
   border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 0.52vw;
+  margin-bottom: 0.52vw;
   text-align: left;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   background-color: rgba(106, 212, 132, 1);
 }
 
@@ -480,13 +480,13 @@ body {
 .control-button {
   background-color: rgba(0, 123, 255, 0.3);
   color: rgba(240, 240, 240, 0.3);
-  padding: 10px 20px;
+  padding: 0.52vw 20px;
   cursor: default;
   transition: background-color 0.3s ease;
   margin-left: 50px;
   margin-right: 50px;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   font-size: 18px;
 }
 
@@ -527,7 +527,7 @@ ul {
   background-color: rgba(241, 92, 92, 1);
   border: 2px solid;
   border-color: #0f0f0f;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -768,14 +768,14 @@ ul {
 .message {
   padding: 5px;
   /* border: 1px solid #b2d916; */
-  border-radius: 10px;
+  border-radius: 0.52vw;
   margin: 0 50px 20px 20px;
 }
 
 .messageMy {
   padding: 5px;
   /* border: 1px solid #b2d916; */
-  border-radius: 10px;
+  border-radius: 0.52vw;
   margin: 0 20px 20px 60px;
 }
 
@@ -849,7 +849,7 @@ ul {
 
 .help-btn-block {
   position: absolute;
-  top: 10px;
+  top: 0.52vw;
   left: 100px;
   width: 150px;
   height: 500px;
@@ -866,9 +866,9 @@ ul {
   margin-top: 600px;
   background-color: rgba(0, 0, 0, 0.2);
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   color: #f4f4f4;
-  line-height: 10px;
+  line-height: 0.52vw;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -933,7 +933,7 @@ ul {
   height: auto;
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   background: #f8f8f8;
   display: flex;
   flex-wrap: nowrap;
@@ -1263,7 +1263,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   background: #f8f8f8;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -1308,7 +1308,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   background: #f8f8f8;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -1473,9 +1473,9 @@ ul {
 
 
 .box-time {
-  width: 310px;
+  width: 30.52vw;
   height: 75px;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   position: fixed;
   top: 1500px;
   left: 4500px;
@@ -1504,7 +1504,7 @@ ul {
 
 .box-time .backArea {
   margin-top: -40px;
-  margin-left: -10px;
+  margin-left: -0.52vw;
 }
 
 .time-header {
@@ -1516,7 +1516,7 @@ ul {
   font-family: 'Circe-Bold', sans-serif;
   color: #939393;
   margin-top: -35px;
-  margin-left: 10px;
+  margin-left: 0.52vw;
   margin-right: 2px;
   opacity: 0;
   /* cursor: pointer; */
@@ -1569,7 +1569,7 @@ ul {
   color: #5ca695;
   line-height: 70px;
   font-size: 60px;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   margin-bottom: 5px;
   font-family: 'digital-7', sans-serif;
   transition: all 0.3s ease;
@@ -1606,9 +1606,9 @@ ul {
 /* ТАЙМЕР */
 .dialogMessageWatch {
   position: fixed;
-  width: 310px;
+  width: 30.52vw;
   height: 275px;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -1642,7 +1642,7 @@ ul {
   line-height: 35px;
   font-family: 'Circe-Bold', sans-serif;
   color: #939393;
-  margin-left: 10px;
+  margin-left: 0.52vw;
 }
 
 .dialogHeader p {
@@ -1658,7 +1658,7 @@ ul {
 
 .dialogClosed {
   background-color: white;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   font-size: 18px;
   border: none;
   color: #939393;
@@ -1692,9 +1692,9 @@ ul {
 
 .dialogTimers-line .time-hour,
 .dialogTimers-line .time .time-minute {
-  width: 110px;
-  height: 110px;
-  line-height: 110px;
+  width: 10.52vw;
+  height: 10.52vw;
+  line-height: 10.52vw;
   font-size: 85px;
   color: #8b8b8b;
 }
@@ -1706,7 +1706,7 @@ ul {
 
 .dialogTimers-title {
   color: #8b8b8b;
-  height: 10px;
+  height: 0.52vw;
   font-size: 15px;
   font-family: 'Circe-Bold', sans-serif;
 }
@@ -1717,7 +1717,7 @@ ul {
   height: 30px;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   border: none;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   color: #8b8b8b;
   background-color: white;
   display: flex;
@@ -1760,12 +1760,12 @@ ul {
   width: 100px;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   z-index: 4;
-  border-radius: 10px;
-  padding-top: 10px;
+  border-radius: 0.52vw;
+  padding-top: 0.52vw;
   overflow: hidden;
   position: relative;
   margin-top: -5px;
-  padding-bottom: 10px;
+  padding-bottom: 0.52vw;
   display: none;
 }
 
@@ -1792,7 +1792,7 @@ ul {
 .section-menu .option {
   border: 2px solid white;
   padding-left: 5px;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   padding-right: 20px;
   color: #8b8b8b;
   font-family: 'Circe-Regular', sans-serif;
@@ -1820,7 +1820,7 @@ ul {
   width: 30px;
   height: 30px;
   color: #5ca695;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   background-image: url('media/images/watch/play.png');
   background-size: cover;
@@ -1860,7 +1860,7 @@ ul {
   position: fixed;
   width: 385px;
   height: 475px;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   opacity: 0;
   z-index: -1;
   overflow: hidden;
@@ -1897,8 +1897,8 @@ ul {
   height: calc(100% - 20px);
   width: 100%;
   margin-right: -26px;
-  border-radius: 10px;
-  padding: 10px 0px 10px 0px;
+  border-radius: 0.52vw;
+  padding: 0.52vw 0px 0.52vw 0px;
 
   overflow-x: hidden;
 }
@@ -1906,7 +1906,7 @@ ul {
 .chat {
   width: 98%;
   height: calc(100% - 20px);
-  border-radius: 10px;
+  border-radius: 0.52vw;
   overflow: auto;
   display: flex;
   /* padding-top: 20px; */
@@ -1938,7 +1938,7 @@ ul {
 .messageError {
   padding: 5px;
   /* border: 1px solid #ffffff; */
-  border-radius: 10px;
+  border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   margin: 5px 50px 20px 20px;
   width: 275px;
@@ -2012,7 +2012,7 @@ ul {
 
 .chat::-webkit-scrollbar {
   /* margin-right: 5px; */
-  width: 10px;
+  width: 0.52vw;
 
 }
 
@@ -2041,7 +2041,7 @@ ul {
   line-height: 30px;
   font-family: 'Circe-Bold', sans-serif;
   color: #939393;
-  margin-left: 10px;
+  margin-left: 0.52vw;
   margin-right: 2px;
   opacity: 0;
   z-index: 3;
@@ -2068,14 +2068,14 @@ ul {
 .message {
   padding: 5px;
   /* border: 1px solid #b2d916; */
-  border-radius: 10px;
+  border-radius: 0.52vw;
   margin: 0 50px 20px 20px;
 }
 
 .messageMy {
   padding: 5px;
   /* border: 1px solid #b2d916; */
-  border-radius: 10px;
+  border-radius: 0.52vw;
   margin: 0 20px 20px 60px;
 }
 
@@ -2114,10 +2114,10 @@ ul {
   position: fixed;
   color: #6e6e6e;
   line-height: 30px;
-  padding: 10px;
+  padding: 0.52vw;
   background-color: rgba(255, 255, 255, 0.8);
   border: 0;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   font-family: 'Circe-Bold', sans-serif;
   transition: all 0.3s ease;
@@ -2125,7 +2125,7 @@ ul {
   padding-bottom: 7px;
   /* width: 290px;
   height: 150px;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   position: fixed;
   top: 55vh;
   left: 4500px;
@@ -2144,7 +2144,7 @@ ul {
 .box-restart {
   width: 290px;
   height: 150px;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   position: fixed;
   top: 55vh;
   left: 4500px;
@@ -2163,7 +2163,7 @@ ul {
 .box-exit {
   width: 290px;
   height: 170px;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   position: fixed;
   top: 55vh;
   left: 4500px;
@@ -2212,10 +2212,10 @@ ul {
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   border: 2px solid white;
   background-color: white;
-  margin: 0 10px 0 10px;
+  margin: 0 0.52vw 0 0.52vw;
   font-size: 18px;
   color: #5e5e5e;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   cursor: pointer;
 }
 
@@ -2231,11 +2231,11 @@ ul {
 .box-scenario {
   position: fixed;
   height: 98%;
-  width: calc(21vw - 10px);
+  width: calc(21vw - 0.52vw);
   background: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
+  border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
-  padding-left: 10px;
+  padding-left: 0.52vw;
   overflow: hidden;
   /* visibility: hidden; */
   opacity: 0;
@@ -2268,8 +2268,8 @@ ul {
 }
 
 .box-scenario-scroll {
-  margin-top: 10px;
-  margin-right: 10px;
+  margin-top: 0.52vw;
+  margin-right: 0.52vw;
   height: 88%;
   overflow: hidden;
   overflow-y: auto;
@@ -2291,7 +2291,7 @@ ul {
 }
 
 .box-scenario-item {
-  margin-bottom: 10px;
+  margin-bottom: 0.52vw;
 }
 
 .box-scenario-item-past {
@@ -2319,12 +2319,12 @@ ul {
   position: relative;
   height: 99vh;
   overflow: hidden;
-  padding: 5px 5px 5px 10px;
+  padding: 5px 5px 5px 0.52vw;
   width: 3vw;
   position: fixed;
   transition: all 0.3s ease;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 0.52vw;
+  border-bottom-right-radius: 0.52vw;
 }
 
 .tren-ui-long {
@@ -2355,7 +2355,7 @@ ul {
   width: 50px;
   height: 50px;
   min-width: 50px;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   outline: none;
   border: 0;
   background-color: white;
@@ -2418,10 +2418,10 @@ ul {
   position: fixed;
   color: #6e6e6e;
   line-height: 30px;
-  padding: 10px;
+  padding: 0.52vw;
   background-color: rgba(255, 255, 255, 0.8);
   border: 0;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   font-family: 'Circe-Bold', sans-serif;
   transition: all 0.3s ease;
@@ -2433,10 +2433,10 @@ ul {
   position: fixed;
   color: #6e6e6e;
   line-height: 30px;
-  padding: 10px;
+  padding: 0.52vw;
   background-color: rgba(255, 255, 255, 0.8);
   border: 0;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   font-family: 'Circe-Bold', sans-serif;
   transition: all 0.3s ease;
@@ -2478,7 +2478,7 @@ ul {
 .hole-container .concentration-hole {
   position: absolute;
   background-color: #FFFFFF;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   opacity: 0;
   /* transition: opacity 0.3s ease; */
   transition: width 0.3s ease, height 0.3s ease, left 0.3s ease, top 0.3s ease, opacity 0s ease 0.1s;
@@ -2486,7 +2486,7 @@ ul {
 
 .line-container .concentration-line {
   position: absolute;
-  border-radius: 10px;
+  border-radius: 0.52vw;
   outline: 2px solid #F4F4F4;
   opacity: 0;
   /* transition: opacity 0.3s ease; */
@@ -2501,21 +2501,70 @@ ul {
 }
 
 .pointer-helper-container {
-  display: none;
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 10vw;
-  height: 5vh;
+  left: 200px;
+  top: 80px;
+  width: 2.6vw;
+  height: 2.6vw;
 }
+
 .pointer-helper-container .arrow {
-
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 1vw;
+  border-right: .5vw solid #2c5289;
+  border-bottom: .4vw solid transparent;
+  border-top: .4vw solid transparent;
 }
+
+.pointer-helper-container .body-border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: .4vw;
+  border-radius: 0.38vw;
+  border: 2px solid #2c5289;
+}
+
 .pointer-helper-container .body {
-
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  left: 0.71vw;
+  top: .3vw;
+  border-radius: 0.38vw;
+  background-color: #f4f4f4;
+  /* animation: scaleAnimationButton 0.6s infinite alternate; */
+  animation: moveAnimationButton 2s infinite alternate;
 }
-.pointer-helper-container img {
 
+@keyframes scaleAnimationButton {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.28);
+  }
+}
+
+@keyframes moveAnimationButton {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5px, 5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.pointer-helper-container object {
+  width: 70%;
+  position: absolute;
+  left: 0.36vw;
+  top: 0.36vw;
 }
 
 

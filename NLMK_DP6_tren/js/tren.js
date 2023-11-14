@@ -310,10 +310,8 @@ function findSideMeshFromCamera(mesh) {
   const { camera, camera: { position } } = devHelper.model3DVals;
   const { Forward, Up, Cross } = BABYLON.Vector3;
   const [cameraForward, cameraUp, cameraRight] = [Forward(), Up(), Cross(Up(), Forward())].map(dir => camera.getDirection(dir));
-  const [dotRight, dotUp] = [cameraRight, cameraUp].map(dir => BABYLON.Vector3.Dot(dir, mesh.position.subtract(position)));
-  console.log(mesh.name, dotRight > 0 ? "справа" : "слева", dotUp > 0 ? "выше" : "ниже", "от камеры");
-  console.log('---------------------------------------------');
-
+  const meshPosition = mesh.getAbsolutePosition();
+  const [dotRight, dotUp] = [cameraRight, cameraUp].map(dir => BABYLON.Vector3.Dot(dir, meshPosition.subtract(position)));
 }
 
 function createConcentrationEffectCondition(Arr) {
@@ -332,14 +330,20 @@ function createConcentrationEffectCondition(Arr) {
         document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту ${devHelper.model3DVals.cameraPositions[Arr[0].position[0]].name}.`;
       }
     } else {
-      if (document.getElementById('b_help').interval)
-        clearInterval(document.getElementById('b_help').interval);
-      document.getElementById('b_help').interval = setInterval(changeBorder, 310);
-      function changeBorder() {
-        document.getElementById('b_GeneralView').style.border =
-          document.getElementById('b_GeneralView').style.border === '' ? '2px solid #2c5289' : '';
+      let activePointMesh = devHelper.model3DVals.movePointMesh.find(m => m.positionIndex === devHelper.model3DVals.currentPosition);
+      if (activePointMesh.svgArr && activePointMesh.svgArr.some(obj => obj.name === Arr[0].scheme)) {
+        createConcentrationEffect(Arr);
+        document.querySelector('.box-help').classList.remove('opacity-1-Temp');
+      } else {
+        if (document.getElementById('b_help').interval)
+          clearInterval(document.getElementById('b_help').interval);
+        document.getElementById('b_help').interval = setInterval(changeBorder, 310);
+        function changeBorder() {
+          document.getElementById('b_GeneralView').style.border =
+            document.getElementById('b_GeneralView').style.border === '' ? '2px solid #2c5289' : '';
+        }
+        document.querySelector('.box-help').innerHTML = 'Вернуться на главный вид.'
       }
-      document.querySelector('.box-help').innerHTML = 'Вернуться на главный вид.'
     }
   } else {
     if (Arr[0].scheme) {
@@ -1139,7 +1143,6 @@ document.getElementById('b_chat').addEventListener("mouseover", (e) => { setMini
 
 // ПОМОЩЬ
 document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseover", (e) => {
-  // findSideMeshFromCamera(devHelper.model3DVals.movePointMesh[7]);
   let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   if (currentAction.concentration) createConcentrationEffectCondition(currentAction.concentration);
 })
