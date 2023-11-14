@@ -43,25 +43,25 @@ const devHelper = {
       svgNames: [],
     },
     cameraPositions: [
-      { positionCoordinates: [0.35, 2.15, -3.4], lookAt: [0.1913, -0.0046, 0], position: undefined }, //начальное положение
-      { positionCoordinates: [-6.58, 1.12, -0.78], lookAt: [-0.0165, -0.7836, 0], position: 1 }, // монитор 1
-      { positionCoordinates: [-6.13, 1.12, -0.33], lookAt: [-0.0165, -0.7836, 0], position: 2 }, // монитор 2
-      { positionCoordinates: [-3.56, 1.73, -1], lookAt: [0.5216195764415446, 0.007373100235868478, 0], position: 3 }, // пульт 1 БВНК
-      { positionCoordinates: [0.06, 1.12, 0.11], lookAt: [-0.017735496836921723, -0.00104686817450884, 0], position: 4 }, // монитор 11
-      { positionCoordinates: [0.75, 1.12, 0.01], lookAt: [-0.02523549683692173, 0.3476621849510065, 0], position: 5 }, // монитор 12
-      { positionCoordinates: [0.1, 1.22, 0.03], lookAt: [1.077429069342384, -0.3353050130723554, 0], position: 6 }, // телефон
-      { positionCoordinates: [0.92, 1.31, -0.05], lookAt: [0.9778930701860019, 1.5707867182903412, 0], position: 7 }, // рация
-      { positionCoordinates: [1.77, 1.59, -0.48], lookAt: [1.111833144037235, -0.0018067781465321568, 0], position: 8 }, // пульт БЗУ
-      { positionCoordinates: [2.96, 1.95, -1.0], lookAt: [0.6879109600288498, 0.001624744992681849, 0], position: 9 }, // пульт ДП6
+      { positionCoordinates: [0.35, 2.15, -3.4], lookAt: [0.1913, -0.0046, 0], position: undefined, name: 'главный вид' }, 
+      { positionCoordinates: [-6.58, 1.12, -0.78], lookAt: [-0.0165, -0.7836, 0], position: 1, name: 'монитор #6 Воздухонагрев' },
+      { positionCoordinates: [-6.13, 1.12, -0.33], lookAt: [-0.0165, -0.7836, 0], position: 2, name: 'монитор #5 Воздухонагрев' },
+      { positionCoordinates: [-3.56, 1.73, -1], lookAt: [0.5216195764415446, 0.007373100235868478, 0], position: 3, name: 'ПУ №1 – Пульт управления клапанами блока воздухонагревателей конструкции Калугина (БВНК)' }, 
+      { positionCoordinates: [0.06, 1.12, 0.11], lookAt: [-0.017735496836921723, -0.00104686817450884, 0], position: 4, name: 'монитор #2' }, 
+      { positionCoordinates: [0.75, 1.12, 0.01], lookAt: [-0.02523549683692173, 0.3476621849510065, 0], position: 5, name: 'монитор #1' },
+      { positionCoordinates: [0.1, 1.22, 0.03], lookAt: [1.077429069342384, -0.3353050130723554, 0], position: 6, name: 'телефон' }, 
+      { positionCoordinates: [0.92, 1.31, -0.05], lookAt: [0.9778930701860019, 1.5707867182903412, 0], position: 7, name: 'рация' },
+      { positionCoordinates: [1.77, 1.59, -0.48], lookAt: [1.111833144037235, -0.0018067781465321568, 0], position: 8, name: 'ПУ №2 – Пуль управления бесконусное загрузочное устройство (БЗУ)' }, 
+      { positionCoordinates: [2.96, 1.95, -1.0], lookAt: [0.6879109600288498, 0.001624744992681849, 0], position: 9, name: 'ПУ №3 – Пульт управления основных механизмов доменной печи №6 (ДП-6)' }, 
     ],
     loadModels: [
       'All',
       'Highlight',
       'Console_BVNK',
-      'Console_BZU',
-      'Console_DP6',
-      'Console_PSODP6',
-      'Console_UGKS',
+      // 'Console_BZU',
+      // 'Console_DP6',
+      // 'Console_PSODP6',
+      // 'Console_UGKS',
     ],
 
   },
@@ -131,7 +131,6 @@ let tempActions = [
             { name: 'right_vn', color: '#8F8F8F' },
             { name: 'circle_1_kl029', stroke: '#8F8F8F' },
             { name: 'circle_2_kl029', stroke: '#8F8F8F' },
-
             { name: 'circle_1_win1', stroke: '#8F8F8F' },
             { name: 'circle_2_win1', stroke: '#8F8F8F' },
           ],
@@ -141,7 +140,7 @@ let tempActions = [
       startTime: timeDiff + 0.1,
       human: true, 
       concentration: [
-        { text: 'Клапан 029', x: 40.9, y: 48, w: 3, h: 7, position: [1, 2], scheme: ['vnk_main']},
+        { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main'},
       ]
     },
     // открыть

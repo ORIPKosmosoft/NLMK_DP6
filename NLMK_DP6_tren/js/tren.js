@@ -4,7 +4,6 @@
 ----------------------------------------------------
 Создание эффекта концетрации
  текст центровать по центру дыры
-
 ----------------------------------------------------
 */
 function loadTrenActions() {
@@ -157,6 +156,7 @@ function trenClickOnSvgElem(SvgElemHelper = undefined) {
           if (currentActonObject.action.window2D.elements.hasOwnProperty(key))
             changeSvgElem(currentActonObject.action.window2D.elements[key]);
         }
+        updateSvgTextures();
       }
       if (currentActonObject.audio) playAudio(currentActonObject.audio);
       newActionStartHelper(currentActonObject);
@@ -306,18 +306,58 @@ function newActionStartHelper(Action) {
   }
 }
 
+function findSideMeshFromCamera(mesh) {
+  const { camera, camera: { position } } = devHelper.model3DVals;
+  const { Forward, Up, Cross } = BABYLON.Vector3;
+  const [cameraForward, cameraUp, cameraRight] = [Forward(), Up(), Cross(Up(), Forward())].map(dir => camera.getDirection(dir));
+  const [dotRight, dotUp] = [cameraRight, cameraUp].map(dir => BABYLON.Vector3.Dot(dir, mesh.position.subtract(position)));
+  console.log(mesh.name, dotRight > 0 ? "справа" : "слева", dotUp > 0 ? "выше" : "ниже", "от камеры");
+  console.log('---------------------------------------------');
+
+}
+
 function createConcentrationEffectCondition(Arr) {
   if (Arr[0].position.indexOf(devHelper.model3DVals.currentPosition) === -1) {
-    console.log('Перейти на позицию' + Arr[0].position);
+    if (devHelper.model3DVals.currentPosition === undefined) {
+      let activePointMesh = devHelper.model3DVals.movePointMesh.find(m => m.positionIndex === Arr[0].position[0]);
+      const isVisible = isMeshVisible(activePointMesh);
+      if (!isVisible) {
+        // если нет то создать выделение
+        document.querySelector('.box-help').innerHTML = `Найти на рабочее место ${devHelper.model3DVals.cameraPositions[Arr[0].position[0]].name}.`;
+        findSideMeshFromCamera(activePointMesh);
+      } else {
+        // если да, то подсветить меш
+        document.getElementById('b_help').active3DTexture = activePointMesh;
+        changeColorTexture(activePointMesh, true);
+        document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту ${devHelper.model3DVals.cameraPositions[Arr[0].position[0]].name}.`;
+      }
+    } else {
+      if (document.getElementById('b_help').interval)
+        clearInterval(document.getElementById('b_help').interval);
+      document.getElementById('b_help').interval = setInterval(changeBorder, 310);
+      function changeBorder() {
+        document.getElementById('b_GeneralView').style.border =
+          document.getElementById('b_GeneralView').style.border === '' ? '2px solid #2c5289' : '';
+      }
+      document.querySelector('.box-help').innerHTML = 'Вернуться на главный вид.'
+    }
   } else {
     if (Arr[0].scheme) {
       let activeMonitor = devHelper.model3DVals.svgDisplays.meshs.find(m => m.positionIndex === devHelper.model3DVals.currentPosition);
-      const isScheme = activeMonitor.svgArr.some(obj => obj.name === Arr[0].scheme[0]);
+      const isScheme = activeMonitor.svgArr.some(obj => obj.name === Arr[0].scheme);
       if (isScheme) {
         createConcentrationEffect(Arr);
+        document.querySelector('.box-help').innerHTML = '';
+        document.querySelector('.box-help').style.opacity = 0;
       } else {
-        console.log('Включить нужную схему', Arr[0].scheme[0]);
+        document.querySelector('.box-help').innerHTML = 'Включить схему ' + devHelper.svgVals.find(element => element.name === Arr[0].scheme).realName;
+        // Добавить выделение на активатор
+        // найти сейчас главные хелпер
+        // найти в нём все хелперБатоны
+        // найти хелпер, который включит нужную схему
       }
+    } else {
+      // TODO тут сделать выделение 3Д активного элемента.
     }
   }
 }
@@ -331,18 +371,49 @@ function createConcentrationEffect(Arr) {
     document.querySelector('.tren-container').append(concentrationDiv);
     concentrationDiv.addEventListener('transitionend', (e) => {
       if (e.propertyName === 'opacity' && e.currentTarget.style.opacity === '1') {
-        Array.from(concentrationDiv.querySelector('.hole-container').children).forEach(element => element.style.opacity = '1')
-        Array.from(concentrationDiv.querySelector('.line-container').children).forEach(element => element.style.opacity = '1')
+        Array.from(concentrationDiv.querySelector('.hole-container').children).forEach(element => {
+          element.style.width = element.endWidth;
+          element.style.height = element.endHeight;
+          element.style.left = element.endLeft;
+          element.style.top = element.endTop;
+          element.style.opacity = '1';
+        })
+        Array.from(concentrationDiv.querySelector('.line-container').children).forEach((element, index) => {
+          element.style.opacity = '1';
+          if (element.classList.contains('concentration-line')) {
+            element.style.width = element.endWidth;
+            element.style.height = element.endHeight;
+            element.style.left = element.endLeft;
+            element.style.top = element.endTop;
+          }
+
+        })
       }
     })
     concentrationDiv.addEventListener('transitionstart', (e) => {
       if (e.propertyName === 'opacity' && e.currentTarget.style.opacity === '0') {
-        Array.from(concentrationDiv.querySelector('.hole-container').children).forEach(element => {element.style.trsansition = 'none'; element.style.opacity = '0'; })
-        Array.from(concentrationDiv.querySelector('.line-container').children).forEach(element => {element.style.trsansition = 'none'; element.style.opacity = '0'; })
+        Array.from(concentrationDiv.querySelector('.hole-container').children).forEach(element => {
+          element.style.trsansition = 'none';
+          element.style.width = '0vw';
+          element.style.height = '0vh';
+          element.style.left = element.startLeft;
+          element.style.top = element.startTop;
+          element.style.opacity = '0'
+        })
+        Array.from(concentrationDiv.querySelector('.line-container').children).forEach((element, index) => {
+          element.style.trsansition = 'none';
+          element.style.opacity = '0'
+          if (element.classList.contains('concentration-line')) {
+            element.style.width = '0vw';
+            element.style.height = '0vh';
+            element.style.left = element.startLeft;
+            element.style.top = element.startTop;
+          }
+        })
       }
       if (e.propertyName === 'opacity' && e.currentTarget.style.opacity === '1') {
-        Array.from(concentrationDiv.querySelector('.hole-container').children).forEach(element => {element.style.trsansition = '';})
-        Array.from(concentrationDiv.querySelector('.line-container').children).forEach(element => {element.style.trsansition = '';})
+        Array.from(concentrationDiv.querySelector('.hole-container').children).forEach(element => { element.style.trsansition = ''; })
+        Array.from(concentrationDiv.querySelector('.line-container').children).forEach(element => { element.style.trsansition = ''; })
       }
     })
     concentrationDiv.append(createCustomElement('div', '', { 'class': 'hole-container' }));
@@ -369,21 +440,23 @@ function createConcentrationEffect(Arr) {
     let concentrationDiv = document.querySelector('.tren-container').querySelector('.concentration');
     concentrationDiv.children[0].append(createConcentrationHoleLine(Variables.x, Variables.y, Variables.w, Variables.h, 'h'));
     concentrationDiv.children[1].append(createConcentrationHoleLine(Variables.x, Variables.y, Variables.w, Variables.h));
-    let newText = createConcentrationText(Variables.text, Variables.x, Variables.y, Variables.w, Variables.h);
+    let newText = createCustomElement('span', '', { 'class': 'concentration-text' });
+    newText.innerHTML = Variables.text;
     concentrationDiv.children[1].append(newText);
-    newText.style.left = (Variables.x - Variables.w / 2) + 'vw';
+    newText.style.left = ((Variables.x + Variables.w / 2) - ConvertPxToVw(newText.getBoundingClientRect().width / 2)) + 'vw';
     newText.style.top = (Variables.y - ConvertPxToVh(newText.getBoundingClientRect().height)) + 'vh';
     function createConcentrationHoleLine(x, y, w, h, type = 'l') {
       let elem = createCustomElement('div', '', { 'class': type === 'h' ? 'concentration-hole' : 'concentration-line' });
-      elem.style.left = x + 'vw';
-      elem.style.top = y + 'vh';
-      elem.style.width = w + 'vw';
-      elem.style.height = h + 'vh';
-      return elem;
-    }
-    function createConcentrationText(text, x, y, w, h) {
-      let elem = createCustomElement('span', '', { 'class': 'concentration-text' });
-      elem.innerHTML = text;
+      elem.endLeft = x + 'vw';
+      elem.endTop = y + 'vh';
+      elem.style.left = (x + w / 2) + 'vw';
+      elem.style.top = (y + h / 2) + 'vh';
+      elem.startLeft = elem.style.left;
+      elem.startTop = elem.style.top;
+      elem.endWidth = w + 'vw';
+      elem.endHeight = h + 'vh';
+      elem.style.width = 0 + 'vw';
+      elem.style.height = 0 + 'vh';
       return elem;
     }
   }
@@ -894,6 +967,7 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
   item = item.querySelector('button');
   b_action.addEventListener('click', (e) => {
     if (item.hasAttribute('disabled')) return; // отключен
+    if (item.id === 'b_help') return;
     if (document.querySelector(`.${item.getAttribute('window-interface')}`)) {  // включить анимацию
       document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0'); // включить анимацию
     }
@@ -1066,24 +1140,23 @@ document.getElementById('b_GeneralView').addEventListener("click", (e) => {
 document.getElementById('b_chat').addEventListener("mouseover", (e) => { setMiniChat(); })
 
 // ПОМОЩЬ
-document.getElementById('b_help').addEventListener("click", (e) => {
-  // if (e.currentTarget.classList.contains('button-tren-active')) {
-  //   document.querySelector('.box-help').classList.add("opacity-1-Always");
-  //   document.querySelector('.box-help').classList.add("box-time-padTop32");
-  //   document.querySelector('.box-help .block-button').classList.add("z-index-1");
-  //   document.querySelector('.box-help .backArea').classList.add('backArea-white-100')
-  //   document.querySelector('.box-help .time-header').classList.add("time-header-opacity");
-  // }
-})
 document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseover", (e) => {
+  // findSideMeshFromCamera(devHelper.model3DVals.movePointMesh[7]);
   let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   if (currentAction.concentration) createConcentrationEffectCondition(currentAction.concentration);
 })
 document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseout", (e) => {
   if (document.querySelector('.concentration')) document.querySelector('.concentration').style.opacity = 0;
+  if (document.getElementById('b_help').active3DTexture) {
+    changeColorTexture(document.getElementById('b_help').active3DTexture, false);
+    document.getElementById('b_help').active3DTexture = undefined;
+  }
+  if (document.getElementById('b_help').interval)
+    clearInterval(document.getElementById('b_help').interval);
+  document.getElementById('b_GeneralView').style.border = '';
 })
 // КЛИК ЗАКРЫТЬ ПОМОЩЬ
-document.querySelector('.box-help .time-header-button').addEventListener("click", clickCloseHelp)
+// document.querySelector('.box-help .time-header-button').addEventListener("click", clickCloseHelp)
 Array.from(document.querySelectorAll('.help-buttons-no')).forEach((item) => {
   item.addEventListener("click", clickCloseHelperWIndow);
 });
@@ -1091,10 +1164,10 @@ Array.from(document.querySelectorAll('.help-buttons-yes')).forEach((item) => {
   item.addEventListener("click", clickYesHelperWIndow);
 });
 // BIND mouseDown
-document.querySelector('.box-help .time-header-title').onmousedown = (e) => {
-  raiseUpBox(e);
-  dragAndDrop(e, e.currentTarget.parentElement.parentElement /*box-time*/);
-};
+// document.querySelector('.box-help .time-header-title').onmousedown = (e) => {
+//   raiseUpBox(e);
+//   dragAndDrop(e, e.currentTarget.parentElement.parentElement /*box-time*/);
+// };
 
 function clickCloseHelperWIndow(e) {
   let helperWindow = e.target.closest('.opacity-1-Always');

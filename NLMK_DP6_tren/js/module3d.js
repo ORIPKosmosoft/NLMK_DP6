@@ -767,3 +767,8 @@ function switc3DTime(digit, digitTime) {
       break;
   }
 }
+
+function isMeshVisible(mesh) {
+  const camera = devHelper.model3DVals.camera;
+  return camera.isInFrustum(mesh);
+}
