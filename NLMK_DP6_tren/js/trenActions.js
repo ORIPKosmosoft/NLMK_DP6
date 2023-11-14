@@ -63,7 +63,6 @@ const devHelper = {
       'Console_PSODP6',
       'Console_UGKS',
     ],
-
   },
   svgVals: [],
   startPos: {

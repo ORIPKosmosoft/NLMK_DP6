@@ -261,6 +261,8 @@ window.addEventListener('load', function () {
           lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
           lightMat.alpha = 0;
           element.material = lightMat;
+          element.isPickable = true;
+          meshOptimization(element);
           if (element.name && element.name === 'Console_BVNK_highlight') {
             makeActiveMesh(element, 3);
           } else if (element.name && element.name === 'Console_BZU_highlight') {
@@ -272,9 +274,6 @@ window.addEventListener('load', function () {
           } else if (element.name && element.name === 'Console_PSODP6_highlight') {
             element.dispose();
           }
-          meshOptimization(element);
-          element.actionManager = new BABYLON.ActionManager(Scene);
-          element.isPickable = true;
         })
       } else if (Name === 'Console_BVNK') {
         meshes.forEach(Mesh => {
@@ -420,6 +419,7 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
     if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
       devHelper.model3DVals.octree.dynamicContent.push(mesh);
+    console.log(mesh.name);
     mesh.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
         BABYLON.ActionManager.OnPickTrigger,
