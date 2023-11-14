@@ -263,16 +263,16 @@ window.addEventListener('load', function () {
           element.material = lightMat;
           element.isPickable = true;
           meshOptimization(element);
-          if (element.name && element.name === 'Console_BVNK_highlight') {
-            makeActiveMesh(element, 3);
-          } else if (element.name && element.name === 'Console_BZU_highlight') {
-            makeActiveMesh(element, 8);
-          } else if (element.name && element.name === 'Console_DP6_highlight') {
-            makeActiveMesh(element, 9);
-          } else if (element.name && element.name === 'Console_UGKS_highlight') {
-            element.dispose();
-          } else if (element.name && element.name === 'Console_PSODP6_highlight') {
-            element.dispose();
+          if (element.name) {
+            if (element.name === 'Console_BVNK_highlight') {
+              makeActiveMesh(element, 3);
+            } else if (element.name === 'Console_BZU_highlight') {
+              makeActiveMesh(element, 8);
+            } else if (element.name === 'Console_DP6_highlight') {
+              makeActiveMesh(element, 9);
+            } else if (element.name === 'Console_UGKS_highlight' || element.name === 'Console_PSODP6_highlight') {
+              element.dispose();
+            }
           }
         })
       } else if (Name === 'Console_BVNK') {
