@@ -242,6 +242,14 @@ body {
   overflow: hidden;
 }
 
+.drop-main a {
+  /* padding-left: 1vh; */
+  /* margin: 0px; */
+  font-family: 'Circe-Regular', sans-serif;
+  /* text-align: left; */
+  color: #3a3a3a;
+}
+
 .dropdown-container .dropdown-content {
   margin-top: -1000vh;
   width: 97%;
@@ -2517,6 +2525,7 @@ ul {
   border-bottom: .4vw solid transparent;
   border-top: .4vw solid transparent;
 }
+
 .arrow.arrow-left {
   left: 3.2vw;
   border-left: .5vw solid #2c5289;

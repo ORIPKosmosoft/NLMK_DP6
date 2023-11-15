@@ -277,7 +277,7 @@ window.addEventListener('load', function () {
     Element.style.marginTop = `1vh`;
     Element.classList.remove('first-drop');
   })
-  
+
   document.querySelectorAll('.nav-icon').forEach((Element) => {
     Element.addEventListener('click', guideBtnsClick);
   });
@@ -421,7 +421,7 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
           Element.classList.add('wrong-answer');
           counts.error++;
         }
-        else{
+        else {
           Element.classList.add('correct-answer');
           counts.correct++;
         }
@@ -708,4 +708,14 @@ function findLast(array, predicate) {
     }
   }
   return undefined;
+}
+
+function openPopupPdf(url) {
+  const screenWidth = window.screen.width;
+  const screenHeight = window.screen.height;
+  const width = Math.round(screenWidth * 0.4);
+  const height = Math.round(screenHeight * 0.9);
+  const left = Math.round((screenWidth - width) / 2);
+  const top = Math.round((screenHeight - height) / 2);
+  window.open(url, 'popup', `width=${width}, height=${height}, left=${left}, top=${top}`);
 }
