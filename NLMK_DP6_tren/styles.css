@@ -1077,6 +1077,21 @@ ul {
   /* padding-top: 0.5vh; */
 }
 
+.selfcheck-dropDown_menu {
+  display: flex;
+  padding: 0.5vh 0 0.5vh;
+  justify-content: left;
+  align-items: center;
+  max-width: 90%;
+}
+.selfcheck-dropDown_menu span {
+  font-size: 2ch;
+  font-family: 'Circe-bold', sans-serif;
+  color: #7C7C7C;
+  width: auto;
+  /* pointer-events: none; */
+}
+
 .dropDown-select {
   width: auto;
   height: auto;
