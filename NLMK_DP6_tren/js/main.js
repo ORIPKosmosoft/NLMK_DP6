@@ -446,7 +446,6 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       } else {
         selfcheckContainer.classList.toggle('block-selfcheck-container', true);
         elem.classList.toggle('disabled-button', true);
-        console.log("ALL OK"); // NEXT VOPROS ? 
       }
     } else if (elem.querySelector('span').textContent === 'Повторить') {
       radioContainer.querySelectorAll('.correct-answer').forEach((Element) => {

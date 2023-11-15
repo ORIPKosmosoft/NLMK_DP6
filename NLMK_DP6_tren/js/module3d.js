@@ -583,7 +583,6 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
     // //   }
     // }
     if (State === false && Mesh.highlightLayer) {
-      console.log(Mesh.highlightLayer);
       Mesh.highlightLayer.removeMesh(Mesh);
       Mesh.highlightLayer.dispose();
       Mesh.highlightLayer = undefined;
