@@ -582,27 +582,27 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
     // //     Mesh.material.emissiveColor = Mesh.material.oldEmissiveColor;
     // //   }
     // }
-    if (State === false && Mesh.highlightLayer) {
-      Mesh.highlightLayer.removeMesh(Mesh);
-      Mesh.highlightLayer.dispose();
-      Mesh.highlightLayer = undefined;
-    } else {
-      const hl = new BABYLON.HighlightLayer("hl1", devHelper.model3DVals.scene);
-      hl.addMesh(Mesh, BABYLON.Color3.Yellow());
-      Mesh.highlightLayer = hl;
-    }
-    devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
-    // let newBlue1 = State === true ? 0 : 1;
-    // let newBlue2 = State === true ? -1 : 0;
-    // let newAlpha = State === true ? 0.5 : 0;
-    // devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
-    // if (Mesh.material.alpha !== 1) {
-    //   Mesh.material.alpha = newAlpha;
+    // if (State === false && Mesh.highlightLayer) {
+    //   Mesh.highlightLayer.removeMesh(Mesh);
+    //   Mesh.highlightLayer.dispose();
+    //   Mesh.highlightLayer = undefined;
     // } else {
-    // if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
-    // else if (Mesh.material._emissiveColor)
-    //   Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
+    //   const hl = new BABYLON.HighlightLayer("hl1", devHelper.model3DVals.scene);
+    //   hl.addMesh(Mesh, BABYLON.Color3.Yellow());
+    //   Mesh.highlightLayer = hl;
     // }
+    // devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
+    let newBlue1 = State === true ? 0 : 1;
+    let newBlue2 = State === true ? -1 : 0;
+    let newAlpha = State === true ? 0.5 : 0;
+    devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
+    if (Mesh.material.alpha !== 1) {
+      Mesh.material.alpha = newAlpha;
+    } else {
+    if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
+    else if (Mesh.material._emissiveColor)
+      Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
+    }
   }
 }
 //TODO тут сделать часы 3Д
