@@ -312,6 +312,14 @@ function findSideMeshFromCamera(mesh) {
   const [cameraForward, cameraUp, cameraRight] = [Forward(), Up(), Cross(Up(), Forward())].map(dir => camera.getDirection(dir));
   const meshPosition = mesh.getAbsolutePosition();
   const [dotRight, dotUp] = [cameraRight, cameraUp].map(dir => BABYLON.Vector3.Dot(dir, meshPosition.subtract(position)));
+  let pointer = document.querySelector('.pointer-helper-container');
+  let arrowPointer = pointer.querySelector('.arrow');
+  pointer.style.display = 'unset';
+  pointer.style.left = dotRight > 0 ? '96.3vw' : '';
+  arrowPointer.classList.toggle('arrow-left', dotRight > 0);
+  arrowPointer.classList.toggle('arrow-right', dotRight <= 0);
+  let pointerTop = 50 - ConvertPxToVh(pointer.getBoundingClientRect().height / 2) - dotUp * ConvertPxToVh(window.innerHeight / 4);
+  pointer.style.top = `${Math.max(3, Math.min(95, pointerTop))}vh`;
 }
 
 function createConcentrationEffectCondition(Arr) {
@@ -321,7 +329,7 @@ function createConcentrationEffectCondition(Arr) {
       const isVisible = isMeshVisible(activePointMesh);
       if (!isVisible) {
         // если нет то создать выделение
-        document.querySelector('.box-help').innerHTML = `Найти на рабочее место ${devHelper.model3DVals.cameraPositions[Arr[0].position[0]].name}.`;
+        document.querySelector('.box-help').innerHTML = `Найти рабочее место ${devHelper.model3DVals.cameraPositions[Arr[0].position[0]].name}.`;
         findSideMeshFromCamera(activePointMesh);
       } else {
         // если да, то подсветить меш
@@ -1155,6 +1163,7 @@ document.getElementById('b_help').querySelector('.click-button-tren').addEventLi
   if (document.getElementById('b_help').interval)
     clearInterval(document.getElementById('b_help').interval);
   document.getElementById('b_GeneralView').style.border = '';
+  document.querySelector('.pointer-helper-container').style.display = 'none';
 })
 // КЛИК ЗАКРЫТЬ ПОМОЩЬ
 // document.querySelector('.box-help .time-header-button').addEventListener("click", clickCloseHelp)

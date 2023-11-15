@@ -9,12 +9,13 @@
 */
 
 /*----------TODO----------------------------------------------------
-Добавить всплывающую подсказку при наведении на хотспот
+Починить уход курсора с подсветки элемента хотспота с рендера
 --------------------------------------------------------------------
 */
 window.addEventListener('load', function () {
   document.querySelector('#renderCanvas').addEventListener('mouseout', e => {
-    devHelper.model3DVals.highlightMesh && changeColorTexture(devHelper.model3DVals.highlightMesh, false);
+    
+    // devHelper.model3DVals.highlightMesh && changeColorTexture(devHelper.model3DVals.highlightMesh, false);
   })
   const createScene = function () {
     let scene = new BABYLON.Scene(devHelper.model3DVals.engine);
@@ -144,7 +145,7 @@ window.addEventListener('load', function () {
     return scene;
   };
   const scene = createScene();
-  if (devHelper.dev.enable === true) scene.debugLayer.show();  // INSPECTOR
+  // if (devHelper.dev.enable === true) scene.debugLayer.show();  // INSPECTOR
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
@@ -581,21 +582,17 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
     // //     Mesh.material.emissiveColor = Mesh.material.oldEmissiveColor;
     // //   }
     // }
-    devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
-    if (Mesh.highlightLayer) {
+    if (State === false && Mesh.highlightLayer) {
+      console.log(Mesh.highlightLayer);
       Mesh.highlightLayer.removeMesh(Mesh);
       Mesh.highlightLayer.dispose();
       Mesh.highlightLayer = undefined;
     } else {
-      // var hexColor = "#2c5289";
-      // var r = parseInt(hexColor.substring(1, 3), 16) / 255; // Получение значения R и его нормализация
-      // var g = parseInt(hexColor.substring(3, 5), 16) / 255; // Получение значения G и его нормализация
-      // var b = parseInt(hexColor.substring(5, 7), 16) / 255; // Получение значения B и его нормализация
-      // var color = new BABYLON.Color3(r, g, b);
       const hl = new BABYLON.HighlightLayer("hl1", devHelper.model3DVals.scene);
       hl.addMesh(Mesh, BABYLON.Color3.Yellow());
       Mesh.highlightLayer = hl;
     }
+    devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
     // let newBlue1 = State === true ? 0 : 1;
     // let newBlue2 = State === true ? -1 : 0;
     // let newAlpha = State === true ? 0.5 : 0;
