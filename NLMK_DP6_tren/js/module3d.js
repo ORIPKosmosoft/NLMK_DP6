@@ -133,7 +133,7 @@ window.addEventListener('load', function () {
     }
     //----------------------------------------------------------------------------------------------------------
 
-    let options = new BABYLON.SceneOptimizerOptions(60, 1000);
+    let options = new BABYLON.SceneOptimizerOptions(60, 250);
     let optimizer = new BABYLON.SceneOptimizer(scene, options);
     BABYLON.SceneOptimizer.OptimizeAsync(scene, BABYLON.SceneOptimizerOptions.HighDegradationAllowed(),
       function () {

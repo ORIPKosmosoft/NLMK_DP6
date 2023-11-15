@@ -1473,7 +1473,7 @@ ul {
 
 
 .box-time {
-  width: 30.52vw;
+  width: 18.52vw;
   height: 75px;
   border-radius: 0.52vw;
   position: fixed;
@@ -1483,10 +1483,8 @@ ul {
   flex-direction: column;
   padding: 5px;
   opacity: 0;
-  /* visibility: hidden; */
   z-index: -1;
   overflow: hidden;
-  /* display: none; */
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
@@ -1498,7 +1496,6 @@ ul {
   height: 104%;
   position: absolute;
   z-index: 6;
-  /* background: rgba(255, 145, 255, 0.2); */
   margin-top: -30px;
 }
 
@@ -1519,8 +1516,6 @@ ul {
   margin-left: 0.52vw;
   margin-right: 2px;
   opacity: 0;
-  /* cursor: pointer; */
-  /* visibility: hidden; */
   transition: all 0.3s ease;
   z-index: 3;
 }
