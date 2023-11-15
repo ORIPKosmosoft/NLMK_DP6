@@ -434,21 +434,9 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
           counts.correct++;
         }
       });
-      radioContainer.querySelectorAll('.active-radio').forEach((Element) => {
-        Element.classList.toggle('wrong-answer', true);
-        Element.classList.toggle('active-radio', false);
-      });
-
+      if (radioContainer.querySelector('.wrong-answer')) 
+        radioContainer.querySelectorAll('.correct-answer').forEach(element => element.classList.replace('correct-answer', 'wrong-answer'));
       if (selfcheckTrueResults[selfcheckcontainerIndex].length != radioContainer.querySelectorAll('.correct-answer').length || radioContainer.querySelector('.wrong-answer') != null) {
-        selfcheckTrueResults[selfcheckcontainerIndex].forEach((Element) => {
-          selfcheckContainer.querySelectorAll('.radio-elem').forEach((elem) => {
-            if (elem.querySelector('span').textContent === Element) {
-              if (!elem.classList.contains('correct-answer') && !elem.classList.contains('wrong-answer')) {
-                elem.classList.toggle('wrong-answer', true);
-              }
-            }
-          });
-        });
         selfcheckContainer.classList.toggle('block-selfcheck-container', true);
         elem.querySelector('span').textContent = 'Повторить';
       } else {
@@ -462,6 +450,10 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       radioContainer.querySelectorAll('.wrong-answer').forEach((Element) => {
         Element.classList.toggle('wrong-answer', false);
       });
+      radioContainer.querySelectorAll('.active-radio').forEach((Element) => {
+        Element.classList.toggle('active-radio', false);
+      });
+
       selfcheckContainer.classList.toggle('block-selfcheck-container', false);
       elem.querySelector('span').textContent = 'Подтвердить';
       elem.classList.toggle('disabled-button', true);
