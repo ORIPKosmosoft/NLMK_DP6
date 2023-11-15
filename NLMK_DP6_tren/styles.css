@@ -562,6 +562,7 @@ ul {
   background-size: auto;
   display: flex;
   flex-direction: row;
+  pointer-events: none;
 }
 
 .model-map-window {
@@ -989,7 +990,7 @@ ul {
 
 .selfcheck-container {
   position: relative;
-  width: 100%;
+  width: 99%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -1065,7 +1066,7 @@ ul {
 .selfcheck-radio-dragDrop {
   display: flex;
   padding: 0.5vh 0 0.5vh;
-  justify-content: left;
+  justify-content: space-between;
 }
 
 .selfcheck-radio-dragDrop span {
@@ -1074,7 +1075,6 @@ ul {
   color: #7C7C7C;
   width: 50%;
   pointer-events: none;
-  /* padding-top: 0.5vh; */
 }
 
 .selfcheck-dropDown_menu {
@@ -1084,6 +1084,7 @@ ul {
   align-items: center;
   max-width: 90%;
 }
+
 .selfcheck-dropDown_menu span {
   font-size: 2ch;
   font-family: 'Circe-bold', sans-serif;
@@ -1110,13 +1111,16 @@ ul {
   z-index: 100;
   max-width: 40vh;
 }
+
 .dropDown-select:hover {
   border: 2px solid #2c5289;
   cursor: pointer !important;
 }
+
 .dropDown-currect {
   border: 2px solid #68b960 !important;
 }
+
 .dropDown-wrong {
   border: 2px solid #ff5353 !important;
 }

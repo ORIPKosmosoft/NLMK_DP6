@@ -20,14 +20,15 @@ function domLoaded() {
   document.querySelector('.tren-ui').before(sectionCopy);
   document.querySelector('.tren-container').addEventListener('transitionend', (e) => {
     if (e.propertyName === 'opacity') {
-      e.currentTarget.style.visibility = e.currentTarget.style.opacity === '0' ? 'hidden' : 'visible';
-      if (e.currentTarget.style.opacity === '0') {
-        e.currentTarget.style.visibility = 'hidden';
-        document.querySelector('.header').style.top = '0px';
-        document.querySelectorAll('.section')[0].style.left = '0px';
+      const isHidden = e.currentTarget.style.opacity === '0';
+      e.currentTarget.style.visibility = isHidden ? 'hidden' : 'visible';
+      e.currentTarget.style.pointerEvents = isHidden ? '' : 'all';
+      if (isHidden) {
+        document.querySelector('.header').style.top = '0';
+        document.querySelectorAll('.section')[0].style.left = '0';
         document.querySelector('.start-container').style.visibility = 'visible';
         animMoveCamera(devHelper.model3DVals.cameraPositions[0], 0.1);
-      } else e.currentTarget.style.visibility = 'visible';
+      }
     }
   })
 
@@ -220,13 +221,16 @@ function showhelperTooltip(elem, elemRect) {
   if (document.querySelector('.selfcheck-visible').classList.contains('container-dragDrop')) {
     helperTooltip.querySelector('span').textContent = devHelper.testVals.dragDropHelperText;
   } else {
-    helperTooltip.querySelector('span').textContent = devHelper.testVals.radioSelfcheckHelperText;
+    const selfcheckContainers = Array.from(document.querySelectorAll('.selfcheck-container'));
+    const selfcheckcontainerIndex = selfcheckContainers.findIndex(container => container.classList.contains('selfcheck-visible'));
+    const answerArray = devHelper.testVals.answersArray[selfcheckcontainerIndex];
+    const helperText = (answerArray.length > 1) ? devHelper.testVals.radioSelfcheckHelperTextMany : devHelper.testVals.radioSelfcheckHelperText;
+    helperTooltip.querySelector('span').textContent = helperText;
   }
   helperTooltip.classList.toggle('visible-tiiltip', true);
   helperTooltip.style.left = elem.offsetLeft + elem.getBoundingClientRect().width - helperTooltip.getBoundingClientRect().width + 'px';
   helperTooltip.style.top = elem.offsetTop - helperTooltip.getBoundingClientRect().height - 10 + 'px';
 }
-
 // Работа с ивентами перетаскивания
 function setDragEvents(elem) {
   // dragstart
@@ -276,8 +280,6 @@ function setDragEvents(elem) {
   });
 
 }
-
-
 
 window.addEventListener('load', function () {
   document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
@@ -348,15 +350,19 @@ function guideBtnsClick(e) {
 // Функция работы с radioButton
 function radioButtonChange(elem) {
   let confirmButton = elem.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button');
-  let radioContainer = elem.closest('.selfcheck-radio-container');
-  if (!elem.parentElement.classList.contains('active-radio')) {
-    elem.parentElement.classList.toggle('active-radio', true);
-    confirmButton.classList.toggle('disabled-button', false)
-    confirmButton.classList.toggle('active-button', true)
-  } else {
-    elem.parentElement.classList.toggle('active-radio', false);
-    confirmButton.classList.toggle('disabled-button', true)
-    confirmButton.classList.toggle('active-button', false)
+  let selfcheckContainer = elem.closest('.tests-container-elem').querySelector('.selfcheck-visible');
+  let selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
+  const answerArray = devHelper.testVals.answersArray[selfcheckcontainerIndex];
+  const activeRadio = selfcheckContainer.querySelector('.active-radio');
+  const isChecked = elem.parentElement.classList.contains('active-radio');
+  const hasSingleAnswer = answerArray.length === 1;
+
+  elem.parentElement.classList.toggle('active-radio', hasSingleAnswer || !isChecked);
+  confirmButton.classList.toggle('disabled-button', !hasSingleAnswer && isChecked);
+  confirmButton.classList.toggle('active-button', hasSingleAnswer || isChecked);
+
+  if (hasSingleAnswer && activeRadio) {
+    activeRadio.classList.remove('active-radio');
   }
 }
 
@@ -383,11 +389,14 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
         const elementDrag = dragDropElem[i];
         for (let ii = 0; ii < Object.keys(answers).length; ii++) {
           const elementAnswers = answers[ii];
-          if (elementDrag[0].textContent === elementAnswers[0]) {
-            if (elementDrag[1].textContent === elementAnswers[1]) {
-              elementDrag[0].parentElement.classList.toggle('correct-dragDrop', true);
-            } else {
-              elementDrag[0].parentElement.classList.toggle('wrong-dragDrop', true);
+          if (elementAnswers[0] === elementDrag[0].textContent) {
+            for (let a = 1; a < elementAnswers.length; a++) {
+              if (elementAnswers[a] === elementDrag[1].textContent) {
+                elementDrag[0].parentElement.classList.toggle('correct-dragDrop', true);
+              }
+              if (a === elementAnswers.length - 1 && !elementDrag[0].parentElement.classList.contains('correct-dragDrop')) {
+                elementDrag[0].parentElement.classList.toggle('wrong-dragDrop', true);
+              }
             }
           }
         }
@@ -399,7 +408,6 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
         elem.classList.toggle('disabled-button', true);
         selfcheckContainer.classList.toggle('correct-dragDrop-container', true);
       }
-
     } else if (elem.querySelector('span').textContent === 'Повторить') {
       selfcheckContainer.querySelectorAll('.correct-dragDrop').forEach((Element) => {
         Element.classList.toggle('correct-dragDrop', false);
@@ -434,7 +442,7 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
           counts.correct++;
         }
       });
-      if (radioContainer.querySelector('.wrong-answer')) 
+      if (radioContainer.querySelector('.wrong-answer'))
         radioContainer.querySelectorAll('.correct-answer').forEach(element => element.classList.replace('correct-answer', 'wrong-answer'));
       if (selfcheckTrueResults[selfcheckcontainerIndex].length != radioContainer.querySelectorAll('.correct-answer').length || radioContainer.querySelector('.wrong-answer') != null) {
         selfcheckContainer.classList.toggle('block-selfcheck-container', true);

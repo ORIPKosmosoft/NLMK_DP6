@@ -210,12 +210,12 @@ function takeStartingState(Restart = false) {
           reloadImg.push(mesh.startSvg.name);
       })
       devHelper.startPos.IF2D.forEach(activeElement => {
-        devHelper.svgVals.forEach((element, index) => {
+        devHelper.svgVals.forEach((element) => {
           element.activeElements.forEach((oldActiveElement) => {
             if (oldActiveElement.element.id === activeElement.id) {
               let cloneNode = activeElement.cloneNode(true);
               oldActiveElement.element = cloneNode;
-              element.svg.querySelector(`#${activeElement.id}`).replaceWith(cloneNode);
+              element.svg.getElementById(activeElement.id).replaceWith(cloneNode);
             }
           })
         })
