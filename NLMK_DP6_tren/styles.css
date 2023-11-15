@@ -1077,6 +1077,35 @@ ul {
   /* padding-top: 0.5vh; */
 }
 
+.dropDown-select {
+  width: auto;
+  height: auto;
+  align-items: center;
+  border-radius: 5px;
+  background: #f8f8f8 !important;
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
+  border: 2px solid #f8f8f8;
+  transition: all 0.3s ease;
+  color: #7C7C7C;
+  font-size: 2ch;
+  font-weight: 700;
+  font-family: 'Circe-Bold', sans-serif;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  z-index: 100;
+  max-width: 40vh;
+}
+.dropDown-select:hover {
+  border: 2px solid #2c5289;
+  cursor: pointer !important;
+}
+.dropDown-currect {
+  border: 2px solid #68b960 !important;
+}
+.dropDown-wrong {
+  border: 2px solid #ff5353 !important;
+}
+
 .drag-drop-elem {
   width: auto;
   height: auto;
