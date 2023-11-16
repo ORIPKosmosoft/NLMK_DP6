@@ -2419,6 +2419,10 @@ ul {
   justify-content: center;
 }
 
+.button-tren#b_help {
+  cursor: default !important;
+}
+
 .button-tren:hover {
   /* background-color: #1b569b; */
   border: 0.15vw solid #2c5289;

@@ -1152,7 +1152,11 @@ document.getElementById('b_chat').addEventListener("mouseover", (e) => { setMini
 // ПОМОЩЬ
 document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseover", (e) => {
   let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-  if (currentAction.concentration) createConcentrationEffectCondition(currentAction.concentration);
+  if (currentAction && currentAction.concentration) createConcentrationEffectCondition(currentAction.concentration);
+  else {
+    document.querySelector('.box-help').innerHTML = '';
+    document.querySelector('.box-help').classList.toggle('opacity-1-Temp', false);
+  }
 })
 document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseout", (e) => {
   if (document.querySelector('.concentration')) document.querySelector('.concentration').style.opacity = 0;

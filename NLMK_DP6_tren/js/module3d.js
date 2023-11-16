@@ -14,8 +14,7 @@
 */
 window.addEventListener('load', function () {
   document.querySelector('#renderCanvas').addEventListener('mouseout', e => {
-    
-    // devHelper.model3DVals.highlightMesh && changeColorTexture(devHelper.model3DVals.highlightMesh, false);
+    devHelper.model3DVals.highlightMesh && changeColorTexture(devHelper.model3DVals.highlightMesh, false);
   })
   const createScene = function () {
     let scene = new BABYLON.Scene(devHelper.model3DVals.engine);
@@ -288,7 +287,7 @@ window.addEventListener('load', function () {
           meshOptimization(Mesh);
         })
       } else if (Name === 'Console_DP6') {
-        meshes.forEach(Mesh => {
+        meshes.forEach((MeshDP6, Index) => {
           meshOptimization(Mesh);
           if (Mesh.name) {
             if (Mesh.name === 'Handle_015') {
@@ -474,7 +473,9 @@ function clickOnPointMesh(Mesh = undefined, Vals = undefined) {
       mesh.isPickable = false;
       if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(false);
     })
-    changeColorTexture(Mesh, false);
+    devHelper.model3DVals.movePointMesh.forEach(mesh => {
+      changeColorTexture(mesh, false);
+    })
     animMoveCamera(Vals);
   }
 }
@@ -599,9 +600,9 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
     if (Mesh.material.alpha !== 1) {
       Mesh.material.alpha = newAlpha;
     } else {
-    if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
-    else if (Mesh.material._emissiveColor)
-      Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
+      if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
+      else if (Mesh.material._emissiveColor)
+        Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
     }
   }
 }
