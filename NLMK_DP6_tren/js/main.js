@@ -145,6 +145,7 @@ function domLoaded() {
       3: ['0,2 кгс/см²', 'остановить загрузку печи'],
       4: ['0,1-0,15 кгс/см²', 'установить листовую заглушку в трубопровод азота'],
     },
+    // ['3', '2', '1'],
   ];
 
   // Вешаю обработчик нажатия на все <div class="selfcheck-radio">
@@ -204,6 +205,10 @@ function domLoaded() {
   document.querySelectorAll('.drag-drop-elem').forEach((Element) => {
     setDragEvents(Element);
   });
+  // Вешаю евенты на контейнеры где нужно выставить ответы последовательно
+  document.querySelectorAll('.consecutive-elem').forEach((Element) => {
+    setDragEvents(Element);
+  });
 
   // Наведение на кнопку 'Помощь'
   document.querySelector('.helper-answer').addEventListener('mouseover', (e) => {
@@ -215,15 +220,7 @@ function domLoaded() {
 
   // Вешаю обработчик на выбор селект и рандомлю ответы
   document.querySelectorAll('.container-dropDownMenu').forEach((Element) => {
-    // document.querySelectorAll('.dropDown-select').forEach((Element) => {
     randomAnswer(Element);
-    Element.querySelectorAll('.dropDown-select').forEach((elem) => {
-      elem.onchange = function () {
-        document.querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', false);
-        document.querySelector('.selfcheck-confirm-button').classList.toggle('active-button', true);
-      };
-    })
-
   });
 
   loadTrenActions();
@@ -249,8 +246,11 @@ function showhelperTooltip(elem, elemRect) {
 }
 // Работа с ивентами перетаскивания
 function setDragEvents(elem) {
+  const elemParent = elem.closest('.selfcheck-radio-dragDrop') || elem.closest('.selfcheck-consecutive');
   // dragstart
   elem.addEventListener('dragstart', (event) => {
+    console.log(elemParent);
+    console.log(elem.classList[0]);
     devHelper.testVals.dragElement = event.currentTarget;
     devHelper.testVals.dragElementText = event.currentTarget.querySelector('span').textContent;
     devHelper.testVals.dragElement.classList.toggle('current-dragStart-elem', true);
@@ -258,22 +258,22 @@ function setDragEvents(elem) {
   });
 
   // dragover
-  elem.closest('.selfcheck-radio-dragDrop').addEventListener('dragover', (event) => {
-    if (devHelper.testVals.dragoverElement !== event.currentTarget.querySelector('.drag-drop-elem')) {
-      devHelper.testVals.dragoverElement = event.currentTarget.querySelector('.drag-drop-elem');
-      devHelper.testVals.dragoverElementText = event.currentTarget.querySelector('.drag-drop-elem').querySelector('span').textContent;
+  elem.closest(`.${elemParent.classList[0]}`).addEventListener('dragover', (event) => {
+    if (devHelper.testVals.dragoverElement !== event.currentTarget.querySelector(`.${elem.classList[0]}`)) {
+      devHelper.testVals.dragoverElement = event.currentTarget.querySelector(`.${elem.classList[0]}`);
+      devHelper.testVals.dragoverElementText = event.currentTarget.querySelector(`.${elem.classList[0]}`).querySelector('span').textContent;
     }
     if (!event.currentTarget.classList.contains('current-drag-elem')) {
-      event.currentTarget.querySelector('.drag-drop-elem').classList.toggle('current-drag-elem', true);
+      event.currentTarget.querySelector(`.${elem.classList[0]}`).classList.toggle('current-drag-elem', true);
     }
     event.preventDefault();
   });
 
   // dragleave
-  elem.closest('.selfcheck-radio-dragDrop').addEventListener('dragleave', (event) => {
-    if (event.currentTarget.querySelector('.drag-drop-elem').classList.contains('current-drag-elem')) {
+  elem.closest(`.${elemParent.classList[0]}`).addEventListener('dragleave', (event) => {
+    if (event.currentTarget.querySelector(`.${elem.classList[0]}`).classList.contains('current-drag-elem')) {
       devHelper.testVals.dragElement.querySelector('span').textContent = devHelper.testVals.dragElementText;
-      event.currentTarget.querySelector('.drag-drop-elem').classList.toggle('current-drag-elem', false);
+      event.currentTarget.querySelector(`.${elem.classList[0]}`).classList.toggle('current-drag-elem', false);
       devHelper.testVals.dragElement.classList.toggle('current-drag-elem', true);
     }
   });
@@ -285,7 +285,7 @@ function setDragEvents(elem) {
   })
 
   // drop
-  elem.closest('.selfcheck-radio-dragDrop').addEventListener('drop', (event) => {
+  elem.closest(`.${elemParent.classList[0]}`).addEventListener('drop', (event) => {
     event.preventDefault();
     if (devHelper.testVals.dragoverElementText != devHelper.testVals.dragElement.querySelector('span').textContent) {
       devHelper.testVals.dragElement.querySelector('span').textContent = devHelper.testVals.dragoverElementText;
@@ -593,16 +593,44 @@ function reviveArray(min) {
   devHelper.testVals.previousContainer = randomContainer;
 }
 
+// Изменение текста плана действий в title
+function titleInfo() {
+  const container = devHelper.testVals.previousContainer;
+  const containerIndex = devHelper.testVals.containerArray.indexOf(container);
+  const answerLength = devHelper.testVals.answersArray[containerIndex].length;
+
+  if (container.classList.contains('container-dragDrop')) {
+    container.querySelector('.radio-title-info').textContent = devHelper.testVals.dragDropHelperText;
+  }
+  if (container.classList.contains('container-dropDownMenu')) {
+    container.querySelector('.radio-title-info').textContent = devHelper.testVals.dropDownHelperText;
+  }
+  if (container.classList.contains('container-radioButton')) {
+    if (answerLength > 4) {
+      container.querySelector('.radio-title-info').textContent = `Выберите ${answerLength} верных ответов и нажмите подтвердить.`;
+      return;
+    }
+    if (answerLength > 1) {
+      container.querySelector('.radio-title-info').textContent = `Выберите ${answerLength} верных ответа и нажмите подтвердить.`;
+      return;
+    } else {
+      container.querySelector('.radio-title-info').textContent = devHelper.testVals.radioSelfcheckHelperText;
+      return;
+    }
+  }
+}
+
 function navIconClick(randomContainer, min) {
   randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
 
   randomContainer.classList.toggle('selfcheck-invisible', false);
   randomContainer.classList.toggle('selfcheck-visible', true);
-  if (randomContainer.classList.contains('container-dragDrop') == true) {
+  if (randomContainer.classList.contains('container-dragDrop') == true || randomContainer.classList.contains('container-dropDownMenu') == true) {
     document.querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', false);
     document.querySelector('.selfcheck-confirm-button').classList.toggle('active-button', true);
   }
   devHelper.testVals.previousContainer = randomContainer;
+  titleInfo();
 }
 
 function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
@@ -644,6 +672,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     randomContainer.classList.toggle('selfcheck-invisible', false);
     randomContainer.classList.toggle('selfcheck-visible', true);
     devHelper.testVals.previousContainer = randomContainer;
+    titleInfo();
     if (devHelper.testVals.containerArray.length === 0) {
       devHelper.testVals.previousContainer = undefined;
     }
@@ -663,7 +692,6 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     }
     randomContainer.classList.toggle('selfcheck-invisible', false);
     randomContainer.classList.toggle('selfcheck-invisible', true);
-    // devHelper.testVals.previousContainer = randomContainer;
     devHelper.testVals.previousContainer.querySelectorAll('.selfcheck-radio-dragDrop').forEach((Element) => {
       Element.classList.toggle('correct-dragDrop', false);
       Element.classList.toggle('wrong-dragDrop', false);
@@ -696,6 +724,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     randomContainer.classList.toggle('selfcheck-invisible', false);
     randomContainer.classList.toggle('selfcheck-visible', true);
     devHelper.testVals.previousContainer = randomContainer;
+    titleInfo();
     if (devHelper.testVals.containerArray.length === 0) {
       devHelper.testVals.previousContainer = undefined;
     }
@@ -727,6 +756,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').querySelector('span').textContent = 'Подтвердить';
 
     devHelper.testVals.previousContainer = randomContainer;
+    titleInfo();
     return;
   }
 
@@ -754,6 +784,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     randomContainer.classList.toggle('selfcheck-invisible', false);
     randomContainer.classList.toggle('selfcheck-visible', true);
     devHelper.testVals.previousContainer = randomContainer;
+    titleInfo();
     if (devHelper.testVals.containerArray.length === 0) {
       devHelper.testVals.previousContainer = undefined;
     }
@@ -787,6 +818,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').querySelector('span').textContent = 'Подтвердить';
 
     devHelper.testVals.previousContainer = randomContainer;
+    titleInfo();
     return;
   }
 
@@ -803,6 +835,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
   randomContainer.classList.toggle('selfcheck-invisible', false);
   randomContainer.classList.toggle('selfcheck-visible', true);
   devHelper.testVals.previousContainer = randomContainer;
+  titleInfo();
   return;
 }
 
@@ -820,7 +853,7 @@ function glavTestFun(pressedButtonName, pressedButton) {
   }
   if (pressedButtonName === 'random-answer-button') {
     randomAnswerButtonClick(randomContainer, min, previousContainerIndex);
-    if (pressedButton.closest('.tests-container-elem').querySelector('.selfcheck-visible').classList.contains('container-dragDrop') == true) {
+    if (document.querySelector('.selfcheck-visible').classList.contains('container-dragDrop') == true || document.querySelector('.selfcheck-visible').classList.contains('container-dropDownMenu') == true) {
       document.querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', false);
       document.querySelector('.selfcheck-confirm-button').classList.toggle('active-button', true);
     } else {

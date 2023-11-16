@@ -81,10 +81,25 @@ const devHelper = {
     dragElementText: '', // Текст элемента, который перетаскиваем
     dragoverElement: undefined, // Элемент, на который навелись
     dragoverElementText: '', // Текст элемента, на который навелись
-    radioSelfcheckHelperText: 'Выберите один вариант и нажмите подтвердить.', // Текст хелпера вопросов с радиокнопками
+    radioSelfcheckHelperText: 'Выберите один верный ответ и нажмите подтвердить.', // Текст хелпера вопросов с радиокнопками
     radioSelfcheckHelperTextMany: 'Выберите несколько вариантов и нажмите подтвердить.', // Текст хелпера вопросов с радиокнопками
     dragDropHelperText: 'Переместите каждый ответ в нужную строчку и нажмите подтвердить.', // Текст хелпера вопросов с dragDrop
     dropDownHelperText: 'В выпадающих списках выберите нужный вариант и нажмите подтвердить.', // Текст хелпера вопросов с dragDrop
+    arrayForCreateTests: [
+      {
+        questionType: 'radio',
+      },
+      {
+        questionType: 'dragDrop',
+      },
+      {
+        questionType: 'dropDownMenu',
+      },
+      {
+        questionType: 'consecutive',
+      },
+
+    ],
   },
   //---------------------------
   dev: {
