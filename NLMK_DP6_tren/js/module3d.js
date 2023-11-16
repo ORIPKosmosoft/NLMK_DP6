@@ -144,7 +144,7 @@ window.addEventListener('load', function () {
     return scene;
   };
   const scene = createScene();
-  // if (devHelper.dev.enable === true) scene.debugLayer.show();  // INSPECTOR
+  if (devHelper.dev.enable === true) scene.debugLayer.show();  // INSPECTOR
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
@@ -287,7 +287,7 @@ window.addEventListener('load', function () {
           meshOptimization(Mesh);
         })
       } else if (Name === 'Console_DP6') {
-        meshes.forEach((MeshDP6, Index) => {
+        meshes.forEach((Mesh) => {
           meshOptimization(Mesh);
           if (Mesh.name) {
             if (Mesh.name === 'Handle_015') {
