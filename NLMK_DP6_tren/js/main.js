@@ -452,6 +452,7 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       });
       if (selfcheckContainer.querySelector('.dropDown-wrong') != null) {
         elem.querySelector('span').textContent = 'Повторить';
+        selfcheckContainer.classList.toggle('block-selfcheck-container', true);
       } else {
         elem.classList.toggle('disabled-button', true);
         selfcheckContainer.classList.toggle('correct-dropDownMenu-container', true);
