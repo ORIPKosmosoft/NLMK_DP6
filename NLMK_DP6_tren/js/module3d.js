@@ -289,12 +289,8 @@ window.addEventListener('load', function () {
       } else if (Name === 'Console_DP6') {
         meshes.forEach((Mesh) => {
           meshOptimization(Mesh);
-          if (Mesh.name) {
-            if (Mesh.name === 'Handle_015') {
-              makeActiveMesh(Mesh, { name: 'Handle_015', posIndex: 9 });
-            }
-          }
         })
+        findActiveMeshs();
       } else if (Name === 'Console_PSODP6') {
         meshes.forEach(Mesh => {
           meshOptimization(Mesh);
@@ -310,6 +306,23 @@ window.addEventListener('load', function () {
       }
       catch { }
     });
+
+    function findActiveMeshs() {
+      devHelper.model3DVals.activeMeshsToArr.forEach(elem => {
+        let tempName = elem.name ? elem.name : elem;
+        const meshNamesToSearch = devHelper.model3DVals.scene.meshes.filter(mesh => mesh.name.includes(tempName));
+        if (meshNamesToSearch.length > 0) {
+          meshNamesToSearch.forEach(mesh => {
+            if (devHelper.model3DVals.tempactiveMeshs.indexOf(mesh) === -1) {
+              // раскомментировать и заработает новое добавление.
+              // Добавить findActiveMeshs в каждый за
+              // makeActiveMesh(mesh, { name: mesh.name });
+            }
+          });
+        }
+      });
+    }
+
     function meshOptimization(mesh, name = undefined) {
       if (mesh._children && mesh._children.length > 0)
         mesh._children.forEach(child => meshOptimization(child));
@@ -342,6 +355,13 @@ window.addEventListener('load', function () {
     }
     else {
       devHelper.model3DVals.octree = Scene.createOrUpdateSelectionOctree();
+      // setTimeout(() => {
+
+      //   const tempVal1 = devHelper.model3DVals.scene.getMeshByName('Handle_015');
+      //   const tempVal2 = devHelper.model3DVals.scene.getMeshByID('3391');
+      //   const tempVal3 = devHelper.model3DVals.scene.getMeshByID('128f49df-9d0a-4b03-b177-dfa710831d6f');
+      //   console.log(tempVal1, tempVal2, tempVal3);
+      // }, 1000);
     }
   }
 })
@@ -414,9 +434,10 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     if (Vals.name) {
       mesh.name = Vals.name;
       mesh.currentPosition = Vals.posIndex;
-      if (devHelper.model3DVals.activeMeshs[Vals.posIndex] === undefined)
-        devHelper.model3DVals.activeMeshs[Vals.posIndex] = [];
-      devHelper.model3DVals.activeMeshs[Vals.posIndex].push(mesh);
+      // if (devHelper.model3DVals.activeMeshs[Vals.posIndex] === undefined)
+      //   devHelper.model3DVals.activeMeshs[Vals.posIndex] = [];
+      // devHelper.model3DVals.activeMeshs[Vals.posIndex].push(mesh);
+      devHelper.model3DVals.activeMeshs.push(mesh);
     } else if (typeof Vals === 'number') {
       mesh.isPickable = true;
       devHelper.model3DVals.movePointMesh.push(mesh);
@@ -674,8 +695,9 @@ function animMoveCamera(Vals, Speed = 2) {
   }
   else {
     devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
-    if (devHelper.model3DVals.activeMeshs[Vals.position])
-      devHelper.model3DVals.activeMeshs[Vals.position].forEach(mesh => mesh.isPickable = true);
+    // if (devHelper.model3DVals.activeMeshs[Vals.position])
+    // devHelper.model3DVals.activeMeshs[Vals.position].forEach(mesh => mesh.isPickable = true);
+    devHelper.model3DVals.activeMeshs.forEach(mesh => mesh.isPickable = true);
   }
 
   let positionAnimation = new BABYLON.Animation(

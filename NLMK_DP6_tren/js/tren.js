@@ -87,7 +87,8 @@ function trenTimeTick(timeStamp) {
             updateSvgTextures();
           }
           if (nextAction.action && nextAction.action.target3D) {
-            let mesh = devHelper.model3DVals.activeMeshs.flat(Infinity).find(mesh => (mesh.name === nextAction.action.target3D));
+            // let mesh = devHelper.model3DVals.activeMeshs.flat(Infinity).find(mesh => (mesh.name === nextAction.action.target3D));
+            let mesh = devHelper.model3DVals.activeMeshs.find(mesh => (mesh.name === nextAction.action.target3D));
             handleRotation(nextAction, mesh);
             handlePosition(nextAction, mesh);
             if (nextAction.action.material) {
@@ -239,7 +240,8 @@ function takeStartingState(Restart = false) {
     }
   }
   function makeStart3DVisual() {
-    devHelper.model3DVals.activeMeshs.flat().forEach(mesh => {
+    // devHelper.model3DVals.activeMeshs.flat().forEach(mesh => {
+    devHelper.model3DVals.activeMeshs.forEach(mesh => {
       if (mesh.startState.enable === true) {
         if (mesh.startState.position !== undefined) {
           let tempOnject = { action: { position: mesh.startState.position }, duration: 0.1 };
@@ -261,7 +263,8 @@ function takeStartingState(Restart = false) {
     })
     if (startState3D[devHelper.trenVals.scenario] && startState3D[devHelper.trenVals.scenario].length > 0) {
       startState3D[devHelper.trenVals.scenario].forEach(element => {
-        const mesh = devHelper.model3DVals.activeMeshs.flat().find(mesh => mesh.name === element.name);
+        // const mesh = devHelper.model3DVals.activeMeshs.flat().find(mesh => mesh.name === element.name);
+        const mesh = devHelper.model3DVals.activeMeshs.find(mesh => mesh.name === element.name);
         let tempobj = { action: element };
         tempobj.duration = 0.1;
         if (mesh !== undefined) {

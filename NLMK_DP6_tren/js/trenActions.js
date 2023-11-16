@@ -23,13 +23,14 @@ const devHelper = {
     scenario: undefined,
     messages: [],
     ended: false,
-    activeMeshs: [],
+    // activeMeshs: [],
   },
   model3DVals: {
     activeControlCamera: true,
     camera: undefined,
     scene: undefined,
     activeMeshs: [],
+    tempactiveMeshs: [],
     currentPosition: undefined,
     movePointMesh: [],
     meshUnderPointer: undefined,
@@ -63,6 +64,21 @@ const devHelper = {
       'Console_PSODP6',
       'Console_UGKS',
     ],
+    activeMeshsToArr : [
+      'Handle_',
+      'PhoneButton',
+      {name: 'kl022', id: '25408591-8ddd-4b64-a7ad-499aaa995ae6'},
+      {name: 'kl021', id: '8d7497bf-6a8b-4906-8a35-1dc986e6e655'},
+    ],
+    movePointMeshToArr: [
+      {name: 'Display_flat002', point: 1},
+      {name: 'Display_flat003', point: 2},
+      {name: 'Console_BVNK_highlight', point: 3},
+      {name: 'Display_flat014', point: 4},
+      {name: 'Display_flat015', point: 5},
+      {name: 'Console_BZU_highlight', point: 8},
+      {name: 'Console_DP6_highlight', point: 9},
+    ]
   },
   svgVals: [],
   startPos: {
@@ -87,7 +103,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
   },
 };
