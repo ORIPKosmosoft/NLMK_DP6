@@ -49,6 +49,7 @@ function domLoaded() {
       devHelper.trenVals.type = TrenType;
       devHelper.trenVals.scenario = Index;
       startTren();
+      stopChangeFon();
     } else {
       let popupDiv = document.createElement('div');
       popupDiv.classList.add('popup-alert');
@@ -281,17 +282,8 @@ function setDragEvents(elem) {
 
 }
 
-window.addEventListener('load', function () {
-  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
-    // Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
-    Element.style.marginTop = `1vh`;
-    Element.classList.remove('first-drop');
-  })
-
-  document.querySelectorAll('.nav-icon').forEach((Element) => {
-    Element.addEventListener('click', guideBtnsClick);
-  });
-  setInterval(() => {
+function startChangeFon() {
+  devHelper.dev.intervalFon = setInterval(() => {
     for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {
       const Element = document.querySelectorAll('.photo')[i];
       Element.style.transition = 'opacity 1s ease';
@@ -304,8 +296,22 @@ window.addEventListener('load', function () {
       }
     }
   }, 8000)
+}
 
+function stopChangeFon() {
+  clearInterval(devHelper.dev.intervalFon);
+}
 
+window.addEventListener('load', function () {
+  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
+    Element.style.marginTop = `1vh`;
+    Element.classList.remove('first-drop');
+  })
+
+  document.querySelectorAll('.nav-icon').forEach((Element) => {
+    Element.addEventListener('click', guideBtnsClick);
+  });
+  startChangeFon();
   if (devHelper.dev.enable === true) console.log(devHelper);
 });
 

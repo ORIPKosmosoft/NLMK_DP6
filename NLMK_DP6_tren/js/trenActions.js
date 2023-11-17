@@ -127,6 +127,7 @@ const devHelper = {
   dev: {
     enable: true,
     perfomance: undefined,
+    intervalFon: undefined,
   },
 };
 

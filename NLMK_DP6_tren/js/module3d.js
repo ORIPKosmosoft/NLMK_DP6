@@ -233,26 +233,6 @@ window.addEventListener('load', function () {
             }
           }
         })
-      } else if (Name === 'Console_BVNK') {
-        meshes.forEach(Mesh => {
-          // meshOptimization(Mesh, 'Console_BVNK');
-        })
-      } else if (Name === 'Console_BZU') {
-        meshes.forEach(Mesh => {
-          // meshOptimization(Mesh);
-        })
-      } else if (Name === 'Console_DP6') {
-        meshes.forEach((Mesh) => {
-          // meshOptimization(Mesh);
-        })
-      } else if (Name === 'Console_PSODP6') {
-        meshes.forEach(Mesh => {
-          // meshOptimization(Mesh);
-        })
-      } else if (Name === 'Console_UGKS') {
-        meshes.forEach(Mesh => {
-          // meshOptimization(Mesh);
-        })
       }
       try {
         setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
@@ -608,22 +588,12 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
     //   Mesh.highlightLayer = hl;
     // }
     // devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
-
-
-    // render overlay color
-
-
-    let newBlue1 = State === true ? 0 : 1;
-    let newBlue2 = State === true ? -1 : 0;
     let newAlpha = State === true ? 0.5 : 0;
+    let newColor = State === true ? true : false;
+    if (Mesh.overlayColor !== BABYLON.Color3.Yellow()) Mesh.overlayColor = BABYLON.Color3.Yellow();
     devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
-    if (Mesh.material.alpha !== 1) {
-      Mesh.material.alpha = newAlpha;
-    } else {
-      if (Mesh.material.diffuseColor) Mesh.material.diffuseColor.b = newBlue1;
-      else if (Mesh.material._emissiveColor)
-        Mesh.material._emissiveColor.b = Mesh.material._emissiveColor.r === 1 ? newBlue1 : newBlue2;
-    }
+    if (Mesh.material.alpha !== 1) Mesh.material.alpha = newAlpha;
+    else Mesh.renderOverlay = newColor;
   }
 }
 //TODO тут сделать часы 3Д

@@ -1226,6 +1226,7 @@ function clickYesHelperWIndow(e) {
   if (btnName === 'restart') {
     startTren(true);
   } else if (btnName === 'exit') {
+    startChangeFon();
     document.querySelector('.tren-container').style.opacity = 0;
     Array.from(document.querySelectorAll('.button-tren-active')).forEach(btn => {
       btn.querySelector('.click-button-tren').dispatchEvent(new Event('click'));
