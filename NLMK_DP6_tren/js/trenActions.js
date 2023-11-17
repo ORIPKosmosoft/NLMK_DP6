@@ -23,7 +23,6 @@ const devHelper = {
     scenario: undefined,
     messages: [],
     ended: false,
-    // activeMeshs: [],
   },
   model3DVals: {
     activeControlCamera: true,
@@ -78,7 +77,17 @@ const devHelper = {
       {name: 'Display_flat015', point: 5},
       {name: 'Console_BZU_highlight', point: 8},
       {name: 'Console_DP6_highlight', point: 9},
-    ]
+    ],
+    svgDisplaysArr: [
+      {name: 'Display_flat002', svgName: 'BVNK_VNK1'},
+      {name: 'Display_flat003', svgName: 'vnk_main'},
+      {name: 'Display_flat010', svgName: 'Osnovnye_parametry_DP'},
+      {name: 'Display_flat012', svgName: 'vnk_spvg'},
+      {name: 'Display_flat014', svgName: 'dp'},
+      {name: 'Display_flat015', svgName: 'bzu'},
+      {name: 'Display_TV', svgName: 'bzu'},
+      {name: 'Display_TV001', svgName: 'dp'},
+    ],
   },
   svgVals: [],
   startPos: {

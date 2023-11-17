@@ -65,23 +65,16 @@ window.addEventListener('load', function () {
      */
     if (devHelper.dev.enable === true) {
       document.getElementById('movePositionX1').addEventListener('click', () => {
-        changeSvgElem({ name: 'vnk_1', color: '#000000' });
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_main');
       })
       document.getElementById('movePositionX2').addEventListener('click', () => {
-        changeSvgElem('fire_vnk_1', { position: { x: 10 } });
       })
       document.getElementById('movePositionY1').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK2', true);
       })
       document.getElementById('movePositionY2').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'BVNK_VNK3', true);
       })
       document.getElementById('movePositionZ1').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_main', true);
       })
       document.getElementById('movePositionZ2').addEventListener('click', () => {
-        changeSvgtexture(devHelper.model3DVals.svgDisplays.meshs[0], 'vnk_spvg', true);
       })
       document.querySelector('#takePosition').addEventListener('click', () => {
         document.querySelector('.value-input').children[0].value = camera.position.x;
@@ -150,6 +143,10 @@ window.addEventListener('load', function () {
   });
   function loadModel(Name, Scene, ShadowGenerator) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
+      allMeshOptimization();
+      findPointerMeshs();
+      findSvgDisplays();
+      findActiveMeshs();
       if (Name === 'All') {
         let meshArr = [];
         meshes.forEach(element => {
@@ -161,7 +158,7 @@ window.addEventListener('load', function () {
           }
         })
         meshArr.forEach(Mesh => {
-          meshOptimization(Mesh);
+          // meshOptimization(Mesh);
           if (Mesh.name && Mesh.name === 'Room') {
           } else if (Mesh.name && Mesh.name === 'Telephone') {
             if (!Mesh.subMeshes) {
@@ -177,13 +174,13 @@ window.addEventListener('load', function () {
               makeActiveMesh(box, 6);
             }
           } else if (Mesh.name && Mesh.name.indexOf('PhoneButton') !== -1) {
-            makeActiveMesh(Mesh, { name: Mesh.name, posIndex: 6 });
+            // makeActiveMesh(Mesh, { name: Mesh.name, posIndex: 6 });
           } else if (Mesh.name && Mesh.name === 'Display_flat002') {
-            makeActiveMesh(Mesh, 1);
-            makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
+            // makeActiveMesh(Mesh, 1);
+            // makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
           } else if (Mesh.name && Mesh.name === 'Display_flat003') {
-            makeActiveMesh(Mesh, 2);
-            makeSvgDisplay(Mesh, Scene, 'vnk_main');
+            // makeActiveMesh(Mesh, 2);
+            // makeSvgDisplay(Mesh, Scene, 'vnk_main');
           } else if (Mesh.id && Mesh.id === '25408591-8ddd-4b64-a7ad-499aaa995ae6') {
             makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
           } else if (Mesh.id && Mesh.id === '8d7497bf-6a8b-4906-8a35-1dc986e6e655') {
@@ -209,15 +206,15 @@ window.addEventListener('load', function () {
             setImageOnMonitor("media/images/monitors/Obzor_sred_akusticheskoy.jpg", Scene, Mesh);
           }
           else if (Mesh.name && Mesh.name === 'Display_flat010') {  // 6
-            makeUnicMat(Mesh);
-            makeSvgDisplay(Mesh, Scene, 'Osnovnye_parametry_DP');
+            // makeUnicMat(Mesh);
+            // makeSvgDisplay(Mesh, Scene, 'Osnovnye_parametry_DP');
           }
           else if (Mesh.name && Mesh.name === 'Display_flat011') {  // 7
             setImageOnMonitor("media/images/monitors/Sloi_shihty.jpg", Scene, Mesh);
           }
           else if (Mesh.name && Mesh.name === 'Display_flat012') {  // 8
-            makeUnicMat(Mesh);
-            makeSvgDisplay(Mesh, Scene, 'vnk_spvg');
+            // makeUnicMat(Mesh);
+            // makeSvgDisplay(Mesh, Scene, 'vnk_spvg');
           }
           else if (Mesh.name && Mesh.name === 'Display_flat013') {  // 9
             setImageOnMonitor("media/images/monitors/Diagnozy_A_PUT.jpg", Scene, Mesh);
@@ -226,12 +223,12 @@ window.addEventListener('load', function () {
             setImageOnMonitor("media/images/monitors/Registratsiya_vypuska_chuguna.jpg", Scene, Mesh);
           }
           else if (Mesh.name && Mesh.name === 'Display_flat014') {  // 11
-            makeActiveMesh(Mesh, 4);
-            makeSvgDisplay(Mesh, Scene, 'dp');
+            // makeActiveMesh(Mesh, 4);
+            // makeSvgDisplay(Mesh, Scene, 'dp');
           }
           else if (Mesh.name && Mesh.name === 'Display_flat015') {  // 12
-            makeActiveMesh(Mesh, 5);
-            makeSvgDisplay(Mesh, Scene, 'bzu');
+            // makeActiveMesh(Mesh, 5);
+            // makeSvgDisplay(Mesh, Scene, 'bzu');
           }
           else if (Mesh.name && Mesh.name === 'Display_flat007') {  // 13
             setImageOnMonitor("media/images/monitors/Podacha_shikhty.jpg", Scene, Mesh);
@@ -249,12 +246,12 @@ window.addEventListener('load', function () {
             setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya_3.jpg", Scene, Mesh);
           }
           else if (Mesh.name && Mesh.name === 'Display_TV') {  // TV 2  // белый экран на дубликатах
-            makeUnicMat(Mesh);
-            makeSvgDisplay(Mesh, Scene, 'bzu');
+            // makeUnicMat(Mesh);
+            // makeSvgDisplay(Mesh, Scene, 'bzu');
           }
           else if (Mesh.name && Mesh.name === 'Display_TV001') {  // TV 3 // белый экран на дубликатах
-            makeUnicMat(Mesh);
-            makeSvgDisplay(Mesh, Scene, 'dp');
+            // makeUnicMat(Mesh);
+            // makeSvgDisplay(Mesh, Scene, 'dp');
           }
         })
         change3DTime();
@@ -265,14 +262,11 @@ window.addEventListener('load', function () {
           lightMat.alpha = 0;
           element.material = lightMat;
           element.isPickable = true;
-          meshOptimization(element);
+          // meshOptimization(element);
           if (element.name) {
             if (element.name === 'Console_BVNK_highlight') {
-              makeActiveMesh(element, 3);
             } else if (element.name === 'Console_BZU_highlight') {
-              makeActiveMesh(element, 8);
             } else if (element.name === 'Console_DP6_highlight') {
-              makeActiveMesh(element, 9);
             } else if (element.name === 'Console_UGKS_highlight' || element.name === 'Console_PSODP6_highlight') {
               element.dispose();
             }
@@ -280,24 +274,23 @@ window.addEventListener('load', function () {
         })
       } else if (Name === 'Console_BVNK') {
         meshes.forEach(Mesh => {
-          meshOptimization(Mesh, 'Console_BVNK');
+          // meshOptimization(Mesh, 'Console_BVNK');
         })
       } else if (Name === 'Console_BZU') {
         meshes.forEach(Mesh => {
-          meshOptimization(Mesh);
+          // meshOptimization(Mesh);
         })
       } else if (Name === 'Console_DP6') {
         meshes.forEach((Mesh) => {
-          meshOptimization(Mesh);
+          // meshOptimization(Mesh);
         })
-        findActiveMeshs();
       } else if (Name === 'Console_PSODP6') {
         meshes.forEach(Mesh => {
-          meshOptimization(Mesh);
+          // meshOptimization(Mesh);
         })
       } else if (Name === 'Console_UGKS') {
         meshes.forEach(Mesh => {
-          meshOptimization(Mesh);
+          // meshOptimization(Mesh);
         })
       }
       try {
@@ -306,17 +299,42 @@ window.addEventListener('load', function () {
       }
       catch { }
     });
-
+    function allMeshOptimization() {
+      devHelper.model3DVals.scene.meshes.forEach(mesh => {
+        if (!mesh.isPickable) {
+          meshOptimization(mesh);
+        }
+      })
+    }
     function findActiveMeshs() {
       devHelper.model3DVals.activeMeshsToArr.forEach(elem => {
         let tempName = elem.name ? elem.name : elem;
+        // Добавить поиск по ID
         const meshNamesToSearch = devHelper.model3DVals.scene.meshes.filter(mesh => mesh.name.includes(tempName));
         if (meshNamesToSearch.length > 0) {
           meshNamesToSearch.forEach(mesh => {
-            if (devHelper.model3DVals.tempactiveMeshs.indexOf(mesh) === -1) {
-              // раскомментировать и заработает новое добавление.
-              // Добавить findActiveMeshs в каждый за
-              // makeActiveMesh(mesh, { name: mesh.name });
+            if (devHelper.model3DVals.activeMeshs.indexOf(mesh) === -1) {
+              makeActiveMesh(mesh, { name: mesh.name });
+            }
+          });
+        }
+      });
+    }
+    function findSvgDisplays() {
+      devHelper.model3DVals.svgDisplaysArr.forEach(elem => {
+        let displayMesh = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === elem.name);
+        if (displayMesh !== undefined && devHelper.model3DVals.svgDisplays.meshs.indexOf(displayMesh) === -1) {
+          makeSvgDisplay(displayMesh, devHelper.model3DVals.scene, elem.svgName);
+        }
+      });
+    }
+    function findPointerMeshs() {
+      devHelper.model3DVals.movePointMeshToArr.forEach(elem => {
+        const meshNamesToSearch = devHelper.model3DVals.scene.meshes.filter(mesh => mesh.name.includes(elem.name));
+        if (meshNamesToSearch.length > 0) {
+          meshNamesToSearch.forEach(mesh => {
+            if (devHelper.model3DVals.movePointMesh.indexOf(mesh) === -1) {
+              makeActiveMesh(mesh, elem.point);
             }
           });
         }
@@ -355,13 +373,6 @@ window.addEventListener('load', function () {
     }
     else {
       devHelper.model3DVals.octree = Scene.createOrUpdateSelectionOctree();
-      // setTimeout(() => {
-
-      //   const tempVal1 = devHelper.model3DVals.scene.getMeshByName('Handle_015');
-      //   const tempVal2 = devHelper.model3DVals.scene.getMeshByID('3391');
-      //   const tempVal3 = devHelper.model3DVals.scene.getMeshByID('128f49df-9d0a-4b03-b177-dfa710831d6f');
-      //   console.log(tempVal1, tempVal2, tempVal3);
-      // }, 1000);
     }
   }
 })
@@ -434,9 +445,6 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     if (Vals.name) {
       mesh.name = Vals.name;
       mesh.currentPosition = Vals.posIndex;
-      // if (devHelper.model3DVals.activeMeshs[Vals.posIndex] === undefined)
-      //   devHelper.model3DVals.activeMeshs[Vals.posIndex] = [];
-      // devHelper.model3DVals.activeMeshs[Vals.posIndex].push(mesh);
       devHelper.model3DVals.activeMeshs.push(mesh);
     } else if (typeof Vals === 'number') {
       mesh.isPickable = true;
@@ -695,8 +703,6 @@ function animMoveCamera(Vals, Speed = 2) {
   }
   else {
     devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
-    // if (devHelper.model3DVals.activeMeshs[Vals.position])
-    // devHelper.model3DVals.activeMeshs[Vals.position].forEach(mesh => mesh.isPickable = true);
     devHelper.model3DVals.activeMeshs.forEach(mesh => mesh.isPickable = true);
   }
 
