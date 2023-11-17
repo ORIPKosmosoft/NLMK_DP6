@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Преальфа билд тренажёра доменной печи №6</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="js/cdn.jsdelivr.net_npm_chart.js" defer></script>
   <script src="js/trenActions.js" defer></script>
   <script src="js/tren.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -231,7 +232,7 @@
                       курения
                       в ПАО «НЛМК»;</ul>
                     <ul><a href="media/documents/pdf21.pdf" target="_blank"
-                      onclick="openPopupPdf(this.href); return false;">- Трудовой кодекс РФ. Ст. 227-231.</a></ul>
+                        onclick="openPopupPdf(this.href); return false;">- Трудовой кодекс РФ. Ст. 227-231.</a></ul>
                   </div>
                 </div>
               </div>
@@ -241,8 +242,8 @@
                 <div class="dropdown-container">
                   <div class="dropdown-content simple-text">
                     <ul><a href="media/documents/pdf3.pdf" target="_blank"
-                      onclick="openPopupPdf(this.href); return false;">Характеристики доменной печи №6 указаны в ТИ
-                      05757665-ДЦ2-09;</a></ul>
+                        onclick="openPopupPdf(this.href); return false;">Характеристики доменной печи №6 указаны в ТИ
+                        05757665-ДЦ2-09;</a></ul>
                   </div>
                 </div>
               </div>
@@ -1074,6 +1075,47 @@
       <button id="movePositionZ2">-Z</button>
       <button id="back-btn">назат!!!!</button>
       <div class="info-tren">Информация</div>
+    </div>
+  </div>
+
+
+  <div class="end-cointainer">
+    <p class="end-title">Поздравляем с завершенеием сценария!</p>
+    <p class="end-title-2">Ваш результат:</p>
+    <div class="window-container">
+      <div class="container-left">
+        <div class="blue-text">Общий результат:</div>
+        <div class="circle-graph">
+          <span>65%</span>
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <div class="container-right">
+        <div class="blue-text">Количество ошибок:</div>
+        <div class="line-graph">
+          <canvas id="myChart2"></canvas>
+        </div>
+      </div>
+      <div class="container-left no-shadow">
+        <div class="container">
+          <span class="left-text">Норма прохождения:</span>
+          <span class="right-text">25 мин 00 сек</span>
+        </div>
+        <div class="container">
+          <span class="left-text">Ваше время:</span>
+          <span class="right-text">35 мин 24 сек</span>
+        </div>
+        <div class="container">
+          <span class="left-text">Допущенные ошибки:</span>
+          <span class="right-text">38</span>
+        </div>
+      </div>
+      <div class="container-right">
+        <div class="blue-text">Время на прохождения отдельных участков сценария:</div>
+        <div class="bar-graph">
+          Тут какие-то данные2
+        </div>
+      </div>
     </div>
   </div>
 

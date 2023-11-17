@@ -213,6 +213,72 @@ function domLoaded() {
   });
 
 
+  //------------------------------------------------------------------------------------------------------------------------------------------
+  // DONUT CHART
+  const canvas = document.getElementById('myChart');
+  const ctx = canvas.getContext('2d');
+
+  // Создайте новую круговую диаграмму
+  const myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Верно', 'Ошибки'],
+      datasets: [{
+        data: [63, 37], // Значения для заполнения и остатка (50% каждое)
+        backgroundColor: ['#2c5289', '#EAEAEA'], // Цвета для заполнения и остатка
+        borderWidth: 4, // Толщина границы
+        borderColor: 'rgba(0, 0, 0, 0.05)', // Цвет границы
+        borderRadius: 5, // Радиус скругления
+      }]
+    },
+    options: {
+      responsive: true, // Сделать график отзывчивым
+      cutout: '60%', // Размер отверстия в центре графика (в данном случае 80%)
+      plugins: {
+        legend: {
+          display: false // Скрыть легенду
+        }
+      }
+    }
+  });
+  // LINE
+  const canvas2 = document.getElementById('myChart2');
+  const ctx2 = canvas2.getContext('2d');
+
+  const data = {
+    labels: ['0', '1', '2', '3', '4', '5'],
+    datasets: [{
+      label: 'Количество ошибок', // Удалите или закомментируйте это свойство
+      data: [0, 11, 38, 29, 16, 21],
+      fill: false,
+      borderWidth: 2,
+      borderColor: '#2c5289',
+      tension: 0.4
+    }]
+  };
+
+  const options = {
+    maintainAspectRatio: false,
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 40
+      }
+    }, 
+    plugins: {
+      legend: {
+        display: false // Скрыть легенду
+      }
+    }
+  };
+  const myChart2 = new Chart(ctx2, {
+    type: 'line',
+    data: data,
+    options: options
+  });
+  //------------------------------------------------------------------------------------------------------------------------------------------
+
   loadTrenActions();
 }
 
