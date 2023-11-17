@@ -115,38 +115,45 @@ function domLoaded() {
     })
   })
 
+
+  // Создание тестов
+  devHelper.testVals.arrayForCreateTests.forEach((Element, Index) => {
+    createTests(Element, Index);
+  });
+
   // Правильные ответы для самопроверки
-  devHelper.testVals.answersArray = [
-    ['Оборудование пылеуловителя'],
-    {
-      0: ['0,6-0,8 кгс/см²', 'открыть атмосферные клапаны'],
-      1: ['0,5 кгс/см²', 'закрыть смесительно-предохранительный клапан'],
-      2: ['0,3 кгс/см²', 'закрыть отсечной клапан пылеуловителя'],
-    },
-    ['Клапаном «СНОРТ»'],
-    [
-      'Запрещается прекращать подачу воздуха в воздуховод холодного дутья',
-      'Уравнительные клапаны и клапаны пылеподавления БЗУ должны быть закрыты',
-      'Выхлопные клапаны БЗУ должны быть открыты',
-    ],
-    {
-      0: ['0,2-0,3 кгс/см²', 'приоткрывая клапан «СНОРТ» установить давление', 'закрыть отсечной клапан пылеуловителя'],
-      1: ['0,6-0,8 кгс/см²', 'закрыть атмосферные клапаны', 'при необходимости открыть смесительно-предохранительный клапан'],
-      2: ['заданное давление и общий перепад в печи', 'приоткрывая клапан «СНОРТ» и кольцевые зазоры установить давление'],
-    },
-    [
-      '20-30 минут', 'в конце', 'сменного мастера',
-      'пылеуловителя', 'пропорциональное', 'открытых'
-    ],
-    {
-      0: ['0,6-0,8 кгс/см²', 'открыть атмосферные клапаны'],
-      1: ['0,5 кгс/см²', 'закрыть смесительно-предохранительный клапан'],
-      2: ['0,2-0,3 кгс/см²', 'закрыть отсечной клапан пылеуловителя'],
-      3: ['0,2 кгс/см²', 'остановить загрузку печи'],
-      4: ['0,1-0,15 кгс/см²', 'установить листовую заглушку в трубопровод азота'],
-    },
-    // ['3', '2', '1'],
-  ];
+  // devHelper.testVals.answersArray = [
+  //   ['Оборудование пылеуловителя'],
+  //   {
+  //     0: ['0,6-0,8 кгс/см²', 'открыть атмосферные клапаны'],
+  //     1: ['0,5 кгс/см²', 'закрыть смесительно-предохранительный клапан'],
+  //     2: ['0,3 кгс/см²', 'закрыть отсечной клапан пылеуловителя'],
+  //   },
+  //   ['Клапаном «СНОРТ»'],
+  //   [
+  //     'Запрещается прекращать подачу воздуха в воздуховод холодного дутья',
+  //     'Уравнительные клапаны и клапаны пылеподавления БЗУ должны быть закрыты',
+  //     'Выхлопные клапаны БЗУ должны быть открыты',
+  //   ],
+  //   {
+  //     0: ['0,2-0,3 кгс/см²', 'приоткрывая клапан «СНОРТ» установить давление', 'закрыть отсечной клапан пылеуловителя'],
+  //     1: ['0,6-0,8 кгс/см²', 'закрыть атмосферные клапаны', 'при необходимости открыть смесительно-предохранительный клапан'],
+  //     2: ['заданное давление и общий перепад в печи', 'приоткрывая клапан «СНОРТ» и кольцевые зазоры установить давление'],
+  //   },
+  //   [
+  //     '20-30 минут', 'в конце', 'сменного мастера',
+  //     'пылеуловителя', 'пропорциональное', 'открытых'
+  //   ],
+  //   {
+  //     0: ['0,6-0,8 кгс/см²', 'открыть атмосферные клапаны'],
+  //     1: ['0,5 кгс/см²', 'закрыть смесительно-предохранительный клапан'],
+  //     2: ['0,2-0,3 кгс/см²', 'закрыть отсечной клапан пылеуловителя'],
+  //     3: ['0,2 кгс/см²', 'остановить загрузку печи'],
+  //     4: ['0,1-0,15 кгс/см²', 'установить листовую заглушку в трубопровод азота'],
+  //   },
+  //   ['3 длинный текст для теста', '2 длинный текст для теста', '1 длинный текст для теста'],
+  // ];
+  
 
   // Вешаю обработчик нажатия на все <div class="selfcheck-radio">
   document.querySelectorAll('.radio-elem').forEach((Element) => {
@@ -209,6 +216,10 @@ function domLoaded() {
   document.querySelectorAll('.consecutive-elem').forEach((Element) => {
     setDragEvents(Element);
   });
+  // рандомлю ответы контейнерах где нужно выставить ответы последовательно
+  document.querySelectorAll('.container-consecutive').forEach((Element) => {
+    randomAnswer(Element);
+  });
 
   // Наведение на кнопку 'Помощь'
   document.querySelector('.helper-answer').addEventListener('mouseover', (e) => {
@@ -233,6 +244,8 @@ function showhelperTooltip(elem, elemRect) {
     helperTooltip.querySelector('span').textContent = devHelper.testVals.dragDropHelperText;
   } else if (document.querySelector('.selfcheck-visible').classList.contains('container-dropDownMenu')) {
     helperTooltip.querySelector('span').textContent = devHelper.testVals.dropDownHelperText;
+  } else if (document.querySelector('.selfcheck-visible').classList.contains('container-consecutive')) {
+    helperTooltip.querySelector('span').textContent = devHelper.testVals.consecutiveHelperText;
   } else {
     const selfcheckContainers = Array.from(document.querySelectorAll('.selfcheck-container'));
     const selfcheckcontainerIndex = selfcheckContainers.findIndex(container => container.classList.contains('selfcheck-visible'));
@@ -249,8 +262,6 @@ function setDragEvents(elem) {
   const elemParent = elem.closest('.selfcheck-radio-dragDrop') || elem.closest('.selfcheck-consecutive');
   // dragstart
   elem.addEventListener('dragstart', (event) => {
-    console.log(elemParent);
-    console.log(elem.classList[0]);
     devHelper.testVals.dragElement = event.currentTarget;
     devHelper.testVals.dragElementText = event.currentTarget.querySelector('span').textContent;
     devHelper.testVals.dragElement.classList.toggle('current-dragStart-elem', true);
@@ -292,7 +303,7 @@ function setDragEvents(elem) {
     }
     devHelper.testVals.dragElement.classList.toggle('current-drag-elem', false);
     const data = event.dataTransfer.getData('text/plain');
-    event.currentTarget.querySelectorAll('span')[1].textContent = data;
+    event.currentTarget.querySelectorAll('span')[event.currentTarget.querySelectorAll('span').length - 1].textContent = data;
   });
 
 }
@@ -469,6 +480,39 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       elem.querySelector('span').textContent = 'Подтвердить';
     }
 
+    // Если consecutive элемент
+  } else if (selfcheckContainer.classList.contains('container-consecutive')) {
+    selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
+    const answers = selfcheckTrueResults[selfcheckcontainerIndex];
+    const containerConsecutiveElem = selfcheckContainer.querySelectorAll('.consecutive-elem');
+
+    if (elem.querySelector('span').textContent === 'Подтвердить') {
+      containerConsecutiveElem.forEach((Element, Index) => {
+        if (Element.querySelector('span').textContent === answers[Index]) {
+          Element.classList.toggle('consecutive-currect', true);
+        } else {
+          Element.classList.toggle('consecutive-wrong', true);
+        }
+      });
+      if (selfcheckContainer.querySelector('.consecutive-wrong') != null) {
+        elem.querySelector('span').textContent = 'Повторить';
+        selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+      } else {
+        elem.classList.toggle('disabled-button', true);
+        selfcheckContainer.classList.toggle('correct-consecutive-container', true);
+        selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+      }
+    } else if (elem.querySelector('span').textContent === 'Повторить') {
+      selfcheckContainer.querySelectorAll('.consecutive-currect').forEach((Element) => {
+        Element.classList.toggle('consecutive-currect', false);
+      });
+      selfcheckContainer.querySelectorAll('.consecutive-wrong').forEach((Element) => {
+        Element.classList.toggle('consecutive-wrong', false);
+      })
+      selfcheckContainer.classList.toggle('block-selfcheck-container', false);
+      elem.querySelector('span').textContent = 'Подтвердить';
+    }
+    
 
     // Если radioButton элемент
   } else if (selfcheckContainer.classList.contains('container-radioButton')) {
@@ -522,9 +566,10 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
 
 // Функция рандома ответов в вопросе
 function randomAnswer(parent) {
-  let radioElements = parent.querySelectorAll('.radio-elem');
-  let dragDropElements = parent.querySelectorAll('.selfcheck-radio-dragDrop');
-  let dropDownElements = parent.querySelectorAll('.dropDown-select');
+  const radioElements = parent.querySelectorAll('.radio-elem');
+  const dragDropElements = parent.querySelectorAll('.selfcheck-radio-dragDrop');
+  const dropDownElements = parent.querySelectorAll('.dropDown-select');
+  const consecutiveElements = parent.querySelectorAll('.consecutive-elem');
   let max = radioElements.length;
   let min = 0;
 
@@ -554,11 +599,25 @@ function randomAnswer(parent) {
       elemSpan[1].textContent = rightTextRandom;
     });
   }
-
   if (dropDownElements.length > 0) {
     dropDownElements.forEach((Element) => {
       Element.value = Element.options[Math.floor(Math.random() * (Element.options.length - 0) + 0)].value;
     })
+  }
+  if (consecutiveElements.length > 0) {
+    const firstElem = consecutiveElements[Math.floor(Math.random() * (consecutiveElements.length - 0) + 0)].querySelector('span');
+    const secondElem = consecutiveElements[Math.floor(Math.random() * (consecutiveElements.length - 0) + 0)].querySelector('span');
+    const tempText = firstElem.textContent;
+    // если следующий span равен предыдущему, то заменить
+    if (firstElem === secondElem) {
+      if (consecutiveElements.length > 1) {
+        while (firstElem === secondElem) {
+          secondElem = consecutiveElements[Math.floor(Math.random() * (consecutiveElements.length - 0) + 0)].querySelector('span');
+        }
+      }
+    }
+    firstElem.textContent = secondElem.textContent;
+    secondElem.textContent = tempText;
   }
 }
 
@@ -577,6 +636,12 @@ function reviveArray(min) {
       Element.querySelectorAll('.dropDown-currect').forEach((elem) => {
         elem.classList.toggle('dropDown-currect', false);
       });
+    } else if (Element.classList.contains('container-consecutive')) {
+      Element.classList.toggle('correct-consecutive-container', false);
+      Element.querySelectorAll('.consecutive-currect').forEach((elem) => {
+        elem.classList.toggle('consecutive-currect', false);
+      });
+      
     } else if (Element.classList.contains('container-radioButton')) {
       Element.classList.toggle('correct-radioButton-container', false);
       Element.querySelectorAll('.correct-answer').forEach((elem) => {
@@ -605,6 +670,9 @@ function titleInfo() {
   if (container.classList.contains('container-dropDownMenu')) {
     container.querySelector('.radio-title-info').textContent = devHelper.testVals.dropDownHelperText;
   }
+  if (container.classList.contains('container-consecutive')) {
+    container.querySelector('.radio-title-info').textContent = devHelper.testVals.consecutiveHelperText;
+  }
   if (container.classList.contains('container-radioButton')) {
     if (answerLength > 4) {
       container.querySelector('.radio-title-info').textContent = `Выберите ${answerLength} верных ответов и нажмите подтвердить.`;
@@ -625,7 +693,7 @@ function navIconClick(randomContainer, min) {
 
   randomContainer.classList.toggle('selfcheck-invisible', false);
   randomContainer.classList.toggle('selfcheck-visible', true);
-  if (randomContainer.classList.contains('container-dragDrop') == true || randomContainer.classList.contains('container-dropDownMenu') == true) {
+  if (randomContainer.classList.contains('container-dragDrop') || randomContainer.classList.contains('container-dropDownMenu') || randomContainer.classList.contains('container-consecutive')) {
     document.querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', false);
     document.querySelector('.selfcheck-confirm-button').classList.toggle('active-button', true);
   }
@@ -760,9 +828,66 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     return;
   }
 
+  // Если consecutive ответы правильные
+  if (devHelper.testVals.previousContainer.classList.contains('container-consecutive') && devHelper.testVals.previousContainer.classList.contains('correct-consecutive-container')) {
+    devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
+    devHelper.testVals.previousContainer.classList.toggle('selfcheck-visible', false);
+    previousContainerIndex = devHelper.testVals.containerArray.indexOf(devHelper.testVals.previousContainer);
+    devHelper.testVals.containerArray.splice(previousContainerIndex, 1);
+    if (devHelper.testVals.containerArray.length === 0) {
+      reviveArray(min);
+      return;
+    }
+    randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+    // если следующий контейнер равен предыдущему, то заменить
+    if (devHelper.testVals.previousContainer == randomContainer) {
+      if (devHelper.testVals.containerArray.length > 1) {
+        while (devHelper.testVals.previousContainer == randomContainer) {
+          randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+        }
+      }
+    }
+    randomContainer.classList.toggle('selfcheck-invisible', false);
+    randomContainer.classList.toggle('selfcheck-visible', true);
+    devHelper.testVals.previousContainer = randomContainer;
+    titleInfo();
+    if (devHelper.testVals.containerArray.length === 0) {
+      devHelper.testVals.previousContainer = undefined;
+    }
+    return;
+    
+  // Если consecutive ответы неправильные
+  } else if (devHelper.testVals.previousContainer.classList.contains('container-consecutive') && devHelper.testVals.previousContainer.querySelector('.consecutive-wrong') !== null) {
+    randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+    // если следующий контейнер равен предыдущему, то заменить
+    if (devHelper.testVals.previousContainer == randomContainer) {
+      if (devHelper.testVals.containerArray.length > 1) {
+        while (devHelper.testVals.previousContainer == randomContainer) {
+          randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
+        }
+      }
+    }
+    randomContainer.classList.toggle('selfcheck-invisible', false);
+    randomContainer.classList.toggle('selfcheck-visible', true);
+
+    devHelper.testVals.previousContainer.querySelectorAll('.consecutive-wrong').forEach((Element) => {
+      Element.classList.toggle('consecutive-wrong', false);
+    });
+    devHelper.testVals.previousContainer.querySelectorAll('.consecutive-currect').forEach((Element) => {
+      Element.classList.toggle('consecutive-currect', false);
+    });
+
+    devHelper.testVals.previousContainer.classList.toggle('block-selfcheck-container', false);
+    devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', true);
+    devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').querySelector('span').textContent = 'Подтвердить';
+
+    devHelper.testVals.previousContainer = randomContainer;
+    titleInfo();
+    return;
+  }
+
 
   // Если radio ответы правильные
-  // if (devHelper.testVals.previousContainer.classList.contains('container-radioButton') && devHelper.testVals.previousContainer.querySelector('.wrong-answer') === null && devHelper.testVals.previousContainer.querySelectorAll('.correct-answer').length === devHelper.testVals.answersArray[devHelper.testVals.containerArray.indexOf(devHelper.testVals.previousContainer)].length) {
   if (devHelper.testVals.previousContainer.classList.contains('container-radioButton') && devHelper.testVals.previousContainer.classList.contains('correct-radioButton-container')) {
     devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
     devHelper.testVals.previousContainer.classList.toggle('selfcheck-visible', false);
@@ -853,13 +978,65 @@ function glavTestFun(pressedButtonName, pressedButton) {
   }
   if (pressedButtonName === 'random-answer-button') {
     randomAnswerButtonClick(randomContainer, min, previousContainerIndex);
-    if (document.querySelector('.selfcheck-visible').classList.contains('container-dragDrop') == true || document.querySelector('.selfcheck-visible').classList.contains('container-dropDownMenu') == true) {
+    if (document.querySelector('.selfcheck-visible').classList.contains('container-dragDrop') || document.querySelector('.selfcheck-visible').classList.contains('container-dropDownMenu') || document.querySelector('.selfcheck-visible').classList.contains('container-consecutive')) {
       document.querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', false);
       document.querySelector('.selfcheck-confirm-button').classList.toggle('active-button', true);
     } else {
       document.querySelector('.selfcheck-confirm-button').classList.toggle('disabled-button', true);
       document.querySelector('.selfcheck-confirm-button').classList.toggle('active-button', false);
     }
+  }
+}
+
+function createTests(elem, index) {
+  if (elem.questionType === 'radio') {
+    const div = document.createElement('div');
+    div.classList.add('selfcheck-container', 'selfcheck-invisible', 'container-radioButton');
+    let answerElem = ``;
+    elem.answers.forEach((Element) => {
+      answerElem += `
+        <div class="radio-elem">
+          <div class="selfcheck-radio">
+            <div></div>
+          </div><span>${Element}</span>
+        </div>
+      `;
+    });
+    const selfcheckContainer = `
+      <span class="selfcheck-title">${elem.questionTopic}</span>
+      <div class="selfcheck-radio-container">
+        <span class="radio-title">${elem.questionText}</span>
+        <span class="radio-title-info"></span>
+        ${answerElem}
+      </div>
+    `;
+    div.innerHTML = selfcheckContainer;
+    devHelper.testVals.answersArray.push(elem.rightAnswers);
+    document.querySelector('.selfcheck-container-main').appendChild(div);
+  }
+  if (elem.questionType === 'dragDrop') {
+    const div = document.createElement('div');
+    div.classList.add('selfcheck-container', 'selfcheck-invisible', 'container-dragDrop');
+    let answerElem = ``;
+    Object.keys(elem.answers).forEach((Element) => {
+      answerElem += `
+        <div class="selfcheck-radio-dragDrop">
+          <span>${elem.answers[Element][0]}</span>
+          <div class="drag-drop-elem" draggable="true"><span>${elem.answers[Element][1]}</span></div>
+        </div>
+      `;
+    });
+    const selfcheckContainer = `
+      <span class="selfcheck-title">${elem.questionTopic}</span>
+      <div class="selfcheck-radio-container">
+        <span class="radio-title">${elem.questionText}</span>
+        <span class="radio-title-info"></span>
+        ${answerElem}
+      </div>
+    `;
+    div.innerHTML = selfcheckContainer;
+    devHelper.testVals.answersArray.push(elem.rightAnswers);
+    document.querySelector('.selfcheck-container-main').appendChild(div);
   }
 }
 

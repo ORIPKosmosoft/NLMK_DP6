@@ -1090,6 +1090,7 @@ ul {
 
 .selfcheck-consecutive {
   display: flex;
+  border: 2px solid #f4f4f4;
   padding: 0.5vh 0 0.5vh;
   justify-content: left;
   align-items: center;
@@ -1101,6 +1102,14 @@ ul {
   color: #7C7C7C;
   /* width: 50%; */
   pointer-events: none;
+}
+
+.consecutive-currect {
+  border: 2px solid #68b960 !important;
+}
+
+.consecutive-wrong {
+  border: 2px solid #ff5353 !important;
 }
 
 .selfcheck-dropDown_menu {
