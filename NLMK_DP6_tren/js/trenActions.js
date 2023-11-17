@@ -88,6 +88,19 @@ const devHelper = {
       {name: 'Display_TV', svgName: 'bzu'},
       {name: 'Display_TV001', svgName: 'dp'},
     ],
+    shadowGenMeshes: [
+      'Monitor_flat',
+      'c4938c6e-adb9-4618-8fe0-76497fa5e0a7',
+      '37fef3e1-5618-4f2b-b5cb-3d578cd09d03',
+      '73a85a47-56c4-417e-a598-bfe24e209022',
+      'Rectangle001',
+    ],
+    receiveShadowMeshes: [
+      'a618e236-5f05-4c16-a5f4-806a8575cd48',
+      'c4938c6e-adb9-4618-8fe0-76497fa5e0a7',
+      '37fef3e1-5618-4f2b-b5cb-3d578cd09d03',
+      '73a85a47-56c4-417e-a598-bfe24e209022',
+    ],
   },
   svgVals: [],
   startPos: {
@@ -147,7 +160,7 @@ let tempActions = [
         target2D: 'kl029',
         window2D: {
           elements: [
-            { name: 'title_work_vn', text: 'Управление клапаном 029' },
+            { name: 'title_work_vn', text: 'Управление клапаном 029' }, //alpha: 0.5
             { name: 'status_window_text', text: 'Нет данных' },
             { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
             { name: 'polozenie_text', text: '51' },

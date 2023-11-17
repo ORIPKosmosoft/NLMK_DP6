@@ -35,6 +35,12 @@ window.addEventListener('load', function () {
     light3.intensity = 1;
     var shadowGenerator = new BABYLON.ShadowGenerator(1024, light2);
     shadowGenerator.useContactHardeningShadow = true;
+    shadowGenerator.usePercentageCloserFiltering = true;
+    // shadowGenerator.filteringQuality = BABYLON.ShadowGenerator.QUALITY_LOW;
+    // shadowGenerator.usePoissonSampling = true;
+    // shadowGenerator.useBlurExponentialShadowMap = true;
+    // shadowGenerator.useBlurCloseExponentialShadowMap = true;
+
     loadModel(devHelper.model3DVals.loadModels[0], scene, shadowGenerator);
     scene.actionManager = new BABYLON.ActionManager(scene);
     scene.actionManager.registerAction(
@@ -147,6 +153,8 @@ window.addEventListener('load', function () {
       findPointerMeshs();
       findSvgDisplays();
       findActiveMeshs();
+      generateShadows();
+      generateReceiveShadows();
       if (Name === 'All') {
         let meshArr = [];
         meshes.forEach(element => {
@@ -158,7 +166,6 @@ window.addEventListener('load', function () {
           }
         })
         meshArr.forEach(Mesh => {
-          // meshOptimization(Mesh);
           if (Mesh.name && Mesh.name === 'Room') {
           } else if (Mesh.name && Mesh.name === 'Telephone') {
             if (!Mesh.subMeshes) {
@@ -173,30 +180,8 @@ window.addEventListener('load', function () {
               meshOptimization(box);
               makeActiveMesh(box, 6);
             }
-          } else if (Mesh.name && Mesh.name.indexOf('PhoneButton') !== -1) {
-            // makeActiveMesh(Mesh, { name: Mesh.name, posIndex: 6 });
-          } else if (Mesh.name && Mesh.name === 'Display_flat002') {
-            // makeActiveMesh(Mesh, 1);
-            // makeSvgDisplay(Mesh, Scene, 'BVNK_VNK1');
-          } else if (Mesh.name && Mesh.name === 'Display_flat003') {
-            // makeActiveMesh(Mesh, 2);
-            // makeSvgDisplay(Mesh, Scene, 'vnk_main');
-          } else if (Mesh.id && Mesh.id === '25408591-8ddd-4b64-a7ad-499aaa995ae6') {
-            makeActiveMesh(Mesh, { name: 'kl022', posIndex: 3 });
-          } else if (Mesh.id && Mesh.id === '8d7497bf-6a8b-4906-8a35-1dc986e6e655') {
-            makeActiveMesh(Mesh, { name: 'kl021', posIndex: 3 });
-          } else if (Mesh.name && Mesh.name === 'Rectangle001') {
-            if (Mesh.id && Mesh.id === 'c4938c6e-adb9-4618-8fe0-76497fa5e0a7') {
-              Mesh.receiveShadows = true;
-              ShadowGenerator.getShadowMap().renderList.push(Mesh);
-            }
-          } else if (Mesh.name && Mesh.name === 'Room') {
-            Mesh.receiveShadows = true;
-          } else if (Mesh.name && Mesh.name === 'Monitor_flat021') {
-            ShadowGenerator.getShadowMap().renderList.push(Mesh);
-          } else if (Mesh.name && Mesh.name === 'Monitor_flat023') {
-            ShadowGenerator.getShadowMap().renderList.push(Mesh);
-          } else if (Mesh.name && Mesh.name === 'Display_flat004') {  // 3
+          }
+          else if (Mesh.name && Mesh.name === 'Display_flat004') {  // 3
             setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene, Mesh);
           }
           else if (Mesh.name && Mesh.name === 'Display_flat009') {  // 4
@@ -205,30 +190,14 @@ window.addEventListener('load', function () {
           else if (Mesh.name && Mesh.name === 'Display_flat017') {  // 5
             setImageOnMonitor("media/images/monitors/Obzor_sred_akusticheskoy.jpg", Scene, Mesh);
           }
-          else if (Mesh.name && Mesh.name === 'Display_flat010') {  // 6
-            // makeUnicMat(Mesh);
-            // makeSvgDisplay(Mesh, Scene, 'Osnovnye_parametry_DP');
-          }
           else if (Mesh.name && Mesh.name === 'Display_flat011') {  // 7
             setImageOnMonitor("media/images/monitors/Sloi_shihty.jpg", Scene, Mesh);
-          }
-          else if (Mesh.name && Mesh.name === 'Display_flat012') {  // 8
-            // makeUnicMat(Mesh);
-            // makeSvgDisplay(Mesh, Scene, 'vnk_spvg');
           }
           else if (Mesh.name && Mesh.name === 'Display_flat013') {  // 9
             setImageOnMonitor("media/images/monitors/Diagnozy_A_PUT.jpg", Scene, Mesh);
           }
           else if (Mesh.name && Mesh.name === 'Display_flat016') {  // 10
             setImageOnMonitor("media/images/monitors/Registratsiya_vypuska_chuguna.jpg", Scene, Mesh);
-          }
-          else if (Mesh.name && Mesh.name === 'Display_flat014') {  // 11
-            // makeActiveMesh(Mesh, 4);
-            // makeSvgDisplay(Mesh, Scene, 'dp');
-          }
-          else if (Mesh.name && Mesh.name === 'Display_flat015') {  // 12
-            // makeActiveMesh(Mesh, 5);
-            // makeSvgDisplay(Mesh, Scene, 'bzu');
           }
           else if (Mesh.name && Mesh.name === 'Display_flat007') {  // 13
             setImageOnMonitor("media/images/monitors/Podacha_shikhty.jpg", Scene, Mesh);
@@ -244,14 +213,6 @@ window.addEventListener('load', function () {
           }
           else if (Mesh.name && Mesh.name === 'Display_TV002') {  // TV 1
             setImageOnMonitor("media/images/monitors/Kamera-nablyudeniya_3.jpg", Scene, Mesh);
-          }
-          else if (Mesh.name && Mesh.name === 'Display_TV') {  // TV 2  // белый экран на дубликатах
-            // makeUnicMat(Mesh);
-            // makeSvgDisplay(Mesh, Scene, 'bzu');
-          }
-          else if (Mesh.name && Mesh.name === 'Display_TV001') {  // TV 3 // белый экран на дубликатах
-            // makeUnicMat(Mesh);
-            // makeSvgDisplay(Mesh, Scene, 'dp');
           }
         })
         change3DTime();
@@ -307,17 +268,14 @@ window.addEventListener('load', function () {
       })
     }
     function findActiveMeshs() {
-      devHelper.model3DVals.activeMeshsToArr.forEach(elem => {
-        let tempName = elem.name ? elem.name : elem;
-        // Добавить поиск по ID
-        const meshNamesToSearch = devHelper.model3DVals.scene.meshes.filter(mesh => mesh.name.includes(tempName));
-        if (meshNamesToSearch.length > 0) {
-          meshNamesToSearch.forEach(mesh => {
-            if (devHelper.model3DVals.activeMeshs.indexOf(mesh) === -1) {
-              makeActiveMesh(mesh, { name: mesh.name });
-            }
-          });
-        }
+      const { activeMeshsToArr, scene, activeMeshs } = devHelper.model3DVals;
+      activeMeshsToArr.forEach(elem => {
+        const meshNamesToSearch = scene.meshes.filter(mesh => mesh.id === elem.id || mesh.name.includes(elem.name || elem));
+        meshNamesToSearch.forEach(mesh => {
+          if (!activeMeshs.includes(mesh)) {
+            makeActiveMesh(mesh, { name: elem.name || mesh.name });
+          }
+        });
       });
     }
     function findSvgDisplays() {
@@ -340,6 +298,34 @@ window.addEventListener('load', function () {
         }
       });
     }
+
+    function generateShadows() {
+      devHelper.model3DVals.shadowGenMeshes.forEach(meshNameId => {
+        const meshNamesToSearch = devHelper.model3DVals.scene.meshes.filter(mesh => mesh.name.includes(meshNameId) || mesh.id === meshNameId);
+        const isGenerated = ShadowGenerator.getShadowMap().renderList.find(mesh => mesh === meshNamesToSearch[0]);
+        if (!isGenerated) {
+          meshNamesToSearch.forEach(mesh => {
+            ShadowGenerator.getShadowMap().renderList.push(mesh);
+          });
+        }
+      });
+    }
+    function generateReceiveShadows() {
+      devHelper.model3DVals.scene.meshes.forEach(mesh => {
+        if (!mesh.receiveShadows || mesh.receiveShadows === true) {
+          mesh.receiveShadows = false;
+        }
+      })
+      devHelper.model3DVals.receiveShadowMeshes.forEach(meshNameId => {
+        const meshNamesToSearch = devHelper.model3DVals.scene.meshes.filter(mesh => mesh.name.includes(meshNameId) || mesh.id === meshNameId);
+        meshNamesToSearch.forEach(mesh => {
+          if (!mesh.receiveShadows || mesh.receiveShadows === false) {
+            mesh.receiveShadows = true;
+          }
+        });
+      });
+    }
+
 
     function meshOptimization(mesh, name = undefined) {
       if (mesh._children && mesh._children.length > 0)
@@ -622,6 +608,11 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
     //   Mesh.highlightLayer = hl;
     // }
     // devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
+
+
+    // render overlay color
+
+
     let newBlue1 = State === true ? 0 : 1;
     let newBlue2 = State === true ? -1 : 0;
     let newAlpha = State === true ? 0.5 : 0;
@@ -697,6 +688,8 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
 }
 
 function animMoveCamera(Vals, Speed = 2) {
+  if (document.querySelector('#b_help'))
+    document.querySelector('#b_help').style.pointerEvents = 'none';
   let speed = Speed * 60;
   if (Vals.position === undefined) {
     if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
@@ -746,6 +739,8 @@ function animMoveCamera(Vals, Speed = 2) {
   devHelper.model3DVals.camera.animations = [positionAnimation, rotationAnimation];
   devHelper.model3DVals.scene.beginAnimation(devHelper.model3DVals.camera, 0, speed, false, 1, () => {
     devHelper.model3DVals.currentPosition = Vals.position;
+    if (document.querySelector('#b_help'))
+      document.querySelector('#b_help').style.pointerEvents = 'all';
     if (devHelper.model3DVals.currentPosition !== undefined) {
       createSvghelper(Vals.position);
       disableGeneralView();
