@@ -1090,6 +1090,7 @@ ul {
 
 .selfcheck-consecutive {
   display: flex;
+  max-width: 95%;
   border: 2px solid #f4f4f4;
   padding: 0.5vh 0 0.5vh;
   justify-content: left;
@@ -1098,6 +1099,7 @@ ul {
 
 .selfcheck-consecutive span {
   font-size: 2ch;
+  width: 100%;
   font-family: 'Circe-bold', sans-serif;
   color: #7C7C7C;
   /* width: 50%; */
@@ -1191,7 +1193,6 @@ ul {
 .drag-drop-elem span {
   color: #7C7C7C !important;
   width: auto;
-  white-space: nowrap;
   transition: all 0.3s ease;
   pointer-events: none;
 }
@@ -1231,7 +1232,7 @@ ul {
 .consecutive-elem span {
   color: #7C7C7C !important;
   width: auto;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   transition: all 0.3s ease;
   pointer-events: none;
 }
@@ -1260,6 +1261,7 @@ ul {
 .selfcheck-radio {
   padding: 4px;
   width: 1.6vh;
+  min-width: 1.6vh;
   height: 1.5vh;
   margin-right: 1vh;
   margin-left: 1vh;

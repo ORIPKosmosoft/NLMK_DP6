@@ -605,19 +605,13 @@ function randomAnswer(parent) {
     })
   }
   if (consecutiveElements.length > 0) {
-    const firstElem = consecutiveElements[Math.floor(Math.random() * (consecutiveElements.length - 0) + 0)].querySelector('span');
-    const secondElem = consecutiveElements[Math.floor(Math.random() * (consecutiveElements.length - 0) + 0)].querySelector('span');
-    const tempText = firstElem.textContent;
-    // если следующий span равен предыдущему, то заменить
-    if (firstElem === secondElem) {
-      if (consecutiveElements.length > 1) {
-        while (firstElem === secondElem) {
-          secondElem = consecutiveElements[Math.floor(Math.random() * (consecutiveElements.length - 0) + 0)].querySelector('span');
-        }
-      }
-    }
-    firstElem.textContent = secondElem.textContent;
-    secondElem.textContent = tempText;
+    consecutiveElements.forEach((Element) => {
+      const firstElem = consecutiveElements[Math.floor(Math.random() * (consecutiveElements.length - 0) + 0)].querySelector('span');
+      const secondElem = consecutiveElements[Math.floor(Math.random() * (consecutiveElements.length - 0) + 0)].querySelector('span');
+      const tempText = firstElem.textContent;
+      firstElem.textContent = secondElem.textContent;
+      secondElem.textContent = tempText;
+    });
   }
 }
 
@@ -660,6 +654,7 @@ function reviveArray(min) {
 
 // Изменение текста плана действий в title
 function titleInfo() {
+  if (devHelper.testVals.previousContainer.querySelector('.radio-title-info').textContent !== '') return;
   const container = devHelper.testVals.previousContainer;
   const containerIndex = devHelper.testVals.containerArray.indexOf(container);
   const answerLength = devHelper.testVals.answersArray[containerIndex].length;
@@ -1002,17 +997,8 @@ function createTests(elem, index) {
         </div>
       `;
     });
-    const selfcheckContainer = `
-      <span class="selfcheck-title">${elem.questionTopic}</span>
-      <div class="selfcheck-radio-container">
-        <span class="radio-title">${elem.questionText}</span>
-        <span class="radio-title-info"></span>
-        ${answerElem}
-      </div>
-    `;
-    div.innerHTML = selfcheckContainer;
     devHelper.testVals.answersArray.push(elem.rightAnswers);
-    document.querySelector('.selfcheck-container-main').appendChild(div);
+    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div));
   }
   if (elem.questionType === 'dragDrop') {
     const div = document.createElement('div');
@@ -1026,7 +1012,60 @@ function createTests(elem, index) {
         </div>
       `;
     });
-    const selfcheckContainer = `
+    devHelper.testVals.answersArray.push(elem.rightAnswers);
+    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div));
+  }
+  if (elem.questionType === 'dropDownMenu') {
+    const div = document.createElement('div');
+    div.classList.add('selfcheck-container', 'selfcheck-invisible', 'container-dropDownMenu');
+    let answerElem = ``;
+    let optionsArray = [];
+    elem.optionContent.forEach((Element) => {
+      let temp = ``;
+      let optionElem;
+      Element.forEach((Element2) => {
+        temp += `
+          <option>${Element2}</option>
+        `;
+      });
+      optionElem = `
+          <select class="dropDown-select">
+            ${temp}
+          </select>
+        `;
+      optionsArray.push(optionElem);
+    });
+    elem.answers.forEach((Element, Index) => {
+      const textWithOption = `${Element.replace('insertOptionElem', optionsArray[Index])}`;
+      answerElem += `
+        <div class="selfcheck-dropDown_menu">
+          <span>${textWithOption}</span>
+        </div>
+      `;
+    });
+    devHelper.testVals.answersArray.push(elem.rightAnswers);
+    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div));
+  }
+  if (elem.questionType === 'consecutive') {
+    const div = document.createElement('div');
+    div.classList.add('selfcheck-container', 'selfcheck-invisible', 'container-consecutive');
+    let answerElem = ``;
+    elem.answers.forEach((Element) => {
+      answerElem += `
+        <div class="selfcheck-consecutive">
+          <div class="consecutive-elem" draggable="true"><span>${Element}</span></div>
+        </div>
+      `;
+    });
+    devHelper.testVals.answersArray.push(elem.rightAnswers);
+    // document.querySelector('.selfcheck-container-main').appendChild(div);
+    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div));
+  }
+}
+
+// создает selfcheck контейнеры для функции createTests
+function createSelfcheckForTests(elem, answerElem, div) {
+  const selfcheckContainer = `
       <span class="selfcheck-title">${elem.questionTopic}</span>
       <div class="selfcheck-radio-container">
         <span class="radio-title">${elem.questionText}</span>
@@ -1035,9 +1074,8 @@ function createTests(elem, index) {
       </div>
     `;
     div.innerHTML = selfcheckContainer;
-    devHelper.testVals.answersArray.push(elem.rightAnswers);
-    document.querySelector('.selfcheck-container-main').appendChild(div);
-  }
+
+    return div;
 }
 
 function findLast(array, predicate) {
