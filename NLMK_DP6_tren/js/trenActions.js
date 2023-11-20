@@ -23,13 +23,13 @@ const devHelper = {
     scenario: undefined,
     messages: [],
     ended: false,
-    activeMeshs: [],
   },
   model3DVals: {
     activeControlCamera: true,
     camera: undefined,
     scene: undefined,
     activeMeshs: [],
+    tempactiveMeshs: [],
     currentPosition: undefined,
     movePointMesh: [],
     meshUnderPointer: undefined,
@@ -63,6 +63,44 @@ const devHelper = {
       'Console_PSODP6',
       'Console_UGKS',
     ],
+    activeMeshsToArr : [
+      'Handle_',
+      'PhoneButton',
+      {name: 'kl022', id: '25408591-8ddd-4b64-a7ad-499aaa995ae6'},
+      {name: 'kl021', id: '8d7497bf-6a8b-4906-8a35-1dc986e6e655'},
+    ],
+    movePointMeshToArr: [
+      {name: 'Display_flat002', point: 1},
+      {name: 'Display_flat003', point: 2},
+      {name: 'Console_BVNK_highlight', point: 3},
+      {name: 'Display_flat014', point: 4},
+      {name: 'Display_flat015', point: 5},
+      {name: 'Console_BZU_highlight', point: 8},
+      {name: 'Console_DP6_highlight', point: 9},
+    ],
+    svgDisplaysArr: [
+      {name: 'Display_flat002', svgName: 'BVNK_VNK1'},
+      {name: 'Display_flat003', svgName: 'vnk_main'},
+      {name: 'Display_flat010', svgName: 'Osnovnye_parametry_DP'},
+      {name: 'Display_flat012', svgName: 'vnk_spvg'},
+      {name: 'Display_flat014', svgName: 'dp'},
+      {name: 'Display_flat015', svgName: 'bzu'},
+      {name: 'Display_TV', svgName: 'bzu'},
+      {name: 'Display_TV001', svgName: 'dp'},
+    ],
+    shadowGenMeshes: [
+      'Monitor_flat',
+      'c4938c6e-adb9-4618-8fe0-76497fa5e0a7',
+      '37fef3e1-5618-4f2b-b5cb-3d578cd09d03',
+      '73a85a47-56c4-417e-a598-bfe24e209022',
+      'Rectangle001',
+    ],
+    receiveShadowMeshes: [
+      'a618e236-5f05-4c16-a5f4-806a8575cd48',
+      'c4938c6e-adb9-4618-8fe0-76497fa5e0a7',
+      '37fef3e1-5618-4f2b-b5cb-3d578cd09d03',
+      '73a85a47-56c4-417e-a598-bfe24e209022',
+    ],
   },
   svgVals: [],
   startPos: {
@@ -81,8 +119,8 @@ const devHelper = {
     dragElementText: '', // Текст элемента, который перетаскиваем
     dragoverElement: undefined, // Элемент, на который навелись
     dragoverElementText: '', // Текст элемента, на который навелись
-    radioSelfcheckHelperText: 'Выберите один верный ответ и нажмите подтвердить.', // Текст хелпера вопросов с радиокнопками
-    radioSelfcheckHelperTextMany: 'Выберите несколько вариантов и нажмите подтвердить.', // Текст хелпера вопросов с радиокнопками
+    radioSelfcheckHelperText: 'Выберите один вариант и нажмите подтвердить', // Текст хелпера вопросов с радиокнопками
+    radioSelfcheckHelperTextMany: 'Выберите несколько вариантов и нажмите подтвердить', // Текст хелпера вопросов с радиокнопками
     dragDropHelperText: 'Переместите каждый ответ в нужную строчку и нажмите подтвердить.', // Текст хелпера вопросов с dragDrop
     dropDownHelperText: 'В выпадающих списках выберите нужный вариант и нажмите подтвердить.', // Текст хелпера вопросов с выпадающими списками
     consecutiveHelperText: 'Переставьте ответы в нужной последовательности и нажмите подтвердить.', // Текст хелпера вопросов с последовательностью
@@ -411,8 +449,9 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
+    intervalFon: undefined,
   },
 };
 
@@ -446,7 +485,7 @@ let tempActions = [
         target2D: 'kl029',
         window2D: {
           elements: [
-            { name: 'title_work_vn', text: 'Управление клапаном 029' },
+            { name: 'title_work_vn', text: 'Управление клапаном 029' }, //alpha: 0.5
             { name: 'status_window_text', text: 'Нет данных' },
             { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
             { name: 'polozenie_text', text: '51' },

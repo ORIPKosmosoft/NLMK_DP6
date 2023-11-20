@@ -51,6 +51,7 @@ function domLoaded() {
       devHelper.trenVals.type = TrenType;
       devHelper.trenVals.scenario = Index;
       startTren();
+      stopChangeFon();
     } else {
       let popupDiv = document.createElement('div');
       popupDiv.classList.add('popup-alert');
@@ -234,6 +235,79 @@ function domLoaded() {
     randomAnswer(Element);
   });
 
+  //------------------------------------------------------------------------------------------------------------------------------------------
+  /*
+  Создаю на HTML CSS и JS окно завершения сценария
+ Осталось сделать последнее окно - время на отдельных участках
+ После этого нужно создать объект, который будет хранить данные прохождения
+ Потом взять данные из этого объекта и создать HTML код
+ И наполнить данными
+  */
+  // DONUT CHART
+  const canvas = document.getElementById('myChart');
+  const ctx = canvas.getContext('2d');
+
+  // Создайте новую круговую диаграмму
+  const myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Верно', 'Ошибки'],
+      datasets: [{
+        data: [63, 37], // Значения для заполнения и остатка (50% каждое)
+        backgroundColor: ['#2c5289', '#EAEAEA'], // Цвета для заполнения и остатка
+        borderWidth: 4, // Толщина границы
+        borderColor: 'rgba(0, 0, 0, 0.05)', // Цвет границы
+        borderRadius: 5, // Радиус скругления
+      }]
+    },
+    options: {
+      responsive: true, // Сделать график отзывчивым
+      cutout: '60%', // Размер отверстия в центре графика (в данном случае 80%)
+      plugins: {
+        legend: {
+          display: false // Скрыть легенду
+        }
+      }
+    }
+  });
+  // LINE
+  const canvas2 = document.getElementById('myChart2');
+  const ctx2 = canvas2.getContext('2d');
+
+  const data = {
+    labels: ['0', '1', '2', '3', '4', '5'],
+    datasets: [{
+      label: 'Количество ошибок', // Удалите или закомментируйте это свойство
+      data: [0, 11, 38, 29, 16, 21],
+      fill: false,
+      borderWidth: 2,
+      borderColor: '#2c5289',
+      tension: 0.4
+    }]
+  };
+
+  const options = {
+    maintainAspectRatio: false,
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 40
+      }
+    },
+    plugins: {
+      legend: {
+        display: false // Скрыть легенду
+      }
+    }
+  };
+  const myChart2 = new Chart(ctx2, {
+    type: 'line',
+    data: data,
+    options: options
+  });
+  //------------------------------------------------------------------------------------------------------------------------------------------
+
   loadTrenActions();
 }
 
@@ -308,17 +382,8 @@ function setDragEvents(elem) {
 
 }
 
-window.addEventListener('load', function () {
-  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
-    // Element.style.marginTop = `-${Element.getBoundingClientRect().height + 50}px`;
-    Element.style.marginTop = `1vh`;
-    Element.classList.remove('first-drop');
-  })
-
-  document.querySelectorAll('.nav-icon').forEach((Element) => {
-    Element.addEventListener('click', guideBtnsClick);
-  });
-  setInterval(() => {
+function startChangeFon() {
+  devHelper.dev.intervalFon = setInterval(() => {
     for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {
       const Element = document.querySelectorAll('.photo')[i];
       Element.style.transition = 'opacity 1s ease';
@@ -331,8 +396,22 @@ window.addEventListener('load', function () {
       }
     }
   }, 8000)
+}
 
+function stopChangeFon() {
+  clearInterval(devHelper.dev.intervalFon);
+}
 
+window.addEventListener('load', function () {
+  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
+    Element.style.marginTop = `1vh`;
+    Element.classList.remove('first-drop');
+  })
+
+  document.querySelectorAll('.nav-icon').forEach((Element) => {
+    Element.addEventListener('click', guideBtnsClick);
+  });
+  startChangeFon();
   if (devHelper.dev.enable === true) console.log(devHelper);
 });
 

@@ -243,10 +243,7 @@ body {
 }
 
 .drop-main a {
-  /* padding-left: 1vh; */
-  /* margin: 0px; */
   font-family: 'Circe-Regular', sans-serif;
-  /* text-align: left; */
   color: #3a3a3a;
 }
 
@@ -814,6 +811,130 @@ ul {
   height: 3vh;
   visibility: hidden;
 }
+
+.end-cointainer {
+  position: absolute;
+  width: 50vw;
+  height: 62vh;
+  left: 25vw;
+  top: 19vh;
+  background-color: #f4f4f4;
+  border-radius: 0.52vw;
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
+}
+
+.end-cointainer .end-title {
+  font-size: xx-large;
+  text-align: center;
+  margin-block-start: 1vh;
+  margin-block-end: 0;
+  color: #6B6B6B;
+  width: 100%;
+}
+
+.end-cointainer .end-title-2 {
+  width: 100%;
+  margin-block-start: 0;
+  margin-block-end: 1vh;
+  font-size: x-large;
+  font-family: 'Circe-Bold', sans-serif;
+  text-align: center;
+  color: #565656;
+}
+
+.end-cointainer .window-container {
+  width: 100%;
+  height: 82%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+
+.end-cointainer .window-container .container-left {
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
+  width: 35%;
+  height: 46%;
+  border-radius: 0.52vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.end-cointainer .window-container .container-right {
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
+  width: 60%;
+  height: 46%;
+  border-radius: 0.52vw;
+}
+
+.end-cointainer .window-container .container {
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 25%;
+  border-radius: 0.52vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-family: 'Circe-Bold', sans-serif;
+
+}
+
+.window-container .container .left-text {
+  margin-left: 4%;
+  width: 60%;
+  text-align: start;
+  color: #6B6B6B;
+}
+
+.window-container .container .right-text {
+  width: 40%;
+  text-align: center;
+  color: #565656;
+}
+
+.no-shadow {
+  box-shadow: none !important;
+}
+
+.window-container .blue-text {
+  font-family: 'Circe-Bold', sans-serif;
+  color: #2c5289;
+  margin-left: 1vw;
+  margin-top: .8vh;
+  height: 10%;
+}
+
+.circle-graph {
+  height: 75%;
+  margin-bottom: 4%;
+  display: flex;
+  justify-content: center;
+}
+
+.circle-graph span {
+  position: absolute;
+  top: 21.9vh;
+  font-family: 'Circe-Regular', sans-serif;
+  color: #2c5289;
+  font-size: xx-large;
+}
+
+.line-graph {
+  height: 70%;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.bar-graph {
+  height: 80%;
+}
+
+
 
 /* svg схемы 
 ----------------------------------------------------------------------------------------------------------
@@ -2494,6 +2615,10 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.button-tren#b_help {
+  cursor: default !important;
 }
 
 .button-tren:hover {
