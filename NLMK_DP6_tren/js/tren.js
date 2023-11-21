@@ -21,6 +21,18 @@ function loadTrenActions() {
           if (devHelper.audio.find(element => element.name === action.audio) === undefined)
             devHelper.audio.push({ name: action.audio, element: new Audio(`/media/audio/${action.audio}.mp3`) });
         }
+        if (action.multi) {
+          action.multi.forEach(multiAction => {
+            if (multiAction.audio)
+              if (!devHelper.audio.find(element => element.name === multiAction.audio))
+                devHelper.audio.push({ name: multiAction.audio, element: new Audio(`/media/audio/${multiAction.audio}.mp3`) });
+          })
+        }
+      })
+      devHelper.audio.forEach(element => {
+        element.element.addEventListener('ended', function () {
+          document.querySelector('.tren-container').classList.toggle('block-interaction', false);
+        });
       })
     }
   })
@@ -69,6 +81,7 @@ function trenTimeTick(timeStamp) {
             if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
             if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
             devHelper.trenVals.waitingInput = true;
+            if (nextAction.multi) devHelper.trenVals.multiAction = [...nextAction.multi];
           }
         } else {
           if (nextAction.lifeTime) {
@@ -118,13 +131,29 @@ function trenClickOnMesh(Mesh) {
     handlePosition(currentAction, Mesh);
     if (currentAction.audio) playAudio(currentAction.audio);
     newActionStartHelper(currentAction);
+  } else if (currentAction.multi && currentAction.multi.length > 0) {
+    const multiAction = devHelper.trenVals.multiAction.find(multiAction2 => (multiAction2.action.target3D === Mesh.name));
+    if (multiAction) {
+      handleRotation(multiAction, Mesh);
+      handlePosition(multiAction, Mesh);
+      if (multiAction.audio) playAudio(multiAction.audio);
+      devHelper.trenVals.multiAction = devHelper.trenVals.multiAction.filter(function (item) {
+        return item !== multiAction;
+      });
+      if (devHelper.trenVals.multiAction.length === 0) {
+        newActionStartHelper(currentAction);
+      }
+    } else handleError(Mesh);
   } else handleError(Mesh);
 }
 
 function playAudio(AudioName) {
-  devHelper.audio.forEach(audio => {
-    if (audio.name === AudioName) audio.element.play();
-  });
+  let audioTag = devHelper.audio.find(element => element.name === AudioName).element;
+  if (!audioTag) return;
+  else {
+    audioTag.play();
+    document.querySelector('.tren-container').classList.toggle('block-interaction', true);
+  }
 }
 
 function handleRotation(currentAction, Mesh) {
@@ -166,6 +195,186 @@ function trenClickOnSvgElem(SvgElemHelper = undefined) {
 
 function trenFinish() {
   devHelper.trenVals.ended = true;
+  //------------------------------------------------------------------------------------------------------------------------------------------
+  const endContainer = document.querySelector('.end-cointainer');
+  endContainer.style.opacity = 1;
+  endContainer.style.display = 'unset';
+  const circleGraph = endContainer.querySelector('.circle-graph');
+  circleGraph.querySelector('span').innerHTML = `${devHelper.endVals.passPerc}%`;
+  Array.from(endContainer.querySelectorAll('.left-text')).forEach((element) => {
+    const text = element.innerHTML;
+    const nextElement = element.nextElementSibling;
+    if (text === 'Норма прохождения:') {
+      nextElement.innerHTML = formatTime(devHelper.endVals.averangeTime.reduce((accumulator, currentValue) => accumulator + currentValue, 0));
+    } else if (text === 'Ваше время:') {
+      nextElement.innerHTML = formatTime(devHelper.endVals.humanTime.reduce((accumulator, currentValue) => accumulator + currentValue, 0));
+    } else if (text === 'Допущено ошибок:') {
+      nextElement.innerHTML = devHelper.endVals.errors.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    }
+  });
+  const chartConfigs = [
+    {
+      name: 'endCircleGraph',
+      type: 'doughnut',
+      options: {
+        responsive: true,
+        cutout: '60%',
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
+      },
+      data: {
+        labels: ['Верно', 'Ошибки'],
+        datasets: [{
+          data: [parseInt(circleGraph.querySelector('span').innerHTML), 100 - parseInt(circleGraph.querySelector('span').innerHTML)],
+          backgroundColor: ['#2c5289', '#EAEAEA'],
+          borderWidth: 4,
+          borderColor: 'rgba(0, 0, 0, 0.05)',
+          borderRadius: 5,
+        }]
+      }
+    },
+    {
+      name: 'endLineGraph',
+      type: 'line',
+      options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 40
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: context => {
+                let label = context.dataset.label || '';
+                if (label) {
+                  label += ': ';
+                }
+                label += context.parsed.y;
+                return label;
+              },
+              title: () => null
+            }
+          }
+        }
+      },
+      data: {
+        labels: Array.from({ length: devHelper.endVals.errors.length }, (_, index) => index),
+        datasets: [{
+          label: 'Количество ошибок',
+          data: devHelper.endVals.errors,
+          fill: false,
+          borderWidth: Math.round(window.innerWidth / 100 * 0.11),
+          borderColor: '#2c5289',
+          tension: 0.4
+        }]
+      }
+    },
+    {
+      name: 'endBarGraph',
+      type: 'bar',
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: context => {
+                let label = context.dataset.label || '';
+                if (label) {
+                  label += ': ';
+                }
+                label += `${context.parsed.y} минут.`;
+                return label;
+              },
+              title: () => null
+            }
+          }
+        }
+      },
+      data: {
+        labels: Array.from({ length: devHelper.endVals.averangeTime.length }, (_, index) => index + 1),
+        datasets: [
+          {
+            label: 'Ваше время',
+            backgroundColor: 'rgba(19, 71, 144, 0.8)',
+            hoverBackgroundColor: 'rgba(19, 71, 144, 1)',
+            borderWidth: Math.round(window.innerWidth / 100 * 0.11),
+            borderColor: 'rgba(0, 0, 0, 0.05)',
+            borderRadius: Math.round(window.innerWidth / 100 * 0.3),
+            data: devHelper.endVals.humanTime.map(number => Math.round(number / 60)),
+          },
+          {
+            label: 'Среднее время',
+            backgroundColor: 'rgba(160, 160, 160, 0.8)',
+            hoverBackgroundColor: 'rgba(160, 160, 160, 1)',
+            borderWidth: Math.round(window.innerWidth / 100 * 0.11),
+            borderColor: 'rgba(0, 0, 0, 0.05)',
+            borderRadius: Math.round(window.innerWidth / 100 * 0.3),
+            data: devHelper.endVals.averangeTime.map(number => Math.round(number / 60)),
+          }
+        ]
+      }
+    }
+  ];
+  devHelper.endVals.charts.forEach(chart => {
+    chart.destroy();
+  })
+  if (devHelper.endVals.charts.length > 0)
+    devHelper.endVals.charts.length = [];
+  chartConfigs.forEach(config => {
+    const { name, type, options, data } = config;
+    const ctx = document.getElementById(name).getContext('2d');
+    let tempChart = new Chart(ctx, {
+      type,
+      data,
+      options
+    });
+    devHelper.endVals.charts.push(tempChart);
+  });
+  function formatTime(seconds) {
+    var hours = Math.floor(seconds / 3600);
+    var minutes = Math.floor((seconds % 3600) / 60);
+    var remainingSeconds = seconds % 60;
+
+    var formattedTime = hours + " ч " + minutes + " м " + remainingSeconds + " с";
+    return formattedTime;
+  }
+  Array.from(document.querySelectorAll('.end-button')).forEach(button => {
+    button.addEventListener('click', function (e) {
+      endContainer.style.opacity = 0;
+      endContainer.style.display = 'none';
+      if (e.currentTarget.innerHTML === 'Повторить') {
+        startTren(true);
+      } else {
+        startChangeFon();
+        document.querySelector('.tren-container').style.opacity = 0;
+        Array.from(document.querySelectorAll('.button-tren-active')).forEach(btn => {
+          btn.querySelector('.click-button-tren').dispatchEvent(new Event('click'));
+          btn.dispatchEvent(new Event('click'));
+        })
+      }
+    })
+  })
+  //------------------------------------------------------------------------------------------------------------------------------------------
+
+
   if (devHelper.dev.enable === true && document.querySelector('.info-tren'))
     document.querySelector('.info-tren').innerHTML = `Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`;
   devHelper.dev.enable && console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`);
@@ -273,6 +482,31 @@ function takeStartingState(Restart = false) {
       });
     }
   }
+  changeScreenVals('vozNagr1_1', '1207');
+  changeScreenVals('vozNagr1_2', '289.5');
+  changeScreenVals('vozNagr2_1', '1217');
+  changeScreenVals('vozNagr2_2', '190.8');
+  changeScreenVals('vozNagr3_1', '1255');
+  changeScreenVals('vozNagr3_2', '125.9');
+  changeScreenVals('rashodSmeshGaza_1', '000.0');
+  changeScreenVals('rashodSmeshGaza_2', '000.1');
+  changeScreenVals('rashodSmeshGaza_3', '000.0');
+  changeScreenVals('rashodVozdyhGor_1', '000.1');
+  changeScreenVals('rashodVozdyhGor_2', '000.1');
+  changeScreenVals('rashodVozdyhGor_3', '000.2');
+  changeScreenVals('davVozGorBVN', '09.90');
+  changeScreenVals('rashodSmeshGaza_1_r', '023.4', 'red');
+  changeScreenVals('rashodSmeshGaza_2_r', '021.1', 'red');
+  changeScreenVals('rashodSmeshGaza_3_r', '022.5', 'red');
+  changeScreenVals('rashodVozdyhGor_1_r', '023.4', 'red');
+  changeScreenVals('rashodVozdyhGor_2_r', '021.5', 'red');
+  changeScreenVals('rashodVozdyhGor_3_r', '021.4', 'red');
+  changeScreenVals('klapPrirGazaBRU_1_r', '003.0', 'red');
+  changeScreenVals('klapPrirGazaBRU_2_r', '000.9', 'red');
+  changeScreenVals('klapPrirGazaBRU_3_r', '015.9', 'red');
+  changeScreenVals('smesKlapBRU_1_r', '000.8', 'red');
+  changeScreenVals('smesKlapBRU_2_r', '002.1', 'red');
+  changeScreenVals('obshKlapVozGorBRU_r', '001.8', 'red');
 }
 
 function saveStart2DIF() {

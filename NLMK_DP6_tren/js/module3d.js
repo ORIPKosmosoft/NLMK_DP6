@@ -306,7 +306,6 @@ window.addEventListener('load', function () {
       });
     }
 
-
     function meshOptimization(mesh, name = undefined) {
       if (mesh._children && mesh._children.length > 0)
         mesh._children.forEach(child => meshOptimization(child));
@@ -747,34 +746,34 @@ function switc3DTime(digit, digitTime) {
 
   switch (digit) {
     case '0':
-      digitTime.material = unic0.material.clone();
+      digitTime.material = unic0.material;
       break;
     case '1':
-      digitTime.material = unic1.material.clone();
+      digitTime.material = unic1.material;
       break;
     case '2':
-      digitTime.material = unic2.material.clone();
+      digitTime.material = unic2.material;
       break;
     case '3':
-      digitTime.material = unic3.material.clone();
+      digitTime.material = unic3.material;
       break;
     case '4':
-      digitTime.material = unic4.material.clone();
+      digitTime.material = unic4.material;
       break;
     case '5':
-      digitTime.material = unic5.material.clone();
+      digitTime.material = unic5.material;
       break;
     case '6':
-      digitTime.material = unic6.material.clone();
+      digitTime.material = unic6.material;
       break;
     case '7':
-      digitTime.material = unic7.material.clone();
+      digitTime.material = unic7.material;
       break;
     case '8':
-      digitTime.material = unic8.material.clone();
+      digitTime.material = unic8.material;
       break;
     case '9':
-      digitTime.material = unic9.material.clone();
+      digitTime.material = unic9.material;
       break;
   }
 }
@@ -782,4 +781,294 @@ function switc3DTime(digit, digitTime) {
 function isMeshVisible(mesh) {
   const camera = devHelper.model3DVals.camera;
   return camera.isInFrustum(mesh);
+}
+
+function changeScreenVals(Name, Val, Color = 'green') {
+  const scene = devHelper.model3DVals.scene;
+  const donorPrefix = Color === 'green' ? 'Unic_DigitGreen_donor_' : 'Unic_digits_';
+  const donorParentName = Color === 'green' ? 'Donor1' : 'sm_BRY-i_Unic';
+  const donorMaterialsDigits = Array.from({ length: 10 }, (_, i) => {
+    const donorName = donorPrefix + i;
+    let tempMat = scene.meshes.find(mesh => mesh.name === donorName && mesh.parent.name === donorParentName).material;
+    if (Color !== 'green') tempMat = tempMat.subMaterials[i + 1];
+    return tempMat;
+  });
+  let donorMaterialsDot = Color === 'green' ?
+    scene.meshes.find(mesh => mesh.name === 'Unic_DigitGreen_donor_Dot_On' && mesh.parent.name === donorParentName).material :
+    scene.meshes.find(mesh => mesh.name === 'Unic_digits_tochka_on' && mesh.parent.name === donorParentName).material;
+
+  //green
+  // Unic_DigitGreen_donor_Dot_On
+  // Unic_DigitGreen_donor_Dot_Off
+
+  //red
+  // Unic_digits_tochka_on
+  // Unic_digits_tochka_off
+  // digits_tochka009
+
+  const data = {
+    vozNagr1_1: {
+      num1: { name: 'Digit007', parent: 'SensorScale001' },
+      num2: { name: 'Digit006', parent: 'SensorScale001' },
+      num3: { name: 'Digit005', parent: 'SensorScale001' },
+      num4: { name: 'Digit004', parent: 'SensorScale001' },
+      dot1: { name: 'Digit_dot005', parent: 'SensorScale001' },
+      dot2: { name: 'Digit_dot004', parent: 'SensorScale001' },
+      dot3: { name: 'Digit_dot003', parent: 'SensorScale001' }
+    },
+    vozNagr1_2: {
+      num1: { name: 'Digit011', parent: 'SensorScale002' },
+      num2: { name: 'Digit010', parent: 'SensorScale002' },
+      num3: { name: 'Digit009', parent: 'SensorScale002' },
+      num4: { name: 'Digit008', parent: 'SensorScale002' },
+      dot1: { name: 'Digit_dot008', parent: 'SensorScale002' },
+      dot2: { name: 'Digit_dot007', parent: 'SensorScale002' },
+      dot3: { name: 'Digit_dot006', parent: 'SensorScale002' }
+    },
+    vozNagr2_1: {
+      num1: { name: 'Digit015', parent: 'SensorScale003' },
+      num2: { name: 'Digit014', parent: 'SensorScale003' },
+      num3: { name: 'Digit013', parent: 'SensorScale003' },
+      num4: { name: 'Digit012', parent: 'SensorScale003' },
+      dot1: { name: 'Digit_dot011', parent: 'SensorScale003' },
+      dot2: { name: 'Digit_dot010', parent: 'SensorScale003' },
+      dot3: { name: 'Digit_dot009', parent: 'SensorScale003' }
+    },
+    vozNagr2_2: {
+      num1: { name: 'Digit019', parent: 'SensorScale004' },
+      num2: { name: 'Digit018', parent: 'SensorScale004' },
+      num3: { name: 'Digit017', parent: 'SensorScale004' },
+      num4: { name: 'Digit016', parent: 'SensorScale004' },
+      dot1: { name: 'Digit_dot014', parent: 'SensorScale004' },
+      dot2: { name: 'Digit_dot013', parent: 'SensorScale004' },
+      dot3: { name: 'Digit_dot012', parent: 'SensorScale004' }
+    },
+    vozNagr3_1: {
+      num1: { name: 'Digit023', parent: 'SensorScale005' },
+      num2: { name: 'Digit022', parent: 'SensorScale005' },
+      num3: { name: 'Digit021', parent: 'SensorScale005' },
+      num4: { name: 'Digit020', parent: 'SensorScale005' },
+      dot1: { name: 'Digit_dot017', parent: 'SensorScale005' },
+      dot2: { name: 'Digit_dot016', parent: 'SensorScale005' },
+      dot3: { name: 'Digit_dot015', parent: 'SensorScale005' }
+    },
+    vozNagr3_2: {
+      num1: { name: 'Digit027', parent: 'SensorScale006' },
+      num2: { name: 'Digit026', parent: 'SensorScale006' },
+      num3: { name: 'Digit025', parent: 'SensorScale006' },
+      num4: { name: 'Digit024', parent: 'SensorScale006' },
+      dot1: { name: 'Digit_dot020', parent: 'SensorScale006' },
+      dot2: { name: 'Digit_dot019', parent: 'SensorScale006' },
+      dot3: { name: 'Digit_dot018', parent: 'SensorScale006' }
+    },
+    rashodSmeshGaza_1: {
+      num1: { name: 'Digit031', parent: 'SensorScale007' },
+      num2: { name: 'Digit030', parent: 'SensorScale007' },
+      num3: { name: 'Digit029', parent: 'SensorScale007' },
+      num4: { name: 'Digit028', parent: 'SensorScale007' },
+      dot1: { name: 'Digit_dot023', parent: 'SensorScale007' },
+      dot2: { name: 'Digit_dot022', parent: 'SensorScale007' },
+      dot3: { name: 'Digit_dot021', parent: 'SensorScale007' }
+    },
+    rashodSmeshGaza_2: {
+      num1: { name: 'Digit035', parent: 'SensorScale008' },
+      num2: { name: 'Digit034', parent: 'SensorScale008' },
+      num3: { name: 'Digit033', parent: 'SensorScale008' },
+      num4: { name: 'Digit032', parent: 'SensorScale008' },
+      dot1: { name: 'Digit_dot026', parent: 'SensorScale008' },
+      dot2: { name: 'Digit_dot025', parent: 'SensorScale008' },
+      dot3: { name: 'Digit_dot024', parent: 'SensorScale008' }
+    },
+    rashodSmeshGaza_3: {
+      num1: { name: 'Digit039', parent: 'SensorScale009' },
+      num2: { name: 'Digit038', parent: 'SensorScale009' },
+      num3: { name: 'Digit037', parent: 'SensorScale009' },
+      num4: { name: 'Digit036', parent: 'SensorScale009' },
+      dot1: { name: 'Digit_dot029', parent: 'SensorScale009' },
+      dot2: { name: 'Digit_dot028', parent: 'SensorScale009' },
+      dot3: { name: 'Digit_dot027', parent: 'SensorScale009' }
+    },
+    rashodVozdyhGor_1: {
+      num1: { name: 'Digit043', parent: 'SensorScale010' },
+      num2: { name: 'Digit042', parent: 'SensorScale010' },
+      num3: { name: 'Digit041', parent: 'SensorScale010' },
+      num4: { name: 'Digit040', parent: 'SensorScale010' },
+      dot1: { name: 'Digit_dot032', parent: 'SensorScale010' },
+      dot2: { name: 'Digit_dot031', parent: 'SensorScale010' },
+      dot3: { name: 'Digit_dot030', parent: 'SensorScale010' }
+    },
+    rashodVozdyhGor_2: {
+      num1: { name: 'Digit047', parent: 'SensorScale011' },
+      num2: { name: 'Digit046', parent: 'SensorScale011' },
+      num3: { name: 'Digit045', parent: 'SensorScale011' },
+      num4: { name: 'Digit044', parent: 'SensorScale011' },
+      dot1: { name: 'Digit_dot035', parent: 'SensorScale011' },
+      dot2: { name: 'Digit_dot034', parent: 'SensorScale011' },
+      dot3: { name: 'Digit_dot033', parent: 'SensorScale011' }
+    },
+    rashodVozdyhGor_3: {
+      num1: { name: 'Digit051', parent: 'SensorScale012' },
+      num2: { name: 'Digit050', parent: 'SensorScale012' },
+      num3: { name: 'Digit049', parent: 'SensorScale012' },
+      num4: { name: 'Digit048', parent: 'SensorScale012' },
+      dot1: { name: 'Digit_dot038', parent: 'SensorScale012' },
+      dot2: { name: 'Digit_dot037', parent: 'SensorScale012' },
+      dot3: { name: 'Digit_dot036', parent: 'SensorScale012' }
+    },
+    davVozGorBVN: {
+      num1: { name: 'Digit055', parent: 'SensorScale013' },
+      num2: { name: 'Digit054', parent: 'SensorScale013' },
+      num3: { name: 'Digit053', parent: 'SensorScale013' },
+      num4: { name: 'Digit052', parent: 'SensorScale013' },
+      dot1: { name: 'Digit_dot041', parent: 'SensorScale013' },
+      dot2: { name: 'Digit_dot040', parent: 'SensorScale013' },
+      dot3: { name: 'Digit_dot039', parent: 'SensorScale013' }
+    },
+    rashodSmeshGaza_1_r: {
+      num1: { name: 'Unic_digits_off008', parent: 'sm_BRY-i_INDIKATORS001' },
+      num2: { name: 'Unic_digits_off007', parent: 'sm_BRY-i_INDIKATORS001' },
+      num3: { name: 'Unic_digits_off006', parent: 'sm_BRY-i_INDIKATORS001' },
+      num4: { name: 'Unic_digits_off005', parent: 'sm_BRY-i_INDIKATORS001' },
+      dot1: { name: 'digits_tochka003', parent: 'sm_BRY-i_INDIKATORS001' },
+      dot2: { name: 'digits_tochka002', parent: 'sm_BRY-i_INDIKATORS001' },
+      dot3: { name: 'digits_tochka001', parent: 'sm_BRY-i_INDIKATORS001' }
+    },
+    rashodSmeshGaza_2_r: {
+      num1: { name: 'Unic_digits_off012', parent: 'sm_BRY-i_INDIKATORS002' },
+      num2: { name: 'Unic_digits_off011', parent: 'sm_BRY-i_INDIKATORS002' },
+      num3: { name: 'Unic_digits_off010', parent: 'sm_BRY-i_INDIKATORS002' },
+      num4: { name: 'Unic_digits_off009', parent: 'sm_BRY-i_INDIKATORS002' },
+      dot1: { name: 'digits_tochka006', parent: 'sm_BRY-i_INDIKATORS002' },
+      dot2: { name: 'digits_tochka005', parent: 'sm_BRY-i_INDIKATORS002' },
+      dot3: { name: 'digits_tochka004', parent: 'sm_BRY-i_INDIKATORS002' }
+    },
+    rashodSmeshGaza_3_r: {
+      num1: { name: 'Unic_digits_off016', parent: 'sm_BRY-i_INDIKATORS003' },
+      num2: { name: 'Unic_digits_off015', parent: 'sm_BRY-i_INDIKATORS003' },
+      num3: { name: 'Unic_digits_off014', parent: 'sm_BRY-i_INDIKATORS003' },
+      num4: { name: 'Unic_digits_off013', parent: 'sm_BRY-i_INDIKATORS003' },
+      dot1: { name: 'digits_tochka009', parent: 'sm_BRY-i_INDIKATORS003' },
+      dot2: { name: 'digits_tochka008', parent: 'sm_BRY-i_INDIKATORS003' },
+      dot3: { name: 'digits_tochka007', parent: 'sm_BRY-i_INDIKATORS003' }
+    },
+    klapPrirGazaBRU_1_r: {
+      num1: { name: 'Unic_digits_off020', parent: 'sm_BRY-i_INDIKATORS004' },
+      num2: { name: 'Unic_digits_off019', parent: 'sm_BRY-i_INDIKATORS004' },
+      num3: { name: 'Unic_digits_off018', parent: 'sm_BRY-i_INDIKATORS004' },
+      num4: { name: 'Unic_digits_off017', parent: 'sm_BRY-i_INDIKATORS004' },
+      dot1: { name: 'digits_tochka012', parent: 'sm_BRY-i_INDIKATORS004' },
+      dot2: { name: 'digits_tochka011', parent: 'sm_BRY-i_INDIKATORS004' },
+      dot3: { name: 'digits_tochka010', parent: 'sm_BRY-i_INDIKATORS004' }
+    },
+    klapPrirGazaBRU_2_r: {
+      num1: { name: 'Unic_digits_off024', parent: 'sm_BRY-i_INDIKATORS005' },
+      num2: { name: 'Unic_digits_off023', parent: 'sm_BRY-i_INDIKATORS005' },
+      num3: { name: 'Unic_digits_off022', parent: 'sm_BRY-i_INDIKATORS005' },
+      num4: { name: 'Unic_digits_off021', parent: 'sm_BRY-i_INDIKATORS005' },
+      dot1: { name: 'digits_tochka015', parent: 'sm_BRY-i_INDIKATORS005' },
+      dot2: { name: 'digits_tochka014', parent: 'sm_BRY-i_INDIKATORS005' },
+      dot3: { name: 'digits_tochka013', parent: 'sm_BRY-i_INDIKATORS005' }
+    },
+    klapPrirGazaBRU_3_r: {
+      num1: { name: 'Unic_digits_off028', parent: 'sm_BRY-i_INDIKATORS006' },
+      num2: { name: 'Unic_digits_off027', parent: 'sm_BRY-i_INDIKATORS006' },
+      num3: { name: 'Unic_digits_off026', parent: 'sm_BRY-i_INDIKATORS006' },
+      num4: { name: 'Unic_digits_off025', parent: 'sm_BRY-i_INDIKATORS006' },
+      dot1: { name: 'digits_tochka018', parent: 'sm_BRY-i_INDIKATORS006' },
+      dot2: { name: 'digits_tochka017', parent: 'sm_BRY-i_INDIKATORS006' },
+      dot3: { name: 'digits_tochka016', parent: 'sm_BRY-i_INDIKATORS006' }
+    },
+    smesKlapBRU_1_r: {
+      num1: { name: 'Unic_digits_off032', parent: 'sm_BRY-i_INDIKATORS007' },
+      num2: { name: 'Unic_digits_off031', parent: 'sm_BRY-i_INDIKATORS007' },
+      num3: { name: 'Unic_digits_off030', parent: 'sm_BRY-i_INDIKATORS007' },
+      num4: { name: 'Unic_digits_off029', parent: 'sm_BRY-i_INDIKATORS007' },
+      dot1: { name: 'digits_tochka021', parent: 'sm_BRY-i_INDIKATORS007' },
+      dot2: { name: 'digits_tochka020', parent: 'sm_BRY-i_INDIKATORS007' },
+      dot3: { name: 'digits_tochka019', parent: 'sm_BRY-i_INDIKATORS007' }
+    },
+    smesKlapBRU_2_r: {
+      num1: { name: 'Unic_digits_off036', parent: 'sm_BRY-i_INDIKATORS008' },
+      num2: { name: 'Unic_digits_off035', parent: 'sm_BRY-i_INDIKATORS008' },
+      num3: { name: 'Unic_digits_off034', parent: 'sm_BRY-i_INDIKATORS008' },
+      num4: { name: 'Unic_digits_off033', parent: 'sm_BRY-i_INDIKATORS008' },
+      dot1: { name: 'digits_tochka024', parent: 'sm_BRY-i_INDIKATORS008' },
+      dot2: { name: 'digits_tochka023', parent: 'sm_BRY-i_INDIKATORS008' },
+      dot3: { name: 'digits_tochka022', parent: 'sm_BRY-i_INDIKATORS008' }
+    },
+    obshKlapVozGorBRU_r: {
+      num1: { name: 'Unic_digits_off040', parent: 'sm_BRY-i_INDIKATORS009' },
+      num2: { name: 'Unic_digits_off039', parent: 'sm_BRY-i_INDIKATORS009' },
+      num3: { name: 'Unic_digits_off038', parent: 'sm_BRY-i_INDIKATORS009' },
+      num4: { name: 'Unic_digits_off037', parent: 'sm_BRY-i_INDIKATORS009' },
+      dot1: { name: 'digits_tochka027', parent: 'sm_BRY-i_INDIKATORS009' },
+      dot2: { name: 'digits_tochka026', parent: 'sm_BRY-i_INDIKATORS009' },
+      dot3: { name: 'digits_tochka025', parent: 'sm_BRY-i_INDIKATORS009' }
+    },
+    rashodVozdyhGor_3_r: {
+      num1: { name: 'Unic_digits_off044', parent: 'sm_BRY-i_INDIKATORS010' },
+      num2: { name: 'Unic_digits_off043', parent: 'sm_BRY-i_INDIKATORS010' },
+      num3: { name: 'Unic_digits_off042', parent: 'sm_BRY-i_INDIKATORS010' },
+      num4: { name: 'Unic_digits_off041', parent: 'sm_BRY-i_INDIKATORS010' },
+      dot1: { name: 'digits_tochka030', parent: 'sm_BRY-i_INDIKATORS010' },
+      dot2: { name: 'digits_tochka029', parent: 'sm_BRY-i_INDIKATORS010' },
+      dot3: { name: 'digits_tochka028', parent: 'sm_BRY-i_INDIKATORS010' }
+    },
+    rashodVozdyhGor_2_r: {
+      num1: { name: 'Unic_digits_off048', parent: 'sm_BRY-i_INDIKATORS011' },
+      num2: { name: 'Unic_digits_off047', parent: 'sm_BRY-i_INDIKATORS011' },
+      num3: { name: 'Unic_digits_off046', parent: 'sm_BRY-i_INDIKATORS011' },
+      num4: { name: 'Unic_digits_off045', parent: 'sm_BRY-i_INDIKATORS011' },
+      dot1: { name: 'digits_tochka033', parent: 'sm_BRY-i_INDIKATORS011' },
+      dot2: { name: 'digits_tochka032', parent: 'sm_BRY-i_INDIKATORS011' },
+      dot3: { name: 'digits_tochka031', parent: 'sm_BRY-i_INDIKATORS011' }
+    },
+    rashodVozdyhGor_1_r: {
+      num1: { name: 'Unic_digits_off052', parent: 'sm_BRY-i_INDIKATORS012' },
+      num2: { name: 'Unic_digits_off051', parent: 'sm_BRY-i_INDIKATORS012' },
+      num3: { name: 'Unic_digits_off050', parent: 'sm_BRY-i_INDIKATORS012' },
+      num4: { name: 'Unic_digits_off049', parent: 'sm_BRY-i_INDIKATORS012' },
+      dot1: { name: 'digits_tochka036', parent: 'sm_BRY-i_INDIKATORS012' },
+      dot2: { name: 'digits_tochka035', parent: 'sm_BRY-i_INDIKATORS012' },
+      dot3: { name: 'digits_tochka034', parent: 'sm_BRY-i_INDIKATORS012' }
+    },
+  };
+
+  let num1, num2, num3, num4, dot;
+
+  if (data[Name]) {
+    const { num1: num1Data, num2: num2Data, num3: num3Data, num4: num4Data, dot1: dot1Data, dot2: dot2Data, dot3: dot3Data } = data[Name];
+    num1 = scene.meshes.find(mesh => mesh.name === num1Data.name && mesh.parent.name === num1Data.parent);
+    num2 = scene.meshes.find(mesh => mesh.name === num2Data.name && mesh.parent.name === num2Data.parent);
+    num3 = scene.meshes.find(mesh => mesh.name === num3Data.name && mesh.parent.name === num3Data.parent);
+    num4 = scene.meshes.find(mesh => mesh.name === num4Data.name && mesh.parent.name === num4Data.parent);
+    const dotIndex = Val.indexOf('.');
+    if (dotIndex === 1) {
+      dot = scene.meshes.find(mesh => mesh.name === dot1Data.name && mesh.parent.name === dot1Data.parent);
+    } else if (dotIndex === 2) {
+      dot = scene.meshes.find(mesh => mesh.name === dot2Data.name && mesh.parent.name === dot2Data.parent);
+    } else if (dotIndex === 3) {
+      dot = scene.meshes.find(mesh => mesh.name === dot3Data.name && mesh.parent.name === dot3Data.parent);
+    } else if (dotIndex === -1) {
+      dot = [scene.meshes.find(mesh => mesh.name === dot1Data.name && mesh.parent.name === dot1Data.parent),
+      scene.meshes.find(mesh => mesh.name === dot2Data.name && mesh.parent.name === dot2Data.parent),
+      scene.meshes.find(mesh => mesh.name === dot3Data.name && mesh.parent.name === dot3Data.parent)];
+      donorMaterialsDot = Color === 'green' ?
+        scene.meshes.find(mesh => mesh.name === 'Unic_DigitGreen_donor_Dot_Off' && mesh.parent.name === donorParentName).material :
+        scene.meshes.find(mesh => mesh.name === 'Unic_digits_tochka_off' && mesh.parent.name === donorParentName).material;
+    }
+  }
+  num1.material = donorMaterialsDigits[Val.replace(/\./g, '')[0]];
+  num2.material = donorMaterialsDigits[Val.replace(/\./g, '')[1]];
+  num3.material = donorMaterialsDigits[Val.replace(/\./g, '')[2]];
+  num4.material = donorMaterialsDigits[Val.replace(/\./g, '')[3]];
+  if (dot) {
+    if (dot.length === 3 && dot[0]) {
+      dot[0].material = donorMaterialsDot;
+      dot[1].material = donorMaterialsDot;
+      dot[2].material = donorMaterialsDot;
+    } else {
+      dot.material = donorMaterialsDot;
+    }
+  }
 }
