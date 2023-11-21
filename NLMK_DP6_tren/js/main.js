@@ -5,7 +5,6 @@
 */
 
 document.addEventListener("DOMContentLoaded", domLoaded);
-
 function domLoaded() {
   let sectionCopy = document.querySelector('.section').cloneNode(true);
   sectionCopy.classList.toggle('section-copy', true);
@@ -37,7 +36,6 @@ function domLoaded() {
     document.querySelector('.header').style.top = ConvertPxToVh(-document.querySelector('.header').getBoundingClientRect().bottom - 10) + 'vh';
     document.querySelector('.section').style.left = ConvertPxToVw(-document.querySelector('.section').getBoundingClientRect().width * 1.1) + 'vw';
   }
-
   function revialTrenScreen() {
     document.querySelector('.tren-container').style.visibility = 'visible';
     document.querySelector('.tren-container').style.transition = 'opacity 0.5s ease 0.5s';
@@ -116,45 +114,10 @@ function domLoaded() {
     })
   })
 
-
   // Создание тестов
   devHelper.testVals.arrayForCreateTests.forEach((Element, Index) => {
     createTests(Element, Index);
   });
-
-  // Правильные ответы для самопроверки
-  // devHelper.testVals.answersArray = [
-  //   ['Оборудование пылеуловителя'],
-  //   {
-  //     0: ['0,6-0,8 кгс/см²', 'открыть атмосферные клапаны'],
-  //     1: ['0,5 кгс/см²', 'закрыть смесительно-предохранительный клапан'],
-  //     2: ['0,3 кгс/см²', 'закрыть отсечной клапан пылеуловителя'],
-  //   },
-  //   ['Клапаном «СНОРТ»'],
-  //   [
-  //     'Запрещается прекращать подачу воздуха в воздуховод холодного дутья',
-  //     'Уравнительные клапаны и клапаны пылеподавления БЗУ должны быть закрыты',
-  //     'Выхлопные клапаны БЗУ должны быть открыты',
-  //   ],
-  //   {
-  //     0: ['0,2-0,3 кгс/см²', 'приоткрывая клапан «СНОРТ» установить давление', 'закрыть отсечной клапан пылеуловителя'],
-  //     1: ['0,6-0,8 кгс/см²', 'закрыть атмосферные клапаны', 'при необходимости открыть смесительно-предохранительный клапан'],
-  //     2: ['заданное давление и общий перепад в печи', 'приоткрывая клапан «СНОРТ» и кольцевые зазоры установить давление'],
-  //   },
-  //   [
-  //     '20-30 минут', 'в конце', 'сменного мастера',
-  //     'пылеуловителя', 'пропорциональное', 'открытых'
-  //   ],
-  //   {
-  //     0: ['0,6-0,8 кгс/см²', 'открыть атмосферные клапаны'],
-  //     1: ['0,5 кгс/см²', 'закрыть смесительно-предохранительный клапан'],
-  //     2: ['0,2-0,3 кгс/см²', 'закрыть отсечной клапан пылеуловителя'],
-  //     3: ['0,2 кгс/см²', 'остановить загрузку печи'],
-  //     4: ['0,1-0,15 кгс/см²', 'установить листовую заглушку в трубопровод азота'],
-  //   },
-  //   ['3 длинный текст для теста', '2 длинный текст для теста', '1 длинный текст для теста'],
-  // ];
-  
 
   // Вешаю обработчик нажатия на все <div class="selfcheck-radio">
   document.querySelectorAll('.radio-elem').forEach((Element) => {
@@ -229,84 +192,6 @@ function domLoaded() {
   document.querySelector('.helper-answer').addEventListener('mouseout', (e) => {
     document.querySelector('.helper-tooltip').classList.toggle('visible-tiiltip', false);
   });
-
-  // Вешаю обработчик на выбор селект и рандомлю ответы
-  document.querySelectorAll('.container-dropDownMenu').forEach((Element) => {
-    randomAnswer(Element);
-  });
-
-  //------------------------------------------------------------------------------------------------------------------------------------------
-  /*
-  Создаю на HTML CSS и JS окно завершения сценария
- Осталось сделать последнее окно - время на отдельных участках
- После этого нужно создать объект, который будет хранить данные прохождения
- Потом взять данные из этого объекта и создать HTML код
- И наполнить данными
-  */
-  // DONUT CHART
-  const canvas = document.getElementById('myChart');
-  const ctx = canvas.getContext('2d');
-
-  // Создайте новую круговую диаграмму
-  const myChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Верно', 'Ошибки'],
-      datasets: [{
-        data: [63, 37], // Значения для заполнения и остатка (50% каждое)
-        backgroundColor: ['#2c5289', '#EAEAEA'], // Цвета для заполнения и остатка
-        borderWidth: 4, // Толщина границы
-        borderColor: 'rgba(0, 0, 0, 0.05)', // Цвет границы
-        borderRadius: 5, // Радиус скругления
-      }]
-    },
-    options: {
-      responsive: true, // Сделать график отзывчивым
-      cutout: '60%', // Размер отверстия в центре графика (в данном случае 80%)
-      plugins: {
-        legend: {
-          display: false // Скрыть легенду
-        }
-      }
-    }
-  });
-  // LINE
-  const canvas2 = document.getElementById('myChart2');
-  const ctx2 = canvas2.getContext('2d');
-
-  const data = {
-    labels: ['0', '1', '2', '3', '4', '5'],
-    datasets: [{
-      label: 'Количество ошибок', // Удалите или закомментируйте это свойство
-      data: [0, 11, 38, 29, 16, 21],
-      fill: false,
-      borderWidth: 2,
-      borderColor: '#2c5289',
-      tension: 0.4
-    }]
-  };
-
-  const options = {
-    maintainAspectRatio: false,
-    responsive: true,
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 40
-      }
-    },
-    plugins: {
-      legend: {
-        display: false // Скрыть легенду
-      }
-    }
-  };
-  const myChart2 = new Chart(ctx2, {
-    type: 'line',
-    data: data,
-    options: options
-  });
-  //------------------------------------------------------------------------------------------------------------------------------------------
 
   loadTrenActions();
 }
@@ -707,8 +592,8 @@ function reviveArray(min) {
       Element.querySelectorAll('.correct-dragDrop').forEach((elem) => {
         elem.classList.toggle('correct-dragDrop', false);
       });
-
     } else if (Element.classList.contains('container-dropDownMenu')) {
+      Element.classList.toggle('correct-dropDownMenu-container', false);
       Element.querySelectorAll('.dropDown-currect').forEach((elem) => {
         elem.classList.toggle('dropDown-currect', false);
       });
