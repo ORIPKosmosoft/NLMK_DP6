@@ -29,9 +29,14 @@ function loadTrenActions() {
           })
         }
       })
+      devHelper.model3DVals.activeMeshsToArr.forEach(state => {
+        if (state.audio)
+          if (devHelper.audio.find(element => element.name === state.audio) === undefined)
+            devHelper.audio.push({ name: state.audio, element: new Audio(`/media/audio/${state.audio}.mp3`) });
+      })
       devHelper.audio.forEach(element => {
         element.element.addEventListener('ended', function () {
-          document.querySelector('.tren-container').classList.toggle('block-interaction', false);
+          document.querySelector('.block-interaction')?.remove();
         });
       })
     }
@@ -122,27 +127,60 @@ function trenTimeTick(timeStamp) {
   }
 }
 
+function actionAfterClickOnMesh(Action, Mesh, Text) {
+  let standartActionMesh = devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.id === elem.id || Mesh.name.includes(elem.name || elem));
+  if (standartActionMesh.endY || standartActionMesh.endX || standartActionMesh.endZ) {
+    if (!Action.action.position) {
+      let tempAction = {
+        action: {
+          position: {
+            duration: standartActionMesh.duration,
+            ...(standartActionMesh.endY !== undefined && { y: standartActionMesh.endY }),
+            ...(standartActionMesh.endX !== undefined && { x: standartActionMesh.endX }),
+            ...(standartActionMesh.endZ !== undefined && { z: standartActionMesh.endZ }),
+          },
+        },
+      };
+      handlePosition(tempAction, Mesh);
+      setTimeout(() => {
+        let tempAction = {
+          action: {
+            position: {
+              duration: standartActionMesh.duration,
+              ...(standartActionMesh.startY !== undefined && { y: standartActionMesh.startY }),
+              ...(standartActionMesh.startX !== undefined && { x: standartActionMesh.startX }),
+              ...(standartActionMesh.startZ !== undefined && { z: standartActionMesh.startZ }),
+            },
+          },
+        };
+        handlePosition(tempAction, Mesh);
+      }, standartActionMesh.duration * 1000 + 100)
+    }
+  }
+  // TODO тут можно добавить вращение туда-сюда
+  if (standartActionMesh.audio) playAudio(standartActionMesh.audio);
+  handleRotation(Action, Mesh);
+  handlePosition(Action, Mesh);
+  if (Action.audio) playAudio(Action.audio);
+  if (Text) sendMessage(Action.sender, Action.text);
+}
+
 function trenClickOnMesh(Mesh) {
   if (!devHelper.trenVals.waitingInput) return;
   const currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario]
     .actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   if (currentAction.action && currentAction.action.target3D === Mesh.name) {
-    handleRotation(currentAction, Mesh);
-    handlePosition(currentAction, Mesh);
-    if (currentAction.audio) playAudio(currentAction.audio);
+    actionAfterClickOnMesh(currentAction, Mesh);
     newActionStartHelper(currentAction);
   } else if (currentAction.multi && currentAction.multi.length > 0) {
     const multiAction = devHelper.trenVals.multiAction.find(multiAction2 => (multiAction2.action.target3D === Mesh.name));
     if (multiAction) {
-      handleRotation(multiAction, Mesh);
-      handlePosition(multiAction, Mesh);
-      if (multiAction.audio) playAudio(multiAction.audio);
+      actionAfterClickOnMesh(multiAction, Mesh, multiAction.text);
       devHelper.trenVals.multiAction = devHelper.trenVals.multiAction.filter(function (item) {
         return item !== multiAction;
       });
-      if (devHelper.trenVals.multiAction.length === 0) {
+      if (devHelper.trenVals.multiAction.length === 0)
         newActionStartHelper(currentAction);
-      }
     } else handleError(Mesh);
   } else handleError(Mesh);
 }
@@ -152,7 +190,7 @@ function playAudio(AudioName) {
   if (!audioTag) return;
   else {
     audioTag.play();
-    document.querySelector('.tren-container').classList.toggle('block-interaction', true);
+    document.body.append(createCustomElement('div', '', { 'class': 'block-interaction' }));
   }
 }
 
@@ -165,6 +203,7 @@ function handleRotation(currentAction, Mesh) {
 
 function handlePosition(currentAction, Mesh) {
   const position = currentAction.action.position || {};
+  console.log(position, Mesh.name);
   if (position.x !== undefined) moveRotationMesh(Mesh, 'p', position.x, 'x', currentAction.duration !== undefined ? currentAction.duration : 1);
   if (position.y !== undefined) moveRotationMesh(Mesh, 'p', position.y, 'y', currentAction.duration !== undefined ? currentAction.duration : 1);
   if (position.z !== undefined) moveRotationMesh(Mesh, 'p', position.z, 'z', currentAction.duration !== undefined ? currentAction.duration : 1);
@@ -731,8 +770,7 @@ const Roles = {
 function addTrenValsMessages(elem) {
   devHelper.trenVals.messages.push(elem);
 }
-//sendMessage("Система","TESTYRWE")
-function sendMessage(Sender, TextMessage) {
+function sendMessage(Sender = 'Система', TextMessage) {
   let message = createCustomElement("div", "", { "class": Roles[Sender] })
   message.setAttribute('mes', '');
   let top = createCustomElement("div", "", { "class": "topMessage" }, message)

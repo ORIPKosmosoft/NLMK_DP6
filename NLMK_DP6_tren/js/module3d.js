@@ -253,7 +253,7 @@ window.addEventListener('load', function () {
         const meshNamesToSearch = scene.meshes.filter(mesh => mesh.id === elem.id || mesh.name.includes(elem.name || elem));
         meshNamesToSearch.forEach(mesh => {
           if (!activeMeshs.includes(mesh)) {
-            makeActiveMesh(mesh, { name: elem.name || mesh.name });
+            makeActiveMesh(mesh, { name: elem.id ? elem.name : mesh.name });
           }
         });
       });
