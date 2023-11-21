@@ -463,9 +463,11 @@ function radioButtonChange(elem) {
   const isChecked = elem.parentElement.classList.contains('active-radio');
   const hasSingleAnswer = answerArray.length === 1;
 
-  elem.parentElement.classList.toggle('active-radio', hasSingleAnswer || !isChecked);
-  confirmButton.classList.toggle('disabled-button', !hasSingleAnswer && isChecked);
-  confirmButton.classList.toggle('active-button', hasSingleAnswer || isChecked);
+  // elem.parentElement.classList.toggle('active-radio', hasSingleAnswer || !isChecked);
+  elem.parentElement.classList.toggle('active-radio', !isChecked);
+  const containerHasActiveRadio = selfcheckContainer.querySelector('.active-radio') !== null ? true : false;
+  confirmButton.classList.toggle('disabled-button', !containerHasActiveRadio);
+  confirmButton.classList.toggle('active-button', containerHasActiveRadio);
 
   if (hasSingleAnswer && activeRadio) {
     activeRadio.classList.remove('active-radio');
@@ -618,6 +620,7 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
         radioContainer.querySelectorAll('.correct-answer').forEach(element => element.classList.replace('correct-answer', 'wrong-answer'));
       if (selfcheckTrueResults[selfcheckcontainerIndex].length != radioContainer.querySelectorAll('.correct-answer').length || radioContainer.querySelector('.wrong-answer') != null) {
         selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+        // elem.classList.toggle('active-button', true);
         elem.querySelector('span').textContent = 'Повторить';
       } else {
         selfcheckContainer.classList.toggle('correct-radioButton-container', true);
@@ -1062,6 +1065,7 @@ function glavTestFun(pressedButtonName, pressedButton) {
   }
 }
 
+// Фукция создания тестов
 function createTests(elem, index) {
   if (elem.questionType === 'radio') {
     const div = document.createElement('div');
