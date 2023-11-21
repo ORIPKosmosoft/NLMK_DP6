@@ -797,15 +797,6 @@ function changeScreenVals(Name, Val, Color = 'green') {
     scene.meshes.find(mesh => mesh.name === 'Unic_DigitGreen_donor_Dot_On' && mesh.parent.name === donorParentName).material :
     scene.meshes.find(mesh => mesh.name === 'Unic_digits_tochka_on' && mesh.parent.name === donorParentName).material;
 
-  //green
-  // Unic_DigitGreen_donor_Dot_On
-  // Unic_DigitGreen_donor_Dot_Off
-
-  //red
-  // Unic_digits_tochka_on
-  // Unic_digits_tochka_off
-  // digits_tochka009
-
   const data = {
     vozNagr1_1: {
       num1: { name: 'Digit007', parent: 'SensorScale001' },
@@ -1058,10 +1049,10 @@ function changeScreenVals(Name, Val, Color = 'green') {
         scene.meshes.find(mesh => mesh.name === 'Unic_digits_tochka_off' && mesh.parent.name === donorParentName).material;
     }
   }
-  num1.material = donorMaterialsDigits[Val.replace(/\./g, '')[0]];
-  num2.material = donorMaterialsDigits[Val.replace(/\./g, '')[1]];
-  num3.material = donorMaterialsDigits[Val.replace(/\./g, '')[2]];
-  num4.material = donorMaterialsDigits[Val.replace(/\./g, '')[3]];
+  if (num1) num1.material = donorMaterialsDigits[Val.replace(/\./g, '')[0]];
+  if (num2) num2.material = donorMaterialsDigits[Val.replace(/\./g, '')[1]];
+  if (num3) num3.material = donorMaterialsDigits[Val.replace(/\./g, '')[2]];
+  if (num4) num4.material = donorMaterialsDigits[Val.replace(/\./g, '')[3]];
   if (dot) {
     if (dot.length === 3 && dot[0]) {
       dot[0].material = donorMaterialsDot;

@@ -509,43 +509,25 @@ function takeStartingState(Restart = false) {
     })
     if (startState3D[devHelper.trenVals.scenario] && startState3D[devHelper.trenVals.scenario].length > 0) {
       startState3D[devHelper.trenVals.scenario].forEach(element => {
-        const mesh = devHelper.model3DVals.activeMeshs.find(mesh => mesh.name === element.name);
-        let tempobj = { action: element };
-        tempobj.duration = 0.1;
-        if (mesh !== undefined) {
-          handleRotation(tempobj, mesh);
-          handlePosition(tempobj, mesh);
-        } else {
-          devHelper.dev.enable && console.warn(`Не найден объект ${element.name} в тренажёре.`);
+        if (element.number)
+          changeScreenVals(element.name, element.number, element.color ? element.color : 'green');
+        else {
+          const mesh = devHelper.model3DVals.activeMeshs.find(mesh => mesh.name === element.name);
+          let tempobj = { action: element };
+          tempobj.duration = 0.1;
+          if (mesh !== undefined) {
+            handleRotation(tempobj, mesh);
+            handlePosition(tempobj, mesh);
+          } else {
+            devHelper.dev.enable && console.warn(`Не найден объект ${element.name} в тренажёре.`);
+          }
         }
       });
     }
   }
-  changeScreenVals('vozNagr1_1', '1207');
-  changeScreenVals('vozNagr1_2', '289.5');
-  changeScreenVals('vozNagr2_1', '1217');
-  changeScreenVals('vozNagr2_2', '190.8');
-  changeScreenVals('vozNagr3_1', '1255');
-  changeScreenVals('vozNagr3_2', '125.9');
-  changeScreenVals('rashodSmeshGaza_1', '000.0');
-  changeScreenVals('rashodSmeshGaza_2', '000.1');
-  changeScreenVals('rashodSmeshGaza_3', '000.0');
-  changeScreenVals('rashodVozdyhGor_1', '000.1');
-  changeScreenVals('rashodVozdyhGor_2', '000.1');
-  changeScreenVals('rashodVozdyhGor_3', '000.2');
-  changeScreenVals('davVozGorBVN', '09.90');
-  changeScreenVals('rashodSmeshGaza_1_r', '023.4', 'red');
-  changeScreenVals('rashodSmeshGaza_2_r', '021.1', 'red');
-  changeScreenVals('rashodSmeshGaza_3_r', '022.5', 'red');
-  changeScreenVals('rashodVozdyhGor_1_r', '023.4', 'red');
-  changeScreenVals('rashodVozdyhGor_2_r', '021.5', 'red');
-  changeScreenVals('rashodVozdyhGor_3_r', '021.4', 'red');
-  changeScreenVals('klapPrirGazaBRU_1_r', '003.0', 'red');
-  changeScreenVals('klapPrirGazaBRU_2_r', '000.9', 'red');
-  changeScreenVals('klapPrirGazaBRU_3_r', '015.9', 'red');
-  changeScreenVals('smesKlapBRU_1_r', '000.8', 'red');
-  changeScreenVals('smesKlapBRU_2_r', '002.1', 'red');
-  changeScreenVals('obshKlapVozGorBRU_r', '001.8', 'red');
+
+  startState3D.forEach((element) => {
+  })
 }
 
 function saveStart2DIF() {
