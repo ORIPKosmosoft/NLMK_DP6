@@ -181,6 +181,24 @@ window.addEventListener('load', function () {
               makeActiveMesh(box, 6);
             }
           }
+          else if (Mesh.name && Mesh.name === 'Microphone') {
+            if (!Mesh.subMeshes) {
+              var box = BABYLON.MeshBuilder.CreateBox("Microphone_highlight", { size: 1 }, Scene);
+              box.position = new BABYLON.Vector3(1.14, 0.939, 0.012);
+              box.scaling = new BABYLON.Vector3(0.27, 0.1, 0.5);
+              const lightMat = new BABYLON.StandardMaterial("lightMat");
+              lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
+              lightMat.alpha = 0;
+              box.material = lightMat;
+              meshOptimization(box);
+              makeActiveMesh(box, 7);
+            }
+          }
+          else if (Mesh.name && Mesh.name.indexOf('ButtonHightlight_') !== -1 && Mesh.name != 'ButtonHightlight_049') {
+            makeActiveMesh(Mesh, { name: Mesh.name });
+            Mesh.material.alpha = 0;
+            Mesh.material.transparencyMode = null;
+          }
           else if (Mesh.name && Mesh.name === 'Display_flat004') {  // 3
             setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene, Mesh);
           }
@@ -250,7 +268,10 @@ window.addEventListener('load', function () {
     function findActiveMeshs() {
       const { activeMeshsToArr, scene, activeMeshs } = devHelper.model3DVals;
       activeMeshsToArr.forEach(elem => {
-        const meshNamesToSearch = scene.meshes.filter(mesh => mesh.id === elem.id || mesh.name.includes(elem.name || elem));
+        const meshNamesToSearch = scene.meshes.filter(mesh => (
+          (mesh.id === elem.id || mesh.name.includes(elem.name || elem)) &&
+          (!elem.parentName || (mesh.parent && mesh.parent.name === elem.parentName))
+        ));
         meshNamesToSearch.forEach(mesh => {
           if (!activeMeshs.includes(mesh)) {
             makeActiveMesh(mesh, { name: elem.id ? elem.name : mesh.name });

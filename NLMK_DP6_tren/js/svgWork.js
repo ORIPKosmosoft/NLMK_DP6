@@ -27,7 +27,7 @@ window.addEventListener('load', function () {
                   ObjectSvg.name === 'O_n_k_na_VNK' ? 'Управление клапаном' :
                     ObjectSvg.name === 'O_n_k_na_VNK_posle_1' ? 'Управление клапаном' :
                       ObjectSvg.name === 'O_n_k_na_VNK_posle_2' ? 'Управление клапаном' :
-                        ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK' ? 'Дополнительное окно' :
+                        ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK' ? 'Перекидка из Нагрева в Отделение' :
                           ObjectSvg.name === 'O_p_n_na_k_p_na_VNK' ? 'Перекидка' :
                             ObjectSvg.name === 'vvod_znachenij' ? 'Ввод значений' :
                               ObjectSvg.name === 'Osnovnye_parametry_DP' ? 'Основные параметры доменной печи' :
@@ -298,6 +298,28 @@ window.addEventListener('load', function () {
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') { addSvgElem(Index, Element, '313'); }
         if (Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M754.17 233.42h16.67v16.67h-16.67z') { addSvgElem(Index, Element, '1PS_03_square'); }
+        if (Element.getAttribute('d') === 'M689.58 539.67h15.63v15.63h-15.63z') { addSvgElem(Index, Element, '1PS_05_square'); }
+
+        if (Element.getAttribute('d') === 'm409.22 288.26-32.88-19.69v19.69l32.88-19.69z') { addSvgElem(Index, Element, 'vn_132'); }
+        if (Element.getAttribute('d') === 'M358.33 265.71h10.42v22.92h-10.42z') { addSvgElem(Index, Element, 'vn_132_l'); }
+        if (Element.getAttribute('d') === 'M362.5 255.29h9.38v8.33h-9.38v-8.33zm8.37 1h-7.37v6.33h7.37v-6.33z') { addSvgElem(Index, Element, 'vn_132_lt'); }
+
+        if (Element.getAttribute('d') === 'm571.66 288.26-32.88-19.69v19.69l32.88-19.69z') { addSvgElem(Index, Element, 'vn_116'); }
+        if (Element.getAttribute('d') === 'M520.83 264.67h10.42v22.92h-10.42z') { addSvgElem(Index, Element, 'vn_116_l'); }
+        if (Element.getAttribute('d') === 'M525 254.25h9.37v8.33H525v-8.33zm8.37 1H526v6.33h7.37v-6.33z') { addSvgElem(Index, Element, 'vn_116_lt'); }
+
+        if (Element.getAttribute('d') === 'm259.64 575.3-32.88-19.7v19.7l32.88-19.7z') { addSvgElem(Index, Element, 'vn_134'); }
+        if (Element.getAttribute('d') === 'm478.18 181.26-19.69 32.87h19.69l-19.69-32.87z') { addSvgElem(Index, Element, 'vn_127'); }
+        if (Element.getAttribute('d') === 'm914.9 575.3-32.88-19.7v19.7l32.88-19.7z') { addSvgElem(Index, Element, 'vn_117'); }
+        if (Element.getAttribute('d') === 'm660.59 793.56-32.88-19.7v19.7l32.88-19.7z') { addSvgElem(Index, Element, 'vn_112'); }
+
+
+
+        if (Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'big_arrow_up'); }
+        if (Element.getAttribute('d') === 'm1118.01 355.49-9.92 32.3 11.81-4.38c.44-.16.92 0 1.17.38l25.18 37.43 22.86-37.2c.29-.47.9-.61 1.37-.33.07.05.14.1.19.16l8.76 7.67-17.95-55.7a.999.999 0 0 1 1.38-1.21l7.03 3.34-25.32-49.07-31.65 49.14 9.46-3.12c.52-.17 1.09.12 1.26.64.07.22.06.45-.01.66l-5.61 19.26c-.01.01-.01.02-.01.03zm-.95-.31-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4-5.63 19.33z') { addSvgElem(Index, Element, 'big_arrow_up_border'); }
+
+
       })
     }
     if (ObjectSvg.name === 'BVNK_VNK2') {
@@ -666,7 +688,7 @@ window.addEventListener('load', function () {
     }
     if (ObjectSvg.name === 'win_sym_302') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
-        if (Element.innerHTML === 'ТТГ') { addSvgElem(Index, Element, 'ws3_ttg'); }
+        if (Element.innerHTML === 'ТТГ') { addSvgElem(Index, Element, 'ws3_ttg', 'start'); }
       })
     }
     if (ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK') {
@@ -982,18 +1004,20 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
             { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
             { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
             { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
-            { x: 53.7, y: 1, w: 10.3, h: 3, name: 'dp', },
-            { x: 64.0, y: 1, w: 10.3, h: 3, name: 'bzu', },
-
-
             { x: 41.5, y: 50, w: 2.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, } },    // win 29
             { x: 35.9, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl038', value: { window: 'O_n_k_na_VNK_posle_1', x: 770, y: 440, } },    // win 38
             { x: 48.8, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl037', value: { window: 'O_n_k_na_VNK_posle_1', x: 1030, y: 440, } },    // win 37
             { x: 48.8, y: 55, w: 2.7, h: 3.5, forAction: true, id: 'kl007', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 555, } },    // win 07
             { x: 36.2, y: 55, w: 2.7, h: 3.5, forAction: true, id: 'kl028', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 480, } },    // win 28
-
-
-
+          ];
+          createSvgHelperButtons(tempArrHelperButtons);
+        } else if (textureSvgName === 'vnk_spvg') {
+          let tempArrHelperButtons = [
+            { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
+            { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+            { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+            { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+            { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
           ];
           createSvgHelperButtons(tempArrHelperButtons);
         } else if (textureSvgName === 'BVNK_VNK1') {
@@ -1003,8 +1027,6 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
             { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
             { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
             { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
-            { x: 53.7, y: 1, w: 10.3, h: 3, name: 'dp', },
-            { x: 64.0, y: 1, w: 10.3, h: 3, name: 'bzu', },
 
 
             { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 } },
@@ -1017,8 +1039,6 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
             { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
             { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
             { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
-            { x: 53.7, y: 1, w: 10.3, h: 3, name: 'dp', },
-            { x: 64.0, y: 1, w: 10.3, h: 3, name: 'bzu', },
 
             { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 } },
           ];
@@ -1030,8 +1050,6 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
             { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
             { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
             { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
-            { x: 53.7, y: 1, w: 10.3, h: 3, name: 'dp', },
-            { x: 64.0, y: 1, w: 10.3, h: 3, name: 'bzu', },
 
             { x: 73.5, y: 83.0, w: 2, h: 3, forAction: true, id: 'vn_310_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1510, y: 635 }, },  // win 310
             { x: 73.5, y: 76.7, w: 2, h: 3, forAction: true, id: 'vn_318_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1510, y: 635 }, },  // win 318
@@ -1053,43 +1071,32 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           createSvgHelperButtons(tempArrHelperButtons);
         } else if (textureSvgName === 'dp') {
           let tempArrHelperButtons = [
-            { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
-            { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
-            { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
-            { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
-            { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
-            { x: 53.7, y: 1, w: 10.3, h: 3, name: 'dp', },
-            { x: 64.0, y: 1, w: 10.3, h: 3, name: 'bzu', },
-            { x: 94.4, y: 26, w: 4, h: 3, forAction: true, id: 't_r_4', value: { window: 'vvod_znachenij', x: 900, y: 473, } },
+            { x: 94.4, y: 26, w: 4, h: 3, forAction: true, id: 't_r_4', value: { window: 'vvod_znachenij', x: 900, y: 300, } },
             { x: 69.4, y: 90, w: 2.5, h: 4, forAction: true, id: 't_b_302_btn', value: { window: 'win_sym_302', x: 56, y: 48, } },
-            { x: 94.4, y: 29.6, w: 4, h: 3, forAction: true, id: 't_r_5', value: { window: 'vvod_znachenij', x: 900, y: 473, } },
-            { x: 94.4, y: 0, w: 4, h: 3, forAction: true, id: 't_r_000', value: { window: 'priczvuksinal', x: 956, y: 112, } },   // для 5.13 // удалить на фулл версии
+            { x: 94.4, y: 29.6, w: 4, h: 3, forAction: true, id: 't_r_5', value: { window: 'vvod_znachenij', x: 900, y: 300, } },
           ];
           createSvgHelperButtons(tempArrHelperButtons);
         } else if (textureSvgName === 'win_sym_302') {
           let tempArrHelperButtons = [
-            { x: 46, y: 5.6, w: 1.6, h: 3, removeWindow: textureSvgName, forAction: true, id: 'ws3_close_btn', }, // close
-            { x: 18.65, y: 75, w: 4, h: 5.5, forAction: true, id: 'ws3_ttg_text_btn', },
-            { x: 22.65, y: 75, w: 4, h: 5.5, forAction: true, id: 'ws3_ttg2_text_btn', value: { window: 'priczvuksinal', x: 956, y: 112, } },
-
-            // { x: 63, y: 40, w: 10, h: 3,   forAction: true, id: 'NETU_win_close', },  // temp "CLOSE" new window
-
+            { x: 45.8, y: 5, w: 1.6, h: 3.3, removeWindow: textureSvgName, forAction: true, id: 'ws3_close_btn', }, // close
+            { x: 18.65, y: 73, w: 8, h: 5.5, forAction: true, id: 'ws3_ttg_text_btn', },
+            { x: 18.65, y: 73, w: 0, h: 0, forAction: true, id: 'ws3_ttg2_text_btn', value: { window: 'priczvuksinal', x: 956, y: 112, } },
           ];
           createSvgHelperButtons(tempArrHelperButtons);
         } else if (textureSvgName === 'vvod_znachenij') {
           let tempArrHelperButtons = [
-            { x: 58.4, y: 48, w: 1.5, h: 2, removeWindow: textureSvgName, forAction: true, id: 'vz_close', }, // close
-            { x: 47.6, y: 96, w: 4.0, h: 4, removeWindow: textureSvgName, forAction: true, id: 'vz_ok', },    // ok
-            { x: 47.7, y: 82.2, w: 3.0, h: 4, forAction: true, id: 'vz_0', },
-            { x: 47.7, y: 77.5, w: 3.0, h: 4, forAction: true, id: 'vz_1', },
-            { x: 51.1, y: 77.5, w: 3.0, h: 4, forAction: true, id: 'vz_2', },
-            { x: 54.4, y: 77.5, w: 3.0, h: 4, forAction: true, id: 'vz_3', },
-            { x: 47.7, y: 72.9, w: 3.0, h: 4, forAction: true, id: 'vz_4', },
-            { x: 51.1, y: 72.9, w: 3.0, h: 4, forAction: true, id: 'vz_5', },
-            { x: 54.4, y: 72.9, w: 3.0, h: 4, forAction: true, id: 'vz_6', },
-            { x: 47.7, y: 68, w: 3.0, h: 4, forAction: true, id: 'vz_7', },
-            { x: 51.1, y: 68, w: 3.0, h: 4, forAction: true, id: 'vz_8', },
-            { x: 54.4, y: 68, w: 3.0, h: 4, forAction: true, id: 'vz_9', },
+            { x: 58.4, y: 30.3, w: 1.5, h: 2, removeWindow: textureSvgName, forAction: true, id: 'vz_close' }, 
+            { x: 47.6, y: 78.3, w: 4.0, h: 4, removeWindow: textureSvgName, forAction: true, id: 'vz_ok' }, 
+            { x: 47.7, y: 64.5, w: 3.0, h: 4, forAction: true, id: 'vz_0' },
+            { x: 47.7, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_1' },
+            { x: 51.1, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_2' },
+            { x: 54.4, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_3' },
+            { x: 47.7, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_4' },
+            { x: 51.1, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_5' },
+            { x: 54.4, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_6' },
+            { x: 47.7, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_7' },
+            { x: 51.1, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_8' },
+            { x: 54.4, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_9' }
           ];
           createSvgHelperButtons(tempArrHelperButtons);
         } else if (textureSvgName === 'O_p_n_na_k_p_na_VNK') {
@@ -1123,15 +1130,6 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           createSvgHelperButtons(tempArrHelperButtons);
         } else if (textureSvgName === 'bzu') {
           let tempArrHelperButtons = [
-            { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
-            { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
-            { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
-            { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
-            { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
-            { x: 53.7, y: 1, w: 10.3, h: 3, name: 'dp', },
-            { x: 64.0, y: 1, w: 10.3, h: 3, name: 'bzu', },
-
-
             { x: 71.7, y: 67.7, w: 4.5, h: 3.3, forAction: true, id: 'bzu_gruzit_btn' },
             { x: 58.3, y: 35.0, w: 9.8, h: 3.3, forAction: true, id: 'bzu_ZapretSledPorci_btn' },
             { x: 32.1, y: 45.3, w: 4.5, h: 6.1, forAction: true, id: 'bzu_raketaNGUK2_btn' },

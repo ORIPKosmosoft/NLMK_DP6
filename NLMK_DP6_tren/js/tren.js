@@ -746,6 +746,7 @@ function createConcentrationEffect(Arr) {
 const Roles = {
   "Система": "messageSystem",
   "Газовщик": "messageMy",
+  "Мастер печи": "message",
   "Работник": "message",
   "Ошибка": "messageError"
 }
@@ -801,8 +802,17 @@ function setNewFillButtonSVG(objectSVG, color) {
   });
 }
 
-
-
+document.body.addEventListener('mouseleave', () => {
+  if (document.querySelector('.transition-0'))
+    stopMoveContainer(document, document.querySelector('.transition-0'));
+});
+function stopMoveContainer(Document, MoveWindow) {
+  Document.onmousemove = null;
+  MoveWindow.onmouseup = null;
+  MoveWindow.classList.remove('transition-0');
+  MoveWindow.style.left = ConvertPxToVw(parseFloat(MoveWindow.style.left)) + 'vw';
+  MoveWindow.style.top = ConvertPxToVh(parseFloat(MoveWindow.style.top)) + 'vh';
+}
 function dragAndDrop(e, moveWindow) {
   // let vW = window.screen.width / 100;
   // let vH = window.screen.height / 100;
@@ -835,12 +845,9 @@ function dragAndDrop(e, moveWindow) {
     moveAt(e);
   };
 
+  // 
   moveWindow.onmouseup = function () {
-    document.onmousemove = null;
-    moveWindow.onmouseup = null;
-    moveWindow.classList.remove('transition-0');
-    moveWindow.style.left = ConvertPxToVw(parseFloat(moveWindow.style.left)) + 'vw';
-    moveWindow.style.top = ConvertPxToVh(parseFloat(moveWindow.style.top)) + 'vh';
+    stopMoveContainer(document, moveWindow);
   };
   moveWindow.ondragstart = function () {
     return false;
