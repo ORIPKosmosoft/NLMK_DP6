@@ -829,7 +829,7 @@ function changeScreenVals(Name, Val, Color = 'green') {
 
   const data = {
     vozNagr1_1: {
-      num1: { id: 'c35ce25e-1c22-4a6b-8136-905359c5a31c', parent: 'SensorScale001' },
+      num1: { id: 'c35ce25e-1c22-4a6b-8136-905359c5a31c' },
       num2: { name: 'Digit006', parent: 'SensorScale001' },
       num3: { name: 'Digit005', parent: 'SensorScale001' },
       num4: { name: 'Digit004', parent: 'SensorScale001' },
@@ -1090,7 +1090,7 @@ function changeScreenVals(Name, Val, Color = 'green') {
   if (num4) num4.material = donorMaterialsDigits[Val.replace(/\./g, '')[3]];
   if (dot) {
     if (dot.length > 1 && dot[0]) {
-      dot.forEach(d => d.material = donorMaterialsDot);
+      dot.forEach(d => { if (d !== undefined) d.material = donorMaterialsDot });
     } else {
       dot.material = donorMaterialsDot;
     }
