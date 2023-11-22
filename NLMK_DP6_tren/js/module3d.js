@@ -241,7 +241,6 @@ window.addEventListener('load', function () {
           lightMat.alpha = 0;
           element.material = lightMat;
           element.isPickable = true;
-          // meshOptimization(element);
           if (element.name) {
             if (element.name === 'Console_BVNK_highlight') {
             } else if (element.name === 'Console_BZU_highlight') {
@@ -251,6 +250,16 @@ window.addEventListener('load', function () {
             }
           }
         })
+      } else if (Name === 'Console_DP6') {
+        var box = BABYLON.MeshBuilder.CreateBox("downBtnFPrirGaza_highlight", { size: 1 }, Scene);
+        box.position = new BABYLON.Vector3(2.993, 1.184, 0.353);
+        box.scaling = new BABYLON.Vector3(0.015, 0.015, 0.02);
+        const lightMat = new BABYLON.StandardMaterial("lightMat1");
+        lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
+        lightMat.alpha = 0;
+        box.material = lightMat;
+        meshOptimization(box);
+        makeActiveMesh(box, { name: 'downBtnFPrirGaza_highlight' });
       }
       try {
         setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
@@ -820,7 +829,7 @@ function changeScreenVals(Name, Val, Color = 'green') {
 
   const data = {
     vozNagr1_1: {
-      num1: { name: 'Digit007', parent: 'SensorScale001' },
+      num1: { id: 'c35ce25e-1c22-4a6b-8136-905359c5a31c', parent: 'SensorScale001' },
       num2: { name: 'Digit006', parent: 'SensorScale001' },
       num3: { name: 'Digit005', parent: 'SensorScale001' },
       num4: { name: 'Digit004', parent: 'SensorScale001' },
@@ -1049,22 +1058,27 @@ function changeScreenVals(Name, Val, Color = 'green') {
   let num1, num2, num3, num4, dot;
 
   if (data[Name]) {
-    const { num1: num1Data, num2: num2Data, num3: num3Data, num4: num4Data, dot1: dot1Data, dot2: dot2Data, dot3: dot3Data } = data[Name];
-    num1 = scene.meshes.find(mesh => mesh.name === num1Data.name && mesh.parent.name === num1Data.parent);
-    num2 = scene.meshes.find(mesh => mesh.name === num2Data.name && mesh.parent.name === num2Data.parent);
-    num3 = scene.meshes.find(mesh => mesh.name === num3Data.name && mesh.parent.name === num3Data.parent);
-    num4 = scene.meshes.find(mesh => mesh.name === num4Data.name && mesh.parent.name === num4Data.parent);
+    const { num1: num1Data, num2: num2Data, num3: num3Data, num4: num4Data, dot1: dot1Data, dot2: dot2Data, dot3: dot3Data, dot4: dot4Data } = data[Name];
+    num1 = scene.meshes.find(mesh => (num1Data.id && mesh.id === num1Data.id) || (mesh.name === num1Data.name && mesh.parent.name === num1Data.parent));
+    num2 = scene.meshes.find(mesh => (num2Data.id && mesh.id === num2Data.id) || (mesh.name === num2Data.name && mesh.parent.name === num2Data.parent));
+    num3 = scene.meshes.find(mesh => (num3Data.id && mesh.id === num3Data.id) || (mesh.name === num3Data.name && mesh.parent.name === num3Data.parent));
+    num4 = scene.meshes.find(mesh => (num4Data.id && mesh.id === num4Data.id) || (mesh.name === num4Data.name && mesh.parent.name === num4Data.parent));
     const dotIndex = Val.indexOf('.');
     if (dotIndex === 1) {
-      dot = scene.meshes.find(mesh => mesh.name === dot1Data.name && mesh.parent.name === dot1Data.parent);
+      dot = scene.meshes.find(mesh => (dot1Data.id && mesh.id === dot1Data.id) || (mesh.name === dot1Data.name && mesh.parent.name === dot1Data.parent));
     } else if (dotIndex === 2) {
-      dot = scene.meshes.find(mesh => mesh.name === dot2Data.name && mesh.parent.name === dot2Data.parent);
+      dot = scene.meshes.find(mesh => (dot2Data.id && mesh.id === dot2Data.id) || (mesh.name === dot2Data.name && mesh.parent.name === dot2Data.parent));
     } else if (dotIndex === 3) {
-      dot = scene.meshes.find(mesh => mesh.name === dot3Data.name && mesh.parent.name === dot3Data.parent);
+      dot = scene.meshes.find(mesh => (dot3Data.id && mesh.id === dot3Data.id) || (mesh.name === dot3Data.name && mesh.parent.name === dot3Data.parent));
+    } else if (dotIndex === 4) {
+      dot = scene.meshes.find(mesh => (dot4Data.id && mesh.id === dot4Data.id) || (mesh.name === dot4Data.name && mesh.parent.name === dot4Data.parent));
     } else if (dotIndex === -1) {
-      dot = [scene.meshes.find(mesh => mesh.name === dot1Data.name && mesh.parent.name === dot1Data.parent),
-      scene.meshes.find(mesh => mesh.name === dot2Data.name && mesh.parent.name === dot2Data.parent),
-      scene.meshes.find(mesh => mesh.name === dot3Data.name && mesh.parent.name === dot3Data.parent)];
+      dot = [
+        scene.meshes.find(mesh => (dot1Data.id && mesh.id === dot1Data.id) || (mesh.name === dot1Data.name && mesh.parent.name === dot1Data.parent)),
+        scene.meshes.find(mesh => (dot2Data.id && mesh.id === dot2Data.id) || (mesh.name === dot2Data.name && mesh.parent.name === dot2Data.parent)),
+        scene.meshes.find(mesh => (dot3Data.id && mesh.id === dot3Data.id) || (mesh.name === dot3Data.name && mesh.parent.name === dot3Data.parent)),
+        dot4Data && scene.meshes.find(mesh => (dot4Data.id && mesh.id === dot4Data.id) || (mesh.name === dot4Data.name && mesh.parent.name === dot4Data.parent))
+      ];
       donorMaterialsDot = Color === 'green' ?
         scene.meshes.find(mesh => mesh.name === 'Unic_DigitGreen_donor_Dot_Off' && mesh.parent.name === donorParentName).material :
         scene.meshes.find(mesh => mesh.name === 'Unic_digits_tochka_off' && mesh.parent.name === donorParentName).material;
@@ -1075,10 +1089,8 @@ function changeScreenVals(Name, Val, Color = 'green') {
   if (num3) num3.material = donorMaterialsDigits[Val.replace(/\./g, '')[2]];
   if (num4) num4.material = donorMaterialsDigits[Val.replace(/\./g, '')[3]];
   if (dot) {
-    if (dot.length === 3 && dot[0]) {
-      dot[0].material = donorMaterialsDot;
-      dot[1].material = donorMaterialsDot;
-      dot[2].material = donorMaterialsDot;
+    if (dot.length > 1 && dot[0]) {
+      dot.forEach(d => d.material = donorMaterialsDot);
     } else {
       dot.material = donorMaterialsDot;
     }

@@ -105,12 +105,18 @@ function trenTimeTick(timeStamp) {
             updateSvgTextures();
           }
           if (nextAction.action && nextAction.action.target3D) {
-            let mesh = devHelper.model3DVals.activeMeshs.find(mesh => (mesh.name === nextAction.action.target3D));
-            handleRotation(nextAction, mesh);
-            handlePosition(nextAction, mesh);
-            if (nextAction.action.material) {
-              let tempMat = devHelper.model3DVals.scene.meshes.find(mesh => (mesh.name === nextAction.action.material)).material;
-              mesh.material = tempMat || (devHelper.dev.enable && console.warn(`material ${nextAction.action.material} not found`));
+            let mesh = devHelper.model3DVals.activeMeshs.find(mesh => mesh.name === nextAction.action.target3D) ||
+              devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === nextAction.action.target3D);
+            if (mesh) {
+              handleRotation(nextAction, mesh);
+              handlePosition(nextAction, mesh);
+              if (nextAction.action.material) {
+                let tempMat = devHelper.model3DVals.scene.meshes.find(mesh => (mesh.name === nextAction.action.material)).material;
+                mesh.material = tempMat || (devHelper.dev.enable && console.warn(`material ${nextAction.action.material} not found`));
+              }
+            } else {
+              if (nextAction.action.number)
+                changeScreenVals(nextAction.action.target3D, nextAction.action.number);
             }
           }
           if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
@@ -129,40 +135,47 @@ function trenTimeTick(timeStamp) {
 
 function actionAfterClickOnMesh(Action, Mesh, Text) {
   let standartActionMesh = devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.id === elem.id || Mesh.name.includes(elem.name || elem));
-  if (standartActionMesh.endY || standartActionMesh.endX || standartActionMesh.endZ) {
-    if (!Action.action.position) {
-      let tempAction = {
-        action: {
-          position: {
-            duration: standartActionMesh.duration,
-            ...(standartActionMesh.endY !== undefined && { y: standartActionMesh.endY }),
-            ...(standartActionMesh.endX !== undefined && { x: standartActionMesh.endX }),
-            ...(standartActionMesh.endZ !== undefined && { z: standartActionMesh.endZ }),
-          },
-        },
-      };
-      handlePosition(tempAction, Mesh);
-      setTimeout(() => {
+  if (standartActionMesh) {
+    if (standartActionMesh.endY || standartActionMesh.endX || standartActionMesh.endZ) {
+      if (!Action.action.position) {
         let tempAction = {
           action: {
             position: {
               duration: standartActionMesh.duration,
-              ...(standartActionMesh.startY !== undefined && { y: standartActionMesh.startY }),
-              ...(standartActionMesh.startX !== undefined && { x: standartActionMesh.startX }),
-              ...(standartActionMesh.startZ !== undefined && { z: standartActionMesh.startZ }),
+              ...(standartActionMesh.endY !== undefined && { y: standartActionMesh.endY }),
+              ...(standartActionMesh.endX !== undefined && { x: standartActionMesh.endX }),
+              ...(standartActionMesh.endZ !== undefined && { z: standartActionMesh.endZ }),
             },
           },
         };
         handlePosition(tempAction, Mesh);
-      }, standartActionMesh.duration * 1000 + 100)
+        setTimeout(() => {
+          let tempAction = {
+            action: {
+              position: {
+                duration: standartActionMesh.duration,
+                ...(standartActionMesh.startY !== undefined && { y: standartActionMesh.startY }),
+                ...(standartActionMesh.startX !== undefined && { x: standartActionMesh.startX }),
+                ...(standartActionMesh.startZ !== undefined && { z: standartActionMesh.startZ }),
+              },
+            },
+          };
+          handlePosition(tempAction, Mesh);
+        }, standartActionMesh.duration * 1000 + 100)
+      }
+    }
+    // TODO тут можно добавить вращение туда-сюда
+    if (standartActionMesh.audio) playAudio(standartActionMesh.audio);
+    handleRotation(Action, Mesh);
+    handlePosition(Action, Mesh);
+    if (Action.audio) playAudio(Action.audio);
+    if (Text) sendMessage(Action.sender, Action.text);
+    if (Action.material) {
+      let tempMat = devHelper.model3DVals.scene.meshes.find(mesh => (mesh.name === Action.material)).material;
+      Mesh.material = tempMat || (devHelper.dev.enable && console.warn(`material ${nextAction.action.material} not found`));
     }
   }
-  // TODO тут можно добавить вращение туда-сюда
-  if (standartActionMesh.audio) playAudio(standartActionMesh.audio);
-  handleRotation(Action, Mesh);
-  handlePosition(Action, Mesh);
-  if (Action.audio) playAudio(Action.audio);
-  if (Text) sendMessage(Action.sender, Action.text);
+
 }
 
 function trenClickOnMesh(Mesh) {
@@ -203,7 +216,6 @@ function handleRotation(currentAction, Mesh) {
 
 function handlePosition(currentAction, Mesh) {
   const position = currentAction.action.position || {};
-  console.log(position, Mesh.name);
   if (position.x !== undefined) moveRotationMesh(Mesh, 'p', position.x, 'x', currentAction.duration !== undefined ? currentAction.duration : 1);
   if (position.y !== undefined) moveRotationMesh(Mesh, 'p', position.y, 'y', currentAction.duration !== undefined ? currentAction.duration : 1);
   if (position.z !== undefined) moveRotationMesh(Mesh, 'p', position.z, 'z', currentAction.duration !== undefined ? currentAction.duration : 1);
@@ -512,14 +524,21 @@ function takeStartingState(Restart = false) {
         if (element.number)
           changeScreenVals(element.name, element.number, element.color ? element.color : 'green');
         else {
-          const mesh = devHelper.model3DVals.activeMeshs.find(mesh => mesh.name === element.name);
+          const mesh = devHelper.model3DVals.activeMeshs.find(mesh => (element.id && mesh.id === element.id) || (element.name && mesh.name === element.name)) ||
+            devHelper.model3DVals.scene.meshes.find(mesh => (element.id && mesh.id === element.id) || (element.name && mesh.name === element.name));
           let tempobj = { action: element };
           tempobj.duration = 0.1;
           if (mesh !== undefined) {
             handleRotation(tempobj, mesh);
             handlePosition(tempobj, mesh);
+            if (element.material) {
+              const tempMaterial = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === element.material).material ||
+                devHelper.model3DVals.scene.materials.find(mesh => mesh.name === element.material);
+              mesh.material = tempMaterial;
+              console.log(mesh.name, tempMaterial);
+            }
           } else {
-            devHelper.dev.enable && console.warn(`Не найден объект ${element.name} в тренажёре.`);
+            devHelper.dev.enable && console.warn(`Не найден объект ${element.name || element.id} в тренажёре.`);
           }
         }
       });
@@ -747,6 +766,7 @@ const Roles = {
   "Система": "messageSystem",
   "Газовщик": "messageMy",
   "Мастер печи": "message",
+  "Дежурный водопроводчик": "message",
   "Работник": "message",
   "Ошибка": "messageError"
 }
