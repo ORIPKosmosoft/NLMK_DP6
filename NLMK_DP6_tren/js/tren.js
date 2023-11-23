@@ -36,9 +36,11 @@ function loadTrenActions() {
       })
       devHelper.audio.forEach(element => {
         element.element.addEventListener('ended', function () {
-          document.querySelector('.block-interaction')?.remove();
+          const activeAudio = devHelper.audio.some(audioFile => !audioFile.element.paused);
+          if (!activeAudio) 
+            document.querySelector('.block-interaction')?.remove();
         });
-      })
+      });
     }
   })
 }
@@ -835,9 +837,6 @@ function stopMoveContainer(Document, MoveWindow) {
   MoveWindow.style.top = ConvertPxToVh(parseFloat(MoveWindow.style.top)) + 'vh';
 }
 function dragAndDrop(e, moveWindow) {
-  // let vW = window.screen.width / 100;
-  // let vH = window.screen.height / 100;
-
   moveWindow.classList.add('transition-0');
   let coords = getCoords(moveWindow);
   let shiftX = e.pageX - coords.left;

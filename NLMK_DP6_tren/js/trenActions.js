@@ -648,7 +648,7 @@ const devHelper = {
 },
 */
 
-const timeDiff = -224;
+const timeDiff = -48;
 let tempActions = [
   // Первый сценарий  // MAIN ALL
   [
@@ -1609,145 +1609,74 @@ let tempActions = [
         },
     
     
-    
+   
         ////--------------------------------0----------------------------------------
+        // закрыть окно ВН
         {
-          scenarioText: 'Газовщик сообщает остановку доменной печи.',
-          text: 'В случае запланированной остановке доменной печи газовщик сообщает об этом.',
+          scenarioText: 'В случае запланированной остановки доменной печи газовщик сообщает об этом.',
           audio: 'tts-7',
           sender: 'Система',
           lifeTime: '07:45:00',
-          startTime: timeDiff + 47,
-        },
-        // закрыть окно ВН
-        {
+          startTime: timeDiff + 46,
           action: {
             target2D: 'close_w1',
           },
-          startTime: timeDiff + 47.1,
           human: true,
         },
         // {
+        //   action: {
+        //     target2D: 'close_w1',
+        //   },
+        //   startTime: timeDiff + 47.1,
+        //   human: true,
+        // },
+        // {
         //   scenarioText: 'Газовщик сообщает остановку доменной печи.',
-    
         //   lifeTime: '07:45:00',
         //   startTime: timeDiff + 31,
         // },
-    
+         */
         ////--------------------------------1----------------------------------------
-        {
-          scenarioText: 'Взять в руку трубку и нажать на кнопку с надписью: «Газовый цех». После разговора положить трубку.',
+        { 
+          scenarioText: 'Взять в руку трубку и нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС».',
           sender: 'Система',
-          startTime: timeDiff + 52,
-        },
-        {
-          audio: 'Zvuk_knopok_na_telefone',
-          action: {
-            target3D: 'PhoneButton001',
-            position: { y: 0.0144 },
-          },
-          duration: 0.15,
-          startTime: timeDiff + 53,
+          multi: [
+            {
+              text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+              sender: 'Газовщик',    
+              action: {
+                target3D: 'PhoneButton001',
+              },
+              audio: 'tts-vo1',
+            },
+            {
+              text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+              sender: 'Газовщик',
+              action: {
+                target3D: 'PhoneButton006',
+              },
+              audio: 'tts-vo1',
+            },
+            {
+              text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+              sender: 'Газовщик',
+              action: {
+                target3D: 'PhoneButton017',
+              },
+              audio: 'tts-vo1',
+            },
+            {
+              text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+              sender: 'Газовщик',
+              action: {
+                target3D: 'PhoneButton020',
+              },
+              audio: 'tts-vo1',
+            }
+          ],
+          startTime: timeDiff + 49,
           human: true,
         },
-        {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-          sender: 'Газовщик',
-          audio: 'tts-vo1',
-          action: {
-            target3D: 'PhoneButton001',
-            position: { y: 0.015 },
-          },
-          duration: 0.15,
-          startTime: timeDiff + 54,
-        },
-        ////--------------------------------2---------------------------------------- 
-        {
-          scenarioText: 'Взять в руку трубку и нажать на кнопку с надписью: «Насосный цех». После разговора положить трубку.',
-          sender: 'Система',
-          startTime: timeDiff + 62,
-        },
-        {
-          audio: 'Zvuk_knopok_na_telefone',
-          action: {
-            target3D: 'PhoneButton006',
-            position: { y: 0.0144 },
-          },
-          duration: 0.15,
-          startTime: timeDiff + 63,
-          human: true,
-        },
-        {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-          sender: 'Газовщик',
-          audio: 'tts-vo1',
-          action: {
-            target3D: 'PhoneButton006',
-            position: { y: 0.015 },
-          },
-          duration: 0.15,
-          startTime: timeDiff + 64,
-        },
-    
-        ////--------------------------------3---------------------------------------- 
-        {
-          scenarioText: 'Взять в руку трубку и нажать на кнопку с надписью: «Кислородный цех». После разговора положить трубку.',
-          sender: 'Система',
-          startTime: timeDiff + 72,
-        },
-        {
-          audio: 'Zvuk_knopok_na_telefone',
-          action: {
-            target3D: 'PhoneButton017',
-            position: { y: 0.0144 },
-          },
-          duration: 0.15,
-          startTime: timeDiff + 73,
-          human: true,
-        },
-        {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-          sender: 'Газовщик',
-          audio: 'tts-vo1',
-          action: {
-            target3D: 'PhoneButton017',
-            position: { y: 0.015 },
-          },
-          duration: 0.15,
-          startTime: timeDiff + 74,
-        },
-    
-    
-    
-        ////--------------------------------4----------------------------------------  
-        {
-          scenarioText: 'Взять в руку трубку и нажать на кнопку с надписью: «ЭВС». После разговора положить трубку.',
-          sender: 'Система',
-          startTime: timeDiff + 82,
-        },
-        {
-          audio: 'Zvuk_knopok_na_telefone',
-          action: {
-            target3D: 'PhoneButton020',
-            position: { y: 0.0144 },
-          },
-          duration: 0.15,
-          startTime: timeDiff + 83,
-          human: true,
-        },
-        {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-          sender: 'Газовщик',
-          audio: 'tts-vo1',
-          action: {
-            target3D: 'PhoneButton020',
-            position: { y: 0.015 },
-          },
-          duration: 0.15,
-          startTime: timeDiff + 84,
-        },
-    
-    
         // 1.2    // DP
         ////--------------------------------1---------------------------------------- 
         {
@@ -2869,7 +2798,6 @@ let tempActions = [
       },
       startTime: timeDiff + 223.31,
     },
-    */
     // 1.5 сценарий ------------------------------------------------------------------------------------------------------------------------------
     {
       text: 'По команде мастера печи - газовщик должен открыть клапан «СНОРТ» полностью для сброса в атмосферу излишки.',
