@@ -468,6 +468,49 @@
         <object class="notification-icon" data="media/images/UI/icons/exclamation-mark.svg"
           type="image/svg+xml"></object>
       </div>
+      <div class="end-cointainer">
+        <p class="end-title">Поздравляем с завершенеием сценария!</p>
+        <p class="end-title-2">Ваш результат:</p>
+        <div class="window-container">
+          <div class="container-left">
+            <div class="blue-text">Общий результат:</div>
+            <div class="circle-graph">
+              <span></span>
+              <canvas id="endCircleGraph"></canvas>
+            </div>
+          </div>
+          <div class="container-right">
+            <div class="blue-text">Количество ошибок:</div>
+            <div class="line-graph">
+              <canvas id="endLineGraph"></canvas>
+            </div>
+          </div>
+          <div class="container-left no-shadow">
+            <div class="container">
+              <span class="left-text">Норма прохождения:</span>
+              <span class="right-text"></span>
+            </div>
+            <div class="container">
+              <span class="left-text">Ваше время:</span>
+              <span class="right-text"></span>
+            </div>
+            <div class="container">
+              <span class="left-text">Допущено ошибок:</span>
+              <span class="right-text"></span>
+            </div>
+          </div>
+          <div class="container-right">
+            <div class="blue-text">Время на прохождения отдельных участков сценария:</div>
+            <div class="bar-graph">
+              <canvas id="endBarGraph"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="end-button">Повторить</button>
+          <button class="end-button">Выйти</button>
+        </div>
+      </div>
 
     </div>
     <div class="game-view">
@@ -834,49 +877,6 @@
   </div>
 
 
-  <div class="end-cointainer">
-    <p class="end-title">Поздравляем с завершенеием сценария!</p>
-    <p class="end-title-2">Ваш результат:</p>
-    <div class="window-container">
-      <div class="container-left">
-        <div class="blue-text">Общий результат:</div>
-        <div class="circle-graph">
-          <span></span>
-          <canvas id="endCircleGraph"></canvas>
-        </div>
-      </div>
-      <div class="container-right">
-        <div class="blue-text">Количество ошибок:</div>
-        <div class="line-graph">
-          <canvas id="endLineGraph"></canvas>
-        </div>
-      </div>
-      <div class="container-left no-shadow">
-        <div class="container">
-          <span class="left-text">Норма прохождения:</span>
-          <span class="right-text"></span>
-        </div>
-        <div class="container">
-          <span class="left-text">Ваше время:</span>
-          <span class="right-text"></span>
-        </div>
-        <div class="container">
-          <span class="left-text">Допущено ошибок:</span>
-          <span class="right-text"></span>
-        </div>
-      </div>
-      <div class="container-right">
-        <div class="blue-text">Время на прохождения отдельных участков сценария:</div>
-        <div class="bar-graph">
-          <canvas id="endBarGraph"></canvas>
-        </div>
-      </div>
-    </div>
-    <div class="button-container">
-      <button class="end-button">Повторить</button>
-      <button class="end-button">Выйти</button>
-    </div>
-  </div>
 
 </body>
 

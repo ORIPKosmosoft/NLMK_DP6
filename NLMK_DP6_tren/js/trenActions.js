@@ -106,6 +106,142 @@ const devHelper = {
     ],
   },
   svgVals: [],
+  svgHelpers: [
+    {
+      name: 'vnk_main', helpers: [
+        { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
+        { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+        { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+        { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+        { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+        { x: 41.5, y: 50, w: 2.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, } },    // win 29
+        { x: 35.9, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl038', value: { window: 'O_n_k_na_VNK_posle_1', x: 770, y: 440, } },    // win 38
+        { x: 48.8, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl037', value: { window: 'O_n_k_na_VNK_posle_1', x: 1030, y: 440, } },    // win 37
+        { x: 48.8, y: 55, w: 2.7, h: 3.5, forAction: true, id: 'kl007', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 555, } },    // win 07
+        { x: 36.2, y: 55, w: 2.7, h: 3.5, forAction: true, id: 'kl028', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 480, } },    // win 28
+      ]
+    },
+    {
+      name: 'vnk_spvg', helpers: [
+        { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
+        { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+        { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+        { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+        { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+      ]
+    },
+    {
+      name: 'BVNK_VNK1', helpers: [
+        { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
+        { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+        { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+        { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+        { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+        { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 } },
+      ]
+    },
+    {
+      name: 'BVNK_VNK2', helpers: [
+        { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
+        { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+        { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+        { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+        { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+        { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 } },
+      ]
+    },
+    {
+      name: 'BVNK_VNK3', helpers: [
+        { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
+        { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+        { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+        { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+        { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+        { x: 73.5, y: 83.0, w: 2, h: 3, forAction: true, id: 'vn_310_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1510, y: 635 }, },  // win 310
+        { x: 73.5, y: 76.7, w: 2, h: 3, forAction: true, id: 'vn_318_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1510, y: 635 }, },  // win 318
+        { x: 65.35, y: 42.9, w: 2, h: 3, forAction: true, id: 'vn_319_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1343, y: 450 }, },  // win 319
+      ]
+    },
+    {
+      name: 'O_n_k_na_VNK_posle_1', helpers: [
+        { x: 61.00, y: 47.2, w: 1.5, h: 2.4, forAction: true, /*name: textureName,*/ id: 'close_w1', removeWindow: 'O_n_k_na_VNK_posle_1', },// TODO сделать по другому
+        { x: 53.40, y: 59.1, w: 4.0, h: 2.6, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, } },// open
+        { x: 83.80, y: 78.8, w: 8.6, h: 2.6, forAction: true, id: 'win_posle_1_stop_btn', x: 1124, y: 546, },  // stop  //  freeBTN
+      ]
+    },
+    {
+      name: 'O_n_k_na_VNK_posle_2', helpers: [
+        { x: 60.2, y: 57, w: 3.2, h: 2.4, removeWindow: 'O_n_k_na_VNK_posle_2', forAction: true, id: 'close_vn', }, // close
+        { x: 56.5, y: 57, w: 3.2, h: 2.4, removeWindow: 'O_n_k_na_VNK_posle_2', forAction: true, id: 'open_vn1', }, // open
+      ]
+    },
+    {
+      name: 'dp', helpers: [
+        { x: 94.4, y: 26, w: 4, h: 3, forAction: true, id: 't_r_4', value: { window: 'vvod_znachenij', x: 900, y: 300, } },
+        { x: 69.4, y: 90, w: 2.5, h: 4, forAction: true, id: 't_b_302_btn', value: { window: 'win_sym_302', x: 56, y: 48, } },
+        { x: 94.4, y: 29.6, w: 4, h: 3, forAction: true, id: 't_r_5', value: { window: 'vvod_znachenij', x: 900, y: 300, } },
+      ]
+    },
+    {
+      name: 'win_sym_302', helpers: [
+        { x: 45.8, y: 5, w: 1.6, h: 3.3, removeWindow: 'win_sym_302', forAction: true, id: 'ws3_close_btn', }, // close
+        { x: 18.65, y: 73, w: 8, h: 5.5, forAction: true, id: 'ws3_ttg_text_btn', },
+        { x: 18.65, y: 73, w: 0, h: 0, forAction: true, id: 'ws3_ttg2_text_btn', value: { window: 'priczvuksinal', x: 956, y: 112, } },
+      ]
+    },
+    {
+      name: 'vvod_znachenij', helpers: [
+        { x: 58.4, y: 30.3, w: 1.5, h: 2, removeWindow: 'vvod_znachenij', forAction: true, id: 'vz_close' },
+        { x: 47.6, y: 78.3, w: 4.0, h: 4, removeWindow: 'vvod_znachenij', forAction: true, id: 'vz_ok' },
+        { x: 47.7, y: 64.5, w: 3.0, h: 4, forAction: true, id: 'vz_0' },
+        { x: 47.7, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_1' },
+        { x: 51.1, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_2' },
+        { x: 54.4, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_3' },
+        { x: 47.7, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_4' },
+        { x: 51.1, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_5' },
+        { x: 54.4, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_6' },
+        { x: 47.7, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_7' },
+        { x: 51.1, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_8' },
+        { x: 54.4, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_9' }
+      ]
+    },
+    {
+      name: 'O_p_n_na_k_p_na_VNK', helpers: [
+        { x: 27.2, y: 11.8, w: 2.25, h: 2.6, forAction: true, id: 'perekidta_exit_btn', removeWindow: 'O_p_n_na_k_p_na_VNK', },
+        { x: 15.6, y: 29, w: 11.9, h: 3.6, forAction: true, id: 'nagrev_otd2_btn', value: { window: 'O_p_n_na_k_na-o_2_na_VNK', x: 379, y: 32, } },
+        { x: 15.6, y: 41.4, w: 11.9, h: 3.6, forAction: true, id: 'otdel_otdel2_btn', value: { window: 'win_otdel2_na_vnk', x: 402, y: 468, } },
+      ]
+    },
+    {
+      name: 'priczvuksinal', helpers: [
+        { x: 83.1, y: 17.7, w: 5, h: 3, removeWindow: 'priczvuksinal', forAction: true, id: 'pzs_close_btn' },
+      ]
+    },
+    {
+      name: 'O_p_n_na_k_na-o_2_na_VNK', helpers: [
+        { x: 63.7, y: 3.4, w: 2.4, h: 2.4, removeWindow: 'O_p_n_na_k_na-o_2_na_VNK', forAction: true, id: 'pericNagrev_close_btn' },
+        { x: 31.8, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_pusk_btn', value: { window: 'O_n_k_na_VNK_posle_2', x: 678, y: 917 } },
+        { x: 35, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_stop_btn' },
+        { x: 38.2, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_reset_btn' },
+      ]
+    },
+    {
+      name: 'win_otdel2_na_vnk', helpers: [
+        { x: 45, y: 48, w: 2.2, h: 2.4, removeWindow: 'win_otdel2_na_vnk', forAction: true, id: 'otdel2_close_btn' },
+        { x: 34.5, y: 90, w: 3.8, h: 3.4, forAction: true, id: 'otdel2_pusk_btn', value: { window: 'O_n_k_na_VNK_posle_2', x: 707, y: 908 } },
+        { x: 38.3, y: 90, w: 3.8, h: 3.4, forAction: true, id: 'otdel2_stop_btn' },
+        { x: 42.1, y: 90, w: 3.8, h: 3.4, forAction: true, id: 'otdel2_reset_btn' },
+      ]
+    },
+    {
+      name: 'bzu', helpers: [
+        { x: 71.7, y: 67.7, w: 4.5, h: 3.3, forAction: true, id: 'bzu_gruzit_btn' },
+        { x: 58.3, y: 35.0, w: 9.8, h: 3.3, forAction: true, id: 'bzu_ZapretSledPorci_btn' },
+        { x: 32.1, y: 45.3, w: 4.5, h: 6.1, forAction: true, id: 'bzu_raketaNGUK2_btn' },
+        { x: 29.7, y: 53.1, w: 3.9, h: 3.5, forAction: true, id: 'bzu_pause_btn' },
+      ]
+    },
+  ],
   startPos: {
     IF2D: [],
     IF3D: [],
@@ -512,7 +648,7 @@ const devHelper = {
 },
 */
 
-const timeDiff = -204;
+const timeDiff = -224;
 let tempActions = [
   // Первый сценарий  // MAIN ALL
   [
@@ -578,6 +714,7 @@ let tempActions = [
           startTime: timeDiff + 4.4,
           human: true,
         },
+        
         // мигание
         {
           action: {
@@ -683,9 +820,10 @@ let tempActions = [
           action: {
             target2D: 'close_w1',
           },
-          startTime: timeDiff + 14, // ?? mb 11
+          startTime: timeDiff + 14, 
           human: true,
         },
+        
         //// клик по ВН38 на схеме  ОТКРЫТ
         {
           action: {
@@ -1979,9 +2117,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046', // ПОКА ЭТА ????? FIX // на видео не видно
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 133,
       human: true,
     },
@@ -1992,9 +2128,7 @@ let tempActions = [
       audio: 'tts-vo3',
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.004 },
       },
-      duration: 0.15,
       startTime: timeDiff + 134,
     },
     // LAMP FIX ???
@@ -2485,20 +2619,17 @@ let tempActions = [
       lifeTime: '08:45:00',
       startTime: timeDiff + 185,
     },
-
     ////--------------------------------1---------------------------------------- РАЦИЯ 
     {
       scenarioText: 'Сообщить по рации дежурному водопроводчику.',
       sender: 'Система',
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 186,
       human: true,
     },
-    {  
+    {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_on',
@@ -2518,14 +2649,14 @@ let tempActions = [
       audio: 'tts-vo5',
       startTime: timeDiff + 190.5,
     },
-    { 
+    {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
       startTime: timeDiff + 193,
     },
-         
+
     ////--------------------------------2---------------------------------------- 
     {
       scenarioText: 'Перевести клапан 721 в режим управления «Дист.»',
@@ -2573,7 +2704,7 @@ let tempActions = [
       startTime: timeDiff + 204,
       human: true,
     },
-*/
+
     ////--------------------------------4----------------------------------------  fix FIX fix
     {
       text: 'Уменьшить значение параметра на регуляторе природного газа.',
@@ -2584,7 +2715,7 @@ let tempActions = [
       action: {
         target3D: 'downBtnFPrirGaza_highlight',
       },
-      startTime: timeDiff + 205.1,
+      startTime: timeDiff + 208.1,
       human: true,
     },
     {
@@ -2592,13 +2723,20 @@ let tempActions = [
         target3D: 'vozNagr1_1', // TODO заменить на красный циферблат
         number: '024.5'
       },
-      startTime: timeDiff + 205.11,
+      startTime: timeDiff + 208.11,
+    },
+    {
+      action: {
+        target3D: 'Clone_4_progress bar142',
+        material: 'Unic_progress bar_off'
+      },
+      startTime: timeDiff + 208.12,
     },
     {
       action: {
         target3D: 'downBtnFPrirGaza_highlight',
       },
-      startTime: timeDiff + 205.5,
+      startTime: timeDiff + 208.5,
       human: true,
     },
     {
@@ -2606,13 +2744,20 @@ let tempActions = [
         target3D: 'vozNagr1_1', // TODO заменить на красный циферблат
         number: '020.0'
       },
-      startTime: timeDiff + 205.51,
+      startTime: timeDiff + 208.51,
+    },
+    {
+      action: {
+        target3D: 'Clone_3_progress bar142',
+        material: 'Unic_progress bar_off'
+      },
+      startTime: timeDiff + 208.52,
     },
     {
       action: {
         target3D: 'downBtnFPrirGaza_highlight',
       },
-      startTime: timeDiff + 206,
+      startTime: timeDiff + 209,
       human: true,
     },
     {
@@ -2620,13 +2765,18 @@ let tempActions = [
         target3D: 'vozNagr1_1', // TODO заменить на красный циферблат
         number: '017.0'
       },
-      startTime: timeDiff + 206.01,
+      startTime: timeDiff + 209.1,
     },
-    // TODO сдвигать ещё какой-то ползунок
-    ////--------------------------------5---------------------------------------- 
-
     {
-      text: '5. Водопроводчик по рации сообщает о выполненных своих операциях.', // FIX
+      action: {
+        target3D: 'Clone_2_progress bar142',
+        material: 'Unic_progress bar_off'
+      },
+      startTime: timeDiff + 209.2,
+    },
+    ////--------------------------------5---------------------------------------- 
+    {
+      text: 'Водопроводчик по рации сообщает о выполненных своих операциях.',
       sender: 'Система',
       startTime: timeDiff + 210,
     },
@@ -2634,23 +2784,25 @@ let tempActions = [
       audio: 'tts-vo6',
       text: 'Газ по фурмам закрыт',
       sender: 'Дежурный водопроводчик',
-      startTime: timeDiff + 211,
+      startTime: timeDiff + 210.1,
     },
-
     ////--------------------------------6---------------------------------------- 
-
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 212,
       human: true,
     },
-    // LAMP ??? FIX
+    {
+      action: {
+        target3D: 'Lamp_034',
+        material: 'DonorLamp_on',
+      },
+      startTime: timeDiff + 212.1,
+    },
     {
       text: 'Природный газ закрыт. На фурмах 3 кг.',
       sender: 'Газовщик',
@@ -2665,12 +2817,18 @@ let tempActions = [
       duration: 0.15,
       startTime: timeDiff + 216.5,
     },
-    /// LAMP ??? FIX
     {
       audio: 'tts-vo8',
       text: 'Понял, принял.',
       sender: 'Дежурный водопроводчик',
       startTime: timeDiff + 217,
+    },
+    {
+      action: {
+        target3D: 'Lamp_034',
+        material: 'DonorLamp_off',
+      },
+      startTime: timeDiff + 219.5,
     },
     ////--------------------------------7---------------------------------------- 
     {
@@ -2682,38 +2840,39 @@ let tempActions = [
     {
       action: {
         target3D: 'Handle_014',
-        rotation: { y: 0.7854, z: 0 }, // 45
+        rotation: { y: 0.7854}, // 45
       },
-      duration: 0.15,
+      duration: 0.3,
       startTime: timeDiff + 221,
       human: true,
     },
     {
       action: {
         target3D: 'Handle_014',
-        rotation: { y: 0, z: 0 },
+        rotation: { y: 0},
       },
-      duration: 0.15,
+      duration: 0.3,
       startTime: timeDiff + 223,
       human: true,
     },
     {
       action: {
         target3D: 'Lamp_Green_023',
-        ////material: 'DonorLamp_off'
+        material: 'Unic_Lamp_Green_Off'
       },
       startTime: timeDiff + 223.3,
     },
     {
       action: {
         target3D: 'Lamp_Red_019',
-        ////material: 'DonorLamp_on'
+        material: 'Unic_Lamp_Red_On'
       },
-      startTime: timeDiff + 223.4,
+      startTime: timeDiff + 223.31,
     },
 
 
 
+    */
 
     // 1.5 сценарий ------------------------------------------------------------------------------------------------------------------------------
     {
@@ -2736,9 +2895,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 235.5,
       human: true,
     },
@@ -2905,9 +3062,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 258,
       human: true,
     },
@@ -2949,9 +3104,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 264.3,
       human: true,
     },
@@ -3085,9 +3238,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 278,
       human: true,
     },
@@ -3129,9 +3280,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 284,
       human: true,
     },
@@ -3309,9 +3458,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 310,
     },
     {
@@ -3352,9 +3499,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 316,
     },
     {
@@ -3488,9 +3633,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 331.5,
     },
     {
@@ -3531,9 +3674,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 341,
     },
     {
@@ -4501,9 +4642,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 533.5,
     },
     {
@@ -4939,9 +5078,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 635,
     },
     {
@@ -4983,9 +5120,7 @@ let tempActions = [
     {
       action: {
         target3D: 'ButtonHightlight_046',
-        position: { y: 0.003 },
       },
-      duration: 0.15,
       startTime: timeDiff + 645,
     },
     {
@@ -6668,7 +6803,13 @@ let startState3D = [
     // { name: 'PhoneButton000', position: { x: 0.2 } },
     // { name: 'PhoneButton002', rotation: { y: 90 } },
     { id: '6c116935-27e8-4508-bbbd-e16306343c49', material: 'Unic_ScaleDot_donor_green' },
-
+    { id: '0376bd70-dc53-46d7-a9b6-9f2a0fbe9a44', material: 'Unic_progress bar_on' },
+    { name: 'Clone_0_progress bar142', material: 'Unic_progress bar_on' },
+    { name: 'Clone_1_progress bar142', material: 'Unic_progress bar_on' },
+    { name: 'Clone_2_progress bar142', material: 'Unic_progress bar_on' },
+    { name: 'Clone_3_progress bar142', material: 'Unic_progress bar_on' },
+    { name: 'Clone_4_progress bar142', material: 'Unic_progress bar_on' },
+    { name: 'Lamp_Green_023', material: 'Unic_Lamp_Green_On' },
 
     { name: 'vozNagr1_1', number: '1207' },
     { name: 'vozNagr1_2', number: '289.5' },

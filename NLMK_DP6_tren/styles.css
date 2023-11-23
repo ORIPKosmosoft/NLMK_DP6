@@ -2607,7 +2607,7 @@ ul {
   z-index: 1;
   position: relative;
   height: 99vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 5px 5px 5px 0.52vw;
   width: 3vw;
   position: fixed;
@@ -2626,6 +2626,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  overflow: hidden;
 }
 
 .line-tren {

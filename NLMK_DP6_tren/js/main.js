@@ -17,7 +17,7 @@ function domLoaded() {
     if (e.propertyName === 'opacity')
       e.currentTarget.style.pointerEvents = e.currentTarget.style.opacity === '1' ? 'all' : '';
   })
-  document.querySelector('.tren-ui').before(sectionCopy);
+  document.querySelector('.box-tren-ui').after(sectionCopy);
   document.querySelector('.tren-container').addEventListener('transitionend', (e) => {
     if (e.propertyName === 'opacity') {
       const isHidden = e.currentTarget.style.opacity === '0';

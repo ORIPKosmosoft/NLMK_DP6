@@ -107,12 +107,14 @@ function trenTimeTick(timeStamp) {
           if (nextAction.action && nextAction.action.target3D) {
             let mesh = devHelper.model3DVals.activeMeshs.find(mesh => mesh.name === nextAction.action.target3D) ||
               devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === nextAction.action.target3D);
+            if (!mesh)
+              mesh = devHelper.model3DVals.scene.meshes.find(mesh => mesh.id === nextAction.action.target3D);
             if (mesh) {
               handleRotation(nextAction, mesh);
               handlePosition(nextAction, mesh);
               if (nextAction.action.material) {
-                let tempMat = devHelper.model3DVals.scene.meshes.find(mesh => (mesh.name === nextAction.action.material)).material;
-                mesh.material = tempMat || (devHelper.dev.enable && console.warn(`material ${nextAction.action.material} not found`));
+                const tempMaterial = findMaterial(nextAction.action.material);
+                mesh.material = tempMaterial || mesh.material;
               }
             } else {
               if (nextAction.action.number)
@@ -171,8 +173,8 @@ function actionAfterClickOnMesh(Action, Mesh, Text) {
     if (Action.audio) playAudio(Action.audio);
     if (Text) sendMessage(Action.sender, Action.text);
     if (Action.material) {
-      let tempMat = devHelper.model3DVals.scene.meshes.find(mesh => (mesh.name === Action.material)).material;
-      Mesh.material = tempMat || (devHelper.dev.enable && console.warn(`material ${nextAction.action.material} not found`));
+      const tempMaterial = findMaterial(Action.material);
+      Mesh.material = tempMaterial || Mesh.material;
     }
   }
 
@@ -535,7 +537,6 @@ function takeStartingState(Restart = false) {
               const tempMaterial = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === element.material).material ||
                 devHelper.model3DVals.scene.materials.find(mesh => mesh.name === element.material);
               mesh.material = tempMaterial;
-              console.log(mesh.name, tempMaterial);
             }
           } else {
             devHelper.dev.enable && console.warn(`Не найден объект ${element.name || element.id} в тренажёре.`);

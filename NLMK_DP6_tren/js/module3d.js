@@ -149,12 +149,14 @@ window.addEventListener('load', function () {
   });
   function loadModel(Name, Scene, ShadowGenerator) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
-      allMeshOptimization();
-      findPointerMeshs();
-      findSvgDisplays();
-      findActiveMeshs();
-      generateShadows();
-      generateReceiveShadows();
+      
+      // allMeshOptimization();
+      // findPointerMeshs();
+      // findSvgDisplays();
+      // findActiveMeshs();
+      // generateShadows();
+      // generateReceiveShadows();
+
       if (Name === 'All') {
         let meshArr = [];
         meshes.forEach(element => {
@@ -177,7 +179,6 @@ window.addEventListener('load', function () {
               lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
               lightMat.alpha = 0;
               box.material = lightMat;
-              meshOptimization(box);
               makeActiveMesh(box, 6);
             }
           }
@@ -190,11 +191,11 @@ window.addEventListener('load', function () {
               lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
               lightMat.alpha = 0;
               box.material = lightMat;
-              meshOptimization(box);
               makeActiveMesh(box, 7);
             }
           }
           else if (Mesh.name && Mesh.name.indexOf('ButtonHightlight_') !== -1 && Mesh.name != 'ButtonHightlight_049') {
+            meshOptimization(Mesh);
             makeActiveMesh(Mesh, { name: Mesh.name });
             Mesh.material.alpha = 0;
             Mesh.material.transparencyMode = null;
@@ -251,6 +252,15 @@ window.addEventListener('load', function () {
           }
         })
       } else if (Name === 'Console_DP6') {
+        meshes.forEach(mesh => {
+          if (mesh.id && mesh.id === '0376bd70-dc53-46d7-a9b6-9f2a0fbe9a44') { // Создать точки над красным экраном
+            let meshWidth = mesh.getBoundingInfo().boundingBox.extendSize.x * 2.5;
+            for (let i = 0; i < 15; i++) {
+              const clone = mesh.clone(`Clone_${i}_${mesh.name}`);
+              clone.position.x += (i + 1) * meshWidth;
+            }
+          }
+        })
         var box = BABYLON.MeshBuilder.CreateBox("downBtnFPrirGaza_highlight", { size: 1 }, Scene);
         box.position = new BABYLON.Vector3(2.993, 1.184, 0.353);
         box.scaling = new BABYLON.Vector3(0.015, 0.015, 0.02);
@@ -258,7 +268,6 @@ window.addEventListener('load', function () {
         lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
         lightMat.alpha = 0;
         box.material = lightMat;
-        meshOptimization(box);
         makeActiveMesh(box, { name: 'downBtnFPrirGaza_highlight' });
       }
       try {
@@ -266,6 +275,14 @@ window.addEventListener('load', function () {
         change3DTime(devHelper.trenVals.timers.lifeTime); // 3d
       }
       catch { }
+
+      allMeshOptimization();
+      findPointerMeshs();
+      findSvgDisplays();
+      findActiveMeshs();
+      generateShadows();
+      generateReceiveShadows();
+      
     });
     function allMeshOptimization() {
       devHelper.model3DVals.scene.meshes.forEach(mesh => {
@@ -290,7 +307,7 @@ window.addEventListener('load', function () {
     }
     function findSvgDisplays() {
       devHelper.model3DVals.svgDisplaysArr.forEach(elem => {
-        let displayMesh = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === elem.name);
+        let displayMesh = findMesh(elem.name);
         if (displayMesh !== undefined && devHelper.model3DVals.svgDisplays.meshs.indexOf(displayMesh) === -1) {
           makeSvgDisplay(displayMesh, devHelper.model3DVals.scene, elem.svgName);
         }
@@ -418,6 +435,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function makeSvgDisplay(Mesh, Scene, SvgName) {
+  if (Mesh.material.name.indexOf(Mesh.name) === -1) 
+    makeUnicMat(Mesh);
   let planeTexture = new BABYLON.DynamicTexture(`texture_${Mesh.name}`, { width: 2000, height: 993 }, Scene, true);
   planeTexture.update();
   Mesh.material.diffuseTexture = Mesh.material.emissiveTexture = planeTexture;
@@ -650,8 +669,7 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
     if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
   }
   if (Mesh !== undefined || Axis !== undefined) {
-    if (!Mesh.rotation._isDirty || Mesh.rotation._isDirty === false)
-      Mesh.rotation = new BABYLON.Vector3(0, 0, 0);
+    Mesh.rotation = Mesh.rotation.clone();
     Mesh.startState.enable = true;
     if (Type === 'r') {
       if (Mesh.startState.rotation === undefined)
@@ -679,9 +697,6 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
       }
     ];
     animation.setKeys(keys);
-    // if (Duration === 0) 
-    //   Mesh.position.x = 0.2
-    // else
     Scene.beginDirectAnimation(Mesh, [animation], 0, Duration * 60, false);
   } else return
 }
@@ -819,7 +834,7 @@ function changeScreenVals(Name, Val, Color = 'green') {
   const donorParentName = Color === 'green' ? 'Donor1' : 'sm_BRY-i_Unic';
   const donorMaterialsDigits = Array.from({ length: 10 }, (_, i) => {
     const donorName = donorPrefix + i;
-    let tempMat = scene.meshes.find(mesh => mesh.name === donorName && mesh.parent.name === donorParentName).material;
+    let tempMat = findMaterial(donorName);
     if (Color !== 'green') tempMat = tempMat.subMaterials[i + 1];
     return tempMat;
   });
@@ -1095,4 +1110,15 @@ function changeScreenVals(Name, Val, Color = 'green') {
       dot.material = donorMaterialsDot;
     }
   }
+}
+
+function findMaterial(Name) {
+  const tempMaterial =
+    (devHelper.model3DVals.scene.meshes && devHelper.model3DVals.scene.meshes.find(mesh => (mesh.name === Name || mesh.id === Name))?.material) ||
+    (devHelper.model3DVals.scene.materials && devHelper.model3DVals.scene.materials.find(material => (material.name === Name || material.id === Name)));
+  return tempMaterial || console.warn(`Material ${Name} not found`);
+}
+function findMesh(Name) {
+  const mesh = devHelper.model3DVals.scene.meshes && devHelper.model3DVals.scene.meshes.find(mesh => (mesh.name === Name || mesh.id === Name));
+  return mesh || (devHelper.dev.enable === true && console.warn(`Mesh ${Name} not found`));
 }
