@@ -6,6 +6,20 @@
 
 document.addEventListener("DOMContentLoaded", domLoaded);
 function domLoaded() {
+/* Изменение времени таймера в файле txt
+fetch('new_slideshow-created_by_qwerpdf.txt')
+  .then(response => response.text())
+  .then(data => {
+    const modifiedData = data.replace(/startTime: timeDiff \+ (\d+)/g, (match, startTime) => {
+      const modifiedStartTime = parseInt(startTime) - 35;
+      return `startTime: timeDiff + ${modifiedStartTime}`;
+    });
+    console.log(modifiedData);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+*/
   let sectionCopy = document.querySelector('.section').cloneNode(true);
   sectionCopy.classList.toggle('section-copy', true);
   sectionCopy.querySelector('.nav-bar').style.width = '6vw';
@@ -478,7 +492,7 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       selfcheckContainer.classList.toggle('block-selfcheck-container', false);
       elem.querySelector('span').textContent = 'Подтвердить';
     }
-    
+
 
     // Если radioButton элемент
   } else if (selfcheckContainer.classList.contains('container-radioButton')) {
@@ -602,7 +616,7 @@ function reviveArray(min) {
       Element.querySelectorAll('.consecutive-currect').forEach((elem) => {
         elem.classList.toggle('consecutive-currect', false);
       });
-      
+
     } else if (Element.classList.contains('container-radioButton')) {
       Element.classList.toggle('correct-radioButton-container', false);
       Element.querySelectorAll('.correct-answer').forEach((elem) => {
@@ -817,8 +831,8 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
       devHelper.testVals.previousContainer = undefined;
     }
     return;
-    
-  // Если consecutive ответы неправильные
+
+    // Если consecutive ответы неправильные
   } else if (devHelper.testVals.previousContainer.classList.contains('container-consecutive') && devHelper.testVals.previousContainer.querySelector('.consecutive-wrong') !== null) {
     randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
     // если следующий контейнер равен предыдущему, то заменить
@@ -1041,9 +1055,9 @@ function createSelfcheckForTests(elem, answerElem, div) {
         ${answerElem}
       </div>
     `;
-    div.innerHTML = selfcheckContainer;
+  div.innerHTML = selfcheckContainer;
 
-    return div;
+  return div;
 }
 
 function findLast(array, predicate) {
