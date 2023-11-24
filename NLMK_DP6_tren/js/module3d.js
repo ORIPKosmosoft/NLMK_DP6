@@ -194,12 +194,12 @@ window.addEventListener('load', function () {
               makeActiveMesh(box, 7);
             }
           }
-          else if (Mesh.name && Mesh.name.indexOf('ButtonHightlight_') !== -1 && Mesh.name != 'ButtonHightlight_049') {
-            meshOptimization(Mesh);
-            makeActiveMesh(Mesh, { name: Mesh.name });
-            Mesh.material.alpha = 0;
-            Mesh.material.transparencyMode = null;
-          }
+          // else if (Mesh.name && Mesh.name.indexOf('ButtonHightlight_') !== -1 && Mesh.name != 'ButtonHightlight_049') {
+          //   meshOptimization(Mesh);
+          //   makeActiveMesh(Mesh, { name: Mesh.name });
+          //   Mesh.material.alpha = 0;
+          //   Mesh.material.transparencyMode = null;
+          // }
           else if (Mesh.name && Mesh.name === 'Display_flat004') {  // 3
             setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene, Mesh);
           }
@@ -296,7 +296,8 @@ window.addEventListener('load', function () {
       activeMeshsToArr.forEach(elem => {
         const meshNamesToSearch = scene.meshes.filter(mesh => (
           (mesh.id === elem.id || mesh.name.includes(elem.name || elem)) &&
-          (!elem.parentName || (mesh.parent && mesh.parent.name === elem.parentName))
+          (!elem.parentName || (mesh.parent && mesh.parent.name === elem.parentName)) &&
+          (mesh.name !== 'ButtonHightlight_049')
         ));
         meshNamesToSearch.forEach(mesh => {
           if (!activeMeshs.includes(mesh)) {
@@ -464,6 +465,10 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
       mesh.isPickable = true;
       devHelper.model3DVals.movePointMesh.push(mesh);
       mesh.positionIndex = Vals;
+    }
+    if (mesh.name.indexOf('ButtonHightlight_') !== -1) {
+      mesh.material.alpha = 0;
+      mesh.material.transparencyMode = null;
     }
     mesh.material.unfreeze();
     mesh.unfreezeWorldMatrix();
@@ -1483,4 +1488,44 @@ function findMaterial(Name) {
 function findMesh(Name) {
   const mesh = devHelper.model3DVals.scene.meshes && devHelper.model3DVals.scene.meshes.find(mesh => (mesh.name === Name || mesh.id === Name));
   return mesh || (devHelper.dev.enable === true && console.warn(`Mesh ${Name} not found`));
+}
+
+function getClientRectFromMesh(Mesh) {
+  const meshVectors = Mesh.getBoundingInfo().boundingBox.vectors
+  const worldMatrix = Mesh.getWorldMatrix()
+  const transformMatrix = devHelper.model3DVals.scene.getTransformMatrix()
+  const viewport = devHelper.model3DVals.camera.viewport
+  const coordinates = meshVectors.map(v => {
+    const proj = BABYLON.Vector3.Project(v, worldMatrix, transformMatrix, viewport)
+    proj.x = proj.x * devHelper.model3DVals.engine.getRenderWidth()
+    proj.y = proj.y * devHelper.model3DVals.engine.getRenderHeight()
+    return proj
+  })
+  const [minX, maxX] = extent(coordinates, c => c.x)
+  const [minY, maxY] = extent(coordinates, c => c.y)
+  const rect = {
+    width: maxX - minX,
+    height: maxY - minY,
+    left: minX,
+    top: minY,
+    right: maxX,
+    bottom: maxY,
+  }
+
+  function extent(array, accessor) {
+    let min = Infinity;
+    let max = -Infinity;
+    for (let i = 0, n = array.length; i < n; ++i) {
+      const value = accessor(array[i], i, array);
+      if (value != null) {
+        if (value < min) min = value;
+        if (value > max) max = value;
+      }
+    }
+    if (min === Infinity || max === -Infinity) {
+      return undefined;
+    }
+    return [min, max];
+  }
+  return rect
 }

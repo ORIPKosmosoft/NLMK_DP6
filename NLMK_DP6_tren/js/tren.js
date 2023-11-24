@@ -37,7 +37,7 @@ function loadTrenActions() {
       devHelper.audio.forEach(element => {
         element.element.addEventListener('ended', function () {
           const activeAudio = devHelper.audio.some(audioFile => !audioFile.element.paused);
-          if (!activeAudio) 
+          if (!activeAudio)
             document.querySelector('.block-interaction')?.remove();
         });
       });
@@ -100,9 +100,25 @@ function trenTimeTick(timeStamp) {
             } else startTimerToStep(nextAction.lifeTime, false);
           }
           if (nextAction.action && nextAction.action.window2D) {
-            for (let key in nextAction.action.window2D.elements) {
-              if (nextAction.action.window2D.elements.hasOwnProperty(key))
-                changeSvgElem(nextAction.action.window2D.elements[key]);
+            if (nextAction.action.window2D.elements) {
+              for (let key in nextAction.action.window2D.elements) {
+                if (nextAction.action.window2D.elements.hasOwnProperty(key))
+                  changeSvgElem(nextAction.action.window2D.elements[key]);
+              }
+            }
+            if (nextAction.action.window2D.newWindow) {
+              nextAction.action.window2D.newWindow.forEach(element => {
+                if (element.elements) {
+                  element.elements.forEach(svgElem => changeSvgElem(svgElem))
+                }
+                addSvgToTextrue(findMesh(element.display), { window: element.svg, x: element.x, y: element.y });
+                // createSvghelper(CurrentPosition, Vals.value.window);
+              })
+            }
+            if (nextAction.action.window2D.removeWindow) {
+              nextAction.action.window2D.removeWindow.forEach(element => {
+                RemoveSvgFromTextrue(findMesh(element.display), element.svg);
+              })
             }
             updateSvgTextures();
           }
@@ -168,7 +184,6 @@ function actionAfterClickOnMesh(Action, Mesh, Text) {
         }, standartActionMesh.duration * 1000 + 100)
       }
     }
-    // TODO тут можно добавить вращение туда-сюда
     if (standartActionMesh.audio) playAudio(standartActionMesh.audio);
     handleRotation(Action, Mesh);
     handlePosition(Action, Mesh);
@@ -177,6 +192,9 @@ function actionAfterClickOnMesh(Action, Mesh, Text) {
     if (Action.material) {
       const tempMaterial = findMaterial(Action.material);
       Mesh.material = tempMaterial || Mesh.material;
+    }
+    if (standartActionMesh.changeMeshmaterial) {
+      findMesh(standartActionMesh.changeMeshmaterial.meshName).material = findMaterial(standartActionMesh.changeMeshmaterial.material) || findMesh(standartActionMesh.changeMeshmaterial.meshName).material;
     }
   }
 
@@ -210,14 +228,12 @@ function playAudio(AudioName) {
     document.body.append(createCustomElement('div', '', { 'class': 'block-interaction' }));
   }
 }
-
 function handleRotation(currentAction, Mesh) {
   const rotation = currentAction.action.rotation || {};
   if (rotation.y !== undefined) moveRotationMesh(Mesh, 'r', rotation.y, 'y', currentAction.duration !== undefined ? currentAction.duration : 1);
   if (rotation.z !== undefined) moveRotationMesh(Mesh, 'r', rotation.z, 'z', currentAction.duration !== undefined ? currentAction.duration : 1);
   if (rotation.x !== undefined) moveRotationMesh(Mesh, 'r', rotation.x, 'x', currentAction.duration !== undefined ? currentAction.duration : 1);
 }
-
 function handlePosition(currentAction, Mesh) {
   const position = currentAction.action.position || {};
   if (position.x !== undefined) moveRotationMesh(Mesh, 'p', position.x, 'x', currentAction.duration !== undefined ? currentAction.duration : 1);
@@ -1292,15 +1308,16 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   let b_action = item.querySelector('.click-button-tren');
   b_action.addEventListener('mouseover', (e) => {
     if (b_action.closest('.button-tren-active') === null) {
-      document.querySelector(`.${item.getAttribute('window-interface')}`).classList.add('opacity-1-Temp');
-      document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('transition-0');
+      _item.classList.add('opacity-1-Temp');
+      _item.classList.remove('transition-0');
+      _item.style.left = !document.querySelector('.tren-ui-long') ? _item.getAttribute('sx') : _item.getAttribute('sx2');
     }
-    if (!document.querySelector(`.${item.getAttribute('window-interface')}`).classList.contains('opacity-1-Always')) {
+    if (!_item.classList.contains('opacity-1-Always')) {
       setCenterWindow(item);
     }
   });
   b_action.addEventListener('mouseout', (e) => {
-    document.querySelector(`.${item.getAttribute('window-interface')}`).classList.remove('opacity-1-Temp');
+    _item.classList.remove('opacity-1-Temp');
   });
 })
 
