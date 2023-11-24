@@ -35,7 +35,7 @@ window.addEventListener('load', function () {
                                       ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                         ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'bzu1') {
+    if (ObjectSvg.name === 'vnk_main1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -1580,8 +1580,8 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === 'Пульт' && TextIndex === 206) { addSvgElem(Index, Element, 'ustochnik ypravlenia_Pult'); }
         if (Element.innerHTML === 'А' && TextIndex === 215) { addSvgElem(Index, Element, 'tek rejim_A'); }
         if (Element.innerHTML === 'Д' && TextIndex === 214) { addSvgElem(Index, Element, 'tek rejim_D'); }
-        if (Element.innerHTML === 'Достигнут заданный' && TextIndex === 273) { addSvgElem(Index, Element, 'dostignut zadannyy'); }
-        if (Element.innerHTML === 'уровень' && TextIndex === 274) { addSvgElem(Index, Element, 'uroven'); }
+        if (Element.innerHTML === 'Достигнут заданный' && TextIndex === 273) { addSvgElem(Index, Element, 'text_dosZadYrov1'); }
+        if (Element.innerHTML === 'уровень' && TextIndex === 274) { addSvgElem(Index, Element, 'text_dosZadYrov2'); }
         if (Element.innerHTML === 'Работа по ' && TextIndex === 266) { addSvgElem(Index, Element, 'rab_max_ur', 'start'); Element.innerHTML = 'Работа по MAХ уровню'; }
         if (Element.innerHTML === 'MA' && TextIndex === 268) { Element.innerHTML = ''; }
         if (Element.innerHTML === 'Х уровню' && TextIndex === 267) { Element.innerHTML = ''; }
@@ -1627,6 +1627,7 @@ window.addEventListener('load', function () {
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.getAttribute('d') === 'M1438.84 676.74h82.67c1.33 0 2.42 1.09 2.42 2.42v24.62c0 1.34-1.09 2.42-2.42 2.42h-82.67c-1.33 0-2.42-1.08-2.42-2.42v-24.62c0-1.33 1.09-2.42 2.42-2.42z') { addSvgElem(Index, Element, 'btn_Gryzit_1'); }
         if (Element.getAttribute('d') === 'M1442.22 679.35h75.75c1.61 0 2.92 1.52 2.92 3.38v16.84c0 1.87-1.31 3.39-2.92 3.39h-75.75c-1.61 0-2.92-1.52-2.92-3.39v-16.84c0-1.86 1.31-3.38 2.92-3.38z') { addSvgElem(Index, Element, 'btn_Gryzit_2'); }
+        if (Element.getAttribute('d') === 'M1141.16 944.7h180.03v35.59h-180.03z') { addSvgElem(Index, Element, 'bg_dosZadYrov'); }
         
         
         if (Element.getAttribute('d') === 'M1442.99 225.13h42.91v30.77h-42.91z') { addSvgElem(Index, Element, 'tekushiy rezym_A'); }

@@ -551,9 +551,7 @@ function takeStartingState(Restart = false) {
             handleRotation(tempobj, mesh);
             handlePosition(tempobj, mesh);
             if (element.material) {
-              const tempMaterial = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === element.material).material ||
-                devHelper.model3DVals.scene.materials.find(mesh => mesh.name === element.material);
-              mesh.material = tempMaterial;
+              mesh.material = findMaterial(element.material);
             }
           } else {
             devHelper.dev.enable && console.warn(`Не найден объект ${element.name || element.id} в тренажёре.`);

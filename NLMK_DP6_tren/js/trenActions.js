@@ -3466,8 +3466,11 @@ let tempActions = [
         target2D: 'bzu_gruzit_btn',
         window2D: {
           elements: [
-            { name: 'btn_Gryzit_1', color: '#00FF00' },
-            { name: 'btn_Gryzit_2', color: '#00FF00' },
+            { name: 'text_dosZadYrov1', color: '#2B2A29' },
+            { name: 'text_dosZadYrov2', color: '#2B2A29' },
+            { name: 'bg_dosZadYrov', color: '#00FF00' },
+            // { name: 'btn_Gryzit_1', color: '#00FF00' },
+            // { name: 'btn_Gryzit_2', color: '#00FF00' },
           ]
         }
       },
@@ -6244,6 +6247,10 @@ let startState3D = [
     { name: 'Lamp_Red_015', material: 'Unic_Lamp_Red_On' },
     { name: 'Handle_016', rotation: { y: (90 * Math.PI) / 180 } },
     { id: 'ba8bad48-50eb-4074-bead-95ba0273eb82', rotation: { y: (145 * Math.PI) / 180 } },
+    // d46ce2bf-329c-4b0b-932f-04e9aa6686bb зелёная точка квадрат
+    // d731d161-f41e-465a-9fb0-b1ac09cb8062 жёлтая точка квадрат
+    { id: '8b1850b5-9c32-4d19-a4dc-70eab7778b97', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // точка жёл экран1
+    { id: '7cd2a16b-0f5e-4691-9f5b-bd8e7dc3c3c7', position: { x: 0.042 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // точка зел экран1
 
     { name: 'vozNagr1_1', number: '1207' },
     { name: 'vozNagr1_2', number: '289.5' },
