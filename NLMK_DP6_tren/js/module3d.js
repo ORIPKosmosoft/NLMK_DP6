@@ -675,6 +675,17 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
   }
   if (Mesh !== undefined || Axis !== undefined) {
     Mesh.rotation = Mesh.rotation.clone();
+    if (!Mesh.startState) {
+      Mesh.startState = {
+        enable: false,
+        position: undefined,
+        rotation: undefined,
+        scale: undefined,
+        material: undefined,
+        diffuseTexture: undefined,
+        emissiveTexture: undefined,
+      }
+    }
     Mesh.startState.enable = true;
     if (Type === 'r') {
       if (Mesh.startState.rotation === undefined)

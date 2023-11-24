@@ -35,7 +35,7 @@ window.addEventListener('load', function () {
                                       ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                         ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'priczvuksinal1') {
+    if (ObjectSvg.name === 'bzu1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -1625,6 +1625,10 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '14,0' && TextIndex === 418) { addSvgElem(Index, Element, 'str51_SM_11'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
+        if (Element.getAttribute('d') === 'M1438.84 676.74h82.67c1.33 0 2.42 1.09 2.42 2.42v24.62c0 1.34-1.09 2.42-2.42 2.42h-82.67c-1.33 0-2.42-1.08-2.42-2.42v-24.62c0-1.33 1.09-2.42 2.42-2.42z') { addSvgElem(Index, Element, 'btn_Gryzit_1'); }
+        if (Element.getAttribute('d') === 'M1442.22 679.35h75.75c1.61 0 2.92 1.52 2.92 3.38v16.84c0 1.87-1.31 3.39-2.92 3.39h-75.75c-1.61 0-2.92-1.52-2.92-3.39v-16.84c0-1.86 1.31-3.38 2.92-3.38z') { addSvgElem(Index, Element, 'btn_Gryzit_2'); }
+        
+        
         if (Element.getAttribute('d') === 'M1442.99 225.13h42.91v30.77h-42.91z') { addSvgElem(Index, Element, 'tekushiy rezym_A'); }
         if (Element.getAttribute('d') === 'M1426.19 292.7h10.87v10.87h-10.87z') { addSvgElem(Index, Element, 'scorosti_1'); }
         if (Element.getAttribute('d') === 'M1526.41 225.13h41.87v30.77h-41.87z') { addSvgElem(Index, Element, 'tekushiy rezym_D'); }

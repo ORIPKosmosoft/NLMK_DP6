@@ -3466,7 +3466,8 @@ let tempActions = [
         target2D: 'bzu_gruzit_btn',
         window2D: {
           elements: [
-            // green
+            { name: 'btn_Gryzit_1', color: '#00FF00' },
+            { name: 'btn_Gryzit_2', color: '#00FF00' },
           ]
         }
       },
@@ -6175,13 +6176,15 @@ let tempActions = [
   ],
   [ // Второй сценарий
     {
-      text: 'Заменить1',
+      scenarioText: 'Заменить1',
+      sender: 'Система',
       action: {
         target: 'kl021',
         position: { x: 0.2 },
         rotation: {},
       },
-      duration: 3
+      startTime: timeDiff + 1,
+      human: true,
     },
     {
       text: 'Заменить1',
@@ -6190,7 +6193,7 @@ let tempActions = [
         position: {},
         rotation: { y: 90 },
       },
-      duration: 3
+      startTime: timeDiff + 4,
     },
   ],
 ]
@@ -6240,6 +6243,7 @@ let startState3D = [
     { name: 'Lamp_Red_017', material: 'Unic_Lamp_Red_On' },
     { name: 'Lamp_Red_015', material: 'Unic_Lamp_Red_On' },
     { name: 'Handle_016', rotation: { y: (90 * Math.PI) / 180 } },
+    { id: 'ba8bad48-50eb-4074-bead-95ba0273eb82', rotation: { y: (145 * Math.PI) / 180 } },
 
     { name: 'vozNagr1_1', number: '1207' },
     { name: 'vozNagr1_2', number: '289.5' },

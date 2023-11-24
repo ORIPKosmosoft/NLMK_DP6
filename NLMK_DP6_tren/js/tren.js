@@ -544,8 +544,7 @@ function takeStartingState(Restart = false) {
         if (element.number)
           changeScreenVals(element.name, element.number, element.color ? element.color : 'green');
         else {
-          const mesh = devHelper.model3DVals.activeMeshs.find(mesh => (element.id && mesh.id === element.id) || (element.name && mesh.name === element.name)) ||
-            devHelper.model3DVals.scene.meshes.find(mesh => (element.id && mesh.id === element.id) || (element.name && mesh.name === element.name));
+          const mesh = findMesh(element.id || element.name);
           let tempobj = { action: element };
           tempobj.duration = 0.1;
           if (mesh !== undefined) {
