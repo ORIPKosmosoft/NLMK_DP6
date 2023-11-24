@@ -139,10 +139,10 @@ function trenTimeTick(timeStamp) {
                 changeScreenVals(nextAction.action.target3D, nextAction.action.number);
             }
           }
+          newActionStartHelper(nextAction);
           if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
           if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
           if (nextAction.audio) playAudio(nextAction.audio);
-          newActionStartHelper(nextAction);
         }
       }
       let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
@@ -194,10 +194,48 @@ function actionAfterClickOnMesh(Action, Mesh, Text) {
       Mesh.material = tempMaterial || Mesh.material;
     }
     if (standartActionMesh.changeMeshmaterial) {
-      findMesh(standartActionMesh.changeMeshmaterial.meshName).material = findMaterial(standartActionMesh.changeMeshmaterial.material) || findMesh(standartActionMesh.changeMeshmaterial.meshName).material;
+      // Если нет условия
+      if (!standartActionMesh.changeMeshmaterial.times) {
+        // findMesh(standartActionMesh.changeMeshmaterial.meshName).material = findMaterial(standartActionMesh.changeMeshmaterial.material) || findMesh(standartActionMesh.changeMeshmaterial.meshName).material;
+        findMesh(standartActionMesh.changeMeshmaterial.meshName).material = findMaterial(standartActionMesh.changeMeshmaterial.material);
+      } else {
+        let mainMesh = findMesh(standartActionMesh.changeMeshmaterial.meshName);
+        let activatorMesh = findMesh(standartActionMesh.name);
+        let tempBool = false;
+        if (standartActionMesh.changeMeshmaterial.condition) {
+          const currentActionObject = findCurrentAction();
+          let currentActions = currentActionObject.multi ? currentActionObject.multi : [currentActionObject.action];
+          for (let i = 0; i < currentActions.length; i++) {
+            const currentAction = currentActions[i].action;
+            if (currentAction.target3D && currentAction.target3D === activatorMesh.name) {
+              tempBool = true;
+              if (standartActionMesh.changeMeshmaterial.condition.rotation && !areObjectsEqual(standartActionMesh.changeMeshmaterial.condition.rotation, currentAction.rotation)) {
+                tempBool = false;
+              }
+              break;
+            }
+          }
+        } else tempBool = true;
+        if (tempBool) {
+          let mat1 = findMaterial(standartActionMesh.changeMeshmaterial.material);
+          let mat2 = findMaterial(standartActionMesh.changeMeshmaterial.material2);
+          let count = standartActionMesh.changeMeshmaterial.times;
+          const tempInterval = setInterval(() => {
+            mainMesh.material = mainMesh.material === mat1 ? mat2 : mat1;
+            if (--count === 0) clearInterval(tempInterval);
+          }, standartActionMesh.changeMeshmaterial.delay * 1000 || 500);
+        }
+      }
     }
   }
 
+}
+
+function findPrevAction() {
+  return devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.reverse().find(action => action.passed === true);
+}
+function findCurrentAction() {
+  return devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => action.passed === false);
 }
 
 function trenClickOnMesh(Mesh) {
@@ -1597,4 +1635,18 @@ function setTextScenario(numberScenario) {
       createCustomElement("div", element.scenarioText, { "class": "box-scenario-text" }, listItem);
     }
   });
+}
+
+function areObjectsEqual(obj1, obj2) {
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+  for (let key of keys1) {
+    if (obj1[key] !== obj2[key]) {
+      return false;
+    }
+  }
+  return true;
 }

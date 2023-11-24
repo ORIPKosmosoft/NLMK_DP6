@@ -1630,6 +1630,15 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1141.16 944.7h180.03v35.59h-180.03z') { addSvgElem(Index, Element, 'bg_dosZadYrov'); }
         if (Element.getAttribute('d') === 'M1411.31 719.45h71.07v14.65h-71.07z') { addSvgElem(Index, Element, 'bg_vRabote'); }
         if (Element.getAttribute('d') === 'm669.98 466-6.41 6.15 20.12 17.56 6.41-6.15z') { addSvgElem(Index, Element, 'right_rect_under_arrow'); }
+        if (Element.getAttribute('d') === 'm675.01 489.13 17.86.71-31.34 19.03-2.13-36.55 9.63 13.55 7.83-29.26 15.95 8.55z') { addSvgElem(Index, Element, 'arrow_right'); }
+        if (Element.getAttribute('d') === 'm580.77 489.13-17.86.71 31.34 19.03 2.13-36.55-9.63 13.55-7.83-29.26-15.95 8.55z') { addSvgElem(Index, Element, 'arrow_left'); }
+        if (Element.getAttribute('d') === 'm586.45 466 6.41 6.15-20.12 17.56-6.41-6.15z') { addSvgElem(Index, Element, 'left_rect_under_arrow'); }
+        if (Element.getAttribute('d') === 'M548.13 515.11h68.36v10.04h-68.36z') { addSvgElem(Index, Element, 'left_rect_down_arrow'); }
+        if (Element.getAttribute('d') === 'M1174.1 351.97h180.02c3.82 0 6.94 2.12 6.94 4.71v23.47c0 2.6-3.12 4.71-6.94 4.71H1174.1c-3.83 0-6.95-2.11-6.95-4.71v-23.47c0-2.59 3.12-4.71 6.95-4.71z') { addSvgElem(Index, Element, 'btn_ZapSledPorc_border'); }
+        if (Element.getAttribute('d') === 'M1174.1 388.4h180.02c3.82 0 6.94 2.11 6.94 4.71v23.47c0 2.59-3.12 4.71-6.94 4.71H1174.1c-3.83 0-6.95-2.12-6.95-4.71v-23.47c0-2.6 3.12-4.71 6.95-4.71z') { addSvgElem(Index, Element, 'btn_SledPorc_border'); }
+        if (Element.getAttribute('d') === 'm660.04 493.36 6.87 5.63 15.05-22.06-6.87-5.63z') { addSvgElem(Index, Element, 'right_rect_yellow_arrow'); }
+        if (Element.getAttribute('d') === 'm593.81 493.36-6.87 5.63-15.05-22.06 6.87-5.63z') { addSvgElem(Index, Element, 'left_rect_yellow_arrow'); }
+        if (Element.getAttribute('d') === 'M595 531.65h67.8c1.63 0 2.96 1.16 2.96 2.58v27.37c0 1.42-1.33 2.58-2.96 2.58H595c-1.63 0-2.97-1.16-2.97-2.58v-27.37c0-1.42 1.34-2.58 2.97-2.58z') { addSvgElem(Index, Element, 'btn_Pause_border'); }
 
 
         if (Element.getAttribute('d') === 'M1442.99 225.13h42.91v30.77h-42.91z') { addSvgElem(Index, Element, 'tekushiy rezym_A'); }
@@ -1953,7 +1962,7 @@ function changeSvgElem(Val = {}) {
             activeElemObj.element.style.fill = Val.color === 'start' ? '' : Val.color;
           if (Val.stroke)
             activeElemObj.element.style.stroke = Val.stroke === 'start' ? '' : Val.stroke;
-          if (Val.alpha)
+          if (Val.opacity)
             activeElemObj.element.style.opacity = Val.opacity === 'start' ? '' : Val.opacity;
           if (Val.rotation)
             changeSvgElemPos(activeElemObj.element, Val.rotation, 'rotate');
