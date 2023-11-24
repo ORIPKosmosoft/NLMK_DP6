@@ -507,6 +507,7 @@ function takeStartingState(Restart = false) {
           changeSvgElem(element);
         }
       });
+      updateSvgTextures();
     }
     if (firstTime === false) {
       reloadImg.forEach(name => {

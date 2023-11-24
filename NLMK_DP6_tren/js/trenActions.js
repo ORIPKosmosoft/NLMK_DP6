@@ -3332,7 +3332,7 @@ let tempActions = [
           newWindow: [
             {
               display: 'Display_flat014', svg: 'priczvuksinal', x: 956, y: 112,
-              elements: [{ name: 'prixZvykSig_text', text: '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Возможная неисправность БЗУ.' }],
+              elements: [{ name: 'prixZvykSig_text', text: '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Возможная неготовность БЗУ.' }],
             },
             { display: 'Display_flat015', svg: 'priczvuksinal', x: 956, y: 112, },
           ]
@@ -3469,8 +3469,7 @@ let tempActions = [
             { name: 'text_dosZadYrov1', color: '#2B2A29' },
             { name: 'text_dosZadYrov2', color: '#2B2A29' },
             { name: 'bg_dosZadYrov', color: '#00FF00' },
-            // { name: 'btn_Gryzit_1', color: '#00FF00' },
-            // { name: 'btn_Gryzit_2', color: '#00FF00' },
+            { name: 'time do vydochi porchii', text: '30' },
           ]
         }
       },
@@ -3479,34 +3478,151 @@ let tempActions = [
     },
     {
       action: {
-        target2D: 'bzu_ZapretSledPorci_btn',
         window2D: {
           elements: [
-            // green
+            { name: 'time do vydochi porchii', text: '25' },
           ]
         }
       },
-      startTime: timeDiff + 315.1,
+      startTime: timeDiff + 315.3,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'time do vydochi porchii', text: '20' },
+          ]
+        }
+      },
+      startTime: timeDiff + 315.6,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'time do vydochi porchii', text: '15' },
+          ]
+        }
+      },
+      startTime: timeDiff + 316,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'time do vydochi porchii', text: '10' },
+          ]
+        }
+      },
+      startTime: timeDiff + 316.3,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'time do vydochi porchii', text: '5' },
+          ]
+        }
+      },
+      startTime: timeDiff + 316.6,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'time do vydochi porchii', text: '0' },
+          ]
+        }
+      },
+      startTime: timeDiff + 317,
+    },
+    {
+      action: {
+        target2D: 'bzu_ZapretSledPorci_btn',
+        window2D: {
+          elements: [
+            { name: 'btn_Gryzit_1', color: '#00FF00' },
+            { name: 'btn_Gryzit_2', color: '#00FF00' },
+            { name: 'v rabote', color: 'start' },
+            { name: 'bg_vRabote', color: 'start' },
+          ]
+        }
+      },
+      startTime: timeDiff + 317.1,
       human: true
     },
-    // { // БЫЛО НА ВИДЕО, в тексте нет //?????  FIX
-    //   action: {
-    //     target2D: 'bzu_raketaNGUK2_btn',
-    //     window2D: {
-    //       elements: [
-    //         // green
-    //       ]
-    //     }
-    //   },
-    //   startTime: timeDiff + 315.2,
-    //   human: true
-    // },
+    // TODO изменить состояние стрелки
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'Krasniy nijniy Poloska', color: '#858585' },
+            { name: 'kl.Oh.NGUK2_2', color: '#00FF00' },
+          ]
+        }
+      },
+      startTime: timeDiff + 318,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl.Oh.NGUK2_1', color: '#00FF00' },
+          ]
+        }
+      },
+      startTime: timeDiff + 318.5,
+    },
+    // Нажал ещё раз на bzu_ZapretSledPorci_btn
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl.Oh.NGUK2_1', color: 'start' },
+            { name: 'Krasniy nijniy Poloska', color: '#00FF00' },
+          ]
+        }
+      },
+      startTime: timeDiff + 319,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl.Oh.NGUK2_2', color: 'start' },
+            { name: 'right_rect_under_arrow', opacity: '0' },
+            // TODO появится стрелка зелёная правая
+          ]
+        }
+      },
+      startTime: timeDiff + 320,
+    },
+
+
+    // TODO проверить на работоспособность
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     {
+      text: 'На ПУ "Бесконусное загрузочное устройство (БЗУ)" нажать "Приостановить подачу материала".',
+      sender: 'Система',
       action: {
         target3D: 'Rectangle056',
       },
-      startTime: timeDiff + 316,
+      startTime: timeDiff + 320.2,
       human: true,
     },
     {
@@ -3514,7 +3630,7 @@ let tempActions = [
         target3D: 'Rectangle056',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 316.3,
+      startTime: timeDiff + 320.3,
     },
     // { // ХЗ КОГДА ОПУСТИЛАСЬ //?????  FIX
     //   action: {
@@ -3524,14 +3640,14 @@ let tempActions = [
     //       ]
     //     }
     //   },
-    //   startTime: timeDiff + 317,
+    //   startTime: timeDiff + 320,
     // },
 
     ////--------------------------------16----------------------------------------  //  Газовщик провернул клапан 1 раз.
     {
       scenarioText: 'Продолжить приоткрывать клапан «СНОРТ».',
       sender: 'Система',
-      startTime: timeDiff + 318,
+      startTime: timeDiff + 321,
     },
     {
       action: {
@@ -3539,7 +3655,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 319,
+      startTime: timeDiff + 322,
       human: true,
     },
     {
@@ -3550,7 +3666,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 320,
+      startTime: timeDiff + 323,
     }, {
       action: {
         window2D: {
@@ -3559,7 +3675,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 321,
+      startTime: timeDiff + 324,
     },
     ////--------------------------------17---------------------------------------- 
     {
@@ -3567,7 +3683,7 @@ let tempActions = [
       text: 'Загрузка приостановлена.',
       sender: 'Система',
       audio: 'tts-28',
-      startTime: timeDiff + 322,
+      startTime: timeDiff + 325,
     },
     {
       action: {
@@ -3578,7 +3694,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 322.1,
+      startTime: timeDiff + 325.1,
       human: true
     },
     ////--------------------------------18---------------------------------------- 
@@ -3587,7 +3703,7 @@ let tempActions = [
       text: 'Открыть атмосферные клапаны.',
       sender: 'Система',
       audio: 'tts-29',
-      startTime: timeDiff + 325,
+      startTime: timeDiff + 328,
     },
     ///// ------------  1
     {
@@ -3596,7 +3712,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 326,
+      startTime: timeDiff + 329,
       human: true,
     },
     { // ЗЕЛ  - 1
@@ -3605,49 +3721,49 @@ let tempActions = [
         ////material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 327,
+      startTime: timeDiff + 330,
     }, { // ТЕЛ  - 1
       action: {
         target3D: 'Lamp_Green_007',
         ////material: 'DonorLamp_off', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 328,
+      startTime: timeDiff + 331,
     }, { // ЗЕЛ  - 2
       action: {
         target3D: 'Lamp_Green_007',
         ////material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 329,
+      startTime: timeDiff + 332,
     }, { // ТЕЛ  - 2
       action: {
         target3D: 'Lamp_Green_007',
         ////material: 'DonorLamp_off', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 330,
+      startTime: timeDiff + 333,
     }, { // ЗЕЛ  - 3
       action: {
         target3D: 'Lamp_Green_007',
         ////material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 331,
+      startTime: timeDiff + 334,
     }, { // ТЕЛ  - 3
       action: {
         target3D: 'Lamp_Green_007',
         ////material: 'DonorLamp_off', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 332,
+      startTime: timeDiff + 335,
     }, { // ЗЕЛ  - 4
       action: {
         target3D: 'Lamp_Green_007',
         ////material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 333,
+      startTime: timeDiff + 336,
     },
 
 
@@ -3658,7 +3774,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 335,
+      startTime: timeDiff + 338,
       human: true,
     },
     { // ЗЕЛ  - 1
@@ -3667,49 +3783,49 @@ let tempActions = [
         ////material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 336,
+      startTime: timeDiff + 339,
     }, { // ТЕЛ  - 1
       action: {
         target3D: 'Lamp_Green_006',
         ////material: 'DonorLamp_off', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 337,
+      startTime: timeDiff + 340,
     }, { // ЗЕЛ  - 2
       action: {
         target3D: 'Lamp_Green_006',
         // //material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 338,
+      startTime: timeDiff + 341,
     }, { // ТЕЛ  - 2
       action: {
         target3D: 'Lamp_Green_006',
         ////material: 'DonorLamp_off', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 339,
+      startTime: timeDiff + 342,
     }, { // ЗЕЛ  - 3
       action: {
         target3D: 'Lamp_Green_006',
         ////material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 340,
+      startTime: timeDiff + 343,
     }, { // ТЕЛ  - 3
       action: {
         target3D: 'Lamp_Green_006',
         ////material: 'DonorLamp_off', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 341,
+      startTime: timeDiff + 344,
     }, { // ЗЕЛ  - 4
       action: {
         target3D: 'Lamp_Green_006',
         ////material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 342,
+      startTime: timeDiff + 345,
     },
 
     /////////-------------- 3
@@ -3720,7 +3836,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 344,
+      startTime: timeDiff + 347,
       human: true,
     },
     { // ЗЕЛ  - 1
@@ -3729,49 +3845,49 @@ let tempActions = [
         ////material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 345,
+      startTime: timeDiff + 348,
     }, { // ТЕЛ  - 1
       action: {
         target3D: 'Lamp_Green_005',
         ////material: 'DonorLamp_off', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 346,
+      startTime: timeDiff + 349,
     }, { // ЗЕЛ  - 2
       action: {
         target3D: 'Lamp_Green_005',
         ////material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 347,
+      startTime: timeDiff + 350,
     }, { // ТЕЛ  - 2
       action: {
         target3D: 'Lamp_Green_005',
         // //material: 'DonorLamp_off', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 348,
+      startTime: timeDiff + 351,
     }, { // ЗЕЛ  - 3
       action: {
         target3D: 'Lamp_Green_005',
         ////material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 349,
+      startTime: timeDiff + 352,
     }, { // ТЕЛ  - 3
       action: {
         target3D: 'Lamp_Green_005',
         ////material: 'DonorLamp_off', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 350,
+      startTime: timeDiff + 353,
     }, { // ЗЕЛ  - 4
       action: {
         target3D: 'Lamp_Green_005',
         // //material: 'DonorLamp_on', //?????? FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 351,
+      startTime: timeDiff + 354,
     },
     ////--------------------------------19---------------------------------------- 
     {
@@ -3779,7 +3895,7 @@ let tempActions = [
       text: 'Атмосферные клапаны открыты.',
       sender: 'Система',
       audio: 'tts-30',
-      startTime: timeDiff + 352,
+      startTime: timeDiff + 355,
     },
     {
       action: {
@@ -3787,7 +3903,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 353,
+      startTime: timeDiff + 356,
       human: true,
     },
     {
@@ -3796,7 +3912,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 354,
+      startTime: timeDiff + 357,
       human: true,
     },
     {
@@ -3805,14 +3921,14 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 355,
+      startTime: timeDiff + 358,
       human: true,
     },
     ////--------------------------------20---------------------------------------- 
     { // 3D
       scenarioText: 'По рации сообщить мастеру печи о выполненной операции.',
       sender: 'Система',
-      startTime: timeDiff + 357,
+      startTime: timeDiff + 360,
     },
     {
       action: {
@@ -3820,28 +3936,28 @@ let tempActions = [
         position: { y: 0.003 },
       },
       duration: 0.15,
-      startTime: timeDiff + 358,
+      startTime: timeDiff + 361,
       human: true,
     },
     {
       text: 'Атмосферные клапана открыты. На фурмах 0,75 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo25',
-      startTime: timeDiff + 359,
+      startTime: timeDiff + 362,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
       duration: 0.15,
-      startTime: timeDiff + 365.5,
+      startTime: timeDiff + 368.5,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 365.65,
+      startTime: timeDiff + 368.65,
     },
 
 
@@ -3850,13 +3966,13 @@ let tempActions = [
     { // 3D
       scenarioText: 'Мастер печи по рации сообщает действия.',
       sender: 'Система',
-      startTime: timeDiff + 367,
+      startTime: timeDiff + 370,
     },
     {
       text: 'Закрывайте кислород и делайте 0,5 кг на фурмах.',
       sender: 'Мастер печи',
       audio: 'tts-vo26',
-      startTime: timeDiff + 368,
+      startTime: timeDiff + 371,
     },
     {
       action: {
@@ -3864,14 +3980,14 @@ let tempActions = [
         position: { y: 0.003 },
       },
       duration: 0.15,
-      startTime: timeDiff + 373.5,
+      startTime: timeDiff + 376.5,
       human: true,
     },
     {
       text: 'Закрываю кислород полностью и делаю 0,5.',
       sender: 'Газовщик',
       audio: 'tts-vo27',
-      startTime: timeDiff + 374.5,
+      startTime: timeDiff + 377.5,
     },
     {
       action: {
@@ -3879,14 +3995,14 @@ let tempActions = [
         position: { y: 0.004 },
       },
       duration: 0.15,
-      startTime: timeDiff + 379,
+      startTime: timeDiff + 382,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 379.15,
+      startTime: timeDiff + 382.15,
     },
 
 
@@ -3894,7 +4010,7 @@ let tempActions = [
     {
       scenarioText: 'Нажать на кнопку с надписью: «Кислородный цех» и взять в руку трубку. После разговора положить трубку.',
       sender: 'Система',
-      startTime: timeDiff + 380,
+      startTime: timeDiff + 383,
     },
 
     {
@@ -3904,7 +4020,7 @@ let tempActions = [
         position: { y: 0.0144 },
       },
       duration: 0.15,
-      startTime: timeDiff + 381,
+      startTime: timeDiff + 384,
       human: true,
     },
     {
@@ -3913,19 +4029,19 @@ let tempActions = [
         position: { y: 0.015 },
       },
       duration: 0.15,
-      startTime: timeDiff + 382,
+      startTime: timeDiff + 385,
     },
     {
       text: 'Закрываю кислород полностью и делаю 0,5.',
       sender: 'Газовщик',
       audio: 'tts-vo28',
-      startTime: timeDiff + 383,
+      startTime: timeDiff + 386,
     },
     {
       text: 'Выполняю',
       sender: 'Дежурный водопроводчик',
       audio: 'tts-vo29',
-      startTime: timeDiff + 386,
+      startTime: timeDiff + 389,
     },
 
 
@@ -3935,7 +4051,7 @@ let tempActions = [
     {
       scenarioText: 'Аналогично п.2.',
       sender: 'Система',
-      startTime: timeDiff + 388,
+      startTime: timeDiff + 391,
     },
     //1
     {
@@ -3944,7 +4060,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 389,
+      startTime: timeDiff + 392,
       human: true,
     },
     {
@@ -3953,7 +4069,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 391,
+      startTime: timeDiff + 394,
       human: true,
     },
     //2
@@ -3963,7 +4079,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 401,
+      startTime: timeDiff + 404,
       human: true,
     },
     {
@@ -3972,7 +4088,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 403,
+      startTime: timeDiff + 406,
       human: true,
     },
     //3
@@ -3982,7 +4098,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 413,
+      startTime: timeDiff + 416,
       human: true,
     },
     {
@@ -3991,7 +4107,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 415,
+      startTime: timeDiff + 418,
       human: true,
     },
     //4
@@ -4001,7 +4117,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 425,
+      startTime: timeDiff + 428,
       human: true,
     },
     {
@@ -4010,7 +4126,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 427,
+      startTime: timeDiff + 430,
       human: true,
     },
     //5
@@ -4020,7 +4136,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 437,
+      startTime: timeDiff + 440,
       human: true,
     },
     {
@@ -4029,7 +4145,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 447,
+      startTime: timeDiff + 450,
       human: true,
     },
     //6
@@ -4039,7 +4155,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 457,
+      startTime: timeDiff + 460,
       human: true,
     },
     {
@@ -4048,7 +4164,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 459,
+      startTime: timeDiff + 462,
       human: true,
     },
     {
@@ -4059,7 +4175,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 460,
+      startTime: timeDiff + 463,
     }, {
       action: {
         window2D: {
@@ -4068,40 +4184,40 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 461,
+      startTime: timeDiff + 464,
     },
     ////--------------------------------24---------------------------------------- 
     {
       scenarioText: 'Аналогично п.4.',
       sender: 'Система',
-      startTime: timeDiff + 462,
+      startTime: timeDiff + 465,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
       duration: 0.15,
-      startTime: timeDiff + 463,
+      startTime: timeDiff + 466,
       human: true,
     },
     {
       text: 'На фурмах 0,5 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo30',
-      startTime: timeDiff + 464,
+      startTime: timeDiff + 467,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 468.5,
+      startTime: timeDiff + 471.5,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 468.6,
+      startTime: timeDiff + 471.6,
     },
 
     {
@@ -4112,7 +4228,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 469,
+      startTime: timeDiff + 472,
     }, {
       action: {
         window2D: {
@@ -4121,7 +4237,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 470,
+      startTime: timeDiff + 473,
     }, {
       action: {
         window2D: {
@@ -4130,7 +4246,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 471,
+      startTime: timeDiff + 474,
     },
     ////--------------------------------25---------------------------------------- 
     //  Все делать последовательно, как на видео. Кнопки мигают и после фиксируются.
@@ -4139,7 +4255,7 @@ let tempActions = [
       text: 'БЗУ снять с автоматического режима.',
       audio: 'tts-31',
       sender: 'Система',
-      startTime: timeDiff + 472,
+      startTime: timeDiff + 475,
     },
 
     { // 3D
@@ -4148,7 +4264,7 @@ let tempActions = [
         position: { y: -0.002 },  // mb v radian и ниже тоже !!!  // FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 473,
+      startTime: timeDiff + 476,
       human: true,
     },
     {
@@ -4159,7 +4275,7 @@ let tempActions = [
         ////material: 'DonorLamp_on', //?????  FIX   /// слева пульта от ДП6 RED LAMP
       },
       duration: 0.15,
-      startTime: timeDiff + 473.2,
+      startTime: timeDiff + 476.2,
     },
 
     { // 3D
@@ -4168,7 +4284,7 @@ let tempActions = [
         position: { y: -0.002 },  // mb v radian и ниже тоже !!!  // FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 474,
+      startTime: timeDiff + 477,
       human: true,
     },
     {
@@ -4178,7 +4294,7 @@ let tempActions = [
         position: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 474.2,
+      startTime: timeDiff + 477.2,
     },
 
 
@@ -4188,7 +4304,7 @@ let tempActions = [
         position: { y: -0.002 },  // mb v radian и ниже тоже !!!  // FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 475,
+      startTime: timeDiff + 478,
       human: true,
     },
     {
@@ -4199,7 +4315,7 @@ let tempActions = [
         ////material: 'DonorLamp_on', //?????  FIX   /// слева пульта от ДП6 RED LAMP /// ??? ZAFORELSA V ITOGE. Там выше зеленый погас
       },
       duration: 0.15,
-      startTime: timeDiff + 475.2,
+      startTime: timeDiff + 478.2,
     },
 
     { // 3D
@@ -4208,7 +4324,7 @@ let tempActions = [
         position: { y: -0.002 },  // mb v radian и ниже тоже !!!  // FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 476,
+      startTime: timeDiff + 479,
       human: true,
     },
     {
@@ -4219,7 +4335,7 @@ let tempActions = [
         ////material: 'DonorLamp_on', //?????  FIX   /// слева пульта от ДП6 GREEN LAMP
       },
       duration: 0.15,
-      startTime: timeDiff + 476.2,
+      startTime: timeDiff + 479.2,
     },
 
 
@@ -4229,7 +4345,7 @@ let tempActions = [
         position: { y: -0.002 },  // mb v radian и ниже тоже !!!  // FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 477,
+      startTime: timeDiff + 480,
       human: true,
     },
     {
@@ -4240,7 +4356,7 @@ let tempActions = [
         ////material: 'DonorLamp_on', //?????  FIX   /// слева пульта от ДП6 GREEN LAMP
       },
       duration: 0.15,
-      startTime: timeDiff + 477.2,
+      startTime: timeDiff + 480.2,
     },
 
     { // 3D
@@ -4249,7 +4365,7 @@ let tempActions = [
         position: { y: -0.002 },  // mb v radian и ниже тоже !!!  // FIX
       },
       duration: 0.15,
-      startTime: timeDiff + 478,
+      startTime: timeDiff + 481,
       human: true,
     },
     {
@@ -4260,7 +4376,7 @@ let tempActions = [
         ////material: 'DonorLamp_on', //?????  FIX   /// слева пульта от ДП6 GREEN LAMP
       },
       duration: 0.15,
-      startTime: timeDiff + 478.2,
+      startTime: timeDiff + 481.2,
     },
 
 
@@ -4271,7 +4387,7 @@ let tempActions = [
       text: 'Закрывайте кислород и делайте 0,5 кг на фурмах.',
       sender: 'Мастер печи',
       audio: 'tts-vo31',
-      startTime: timeDiff + 481,
+      startTime: timeDiff + 484,
     },
     {
       action: {
@@ -4279,14 +4395,14 @@ let tempActions = [
         position: { y: 0.003 },
       },
       duration: 0.15,
-      startTime: timeDiff + 484,
+      startTime: timeDiff + 487,
       human: true,
     },
     {
       text: 'Принимаю, делаю 0,3.',
       sender: 'Газовщик',
       audio: 'tts-vo32',
-      startTime: timeDiff + 485,
+      startTime: timeDiff + 488,
     },
     {
       action: {
@@ -4294,14 +4410,14 @@ let tempActions = [
         position: { y: 0.004 },
       },
       duration: 0.15,
-      startTime: timeDiff + 488.5,
+      startTime: timeDiff + 491.5,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 488.65,
+      startTime: timeDiff + 491.65,
     },
 
 
@@ -4310,7 +4426,7 @@ let tempActions = [
     {
       scenarioText: 'Аналогично п.2.',
       sender: 'Система',
-      startTime: timeDiff + 489,
+      startTime: timeDiff + 492,
     },
     //1
     {
@@ -4319,7 +4435,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 491,
+      startTime: timeDiff + 494,
       human: true,
     },
     {
@@ -4328,7 +4444,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 495,
+      startTime: timeDiff + 498,
       human: true,
     },
     //2
@@ -4338,7 +4454,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 505,
+      startTime: timeDiff + 508,
       human: true,
     },
     {
@@ -4347,7 +4463,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 507,
+      startTime: timeDiff + 510,
       human: true,
     },
     //3
@@ -4357,7 +4473,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 517,
+      startTime: timeDiff + 520,
       human: true,
     },
     {
@@ -4366,7 +4482,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 520,
+      startTime: timeDiff + 523,
       human: true,
     },
     //4
@@ -4376,7 +4492,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 530,
+      startTime: timeDiff + 533,
       human: true,
     },
     {
@@ -4385,7 +4501,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 532,
+      startTime: timeDiff + 535,
       human: true,
     },
     //5
@@ -4395,7 +4511,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 542,
+      startTime: timeDiff + 545,
       human: true,
     },
     {
@@ -4404,7 +4520,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 545,
+      startTime: timeDiff + 548,
       human: true,
     },
     //6
@@ -4414,7 +4530,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 555,
+      startTime: timeDiff + 558,
       human: true,
     },
     {
@@ -4423,7 +4539,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 557,
+      startTime: timeDiff + 560,
       human: true,
     },
     {
@@ -4434,7 +4550,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 558,
+      startTime: timeDiff + 561,
     }, {
       action: {
         window2D: {
@@ -4443,7 +4559,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 558,
+      startTime: timeDiff + 561,
     },
     {
       text: 'Смесительный клапан 002 закрывается.',
@@ -4457,7 +4573,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 559,
+      startTime: timeDiff + 562,
     }, {
       action: {
         window2D: {
@@ -4466,7 +4582,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 560,
+      startTime: timeDiff + 563,
     }, {
       action: {
         window2D: {
@@ -4475,12 +4591,12 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 561,
+      startTime: timeDiff + 564,
     }, {
       action: {
 
       },
-      startTime: timeDiff + 562,
+      startTime: timeDiff + 565,
     }, {
       action: {
         window2D: {
@@ -4489,46 +4605,46 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 563,
+      startTime: timeDiff + 566,
     },
     ////--------------------------------28---------------------------------------- 
     {
       scenarioText: 'Аналогично п.4.',
       sender: 'Система',
-      startTime: timeDiff + 564,
+      startTime: timeDiff + 567,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
       duration: 0.15,
-      startTime: timeDiff + 565,
+      startTime: timeDiff + 568,
       human: true,
     },
     {
       text: 'На фурмах 0,3 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo33',
-      startTime: timeDiff + 566,
+      startTime: timeDiff + 569,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 570,
+      startTime: timeDiff + 573,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 570.2,
+      startTime: timeDiff + 573.2,
     },
     {
       text: 'Закрывайте отсечной.',
       sender: 'Мастер печи',
       audio: 'tts-vo34',
-      startTime: timeDiff + 571,
+      startTime: timeDiff + 574,
     },
 
     {
@@ -4536,33 +4652,33 @@ let tempActions = [
         target3D: 'ButtonHightlight_046',
       },
       duration: 0.15,
-      startTime: timeDiff + 575,
+      startTime: timeDiff + 578,
       human: true,
     },
     {
       text: 'Понятно, Артём Викторович – закрывай отсечной.',
       sender: 'Газовщик',
       audio: 'tts-vo35',
-      startTime: timeDiff + 576,
+      startTime: timeDiff + 579,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 580,
+      startTime: timeDiff + 583,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 580.2,
+      startTime: timeDiff + 583.2,
     },
     {
       text: 'Понял, закрываю отсечной клапан.',
       sender: 'Мастер печи',
       audio: 'tts-vo36',
-      startTime: timeDiff + 581,
+      startTime: timeDiff + 584,
     },
     {
       action: {
@@ -4572,7 +4688,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 585,
+      startTime: timeDiff + 588,
     }, {
       action: {
         window2D: {
@@ -4581,7 +4697,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 586,
+      startTime: timeDiff + 589,
     }, {
       action: {
         window2D: {
@@ -4590,7 +4706,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 587,
+      startTime: timeDiff + 590,
     },
     ////--------------------------------29---------------------------------------- 
     //  29. На схеме ДП клапан 81 будет мигать красным цветом, сначала одна сторона, затем вторая и после зафиксирует положение.
@@ -4598,7 +4714,7 @@ let tempActions = [
       text: 'Отсечной клапан закрыть.',
       sender: 'Система',
       audio: 'tts-33',
-      startTime: timeDiff + 589,
+      startTime: timeDiff + 592,
     },
     {
       action: {
@@ -4608,7 +4724,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 591.5,
+      startTime: timeDiff + 594.5,
     }, {
       action: {
         window2D: {
@@ -4617,7 +4733,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 593,
+      startTime: timeDiff + 596,
     }, {
       action: {
         window2D: {
@@ -4626,7 +4742,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 594,
+      startTime: timeDiff + 597,
     }, {
       action: {
         window2D: {
@@ -4635,7 +4751,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 595,
+      startTime: timeDiff + 598,
     },
 
     /*   
@@ -6214,19 +6330,23 @@ let startState2D = [
     { name: 'kl007_proc', text: '100' },
     { name: 'circle_1_kl025', stroke: '#00FF00' },
     ///// КУЧА старых 2д исчезла. НАЙТИ!!!!
-    { name: 'VNK1_vnk_1', color: '#ff0000' },
-    { name: 'vn_132', color: '#00FF00' },
-    { name: 'vn_117', color: '#00FF00' },
-    { name: 'vn_132_l', color: '#00FF00' },
-    { name: 'vn_116', color: '#00FF00' },
-    { name: 'vn_116_l', color: '#00FF00' },
-    { name: '1PS_03_square', color: '#00FF00' },
-    { name: '1PS_05_square', color: '#00FF00' },
-    { name: 'VNK1_Avto', text: 'Циклический' },
-    { name: 'VNK1_Dutyo', text: 'Нагрев-Отдел.' },
-    { name: 'VNK1_Vremya_nagreva', text: '109' },
-    { name: 'VNK1_Vremya_dutya', text: '60' },
-    { name: 'VNK1_Vremya_otdelen', text: '0' },
+    // { name: 'vnk_1', color: '#ff0000' },
+    // { name: 'vn_132', color: '#00FF00' },
+    // { name: 'vn_117', color: '#00FF00' },
+    // { name: 'vn_132_l', color: '#00FF00' },
+    // { name: 'vn_116', color: '#00FF00' },
+    // { name: 'vn_116_l', color: '#00FF00' },
+    // { name: '1PS_03_square', color: '#00FF00' },
+    // { name: '1PS_05_square', color: '#00FF00' },
+    // { name: 'Avto', text: 'Циклический' },
+    // { name: 'Dutyo', text: 'Нагрев-Отдел.' },
+    // { name: 'Vremya_nagreva', text: '109' },
+    // { name: 'Vremya_dutya', text: '60' },
+    // { name: 'Vremya_otdelen', text: '0' },
+    // BZU
+    { name: 'v rabote', color: '#2B2A29' },
+    { name: 'bg_vRabote', color: '#00FF00' },
+
   ]
 ]
 let startState3D = [
@@ -6250,7 +6370,7 @@ let startState3D = [
     // d46ce2bf-329c-4b0b-932f-04e9aa6686bb зелёная точка квадрат
     // d731d161-f41e-465a-9fb0-b1ac09cb8062 жёлтая точка квадрат
     { id: '8b1850b5-9c32-4d19-a4dc-70eab7778b97', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // точка жёл экран1
-    { id: '7cd2a16b-0f5e-4691-9f5b-bd8e7dc3c3c7', position: { x: 0.042 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // точка зел экран1
+    { id: '7cd2a16b-0f5e-4691-9f5b-bd8e7dc3c3c7', position: { x: 0.042 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // точка зел экран1
 
     { name: 'vozNagr1_1', number: '1207' },
     { name: 'vozNagr1_2', number: '289.5' },
