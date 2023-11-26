@@ -12,7 +12,7 @@ function domLoaded() {
    .then(response => response.text())
    .then(data => {
      const modifiedData = data.replace(/startTime: timeDiff \+ (\d+)/g, (match, startTime) => {
-       const modifiedStartTime = parseInt(startTime) - 4;
+       const modifiedStartTime = parseInt(startTime) + 1;
        return `startTime: timeDiff + ${modifiedStartTime}`;
      });
      console.log(modifiedData);
