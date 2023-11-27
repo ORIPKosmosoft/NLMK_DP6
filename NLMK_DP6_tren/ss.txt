@@ -1,341 +1,4 @@
-    ////--------------------------------31---------------------------------------- 
-    {
-      scenarioText: 'Мастер печи по рации сообщает действия. Газовщик на рации прожимает кнопку «Лётка №3»',
-      sender: 'Система',
-      startTime: timeDiff + 445,
-    },
-    ////--------------------------------32---------------------------------------- 
-    {
-      scenarioText: '32. Позвонить по телефону, нажав на кнопку «Дисп.комб» и сообщить действия через громкоговоритель. ',
-      sender: 'Система',
-      action: {
-        window2D: {
-          elements: []
-        }
-      },
-      startTime: timeDiff + 446,
-    },
-    ////--------------------------------33---------------------------------------- 
-    {
-      scenarioText: '33. Газовщик на рации прожимает кнопку «Лётка №3», загорается кнопка и сообщает команду. ',
-      sender: 'Система',
-      action: {
-        window2D: {
-          elements: []
-        }
-      },
-      startTime: timeDiff + 447,
-    },
-    ////--------------------------------34---------------------------------------- 
-    {
-      scenarioText: '34. Мастер печи по рации сообщает действия, а газовщик отвечает.   ',
-      sender: 'Система',
-      action: {
-        window2D: {
-          elements: []
-        }
-      },
-      startTime: timeDiff + 448,
-    },
-    ////--------------------------------35---------------------------------------- 
-    {
-      scenarioText: '35. Аналогично п.2. На схеме ДП давление поднимется до Н93.',
-      sender: 'Система',
-      audio: 'tts-35',
-      action: {
-        window2D: {
-          elements: []
-        }
-      },
-      startTime: timeDiff + 449,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '88' },
-          ]
-        }
-      },
-      startTime: timeDiff + 450,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '93' },
-          ]
-        }
-      },
-      startTime: timeDiff + 451,
-    },
-    ////--------------------------------36---------------------------------------- 
-    {
-      scenarioText: '36. Аналогично п.4.',
-      sender: 'Система',
-      action: {
-        window2D: {
-          elements: []
-        }
-      },
-      startTime: timeDiff + 452,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '91' },
-          ]
-        }
-      },
-      startTime: timeDiff + 453,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '88' },
-          ]
-        }
-      },
-      startTime: timeDiff + 454,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '87' },
-          ]
-        }
-      },
-      startTime: timeDiff + 455,
-    },
-    ////--------------------------------37---------------------------------------- 
-    {
-      scenarioText: '37. Аналогично п.2. На схеме ДП давление поднимется до Н100, а также падает давление на фурмах до 0.00. На ПУ загорается индикатор «Открыт».',
-      sender: 'Система',
-      audio: 'tts-35',
-      action: {
-        window2D: {
-          elements: []
-        }
-      },
-      startTime: timeDiff + 456,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '95' },
-          ]
-        }
-      },
-      startTime: timeDiff + 457,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '100' },
-          ]
-        }
-      },
-      startTime: timeDiff + 458,
-    },
-    ////--------------------------------38---------------------------------------- 
-    {
-      scenarioText: '38. Аналогично п.4.',
-      sender: 'Система',
-      action: {
-        window2D: {
-          elements: []
-        }
-      },
-      startTime: timeDiff + 459,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '98' },
-          ]
-        }
-      },
-      startTime: timeDiff + 460,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '96' },
-          ]
-        }
-      },
-      startTime: timeDiff + 461,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '95' },
-          ]
-        }
-      },
-      startTime: timeDiff + 462,
-    },
-
-
-    ////--------------------------------39---------------------------------------- 
-    // scenarioText: 'Делаем также с 318 и 319 поочерёдно.',
-    ////--------------------------------клапан 310----------------------------------------Закрыт. Автоматический в ручной-------------------------------
-    {
-      scenarioText: '39. На мониторе 1 с «Общая схема» перейти на вкладку «ВНК №3». Нажать на клапан 310, после нажать на клавишу «Ручной», затем «Да»,',
-      sender: 'Система',
-      action: {
-        target2D: 'vn_310_btn',
-        window2D: {
-          elements: [ // ИСПРАВИТЬ ЦВЕТА !!!  //  FIX // ПЕРЕНЕСТИ ЦВЕТА С ВИДЕО. НЕ только ТУТ
-            { name: 'title_work_vn', text: 'Управление клапаном 310' },
-            { name: 'left_vn', color: '#ff1e00' },
-            { name: 'right_vn', color: '#ff1e00' },
-
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
-
-            { name: 'status_control_vnk_text', text: 'Автоматический' },
-            { name: 'status_window_text', text: 'Закрыт' },
-
-            { name: 'blocks_open', color: '#00FF00' },
-            { name: 'blocks_close', color: '#00FF00' },
-
-            { name: 'polozenie_button_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'polozenie_button_zakr_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'polozenie_button_stop_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'polozenie_button_reset_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-
-
-            { name: 'uprav_auto_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'uprav_rucnoy_text', color: '#000000' },                     //  #6E6E6E //  #000000;
-
-
-            { name: 'btn_auto', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000 // afk
-            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#000000' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_open', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_close', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_stop', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_reset', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
-
-            { name: 'block_scheme_sobr', color: '#00FF00' },
-            { name: 'bypas_block', color: '#ffffff' },
-
-            { name: 'time_full_vnk_text', text: '22' },
-            { name: 'polozenie_text', text: '0' },
-          ]
-        },
-        helper2D: [
-          { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
-          { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  //  «Ручной»
-        ]
-      },
-      startTime: timeDiff + 463,
-      human: true,
-    },
-    // окно ВН  // клик ручной
-    {
-      action: {
-        target2D: 'open_vn',
-        window2D: {
-          newPositionWindow: {  //  wind 2
-            x: 1765,
-            y: 732
-          },
-          elements: [
-            { name: 'title_open_vn', text: 'Ручной' },
-          ],
-        },
-        helper2D: [
-          { x: 92.10, y: 76, w: 3.2, h: 2.5, id: 'close_vn' },   //  wind 2
-          { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
-        ]
-      },
-      startTime: timeDiff + 463.2,
-      human: true,
-    },
-    // маленькое окошко ОК
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          elements: [
-            { name: 'status_control_vnk_text', text: 'Ручной' },
-            { name: 'uprav_auto_text', color: '#000000' },                     //  #6E6E6E //  #000000;
-            { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-
-            { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },  //  #C4C4C4 //  #ffffff       //  #000000 
-            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000 // afk
-          ]
-        },
-        helper2D: [
-          { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
-          { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1  // байпас
-        ]
-      },
-      startTime: timeDiff + 463.4,
-      human: true,
-    },
-
-    // окно ВН  //  клик байпас
-    {
-      scenarioText: 'после «Байпас всех блокировок», затем «Да» ',
-      sender: 'Система',
-      action: {
-        target2D: 'open_vn',
-        window2D: {
-          newPositionWindow: {  //  wind 2
-            x: 1760,
-            y: 900
-          },
-          elements: [
-            { name: 'title_open_vn', text: 'Байпас всех блокировок' },
-          ],
-        },
-        helper2D: [
-          { x: 91.90, y: 93, w: 3.2, h: 2.5, id: 'close_vn' },   //  wind 2
-          { x: 88.20, y: 93, w: 3.3, h: 2.5, id: 'open_vn1' },
-        ]
-      },
-      startTime: timeDiff + 463.6,
-      human: true,
-    },
-
-    // маленькое окошко ОК
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          elements: [
-            { name: 'bypas_block', color: '#00FF00' },
-
-            { name: 'status_control_vnk_text', text: 'Ручной' },
-            { name: 'uprav_auto_text', color: '#000000' },                     //  #6E6E6E //  #000000;
-            { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-
-            { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },  //  #C4C4C4 //  #ffffff       //  #000000 
-            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000 // afk
-          ]
-        },
-        helper2D: [
-          { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
-          { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1
-        ]
-      },
-      startTime: timeDiff + 463.8,
-      human: true,
-    },
-
-    {
-      scenarioText: 'и после закрываем доп. окно, через крестик.',
-      sender: 'Система',
-      action: {
-        target2D: 'close_w1',
-      },
-      startTime: timeDiff + 464,
-      human: true,
-    },
+/*
     ////
     ////--------------------------------клапан 318----------------------------------------Открыт. Автоматический в ручной-------------------------------
     {
@@ -358,22 +21,22 @@
             { name: 'blocks_open', color: '#00FF00' },
             { name: 'blocks_close', color: '#00FF00' },
 
-            { name: 'polozenie_button_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'polozenie_button_zakr_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'polozenie_button_stop_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'polozenie_button_reset_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
+            { name: 'polozenie_button_text', color: '#6E6E6E' },                     
+            { name: 'polozenie_button_zakr_text', color: '#6E6E6E' },                     
+            { name: 'polozenie_button_stop_text', color: '#6E6E6E' },                     
+            { name: 'polozenie_button_reset_text', color: '#6E6E6E' },                     
 
 
-            { name: 'uprav_auto_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'uprav_rucnoy_text', color: '#000000' },                     //  #6E6E6E //  #000000;
+            { name: 'uprav_auto_text', color: '#6E6E6E' },                     
+            { name: 'uprav_rucnoy_text', color: '#000000' },                     
 
 
-            { name: 'btn_auto', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000 // afk
-            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#000000' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_open', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_close', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_stop', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_reset', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
+            { name: 'btn_auto', color: '#ffffff', stroke: '#6E6E6E' },         
+            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#000000' },         
+            { name: 'btn_open', color: '#ffffff', stroke: '#6E6E6E' },         
+            { name: 'btn_close', color: '#ffffff', stroke: '#6E6E6E' },         
+            { name: 'btn_stop', color: '#ffffff', stroke: '#6E6E6E' },         
+            { name: 'btn_reset', color: '#ffffff', stroke: '#6E6E6E' },         
 
             { name: 'block_scheme_sobr', color: '#00FF00' },
             { name: 'bypas_block', color: '#ffffff' },
@@ -387,8 +50,7 @@
           { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  //  «Ручной»
         ]
       },
-      startTime: timeDiff + 464.2,
-      // startTime: timeDiff + 379,
+      startTime: timeDiff + 465.2,
       human: true,
     },
     // окно ВН
@@ -409,7 +71,7 @@
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 464.4,
+      startTime: timeDiff + 465.4,
       human: true,
     },
     // маленькое окошко ОК
@@ -419,11 +81,11 @@
         window2D: {
           elements: [
             { name: 'status_control_vnk_text', text: 'Ручной' },
-            { name: 'uprav_auto_text', color: '#000000' },                     //  #6E6E6E //  #000000;
-            { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
+            { name: 'uprav_auto_text', color: '#000000' },                     
+            { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     
 
-            { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },  //  #C4C4C4 //  #ffffff       //  #000000 
-            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000 // afk
+            { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },          
+            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },         
           ]
         },
         helper2D: [
@@ -431,7 +93,7 @@
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1  // байпас
         ]
       },
-      startTime: timeDiff + 464.6,
+      startTime: timeDiff + 465.6,
       human: true,
     },
     // окно ВН -> блокировка открытие // NE RABOTAET  //  FIX
@@ -442,7 +104,7 @@
           { name: 'blocks_close', color: '#FF0000' },
         ]
       },
-      startTime: timeDiff + 465,
+      startTime: timeDiff + 466,
     },
     // окно ВН
     {
@@ -464,7 +126,7 @@
           { x: 88.20, y: 93, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 465.2,
+      startTime: timeDiff + 466.2,
       human: true,
     },
 
@@ -477,11 +139,11 @@
             { name: 'bypas_block', color: '#00FF00' },
 
             { name: 'status_control_vnk_text', text: 'Ручной' },
-            { name: 'uprav_auto_text', color: '#000000' },                     //  #6E6E6E //  #000000;
-            { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
+            { name: 'uprav_auto_text', color: '#000000' },                     
+            { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     
 
-            { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },  //  #C4C4C4 //  #ffffff       //  #000000 
-            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000 // afk
+            { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },          
+            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },         
           ]
         },
         helper2D: [
@@ -489,7 +151,7 @@
           { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1
         ]
       },
-      startTime: timeDiff + 465.4,
+      startTime: timeDiff + 466.4,
       human: true,
     },
     {
@@ -498,7 +160,7 @@
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 465.6,
+      startTime: timeDiff + 466.6,
       human: true,
     },
 
@@ -523,22 +185,22 @@
             { name: 'blocks_open', color: '#00FF00' },
             { name: 'blocks_close', color: '#00FF00' },
 
-            { name: 'polozenie_button_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'polozenie_button_zakr_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'polozenie_button_stop_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'polozenie_button_reset_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
+            { name: 'polozenie_button_text', color: '#6E6E6E' },                     
+            { name: 'polozenie_button_zakr_text', color: '#6E6E6E' },                     
+            { name: 'polozenie_button_stop_text', color: '#6E6E6E' },                     
+            { name: 'polozenie_button_reset_text', color: '#6E6E6E' },                     
 
 
-            { name: 'uprav_auto_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
-            { name: 'uprav_rucnoy_text', color: '#000000' },                     //  #6E6E6E //  #000000;
+            { name: 'uprav_auto_text', color: '#6E6E6E' },                     
+            { name: 'uprav_rucnoy_text', color: '#000000' },                     
 
 
-            { name: 'btn_auto', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000 // afk
-            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#000000' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_open', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_close', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_stop', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
-            { name: 'btn_reset', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000
+            { name: 'btn_auto', color: '#ffffff', stroke: '#6E6E6E' },         
+            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#000000' },         
+            { name: 'btn_open', color: '#ffffff', stroke: '#6E6E6E' },         
+            { name: 'btn_close', color: '#ffffff', stroke: '#6E6E6E' },         
+            { name: 'btn_stop', color: '#ffffff', stroke: '#6E6E6E' },         
+            { name: 'btn_reset', color: '#ffffff', stroke: '#6E6E6E' },         
 
             { name: 'block_scheme_sobr', color: '#00FF00' },
             { name: 'bypas_block', color: '#ffffff' },
@@ -552,7 +214,7 @@
           { x: 79.80, y: 53.2, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  //  «Ручной»
         ]
       },
-      startTime: timeDiff + 465.8,
+      startTime: timeDiff + 466.8,
       human: true,
     },
     // окно ВН
@@ -573,7 +235,7 @@
           { x: 83.20, y: 56, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 466,
+      startTime: timeDiff + 467,
       human: true,
     },
     // маленькое окошко ОК
@@ -583,11 +245,11 @@
         window2D: {
           elements: [
             { name: 'status_control_vnk_text', text: 'Ручной' },
-            { name: 'uprav_auto_text', color: '#000000' },                     //  #6E6E6E //  #000000;
-            { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
+            { name: 'uprav_auto_text', color: '#000000' },                     
+            { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     
 
-            { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },  //  #C4C4C4 //  #ffffff       //  #000000 
-            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000 // afk
+            { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },          
+            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },         
           ]
         },
         helper2D: [
@@ -595,7 +257,7 @@
           { x: 75.40, y: 70.6, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1  // байпас
         ]
       },
-      startTime: timeDiff + 466.2,
+      startTime: timeDiff + 467.2,
       human: true,
     },
     // окно ВН -> блокировка открытие
@@ -606,7 +268,7 @@
           { name: 'blocks_close', color: '#FF0000' },
         ]
       },
-      startTime: timeDiff + 467,
+      startTime: timeDiff + 468,
     },
     // окно ВН
     {
@@ -628,7 +290,7 @@
           { x: 80.20, y: 74.4, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 467.2,
+      startTime: timeDiff + 468.2,
       human: true,
     },
 
@@ -641,11 +303,11 @@
             { name: 'bypas_block', color: '#00FF00' },
 
             { name: 'status_control_vnk_text', text: 'Ручной' },
-            { name: 'uprav_auto_text', color: '#000000' },                     //  #6E6E6E //  #000000;
-            { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     //  #6E6E6E //  #000000;
+            { name: 'uprav_auto_text', color: '#000000' },                     
+            { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     
 
-            { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },  //  #C4C4C4 //  #ffffff       //  #000000 
-            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },  //  #C4C4C4 //  #ffffff       //  #000000 // afk
+            { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },          
+            { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },         
           ]
         },
         helper2D: [
@@ -653,7 +315,7 @@
           { x: 75.40, y: 70.6, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1  
         ]
       },
-      startTime: timeDiff + 467.4,
+      startTime: timeDiff + 468.4,
       human: true,
     },
     {
@@ -662,6 +324,852 @@
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 467.6,
+      startTime: timeDiff + 468.6,
       human: true,
     },
+
+
+    /*  
+
+////--------------------------------40---------------------------------------- 
+{
+ scenarioText: '40. Нажать на клапан 310, после нажать на клавишу «Открыть», затем «Да» и после закрываем доп. окно через крестик.',
+ sender: 'Система',
+ action: {
+   target2D: 'vn_310_btn',
+   window2D: {
+     elements: [
+       { name: 'btn_open', color: '#ffffff', stroke: '#000000' },         
+       { name: 'polozenie_button_text', color: '#000000' },                     
+ 
+       { name: 'title_work_vn', text: 'Управление клапаном 310' },
+       { name: 'left_vn', color: '#ff1e00' },
+       { name: 'right_vn', color: '#ff1e00' },
+ 
+       { name: 'circle_1_win1', stroke: '#ff1e00' },
+       { name: 'circle_2_win1', stroke: '#ff1e00' },
+ 
+       { name: 'status_control_vnk_text', text: 'Ручной' },
+       { name: 'status_window_text', text: 'Закрыт' },
+ 
+       { name: 'blocks_open', color: '#FF0000' },
+       { name: 'blocks_close', color: '#00FF00' },
+ 
+       { name: 'polozenie_button_text', color: '#000000' },                     
+       { name: 'polozenie_button_zakr_text', color: '#6E6E6E' },                     
+       { name: 'polozenie_button_stop_text', color: '#6E6E6E' },                     
+       { name: 'polozenie_button_reset_text', color: '#6E6E6E' },                     
+ 
+ 
+       { name: 'uprav_auto_text', color: '#000000' },                     
+       { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     
+ 
+ 
+       { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },         
+       { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },         
+       { name: 'btn_open', color: '#ffffff', stroke: '#6E6E6E' },         
+       { name: 'btn_close', color: '#ffffff', stroke: '#6E6E6E' },         
+       { name: 'btn_stop', color: '#ffffff', stroke: '#6E6E6E' },         
+       { name: 'btn_reset', color: '#ffffff', stroke: '#6E6E6E' },         
+ 
+       { name: 'block_scheme_sobr', color: '#00FF00' },
+       { name: 'bypas_block', color: '#00FF00' },
+ 
+       { name: 'time_full_vnk_text', text: '22' },
+       { name: 'polozenie_text', text: '0' },
+ 
+     ]
+   },
+   helper2D: [
+     { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
+     { x: 83.80, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  «Открыть»
+   ]
+ },
+ startTime: timeDiff + 467.8,
+ human: true,
+},
+ 
+// окно ВН
+{
+ action: {
+   target2D: 'open_vn',
+   window2D: {
+     newPositionWindow: {  //  wind 2
+       x: 1765,
+       y: 732
+     },
+     elements: [
+       { name: 'title_open_vn', text: 'Открыть' },
+     ],
+   },
+   helper2D: [
+     { x: 92.10, y: 76, w: 3.2, h: 2.5, id: 'close_vn' },   //  wind 2
+     { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
+   ]
+ },
+ startTime: timeDiff + 468,
+ human: true,
+},
+//  маленькое окошко ОК
+{
+ action: {
+   target2D: 'open_vn1',
+   window2D: {
+     elements: [
+       { name: 'polozenie_button_zakr_text', color: '#000000' },                     
+       { name: 'polozenie_button_text', color: '#6E6E6E' },                     
+ 
+       { name: 'btn_close', color: '#ffffff', stroke: '#000000' },          
+       { name: 'btn_open', color: '#ffffff', stroke: '#6E6E6E' },         
+ 
+       { name: 'status_window_text', text: 'Открывается' },
+ 
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   },
+   helper2D: [
+     { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
+     { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1
+   ]
+ },
+ startTime: timeDiff + 468.2,
+ human: true,
+},
+//  мигание
+{
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#00FF00' },
+       { name: 'right_vn', color: '#00FF00' },
+       { name: 'circle_1_win1', stroke: '#00FF00' },
+       { name: 'circle_2_win1', stroke: '#00FF00' },
+ 
+       { name: 'vnk3_310_l', color: '#00FF00' },
+       { name: 'vnk3_310_r', color: '#00FF00' },
+     ]
+   }
+ },
+ startTime: timeDiff + 469,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   }
+ },
+ startTime: timeDiff + 470,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#00FF00' },
+       { name: 'right_vn', color: '#00FF00' },
+       { name: 'circle_1_win1', stroke: '#00FF00' },
+       { name: 'circle_2_win1', stroke: '#00FF00' },
+ 
+       { name: 'vnk3_310_l', color: '#00FF00' },
+       { name: 'vnk3_310_r', color: '#00FF00' },
+     ]
+   }
+ },
+ startTime: timeDiff + 471,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   }
+ },
+ startTime: timeDiff + 472,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'status_window_text', text: 'Открыт' },
+ 
+       { name: 'left_vn', color: '#00FF00' },
+       { name: 'right_vn', color: '#00FF00' },
+       { name: 'circle_1_win1', stroke: '#00FF00' },
+       { name: 'circle_2_win1', stroke: '#00FF00' },
+ 
+       { name: 'vnk3_310_l', color: '#00FF00' },
+       { name: 'vnk3_310_r', color: '#00FF00' },
+     ]
+   }
+ },
+ startTime: timeDiff + 473,
+},
+{
+ action: {
+   target2D: 'close_w1',
+   helper2D: [
+     { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
+     { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1
+   ]
+ },
+ startTime: timeDiff + 473.2,
+ human: true,
+},
+ 
+ 
+// окно ВН
+////--------------------------------41---------------------------------------- 
+////--------------------------------клапан 318----------------------------------------Открыт. Открыт в закрыт-------------------------------
+{
+ scenarioText: '41. Аналогично п.40, только происходит закрытие. Как только начнёт клапан мигать красным цветом на доп. окне, стоит нажать через пару секунд на клавишу «Стоп» и после повторить операцию 2-3 раза с нажатием на «Закрыть» и «Стоп».',
+ sender: 'Система',
+ action: {
+   target2D: 'vn_318_btn',
+   window2D: {
+     elements: [
+       { name: 'btn_open', color: '#ffffff', stroke: '#000000' },         
+       { name: 'polozenie_button_text', color: '#000000' },                     
+ 
+       { name: 'title_work_vn', text: 'Управление клапаном 318' },
+       { name: 'left_vn', color: '#00FF00' },
+       { name: 'right_vn', color: '#00FF00' },
+ 
+       { name: 'circle_1_win1', stroke: '#00FF00' },
+       { name: 'circle_2_win1', stroke: '#00FF00' },
+ 
+       { name: 'status_control_vnk_text', text: 'Ручной' },
+       { name: 'status_window_text', text: 'Открыт' },
+ 
+       { name: 'blocks_open', color: '#FF0000' },
+       { name: 'blocks_close', color: '#FF0000' },
+ 
+       { name: 'polozenie_button_text', color: '#6E6E6E' },                     
+       { name: 'polozenie_button_zakr_text', color: '#000000' },                     
+       { name: 'polozenie_button_stop_text', color: '#000000' },                     
+       { name: 'polozenie_button_reset_text', color: '#6E6E6E' },                     
+ 
+ 
+       { name: 'uprav_auto_text', color: '#000000' },                     
+       { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     
+ 
+       { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },         
+       { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },         
+       { name: 'btn_open', color: '#ffffff', stroke: '#6E6E6E' },         
+       { name: 'btn_close', color: '#ffffff', stroke: '#000000' },         
+       { name: 'btn_stop', color: '#ffffff', stroke: '#000000' },         
+       { name: 'btn_reset', color: '#ffffff', stroke: '#6E6E6E' },         
+ 
+       { name: 'block_scheme_sobr', color: '#00FF00' },
+       { name: 'bypas_block', color: '#00FF00' },
+ 
+       { name: 'time_full_vnk_text', text: '22' },
+       { name: 'polozenie_text', text: '0' },
+ 
+     ]
+   },
+   helper2D: [
+     { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
+     { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
+   ]
+ },
+ startTime: timeDiff + 473.4,
+ human: true,
+},
+// окно ВН  // закрыть
+{
+ action: {
+   target2D: 'open_vn',
+   window2D: {
+     newPositionWindow: {  //  wind 2
+       x: 1765,
+       y: 732
+     },
+     elements: [
+       { name: 'title_open_vn', text: 'Закрыть' },
+     ],
+   },
+   helper2D: [
+     { x: 92.10, y: 76, w: 3.2, h: 2.5, id: 'close_vn' },   //  wind 2
+     { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
+   ]
+ },
+ startTime: timeDiff + 473.6,
+ human: true,
+},
+//  маленькое окошко ОК //  ВН Закрывается
+{
+ action: {
+   target2D: 'open_vn1',
+   window2D: {
+     elements: [
+       { name: 'polozenie_button_zakr_text', color: '#000000' },                     
+       { name: 'polozenie_button_text', color: '#6E6E6E' },                     
+ 
+       { name: 'btn_close', color: '#ffffff', stroke: '#6E6E6E' },          
+       { name: 'btn_open', color: '#ffffff', stroke: '#000000' },         
+ 
+       { name: 'status_window_text', text: 'Закрывается' },
+ 
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   },
+   helper2D: [
+     { x: 83.80, y: 78.8, w: 8.6, h: 2.6, id: 'win_posle_1_stop_btn' }, //  win 1 //  СТОП
+     { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
+     { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
+   ]
+ },
+ startTime: timeDiff + 473.8,
+ human: true,
+},
+//мигание пару секунд
+{
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#FF0000' },
+       { name: 'right_vn', color: '#FF0000' },
+       { name: 'circle_1_win1', stroke: '#FF0000' },
+       { name: 'circle_2_win1', stroke: '#FF0000' },
+ 
+       { name: 'vnk3_310_l', color: '#FF0000' },
+       { name: 'vnk3_310_r', color: '#FF0000' },
+     ]
+   },
+ },
+ startTime: timeDiff + 474.3,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   },
+ },
+ startTime: timeDiff + 475,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#FF0000' },
+       { name: 'right_vn', color: '#FF0000' },
+       { name: 'circle_1_win1', stroke: '#FF0000' },
+       { name: 'circle_2_win1', stroke: '#FF0000' },
+ 
+       { name: 'vnk3_310_l', color: '#FF0000' },
+       { name: 'vnk3_310_r', color: '#FF0000' },
+     ]
+   },
+ },
+ startTime: timeDiff + 476,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   },
+ 
+ },
+ startTime: timeDiff + 477,
+},
+ 
+// ОКНО ВН  // КЛИК СТОП
+{
+ action: {
+   target2D: 'win_posle_1_stop_btn',
+   window2D: {
+     elements: [
+       { name: 'status_window_text', text: 'Нет данных' },
+       { name: 'polozenie_button_text', color: '#000000' },                     
+       { name: 'polozenie_button_zakr_text', color: '#000000' },                     
+ 
+       { name: 'btn_open', color: '#ffffff', stroke: '#000000' },         
+       { name: 'btn_close', color: '#ffffff', stroke: '#000000' },         
+     ]
+   },
+ },
+ startTime: timeDiff + 477.2,
+ human: true
+},
+////--------------------------------клапан 318----------------------------------------Закрыт. Закрыт в закрыт-------------------------------    //  1
+// повторить 2-3 раза. Будет 2
+// окно ВН  // закрыть
+{
+ action: {
+   target2D: 'open_vn',
+   window2D: {
+     newPositionWindow: {  //  wind 2
+       x: 1765,
+       y: 732
+     },
+     elements: [
+       { name: 'title_open_vn', text: 'Закрыть' },
+     ],
+   },
+   helper2D: [
+     { x: 92.10, y: 76, w: 3.2, h: 2.5, id: 'close_vn' },   //  wind 2
+     { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
+   ]
+ },
+ startTime: timeDiff + 477.4,
+ human: true,
+},
+//  маленькое окошко ОК //  ВН Закрывается
+{
+ action: {
+   target2D: 'open_vn1',
+   window2D: {
+     elements: [
+       { name: 'polozenie_button_zakr_text', color: '#000000' },                     
+       { name: 'polozenie_button_text', color: '#6E6E6E' },                     
+ 
+       { name: 'btn_close', color: '#ffffff', stroke: '#6E6E6E' },          
+       { name: 'btn_open', color: '#ffffff', stroke: '#000000' },         
+ 
+       { name: 'status_window_text', text: 'Закрывается' },
+ 
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   },
+   helper2D: [
+     { x: 83.80, y: 78.8, w: 8.6, h: 2.6, id: 'win_posle_1_stop_btn' }, //  win 1 //  СТОП
+     { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
+     { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
+   ]
+ },
+ startTime: timeDiff + 477.6,
+ human: true,
+},
+//мигание пару секунд
+{
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#FF0000' },
+       { name: 'right_vn', color: '#FF0000' },
+       { name: 'circle_1_win1', stroke: '#FF0000' },
+       { name: 'circle_2_win1', stroke: '#FF0000' },
+ 
+       { name: 'vnk3_310_l', color: '#FF0000' },
+       { name: 'vnk3_310_r', color: '#FF0000' },
+     ]
+   },
+ },
+ startTime: timeDiff + 478.3,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   },
+ },
+ startTime: timeDiff + 479,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#FF0000' },
+       { name: 'right_vn', color: '#FF0000' },
+       { name: 'circle_1_win1', stroke: '#FF0000' },
+       { name: 'circle_2_win1', stroke: '#FF0000' },
+ 
+       { name: 'vnk3_310_l', color: '#FF0000' },
+       { name: 'vnk3_310_r', color: '#FF0000' },
+     ]
+   },
+ },
+ startTime: timeDiff + 480,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   },
+ 
+ },
+ startTime: timeDiff + 481,
+},
+// ОКНО ВН  // КЛИК СТОП
+{
+ action: {
+   target2D: 'win_posle_1_stop_btn',
+   window2D: {
+     elements: [
+       { name: 'status_window_text', text: 'Нет данных' },
+       { name: 'polozenie_button_text', color: '#000000' },                     
+       { name: 'polozenie_button_zakr_text', color: '#000000' },                     
+ 
+       { name: 'btn_open', color: '#ffffff', stroke: '#000000' },         
+       { name: 'btn_close', color: '#ffffff', stroke: '#000000' },         
+     ]
+   },
+   helper2D: [
+     { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
+     { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
+   ]
+ },
+ startTime: timeDiff + 481.2,
+ human: true
+},
+///////
+// окно ВН  // закрыть
+{
+ action: {
+   target2D: 'open_vn',
+   window2D: {
+     newPositionWindow: {  //  wind 2
+       x: 1765,
+       y: 732
+     },
+     elements: [
+       { name: 'title_open_vn', text: 'Закрыть' },
+     ],
+   },
+   helper2D: [
+     { x: 92.10, y: 76, w: 3.2, h: 2.5, id: 'close_vn' },   //  wind 2
+     { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
+   ]
+ },
+ startTime: timeDiff + 481.4,
+ human: true,
+},
+//  маленькое окошко ОК //  ВН Закрывается
+{
+ action: {
+   target2D: 'open_vn1',
+   window2D: {
+     elements: [
+       { name: 'polozenie_button_zakr_text', color: '#000000' },                     
+       { name: 'polozenie_button_text', color: '#6E6E6E' },                     
+ 
+       { name: 'btn_close', color: '#ffffff', stroke: '#6E6E6E' },          
+       { name: 'btn_open', color: '#ffffff', stroke: '#000000' },         
+ 
+       { name: 'status_window_text', text: 'Закрывается' },
+ 
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   },
+   helper2D: [
+     { x: 83.80, y: 78.8, w: 8.6, h: 2.6, id: 'win_posle_1_stop_btn' }, //  win 1 //  СТОП
+     { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
+     { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
+   ]
+ },
+ startTime: timeDiff + 481.6,
+ human: true,
+},
+//мигание пару секунд
+{
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#FF0000' },
+       { name: 'right_vn', color: '#FF0000' },
+       { name: 'circle_1_win1', stroke: '#FF0000' },
+       { name: 'circle_2_win1', stroke: '#FF0000' },
+ 
+       { name: 'vnk3_310_l', color: '#FF0000' },
+       { name: 'vnk3_310_r', color: '#FF0000' },
+     ]
+   },
+ },
+ startTime: timeDiff + 482.3,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   },
+ },
+ startTime: timeDiff + 483,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#FF0000' },
+       { name: 'right_vn', color: '#FF0000' },
+       { name: 'circle_1_win1', stroke: '#FF0000' },
+       { name: 'circle_2_win1', stroke: '#FF0000' },
+ 
+       { name: 'vnk3_310_l', color: '#FF0000' },
+       { name: 'vnk3_310_r', color: '#FF0000' },
+     ]
+   },
+ },
+ startTime: timeDiff + 484,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_310_l', color: '#8F8F8F' },
+       { name: 'vnk3_310_r', color: '#8F8F8F' },
+     ]
+   },
+ 
+ },
+ startTime: timeDiff + 485,
+},
+////--------------------------------клапан 318----------------------------------------Закрыт. Закрыт в закрыт-------------------------------    //  2
+// ОКНО ВН  // КЛИК СТОП
+{
+ action: {
+   target2D: 'win_posle_1_stop_btn',
+   window2D: {
+     elements: [
+       { name: 'status_window_text', text: 'Нет данных' },
+       { name: 'polozenie_button_text', color: '#000000' },                     
+       { name: 'polozenie_button_zakr_text', color: '#000000' },                     
+ 
+       { name: 'btn_open', color: '#ffffff', stroke: '#000000' },         
+       { name: 'btn_close', color: '#ffffff', stroke: '#000000' },         
+     ]
+   },
+   helper2D: [
+     { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
+   ],
+ },
+ startTime: timeDiff + 485.2,
+ human: true
+},
+{
+ action: {
+   target2D: 'close_w1',
+ },
+ startTime: timeDiff + 485.3,
+ human: true,
+},
+ 
+ 
+ 
+ 
+////--------------------------------42---------------------------------------- 
+////--------------------------------клапан 319----------------------------------------Открыт. Открыт в закрыт-------------------------------
+{
+ scenarioText: '42. Аналогично п.40 только закрываем клапан 319.',
+ sender: 'Система',
+ action: {
+   target2D: 'vn_319_btn',
+   window2D: {
+     elements: [
+       { name: 'title_work_vn', text: 'Управление клапаном 319' },
+       { name: 'left_vn', color: '#00FF00' },
+       { name: 'right_vn', color: '#00FF00' },
+ 
+       { name: 'circle_1_win1', stroke: '#00FF00' },
+       { name: 'circle_2_win1', stroke: '#00FF00' },
+ 
+       { name: 'status_control_vnk_text', text: 'Ручной' },
+       { name: 'status_window_text', text: 'Открыт' },
+ 
+       { name: 'blocks_open', color: '#ff1e00' },
+       { name: 'blocks_close', color: '#00FF00' },
+ 
+       { name: 'polozenie_button_text', color: '#6E6E6E' },                     
+       { name: 'polozenie_button_zakr_text', color: '#000000' },                     
+       { name: 'polozenie_button_stop_text', color: '#000000' },                     
+       { name: 'polozenie_button_reset_text', color: '#6E6E6E' },                     
+ 
+ 
+       { name: 'uprav_auto_text', color: '#000000' },                     
+       { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     
+ 
+ 
+       { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },         
+       { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },         
+       { name: 'btn_open', color: '#ffffff', stroke: '#6E6E6E' },         
+       { name: 'btn_close', color: '#ffffff', stroke: '#000000' },         
+       { name: 'btn_stop', color: '#ffffff', stroke: '#000000' },         
+       { name: 'btn_reset', color: '#ffffff', stroke: '#6E6E6E' },         
+ 
+       { name: 'block_scheme_sobr', color: '#00FF00' },
+       { name: 'bypas_block', color: '#ffffff' },
+ 
+       { name: 'time_full_vnk_text', text: '22' },
+       { name: 'polozenie_text', text: '0' },
+     ]
+   },
+   helper2D: [
+     { x: 82.90, y: 45.2, w: 1.5, h: 2.0, id: 'close_w1' },
+     { x: 79.80, y: 57.2, w: 4.0, h: 2.6, id: 'open_vn' },   //  клапан 319 //  win 1  //  "Закрыть"
+   ]
+ },
+ startTime: timeDiff + 485.4,
+ human: true,
+},
+{
+ action: {
+   target2D: 'open_vn',  // окно ВН  "Закрыть"
+   window2D: {
+     newPositionWindow: {  //  wind 2
+       x: 1640,
+       y: 583
+     },
+     elements: [
+       { name: 'title_open_vn', text: 'Закрыть' },
+     ],
+   },
+   helper2D: [
+     { x: 85.75, y: 60.8, w: 3.2, h: 2.5, id: 'close_vn' },   //  wind 2
+     { x: 82.15, y: 60.8, w: 3.3, h: 2.5, id: 'open_vn1' },
+   ]
+ },
+ startTime: timeDiff + 485.6,
+ human: true,
+},
+{
+ action: {
+   target2D: 'open_vn1', // маленькое окошко ДА/НЕТ
+   window2D: {
+     elements: [
+       { name: 'status_control_vnk_text', text: 'Закрывается' },
+       { name: 'uprav_auto_text', color: '#000000' },                     
+       { name: 'uprav_rucnoy_text', color: '#6E6E6E' },                     
+ 
+       { name: 'btn_auto', color: '#ffffff', stroke: '#000000' },          
+       { name: 'btn_rucnoy', color: '#ffffff', stroke: '#6E6E6E' },         
+ 
+       { name: 'polozenie_button_zakr_text', color: '#6E6E6E' },                     
+       { name: 'btn_close', color: '#ffffff', stroke: '#6E6E6E' },         
+     ]
+   },
+   helper2D: [
+     { x: 82.90, y: 45.2, w: 1.5, h: 2.0, id: 'close_w1' },
+   ]
+ },
+ startTime: timeDiff + 485.8,
+ human: true,
+},
+//мигание пару секунд
+{
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#FF0000' },
+       { name: 'right_vn', color: '#FF0000' },
+       { name: 'circle_1_win1', stroke: '#FF0000' },
+       { name: 'circle_2_win1', stroke: '#FF0000' },
+ 
+       { name: 'vnk3_319_l', color: '#FF0000' },
+       { name: 'vnk3_319_r', color: '#FF0000' },
+     ]
+   },
+ },
+ startTime: timeDiff + 486.8,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#8F8F8F' },
+       { name: 'right_vn', color: '#8F8F8F' },
+       { name: 'circle_1_win1', stroke: '#8F8F8F' },
+       { name: 'circle_2_win1', stroke: '#8F8F8F' },
+ 
+       { name: 'vnk3_319_l', color: '#8F8F8F' },
+       { name: 'vnk3_319_r', color: '#8F8F8F' },
+     ]
+   },
+ },
+ startTime: timeDiff + 487.8,
+}, {
+ action: {
+   window2D: {
+     elements: [
+       { name: 'left_vn', color: '#FF0000' },
+       { name: 'right_vn', color: '#FF0000' },
+       { name: 'circle_1_win1', stroke: '#FF0000' },
+       { name: 'circle_2_win1', stroke: '#FF0000' },
+ 
+       { name: 'vnk3_319_l', color: '#FF0000' },
+       { name: 'vnk3_319_r', color: '#FF0000' },
+ 
+       { name: 'status_control_vnk_text', text: 'Закрыт' },
+       { name: 'polozenie_button_text', color: '#6E6E6E' },
+       { name: 'btn_open', color: '#ffffff', stroke: '#000000' },         
+     ]
+   },
+ },
+ startTime: timeDiff + 488.8,
+},
+ 
+{
+ action: {
+   target2D: 'close_w1',
+ },
+ startTime: timeDiff + 489,
+ human: true,
+},
+*/
