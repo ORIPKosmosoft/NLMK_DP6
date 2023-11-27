@@ -37,7 +37,7 @@ window.addEventListener('load', function () {
                                       ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                         ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'O_n_k_na_VNK_posle_11') {
+    if (ObjectSvg.name === 'dp1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -1962,19 +1962,19 @@ function changeSvgElem(Val = {}) {
       svgArrObject.activeElements.forEach((activeElemObj) => {
         if (activeElemObj.name === Val.name) {
           svgArrObject.object.nextElementSibling.svgReload = false;
-          if (Val.text)
+          if (Val.position.x !== undefined)
             activeElemObj.element.innerHTML = Val.text;
-          if (Val.color) 
+          if (Val.color !== undefined)
             activeElemObj.element.style.fill = Val.color === 'start' ? '' : Val.color;
-          if (Val.stroke)
+          if (Val.stroke !== undefined)
             activeElemObj.element.style.stroke = Val.stroke === 'start' ? '' : Val.stroke;
-          if (Val.opacity)
+          if (Val.opacity !== undefined)
             activeElemObj.element.style.opacity = Val.opacity === 'start' ? '' : Val.opacity;
-          if (Val.rotation)
+          if (Val.rotation !== undefined)
             changeSvgElemPos(activeElemObj.element, Val.rotation, 'rotate');
           if (Val.position) {
-            if (Val.position.x !== '') changeSvgElemPos(activeElemObj.element, Val.position.x, 'translateX');
-            if (Val.position.y !== '') changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
+            if (Val.position.x !== undefined) changeSvgElemPos(activeElemObj.element, Val.position.x, 'translateX');
+            if (Val.position.y !== undefined) changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
           }
         }
       })
