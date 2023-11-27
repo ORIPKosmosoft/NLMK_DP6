@@ -1962,7 +1962,7 @@ function changeSvgElem(Val = {}) {
       svgArrObject.activeElements.forEach((activeElemObj) => {
         if (activeElemObj.name === Val.name) {
           svgArrObject.object.nextElementSibling.svgReload = false;
-          if (Val.position.x !== undefined)
+          if (Val.text !== undefined)
             activeElemObj.element.innerHTML = Val.text;
           if (Val.color !== undefined)
             activeElemObj.element.style.fill = Val.color === 'start' ? '' : Val.color;
