@@ -665,11 +665,6 @@ const devHelper = {
   human: true,
 },
 */
-// TODO Добавить озвучку
-// Система: Сообщить по телефону.
-// Система: Сообщить по рации.
-// tts-vo15 - исправить на "Делаем 1,5 кг"
-// 302 символ заменить на дрос....
 const timeDiff = -0;
 let tempActions = [
   [ // test scenario 1
@@ -1686,6 +1681,7 @@ let tempActions = [
     {
       scenarioText: 'Взять в руку трубку и нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС».',
       sender: 'Система',
+      audio: 'telephone_say',
       multi: [
         {
           text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
@@ -2082,6 +2078,12 @@ let tempActions = [
       sender: 'Мастер печи',
       audio: 'tts-vo2',
       startTime: timeDiff + 93,
+    },
+    {
+      text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 97,
     },
     {
       action: {
@@ -2592,6 +2594,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации дежурному водопроводчику.',
       sender: 'Система',
+      audio: 'radio_say',
       action: {
         target3D: 'ButtonHightlight_046',
       },
@@ -2751,6 +2754,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       action: {
         target3D: 'ButtonHightlight_046',
       },
@@ -2833,6 +2837,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       action: {
         target3D: 'ButtonHightlight_046',
       },
@@ -2918,6 +2923,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       startTime: timeDiff + 211,
     },
     {
@@ -3033,6 +3039,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       startTime: timeDiff + 228.5,
     },
     {
@@ -3085,6 +3092,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по телефону в «ЭВС».',
       sender: 'Система',
+      audio: 'telephone_say',
       startTime: timeDiff + 240,
       action: {
         target3D: 'PhoneButton020',
@@ -3160,6 +3168,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       startTime: timeDiff + 253,
     },
     {
@@ -3267,6 +3276,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       startTime: timeDiff + 276,
     },
     {
@@ -3796,7 +3806,7 @@ let tempActions = [
     { // 3D
       text: 'По рации сообщить мастеру печи о выполненной операции.',
       sender: 'Система',
-      // audio: 'tts-', // TODO добавить озвучку Система: Сообщить по рации.
+      audio: 'radio_say',
       startTime: timeDiff + 338,
     },
     {
@@ -3855,6 +3865,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по телефону в "Кислородный цех".',
       sender: 'Система',
+      audio: 'telephone_say',
       startTime: timeDiff + 361,
     },
     {
@@ -3932,6 +3943,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       startTime: timeDiff + 371,
     },
     {
@@ -4246,6 +4258,12 @@ let tempActions = [
       startTime: timeDiff + 394,
     },
     {
+      text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 393,
+    },
+    {
       action: {
         target3D: 'ButtonHightlight_046',
       },
@@ -4372,6 +4390,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       startTime: timeDiff + 411,
     },
     {
@@ -4481,7 +4500,7 @@ let tempActions = [
     {
       text: 'Отсечной клапан закрыт.',
       sender: 'Система',
-      audio: 'tts-33', // TODO заменить озвучку
+      audio: 'tts-33',
       startTime: timeDiff + 441,
     },
     ////--------------------------------30---------------------------------------- 
@@ -4539,8 +4558,9 @@ let tempActions = [
       startTime: timeDiff + 447,
     },
     {
-      scenarioText: 'Сообщить по рации в «Лётка №3».',
+      scenarioText: 'Сообщить по рации в «Лётки №3».',
       sender: 'Система',
+      audio: 'radio_say',
       startTime: timeDiff + 449,
     },
     {
@@ -4569,6 +4589,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по телефону в "Дисп.комб".',
       sender: 'Система',
+      audio: 'telephone_say',
       startTime: timeDiff + 455,
     },
     {
@@ -4598,8 +4619,9 @@ let tempActions = [
     },
     ////--------------------------------33---------------------------------------- 
     {
-      scenarioText: 'Сообщить по рации в «Лётка №3».',
+      scenarioText: 'Сообщить по рации в «Лётки №3».',
       sender: 'Система',
+      audio: 'radio_say',
       startTime: timeDiff + 469,
     },
     {
@@ -4627,7 +4649,7 @@ let tempActions = [
     {
       text: 'Отсечной закрыт.',
       sender: 'Мастер печи',
-      audio: 'tts-vo43', // TODO переозвучить отсечной
+      audio: 'tts-vo43', 
       startTime: timeDiff + 477,
     },
     {
@@ -4732,6 +4754,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       startTime: timeDiff + 495,
     },
     {
@@ -4865,6 +4888,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       startTime: timeDiff + 513,
     },
     {
@@ -6258,6 +6282,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       action: {
         target3D: 'ButtonHightlight_046',
       },
@@ -6719,6 +6744,7 @@ let tempActions = [
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
+      audio: 'radio_say',
       action: {
         target3D: 'ButtonHightlight_046',
       },
