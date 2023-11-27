@@ -1,6 +1,5 @@
 /*                 TODO
 ----------------------------------------------------
-Сделать ресайзер для 2Д
 ----------------------------------------------------
 */
 
@@ -282,6 +281,7 @@ function setDragEvents(elem) {
 }
 
 function startChangeFon() {
+  if (devHelper.trenVals.scenario !== undefined) devHelper.trenVals.scenario = undefined;
   devHelper.dev.intervalFon = setInterval(() => {
     for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {
       const Element = document.querySelectorAll('.photo')[i];

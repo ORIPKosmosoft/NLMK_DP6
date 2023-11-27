@@ -1,9 +1,7 @@
 /*                TODO
 ----------------------------------------------------
-Создать стили для текста концетрации
-----------------------------------------------------
-Создание эффекта концетрации
- текст центровать по центру дыры
+Доработать Хелпер.
+Сделать автоматическое выделения для всех 3Д элемнетов
 ----------------------------------------------------
 */
 function loadTrenActions() {
@@ -148,7 +146,6 @@ function trenTimeTick(timeStamp) {
       let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
       if (lastAction === undefined) trenFinish();
     }
-    // TODO Тут остановить при выходе из сценария
     window.requestAnimationFrame(trenTimeTick);
   }
 }

@@ -1,15 +1,4 @@
-// Остановка вращения камерой camera.inputs.attached.mouse._allowCameraRotation = false;
-/* Убрать движение камерой
-    camera.inputs.attached.keyboard.keysDown = [];
-    camera.inputs.attached.keyboard.keysDownward = [];
-    camera.inputs.attached.keyboard.keysLeft = [];
-    camera.inputs.attached.keyboard.keysRight = [];
-    camera.inputs.attached.keyboard.keysUp = [];
-    camera.inputs.attached.keyboard.keysUpward = [];
-*/
-
 /*----------TODO----------------------------------------------------
-Починить уход курсора с подсветки элемента хотспота с рендера
 --------------------------------------------------------------------
 */
 window.addEventListener('load', function () {
@@ -649,7 +638,7 @@ function changeColorTexture(Mesh = undefined, State = undefined) {
     else Mesh.renderOverlay = newColor;
   }
 }
-//TODO тут сделать часы 3Д
+
 function change3DTime(Time = '00:00:00') {
   let digit1 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits000');
   let digit2 = devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === 'Time_digits001');
