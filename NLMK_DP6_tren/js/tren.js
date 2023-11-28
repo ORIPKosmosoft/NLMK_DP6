@@ -600,6 +600,7 @@ function takeStartingState(Restart = false) {
                 } else {
                   devHelper.dev.enable && console.warn(`Не найден объект ${element.name || element.id} в тренажёре.`);
                 }
+                clearInterval(tempInterval);
               }
             }, 1500)
           }
