@@ -3,6 +3,8 @@
 Доработать Хелпер.
 Сделать автоматическое выделения для всех 3Д элемнетов
 ----------------------------------------------------
+Дополнительные переходы по пультам
+----------------------------------------------------
 */
 function loadTrenActions() {
   devHelper.trenVals.scenarioArr = [];
@@ -265,15 +267,15 @@ function playAudio(AudioName) {
 }
 function handleRotation(currentAction, Mesh) {
   const rotation = currentAction.action.rotation || {};
-  if (rotation.y !== undefined) moveRotationMesh(Mesh, 'r', rotation.y, 'y', currentAction.duration !== undefined ? currentAction.duration : 1);
-  if (rotation.z !== undefined) moveRotationMesh(Mesh, 'r', rotation.z, 'z', currentAction.duration !== undefined ? currentAction.duration : 1);
-  if (rotation.x !== undefined) moveRotationMesh(Mesh, 'r', rotation.x, 'x', currentAction.duration !== undefined ? currentAction.duration : 1);
+  if (rotation.y !== undefined || rotation.x !== undefined || rotation.z !== undefined) {
+    moveRotationMesh(Mesh, 'r', rotation, 'all', currentAction.duration !== undefined ? currentAction.duration : 1);
+  }
 }
 function handlePosition(currentAction, Mesh) {
   const position = currentAction.action.position || {};
-  if (position.x !== undefined) moveRotationMesh(Mesh, 'p', position.x, 'x', currentAction.duration !== undefined ? currentAction.duration : 1);
-  if (position.y !== undefined) moveRotationMesh(Mesh, 'p', position.y, 'y', currentAction.duration !== undefined ? currentAction.duration : 1);
-  if (position.z !== undefined) moveRotationMesh(Mesh, 'p', position.z, 'z', currentAction.duration !== undefined ? currentAction.duration : 1);
+  if (position.y !== undefined || position.x !== undefined || position.z !== undefined) {
+    moveRotationMesh(Mesh, 'p', position, 'all', currentAction.duration !== undefined ? currentAction.duration : 1);
+  }
 }
 
 function handleError(Mesh) {
@@ -555,14 +557,14 @@ function takeStartingState(Restart = false) {
     }
   }
   function makeStart3DVisual() {
-    devHelper.model3DVals.activeMeshs.forEach(mesh => {
-      if (mesh.startState.enable === true) {
+    devHelper.model3DVals.scene.meshes.forEach(mesh => {
+      if (mesh.startState && mesh.startState.enable === true) {
         if (mesh.startState.position !== undefined) {
-          let tempOnject = { action: { position: mesh.startState.position }, duration: 0.1 };
+          let tempOnject = { action: { position: { x: mesh.startState.position.x, y: mesh.startState.position.y, z: mesh.startState.position.z } }, duration: 0 };
           handlePosition(tempOnject, mesh);
         }
         if (mesh.startState.rotation !== undefined) {
-          let tempOnject = { action: { rotation: mesh.startState.rotation }, duration: 0.1 };
+          let tempOnject = { action: { rotation: { x: mesh.startState.rotation.x, y: mesh.startState.rotation.y, z: mesh.startState.rotation.z } }, duration: 0 };
           handleRotation(tempOnject, mesh);
         }
         if (mesh.startState.scale !== undefined) // не встречал такого
@@ -581,24 +583,45 @@ function takeStartingState(Restart = false) {
           changeScreenVals(element.name, element.number, element.color ? element.color : 'green');
         else {
           const mesh = findMesh(element.id || element.name);
-          let tempobj = { action: element };
-          tempobj.duration = 0.1;
-          if (mesh !== undefined) {
-            handleRotation(tempobj, mesh);
-            handlePosition(tempobj, mesh);
-            if (element.material) {
-              mesh.material = findMaterial(element.material);
+          if (!mesh) {
+            let tempInterval = setInterval(() => {
+              const mesh = findMesh(element.id || element.name);
+              if (mesh) {
+                if (!devHelper.model3DVals.activeMeshs.includes(mesh))
+                  makeActiveMesh(mesh, { name: element.id ? element.name : mesh.name });
+                let tempobj = { action: element };
+                tempobj.duration = 0;
+                if (mesh !== undefined) {
+                  handleRotation(tempobj, mesh);
+                  handlePosition(tempobj, mesh);
+                  if (element.material) {
+                    mesh.material = findMaterial(element.material);
+                  }
+                } else {
+                  devHelper.dev.enable && console.warn(`Не найден объект ${element.name || element.id} в тренажёре.`);
+                }
+              }
+            }, 1500)
+          }
+          else {
+            if (!devHelper.model3DVals.activeMeshs.includes(mesh))
+              makeActiveMesh(mesh, { name: element.id ? element.name : mesh.name });
+            let tempobj = { action: element };
+            tempobj.duration = 0;
+            if (mesh !== undefined) {
+              handleRotation(tempobj, mesh);
+              handlePosition(tempobj, mesh);
+              if (element.material) {
+                mesh.material = findMaterial(element.material);
+              }
+            } else {
+              devHelper.dev.enable && console.warn(`Не найден объект ${element.name || element.id} в тренажёре.`);
             }
-          } else {
-            devHelper.dev.enable && console.warn(`Не найден объект ${element.name || element.id} в тренажёре.`);
           }
         }
       });
     }
   }
-
-  startState3D.forEach((element) => {
-  })
 }
 
 function saveStart2DIF() {
@@ -1457,14 +1480,8 @@ document.getElementById('b_restart').addEventListener("click", (e) => {
 });
 
 function disableGeneralView(state = true) {
-  if (state) {
-    if (document.getElementById('b_GeneralView').hasAttribute('disabled')) {
-      document.getElementById('b_GeneralView').removeAttribute('disabled')
-    }
-  }
-  else {
-    document.getElementById('b_GeneralView').setAttribute('disabled', "");
-  }
+  const button = document.getElementById('b_GeneralView');
+  state ? button.removeAttribute('disabled') : button.setAttribute('disabled', "");
 }
 // КЛИК ОБРАТНО
 document.getElementById('b_GeneralView').addEventListener("click", (e) => {

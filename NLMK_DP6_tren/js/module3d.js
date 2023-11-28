@@ -1,4 +1,5 @@
 /*----------TODO----------------------------------------------------
+Сделать селшейдинг тени. Тени на самом себе объекте
 --------------------------------------------------------------------
 */
 window.addEventListener('load', function () {
@@ -25,10 +26,14 @@ window.addEventListener('load', function () {
     var shadowGenerator = new BABYLON.ShadowGenerator(1024, light2);
     shadowGenerator.useContactHardeningShadow = true;
     shadowGenerator.usePercentageCloserFiltering = true;
+
+    // shadowGenerator.useBlurCloseExponentialShadowMap = true;
+    // shadowGenerator.forceBackFacesOnly = true;
+    // shadowGenerator.blurKernel = 32;
+    // shadowGenerator.useKernelBlur = true;
     // shadowGenerator.filteringQuality = BABYLON.ShadowGenerator.QUALITY_LOW;
     // shadowGenerator.usePoissonSampling = true;
     // shadowGenerator.useBlurExponentialShadowMap = true;
-    // shadowGenerator.useBlurCloseExponentialShadowMap = true;
 
     loadModel(devHelper.model3DVals.loadModels[0], scene, shadowGenerator);
     scene.actionManager = new BABYLON.ActionManager(scene);
@@ -51,8 +56,13 @@ window.addEventListener('load', function () {
       )
     );
     scene.onPointerUp = function (evt, pickResult) {
-      if (devHelper.model3DVals.currentPosition !== undefined) {
-        animMoveCamera(devHelper.model3DVals.cameraPositions[devHelper.model3DVals.currentPosition], 0.5);
+      const currentPosition = devHelper.model3DVals.currentPosition;
+      if (currentPosition !== undefined) {
+        if (pickResult.pickedMesh.positionIndex && pickResult.pickedMesh.positionIndex !== currentPosition) {
+        } else {
+          animMoveCamera(devHelper.model3DVals.cameraPositions.find(elem => elem.position === currentPosition), 0.5);
+
+        }
       }
     };
     /* Блок кнопопк для камеры
@@ -138,14 +148,6 @@ window.addEventListener('load', function () {
   });
   function loadModel(Name, Scene, ShadowGenerator) {
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
-
-      // allMeshOptimization();
-      // findPointerMeshs();
-      // findSvgDisplays();
-      // findActiveMeshs();
-      // generateShadows();
-      // generateReceiveShadows();
-
       if (Name === 'All') {
         let meshArr = [];
         meshes.forEach(element => {
@@ -241,8 +243,22 @@ window.addEventListener('load', function () {
           }
         })
       } else if (Name === 'Console_DP6') {
+        const lightMat = new BABYLON.StandardMaterial("lightMatDP6");
+        lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
+        lightMat.alpha = 0;
         meshes.forEach(mesh => {
-          if (mesh.id && mesh.id === '0376bd70-dc53-46d7-a9b6-9f2a0fbe9a44') { // Создать точки над красным экраном
+          if (mesh.id && mesh.id === 'd77660f1-f36a-489c-b0a4-e0cbb5d74f0a') {
+            let box = BABYLON.MeshBuilder.CreateBox("DP6_monitors", { size: 1 }, Scene);
+            box.position = new BABYLON.Vector3(2.961, 1.289, 0.363);
+            box.scaling = new BABYLON.Vector3(1.35, 0.5, 0.02);
+            box.material = lightMat;
+          } else if (mesh.id && mesh.id === '0429fd81-7fa5-481b-890c-d87b0f7097fe') {
+            let box = BABYLON.MeshBuilder.CreateBox("DP6_tumblers", { size: 1 }, Scene);
+            box.position = new BABYLON.Vector3(2.963, 0.973, -0.152);
+            box.scaling = new BABYLON.Vector3(1.35, 0.2, 0.8);
+            box.rotation = new BABYLON.Vector3(175 * (Math.PI / 180), 0, 0);
+            box.material = lightMat;
+          } else if (mesh.id && mesh.id === '0376bd70-dc53-46d7-a9b6-9f2a0fbe9a44') { // Создать точки над красным экраном
             let meshWidth = mesh.getBoundingInfo().boundingBox.extendSize.x * 2.5;
             for (let i = 0; i < 15; i++) {
               const clone = mesh.clone(`Clone_${i}_${mesh.name}`);
@@ -253,11 +269,26 @@ window.addEventListener('load', function () {
         var box = BABYLON.MeshBuilder.CreateBox("downBtnFPrirGaza_highlight", { size: 1 }, Scene);
         box.position = new BABYLON.Vector3(2.993, 1.184, 0.353);
         box.scaling = new BABYLON.Vector3(0.015, 0.015, 0.02);
-        const lightMat = new BABYLON.StandardMaterial("lightMat1");
-        lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
-        lightMat.alpha = 0;
         box.material = lightMat;
         makeActiveMesh(box, { name: 'downBtnFPrirGaza_highlight' });
+      } else if (Name === 'Console_BVNK') {
+        const lightMat = new BABYLON.StandardMaterial("lightMatBVNK");
+        lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
+        lightMat.alpha = 0;
+        meshes.forEach(mesh => {
+          if (mesh.id && mesh.id === 'ba053138-9c06-4271-90be-d8be4f72543e') {
+            var box = BABYLON.MeshBuilder.CreateBox("BVNK_monitors", { size: 1 }, Scene);
+            box.position = new BABYLON.Vector3(-3.536, 1.289, 0.363);
+            box.scaling = new BABYLON.Vector3(1.065, 0.5, 0.02);
+            box.material = lightMat;
+          } else if (mesh.id && mesh.id === 'a496de76-2265-45a0-be51-9d2adc7f7694') {
+            var box = BABYLON.MeshBuilder.CreateBox("BVNK_tumblers", { size: 1 }, Scene);
+            box.position = new BABYLON.Vector3(-3.536, 0.975, -0.133);
+            box.scaling = new BABYLON.Vector3(1.065, 0.2, 0.8);
+            box.rotation = new BABYLON.Vector3(175 * (Math.PI / 180), 0, 0);
+            box.material = lightMat;
+          }
+        })
       }
       try {
         setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
@@ -305,13 +336,9 @@ window.addEventListener('load', function () {
     }
     function findPointerMeshs() {
       devHelper.model3DVals.movePointMeshToArr.forEach(elem => {
-        const meshNamesToSearch = devHelper.model3DVals.scene.meshes.filter(mesh => mesh.name.includes(elem.name));
-        if (meshNamesToSearch.length > 0) {
-          meshNamesToSearch.forEach(mesh => {
-            if (devHelper.model3DVals.movePointMesh.indexOf(mesh) === -1) {
-              makeActiveMesh(mesh, elem.point);
-            }
-          });
+        let mesh = findMesh(elem.name);
+        if (mesh && devHelper.model3DVals.movePointMesh.indexOf(mesh) === -1) {
+          makeActiveMesh(mesh, elem.point);
         }
       });
     }
@@ -343,17 +370,7 @@ window.addEventListener('load', function () {
       });
     }
 
-    function meshOptimization(mesh, name = undefined) {
-      if (mesh._children && mesh._children.length > 0)
-        mesh._children.forEach(child => meshOptimization(child));
-      if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
-        devHelper.model3DVals.octree.dynamicContent.push(mesh);
-      if (mesh.material) mesh.material.freeze();
-      mesh.freezeWorldMatrix();
-      mesh.doNotSyncBoundingInfo = mesh instanceof BABYLON.InstancedMesh ? false : true;
-      mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
-      mesh.isPickable = true;
-    }
+
 
     function setImageOnMonitor(url, scene, mesh) {
       if (mesh._sourceMesh !== undefined) mesh = createCloneInstancedMesh(mesh, url, scene);
@@ -379,8 +396,8 @@ window.addEventListener('load', function () {
   }
 })
 
-function createCloneInstancedMesh(mesh, url = undefined, scene = undefined) {
-  let newMesh = mesh.sourceMesh.clone();
+function createCloneInstancedMesh(mesh, url = undefined, scene = undefined, duplcitate = false) {
+  let newMesh = duplcitate ? mesh : mesh.sourceMesh.clone();
   newMesh.name = mesh.name;
   newMesh.setParent(mesh.parent);
   newMesh.rotation = new BABYLON.Vector3(0, 0, 0);
@@ -392,7 +409,6 @@ function createCloneInstancedMesh(mesh, url = undefined, scene = undefined) {
       newMesh.material.diffuseTexture.updateURL(url);
   } else
     newMesh.material = mesh.material.clone(`material_${mesh.name}`);
-
   newMesh.setAbsolutePosition(
     new BABYLON.Vector3(
       mesh.absolutePosition._x,
@@ -440,12 +456,25 @@ function makeSvgDisplay(Mesh, Scene, SvgName) {
   }, 500);
 }
 
+function meshOptimization(mesh, name = undefined) {
+  if (mesh._children && mesh._children.length > 0)
+    mesh._children.forEach(child => meshOptimization(child));
+  if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
+    devHelper.model3DVals.octree.dynamicContent.push(mesh);
+  if (mesh.material) mesh.material.freeze();
+  mesh.freezeWorldMatrix();
+  mesh.doNotSyncBoundingInfo = mesh instanceof BABYLON.InstancedMesh ? false : true;
+  mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
+  mesh.isPickable = true;
+}
+
 function makeActiveMesh(Mesh = undefined, Vals = undefined) {
   if (Mesh === undefined || Vals === undefined) {
     if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции makeActivemesh.');
     return;
   } else {
     const mesh = Mesh._sourceMesh !== undefined ? createCloneInstancedMesh(Mesh) : Mesh;
+    // meshOptimization(mesh);
     if (Vals.name) {
       mesh.name = Vals.name;
       mesh.currentPosition = Vals.posIndex;
@@ -459,6 +488,7 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
       mesh.material.alpha = 0;
       mesh.material.transparencyMode = null;
     }
+
     mesh.material.unfreeze();
     mesh.unfreezeWorldMatrix();
     mesh.actionManager = new BABYLON.ActionManager(devHelper.model3DVals.scene);
@@ -471,7 +501,7 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
           if (Vals.name) {
             clickOnMesh(mesh);
           } else if (typeof Vals === 'number') {
-            clickOnPointMesh(mesh, devHelper.model3DVals.cameraPositions[Vals]);
+            clickOnPointMesh(mesh, devHelper.model3DVals.cameraPositions.find(elem => elem.position === Vals));
           }
         }
       )
@@ -489,6 +519,12 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
       )
     );
     makeUnicMat(mesh);
+
+    if (mesh.rotationQuaternion) {
+      var eulerRotation = mesh.rotationQuaternion.toEulerAngles();
+      mesh.rotation = eulerRotation;
+      mesh.rotationQuaternion = null;
+    }
     mesh.startState = {
       enable: false,
       position: undefined,
@@ -596,12 +632,13 @@ function RemoveSvgFromTextrue(Mesh = undefined, RemoveWindowName = undefined) {
 function changeColorTexture(Mesh = undefined, State = undefined) {
   let tempBool = false;
   if (devHelper.model3DVals.movePointMesh.indexOf(Mesh) !== -1) {
-    if (devHelper.model3DVals.currentPosition === undefined)
-      tempBool = true;
-  } else if (devHelper.model3DVals.activeMeshs.indexOf(Mesh) !== -1) {
-    if (devHelper.model3DVals.currentPosition === Mesh.currentPosition)
+    if (devHelper.model3DVals.currentPosition === undefined || Mesh.positionIndex > 100)
       tempBool = true;
   }
+  // else if (devHelper.model3DVals.activeMeshs.indexOf(Mesh) !== -1) {
+  //   if (devHelper.model3DVals.currentPosition === Mesh.currentPosition)
+  //     tempBool = true;
+  // }
 
   if (tempBool === true) {
     // if (State === true) {
@@ -663,7 +700,7 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
     if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
   }
   if (Mesh !== undefined || Axis !== undefined) {
-    Mesh.rotation = Mesh.rotation.clone();
+    Mesh.unfreezeWorldMatrix();
     if (!Mesh.startState) {
       Mesh.startState = {
         enable: false,
@@ -676,6 +713,16 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
       }
     }
     Mesh.startState.enable = true;
+    if (Mesh.rotationQuaternion) Mesh.rotationQuaternion = null;
+    let meshX = Type === 'r' ? (Mesh.rotationQuaternion ? Mesh.rotationQuaternion.toEulerAngles().y : Mesh.rotation.x) : Mesh.position.x;
+    let meshY = Type === 'r' ? (Mesh.rotationQuaternion ? Mesh.rotationQuaternion.toEulerAngles().y : Mesh.rotation.y) : Mesh.position.y;
+    let meshZ = Type === 'r' ? (Mesh.rotationQuaternion ? Mesh.rotationQuaternion.toEulerAngles().y : Mesh.rotation.z) : Mesh.position.z;
+    let newValX = Val.x !== undefined ? (Type === 'r' ? (Mesh.rotationQuaternion ? (Val.x * (180 / Math.PI)) : Val.x) : Val.x) : undefined;
+    let valX = newValX !== undefined ? newValX : meshX;
+    let newValY = Val.y !== undefined ? (Type === 'r' ? (Mesh.rotationQuaternion ? (Val.y * (180 / Math.PI)) : Val.y) : Val.y) : undefined;
+    let valY = newValY !== undefined ? newValY : meshY;
+    let newValZ = Val.z !== undefined ? (Type === 'r' ? (Mesh.rotationQuaternion ? (Val.z * (180 / Math.PI)) : Val.z) : Val.z) : undefined;
+    let valZ = newValZ !== undefined ? newValZ : meshZ;
     if (Type === 'r') {
       if (Mesh.startState.rotation === undefined)
         Mesh.startState.rotation = Mesh.rotation.clone();
@@ -683,26 +730,67 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
       if (Mesh.startState.position === undefined)
         Mesh.startState.position = Mesh.position.clone();
     }
-    // if (Type === 'r') Val = Val * (Math.PI / 180);
-    let animation = new BABYLON.Animation(
-      Type === 'r' ? "rotationAnimation" : "positionAnimation",
-      Type === 'r' ? `rotation.${Axis}` : `position.${Axis}`,
-      60,
-      BABYLON.Animation.ANIMATIONTYPE_FLOAT,
-      BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
-    );
-    var keys = [
-      {
-        frame: 0,
-        value: Type === 'r' ? Mesh.rotation[Axis] : Mesh.position[Axis],
-      },
-      {
-        frame: Duration * 60,
-        value: Val,
-      }
-    ];
-    animation.setKeys(keys);
-    Scene.beginDirectAnimation(Mesh, [animation], 0, Duration * 60, false);
+    if (Duration === 0) {
+      if (Type === 'r') Mesh.rotation = new BABYLON.Vector3(valX, valY, valZ);
+      else Mesh.position = new BABYLON.Vector3(valX, valY, valZ);
+    } else {
+      Mesh.rotation = Mesh.rotation.clone();
+      let animationX = new BABYLON.Animation(
+        Type === 'r' ? "rotationAnimationX" : "positionAnimationX",
+        Type === 'r' ? `rotation.x` : `position.x`,
+        60,
+        BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+        BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+      );
+      let animationY = new BABYLON.Animation(
+        Type === 'r' ? "rotationAnimationY" : "positionAnimationY",
+        Type === 'r' ? `rotation.y` : `position.y`,
+        60,
+        BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+        BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+      );
+      let animationZ = new BABYLON.Animation(
+        Type === 'r' ? "rotationAnimationZ" : "positionAnimationZ",
+        Type === 'r' ? `rotation.z` : `position.z`,
+        60,
+        BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+        BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+      );
+      let keysX = [
+        {
+          frame: 0,
+          value: meshX,
+        },
+        {
+          frame: Duration * 60,
+          value: valX,
+        }
+      ];
+      let keysY = [
+        {
+          frame: 0,
+          value: meshY,
+        },
+        {
+          frame: Duration * 60,
+          value: valY,
+        }
+      ];
+      let keysZ = [
+        {
+          frame: 0,
+          value: meshZ,
+        },
+        {
+          frame: Duration * 60,
+          value: valZ,
+        }
+      ];
+      animationX.setKeys(keysX);
+      animationY.setKeys(keysY);
+      animationZ.setKeys(keysZ);
+      Scene.beginDirectAnimation(Mesh, [animationX, animationY, animationZ], 0, Duration * 60, false);
+    }
   } else return
 }
 
@@ -725,7 +813,6 @@ function animMoveCamera(Vals, Speed = 2) {
     BABYLON.Animation.ANIMATIONTYPE_VECTOR3,
     BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
   );
-
   var positionKeys = [];
   positionKeys.push({
     frame: 0,
@@ -761,12 +848,22 @@ function animMoveCamera(Vals, Speed = 2) {
     if (document.querySelector('#b_help'))
       document.querySelector('#b_help').style.pointerEvents = 'all';
     if (devHelper.model3DVals.currentPosition !== undefined) {
-      createSvghelper(Vals.position);
+      if (Vals.position <= 100) {
+        createSvghelper(Vals.position);
+        devHelper.model3DVals.movePointMesh.forEach(mesh => {
+          if (mesh.positionIndex > 100) {
+            mesh.isPickable = true;
+            if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(true);
+          }
+        })
+      }
       disableGeneralView();
     } else {
       devHelper.model3DVals.movePointMesh.forEach(mesh => {
-        mesh.isPickable = true;
-        if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(true);
+        if (mesh.positionIndex <= 100) {
+          mesh.isPickable = true;
+          if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(true);
+        }
       })
     }
   });
