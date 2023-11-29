@@ -1,9 +1,5 @@
 /*                TODO
 ----------------------------------------------------
-Доработать Хелпер.
-Сделать автоматическое выделения для всех 3Д элемнетов
-----------------------------------------------------
-Дополнительные переходы по пультам
 ----------------------------------------------------
 */
 function loadTrenActions() {
@@ -57,7 +53,9 @@ function startTren(Restart = false) {
     devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].startTime === 0) {
     devHelper.trenVals.waitingInput = true;
   } else devHelper.trenVals.waitingInput = false;
-
+  // TODO тут сделать исчезание 
+  document.querySelector('.end-cointainer').style.opacity = '';
+  document.querySelector('.end-cointainer').style.display = '';
   let maxChapterActions = Math.ceil(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length / 6);
   devHelper.endVals.actionChapter = [maxChapterActions, maxChapterActions, maxChapterActions, maxChapterActions, maxChapterActions, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length - maxChapterActions * 5];
   devHelper.endVals.currentChapter = 0;
@@ -83,7 +81,7 @@ function startTren(Restart = false) {
   })
   const differenceArray = tempArrDur.map((currentValue, index, array) => {
     if (index === 0) return 0;
-    else return Math.ceil((currentValue - array[index - 1]) * 2.2);
+    else return Math.ceil((currentValue - array[index - 1]) * 2.6);
   });
   differenceArray.shift();
   devHelper.endVals.averageTime = differenceArray;
@@ -173,10 +171,11 @@ function trenTimeTick(timeStamp) {
             updateSvgTextures();
           }
           if (nextAction.action && nextAction.action.target3D) {
-            let mesh = devHelper.model3DVals.activeMeshs.find(mesh => mesh.name === nextAction.action.target3D) ||
-              devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === nextAction.action.target3D);
-            if (!mesh)
-              mesh = devHelper.model3DVals.scene.meshes.find(mesh => mesh.id === nextAction.action.target3D);
+            let mesh = findMesh(nextAction.action.target3D);
+            // let mesh = devHelper.model3DVals.activeMeshs.find(mesh => mesh.name === nextAction.action.target3D) ||
+            //   devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === nextAction.action.target3D);
+            // if (!mesh)
+            //   mesh = devHelper.model3DVals.scene.meshes.find(mesh => mesh.id === nextAction.action.target3D);
             if (mesh) {
               handleRotation(nextAction, mesh);
               handlePosition(nextAction, mesh);
@@ -256,7 +255,7 @@ function actionAfterClickOnMesh(Action, Mesh, Text) {
           let currentActions = currentActionObject.multi ? currentActionObject.multi : [currentActionObject.action];
           for (let i = 0; i < currentActions.length; i++) {
             const currentAction = currentActions[i].action;
-            if (currentAction.target3D && currentAction.target3D === activatorMesh.name) {
+            if (currentAction.target3D && (currentAction.target3D === activatorMesh.name || currentAction.target3D === activatorMesh.id)) {
               tempBool = true;
               if (standartActionMesh.changeMeshmaterial.condition.rotation && !areObjectsEqual(standartActionMesh.changeMeshmaterial.condition.rotation, currentAction.rotation)) {
                 tempBool = false;
@@ -291,11 +290,11 @@ function trenClickOnMesh(Mesh) {
   if (!devHelper.trenVals.waitingInput) return;
   const currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario]
     .actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-  if (currentAction.action && currentAction.action.target3D === Mesh.name) {
+  if (currentAction.action && (currentAction.action.target3D === Mesh.name || currentAction.action.target3D === Mesh.id)) {
     actionAfterClickOnMesh(currentAction, Mesh);
     newActionStartHelper(currentAction);
   } else if (currentAction.multi && currentAction.multi.length > 0) {
-    const multiAction = devHelper.trenVals.multiAction.find(multiAction2 => (multiAction2.action.target3D === Mesh.name));
+    const multiAction = devHelper.trenVals.multiAction.find(multiAction2 => (multiAction2.action.target3D === Mesh.name || multiAction2.action.target3D === Mesh.id));
     if (multiAction) {
       actionAfterClickOnMesh(multiAction, Mesh, multiAction.text);
       devHelper.trenVals.multiAction = devHelper.trenVals.multiAction.filter(function (item) {
@@ -1553,7 +1552,13 @@ document.getElementById('b_GeneralView').addEventListener("click", (e) => {
     mesh.isPickable = false;
     if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(false);
   })
-  animMoveCamera(devHelper.model3DVals.cameraPositions[0]);
+  if (devHelper.model3DVals.currentPosition > 100) {
+    if (devHelper.model3DVals.currentPosition === 101 || devHelper.model3DVals.currentPosition === 102) {
+      animMoveCamera(devHelper.model3DVals.cameraPositions[8]);
+    } else if (devHelper.model3DVals.currentPosition === 103 || devHelper.model3DVals.currentPosition === 104) {
+      animMoveCamera(devHelper.model3DVals.cameraPositions[9]);
+    }
+  } else animMoveCamera(devHelper.model3DVals.cameraPositions[0]);
   setNewFillButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Normal);
   document.getElementById('b_GeneralView').setAttribute('disabled', "");
 })
@@ -1564,12 +1569,26 @@ document.getElementById('b_chat').addEventListener("mouseover", (e) => { setMini
 document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseover", (e) => {
   let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   if (currentAction && currentAction.concentration) createConcentrationEffectCondition(currentAction.concentration);
-  else {
+  else if (currentAction && currentAction.action && currentAction.action.target3D && currentAction.human) {
+    let tempMesh = findMesh(currentAction.action.target3D);
+    if (tempMesh) changeColorTexture(tempMesh, true, true);
+    document.querySelector('.box-help').innerHTML = 'Нажать курсором на 3Д объект,<br> выделенный жёлтым цветом.';
+  } else if (currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
+    let tempNameSvg = document.querySelector('#svg-helper').forScheme;
+    let tempRealShemeName = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
+    let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === currentAction.action.target2D);
+    document.querySelector('.box-help').innerHTML = `Нажать курсором по элементу ${tempRealHelper && tempRealHelper.realName ? tempRealHelper.realName : ''} на схеме ${tempRealShemeName ? tempRealShemeName : ''}.`;
+  } else {
     document.querySelector('.box-help').innerHTML = '';
     document.querySelector('.box-help').classList.toggle('opacity-1-Temp', false);
   }
 })
 document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseout", (e) => {
+  let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+  if (currentAction && currentAction.action && currentAction.action.target3D && currentAction.human) {
+    let tempMesh = findMesh(currentAction.action.target3D);
+    if (tempMesh) changeColorTexture(tempMesh, false, true);
+  }
   if (document.querySelector('.concentration')) document.querySelector('.concentration').style.opacity = 0;
   if (document.getElementById('b_help').active3DTexture) {
     changeColorTexture(document.getElementById('b_help').active3DTexture, false);

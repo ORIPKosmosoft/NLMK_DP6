@@ -195,7 +195,7 @@ const devHelper = {
     {
       name: 'O_n_k_na_VNK_posle_1', helpers: [
         { x: 61.00, y: 47.2, w: 1.5, h: 2.4, forAction: true, id: 'close_w1', removeWindow: 'O_n_k_na_VNK_posle_1', },
-        { x: 53.40, y: 59.1, w: 4.0, h: 2.6, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, } },// open
+        { x: 53.40, y: 59.1, w: 4.0, h: 2.6, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, realName: 'Открыть', },// open
         { x: 83.80, y: 78.8, w: 8.6, h: 2.6, forAction: true, id: 'win_posle_1_stop_btn', x: 1124, y: 546, },  // stop  //  freeBTN
       ]
     },
@@ -687,7 +687,7 @@ let tempActions = [
 
     {
       action: {
-        target3D: 'Handle_013',
+        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
         rotation: { y: 1.571 },
       },
       duration: 0.3,
@@ -703,7 +703,7 @@ let tempActions = [
       startTime: timeDiff + 3,
     },
     {
-      startTime: timeDiff + 100,
+      startTime: timeDiff + 5,
     },
   ],
   // Первый сценарий  

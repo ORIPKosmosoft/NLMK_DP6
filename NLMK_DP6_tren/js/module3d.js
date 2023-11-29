@@ -55,13 +55,21 @@ window.addEventListener('load', function () {
         }
       )
     );
+    let tempDiffPosPointer = {};
+    scene.onPointerDown = function (evt, pickResult) {
+      tempDiffPosPointer.x = evt.clientX;
+      tempDiffPosPointer.y = evt.clientY;
+    };
+
     scene.onPointerUp = function (evt, pickResult) {
       const currentPosition = devHelper.model3DVals.currentPosition;
       if (currentPosition !== undefined) {
-        if (pickResult.pickedMesh.positionIndex && pickResult.pickedMesh.positionIndex !== currentPosition) {
+        const { x, y } = tempDiffPosPointer;
+        if (x !== evt.clientX || y !== evt.clientY) {
+          animMoveCamera(devHelper.model3DVals.cameraPositions.find(elem => elem.position === currentPosition), 0.5);
+        } else if (pickResult.pickedMesh.positionIndex && pickResult.pickedMesh.positionIndex !== currentPosition) {
         } else {
           animMoveCamera(devHelper.model3DVals.cameraPositions.find(elem => elem.position === currentPosition), 0.5);
-
         }
       }
     };
@@ -629,12 +637,13 @@ function RemoveSvgFromTextrue(Mesh = undefined, RemoveWindowName = undefined) {
   }
 }
 
-function changeColorTexture(Mesh = undefined, State = undefined) {
+function changeColorTexture(Mesh = undefined, State = undefined, Help = false) {
   let tempBool = false;
   if (devHelper.model3DVals.movePointMesh.indexOf(Mesh) !== -1) {
     if (devHelper.model3DVals.currentPosition === undefined || Mesh.positionIndex > 100)
       tempBool = true;
   }
+  if (Help) tempBool = true;
   // else if (devHelper.model3DVals.activeMeshs.indexOf(Mesh) !== -1) {
   //   if (devHelper.model3DVals.currentPosition === Mesh.currentPosition)
   //     tempBool = true;

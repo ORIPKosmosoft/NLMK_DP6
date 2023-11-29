@@ -1856,7 +1856,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
         let textureSvgName = SvgName === undefined ? mainMesh.svgArr[mainMesh.svgArr.length - 1].name : SvgName;
         let currentMeshTexture = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition).material.diffuseTexture;
         let textureName = currentMeshTexture.name.substring(currentMeshTexture.name.indexOf('_') + 1);
-        createSvgHelperButtons(devHelper.svgHelpers[devHelper.svgHelpers.findIndex(element => element.name === textureSvgName)].helpers);
+        createSvgHelperButtons(devHelper.svgHelpers[devHelper.svgHelpers.findIndex(element => element.name === textureSvgName)].helpers, textureSvgName);
         function createSvgHelperButton(Vals, DisplayMesh) {
           let invisElem = document.createElement('div');
           invisElem.classList.add('invisible-element-svg');
@@ -1916,8 +1916,8 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           });
           return invisElem;
         }
-        function createSvgHelperButtons(Arr) {
-          let mainContainer = createMainHelperContainer();
+        function createSvgHelperButtons(Arr, TextureSvgName) {
+          let mainContainer = createMainHelperContainer(TextureSvgName);
           let currentActonObject = findLast(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions, action => (action.passed === true && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
           Arr.forEach((element) => {
             if (currentActonObject && currentActonObject.hasOwnProperty('action') && currentActonObject.action.hasOwnProperty('helper2D')) {
@@ -1932,7 +1932,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
             }
             mainContainer.append(createSvgHelperButton(element, mainMesh));
           })
-          function createMainHelperContainer() {
+          function createMainHelperContainer(TextureSvgName) {
             if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
             let mesh2DVals = getClientRectFromMesh(devHelper.model3DVals.svgDisplays.meshs.find(m => m.positionIndex === devHelper.model3DVals.currentPosition));
             let mainContainer = document.createElement('div');
@@ -1942,6 +1942,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
             mainContainer.style.width = (mesh2DVals.width / (document.getElementById('renderCanvas').width / 100)) + '%';
             mainContainer.style.height = (mesh2DVals.height / (document.getElementById('renderCanvas').height / 100)) + '%';
             mainContainer.id = 'svg-helper';
+            mainContainer.forScheme = TextureSvgName;
             document.body.querySelector('.game-view').append(mainContainer);
             return mainContainer;
           }
