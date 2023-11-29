@@ -378,22 +378,6 @@ window.addEventListener('load', function () {
       });
     }
 
-
-
-    function setImageOnMonitor(url, scene, mesh) {
-      if (mesh._sourceMesh !== undefined) mesh = createCloneInstancedMesh(mesh, url, scene);
-      else {
-        if (!mesh.material || mesh.material.name !== 'material_' + mesh.name) {
-          mesh.material = new BABYLON.StandardMaterial('material_' + mesh.name, scene);
-          mesh.material.diffuseTexture = new BABYLON.Texture(url, scene);
-        } else {
-          mesh.material.diffuseTexture.updateURL(url);
-        }
-      }
-      if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
-        devHelper.model3DVals.octree.dynamicContent.push(mesh);
-    }
-
     if (devHelper.model3DVals.loadModels.length > 1) {
       devHelper.model3DVals.loadModels.shift();
       loadModel(devHelper.model3DVals.loadModels[0], Scene, ShadowGenerator);
@@ -403,6 +387,21 @@ window.addEventListener('load', function () {
     }
   }
 })
+
+function setImageOnMonitor(url, scene, mesh) {
+  if (mesh._sourceMesh !== undefined) mesh = createCloneInstancedMesh(mesh, url, scene);
+  else {
+    if (!mesh.material || mesh.material.name !== 'material_' + mesh.name) {
+      mesh.material = new BABYLON.StandardMaterial('material_' + mesh.name, scene);
+      mesh.material.diffuseTexture = new BABYLON.Texture(url, scene);
+    } else {
+      mesh.material.diffuseTexture.updateURL(url);
+    }
+  }
+  if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
+    devHelper.model3DVals.octree.dynamicContent.push(mesh);
+}
+
 
 function createCloneInstancedMesh(mesh, url = undefined, scene = undefined, duplcitate = false) {
   let newMesh = duplcitate ? mesh : mesh.sourceMesh.clone();

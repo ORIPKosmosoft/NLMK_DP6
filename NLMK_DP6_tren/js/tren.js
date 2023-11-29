@@ -172,16 +172,15 @@ function trenTimeTick(timeStamp) {
           }
           if (nextAction.action && nextAction.action.target3D) {
             let mesh = findMesh(nextAction.action.target3D);
-            // let mesh = devHelper.model3DVals.activeMeshs.find(mesh => mesh.name === nextAction.action.target3D) ||
-            //   devHelper.model3DVals.scene.meshes.find(mesh => mesh.name === nextAction.action.target3D);
-            // if (!mesh)
-            //   mesh = devHelper.model3DVals.scene.meshes.find(mesh => mesh.id === nextAction.action.target3D);
             if (mesh) {
               handleRotation(nextAction, mesh);
               handlePosition(nextAction, mesh);
               if (nextAction.action.material) {
                 const tempMaterial = findMaterial(nextAction.action.material);
                 mesh.material = tempMaterial || mesh.material;
+              }
+              if (nextAction.action.imgTexture) {
+                setImageOnMonitor(nextAction.action.imgTexture, devHelper.model3DVals.scene, mesh);
               }
             } else {
               if (nextAction.action.number)

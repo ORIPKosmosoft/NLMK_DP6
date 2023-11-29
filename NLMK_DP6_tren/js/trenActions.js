@@ -684,7 +684,13 @@ const timeDiff = -0;
 let tempActions = [
   [ // test scenario 1
     ////--------------------------------2---------------------------------------- 
-
+    {
+      action: { // замена текстуры но рисунок
+        target3D: 'ea447b82-8145-4ba1-8e9f-abc1360dbcb6',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg'
+      },
+      startTime: timeDiff + 1,
+    },
     {
       action: {
         target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
@@ -727,7 +733,7 @@ let tempActions = [
     {
       action: {
         target2D: 'kl029',
-        realName: 'Клапан 030',
+        realName: 'Клапан 029',
         window2D: {
           elements: [
             { name: 'title_work_vn', text: 'Управление клапаном 029' },
