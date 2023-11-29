@@ -1554,9 +1554,9 @@ document.getElementById('b_GeneralView').addEventListener("click", (e) => {
   })
   if (devHelper.model3DVals.currentPosition > 100) {
     if (devHelper.model3DVals.currentPosition === 101 || devHelper.model3DVals.currentPosition === 102) {
-      animMoveCamera(devHelper.model3DVals.cameraPositions[8]);
+      animMoveCamera(devHelper.model3DVals.cameraPositions.find(obj => obj.position === 3), 1);
     } else if (devHelper.model3DVals.currentPosition === 103 || devHelper.model3DVals.currentPosition === 104) {
-      animMoveCamera(devHelper.model3DVals.cameraPositions[9]);
+      animMoveCamera(devHelper.model3DVals.cameraPositions.find(obj => obj.position === 9), 1);
     }
   } else animMoveCamera(devHelper.model3DVals.cameraPositions[0]);
   setNewFillButtonSVG(e.currentTarget.querySelector('object'), COLOR_STATE_BUTTON.Normal);

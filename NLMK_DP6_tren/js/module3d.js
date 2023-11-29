@@ -557,7 +557,7 @@ function clickOnPointMesh(Mesh = undefined, Vals = undefined) {
     devHelper.model3DVals.movePointMesh.forEach(mesh => {
       changeColorTexture(mesh, false);
     })
-    animMoveCamera(Vals);
+    animMoveCamera(Vals, Vals.position > 100 ? 1 : 2);
   }
 }
 
