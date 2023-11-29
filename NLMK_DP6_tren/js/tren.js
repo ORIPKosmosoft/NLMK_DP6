@@ -57,6 +57,56 @@ function startTren(Restart = false) {
     devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].startTime === 0) {
     devHelper.trenVals.waitingInput = true;
   } else devHelper.trenVals.waitingInput = false;
+
+  let maxChapterActions = Math.ceil(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length / 6);
+  devHelper.endVals.actionChapter = [maxChapterActions, maxChapterActions, maxChapterActions, maxChapterActions, maxChapterActions, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length - maxChapterActions * 5];
+  devHelper.endVals.currentChapter = 0;
+  devHelper.endVals.currentActionCount = 0;
+  devHelper.endVals.errors = [0];
+  devHelper.endVals.humanTime = [];
+  let tempArr = Array.from(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions);
+  tempArr.sort((a, b) => a.startTime - b.startTime);
+
+  let tempArrDur = [];
+  let tempAudio = [];
+  tempArr.forEach((element, index) => {
+    if (index === tempArr.length - 1 || index % maxChapterActions === 0) {
+      tempArrDur.push(element.startTime);
+      devHelper.endVals.currentChapter++;
+    }
+    if (tempAudio.length !== devHelper.endVals.currentChapter) {
+      tempAudio.push([]);
+    }
+    if (element.audio) {
+      tempAudio[tempAudio.length - 1].push(element.audio);
+    }
+  })
+  const differenceArray = tempArrDur.map((currentValue, index, array) => {
+    if (index === 0) return 0;
+    else return Math.ceil((currentValue - array[index - 1]) * 2.2);
+  });
+  differenceArray.shift();
+  devHelper.endVals.averageTime = differenceArray;
+  tempAudio.pop();
+  let tempAudioDuration = [];
+  tempAudio.forEach((arr, index) => {
+    if (tempAudioDuration.length - 1 !== index) tempAudioDuration.push([]);
+    arr.forEach(audioName => {
+      let audioDuration = devHelper.audio.find(element => element.name === audioName).element.duration;
+      if (audioDuration) tempAudioDuration[tempAudioDuration.length - 1].push(Math.ceil(audioDuration));
+    })
+  })
+  let newTempAtt2 = [];
+  tempAudioDuration.forEach((arr, index) => {
+    newTempAtt2.push(arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0))
+  })
+  devHelper.endVals.averageTime.forEach((element, index) => {
+    if (element < newTempAtt2[index]) {
+      element = newTempAtt2[index];
+    }
+  })
+  devHelper.endVals.currentChapter = 0;
+
   if (Restart === false)
     window.requestAnimationFrame(trenTimeTick);
 }
@@ -136,7 +186,7 @@ function trenTimeTick(timeStamp) {
               }
             } else {
               if (nextAction.action.number)
-                changeScreenVals(nextAction.action.target3D, nextAction.action.number);
+                changeScreenVals(nextAction.action.target3D, nextAction.action.number, nextAction.action.color ? nextAction.action.color : 'green');
             }
           }
           newActionStartHelper(nextAction);
@@ -279,8 +329,11 @@ function handlePosition(currentAction, Mesh) {
 }
 
 function handleError(Mesh) {
-  devHelper.dev.enable && console.warn(`Клик на ${Mesh.name} в действии ${devHelper.trenVals.currentAction} неверный.`);
+  devHelper.dev.enable && console.warn(`Клик на ${Mesh.name ? Mesh.name : Mesh} в действии ${devHelper.trenVals.currentAction} неверный.`);
   sendMessage("Ошибка", "Вы совершили неверное действие.");
+  if (!devHelper.endVals.errors[devHelper.endVals.currentChapter + 1])
+    devHelper.endVals.errors.push(1);
+  else devHelper.endVals.errors[devHelper.endVals.currentChapter + 1]++;
 }
 
 function trenClickOnSvgElem(SvgElemHelper = undefined) {
@@ -313,7 +366,7 @@ function trenFinish() {
     const text = element.innerHTML;
     const nextElement = element.nextElementSibling;
     if (text === 'Норма прохождения:') {
-      nextElement.innerHTML = formatTime(devHelper.endVals.averangeTime.reduce((accumulator, currentValue) => accumulator + currentValue, 0));
+      nextElement.innerHTML = formatTime(devHelper.endVals.averageTime.reduce((accumulator, currentValue) => accumulator + currentValue, 0));
     } else if (text === 'Ваше время:') {
       nextElement.innerHTML = formatTime(devHelper.endVals.humanTime.reduce((accumulator, currentValue) => accumulator + currentValue, 0));
     } else if (text === 'Допущено ошибок:') {
@@ -417,7 +470,7 @@ function trenFinish() {
         }
       },
       data: {
-        labels: Array.from({ length: devHelper.endVals.averangeTime.length }, (_, index) => index + 1),
+        labels: Array.from({ length: devHelper.endVals.averageTime.length }, (_, index) => index + 1),
         datasets: [
           {
             label: 'Ваше время',
@@ -435,7 +488,7 @@ function trenFinish() {
             borderWidth: Math.round(window.innerWidth / 100 * 0.11),
             borderColor: 'rgba(0, 0, 0, 0.05)',
             borderRadius: Math.round(window.innerWidth / 100 * 0.3),
-            data: devHelper.endVals.averangeTime.map(number => Math.round(number / 60)),
+            data: devHelper.endVals.averageTime.map(number => Math.round(number / 60)),
           }
         ]
       }
@@ -653,6 +706,15 @@ function newActionStartHelper(Action) {
   } else {
     //   if (document.querySelector('.box-scenario-text'))
     //     document.querySelector('.box-scenario-text').classList.toggle('current', true);
+  }
+  devHelper.endVals.currentActionCount++;
+  if (devHelper.endVals.currentActionCount > devHelper.endVals.actionChapter[devHelper.endVals.currentChapter]) {
+    devHelper.endVals.currentActionCount = 1;
+    devHelper.endVals.currentChapter++;
+    if (devHelper.endVals.currentChapter !== 1) {
+      let newVal = devHelper.trenVals.timers.allTime / 1000 - devHelper.endVals.humanTime[devHelper.endVals.humanTime.length - 1];
+      devHelper.endVals.humanTime.push(Math.ceil(newVal))
+    } else devHelper.endVals.humanTime.push(Math.ceil(devHelper.trenVals.timers.allTime / 1000));
   }
 }
 

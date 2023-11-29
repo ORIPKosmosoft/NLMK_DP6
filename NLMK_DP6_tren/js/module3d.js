@@ -1570,7 +1570,7 @@ function changeScreenVals(Name, Val, Color = 'green') {
     if (dot) {
       let donorMaterialsDot = Color === 'green' ? findMaterial('Unic_DigitGreen_donor_Dot_On') : findMaterial('Unic_digits_tochka_on');
       if (dot.length > 1 && dot[0]) {
-        dot.forEach(d => { if (d !== undefined) d.material = donorMaterialsDot });
+        dot.forEach(d => { if (d !== undefined) d.material = Color === 'green' ? findMaterial('Unic_DigitGreen_donor_Dot_Off') : findMaterial('Unic_digits_tochka_off') });
       } else {
         dot.material = donorMaterialsDot;
       }

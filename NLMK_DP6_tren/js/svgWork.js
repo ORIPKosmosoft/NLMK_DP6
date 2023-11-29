@@ -1892,7 +1892,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
                       changeSvgtexture(DisplayMesh, Vals.name, true);
                       createSvghelper(CurrentPosition, Vals.name);
                     }
-                  } else console.warn('неверный клик по элементу', invisElem.id);
+                  } else handleError(invisElem.id);
                 }
               } else {
                 // if (Vals.id !== undefined) trenClickOnSvgElem(invisElem);

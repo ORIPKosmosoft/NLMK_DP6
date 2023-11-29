@@ -623,11 +623,14 @@ const devHelper = {
     intervalFon: undefined,
   },
   endVals: {
-    passPerc: 0, // TODO: понять как вычислять проценты
-    errors: [0, 11, 38, 29, 16, 21], // TODO: понять разделять все дейтсвия на этапы
-    averangeTime: [965, 840, 25 * 60, 24 * 60, 7 * 60], // 965, 840, 25 * 60, 24 * 60, 7 * 60
-    humanTime: [19 * 60, 10 * 60, 17 * 60, 11 * 60, 5 * 60],
+    passPerc: 100,
+    errors: [0],
+    averageTime: [],
+    humanTime: [],
     charts: [],
+    actionChapter: [],
+    currentActionCount: 0,
+    currentChapter: 0,
   }
 };
 
@@ -681,7 +684,7 @@ const timeDiff = -0;
 let tempActions = [
   [ // test scenario 1
     ////--------------------------------2---------------------------------------- 
-    
+
     {
       action: {
         target3D: 'Handle_013',
@@ -690,6 +693,14 @@ let tempActions = [
       duration: 0.3,
       startTime: timeDiff + 2,
       human: true,
+    },
+    {
+      action: {
+        target3D: 'fPrirodGazReg',
+        number: '024.5',
+        color: 'red',
+      },
+      startTime: timeDiff + 3,
     },
     {
       startTime: timeDiff + 100,
@@ -1725,6 +1736,7 @@ let tempActions = [
       startTime: timeDiff + 51,
       human: true,
     },
+    /*
     // 1.2    // DP
     ////--------------------------------1---------------------------------------- 
     {
@@ -1898,7 +1910,6 @@ let tempActions = [
       startTime: timeDiff + 76.4,
       human: true,
     },
-
     ////--------------------------------3.1
     {
       // scenarioText: 'Нажимаем на значение у ТТГ 22000 на общей схеме. Появляется окошко и вводим значение 2200 вручную',
@@ -2687,6 +2698,9 @@ let tempActions = [
       startTime: timeDiff + 175.1,
       human: true,
     },
+
+
+
     {
       action: {
         target3D: 'vozNagr1_1', // TODO заменить на красный циферблат
@@ -6804,6 +6818,7 @@ let tempActions = [
     {
       startTime: timeDiff + 594,
     },
+    */
   ],
   [ // Второй сценарий
     {
