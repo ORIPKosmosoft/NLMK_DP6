@@ -1577,7 +1577,9 @@ document.getElementById('b_help').querySelector('.click-button-tren').addEventLi
     let tempNameSvg = document.querySelector('#svg-helper').forScheme;
     let tempRealShemeName = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
     let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === currentAction.action.target2D);
-    document.querySelector('.box-help').innerHTML = `Нажать курсором по элементу ${tempRealHelper && tempRealHelper.realName ? tempRealHelper.realName : ''} на схеме ${tempRealShemeName ? tempRealShemeName : ''}.`;
+    let tempRealHelperName = tempRealHelper.realName ? tempRealHelper.realName : '';
+    if (currentAction.action.realName) tempRealHelperName = currentAction.action.realName;
+    document.querySelector('.box-help').innerHTML = `Нажать курсором по элементу ${tempRealHelperName} на схеме ${tempRealShemeName ? tempRealShemeName : ''}.`;
   } else {
     document.querySelector('.box-help').innerHTML = '';
     document.querySelector('.box-help').classList.toggle('opacity-1-Temp', false);

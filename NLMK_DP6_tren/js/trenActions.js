@@ -727,6 +727,7 @@ let tempActions = [
     {
       action: {
         target2D: 'kl029',
+        realName: 'Клапан 030',
         window2D: {
           elements: [
             { name: 'title_work_vn', text: 'Управление клапаном 029' },
@@ -745,9 +746,9 @@ let tempActions = [
       },
       startTime: timeDiff + 6.1,
       human: true,
-      concentration: [
-        { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-      ]
+      // concentration: [
+      //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
+      // ]
     },
 
     // открыть
