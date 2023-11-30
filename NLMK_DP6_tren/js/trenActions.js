@@ -928,31 +928,35 @@ const devHelper = {
 // красные круги на 028
 const timeDiff = -0;
 let tempActions = [
-  /*
-    [ // test scenario 1
-      ////--------------------------------2---------------------------------------- 
-      {
-        action: {
-          target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-          rotation: { y: 1.571 },
-        },
-        duration: 0.3,
-        startTime: timeDiff + 2,
-        human: true,
+
+  [ // test scenario 1
+    ////--------------------------------2---------------------------------------- 
+    {
+      action: {
+        target2D: 'kl029',
+        // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        // rotation: { y: 1.571 },
       },
-      {
-        action: {
-          target3D: 'fPrirodGazReg',
-          number: '024.5',
-          color: 'red',
-        },
-        startTime: timeDiff + 3,
+      // duration: 0.3,
+      startTime: timeDiff + 2,
+      human: true,
+      concentration: [
+        { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
+      ]
+    },
+    {
+      action: {
+        target3D: 'fPrirodGazReg',
+        number: '024.5',
+        color: 'red',
       },
-      {
-        startTime: timeDiff + 5,
-      },
-    ],
-  */
+      startTime: timeDiff + 3,
+    },
+    {
+      startTime: timeDiff + 5,
+    },
+  ],
+
   // Первый сценарий  
   [
     {
@@ -974,7 +978,6 @@ let tempActions = [
     {
       action: {
         target2D: 'kl029',
-        realName: 'Клапан 029',
         window2D: {
           elements: [
             { name: 'title_work_vn', text: 'Управление клапаном 029' },
@@ -2286,7 +2289,7 @@ let tempActions = [
     {
       text: 'Выбрать ТТГ и установить значение 2200.',
       sender: 'Система',
-      action: { 
+      action: {
         target2D: 't_r_5',
         window2D: {
           elements: [
@@ -9623,37 +9626,37 @@ let tempActions = [
 // Массив исходных состояний
 let startState2D = [
   [// Первый сценарий
-  { name: 'kl028', color: '#00FF00' },
-  { name: 'circle_1_kl028', stroke: '#00FF00' },
-  { name: 'circle_2_kl028', stroke: '#00FF00' },
-  { name: 'kl028_proc', text: '100' },
-  { name: 'kl007', color: '#00FF00' },
-  { name: 'circle_1_kl007', stroke: '#00FF00' },
-  { name: 'circle_2_kl007', stroke: '#00FF00' },
-  { name: 'kl007_proc', text: '100' },
-  { name: 'circle_1_kl025', stroke: '#00FF00' },
-  ///// КУЧА старых 2д исчезла. НАЙТИ!!!!
-  // { name: 'vnk_1', color: '#ff0000' },
-  // { name: 'vn_132', color: '#00FF00' },
-  // { name: 'vn_117', color: '#00FF00' },
-  // { name: 'vn_132_l', color: '#00FF00' },
-  // { name: 'vn_116', color: '#00FF00' },
-  // { name: 'vn_116_l', color: '#00FF00' },
-  // { name: '1PS_03_square', color: '#00FF00' },
-  // { name: '1PS_05_square', color: '#00FF00' },
-  // { name: 'Avto', text: 'Циклический' },
-  // { name: 'Dutyo', text: 'Нагрев-Отдел.' },
-  // { name: 'Vremya_nagreva', text: '109' },
-  // { name: 'Vremya_dutya', text: '60' },
-  // { name: 'Vremya_otdelen', text: '0' },
-  // BZU
-  { name: 'v rabote', color: '#2B2A29' },
-  { name: 'bg_vRabote', color: '#00FF00' },
-  { name: 'arrow_right', opacity: '0' },
-  { name: 'arrow_left', opacity: '0' },
-  { name: 'left_rect_down_arrow', color: '#D90001' },
-  { name: 'right_rect_yellow_arrow', opacity: '0' },
-  { name: 'left_rect_yellow_arrow', opacity: '0' },
+    { name: 'kl028', color: '#00FF00' },
+    { name: 'circle_1_kl028', stroke: '#00FF00' },
+    { name: 'circle_2_kl028', stroke: '#00FF00' },
+    { name: 'kl028_proc', text: '100' },
+    { name: 'kl007', color: '#00FF00' },
+    { name: 'circle_1_kl007', stroke: '#00FF00' },
+    { name: 'circle_2_kl007', stroke: '#00FF00' },
+    { name: 'kl007_proc', text: '100' },
+    { name: 'circle_1_kl025', stroke: '#00FF00' },
+    ///// КУЧА старых 2д исчезла. НАЙТИ!!!!
+    // { name: 'vnk_1', color: '#ff0000' },
+    // { name: 'vn_132', color: '#00FF00' },
+    // { name: 'vn_117', color: '#00FF00' },
+    // { name: 'vn_132_l', color: '#00FF00' },
+    // { name: 'vn_116', color: '#00FF00' },
+    // { name: 'vn_116_l', color: '#00FF00' },
+    // { name: '1PS_03_square', color: '#00FF00' },
+    // { name: '1PS_05_square', color: '#00FF00' },
+    // { name: 'Avto', text: 'Циклический' },
+    // { name: 'Dutyo', text: 'Нагрев-Отдел.' },
+    // { name: 'Vremya_nagreva', text: '109' },
+    // { name: 'Vremya_dutya', text: '60' },
+    // { name: 'Vremya_otdelen', text: '0' },
+    // BZU
+    { name: 'v rabote', color: '#2B2A29' },
+    { name: 'bg_vRabote', color: '#00FF00' },
+    { name: 'arrow_right', opacity: '0' },
+    { name: 'arrow_left', opacity: '0' },
+    { name: 'left_rect_down_arrow', color: '#D90001' },
+    { name: 'right_rect_yellow_arrow', opacity: '0' },
+    { name: 'left_rect_yellow_arrow', opacity: '0' },
     // ----------------------------------------------
     //Sergey
     // vnk_main
@@ -9701,40 +9704,40 @@ let startState2D = [
     { name: 'vnk3_fire', opacity: 0 },
     // { name: '0F2_stripe', stroke: '#000000'},
     // { name: '0F1_stripe', stroke: '#FF0000'},
-    { name: 'B3_3', color: '#55FF33', stroke: '#4BB83B'},
-    { name: 'B3_2', color: '#55FF33', stroke: '#4BB83B'},
-    { name: 'B3_1', color: '#50DC38', stroke: '#4BB83B'},
-    { name: 'B2_3', color: '#55FF33', stroke: '#4BB83B'},
-    { name: 'B2_2', color: '#55FF33', stroke: '#4BB83B'},
-    { name: 'B2_1', color: '#50DC38', stroke: '#4BB83B'},
-    { name: 'B1_3', color: '#BFBFBF', stroke: '#6B6B6B'},
-    { name: 'B1_2', color: '#BFBFBF', stroke: '#6B6B6B'},
-    { name: 'B1_1', color: '#9E9E9E', stroke: '#6B6B6B'},
-    { name: '053_stripe_1', opacity: 0},
-    { name: '053_stripe_2', opacity: 0},
-    { name: '051_stripe_1', opacity: 0},
-    { name: '051_stripe_2', opacity: 0},
-    { name: '052_stripe_1', opacity: 0},
-    { name: '052_stripe_2', opacity: 0},
-    { name: '035_stripe_1', opacity: 0},
-    { name: '035_stripe_2', opacity: 0},
-    { name: '0F3_stripe_1', opacity: 0},
-    { name: '0F3_stripe_2', opacity: 0},
-    { name: '0F2_stripe_1', opacity: 0},
-    { name: '0F2_stripe_2', opacity: 0},
-    { name: '0F2_stripe', opacity: 0},
-    { name: '0F1_stripe', opacity: 0},
-    { name: '0F1_stripe_1', opacity: 0},
-    { name: 'circle_0F3', opacity: 0},
-    { name: 'circle_0F2', opacity: 0},
-    { name: 'circle_0F1', opacity: 0},
-    { name: '001_stripe_1', opacity: 0},
-    { name: '001a_stripe_1', opacity: 0},
-    { name: '001a_stripe_2', opacity: 0},
-    { name: 'circle_001a', stroke: '#B0B0B0'},
-    { name: 'circle_kl007', stroke: '#00FF00'},
-    { name: 'circle_kl028', stroke: '#00FF00'},
-    { name: 'circle_053', stroke: '#B0B0B0'},
+    { name: 'B3_3', color: '#55FF33', stroke: '#4BB83B' },
+    { name: 'B3_2', color: '#55FF33', stroke: '#4BB83B' },
+    { name: 'B3_1', color: '#50DC38', stroke: '#4BB83B' },
+    { name: 'B2_3', color: '#55FF33', stroke: '#4BB83B' },
+    { name: 'B2_2', color: '#55FF33', stroke: '#4BB83B' },
+    { name: 'B2_1', color: '#50DC38', stroke: '#4BB83B' },
+    { name: 'B1_3', color: '#BFBFBF', stroke: '#6B6B6B' },
+    { name: 'B1_2', color: '#BFBFBF', stroke: '#6B6B6B' },
+    { name: 'B1_1', color: '#9E9E9E', stroke: '#6B6B6B' },
+    { name: '053_stripe_1', opacity: 0 },
+    { name: '053_stripe_2', opacity: 0 },
+    { name: '051_stripe_1', opacity: 0 },
+    { name: '051_stripe_2', opacity: 0 },
+    { name: '052_stripe_1', opacity: 0 },
+    { name: '052_stripe_2', opacity: 0 },
+    { name: '035_stripe_1', opacity: 0 },
+    { name: '035_stripe_2', opacity: 0 },
+    { name: '0F3_stripe_1', opacity: 0 },
+    { name: '0F3_stripe_2', opacity: 0 },
+    { name: '0F2_stripe_1', opacity: 0 },
+    { name: '0F2_stripe_2', opacity: 0 },
+    { name: '0F2_stripe', opacity: 0 },
+    { name: '0F1_stripe', opacity: 0 },
+    { name: '0F1_stripe_1', opacity: 0 },
+    { name: 'circle_0F3', opacity: 0 },
+    { name: 'circle_0F2', opacity: 0 },
+    { name: 'circle_0F1', opacity: 0 },
+    { name: '001_stripe_1', opacity: 0 },
+    { name: '001a_stripe_1', opacity: 0 },
+    { name: '001a_stripe_2', opacity: 0 },
+    { name: 'circle_001a', stroke: '#B0B0B0' },
+    { name: 'circle_kl007', stroke: '#00FF00' },
+    { name: 'circle_kl028', stroke: '#00FF00' },
+    { name: 'circle_053', stroke: '#B0B0B0' },
 
     // BVNK_VNK1
     { name: 'VNK1_status_2', text: 'Нагрев-Отдел.' },
@@ -10020,7 +10023,7 @@ let startState2D = [
     { name: 'PI_16', text: '10,25' },
     // { name: 'kl_028', color: '#00FF00' },
 
-    
+
 
   ]
 ]
@@ -10062,33 +10065,33 @@ let startState3D = [
     // d731d161-f41e-465a-9fb0-b1ac09cb8062 жёлтая точка квадрат
     // 9ae5a167-2f72-43c2-8b6b-96a029f7ea76 красная точка квадрат
     // a17521df-7b0a-4251-816e-b2aa231b4358 красная точка круглая
-    { id: '8b1850b5-9c32-4d19-a4dc-70eab7778b97', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 1_1 yellow
-    { id: '7cd2a16b-0f5e-4691-9f5b-bd8e7dc3c3c7', position: { x: 0.052 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 1_1 green
-    { id: 'c75cf9a0-f0a8-4da1-98c1-1c3bf408486a', position: { x: 0.031 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 1_2 green
-    { id: 'f8b83dd9-b727-49d2-94af-55adc4485119', position: { x: 0.044 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 1_2 yellow
-    { id: 'b98fded5-298c-4e32-8ddf-4e60c9579d12', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 2_1 yellow
-    { id: 'ad8e5eff-0434-43dc-bb71-cfe86f9b6a1d', position: { x: 0.052 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 2_1 green
-    { id: '657b8416-3136-4c7a-bd63-959a88a6443e', position: { x: 0.044 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 2_2 yellow
-    { id: 'c86be730-99e7-4451-a46a-ba4392e814c4', position: { x: 0.016 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 2_2 green
-    { id: 'b7d7ebb3-02fa-46fa-9d39-74c98e03ac8c', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 3_1 yellow
-    { id: '1227d1f2-7c92-45b9-9c4c-af914c8a6358', position: { x: 0.049 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 3_1 green
-    { id: '90855da7-95c5-4df4-a738-cea6ecf001f9', position: { x: 0.041 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 3_2 yellow
-    { id: 'f8457e88-9191-413e-8010-69a7a32aa75b', position: { x: 0.018 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 3_2 green
-    { id: '3d972852-386c-4d15-ae63-a2d476340bef', position: { x: 0.006 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход смешанного газа 1 yellow
-    { id: 'b5c1cace-f4fe-4aad-9657-791859b07c87', position: { x: 0.030 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Расход смешанного газа 1 green
-    { id: 'ebe5d7e4-fe4e-48bf-953a-735f0452253b', position: { x: 0.005 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход смешанного газа 2 yellow
-    { id: '76fd240b-e19c-4aca-9111-c4064b34c315', position: { x: 0.025 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Расход смешанного газа 2 green
-    { id: 'bf9808ed-4845-4c63-acf1-a25e6d883c81', position: { x: 0.003 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход смешанного газа 3 yellow
-    { id: 'b553b434-42b3-4afd-9688-4e6a164b86e8', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // Расход смешанного газа 3 red
-    { id: 'ab51df96-6c30-4c3e-b3b5-5236c321bbb6', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // Расход смешанного газа 3 y1 red
-    { id: 'f5b76bd7-cdea-4868-a2d8-4315bb33f231', position: { x: 0.004 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход воздуха горения 1 yellow
-    { id: 'c804594c-63a4-4c6f-8c8a-394e75ab619f', position: { x: 0.025 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Расход воздуха горения 1 green
-    { id: '09b1601c-13e6-4fd8-a8c3-df0ad0e8ecdc', position: { x: 0.006 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход воздуха горения 2 yellow
-    { id: '3aa58ddd-e519-4189-b546-fec9ecc7f144', position: { x: 0.027 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Расход воздуха горения 2 green
-    { id: 'c4fa1c34-5899-4a86-8071-438dde6a707d', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // Расход воздуха горения 3 red
-    { id: '3c7b02d7-261c-44f4-a06a-d9480e51a444', position: { x: 0.002 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход воздуха горения 3 yellow
-    { id: 'a9e95fd1-454f-4c87-941c-30d34b9f6374', position: { x: 0.043 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Давление воздуха горения yellow
-    { id: 'd40c262b-83f0-4dc7-8374-6afee60222d9', position: { x: 0.036 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Давление воздуха горения green
+    { id: '8b1850b5-9c32-4d19-a4dc-70eab7778b97', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 1_1 yellow
+    { id: '7cd2a16b-0f5e-4691-9f5b-bd8e7dc3c3c7', position: { x: 0.052 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 1_1 green
+    { id: 'c75cf9a0-f0a8-4da1-98c1-1c3bf408486a', position: { x: 0.031 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 1_2 green
+    { id: 'f8b83dd9-b727-49d2-94af-55adc4485119', position: { x: 0.044 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 1_2 yellow
+    { id: 'b98fded5-298c-4e32-8ddf-4e60c9579d12', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 2_1 yellow
+    { id: 'ad8e5eff-0434-43dc-bb71-cfe86f9b6a1d', position: { x: 0.052 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 2_1 green
+    { id: '657b8416-3136-4c7a-bd63-959a88a6443e', position: { x: 0.044 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 2_2 yellow
+    { id: 'c86be730-99e7-4451-a46a-ba4392e814c4', position: { x: 0.016 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 2_2 green
+    { id: 'b7d7ebb3-02fa-46fa-9d39-74c98e03ac8c', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 3_1 yellow
+    { id: '1227d1f2-7c92-45b9-9c4c-af914c8a6358', position: { x: 0.049 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 3_1 green
+    { id: '90855da7-95c5-4df4-a738-cea6ecf001f9', position: { x: 0.041 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 3_2 yellow
+    { id: 'f8457e88-9191-413e-8010-69a7a32aa75b', position: { x: 0.018 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 3_2 green
+    { id: '3d972852-386c-4d15-ae63-a2d476340bef', position: { x: 0.006 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход смешанного газа 1 yellow
+    { id: 'b5c1cace-f4fe-4aad-9657-791859b07c87', position: { x: 0.030 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Расход смешанного газа 1 green
+    { id: 'ebe5d7e4-fe4e-48bf-953a-735f0452253b', position: { x: 0.005 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход смешанного газа 2 yellow
+    { id: '76fd240b-e19c-4aca-9111-c4064b34c315', position: { x: 0.025 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Расход смешанного газа 2 green
+    { id: 'bf9808ed-4845-4c63-acf1-a25e6d883c81', position: { x: 0.003 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход смешанного газа 3 yellow
+    { id: 'b553b434-42b3-4afd-9688-4e6a164b86e8', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // Расход смешанного газа 3 red
+    { id: 'ab51df96-6c30-4c3e-b3b5-5236c321bbb6', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // Расход смешанного газа 3 y1 red
+    { id: 'f5b76bd7-cdea-4868-a2d8-4315bb33f231', position: { x: 0.004 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход воздуха горения 1 yellow
+    { id: 'c804594c-63a4-4c6f-8c8a-394e75ab619f', position: { x: 0.025 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Расход воздуха горения 1 green
+    { id: '09b1601c-13e6-4fd8-a8c3-df0ad0e8ecdc', position: { x: 0.006 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход воздуха горения 2 yellow
+    { id: '3aa58ddd-e519-4189-b546-fec9ecc7f144', position: { x: 0.027 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Расход воздуха горения 2 green
+    { id: 'c4fa1c34-5899-4a86-8071-438dde6a707d', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // Расход воздуха горения 3 red
+    { id: '3c7b02d7-261c-44f4-a06a-d9480e51a444', position: { x: 0.002 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход воздуха горения 3 yellow
+    { id: 'a9e95fd1-454f-4c87-941c-30d34b9f6374', position: { x: 0.043 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Давление воздуха горения yellow
+    { id: 'd40c262b-83f0-4dc7-8374-6afee60222d9', position: { x: 0.036 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Давление воздуха горения green
 
     { name: 'vozNagr1_1', number: '1329' },
     { name: 'vozNagr1_2', number: '299.0' },
@@ -10131,92 +10134,92 @@ let startState3D = [
     { name: 'Handle_09', rotation: { y: (90 * Math.PI) / 180 } }, // М84
     { name: 'Handle_05', rotation: { y: (90 * Math.PI) / 180 } }, // Пар на увлажнение дутья
     { id: 'e1b732e7-f99e-47b3-9c8c-6ffc1913109c', rotation: { y: (320 * Math.PI) / 180 } }, // М38
-    
+
     // d46ce2bf-329c-4b0b-932f-04e9aa6686bb зелёная точка квадрат
     // d731d161-f41e-465a-9fb0-b1ac09cb8062 жёлтая точка квадрат
     // 9ae5a167-2f72-43c2-8b6b-96a029f7ea76 красная точка квадрат
     // a17521df-7b0a-4251-816e-b2aa231b4358 красная точка круглая
-    { id: '7a2c174a-c280-4b79-913a-585656d091f1', position: { x: 0.018 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Р колошникового газа yellow
-    { id: 'd35a945e-6098-413c-85fc-ec03675b2b5c', position: { x: 0.030 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 Р колошникового газа green
-    { id: '.d35a945e-6098-413c-85fc-ec03675b2b5c', position: { x: 0.068 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Р колошникового газа yellow
-    { id: '7a2fdce1-d243-453d-a1f4-ea4ab59b5bf6', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // dp верхний y1
-    { id: 'dc76f3f3-8650-4795-824b-b401ea25189d', position: { x: 0.010 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 dp верхний red
-    { id: '54aef8ff-43e1-46a9-811e-d82e2b22471d', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp верхний yellow
-    { id: '.54aef8ff-43e1-46a9-811e-d82e2b22471d', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp верхний yellow
-    { id: '584426b6-391e-491a-b6cc-641cbd20b002', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp общий yellow
-    { id: '7561228f-cbe4-4094-b7cf-4dc9c7670544', position: { x: 0.048 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 dp общий green
-    { id: '.7561228f-cbe4-4094-b7cf-4dc9c7670544', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp общий yellow
-    { id: '92878d8c-d3c3-4d92-8a3a-2aa45b1b8de3', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp нижний yellow
-    { id: '8fcdf048-da99-4a7b-b10a-4e1a9f79abab', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp нижний yellow
-    { id: '.8fcdf048-da99-4a7b-b10a-4e1a9f79abab', position: { x: 0.06 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 dp нижний red
-    { id: 'a45b1224-c9a9-4e53-b8be-f2524cf79e63', position: { x: 0.016 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F холодного дутья yellow
-    { id: '0ade6fb4-862a-48a1-b10d-cfbdd38e773b', position: { x: 0.052 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 F холодного дутья green
-    { id: '.0ade6fb4-862a-48a1-b10d-cfbdd38e773b', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F холодного дутья yellow
-    { id: '55085feb-00cb-46e5-94d4-3074d509094a', position: { x: 0.016 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F горячего дутья yellow
-    { id: 'bf4940b2-342f-4124-aa54-c64b51e9eef5', position: { x: 0.048 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 F горячего дутья green
-    { id: '.bf4940b2-342f-4124-aa54-c64b51e9eef5', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F горячего дутья yellow
-    { id: 'af6703c1-4b5a-416a-8389-3072297bd777', position: { x: 0.008 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи датчик 1 yellow
-    { id: '5a23380c-a320-4d63-8b0d-2da82755a220', position: { x: 0.008 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Уровень засыпи датчик 1 red
-    { id: '.5a23380c-a320-4d63-8b0d-2da82755a220', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи датчик 1 yellow
-    { id: '99491d93-949c-4aa5-ab11-f70fdde6aaf7', position: { x: 0.008 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи датчик 2 yellow
-    { id: 'd0acec57-fa5c-4995-b3ab-16ecf8829ee7', position: { x: 0.008 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 Уровень засыпи датчик 2 green
-    { id: '.d0acec57-fa5c-4995-b3ab-16ecf8829ee7', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи датчик 2 yellow
-    { id: 'f9534176-d207-4906-8191-ce0c47200b3c', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Уровень засыпи механический y1
-    { id: 'd5cd0ea5-90d3-4db2-9d26-36fb10709d1a', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Уровень засыпи механический y2
-    { id: 'd86979f8-150c-4b01-bb02-5f2af5abe0e7', position: { x: 0.000 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи механический yellow
-    { id: '7ccf0961-7311-4c27-bbaa-12b2dec45ec9', position: { x: 0.013 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи механический yellow
-    { id: '.7ccf0961-7311-4c27-bbaa-12b2dec45ec9', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи механический yellow
-    { id: '69e54be8-f44e-442c-a5d4-dfba00e7ba23', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Т в газоотводе Т.1 y1
-    { id: 'ce57afd4-204f-4c3b-bc9f-0ecb4d37eea0', position: { x: 0.012 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Т в газоотводе Т.1 red
-    { id: '9071a277-fcb6-405b-8af1-f65ccc2bb6e7', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.1 yellow
-    { id: '.9071a277-fcb6-405b-8af1-f65ccc2bb6e7', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.1 yellow
-    { id: '040546fe-5b88-4ae4-b017-8d853dea3053', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Т в газоотводе Т.2 y1
-    { id: '4bba5e52-68b2-497c-8085-b887a8cbf29a', position: { x: 0.010 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Т в газоотводе Т.2 red
-    { id: '2a199899-7a38-4f54-987d-8c88e3aaef67', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.2 yellow
-    { id: '.2a199899-7a38-4f54-987d-8c88e3aaef67', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.2 yellow
-    { id: 'bfd31283-da5b-49e3-98c5-5a2e4a5018e9', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Т в газоотводе Т.3 y1
-    { id: '52b2bfef-fc48-42df-b2c0-201157e7baa0', position: { x: 0.012 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Т в газоотводе Т.3 red
-    { id: 'cf1b0be1-d720-4be2-b1af-d459c16e3a62', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.3 yellow
-    { id: '.cf1b0be1-d720-4be2-b1af-d459c16e3a62', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.3 yellow  
-    { id: 'ef846d8f-8121-40c8-91aa-aee2ae947ea6', position: { x: 0.012 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Т в газоотводе Т.4 red
-    { id: 'd7f093e4-3fad-4764-bcad-cfc4e8848bcc', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.4 yellow
-    { id: '.d7f093e4-3fad-4764-bcad-cfc4e8848bcc', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.4 yellow
-    { id: '829fcf64-55eb-4d4b-bf08-77855a11353f', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F азота общего yellow
-    { id: 'e5b790a4-1bdf-43c1-9e62-f4fc12304623', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F азота общего yellow
-    { id: '.e5b790a4-1bdf-43c1-9e62-f4fc12304623', position: { x: 0.055 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 F азота общего red      
-    { id: '1930091e-7664-403d-adfc-804d8d5c3bee', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Содержание кислорода в азоте y1
-    { id: '91f8c2d9-058f-49a1-be33-632f860484f0', position: { x: 0.002 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Содержание кислорода в азоте red
-    { id: '7944e7da-dce6-4a38-b735-6cedc4e531c1', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Содержание кислорода в азоте yellow
-    { id: '.7944e7da-dce6-4a38-b735-6cedc4e531c1', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Содержание кислорода в азоте yellow        
-    { id: '27576245-1e99-4565-af10-2f8dd7ee7a43', position: { x: 0.051 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 Т горячего дутья green
-    { id: '2a471a82-ab01-42bf-91e5-6ceee0477d76', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т горячего дутья yellow
-    { id: '.2a471a82-ab01-42bf-91e5-6ceee0477d76', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т горячего дутья yellow
-    { id: '8ce6a093-f609-4b99-9517-cad1b4c1cbe9', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P технической воды Т.1 yellow
-    { id: '039d8c28-77d1-4fe9-9d3d-e3bb57bad86f', position: { x: 0.057 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P технической воды Т.1 yellow
-    { id: '.039d8c28-77d1-4fe9-9d3d-e3bb57bad86f', position: { x: 0.062 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 P технической воды Т.1 red 
-    { id: '7106bb71-595c-4ac7-96f4-b5233c00341b', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P технической воды Т.2 yellow
-    { id: 'b9339fcf-a848-430c-a6c8-3aa0f115b494', position: { x: 0.057 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P технической воды Т.2 yellow
-    { id: '.b9339fcf-a848-430c-a6c8-3aa0f115b494', position: { x: 0.062 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 P технической воды Т.2 red  
-    { id: 'e762b64f-213a-4035-aa22-1ed4a88d4199', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P сжатого воздуха yellow
-    { id: '98ce2502-03bb-4d18-b164-75a45ee543da', position: { x: 0.029 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 P сжатого воздуха green
-    { id: '.98ce2502-03bb-4d18-b164-75a45ee543da', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P сжатого воздуха yellow
-    { id: 'f7fd7e6f-9d0e-46ce-94d1-f5eed14b825a', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P осушенного сжатого воздуха yellow
-    { id: '34c66f86-b540-4f7d-bd78-9c4be2dca03a', position: { x: 0.029 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 P осушенного сжатого воздуха green
-    { id: '.34c66f86-b540-4f7d-bd78-9c4be2dca03a', position: { x: 0.050 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P осушенного сжатого воздуха yellow
-    { id: 'b5e7d9c8-2f96-420e-aa51-728375f7d496', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P азота к затворам yellow
-    { id: 'f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.038 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 P азота к затворам green
-    { id: '.f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.054 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P азота к затворам yellow       
-    { id: '627a5c0a-f2c6-4cc1-98d9-915633629886', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 T редуктора yellow
-    { id: 'd0164997-c397-410f-a6c9-7380c9d73944', position: { x: 0.029 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 T редуктора green
-    { id: '.d0164997-c397-410f-a6c9-7380c9d73944', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 T редуктора yellow
-    { id: '.f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.054 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P азота к затворам yellow     
-    { id: 'a040d9c7-c376-4179-aa17-71a39507616c', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F воды на редуктор yellow
-    { id: '5e0f2c52-4c56-4fb6-b194-e8923c4a9d05', position: { x: 0.033 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 F воды на редуктор green
-    { id: '.5e0f2c52-4c56-4fb6-b194-e8923c4a9d05', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F воды на редуктор yellow
-    { id: '.f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.054 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P азота к затворам yellow     
-    { id: '629952a1-8aab-4889-8d46-e4af4789ccbb', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F природного газа yellow
-    { id: 'de15bb4a-f57f-498b-a392-1052df17fc1d', position: { x: 0.063 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 F природного газа red
-    { id: '.de15bb4a-f57f-498b-a392-1052df17fc1d', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F природного газа yellow
+    { id: '7a2c174a-c280-4b79-913a-585656d091f1', position: { x: 0.018 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Р колошникового газа yellow
+    { id: 'd35a945e-6098-413c-85fc-ec03675b2b5c', position: { x: 0.030 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 Р колошникового газа green
+    { id: '.d35a945e-6098-413c-85fc-ec03675b2b5c', position: { x: 0.068 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Р колошникового газа yellow
+    { id: '7a2fdce1-d243-453d-a1f4-ea4ab59b5bf6', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // dp верхний y1
+    { id: 'dc76f3f3-8650-4795-824b-b401ea25189d', position: { x: 0.010 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 dp верхний red
+    { id: '54aef8ff-43e1-46a9-811e-d82e2b22471d', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp верхний yellow
+    { id: '.54aef8ff-43e1-46a9-811e-d82e2b22471d', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp верхний yellow
+    { id: '584426b6-391e-491a-b6cc-641cbd20b002', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp общий yellow
+    { id: '7561228f-cbe4-4094-b7cf-4dc9c7670544', position: { x: 0.048 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 dp общий green
+    { id: '.7561228f-cbe4-4094-b7cf-4dc9c7670544', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp общий yellow
+    { id: '92878d8c-d3c3-4d92-8a3a-2aa45b1b8de3', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp нижний yellow
+    { id: '8fcdf048-da99-4a7b-b10a-4e1a9f79abab', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp нижний yellow
+    { id: '.8fcdf048-da99-4a7b-b10a-4e1a9f79abab', position: { x: 0.06 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 dp нижний red
+    { id: 'a45b1224-c9a9-4e53-b8be-f2524cf79e63', position: { x: 0.016 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F холодного дутья yellow
+    { id: '0ade6fb4-862a-48a1-b10d-cfbdd38e773b', position: { x: 0.052 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 F холодного дутья green
+    { id: '.0ade6fb4-862a-48a1-b10d-cfbdd38e773b', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F холодного дутья yellow
+    { id: '55085feb-00cb-46e5-94d4-3074d509094a', position: { x: 0.016 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F горячего дутья yellow
+    { id: 'bf4940b2-342f-4124-aa54-c64b51e9eef5', position: { x: 0.048 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 F горячего дутья green
+    { id: '.bf4940b2-342f-4124-aa54-c64b51e9eef5', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F горячего дутья yellow
+    { id: 'af6703c1-4b5a-416a-8389-3072297bd777', position: { x: 0.008 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи датчик 1 yellow
+    { id: '5a23380c-a320-4d63-8b0d-2da82755a220', position: { x: 0.008 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Уровень засыпи датчик 1 red
+    { id: '.5a23380c-a320-4d63-8b0d-2da82755a220', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи датчик 1 yellow
+    { id: '99491d93-949c-4aa5-ab11-f70fdde6aaf7', position: { x: 0.008 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи датчик 2 yellow
+    { id: 'd0acec57-fa5c-4995-b3ab-16ecf8829ee7', position: { x: 0.008 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 Уровень засыпи датчик 2 green
+    { id: '.d0acec57-fa5c-4995-b3ab-16ecf8829ee7', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи датчик 2 yellow
+    { id: 'f9534176-d207-4906-8191-ce0c47200b3c', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Уровень засыпи механический y1
+    { id: 'd5cd0ea5-90d3-4db2-9d26-36fb10709d1a', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Уровень засыпи механический y2
+    { id: 'd86979f8-150c-4b01-bb02-5f2af5abe0e7', position: { x: 0.000 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи механический yellow
+    { id: '7ccf0961-7311-4c27-bbaa-12b2dec45ec9', position: { x: 0.013 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи механический yellow
+    { id: '.7ccf0961-7311-4c27-bbaa-12b2dec45ec9', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи механический yellow
+    { id: '69e54be8-f44e-442c-a5d4-dfba00e7ba23', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Т в газоотводе Т.1 y1
+    { id: 'ce57afd4-204f-4c3b-bc9f-0ecb4d37eea0', position: { x: 0.012 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Т в газоотводе Т.1 red
+    { id: '9071a277-fcb6-405b-8af1-f65ccc2bb6e7', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.1 yellow
+    { id: '.9071a277-fcb6-405b-8af1-f65ccc2bb6e7', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.1 yellow
+    { id: '040546fe-5b88-4ae4-b017-8d853dea3053', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Т в газоотводе Т.2 y1
+    { id: '4bba5e52-68b2-497c-8085-b887a8cbf29a', position: { x: 0.010 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Т в газоотводе Т.2 red
+    { id: '2a199899-7a38-4f54-987d-8c88e3aaef67', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.2 yellow
+    { id: '.2a199899-7a38-4f54-987d-8c88e3aaef67', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.2 yellow
+    { id: 'bfd31283-da5b-49e3-98c5-5a2e4a5018e9', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Т в газоотводе Т.3 y1
+    { id: '52b2bfef-fc48-42df-b2c0-201157e7baa0', position: { x: 0.012 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Т в газоотводе Т.3 red
+    { id: 'cf1b0be1-d720-4be2-b1af-d459c16e3a62', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.3 yellow
+    { id: '.cf1b0be1-d720-4be2-b1af-d459c16e3a62', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.3 yellow  
+    { id: 'ef846d8f-8121-40c8-91aa-aee2ae947ea6', position: { x: 0.012 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Т в газоотводе Т.4 red
+    { id: 'd7f093e4-3fad-4764-bcad-cfc4e8848bcc', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.4 yellow
+    { id: '.d7f093e4-3fad-4764-bcad-cfc4e8848bcc', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.4 yellow
+    { id: '829fcf64-55eb-4d4b-bf08-77855a11353f', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F азота общего yellow
+    { id: 'e5b790a4-1bdf-43c1-9e62-f4fc12304623', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F азота общего yellow
+    { id: '.e5b790a4-1bdf-43c1-9e62-f4fc12304623', position: { x: 0.055 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 F азота общего red      
+    { id: '1930091e-7664-403d-adfc-804d8d5c3bee', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Содержание кислорода в азоте y1
+    { id: '91f8c2d9-058f-49a1-be33-632f860484f0', position: { x: 0.002 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Содержание кислорода в азоте red
+    { id: '7944e7da-dce6-4a38-b735-6cedc4e531c1', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Содержание кислорода в азоте yellow
+    { id: '.7944e7da-dce6-4a38-b735-6cedc4e531c1', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Содержание кислорода в азоте yellow        
+    { id: '27576245-1e99-4565-af10-2f8dd7ee7a43', position: { x: 0.051 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 Т горячего дутья green
+    { id: '2a471a82-ab01-42bf-91e5-6ceee0477d76', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т горячего дутья yellow
+    { id: '.2a471a82-ab01-42bf-91e5-6ceee0477d76', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т горячего дутья yellow
+    { id: '8ce6a093-f609-4b99-9517-cad1b4c1cbe9', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P технической воды Т.1 yellow
+    { id: '039d8c28-77d1-4fe9-9d3d-e3bb57bad86f', position: { x: 0.057 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P технической воды Т.1 yellow
+    { id: '.039d8c28-77d1-4fe9-9d3d-e3bb57bad86f', position: { x: 0.062 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 P технической воды Т.1 red 
+    { id: '7106bb71-595c-4ac7-96f4-b5233c00341b', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P технической воды Т.2 yellow
+    { id: 'b9339fcf-a848-430c-a6c8-3aa0f115b494', position: { x: 0.057 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P технической воды Т.2 yellow
+    { id: '.b9339fcf-a848-430c-a6c8-3aa0f115b494', position: { x: 0.062 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 P технической воды Т.2 red  
+    { id: 'e762b64f-213a-4035-aa22-1ed4a88d4199', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P сжатого воздуха yellow
+    { id: '98ce2502-03bb-4d18-b164-75a45ee543da', position: { x: 0.029 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 P сжатого воздуха green
+    { id: '.98ce2502-03bb-4d18-b164-75a45ee543da', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P сжатого воздуха yellow
+    { id: 'f7fd7e6f-9d0e-46ce-94d1-f5eed14b825a', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P осушенного сжатого воздуха yellow
+    { id: '34c66f86-b540-4f7d-bd78-9c4be2dca03a', position: { x: 0.029 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 P осушенного сжатого воздуха green
+    { id: '.34c66f86-b540-4f7d-bd78-9c4be2dca03a', position: { x: 0.050 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P осушенного сжатого воздуха yellow
+    { id: 'b5e7d9c8-2f96-420e-aa51-728375f7d496', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P азота к затворам yellow
+    { id: 'f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.038 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 P азота к затворам green
+    { id: '.f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.054 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P азота к затворам yellow       
+    { id: '627a5c0a-f2c6-4cc1-98d9-915633629886', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 T редуктора yellow
+    { id: 'd0164997-c397-410f-a6c9-7380c9d73944', position: { x: 0.029 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 T редуктора green
+    { id: '.d0164997-c397-410f-a6c9-7380c9d73944', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 T редуктора yellow
+    { id: '.f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.054 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P азота к затворам yellow     
+    { id: 'a040d9c7-c376-4179-aa17-71a39507616c', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F воды на редуктор yellow
+    { id: '5e0f2c52-4c56-4fb6-b194-e8923c4a9d05', position: { x: 0.033 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 F воды на редуктор green
+    { id: '.5e0f2c52-4c56-4fb6-b194-e8923c4a9d05', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F воды на редуктор yellow
+    { id: '.f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.054 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P азота к затворам yellow     
+    { id: '629952a1-8aab-4889-8d46-e4af4789ccbb', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F природного газа yellow
+    { id: 'de15bb4a-f57f-498b-a392-1052df17fc1d', position: { x: 0.063 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 F природного газа red
+    { id: '.de15bb4a-f57f-498b-a392-1052df17fc1d', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F природного газа yellow
 
     { name: 'pKolGaz', number: '02.30', }, // P_tryba_1_503
     { name: 'dpVerh', number: '00.22', }, // dP_verh
@@ -10281,34 +10284,34 @@ let startState3D = [
     // d731d161-f41e-465a-9fb0-b1ac09cb8062 жёлтая точка квадрат
     // 9ae5a167-2f72-43c2-8b6b-96a029f7ea76 красная точка квадрат
     // a17521df-7b0a-4251-816e-b2aa231b4358 красная точка круглая
-    { id: '8b1850b5-9c32-4d19-a4dc-70eab7778b97', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 1_1 yellow
-    { id: '7cd2a16b-0f5e-4691-9f5b-bd8e7dc3c3c7', position: { x: 0.036 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 1_1 green
-    { id: 'c75cf9a0-f0a8-4da1-98c1-1c3bf408486a', position: { x: 0.023 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 1_2 green
-    { id: 'f8b83dd9-b727-49d2-94af-55adc4485119', position: { x: 0.044 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 1_2 yellow
-    { id: 'b98fded5-298c-4e32-8ddf-4e60c9579d12', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 2_1 yellow
-    { id: 'ad8e5eff-0434-43dc-bb71-cfe86f9b6a1d', position: { x: 0.036 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 2_1 green
-    { id: '657b8416-3136-4c7a-bd63-959a88a6443e', position: { x: 0.044 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 2_2 yellow
-    { id: 'c86be730-99e7-4451-a46a-ba4392e814c4', position: { x: 0.016 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 2_2 green
-    { id: 'b7d7ebb3-02fa-46fa-9d39-74c98e03ac8c', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 3_1 yellow
-    { id: '1227d1f2-7c92-45b9-9c4c-af914c8a6358', position: { x: 0.036 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 3_1 green
-    { id: '90855da7-95c5-4df4-a738-cea6ecf001f9', position: { x: 0.041 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Воздухо-нагреватель 3_2 yellow
-    { id: 'f8457e88-9191-413e-8010-69a7a32aa75b', position: { x: 0.018 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Воздухо-нагреватель 3_2 green
-    { id: '3d972852-386c-4d15-ae63-a2d476340bef', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // Расход смешанного газа 1 red
-    { id: 'b5c1cace-f4fe-4aad-9657-791859b07c87', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход смешанного газа 1 yellow
-    { id: 'ebe5d7e4-fe4e-48bf-953a-735f0452253b', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // Расход смешанного газа 2 red
-    { id: '76fd240b-e19c-4aca-9111-c4064b34c315', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход смешанного газа 2 yellow
-    { id: '40a6cecd-a909-4410-b814-b78b9db9bba8', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // Расход смешанного газа 2 y1 red
-    { id: 'bf9808ed-4845-4c63-acf1-a25e6d883c81', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход смешанного газа 3 yellow
-    { id: 'b553b434-42b3-4afd-9688-4e6a164b86e8', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // Расход смешанного газа 3 red
-    { id: 'ab51df96-6c30-4c3e-b3b5-5236c321bbb6', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // Расход смешанного газа 3 y1 red
-    { id: 'f5b76bd7-cdea-4868-a2d8-4315bb33f231', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // Расход воздуха горения 1 red
-    { id: 'c804594c-63a4-4c6f-8c8a-394e75ab619f', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход воздуха горения 1 yellow
-    { id: '09b1601c-13e6-4fd8-a8c3-df0ad0e8ecdc', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // Расход воздуха горения 2 red
-    { id: '3aa58ddd-e519-4189-b546-fec9ecc7f144', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход воздуха горения 2 yellow
-    { id: 'c4fa1c34-5899-4a86-8071-438dde6a707d', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // Расход воздуха горения 3 red
-    { id: '3c7b02d7-261c-44f4-a06a-d9480e51a444', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Расход воздуха горения 3 yellow
-    { id: 'a9e95fd1-454f-4c87-941c-30d34b9f6374', position: { x: 0.043 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // Давление воздуха горения yellow
-    { id: 'd40c262b-83f0-4dc7-8374-6afee60222d9', position: { x: 0.000 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // Давление воздуха горения green
+    { id: '8b1850b5-9c32-4d19-a4dc-70eab7778b97', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 1_1 yellow
+    { id: '7cd2a16b-0f5e-4691-9f5b-bd8e7dc3c3c7', position: { x: 0.036 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 1_1 green
+    { id: 'c75cf9a0-f0a8-4da1-98c1-1c3bf408486a', position: { x: 0.023 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 1_2 green
+    { id: 'f8b83dd9-b727-49d2-94af-55adc4485119', position: { x: 0.044 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 1_2 yellow
+    { id: 'b98fded5-298c-4e32-8ddf-4e60c9579d12', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 2_1 yellow
+    { id: 'ad8e5eff-0434-43dc-bb71-cfe86f9b6a1d', position: { x: 0.036 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 2_1 green
+    { id: '657b8416-3136-4c7a-bd63-959a88a6443e', position: { x: 0.044 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 2_2 yellow
+    { id: 'c86be730-99e7-4451-a46a-ba4392e814c4', position: { x: 0.016 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 2_2 green
+    { id: 'b7d7ebb3-02fa-46fa-9d39-74c98e03ac8c', position: { x: 0.024 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 3_1 yellow
+    { id: '1227d1f2-7c92-45b9-9c4c-af914c8a6358', position: { x: 0.036 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 3_1 green
+    { id: '90855da7-95c5-4df4-a738-cea6ecf001f9', position: { x: 0.041 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Воздухо-нагреватель 3_2 yellow
+    { id: 'f8457e88-9191-413e-8010-69a7a32aa75b', position: { x: 0.018 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Воздухо-нагреватель 3_2 green
+    { id: '3d972852-386c-4d15-ae63-a2d476340bef', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // Расход смешанного газа 1 red
+    { id: 'b5c1cace-f4fe-4aad-9657-791859b07c87', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход смешанного газа 1 yellow
+    { id: 'ebe5d7e4-fe4e-48bf-953a-735f0452253b', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // Расход смешанного газа 2 red
+    { id: '76fd240b-e19c-4aca-9111-c4064b34c315', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход смешанного газа 2 yellow
+    { id: '40a6cecd-a909-4410-b814-b78b9db9bba8', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // Расход смешанного газа 2 y1 red
+    { id: 'bf9808ed-4845-4c63-acf1-a25e6d883c81', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход смешанного газа 3 yellow
+    { id: 'b553b434-42b3-4afd-9688-4e6a164b86e8', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // Расход смешанного газа 3 red
+    { id: 'ab51df96-6c30-4c3e-b3b5-5236c321bbb6', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // Расход смешанного газа 3 y1 red
+    { id: 'f5b76bd7-cdea-4868-a2d8-4315bb33f231', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // Расход воздуха горения 1 red
+    { id: 'c804594c-63a4-4c6f-8c8a-394e75ab619f', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход воздуха горения 1 yellow
+    { id: '09b1601c-13e6-4fd8-a8c3-df0ad0e8ecdc', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // Расход воздуха горения 2 red
+    { id: '3aa58ddd-e519-4189-b546-fec9ecc7f144', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход воздуха горения 2 yellow
+    { id: 'c4fa1c34-5899-4a86-8071-438dde6a707d', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // Расход воздуха горения 3 red
+    { id: '3c7b02d7-261c-44f4-a06a-d9480e51a444', position: { x: 0.001 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Расход воздуха горения 3 yellow
+    { id: 'a9e95fd1-454f-4c87-941c-30d34b9f6374', position: { x: 0.043 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // Давление воздуха горения yellow
+    { id: 'd40c262b-83f0-4dc7-8374-6afee60222d9', position: { x: 0.000 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // Давление воздуха горения green
 
     { name: 'vozNagr1_1', number: '1106' },
     { name: 'vozNagr1_2', number: '245.3' },
@@ -10367,95 +10370,95 @@ let startState3D = [
     { name: 'Handle_09', rotation: { y: (90 * Math.PI) / 180 } }, // М84
     { name: 'Handle_05', rotation: { y: (90 * Math.PI) / 180 } }, // Пар на увлажнение дутья
     { id: 'e1b732e7-f99e-47b3-9c8c-6ffc1913109c', rotation: { y: (320 * Math.PI) / 180 } }, // М38
-    
+
     // d46ce2bf-329c-4b0b-932f-04e9aa6686bb зелёная точка квадрат
     // d731d161-f41e-465a-9fb0-b1ac09cb8062 жёлтая точка квадрат
     // 9ae5a167-2f72-43c2-8b6b-96a029f7ea76 красная точка квадрат
     // a17521df-7b0a-4251-816e-b2aa231b4358 красная точка круглая
-    { id: '7a2c174a-c280-4b79-913a-585656d091f1', position: { x: 0.018 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Р колошникового газа yellow
-    { id: 'd35a945e-6098-413c-85fc-ec03675b2b5c', position: { x: -0.003 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 Р колошникового газа green
-    { id: '.d35a945e-6098-413c-85fc-ec03675b2b5c', position: { x: 0.068 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Р колошникового газа yellow
-    { id: '7a2fdce1-d243-453d-a1f4-ea4ab59b5bf6', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // dp верхний y1
-    { id: 'dc76f3f3-8650-4795-824b-b401ea25189d', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 dp верхний red
-    { id: '54aef8ff-43e1-46a9-811e-d82e2b22471d', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp верхний yellow
-    { id: '.54aef8ff-43e1-46a9-811e-d82e2b22471d', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp верхний yellow
-    { id: '584426b6-391e-491a-b6cc-641cbd20b002', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp общий yellow
-    { id: '7561228f-cbe4-4094-b7cf-4dc9c7670544', position: { x: -0.003 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 dp общий red
-    { id: '.7561228f-cbe4-4094-b7cf-4dc9c7670544', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp общий yellow
-    { id: '985bd5bc-1ad1-4162-b920-fbc4827202a1', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 dp нижний y1
-    { id: '92878d8c-d3c3-4d92-8a3a-2aa45b1b8de3', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp нижний yellow
-    { id: '8fcdf048-da99-4a7b-b10a-4e1a9f79abab', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 dp нижний yellow
-    { id: '.8fcdf048-da99-4a7b-b10a-4e1a9f79abab', position: { x: -0.003 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 dp нижний red
-    { id: 'a45b1224-c9a9-4e53-b8be-f2524cf79e63', position: { x: 0.016 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F холодного дутья yellow
-    { id: '0ade6fb4-862a-48a1-b10d-cfbdd38e773b', position: { x: -0.003 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 F холодного дутья red
-    { id: '.0ade6fb4-862a-48a1-b10d-cfbdd38e773b', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F холодного дутья yellow
-    { id: '55085feb-00cb-46e5-94d4-3074d509094a', position: { x: 0.016 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P горячего дутья yellow
-    { id: 'bf4940b2-342f-4124-aa54-c64b51e9eef5', position: { x: -0.003 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 P горячего дутья red
-    { id: '.bf4940b2-342f-4124-aa54-c64b51e9eef5', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P горячего дутья yellow
-    { id: '25ae07ec-db4d-40c9-a244-c3c87960e95f', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Уровень засыпи датчик 1 y1
-    { id: 'af6703c1-4b5a-416a-8389-3072297bd777', position: { x: 0.008 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи датчик 1 yellow
-    { id: '5a23380c-a320-4d63-8b0d-2da82755a220', position: { x: 0.008 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Уровень засыпи датчик 1 red
-    { id: '.5a23380c-a320-4d63-8b0d-2da82755a220', position: { x: 0.011 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи датчик 1 yellow
-    { id: '99491d93-949c-4aa5-ab11-f70fdde6aaf7', position: { x: 0.008 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи датчик 2 yellow
-    { id: 'd0acec57-fa5c-4995-b3ab-16ecf8829ee7', position: { x: 0.008 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 Уровень засыпи датчик 2 green
-    { id: '.d0acec57-fa5c-4995-b3ab-16ecf8829ee7', position: { x: 0.011 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи датчик 2 yellow
-    { id: 'f9534176-d207-4906-8191-ce0c47200b3c', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Уровень засыпи механический y1
-    { id: 'd5cd0ea5-90d3-4db2-9d26-36fb10709d1a', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Уровень засыпи механический y2
-    { id: 'd86979f8-150c-4b01-bb02-5f2af5abe0e7', position: { x: 0.000 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи механический yellow
-    { id: '7ccf0961-7311-4c27-bbaa-12b2dec45ec9', position: { x: 0.013 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи механический yellow
-    { id: '.7ccf0961-7311-4c27-bbaa-12b2dec45ec9', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Уровень засыпи механический yellow
-    { id: 'ce57afd4-204f-4c3b-bc9f-0ecb4d37eea0', position: { x: 0.010 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Т в газоотводе Т.1 red
-    { id: '9071a277-fcb6-405b-8af1-f65ccc2bb6e7', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.1 yellow
-    { id: '.9071a277-fcb6-405b-8af1-f65ccc2bb6e7', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.1 yellow
-    { id: '4bba5e52-68b2-497c-8085-b887a8cbf29a', position: { x: 0.012 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Т в газоотводе Т.2 red
-    { id: '2a199899-7a38-4f54-987d-8c88e3aaef67', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.2 yellow
-    { id: '.2a199899-7a38-4f54-987d-8c88e3aaef67', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.2 yellow
-    { id: 'bfd31283-da5b-49e3-98c5-5a2e4a5018e9', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Т в газоотводе Т.3 y1
-    { id: '52b2bfef-fc48-42df-b2c0-201157e7baa0', position: { x: 0.010 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Т в газоотводе Т.3 red
-    { id: 'cf1b0be1-d720-4be2-b1af-d459c16e3a62', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.3 yellow
-    { id: '.cf1b0be1-d720-4be2-b1af-d459c16e3a62', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.3 yellow 
-    { id: '890cfeb2-b59b-4e9f-a2a2-0b61e62d2932', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Т в газоотводе Т.4 y1
-    { id: 'ef846d8f-8121-40c8-91aa-aee2ae947ea6', position: { x: 0.010 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Т в газоотводе Т.4 red
-    { id: 'd7f093e4-3fad-4764-bcad-cfc4e8848bcc', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.4 yellow
-    { id: '.d7f093e4-3fad-4764-bcad-cfc4e8848bcc', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т в газоотводе Т.4 yellow
-    { id: '829fcf64-55eb-4d4b-bf08-77855a11353f', position: { x: 0.047 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F азота общего yellow
-    { id: 'e5b790a4-1bdf-43c1-9e62-f4fc12304623', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F азота общего yellow
-    { id: '.e5b790a4-1bdf-43c1-9e62-f4fc12304623', position: { x: 0.055 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 F азота общего red  
-    { id: '1930091e-7664-403d-adfc-804d8d5c3bee', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 Содержание кислорода в азоте y1
-    { id: '91f8c2d9-058f-49a1-be33-632f860484f0', position: { x: 0.002 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 Содержание кислорода в азоте red
-    { id: '7944e7da-dce6-4a38-b735-6cedc4e531c1', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Содержание кислорода в азоте yellow
-    { id: '.7944e7da-dce6-4a38-b735-6cedc4e531c1', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Содержание кислорода в азоте yellow 
-    { id: '27576245-1e99-4565-af10-2f8dd7ee7a43', position: { x: 0.051 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 Т горячего дутья green
-    { id: '2a471a82-ab01-42bf-91e5-6ceee0477d76', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т горячего дутья yellow
-    { id: '.2a471a82-ab01-42bf-91e5-6ceee0477d76', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 Т горячего дутья yellow
-    { id: '769e34f1-8103-4d00-9d58-047c68f27c80', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 P технической воды Т.1 y1
-    { id: '8ce6a093-f609-4b99-9517-cad1b4c1cbe9', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P технической воды Т.1 yellow
-    { id: '039d8c28-77d1-4fe9-9d3d-e3bb57bad86f', position: { x: 0.057 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P технической воды Т.1 yellow
-    { id: '.039d8c28-77d1-4fe9-9d3d-e3bb57bad86f', position: { x: 0.062 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 P технической воды Т.1 red 
-    { id: 'a5eb6594-a571-41d3-85de-317be75540f8', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 P технической воды Т.2 y1
-    { id: '7106bb71-595c-4ac7-96f4-b5233c00341b', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P технической воды Т.2 yellow
-    { id: 'b9339fcf-a848-430c-a6c8-3aa0f115b494', position: { x: 0.057 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P технической воды Т.2 yellow
-    { id: '.b9339fcf-a848-430c-a6c8-3aa0f115b494', position: { x: 0.062 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 P технической воды Т.2 red  
-    { id: 'e762b64f-213a-4035-aa22-1ed4a88d4199', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P сжатого воздуха yellow
-    { id: '98ce2502-03bb-4d18-b164-75a45ee543da', position: { x: 0.035 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 P сжатого воздуха green
-    { id: '.98ce2502-03bb-4d18-b164-75a45ee543da', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P сжатого воздуха yellow
-    { id: 'f7fd7e6f-9d0e-46ce-94d1-f5eed14b825a', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P осушенного сжатого воздуха yellow
-    { id: '34c66f86-b540-4f7d-bd78-9c4be2dca03a', position: { x: 0.029 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 P осушенного сжатого воздуха green
-    { id: '.34c66f86-b540-4f7d-bd78-9c4be2dca03a', position: { x: 0.050 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P осушенного сжатого воздуха yellow
-    { id: 'b5e7d9c8-2f96-420e-aa51-728375f7d496', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P азота к затворам yellow
-    { id: 'f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.038 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 P азота к затворам green
-    { id: '.f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.054 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 P азота к затворам yellow   
-    { id: '627a5c0a-f2c6-4cc1-98d9-915633629886', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 T редуктора yellow
-    { id: 'd0164997-c397-410f-a6c9-7380c9d73944', position: { x: 0.016 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 T редуктора green
-    { id: '.d0164997-c397-410f-a6c9-7380c9d73944', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 T редуктора yellow
-    { id: 'a040d9c7-c376-4179-aa17-71a39507616c', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F воды на редуктор yellow
-    { id: '5e0f2c52-4c56-4fb6-b194-e8923c4a9d05', position: { x: 0.033 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb'}, // DP6 F воды на редуктор green
-    { id: '.5e0f2c52-4c56-4fb6-b194-e8923c4a9d05', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F воды на редуктор yellow
-    { id: 'a9d6cf94-6bd3-484f-b207-92b96570b77c', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 F природного газа y1
-    { id: '700e7fad-91e3-4c50-9722-31be7a5c0141', material: 'a17521df-7b0a-4251-816e-b2aa231b4358'}, // DP6 F природного газа y1
-    { id: '629952a1-8aab-4889-8d46-e4af4789ccbb', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F природного газа yellow
-    { id: 'de15bb4a-f57f-498b-a392-1052df17fc1d', position: { x: -0.003 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76'}, // DP6 F природного газа red
-    { id: '.de15bb4a-f57f-498b-a392-1052df17fc1d', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062'}, // DP6 F природного газа yellow
+    { id: '7a2c174a-c280-4b79-913a-585656d091f1', position: { x: 0.018 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Р колошникового газа yellow
+    { id: 'd35a945e-6098-413c-85fc-ec03675b2b5c', position: { x: -0.003 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 Р колошникового газа green
+    { id: '.d35a945e-6098-413c-85fc-ec03675b2b5c', position: { x: 0.068 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Р колошникового газа yellow
+    { id: '7a2fdce1-d243-453d-a1f4-ea4ab59b5bf6', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // dp верхний y1
+    { id: 'dc76f3f3-8650-4795-824b-b401ea25189d', position: { x: 0.000 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 dp верхний red
+    { id: '54aef8ff-43e1-46a9-811e-d82e2b22471d', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp верхний yellow
+    { id: '.54aef8ff-43e1-46a9-811e-d82e2b22471d', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp верхний yellow
+    { id: '584426b6-391e-491a-b6cc-641cbd20b002', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp общий yellow
+    { id: '7561228f-cbe4-4094-b7cf-4dc9c7670544', position: { x: -0.003 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 dp общий red
+    { id: '.7561228f-cbe4-4094-b7cf-4dc9c7670544', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp общий yellow
+    { id: '985bd5bc-1ad1-4162-b920-fbc4827202a1', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 dp нижний y1
+    { id: '92878d8c-d3c3-4d92-8a3a-2aa45b1b8de3', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp нижний yellow
+    { id: '8fcdf048-da99-4a7b-b10a-4e1a9f79abab', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 dp нижний yellow
+    { id: '.8fcdf048-da99-4a7b-b10a-4e1a9f79abab', position: { x: -0.003 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 dp нижний red
+    { id: 'a45b1224-c9a9-4e53-b8be-f2524cf79e63', position: { x: 0.016 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F холодного дутья yellow
+    { id: '0ade6fb4-862a-48a1-b10d-cfbdd38e773b', position: { x: -0.003 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 F холодного дутья red
+    { id: '.0ade6fb4-862a-48a1-b10d-cfbdd38e773b', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F холодного дутья yellow
+    { id: '55085feb-00cb-46e5-94d4-3074d509094a', position: { x: 0.016 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P горячего дутья yellow
+    { id: 'bf4940b2-342f-4124-aa54-c64b51e9eef5', position: { x: -0.003 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 P горячего дутья red
+    { id: '.bf4940b2-342f-4124-aa54-c64b51e9eef5', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P горячего дутья yellow
+    { id: '25ae07ec-db4d-40c9-a244-c3c87960e95f', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Уровень засыпи датчик 1 y1
+    { id: 'af6703c1-4b5a-416a-8389-3072297bd777', position: { x: 0.008 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи датчик 1 yellow
+    { id: '5a23380c-a320-4d63-8b0d-2da82755a220', position: { x: 0.008 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Уровень засыпи датчик 1 red
+    { id: '.5a23380c-a320-4d63-8b0d-2da82755a220', position: { x: 0.011 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи датчик 1 yellow
+    { id: '99491d93-949c-4aa5-ab11-f70fdde6aaf7', position: { x: 0.008 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи датчик 2 yellow
+    { id: 'd0acec57-fa5c-4995-b3ab-16ecf8829ee7', position: { x: 0.008 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 Уровень засыпи датчик 2 green
+    { id: '.d0acec57-fa5c-4995-b3ab-16ecf8829ee7', position: { x: 0.011 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи датчик 2 yellow
+    { id: 'f9534176-d207-4906-8191-ce0c47200b3c', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Уровень засыпи механический y1
+    { id: 'd5cd0ea5-90d3-4db2-9d26-36fb10709d1a', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Уровень засыпи механический y2
+    { id: 'd86979f8-150c-4b01-bb02-5f2af5abe0e7', position: { x: 0.000 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи механический yellow
+    { id: '7ccf0961-7311-4c27-bbaa-12b2dec45ec9', position: { x: 0.013 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи механический yellow
+    { id: '.7ccf0961-7311-4c27-bbaa-12b2dec45ec9', position: { x: 0.056 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Уровень засыпи механический yellow
+    { id: 'ce57afd4-204f-4c3b-bc9f-0ecb4d37eea0', position: { x: 0.010 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Т в газоотводе Т.1 red
+    { id: '9071a277-fcb6-405b-8af1-f65ccc2bb6e7', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.1 yellow
+    { id: '.9071a277-fcb6-405b-8af1-f65ccc2bb6e7', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.1 yellow
+    { id: '4bba5e52-68b2-497c-8085-b887a8cbf29a', position: { x: 0.012 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Т в газоотводе Т.2 red
+    { id: '2a199899-7a38-4f54-987d-8c88e3aaef67', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.2 yellow
+    { id: '.2a199899-7a38-4f54-987d-8c88e3aaef67', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.2 yellow
+    { id: 'bfd31283-da5b-49e3-98c5-5a2e4a5018e9', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Т в газоотводе Т.3 y1
+    { id: '52b2bfef-fc48-42df-b2c0-201157e7baa0', position: { x: 0.010 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Т в газоотводе Т.3 red
+    { id: 'cf1b0be1-d720-4be2-b1af-d459c16e3a62', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.3 yellow
+    { id: '.cf1b0be1-d720-4be2-b1af-d459c16e3a62', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.3 yellow 
+    { id: '890cfeb2-b59b-4e9f-a2a2-0b61e62d2932', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Т в газоотводе Т.4 y1
+    { id: 'ef846d8f-8121-40c8-91aa-aee2ae947ea6', position: { x: 0.010 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Т в газоотводе Т.4 red
+    { id: 'd7f093e4-3fad-4764-bcad-cfc4e8848bcc', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.4 yellow
+    { id: '.d7f093e4-3fad-4764-bcad-cfc4e8848bcc', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т в газоотводе Т.4 yellow
+    { id: '829fcf64-55eb-4d4b-bf08-77855a11353f', position: { x: 0.047 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F азота общего yellow
+    { id: 'e5b790a4-1bdf-43c1-9e62-f4fc12304623', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F азота общего yellow
+    { id: '.e5b790a4-1bdf-43c1-9e62-f4fc12304623', position: { x: 0.055 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 F азота общего red  
+    { id: '1930091e-7664-403d-adfc-804d8d5c3bee', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 Содержание кислорода в азоте y1
+    { id: '91f8c2d9-058f-49a1-be33-632f860484f0', position: { x: 0.002 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 Содержание кислорода в азоте red
+    { id: '7944e7da-dce6-4a38-b735-6cedc4e531c1', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Содержание кислорода в азоте yellow
+    { id: '.7944e7da-dce6-4a38-b735-6cedc4e531c1', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Содержание кислорода в азоте yellow 
+    { id: '27576245-1e99-4565-af10-2f8dd7ee7a43', position: { x: 0.051 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 Т горячего дутья green
+    { id: '2a471a82-ab01-42bf-91e5-6ceee0477d76', position: { x: 0.012 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т горячего дутья yellow
+    { id: '.2a471a82-ab01-42bf-91e5-6ceee0477d76', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 Т горячего дутья yellow
+    { id: '769e34f1-8103-4d00-9d58-047c68f27c80', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 P технической воды Т.1 y1
+    { id: '8ce6a093-f609-4b99-9517-cad1b4c1cbe9', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P технической воды Т.1 yellow
+    { id: '039d8c28-77d1-4fe9-9d3d-e3bb57bad86f', position: { x: 0.057 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P технической воды Т.1 yellow
+    { id: '.039d8c28-77d1-4fe9-9d3d-e3bb57bad86f', position: { x: 0.062 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 P технической воды Т.1 red 
+    { id: 'a5eb6594-a571-41d3-85de-317be75540f8', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 P технической воды Т.2 y1
+    { id: '7106bb71-595c-4ac7-96f4-b5233c00341b', position: { x: 0.015 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P технической воды Т.2 yellow
+    { id: 'b9339fcf-a848-430c-a6c8-3aa0f115b494', position: { x: 0.057 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P технической воды Т.2 yellow
+    { id: '.b9339fcf-a848-430c-a6c8-3aa0f115b494', position: { x: 0.062 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 P технической воды Т.2 red  
+    { id: 'e762b64f-213a-4035-aa22-1ed4a88d4199', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P сжатого воздуха yellow
+    { id: '98ce2502-03bb-4d18-b164-75a45ee543da', position: { x: 0.035 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 P сжатого воздуха green
+    { id: '.98ce2502-03bb-4d18-b164-75a45ee543da', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P сжатого воздуха yellow
+    { id: 'f7fd7e6f-9d0e-46ce-94d1-f5eed14b825a', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P осушенного сжатого воздуха yellow
+    { id: '34c66f86-b540-4f7d-bd78-9c4be2dca03a', position: { x: 0.029 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 P осушенного сжатого воздуха green
+    { id: '.34c66f86-b540-4f7d-bd78-9c4be2dca03a', position: { x: 0.050 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P осушенного сжатого воздуха yellow
+    { id: 'b5e7d9c8-2f96-420e-aa51-728375f7d496', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P азота к затворам yellow
+    { id: 'f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.038 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 P азота к затворам green
+    { id: '.f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', position: { x: 0.054 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 P азота к затворам yellow   
+    { id: '627a5c0a-f2c6-4cc1-98d9-915633629886', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 T редуктора yellow
+    { id: 'd0164997-c397-410f-a6c9-7380c9d73944', position: { x: 0.016 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 T редуктора green
+    { id: '.d0164997-c397-410f-a6c9-7380c9d73944', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 T редуктора yellow
+    { id: 'a040d9c7-c376-4179-aa17-71a39507616c', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F воды на редуктор yellow
+    { id: '5e0f2c52-4c56-4fb6-b194-e8923c4a9d05', position: { x: 0.033 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // DP6 F воды на редуктор green
+    { id: '.5e0f2c52-4c56-4fb6-b194-e8923c4a9d05', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F воды на редуктор yellow
+    { id: 'a9d6cf94-6bd3-484f-b207-92b96570b77c', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 F природного газа y1
+    { id: '700e7fad-91e3-4c50-9722-31be7a5c0141', material: 'a17521df-7b0a-4251-816e-b2aa231b4358' }, // DP6 F природного газа y1
+    { id: '629952a1-8aab-4889-8d46-e4af4789ccbb', position: { x: 0.014 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F природного газа yellow
+    { id: 'de15bb4a-f57f-498b-a392-1052df17fc1d', position: { x: -0.003 }, material: '9ae5a167-2f72-43c2-8b6b-96a029f7ea76' }, // DP6 F природного газа red
+    { id: '.de15bb4a-f57f-498b-a392-1052df17fc1d', position: { x: 0.055 }, material: 'd731d161-f41e-465a-9fb0-b1ac09cb8062' }, // DP6 F природного газа yellow
 
     { name: 'pKolGaz', number: '0.001', },
     { name: 'dpVerh', number: '0.000', },

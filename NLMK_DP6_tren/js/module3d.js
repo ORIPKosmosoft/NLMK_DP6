@@ -369,7 +369,7 @@ window.addEventListener('load', function () {
     function findSvgDisplays() {
       devHelper.model3DVals.svgDisplaysArr.forEach(elem => {
         let displayMesh = findMesh(elem.name);
-        if (displayMesh !== undefined && devHelper.model3DVals.svgDisplays.meshs.indexOf(displayMesh) === -1) {
+        if (displayMesh && devHelper.model3DVals.svgDisplays.meshs.indexOf(displayMesh) === -1) {
           makeSvgDisplay(displayMesh, devHelper.model3DVals.scene, elem.svgName);
         }
       });
