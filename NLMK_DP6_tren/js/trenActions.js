@@ -271,7 +271,7 @@ const devHelper = {
         { x: 22.2, y: 1.0, w: 10.4, h: 3, name: 'BVNK_VNK2', },
         { x: 32.7, y: 1.0, w: 10.4, h: 3, name: 'BVNK_VNK3', },
         { x: 43.4, y: 1.0, w: 10.3, h: 3, name: 'vnk_spvg', },
-        { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 } },
+        { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 }, realName: 'Перекидка' },
         { x: 19.0, y: 26, w: 2, h: 3, forAction: true, id: 'kl232', },
         { x: 13.6, y: 37.5, w: 2, h: 3, forAction: true, id: 'kl224', },
         { x: 27.0, y: 26, w: 2, h: 3, forAction: true, id: 'kl216', },
@@ -426,17 +426,14 @@ const devHelper = {
     },
     {
       name: 'O_p_n_na_k_p_na_VNK', helpers: [
-        // { x: 27.2, y: 11.8, w: 2.25, h: 2.6, forAction: true, id: 'perekidta_exit_btn', removeWindow: 'O_p_n_na_k_p_na_VNK', },
-        // { x: 15.6, y: 29, w: 11.9, h: 3.6, forAction: true, id: 'nagrev_otd2_btn', value: { window: 'O_p_n_na_k_na-o_2_na_VNK', x: 379, y: 32, } },
-        // { x: 15.6, y: 41.4, w: 11.9, h: 3.6, forAction: true, id: 'otdel_otdel2_btn', value: { window: 'win_otdel2_na_vnk', x: 402, y: 468, } },
         { x: 27.2, y: 11.8, w: 2.25, h: 2.6, forAction: true, id: 'perekidta_exit_btn', realName: 'Закрыть', removeWindow: 'O_p_n_na_k_p_na_VNK', },
         { x: 15.6, y: 21.0, w: 11.9, h: 3.6, forAction: true, id: 'avaric_otdel_btn', realName: 'Аварийное отделение', },
         { x: 15.6, y: 25.0, w: 11.9, h: 3.6, forAction: true, id: 'otdel_nagrev_btn', realName: 'Отделение-Нагрев', },
-        { x: 15.6, y: 28.8, w: 11.9, h: 3.6, forAction: true, id: 'nagrev_otdel2_btn', realName: 'Нагрев-Отделение 2', value: { window: 'O_p_n_na_k_na-o_2_na_VNK', x: 379, y: 32, } },
+        { x: 15.6, y: 28.8, w: 11.9, h: 3.6, forAction: true, id: 'nagrev_otd2_btn', realName: 'Нагрев-Отделение 2', value: { window: 'O_p_n_na_k_na-o_2_na_VNK', x: 379, y: 32, } },
         { x: 15.6, y: 33.1, w: 11.9, h: 3.6, forAction: true, id: 'otdel_dutia_btn', realName: 'Отделение-Дутье', },
         { x: 15.6, y: 37.1, w: 11.9, h: 3.6, forAction: true, id: 'dutia_otdel_btn', realName: 'Дутье-отделение', },
         { x: 15.6, y: 41.4, w: 11.9, h: 3.6, forAction: true, id: 'otdel_otdel2_btn', realName: 'Отделение-Отделение 2', },
-        { x: 15.6, y: 45.6, w: 11.9, h: 3.6, forAction: true, id: 'otdel2_otdel_btn', realName: 'Отделение 2 - Отделение', value: { window: 'win_otdel2_na_vnk', x: 402, y: 468, } },
+        { x: 15.6, y: 45.6, w: 11.9, h: 3.6, forAction: true, id: 'otdel2_otdel_btn', realName: 'Отделение 2 - Отделение', value: { window: 'win_otdel2_na_vnk', x: 402, y: 468, }, realName: 'Отделение 2 - Отделение', },
         { x: 15.6, y: 56.6, w: 11.9, h: 3.6, forAction: true, id: '10_klapan', realName: '10 клапан', },
         { x: 15.6, y: 60.6, w: 11.9, h: 3.6, forAction: true, id: '11_klapan', realName: '11 клапан', },
         { x: 15.6, y: 64.5, w: 11.9, h: 3.6, forAction: true, id: '12_klapan', realName: '12 клапан', },
@@ -450,8 +447,8 @@ const devHelper = {
     },
     {
       name: 'O_p_n_na_k_na-o_2_na_VNK', helpers: [
-        { x: 63.7, y: 3.4, w: 2.4, h: 2.4, removeWindow: 'O_p_n_na_k_na-o_2_na_VNK', forAction: true, id: 'pericNagrev_close_btn' },
-        { x: 31.8, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_pusk_btn', value: { window: 'O_n_k_na_VNK_posle_2', x: 678, y: 917 } },
+        { x: 63.7, y: 3.4, w: 2.4, h: 2.4, removeWindow: 'O_p_n_na_k_na-o_2_na_VNK', forAction: true, id: 'pericNagrev_close_btn', realName: 'Закрыть' },
+        { x: 31.8, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_pusk_btn', value: { window: 'O_n_k_na_VNK_posle_2', x: 678, y: 917 }, realName: 'Пуск' },
         { x: 35, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_stop_btn' },
         { x: 38.2, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_reset_btn' },
       ]
@@ -928,10 +925,8 @@ const devHelper = {
   human: true,
 },
 */
-// 007 запкрывается слишком быстро
 // красные круги на 028
-// 028 запкрывается слишком быстро
-const timeDiff = -62;
+const timeDiff = -0;
 let tempActions = [
   /*
     [ // test scenario 1
@@ -960,7 +955,6 @@ let tempActions = [
   */
   // Первый сценарий  
   [
-    /*
     {
       lifeTime: '07:30:00',
       startTime: timeDiff + 0,
@@ -2134,7 +2128,6 @@ let tempActions = [
       },
       startTime: timeDiff + 58,
     },
-*/
     ////--------------------------------2----------------------------------------
     {
       scenarioText: ' Расход природного газа увеличиваем для поддержания ТТГ. Установить на 37000.',
@@ -2217,7 +2210,7 @@ let tempActions = [
     },
     ////--------------------------------3----------------------------------------
     {
-      scenarioText: 'Настройка значения теоретической температуры горения. Установить на 2200.',
+      scenarioText: 'Настройка значения теоретической температуры горения.',
       sender: 'Система',
       audio: 'tts-11',
       startTime: timeDiff + 69,
@@ -2291,8 +2284,8 @@ let tempActions = [
 
     ////--------------------------------3.1
     {
-      // scenarioText: 'Нажимаем на значение у ТТГ 22000 на общей схеме. Появляется окошко и вводим значение 2200 вручную',
-      // sender: 'Система',
+      text: 'Выбрать ТТГ и установить значение 2200.',
+      sender: 'Система',
       action: { 
         target2D: 't_r_5',
         window2D: {
@@ -2372,7 +2365,11 @@ let tempActions = [
           elements: [
             { name: 'ws3_ttg', text: 'расход ПГ' },
           ]
-        }
+        },
+        helper2D: [
+          { x: 18.65, y: 73, w: 8, h: 5.5, id: 'ws3_ttg_text_btn' },
+          { x: 18.65, y: 73, w: 0, h: 0, id: 'ws3_ttg2_text_btn' },
+        ]
       },
       startTime: timeDiff + 74.1,
       human: true,
@@ -2389,10 +2386,6 @@ let tempActions = [
             { name: 't_r_ttg', stroke: '#000' },
           ]
         },
-        helper2D: [
-          { x: 18.65, y: 73, w: 0, h: 0, id: 'ws3_ttg_text_btn' },
-          { x: 18.65, y: 73, w: 8, h: 5.5, id: 'ws3_ttg2_text_btn' },
-        ]
       },
       startTime: timeDiff + 74.2,
       human: true,
@@ -2514,7 +2507,6 @@ let tempActions = [
       },
       startTime: timeDiff + 100,
     },
-
     ////--------------------------------2
     {
       scenarioText: 'Перекидка клапанов в автоматическом режиме.',
@@ -2545,6 +2537,8 @@ let tempActions = [
       human: true,
     },
     {
+      text: 'Выбрать "Нагрев-Отделение 2.',
+      sender: 'Система',
       action: {
         target2D: 'nagrev_otd2_btn',
       },
@@ -3450,7 +3444,7 @@ let tempActions = [
     },
     {
       action: {
-        target2D: 'perekidta_btn_vnk2',
+        target2D: 'perekidta_btn', // perekidta_btn
         window2D: {
           elements: [
             { name: 'text_132', y: 475 },
@@ -4212,7 +4206,7 @@ let tempActions = [
 
     {
       action: {
-        target2D: 'perekidta_btn_vnk2',
+        target2D: 'perekidta_btn',
         window2D: {
           elements: [
             { name: 'avarin_otd_rect', color: '#e6e6e6', stroke: '#808080' },
@@ -4616,8 +4610,8 @@ let tempActions = [
       startTime: timeDiff + 210,
     },
     {
-      action: {
-        target3D: 'Handle_014',
+      action: { // TODO изменить имена 3Д на индексы
+        target3D: 'b6cc151c-004a-4e3f-bb7b-921c4300993c',
         rotation: { y: 0.7854 }, // 45
       },
       duration: 0.3,
@@ -4633,7 +4627,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_014',
+        target3D: 'b6cc151c-004a-4e3f-bb7b-921c4300993c',
         rotation: { y: 0 },
       },
       duration: 0.3,
@@ -4688,7 +4682,6 @@ let tempActions = [
       },
       startTime: timeDiff + 231,
     },
-
     ////--------------------------------2----------------------------------------     /// 4 раза как на видео
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 2,5кг.',
@@ -4698,7 +4691,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -4714,7 +4707,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -4723,7 +4716,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -4732,7 +4725,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -4892,7 +4885,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -4901,7 +4894,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -4910,7 +4903,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -4919,7 +4912,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -5044,7 +5037,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -5053,7 +5046,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -5062,7 +5055,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -5071,7 +5064,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -5142,7 +5135,7 @@ let tempActions = [
       human: true,
     },
     {
-      text: 'Делаю один.',
+      text: 'Делаю 1.',
       sender: 'Газовщик',
       audio: 'tts-vo21',
       startTime: timeDiff + 292,
@@ -5163,7 +5156,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -5172,7 +5165,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -5181,7 +5174,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -5190,7 +5183,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -5262,6 +5255,7 @@ let tempActions = [
       },
       startTime: timeDiff + 320,
     },
+
     ////--------------------------------12---------------------------------------- /////////    2   //////////// 2 РАЗА КРУТИТ  из сценария
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ»',
@@ -5271,7 +5265,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -5280,7 +5274,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -5299,7 +5293,6 @@ let tempActions = [
       },
       startTime: timeDiff + 325.1,
     },
-
     ////--------------------------------13---------------------------------------- 
     {
       scenarioText: 'Открыть нижний шихтовый затвор.',
@@ -5380,6 +5373,11 @@ let tempActions = [
       startTime: timeDiff + 333.5,
     },
     {
+      text: 'Нажать на кнопку "Сброс сигнала тревоги" на ПУ БЗУ. ',
+      sender: 'Система',
+      startTime: timeDiff + 333.9,
+    },
+    {
       action: {
         target3D: 'Rectangle053',
       },
@@ -5408,7 +5406,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -5417,7 +5415,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -5594,6 +5592,9 @@ let tempActions = [
     { //3D
       text: 'На ПУ БЗУ нажать "Приостановить подачу материала".',
       sender: 'Система',
+      startTime: timeDiff + 349.1,
+    },
+    { //3D
       action: {
         target3D: 'Rectangle056',
       },
@@ -5615,7 +5616,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -5624,7 +5625,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -5840,7 +5841,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -5849,7 +5850,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -5858,7 +5859,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -5867,7 +5868,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -6201,12 +6202,6 @@ let tempActions = [
 
 
     ////--------------------------------26---------------------------------------- 
-    //// {
-    ////   text: 'Сообщить по рации в «Литейный фурменный поддоменник».', // нет такого
-    ////   sender: 'Система',
-    ////   audio: 'radio_say',
-    ////  startTime: timeDiff + 424,
-    //// },
     {
       scenarioText: 'Мастер печи по рации сообщает о следующих операциях',
       startTime: timeDiff + 425,
@@ -6246,7 +6241,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -6255,7 +6250,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -6264,7 +6259,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -6273,7 +6268,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -6539,7 +6534,6 @@ let tempActions = [
       audio: 'tts-33',
       startTime: timeDiff + 474,
     },
-
     ////--------------------------------30---------------------------------------- \
     {
       scenarioText: 'Открыть сбросной клапан 723',
@@ -6549,7 +6543,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_012',
+        target3D: 'ebc13da1-0cf6-47e7-b08b-b39f7100bc44',
         rotation: { y: -0.785 },
       },
       duration: 0.3,
@@ -6572,7 +6566,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_012',
+        target3D: 'ebc13da1-0cf6-47e7-b08b-b39f7100bc44',
         rotation: { y: 0 },
       },
       duration: 0.3,
@@ -6717,7 +6711,7 @@ let tempActions = [
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 530,
+      startTime: timeDiff + 530, // TODO Слишком большой перерыв
     },
     {
       text: 'Делаем 0,2 кг.',
@@ -6755,7 +6749,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -6764,7 +6758,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -6773,7 +6767,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -6782,7 +6776,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -6865,7 +6859,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -6874,7 +6868,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -6883,7 +6877,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: -0.785 },
       },
       duration: 0.15,
@@ -6892,7 +6886,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Handle_015',
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
         rotation: { y: 0 },
       },
       duration: 0.15,
@@ -7082,6 +7076,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Ручной',
         window2D: {
           newPositionWindow: { x: 1765, y: 732 },
           elements: [
@@ -7129,6 +7124,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Байпас всех блокировок',
         window2D: {
           newPositionWindow: { x: 1760, y: 900 },
           elements: [
@@ -7221,6 +7217,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Ручной',
         window2D: {
           newPositionWindow: { x: 1765, y: 732 },
           elements: [
@@ -7270,6 +7267,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Байпас всех блокировок',
         window2D: {
           newPositionWindow: { x: 1760, y: 900 },
           elements: [
@@ -7361,6 +7359,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Ручной',
         window2D: {
           newPositionWindow: { x: 1610, y: 580 },
           elements: [
@@ -7408,6 +7407,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Байпас всех блокировок',
         window2D: {
           newPositionWindow: { x: 1610, y: 680 },
           elements: [
@@ -7440,10 +7440,6 @@ let tempActions = [
       startTime: timeDiff + 576.8,
       human: true,
     },
-
-
-
-
     ////--------------------------------40---------------------------------------- 
     {
       scenarioText: 'Открыть клапан 310 для сброса давления.',
@@ -7706,6 +7702,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Закрыть',
         window2D: {
           newPositionWindow: {  //  wind 2
             x: 1765,
@@ -7837,6 +7834,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Закрыть',
         window2D: {
           newPositionWindow: {  //  wind 2
             x: 1765,
@@ -7970,6 +7968,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Закрыть',
         window2D: {
           newPositionWindow: {  //  wind 2
             x: 1765,
@@ -8077,8 +8076,6 @@ let tempActions = [
       startTime: timeDiff + 601.1,
       human: true,
     },
-
-
     {
       action: {
         target2D: 'vn_319_btn',
@@ -8117,6 +8114,7 @@ let tempActions = [
           ]
         },
         helper2D: [
+          { x: 82.90, y: 45.2, w: 0, h: 0, id: 'win_posle_1_stop_btn' },
           { x: 82.90, y: 45.2, w: 1.5, h: 2.0, id: 'close_w1' },
           { x: 79.80, y: 57.2, w: 4.0, h: 2.6, id: 'open_vn' },   //  клапан 319 //  win 1  //  "Закрыть"
         ]
@@ -8147,6 +8145,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn1',
+        realName: 'Закрыть',
         window2D: {
           elements: [
             { name: 'status_window_text', text: 'Закрывается' },
@@ -8281,6 +8280,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',  // окно ВН  "Закрыть"
+        realName: 'Закрыть',
         window2D: {
           newPositionWindow: { x: 1765, y: 732 },
           elements: [

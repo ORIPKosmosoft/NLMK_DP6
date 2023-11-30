@@ -34,7 +34,7 @@ window.addEventListener('load', function () {
                                       ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                         ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'dp1') {
+    if (ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -1068,7 +1068,7 @@ window.addEventListener('load', function () {
     }
     if (ObjectSvg.name === 'O_n_k_na_VNK_posle_2') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
-        if (Element.innerHTML === 'Закрыть') { addSvgElem(Index, Element, 'title_open_vn',); }
+        if (Element.innerHTML === 'Закрыть') { addSvgElem(Index, Element, 'title_open_vn', 'start'); }
       })
     }
     if (ObjectSvg.name === 'Kontrol_progara') {
@@ -1951,6 +1951,7 @@ function pushSvgDisplaysArr(ObjectSvg) {
 
 function createSvghelper(CurrentPosition, SvgName = undefined) {
   if (CurrentPosition !== undefined) {
+    // console.log(1);
     setTimeout(() => {
       if (CurrentPosition === 1 || CurrentPosition === 2 || CurrentPosition === 4 || CurrentPosition === 5) {
         let mainMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === CurrentPosition);
@@ -1963,8 +1964,9 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           invisElem.classList.add('invisible-element-svg');
           if (devHelper.dev.enable === true) {
             invisElem.classList.add('invisible-element-svg-helper');
-            invisElem.innerHTML = Vals.id === undefined ? 'test' : Vals.id;
+            // invisElem.innerHTML = Vals.id === undefined ? 'test' : Vals.id;
           }
+          // console.log(invisElem.id, Vals);
           invisElem.style.left = Vals.x + '%';
           invisElem.style.top = Vals.y + '%';
           invisElem.style.width = Vals.w + '%';
@@ -2024,10 +2026,10 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
             if (currentActonObject && currentActonObject.hasOwnProperty('action') && currentActonObject.action.hasOwnProperty('helper2D')) {
               currentActonObject.action.helper2D.forEach(element2 => {
                 if (element.id === element2.id) {
-                  if (element2.x) element.x = element2.x;
-                  if (element2.y) element.y = element2.y;
-                  if (element2.w) element.w = element2.w;
-                  if (element2.h) element.h = element2.h;
+                  if (element2.x !== undefined) element.x = element2.x;
+                  if (element2.y !== undefined) element.y = element2.y;
+                  if (element2.w !== undefined) element.w = element2.w;
+                  if (element2.h !== undefined) element.h = element2.h;
                 }
               })
             }
@@ -2075,6 +2077,7 @@ function changeSvgElem(Val = {}) {
             if (Val.position.x !== undefined) changeSvgElemPos(activeElemObj.element, Val.position.x, 'translateX');
             if (Val.position.y !== undefined) changeSvgElemPos(activeElemObj.element, Val.position.y, 'translateY');
           }
+          if (Val.y) activeElemObj.element.setAttribute('y', Val.y);
         }
       })
     })

@@ -679,7 +679,10 @@ function changeColorTexture(Mesh = undefined, State = undefined, Help = false) {
     let newColor = State === true ? true : false;
     if (Mesh.overlayColor !== BABYLON.Color3.Yellow()) Mesh.overlayColor = BABYLON.Color3.Yellow();
     devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
-    if (Mesh.material.alpha !== 1) Mesh.material.alpha = newAlpha;
+    if (Mesh.material.alpha !== 1) {
+      Mesh.renderOverlay = newColor;
+      // Mesh.material.alpha = newAlpha;
+    }
     else Mesh.renderOverlay = newColor;
   }
 }

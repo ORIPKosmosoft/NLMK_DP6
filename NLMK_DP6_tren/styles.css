@@ -1000,8 +1000,8 @@ ul {
 }
 
 .invisible-element-svg-helper {
-  /* background-color: rgba(255, 0, 0, 0.3); */
-  outline: 5px solid rgba(255, 0, 0, 0.3);
+  background-color: rgba(255, 0, 0, 0.3);
+  /* outline: 5px solid rgba(255, 0, 0, 0.3); */
   font-size: medium;
   color: #000000;
   font-family: 'Circe-ExtraBold', sans-serif;

@@ -160,7 +160,9 @@ function trenTimeTick(timeStamp) {
                   element.elements.forEach(svgElem => changeSvgElem(svgElem))
                 }
                 addSvgToTextrue(findMesh(element.display), { window: element.svg, x: element.x, y: element.y });
-                // createSvghelper(CurrentPosition, Vals.value.window);
+                // TODO Не знаю нужен ли этот код или нет стрчока
+                // Это доп код для появления схемы на мониторе, когда ты кликнул на 3Д
+                // createSvghelper(devHelper.model3DVals.currentPosition, Vals.value.window);
               })
             }
             if (nextAction.action.window2D.removeWindow) {
@@ -186,6 +188,9 @@ function trenTimeTick(timeStamp) {
               if (nextAction.action.number)
                 changeScreenVals(nextAction.action.target3D, nextAction.action.number, nextAction.action.color ? nextAction.action.color : 'green');
             }
+          }
+          if (nextAction.action && nextAction.action.helper2D) {
+            createSvghelper(devHelper.model3DVals.currentPosition)
           }
           newActionStartHelper(nextAction);
           if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
@@ -329,9 +334,10 @@ function handlePosition(currentAction, Mesh) {
 function handleError(Mesh) {
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name ? Mesh.name : Mesh} в действии ${devHelper.trenVals.currentAction} неверный.`);
   sendMessage("Ошибка", "Вы совершили неверное действие.");
-  if (!devHelper.endVals.errors[devHelper.endVals.currentChapter + 1])
-    devHelper.endVals.errors.push(1);
-  else devHelper.endVals.errors[devHelper.endVals.currentChapter + 1]++;
+  // if (!devHelper.endVals.errors[devHelper.endVals.currentChapter + 1])
+  //   devHelper.endVals.errors.push(1);
+  // else 
+  devHelper.endVals.errors[devHelper.endVals.currentChapter + 1]++;
 }
 
 function trenClickOnSvgElem(SvgElemHelper = undefined) {
@@ -347,6 +353,9 @@ function trenClickOnSvgElem(SvgElemHelper = undefined) {
         updateSvgTextures();
       }
       if (currentActonObject.audio) playAudio(currentActonObject.audio);
+      if (currentActonObject.action && currentActonObject.action.helper2D) {
+        createSvghelper(devHelper.model3DVals.currentPosition)
+      }
       newActionStartHelper(currentActonObject);
     }
   }
@@ -709,6 +718,7 @@ function newActionStartHelper(Action) {
   if (devHelper.endVals.currentActionCount > devHelper.endVals.actionChapter[devHelper.endVals.currentChapter]) {
     devHelper.endVals.currentActionCount = 1;
     devHelper.endVals.currentChapter++;
+    devHelper.endVals.errors.push([0]);
     if (devHelper.endVals.currentChapter !== 1) {
       let newVal = devHelper.trenVals.timers.allTime / 1000 - devHelper.endVals.humanTime[devHelper.endVals.humanTime.length - 1];
       devHelper.endVals.humanTime.push(Math.ceil(newVal))
