@@ -144,43 +144,43 @@ const devHelper = {
         { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
         { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
         { x: 41.5, y: 50, w: 2.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, }, realName: 'Клапан 029' },    // win 29
-        { x: 35.9, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl_038', value: { window: 'O_n_k_na_VNK_posle_1', x: 770, y: 440, }, realName: 'Клапан 038'},    // win 38
+        { x: 35.9, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl_038', value: { window: 'O_n_k_na_VNK_posle_1', x: 770, y: 440, }, realName: 'Клапан 038' },    // win 38
         { x: 48.8, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl_037', value: { window: 'O_n_k_na_VNK_posle_1', x: 1030, y: 440, }, realName: 'Клапан 037' },    // win 37
         { x: 48.8, y: 55, w: 2.7, h: 3.5, forAction: true, id: 'kl007', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 555, }, realName: 'Клапан 007' },    // win 07
         { x: 36.2, y: 55, w: 2.7, h: 3.5, forAction: true, id: 'kl028', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 480, }, realName: 'Клапан 028' },    // win 28
         { x: 86.2, y: 20.6, w: 2.5, h: 3.2, forAction: true, id: 'kl022', value: { window: 'O_n_k_na_VNK_posle_1', x: 1582, y: 260, }, realName: 'Клапан 022' },    // win 22
-        { x: 35.9, y: 37.5, w:2.7, h: 3.5, forAction: true, id: 'kl039', },
-        { x: 48.9, y: 37.5, w:2.7, h: 3.5, forAction: true, id: 'kl030', },
-        { x: 41.9, y: 31.5, w:2.7, h: 3.5, forAction: true, id: 'kl048', },
-        { x: 24.9, y: 54.5, w:2.7, h: 3.5, forAction: true, id: 'kl0501', },
-        { x: 36.5, y: 61.5, w:2.7, h: 3.5, forAction: true, id: 'kl020', },
-        { x: 48.5, y: 61.5, w:2.7, h: 3.5, forAction: true, id: 'kl025', },
-        { x: 42.5, y: 68.5, w:2.7, h: 3.5, forAction: true, id: 'kl004', },
-        { x: 35.5, y: 79.5, w:2.7, h: 3.5, forAction: true, id: 'kl036b', },
-        { x: 11,   y: 54.5, w:2.7, h: 3.5, forAction: true, id: 'kl0502', },
-        { x: 16.5, y: 54.5, w:1.7, h: 3.5, forAction: true, id: 'kl052', },
-        { x: 16.5, y: 46.5, w:1.7, h: 3.5, forAction: true, id: 'kl051', },
-        { x: 19.3, y: 37.3, w:1.7, h: 3.5, forAction: true, id: 'kl053', },
-        { x: 16.3, y: 62.3, w:1.7, h: 3.5, forAction: true, id: 'kl0333', },
-        { x: 23.0, y: 62.3, w:1, h: 3.5, forAction: true, id: 'kl0332', },
-        { x: 29.1, y: 62.3, w:1, h: 3.5, forAction: true, id: 'kl0331', },
-        { x: 33.1, y: 71.3, w:1, h: 3.5, forAction: true, id: 'kl036v', },
-        { x: 26.6, y: 84, w:1, h: 3.5, forAction: true, id: 'kl0311', },
-        { x: 20.7, y: 83.9, w:1, h: 3.5, forAction: true, id: 'kl0312', },
-        { x: 14.5, y: 83.6, w:1, h: 3.5, forAction: true, id: 'kl0313', },
-        { x: 14.0, y: 74.6, w:2, h: 3.5, forAction: true, id: 'klOF3', },
-        { x: 20.5, y: 74, w:2, h: 3.5, forAction: true, id: 'klOF2', },
-        { x: 26.0, y: 74, w:2, h: 3.5, forAction: true, id: 'klOF1', },
+        { x: 35.9, y: 37.5, w: 2.7, h: 3.5, forAction: true, id: 'kl039', },
+        { x: 48.9, y: 37.5, w: 2.7, h: 3.5, forAction: true, id: 'kl030', },
+        { x: 41.9, y: 31.5, w: 2.7, h: 3.5, forAction: true, id: 'kl048', },
+        { x: 24.9, y: 54.5, w: 2.7, h: 3.5, forAction: true, id: 'kl0501', },
+        { x: 36.5, y: 61.5, w: 2.7, h: 3.5, forAction: true, id: 'kl020', },
+        { x: 48.5, y: 61.5, w: 2.7, h: 3.5, forAction: true, id: 'kl025', },
+        { x: 42.5, y: 68.5, w: 2.7, h: 3.5, forAction: true, id: 'kl004', },
+        { x: 35.5, y: 79.5, w: 2.7, h: 3.5, forAction: true, id: 'kl036b', },
+        { x: 11, y: 54.5, w: 2.7, h: 3.5, forAction: true, id: 'kl0502', },
+        { x: 16.5, y: 54.5, w: 1.7, h: 3.5, forAction: true, id: 'kl052', },
+        { x: 16.5, y: 46.5, w: 1.7, h: 3.5, forAction: true, id: 'kl051', },
+        { x: 19.3, y: 37.3, w: 1.7, h: 3.5, forAction: true, id: 'kl053', },
+        { x: 16.3, y: 62.3, w: 1.7, h: 3.5, forAction: true, id: 'kl0333', },
+        { x: 23.0, y: 62.3, w: 1, h: 3.5, forAction: true, id: 'kl0332', },
+        { x: 29.1, y: 62.3, w: 1, h: 3.5, forAction: true, id: 'kl0331', },
+        { x: 33.1, y: 71.3, w: 1, h: 3.5, forAction: true, id: 'kl036v', },
+        { x: 26.6, y: 84, w: 1, h: 3.5, forAction: true, id: 'kl0311', },
+        { x: 20.7, y: 83.9, w: 1, h: 3.5, forAction: true, id: 'kl0312', },
+        { x: 14.5, y: 83.6, w: 1, h: 3.5, forAction: true, id: 'kl0313', },
+        { x: 14.0, y: 74.6, w: 2, h: 3.5, forAction: true, id: 'klOF3', },
+        { x: 20.5, y: 74, w: 2, h: 3.5, forAction: true, id: 'klOF2', },
+        { x: 26.0, y: 74, w: 2, h: 3.5, forAction: true, id: 'klOF1', },
         // { x: 35.5, y: 0, w:2, h: 3.5, forAction: true, id: 'kl036b', },
         // { x: 64.5, y: 9, w:1, h: 4.5, forAction: true, id: 'kl047', },
         // { x: 70.3, y: 8, w:2, h: 4.5, forAction: true, id: 'kl001a', },
         // { x: 70.3, y: 9, w:2, h: 4.5, forAction: true, id: 'kl001', },
-        { x: 86.3, y: 1, w:2, h: 2.5, forAction: true, id: 'kl022', },
+        { x: 86.3, y: 1, w: 2, h: 2.5, forAction: true, id: 'kl022', },
         { x: 22.5, y: 46.8, w: 1.7, h: 3.5, forAction: true, id: 'kl054', },
-        { x:76.3, y:24.5, w:2, h: 2.5, forAction: true, id: 'kl002', },
-        { x:21.3, y:10.5, w:7, h: 3.5, forAction: true, id: 'trendy', },
-        { x:12.3, y:10.5, w:9, h: 3.5, forAction: true, id: 'rejimy BVNK', },
-        { x:3.3, y:10.5, w:9, h: 3.5, forAction: true, id: 'Sostoynie BVNK', },
+        { x: 76.3, y: 24.5, w: 2, h: 2.5, forAction: true, id: 'kl002', },
+        { x: 21.3, y: 10.5, w: 7, h: 3.5, forAction: true, id: 'trendy', },
+        { x: 12.3, y: 10.5, w: 9, h: 3.5, forAction: true, id: 'rejimy BVNK', },
+        { x: 3.3, y: 10.5, w: 9, h: 3.5, forAction: true, id: 'Sostoynie BVNK', },
         { x: 11, y: 59, w: 2, h: 3.5, forAction: true, id: 'kl035', },
         { x: 35.3, y: 13.5, w: 4, h: 2.5, forAction: true, id: 'Avto', },
         { x: 35.3, y: 17, w: 4, h: 2.5, forAction: true, id: 'Ruhnoy', },
@@ -200,23 +200,23 @@ const devHelper = {
         { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
         { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
         { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
-        { x:69, y:30, w:2, h:3, forAction: true, id: 'kl048', },
-        { x:62.5, y:34.9, w:2, h:2, forAction: true, id: 'kl039', },
-        { x:77, y:34.9, w:2, h:2, forAction: true, id: 'kl030', },
-        { x:77, y:40.9, w:2, h:2, forAction: true, id: 'kl037', },
-        { x:63, y:40.9, w:2, h:2, forAction: true, id: 'kl038', },
-        { x:63, y:53.9, w:2, h:2, forAction: true, id: 'kl028', },
-        { x:77.5, y:53.9, w:2, h:2, forAction: true, id: 'kl007', },
-        { x:77.5, y:59.9, w:2, h:2, forAction: true, id: 'kl025', },
-        { x:63.5, y:59.9, w:2, h:2, forAction: true, id: 'kl020', },
-        { x:71.5, y:66.9, w:2, h:2, forAction: true, id: 'kl004', },
-        { x:60, y:70.9, w:1, h:3.5, forAction: true, id: 'kl036v', },
-        { x:56.5, y:78.9, w:2, h:2.5, forAction: true, id: 'kl036b', },
-        { x:50.8, y: 82, w:1, h:3.5, forAction: true, id: 'kl0311', },
-        { x:43.7, y:82, w:1, h:3.5, forAction: true, id: 'kl0312', },
-        { x:36.3, y:82, w:1, h:3.5, forAction: true, id: 'kl0313', },
-        { x:39, y:63, w: 1, h:3.5, forAction: true, id: 'kl0333', },
-        { x:46.5, y: 63, w: 1, h: 3.5, forAction: true, id: 'kl0332', },
+        { x: 69, y: 30, w: 2, h: 3, forAction: true, id: 'kl048', },
+        { x: 62.5, y: 34.9, w: 2, h: 2, forAction: true, id: 'kl039', },
+        { x: 77, y: 34.9, w: 2, h: 2, forAction: true, id: 'kl030', },
+        { x: 77, y: 40.9, w: 2, h: 2, forAction: true, id: 'kl037', },
+        { x: 63, y: 40.9, w: 2, h: 2, forAction: true, id: 'kl038', },
+        { x: 63, y: 53.9, w: 2, h: 2, forAction: true, id: 'kl028', },
+        { x: 77.5, y: 53.9, w: 2, h: 2, forAction: true, id: 'kl007', },
+        { x: 77.5, y: 59.9, w: 2, h: 2, forAction: true, id: 'kl025', },
+        { x: 63.5, y: 59.9, w: 2, h: 2, forAction: true, id: 'kl020', },
+        { x: 71.5, y: 66.9, w: 2, h: 2, forAction: true, id: 'kl004', },
+        { x: 60, y: 70.9, w: 1, h: 3.5, forAction: true, id: 'kl036v', },
+        { x: 56.5, y: 78.9, w: 2, h: 2.5, forAction: true, id: 'kl036b', },
+        { x: 50.8, y: 82, w: 1, h: 3.5, forAction: true, id: 'kl0311', },
+        { x: 43.7, y: 82, w: 1, h: 3.5, forAction: true, id: 'kl0312', },
+        { x: 36.3, y: 82, w: 1, h: 3.5, forAction: true, id: 'kl0313', },
+        { x: 39, y: 63, w: 1, h: 3.5, forAction: true, id: 'kl0333', },
+        { x: 46.5, y: 63, w: 1, h: 3.5, forAction: true, id: 'kl0332', },
         { x: 53.7, y: 63, w: 1, h: 3.5, forAction: true, id: 'kl0331', },
         { x: 50, y: 75, w: 2, h: 3.5, forAction: true, id: 'klOF1', },
         { x: 43, y: 75, w: 2, h: 3.5, forAction: true, id: 'klOF2', },
@@ -224,7 +224,7 @@ const devHelper = {
         { x: 29.3, y: 59, w: 2, h: 3.5, forAction: true, id: 'kl035', },
         { x: 27.3, y: 8, w: 7, h: 3.5, forAction: true, id: 'Maslostanci', },
         { x: 3.3, y: 8, w: 7, h: 3.5, forAction: true, id: 'Rejim', },
-        { x: 10.3, y: 8, w: 7, h:3.5, forAction: true, id: 'Prekidka', },
+        { x: 10.3, y: 8, w: 7, h: 3.5, forAction: true, id: 'Prekidka', },
         { x: 17.3, y: 8, w: 10, h: 3.5, forAction: true, id: 'Temperatura Kojuxa', },
         { x: 34.3, y: 8, w: 7, h: 3.5, forAction: true, id: 'Trendy', },
       ]
@@ -237,31 +237,31 @@ const devHelper = {
         { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
         { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
         { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 } },
-        { x:19, y:26, w:2, h: 3, forAction: true, id: 'kl132', },   
-        { x:13.6, y:37.5, w:2, h: 3, forAction: true, id: 'kl124', },   
-        { x:27, y:26, w:2, h: 3, forAction: true, id: 'kl116', },   
-        { x:33, y:26, w:1.5, h: 3, forAction: true, id: 'kl115', },   
-        { x:46, y:26, w:2, h: 3, forAction: true, id: 'kl113', },   
-        { x:44, y:55, w:2, h: 3, forAction: true, id: 'kl117', },   
-        { x:27.5, y:55, w:1.5, h: 3, forAction: true, id: 'kl123', },   
-        { x:11.4, y:55, w:1.9, h: 3, forAction: true, id: 'kl134', },   
-        { x:31.4, y:72.5, w:1.9, h: 3, forAction: true, id: 'kl111', },   
-        { x:31.4, y:77, w:1.9, h: 3, forAction: true, id: 'kl112', },   
-        { x:73.3, y:77, w:2, h: 3, forAction: true, id: 'kl118', },   
-        { x:73.5, y:83, w:2, h: 3, forAction: true, id: 'kl110', },   
-        { x:73.3, y:70.5, w:2, h: 3, forAction: true, id: 'kl118a', },   
-        { x:72.5, y:62.5, w:2, h: 3, forAction: true, id: 'kl136a', },   
-        { x:65.5, y:43, w:2, h: 3, forAction: true, id: 'kl119', },   
-        { x:40, y:18, w:1.2, h: 3.5, forAction: true, id: 'kl121', },   
-        { x:23.3, y:17.5, w:1, h: 4, forAction: true, id: 'kl127', },   
-        { x:78, y:49.5, w:4, h: 2.5, forAction: true, id: 'Avto', },   
-        { x:78, y:52.9, w:4, h: 2.5, forAction: true, id: 'rucnou', },   
-        { x:78, y:55.9, w:4, h: 3.5, forAction: true, id: 'sbros ohibki', },   
-        { x:34.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'trendy', },   
-        { x:27.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'meteostanci', },   
-        { x:17.7, y:8.9, w:10, h: 2.5, forAction: true, id: 'temperatura kojuxa', },   
-        { x:3.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'rejim', },   
-        { x:38.5, y:43.5, w:1.4, h: 3.5, forAction: true, id: 'kl140', },
+        { x: 19, y: 26, w: 2, h: 3, forAction: true, id: 'kl132', },
+        { x: 13.6, y: 37.5, w: 2, h: 3, forAction: true, id: 'kl124', },
+        { x: 27, y: 26, w: 2, h: 3, forAction: true, id: 'kl116', },
+        { x: 33, y: 26, w: 1.5, h: 3, forAction: true, id: 'kl115', },
+        { x: 46, y: 26, w: 2, h: 3, forAction: true, id: 'kl113', },
+        { x: 44, y: 55, w: 2, h: 3, forAction: true, id: 'kl117', },
+        { x: 27.5, y: 55, w: 1.5, h: 3, forAction: true, id: 'kl123', },
+        { x: 11.4, y: 55, w: 1.9, h: 3, forAction: true, id: 'kl134', },
+        { x: 31.4, y: 72.5, w: 1.9, h: 3, forAction: true, id: 'kl111', },
+        { x: 31.4, y: 77, w: 1.9, h: 3, forAction: true, id: 'kl112', },
+        { x: 73.3, y: 77, w: 2, h: 3, forAction: true, id: 'kl118', },
+        { x: 73.5, y: 83, w: 2, h: 3, forAction: true, id: 'kl110', },
+        { x: 73.3, y: 70.5, w: 2, h: 3, forAction: true, id: 'kl118a', },
+        { x: 72.5, y: 62.5, w: 2, h: 3, forAction: true, id: 'kl136a', },
+        { x: 65.5, y: 43, w: 2, h: 3, forAction: true, id: 'kl119', },
+        { x: 40, y: 18, w: 1.2, h: 3.5, forAction: true, id: 'kl121', },
+        { x: 23.3, y: 17.5, w: 1, h: 4, forAction: true, id: 'kl127', },
+        { x: 78, y: 49.5, w: 4, h: 2.5, forAction: true, id: 'Avto', },
+        { x: 78, y: 52.9, w: 4, h: 2.5, forAction: true, id: 'rucnou', },
+        { x: 78, y: 55.9, w: 4, h: 3.5, forAction: true, id: 'sbros ohibki', },
+        { x: 34.2, y: 8.9, w: 7, h: 2.5, forAction: true, id: 'trendy', },
+        { x: 27.2, y: 8.9, w: 7, h: 2.5, forAction: true, id: 'meteostanci', },
+        { x: 17.7, y: 8.9, w: 10, h: 2.5, forAction: true, id: 'temperatura kojuxa', },
+        { x: 3.2, y: 8.9, w: 7, h: 2.5, forAction: true, id: 'rejim', },
+        { x: 38.5, y: 43.5, w: 1.4, h: 3.5, forAction: true, id: 'kl140', },
       ]
     },
     {
@@ -272,31 +272,31 @@ const devHelper = {
         { x: 32.7, y: 1.0, w: 10.4, h: 3, name: 'BVNK_VNK3', },
         { x: 43.4, y: 1.0, w: 10.3, h: 3, name: 'vnk_spvg', },
         { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 } },
-        { x: 19.0, y: 26, w:2, h: 3, forAction: true, id: 'kl232', },   
-        { x: 13.6, y: 37.5, w:2, h: 3, forAction: true, id: 'kl224', },   
-        { x: 27.0, y: 26, w:2, h: 3, forAction: true, id: 'kl216', },   
-        { x: 33.0, y: 26, w:1.5, h: 3, forAction: true, id: 'kl215', },   
-        { x: 46.0, y: 26, w:2, h: 3, forAction: true, id: 'kl213', },   
-        { x: 44.0, y: 55, w:2, h: 3, forAction: true, id: 'kl217', },   
-        { x: 27.5, y: 55, w:1.5, h: 3, forAction: true, id: 'kl223', },   
-        { x: 11.4, y: 55, w:1.9, h: 3, forAction: true, id: 'kl234', },   
-        { x: 31.4, y: 72.5, w:1.9, h: 3, forAction: true, id: 'kl211', },   
-        { x: 31.4, y: 77, w:1.9, h: 3, forAction: true, id: 'kl212', },   
-        { x: 73.3, y: 77, w:2, h: 3, forAction: true, id: 'kl218', },   
-        { x: 73.5, y: 83, w:2, h: 3, forAction: true, id: 'kl210', },   
-        { x: 73.3, y: 70.5, w:2, h: 3, forAction: true, id: 'kl218a', },   
-        { x: 72.5, y: 62.5, w:2, h: 3, forAction: true, id: 'kl236a', },   
-        { x: 65.5, y: 43, w:2, h: 3, forAction: true, id: 'kl219', },   
-        { x: 40.0, y: 18, w:1.2, h: 3.5, forAction: true, id: 'kl221', },   
-        { x: 23.3, y: 17.5, w:1, h: 4, forAction: true, id: 'kl227', },   
-        { x: 78.0, y: 49.5, w:4, h: 2.5, forAction: true, id: 'Avto', },   
-        { x: 78.0, y: 52.9, w:4, h: 2.5, forAction: true, id: 'rucnou', },   
-        { x: 78.0, y: 55.9, w:4, h: 3.5, forAction: true, id: 'sbros ohibki', },   
-        { x: 34.2, y: 8.9, w:7, h: 2.5, forAction: true, id: 'trendy', },   
-        { x: 27.2, y: 8.9, w:7, h: 2.5, forAction: true, id: 'meteostanci', },   
-        { x: 17.7, y: 8.9, w:10, h: 2.5, forAction: true, id: 'temperatura kojuxa', },   
-        { x: 3.20, y: 8.9, w:7, h: 2.5, forAction: true, id: 'rejim', },   
-        { x: 38.5, y: 43.5, w:1.4, h: 3.5, forAction: true, id: 'kl240', }, 
+        { x: 19.0, y: 26, w: 2, h: 3, forAction: true, id: 'kl232', },
+        { x: 13.6, y: 37.5, w: 2, h: 3, forAction: true, id: 'kl224', },
+        { x: 27.0, y: 26, w: 2, h: 3, forAction: true, id: 'kl216', },
+        { x: 33.0, y: 26, w: 1.5, h: 3, forAction: true, id: 'kl215', },
+        { x: 46.0, y: 26, w: 2, h: 3, forAction: true, id: 'kl213', },
+        { x: 44.0, y: 55, w: 2, h: 3, forAction: true, id: 'kl217', },
+        { x: 27.5, y: 55, w: 1.5, h: 3, forAction: true, id: 'kl223', },
+        { x: 11.4, y: 55, w: 1.9, h: 3, forAction: true, id: 'kl234', },
+        { x: 31.4, y: 72.5, w: 1.9, h: 3, forAction: true, id: 'kl211', },
+        { x: 31.4, y: 77, w: 1.9, h: 3, forAction: true, id: 'kl212', },
+        { x: 73.3, y: 77, w: 2, h: 3, forAction: true, id: 'kl218', },
+        { x: 73.5, y: 83, w: 2, h: 3, forAction: true, id: 'kl210', },
+        { x: 73.3, y: 70.5, w: 2, h: 3, forAction: true, id: 'kl218a', },
+        { x: 72.5, y: 62.5, w: 2, h: 3, forAction: true, id: 'kl236a', },
+        { x: 65.5, y: 43, w: 2, h: 3, forAction: true, id: 'kl219', },
+        { x: 40.0, y: 18, w: 1.2, h: 3.5, forAction: true, id: 'kl221', },
+        { x: 23.3, y: 17.5, w: 1, h: 4, forAction: true, id: 'kl227', },
+        { x: 78.0, y: 49.5, w: 4, h: 2.5, forAction: true, id: 'Avto', },
+        { x: 78.0, y: 52.9, w: 4, h: 2.5, forAction: true, id: 'rucnou', },
+        { x: 78.0, y: 55.9, w: 4, h: 3.5, forAction: true, id: 'sbros ohibki', },
+        { x: 34.2, y: 8.9, w: 7, h: 2.5, forAction: true, id: 'trendy', },
+        { x: 27.2, y: 8.9, w: 7, h: 2.5, forAction: true, id: 'meteostanci', },
+        { x: 17.7, y: 8.9, w: 10, h: 2.5, forAction: true, id: 'temperatura kojuxa', },
+        { x: 3.20, y: 8.9, w: 7, h: 2.5, forAction: true, id: 'rejim', },
+        { x: 38.5, y: 43.5, w: 1.4, h: 3.5, forAction: true, id: 'kl240', },
       ]
     },
     {
@@ -306,51 +306,51 @@ const devHelper = {
         { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
         { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
         { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
-        { x: 73.5, y: 83.0, w: 2, h: 3, forAction: true, id: 'vn_310_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1510, y: 635 }, },  // win 310
-        { x: 73.5, y: 76.7, w: 2, h: 3, forAction: true, id: 'vn_318_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1510, y: 635 }, },  // win 318
-        { x: 65.35, y: 42.9, w: 2, h: 3, forAction: true, id: 'vn_319_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1343, y: 450 }, },  // win 319
-        { x: 19, y:26, w:2, h: 3, forAction: true, id: 'kl332', },   
-        { x: 13.6, y:37.5, w:2, h: 3, forAction: true, id: 'kl324', },   
-        { x: 27, y:26, w:2, h: 3, forAction: true, id: 'kl316', },   
-        { x: 33, y:26, w:1.5, h: 3, forAction: true, id: 'kl315', },   
-        { x: 46, y:26, w:2, h: 3, forAction: true, id: 'kl313', },   
-        { x: 44, y:55, w:2, h: 3, forAction: true, id: 'kl317', },   
-        { x: 27.5, y:55, w:1.5, h: 3, forAction: true, id: 'kl323', },   
-        { x: 11.4, y:55, w:1.9, h: 3, forAction: true, id: 'kl334', },   
-        { x: 31.4, y:72.5, w:1.9, h: 3, forAction: true, id: 'kl311', },   
-        { x: 31.4, y:77, w:1.9, h: 3, forAction: true, id: 'kl312', },     
-        { x: 73.3, y:70.5, w:2, h: 3, forAction: true, id: 'kl318a', },   
-        { x: 72.5, y:62.5, w:2, h: 3, forAction: true, id: 'kl336a', },      
-        { x: 40, y:18, w:1.2, h: 3.5, forAction: true, id: 'kl321', },   
-        { x: 23.3, y:17.5, w:1, h: 4, forAction: true, id: 'kl327', },   
-        { x: 78, y:49.5, w:4, h: 2.5, forAction: true, id: 'Avto', },   
-        { x: 78, y:52.9, w:4, h: 2.5, forAction: true, id: 'rucnou', },   
-        { x: 78, y:55.9, w:4, h: 3.5, forAction: true, id: 'sbros ohibki', },   
-        { x: 34.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'trendy', },   
-        { x: 27.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'meteostanci', },   
-        { x: 17.7, y:8.9, w:10, h: 2.5, forAction: true, id: 'temperatura kojuxa', },   
-        { x: 3.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'rejim', },   
-        { x: 38.5, y:43.5, w:1.4, h: 3.5, forAction: true, id: 'kl340', }, 
+        { x: 73.5, y: 83.0, w: 2, h: 3, forAction: true, id: 'vn_310_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1510, y: 635 }, realName: 'Клапан 310' },  // win 310
+        { x: 73.5, y: 76.7, w: 2, h: 3, forAction: true, id: 'vn_318_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1510, y: 635 }, realName: 'Клапан 318' },  // win 318
+        { x: 65.35, y: 42.9, w: 2, h: 3, forAction: true, id: 'vn_319_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1343, y: 450 }, realName: 'Клапан 319' },  // win 319
+        { x: 19, y: 26, w: 2, h: 3, forAction: true, id: 'kl332', },
+        { x: 13.6, y: 37.5, w: 2, h: 3, forAction: true, id: 'kl324', },
+        { x: 27, y: 26, w: 2, h: 3, forAction: true, id: 'kl316', },
+        { x: 33, y: 26, w: 1.5, h: 3, forAction: true, id: 'kl315', },
+        { x: 46, y: 26, w: 2, h: 3, forAction: true, id: 'kl313', },
+        { x: 44, y: 55, w: 2, h: 3, forAction: true, id: 'kl317', },
+        { x: 27.5, y: 55, w: 1.5, h: 3, forAction: true, id: 'kl323', },
+        { x: 11.4, y: 55, w: 1.9, h: 3, forAction: true, id: 'kl334', },
+        { x: 31.4, y: 72.5, w: 1.9, h: 3, forAction: true, id: 'kl311', },
+        { x: 31.4, y: 77, w: 1.9, h: 3, forAction: true, id: 'kl312', },
+        { x: 73.3, y: 70.5, w: 2, h: 3, forAction: true, id: 'kl318a', },
+        { x: 72.5, y: 62.5, w: 2, h: 3, forAction: true, id: 'kl336a', },
+        { x: 40, y: 18, w: 1.2, h: 3.5, forAction: true, id: 'kl321', },
+        { x: 23.3, y: 17.5, w: 1, h: 4, forAction: true, id: 'kl327', },
+        { x: 78, y: 49.5, w: 4, h: 2.5, forAction: true, id: 'Avto', },
+        { x: 78, y: 52.9, w: 4, h: 2.5, forAction: true, id: 'rucnou', },
+        { x: 78, y: 55.9, w: 4, h: 3.5, forAction: true, id: 'sbros ohibki', },
+        { x: 34.2, y: 8.9, w: 7, h: 2.5, forAction: true, id: 'trendy', },
+        { x: 27.2, y: 8.9, w: 7, h: 2.5, forAction: true, id: 'meteostanci', },
+        { x: 17.7, y: 8.9, w: 10, h: 2.5, forAction: true, id: 'temperatura kojuxa', },
+        { x: 3.2, y: 8.9, w: 7, h: 2.5, forAction: true, id: 'rejim', },
+        { x: 38.5, y: 43.5, w: 1.4, h: 3.5, forAction: true, id: 'kl340', },
       ]
     },
     {
       name: 'O_n_k_na_VNK_posle_1', helpers: [
         { x: 61.00, y: 47.2, w: 1.5, h: 2.4, forAction: true, id: 'close_w1', removeWindow: 'O_n_k_na_VNK_posle_1', realName: 'Закрыть' },
         { x: 53.40, y: 59.1, w: 4.0, h: 2.6, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, realName: 'Открыть' },// open
-        { x: 83.80, y: 78.8, w: 8.6, h: 2.6, forAction: true, id: 'win_posle_1_stop_btn', x: 1124, y: 546, },  // stop  //  freeBTN
+        { x: 83.80, y: 78.8, w: 8.6, h: 2.6, forAction: true, id: 'win_posle_1_stop_btn', x: 1124, y: 546, realName: 'Стоп' },  // stop  //  freeBTN
       ]
     },
     {
       name: 'O_n_k_na_VNK_posle_2', helpers: [
-        { x: 60.2, y: 57, w: 3.2, h: 2.4, removeWindow: 'O_n_k_na_VNK_posle_2', forAction: true, id: 'close_vn', realName: 'Нет'}, // close
+        { x: 60.2, y: 57, w: 3.2, h: 2.4, removeWindow: 'O_n_k_na_VNK_posle_2', forAction: true, id: 'close_vn', realName: 'Нет' }, // close
         { x: 56.5, y: 57, w: 3.2, h: 2.4, removeWindow: 'O_n_k_na_VNK_posle_2', forAction: true, id: 'open_vn1', realName: 'Да' }, // open
       ]
     },
     {
       name: 'dp', helpers: [
         { x: 94.4, y: 26, w: 4, h: 3, forAction: true, id: 't_r_4', value: { window: 'vvod_znachenij', x: 900, y: 300, }, realName: 'F природного газа' },
-        { x: 69.4, y: 90, w: 2.5, h: 4, forAction: true, id: 't_b_302_btn', value: { window: 'win_sym_302', x: 56, y: 48, } },
-        { x: 94.4, y: 29.6, w: 4, h: 3, forAction: true, id: 't_r_5', value: { window: 'vvod_znachenij', x: 900, y: 300, } },
+        { x: 69.4, y: 90, w: 2.5, h: 4, forAction: true, id: 't_b_302_btn', value: { window: 'win_sym_302', x: 56, y: 48, realName: 'Символ «302»' } },
+        { x: 94.4, y: 29.6, w: 4, h: 3, forAction: true, id: 't_r_5', value: { window: 'vvod_znachenij', x: 900, y: 300, }, realName: 'ТТГ' },
         { x: 94.4, y: 22.7, w: 4, h: 3, forAction: true, id: 'T.Gor dutiy', },
         { x: 94.4, y: 18.7, w: 4, h: 3, forAction: true, id: 'DP obh', },
         { x: 94.4, y: 14.9, w: 4, h: 3.4, forAction: true, id: 'P cop gaza', },
@@ -401,37 +401,51 @@ const devHelper = {
     },
     {
       name: 'win_sym_302', helpers: [
-        { x: 45.8, y: 5, w: 1.6, h: 3.3, removeWindow: 'win_sym_302', forAction: true, id: 'ws3_close_btn', }, // close
-        { x: 18.65, y: 73, w: 8, h: 5.5, forAction: true, id: 'ws3_ttg_text_btn', },
-        { x: 18.65, y: 73, w: 0, h: 0, forAction: true, id: 'ws3_ttg2_text_btn', value: { window: 'priczvuksinal', x: 956, y: 112, } },
+        { x: 45.8, y: 5, w: 1.6, h: 3.3, removeWindow: 'win_sym_302', forAction: true, id: 'ws3_close_btn', realName: 'Закрыть' }, // close            
+        { x: 18.65, y: 73, w: 8, h: 5.5, forAction: true, id: 'ws3_ttg_text_btn', realName: 'Расход ПГ' },
+        { x: 18.65, y: 73, w: 0, h: 0, forAction: true, id: 'ws3_ttg2_text_btn', value: { window: 'priczvuksinal', x: 956, y: 112, }, realName: 'ТТГ' },
+
       ]
     },
     {
       name: 'vvod_znachenij', helpers: [
-        { x: 58.4, y: 30.3, w: 1.5, h: 2, removeWindow: 'vvod_znachenij', forAction: true, id: 'vz_close' },
-        { x: 47.6, y: 78.3, w: 4.0, h: 4, removeWindow: 'vvod_znachenij', forAction: true, id: 'vz_ok' },
-        { x: 47.7, y: 64.5, w: 3.0, h: 4, forAction: true, id: 'vz_0' },
-        { x: 47.7, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_1' },
-        { x: 51.1, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_2' },
-        { x: 54.4, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_3' },
-        { x: 47.7, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_4' },
-        { x: 51.1, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_5' },
-        { x: 54.4, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_6' },
-        { x: 47.7, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_7' },
-        { x: 51.1, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_8' },
-        { x: 54.4, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_9' }
+        { x: 58.4, y: 30.3, w: 1.5, h: 2, removeWindow: 'vvod_znachenij', forAction: true, id: 'vz_close', realName: 'Закрыть' },
+        { x: 47.6, y: 78.3, w: 4.0, h: 4, removeWindow: 'vvod_znachenij', forAction: true, id: 'vz_ok', realName: 'Ок' },
+        { x: 47.7, y: 64.5, w: 3.0, h: 4, forAction: true, id: 'vz_0', realName: 'Цифра 0' },
+        { x: 47.7, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_1', realName: 'Цифра 1' },
+        { x: 51.1, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_2', realName: 'Цифра 2' },
+        { x: 54.4, y: 60, w: 3.0, h: 4, forAction: true, id: 'vz_3', realName: 'Цифра 3' },
+        { x: 47.7, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_4', realName: 'Цифра 4' },
+        { x: 51.1, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_5', realName: 'Цифра 5' },
+        { x: 54.4, y: 55, w: 3.0, h: 4, forAction: true, id: 'vz_6', realName: 'Цифра 6' },
+        { x: 47.7, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_7', realName: 'Цифра 7' },
+        { x: 51.1, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_8', realName: 'Цифра 8' },
+        { x: 54.4, y: 50.3, w: 3.0, h: 4, forAction: true, id: 'vz_9', realName: 'Цифра 9' }
+
       ]
     },
     {
       name: 'O_p_n_na_k_p_na_VNK', helpers: [
-        { x: 27.2, y: 11.8, w: 2.25, h: 2.6, forAction: true, id: 'perekidta_exit_btn', removeWindow: 'O_p_n_na_k_p_na_VNK', },
-        { x: 15.6, y: 29, w: 11.9, h: 3.6, forAction: true, id: 'nagrev_otd2_btn', value: { window: 'O_p_n_na_k_na-o_2_na_VNK', x: 379, y: 32, } },
-        { x: 15.6, y: 41.4, w: 11.9, h: 3.6, forAction: true, id: 'otdel_otdel2_btn', value: { window: 'win_otdel2_na_vnk', x: 402, y: 468, } },
+        // { x: 27.2, y: 11.8, w: 2.25, h: 2.6, forAction: true, id: 'perekidta_exit_btn', removeWindow: 'O_p_n_na_k_p_na_VNK', },
+        // { x: 15.6, y: 29, w: 11.9, h: 3.6, forAction: true, id: 'nagrev_otd2_btn', value: { window: 'O_p_n_na_k_na-o_2_na_VNK', x: 379, y: 32, } },
+        // { x: 15.6, y: 41.4, w: 11.9, h: 3.6, forAction: true, id: 'otdel_otdel2_btn', value: { window: 'win_otdel2_na_vnk', x: 402, y: 468, } },
+        { x: 27.2, y: 11.8, w: 2.25, h: 2.6, forAction: true, id: 'perekidta_exit_btn', realName: 'Закрыть', removeWindow: 'O_p_n_na_k_p_na_VNK', },
+        { x: 15.6, y: 21.0, w: 11.9, h: 3.6, forAction: true, id: 'avaric_otdel_btn', realName: 'Аварийное отделение', },
+        { x: 15.6, y: 25.0, w: 11.9, h: 3.6, forAction: true, id: 'otdel_nagrev_btn', realName: 'Отделение-Нагрев', },
+        { x: 15.6, y: 28.8, w: 11.9, h: 3.6, forAction: true, id: 'nagrev_otdel2_btn', realName: 'Нагрев-Отделение 2', value: { window: 'O_p_n_na_k_na-o_2_na_VNK', x: 379, y: 32, } },
+        { x: 15.6, y: 33.1, w: 11.9, h: 3.6, forAction: true, id: 'otdel_dutia_btn', realName: 'Отделение-Дутье', },
+        { x: 15.6, y: 37.1, w: 11.9, h: 3.6, forAction: true, id: 'dutia_otdel_btn', realName: 'Дутье-отделение', },
+        { x: 15.6, y: 41.4, w: 11.9, h: 3.6, forAction: true, id: 'otdel_otdel2_btn', realName: 'Отделение-Отделение 2', },
+        { x: 15.6, y: 45.6, w: 11.9, h: 3.6, forAction: true, id: 'otdel2_otdel_btn', realName: 'Отделение 2 - Отделение', value: { window: 'win_otdel2_na_vnk', x: 402, y: 468, } },
+        { x: 15.6, y: 56.6, w: 11.9, h: 3.6, forAction: true, id: '10_klapan', realName: '10 клапан', },
+        { x: 15.6, y: 60.6, w: 11.9, h: 3.6, forAction: true, id: '11_klapan', realName: '11 клапан', },
+        { x: 15.6, y: 64.5, w: 11.9, h: 3.6, forAction: true, id: '12_klapan', realName: '12 клапан', },
+
       ]
     },
     {
       name: 'priczvuksinal', helpers: [
-        { x: 83.1, y: 17.7, w: 5, h: 3, removeWindow: 'priczvuksinal', forAction: true, id: 'pzs_close_btn' },
+        { x: 83.1, y: 17.7, w: 5, h: 3, removeWindow: 'priczvuksinal', forAction: true, id: 'pzs_close_btn', realName: 'Закрыть' },
       ]
     },
     {
@@ -444,62 +458,62 @@ const devHelper = {
     },
     {
       name: 'win_otdel2_na_vnk', helpers: [
-        { x: 45, y: 48, w: 2.2, h: 2.4, removeWindow: 'win_otdel2_na_vnk', forAction: true, id: 'otdel2_close_btn' },
-        { x: 34.5, y: 90, w: 3.8, h: 3.4, forAction: true, id: 'otdel2_pusk_btn', value: { window: 'O_n_k_na_VNK_posle_2', x: 707, y: 908 } },
-        { x: 38.3, y: 90, w: 3.8, h: 3.4, forAction: true, id: 'otdel2_stop_btn' },
-        { x: 42.1, y: 90, w: 3.8, h: 3.4, forAction: true, id: 'otdel2_reset_btn' },
+        { x: 45, y: 48, w: 2.2, h: 2.4, removeWindow: 'win_otdel2_na_vnk', realName: 'Закрыть', forAction: true, id: 'otdel2_close_btn' },
+        { x: 34.5, y: 90, w: 3.8, h: 3.4, forAction: true, id: 'otdel2_pusk_btn', realName: 'Пуск', value: { window: 'O_n_k_na_VNK_posle_2', x: 707, y: 908 } },
+        { x: 38.3, y: 90, w: 3.8, h: 3.4, forAction: true, id: 'otdel2_stop_btn', realName: 'Стоп', },
+        { x: 42.1, y: 90, w: 3.8, h: 3.4, forAction: true, id: 'otdel2_reset_btn', realName: 'Cброс', },
       ]
     },
     {
       name: 'bzu', helpers: [
-        { x: 71.7, y: 67.7, w: 4.5, h: 3.3, forAction: true, id: 'bzu_gruzit_btn' },
-        { x: 58.3, y: 35.0, w: 9.8, h: 3.3, forAction: true, id: 'bzu_ZapretSledPorci_btn' },
-        { x: 32.1, y: 45.3, w: 4.5, h: 6.1, forAction: true, id: 'bzu_raketaNGUK2_btn' },
-        { x: 29.7, y: 53.1, w: 3.9, h: 3.5, forAction: true, id: 'bzu_pause_btn' },
-        { x:58.3, y:39, w:9.8, h: 3.3, forAction: true, id: 'sleduyhai pociy', },
-        { x:72, y:15, w:4, h: 3.8, forAction: true, id: 'Pusk', },
-        { x:76.4, y:15, w: 4, h: 3.8, forAction: true, id: 'stop', },
-        { x:69.5, y: 82.5, w: 5.5, h:3.3, forAction: true, id: 'Izmerit', },
-        { x:2, y:84, w:5.5, h: 3.3, forAction: true, id: 'Datcik_1', },
-        { x:2, y:87.8, w:5.5, h: 3.3, forAction: true, id: 'Datcik_2', },
-        { x:2, y:91, w:5.5, h: 3.3, forAction: true, id: 'Datcik_3', },
-        { x:2, y:94.7, w:5.5, h: 3.3, forAction: true, id: 'Datcik_4', },
-        { x:26.5, y:45, w:5, h: 6.3, forAction: true, id: 'raketaNGUK1', },
-        { x:24, y:46.8, w:2.4, h:2.3, forAction: true, id: 'klNGUK1', },
-        { x:37, y:46.4, w:2, h: 2.3, forAction: true, id: 'klNGUK2', },
-        { x:33.5, y:41.9, w:3, h:3.3, forAction: true, id: 'Vygr_NGUK2', },
-        { x:26.4, y:41.6, w:3, h: 3, forAction: true, id: 'Vygr_NGUK1', },
-        { x:23.3, y:21.5, w:3, h:3.5, forAction: true, id: 'Zagr1', },
-        { x:37, y:21.6, w:3, h: 3.5, forAction: true, id: 'Zagr2', },
-        { x:25, y:13.5, w:3.4, h: 3.3, forAction: true, id: 'Jelob', },
-        { x:27, y:16.8, w:2, h: 2.3, forAction: true, id: 'klVGUK1', },
-        { x:35, y:16.8, w:2, h: 2.3, forAction: true, id: 'klVGUK2', },
-        { x:41, y:26.6, w:1.5, h: 4.3, forAction: true, id: 'klBK-2', },
-        { x:21, y:26.5, w:1.5, h: 4.3, forAction: true, id: 'klBK-1', },
-        { x:21, y:35.9, w:1.5, h: 4.3, forAction: true, id: 'klNKV-1', },
-        { x:17, y:35.9, w:1.5, h: 4.3, forAction: true, id: 'klNKP-1', },
-        { x:41, y:35.9, w:1.5, h: 4.3, forAction: true, id: 'klNKV-2', },
-        { x:45, y:35.9, w:1.5, h: 4.3, forAction: true, id: 'klNKP-2', },
-        { x:40.8, y:32.6, w:1.5, h: 3.3, forAction: true, id: 'Droseli2', },
-        { x:20.8, y:32.6, w:1.5, h: 3.3, forAction: true, id: 'Droseli1', },
-        { x:12.9, y:27.9, w:6.5, h: 3, forAction: true, id: 'hagi upravleniy1', },
-        { x:43.7, y:28.6, w:6.4, h: 2.3, forAction: true, id: 'hagi upravleniy2', },
-        { x:60.4, y:42, w:7, h: 3.3, forAction: true, id: 'ekstraporcii', },
-        { x:73, y:42, w:3.5, h: 3, forAction: true, id: 'vidati', },
-        { x:33.5, y:38.9, w:4, h: 3.3, forAction: true, id: 'vibraciy', },
-        { x:33.5, y:35.9, w:3.9, h: 3.3, forAction: true, id: 'pusto', },
-        { x:78, y:37, w:2.8, h: 3, forAction: true, id: 'sbros', },
-        { x:87, y:46.3, w:4.8, h: 3, forAction: true, id: 'Na konveer', },
-        { x:92, y:46.3, w:1.8, h: 3, forAction: true, id: 'B1', },
-        { x:94, y:46.3, w:1.8, h: 3, forAction: true, id: 'B2', },
+        { x: 71.7, y: 67.7, w: 4.5, h: 3.3, forAction: true, id: 'bzu_gruzit_btn', realName: 'Грузить' },
+        { x: 58.3, y: 35.0, w: 9.8, h: 3.3, forAction: true, id: 'bzu_ZapretSledPorci_btn', realName: 'Запрет след.порции' },
+        { x: 32.1, y: 45.3, w: 4.5, h: 6.1, forAction: true, id: 'bzu_raketaNGUK2_btn', },
+        { x: 29.7, y: 53.1, w: 3.9, h: 3.5, forAction: true, id: 'bzu_pause_btn', realName: 'Пауза' },
+        { x: 58.3, y: 39, w: 9.8, h: 3.3, forAction: true, id: 'sleduyhai pociy', },
+        { x: 72, y: 15, w: 4, h: 3.8, forAction: true, id: 'Pusk', },
+        { x: 76.4, y: 15, w: 4, h: 3.8, forAction: true, id: 'stop', },
+        { x: 69.5, y: 82.5, w: 5.5, h: 3.3, forAction: true, id: 'Izmerit', },
+        { x: 2, y: 84, w: 5.5, h: 3.3, forAction: true, id: 'Datcik_1', },
+        { x: 2, y: 87.8, w: 5.5, h: 3.3, forAction: true, id: 'Datcik_2', },
+        { x: 2, y: 91, w: 5.5, h: 3.3, forAction: true, id: 'Datcik_3', },
+        { x: 2, y: 94.7, w: 5.5, h: 3.3, forAction: true, id: 'Datcik_4', },
+        { x: 26.5, y: 45, w: 5, h: 6.3, forAction: true, id: 'raketaNGUK1', },
+        { x: 24, y: 46.8, w: 2.4, h: 2.3, forAction: true, id: 'klNGUK1', },
+        { x: 37, y: 46.4, w: 2, h: 2.3, forAction: true, id: 'klNGUK2', },
+        { x: 33.5, y: 41.9, w: 3, h: 3.3, forAction: true, id: 'Vygr_NGUK2', },
+        { x: 26.4, y: 41.6, w: 3, h: 3, forAction: true, id: 'Vygr_NGUK1', },
+        { x: 23.3, y: 21.5, w: 3, h: 3.5, forAction: true, id: 'Zagr1', },
+        { x: 37, y: 21.6, w: 3, h: 3.5, forAction: true, id: 'Zagr2', },
+        { x: 25, y: 13.5, w: 3.4, h: 3.3, forAction: true, id: 'Jelob', },
+        { x: 27, y: 16.8, w: 2, h: 2.3, forAction: true, id: 'klVGUK1', },
+        { x: 35, y: 16.8, w: 2, h: 2.3, forAction: true, id: 'klVGUK2', },
+        { x: 41, y: 26.6, w: 1.5, h: 4.3, forAction: true, id: 'klBK-2', },
+        { x: 21, y: 26.5, w: 1.5, h: 4.3, forAction: true, id: 'klBK-1', },
+        { x: 21, y: 35.9, w: 1.5, h: 4.3, forAction: true, id: 'klNKV-1', },
+        { x: 17, y: 35.9, w: 1.5, h: 4.3, forAction: true, id: 'klNKP-1', },
+        { x: 41, y: 35.9, w: 1.5, h: 4.3, forAction: true, id: 'klNKV-2', },
+        { x: 45, y: 35.9, w: 1.5, h: 4.3, forAction: true, id: 'klNKP-2', },
+        { x: 40.8, y: 32.6, w: 1.5, h: 3.3, forAction: true, id: 'Droseli2', },
+        { x: 20.8, y: 32.6, w: 1.5, h: 3.3, forAction: true, id: 'Droseli1', },
+        { x: 12.9, y: 27.9, w: 6.5, h: 3, forAction: true, id: 'hagi upravleniy1', },
+        { x: 43.7, y: 28.6, w: 6.4, h: 2.3, forAction: true, id: 'hagi upravleniy2', },
+        { x: 60.4, y: 42, w: 7, h: 3.3, forAction: true, id: 'ekstraporcii', },
+        { x: 73, y: 42, w: 3.5, h: 3, forAction: true, id: 'vidati', },
+        { x: 33.5, y: 38.9, w: 4, h: 3.3, forAction: true, id: 'vibraciy', },
+        { x: 33.5, y: 35.9, w: 3.9, h: 3.3, forAction: true, id: 'pusto', },
+        { x: 78, y: 37, w: 2.8, h: 3, forAction: true, id: 'sbros', },
+        { x: 87, y: 46.3, w: 4.8, h: 3, forAction: true, id: 'Na konveer', },
+        { x: 92, y: 46.3, w: 1.8, h: 3, forAction: true, id: 'B1', },
+        { x: 94, y: 46.3, w: 1.8, h: 3, forAction: true, id: 'B2', },
         { x: 96, y: 46.3, w: 2.9, h: 3, forAction: true, id: 'Ekstra', },
         { x: 97, y: 50.6, w: 2.5, h: 3, forAction: true, id: 'NomerStr', },
         { x: 92, y: 50.6, w: 2.2, h: 3, forAction: true, id: 'NomerMatr', },
-        { x:85.8, y:50.6, w:2.2, h: 3, forAction: true, id: 'B2_2', },
-        { x:83.8, y:50.6, w:2.2, h: 3, forAction: true, id: 'B1_2', },
-        { x:91.5, y:14.3, w:6.8, h: 3.3, forAction: true, id: 'sbros ohibki', },
-        { x:85.8, y:70.6, w:5.2, h: 3, forAction: true, id: 'Na konveer', },
-        { x:85.8, y:79, w:5.4, h: 3, forAction: true, id: 'V peh', },
+        { x: 85.8, y: 50.6, w: 2.2, h: 3, forAction: true, id: 'B2_2', },
+        { x: 83.8, y: 50.6, w: 2.2, h: 3, forAction: true, id: 'B1_2', },
+        { x: 91.5, y: 14.3, w: 6.8, h: 3.3, forAction: true, id: 'sbros ohibki', },
+        { x: 85.8, y: 70.6, w: 5.2, h: 3, forAction: true, id: 'Na konveer', },
+        { x: 85.8, y: 79, w: 5.4, h: 3, forAction: true, id: 'V peh', },
         { x: 13.7, y: 0, w: 3.4, h: 3.3, name: 'dp', },
         { x: 18, y: 0, w: 4.5, h: 3.3, name: 'Protechki', },
         { x: 45.5, y: 0, w: 3.5, h: 3.3, name: 'bzu', },
@@ -917,7 +931,7 @@ const devHelper = {
 // 007 запкрывается слишком быстро
 // красные круги на 028
 // 028 запкрывается слишком быстро
-const timeDiff = -0;
+const timeDiff = -62;
 let tempActions = [
   /*
     [ // test scenario 1
@@ -946,6 +960,7 @@ let tempActions = [
   */
   // Первый сценарий  
   [
+    /*
     {
       lifeTime: '07:30:00',
       startTime: timeDiff + 0,
@@ -1414,6 +1429,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Закрыть',
         window2D: {
           newPositionWindow: {  //  wind 2
             x: 1200,
@@ -1643,6 +1659,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Закрыть',
         window2D: {
           newPositionWindow: {
             x: 1208,
@@ -1869,6 +1886,7 @@ let tempActions = [
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Закрыть',
         window2D: {
           newPositionWindow: {
             x: 957,
@@ -2037,16 +2055,18 @@ let tempActions = [
     ////--------------------------------0----------------------------------------
     // закрыть окно ВН
     {
-      scenarioText: 'В случае запланированной остановки доменной печи газовщик сообщает об этом.',
-      audio: 'tts-7',
-      sender: 'Система',
-      lifeTime: '07:45:00',
       startTime: timeDiff + 45,
       action: {
         target2D: 'close_w1',
       },
       human: true,
-
+    },
+    {
+      scenarioText: 'В случае запланированной остановки доменной печи газовщик сообщает об этом.',
+      audio: 'tts-7',
+      sender: 'Система',
+      lifeTime: '07:45:00',
+      startTime: timeDiff + 45.1,
     },
     ////--------------------------------1----------------------------------------
     {
@@ -2114,10 +2134,10 @@ let tempActions = [
       },
       startTime: timeDiff + 58,
     },
-
+*/
     ////--------------------------------2----------------------------------------
     {
-      scenarioText: ' Расход природного газа увеличиваем для поддержания ТТГ.',
+      scenarioText: ' Расход природного газа увеличиваем для поддержания ТТГ. Установить на 37000.',
       sender: 'Система',
       audio: 'tts-10',
       startTime: timeDiff + 63,
@@ -2197,12 +2217,14 @@ let tempActions = [
     },
     ////--------------------------------3----------------------------------------
     {
-      scenarioText: 'Настройка значения теоретической температуры горения.',
+      scenarioText: 'Настройка значения теоретической температуры горения. Установить на 2200.',
       sender: 'Система',
       audio: 'tts-11',
       startTime: timeDiff + 69,
     },
-    {
+    { // TODO не нашёл имя и схему в помощи
+      text: 'Вырать 302',
+      sender: 'Система',
       action: {
         target2D: 't_b_302_btn',
         window2D: {
@@ -2244,7 +2266,10 @@ let tempActions = [
             { name: 't_r_ttg', stroke: '#c4bdb3' },
           ]
         },
-
+        helper2D: [
+          { x: 18.65, y: 73, w: 8, h: 5.5, id: 'ws3_ttg_text_btn' },
+          { x: 18.65, y: 73, w: 0, h: 0, id: 'ws3_ttg2_text_btn' },
+        ]
       },
       startTime: timeDiff + 73.2,
       human: true,
@@ -2268,7 +2293,7 @@ let tempActions = [
     {
       // scenarioText: 'Нажимаем на значение у ТТГ 22000 на общей схеме. Появляется окошко и вводим значение 2200 вручную',
       // sender: 'Система',
-      action: {
+      action: { 
         target2D: 't_r_5',
         window2D: {
           elements: [
@@ -2339,9 +2364,9 @@ let tempActions = [
     },
     ////--------------------------------3.2
     {
-      // scenarioText: 'Повторить операцию с символом 302, только оставляем клавишу «ТТГ» и после закрываем доп. окно.',
-      // sender: 'Система',
-      action: {
+      text: 'Вырать 302',
+      sender: 'Система',
+      action: { // TODO клик по 302!?
         target2D: 't_b_302_btn',
         window2D: {
           elements: [
@@ -2363,7 +2388,11 @@ let tempActions = [
             { name: 'f_prirgaz', stroke: '#c4bdb3' },
             { name: 't_r_ttg', stroke: '#000' },
           ]
-        }
+        },
+        helper2D: [
+          { x: 18.65, y: 73, w: 0, h: 0, id: 'ws3_ttg_text_btn' },
+          { x: 18.65, y: 73, w: 8, h: 5.5, id: 'ws3_ttg2_text_btn' },
+        ]
       },
       startTime: timeDiff + 74.2,
       human: true,

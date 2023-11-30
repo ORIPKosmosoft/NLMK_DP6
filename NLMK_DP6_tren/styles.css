@@ -1768,7 +1768,7 @@ ul {
 
 
 .box-time {
-  width: 18.52vw;
+  width: 15.52vw;
   height: 75px;
   border-radius: 0.52vw;
   position: fixed;
@@ -1783,7 +1783,7 @@ ul {
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
-  border: solid 2px rgba(255, 255, 255, 0.8);
+  border: solid 0.15vw rgba(255, 255, 255, 0.8);
 }
 
 .box-time .block-button {
@@ -1881,6 +1881,8 @@ ul {
   background-size: cover;
   transition: all 0.3s ease;
   cursor: pointer;
+  display: none;
+  visibility: hidden;
 }
 
 .time-oclock:hover {
@@ -2148,7 +2150,7 @@ ul {
 /* ///  ЧАТ /// */
 .box-chat-window {
   position: fixed;
-  width: 20vh;
+  width: 17.5vw;
   height: 52vh;
   left: 4vw;
   border-radius: 0.52vw;
@@ -2160,14 +2162,14 @@ ul {
   padding-bottom: 1.7vh;
   display: flex;
   flex-direction: column;
-  border: solid 2px rgba(255, 255, 255, 0.8);
+  border: solid 0.15vw rgba(255, 255, 255, 0.8);
 }
 
 .box-chat-window-mini {
   height: 11vh;
   padding-top: 0px;
   padding-bottom: 0px;
-  border: solid 2px rgba(255, 255, 255, 0.8);
+  border: solid 0.15vw rgba(255, 255, 255, 0.8);
 }
 
 .box-chat-window .block-button {
@@ -2518,7 +2520,7 @@ ul {
   opacity: 0;
   transition: all 0.3s ease;
   z-index: -1;
-  border: solid 2px rgba(255, 255, 255, 0.2);
+  border: solid 0.15vw rgba(255, 255, 255, 0.2);
 }
 
 .box-scenario-top {
