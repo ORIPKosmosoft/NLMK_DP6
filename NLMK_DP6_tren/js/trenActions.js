@@ -143,12 +143,54 @@ const devHelper = {
         { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
         { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
         { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
-        { x: 41.5, y: 50, w: 2.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, } },    // win 29
-        { x: 35.9, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl038', value: { window: 'O_n_k_na_VNK_posle_1', x: 770, y: 440, } },    // win 38
-        { x: 48.8, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl037', value: { window: 'O_n_k_na_VNK_posle_1', x: 1030, y: 440, } },    // win 37
-        { x: 48.8, y: 55, w: 2.7, h: 3.5, forAction: true, id: 'kl007', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 555, } },    // win 07
-        { x: 36.2, y: 55, w: 2.7, h: 3.5, forAction: true, id: 'kl028', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 480, } },    // win 28
-        { x: 86.2, y: 20.6, w: 2.5, h: 3.2, forAction: true, id: 'kl022', value: { window: 'O_n_k_na_VNK_posle_1', x: 1582, y: 260, } },    // win 28
+        { x: 41.5, y: 50, w: 2.7, h: 3.5, forAction: true, id: 'kl029', value: { window: 'O_n_k_na_VNK_posle_1', x: 900, y: 473, }, realName: 'Клапан 029' },    // win 29
+        { x: 35.9, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl_038', value: { window: 'O_n_k_na_VNK_posle_1', x: 770, y: 440, }, realName: 'Клапан 038'},    // win 38
+        { x: 48.8, y: 43.5, w: 2.7, h: 3.5, forAction: true, id: 'kl_037', value: { window: 'O_n_k_na_VNK_posle_1', x: 1030, y: 440, }, realName: 'Клапан 037' },    // win 37
+        { x: 48.8, y: 55, w: 2.7, h: 3.5, forAction: true, id: 'kl007', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 555, }, realName: 'Клапан 007' },    // win 07
+        { x: 36.2, y: 55, w: 2.7, h: 3.5, forAction: true, id: 'kl028', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 480, }, realName: 'Клапан 028' },    // win 28
+        { x: 86.2, y: 20.6, w: 2.5, h: 3.2, forAction: true, id: 'kl022', value: { window: 'O_n_k_na_VNK_posle_1', x: 1582, y: 260, }, realName: 'Клапан 022' },    // win 22
+        { x: 35.9, y: 37.5, w:2.7, h: 3.5, forAction: true, id: 'kl039', },
+        { x: 48.9, y: 37.5, w:2.7, h: 3.5, forAction: true, id: 'kl030', },
+        { x: 41.9, y: 31.5, w:2.7, h: 3.5, forAction: true, id: 'kl048', },
+        { x: 24.9, y: 54.5, w:2.7, h: 3.5, forAction: true, id: 'kl0501', },
+        { x: 36.5, y: 61.5, w:2.7, h: 3.5, forAction: true, id: 'kl020', },
+        { x: 48.5, y: 61.5, w:2.7, h: 3.5, forAction: true, id: 'kl025', },
+        { x: 42.5, y: 68.5, w:2.7, h: 3.5, forAction: true, id: 'kl004', },
+        { x: 35.5, y: 79.5, w:2.7, h: 3.5, forAction: true, id: 'kl036b', },
+        { x: 11,   y: 54.5, w:2.7, h: 3.5, forAction: true, id: 'kl0502', },
+        { x: 16.5, y: 54.5, w:1.7, h: 3.5, forAction: true, id: 'kl052', },
+        { x: 16.5, y: 46.5, w:1.7, h: 3.5, forAction: true, id: 'kl051', },
+        { x: 19.3, y: 37.3, w:1.7, h: 3.5, forAction: true, id: 'kl053', },
+        { x: 16.3, y: 62.3, w:1.7, h: 3.5, forAction: true, id: 'kl0333', },
+        { x: 23.0, y: 62.3, w:1, h: 3.5, forAction: true, id: 'kl0332', },
+        { x: 29.1, y: 62.3, w:1, h: 3.5, forAction: true, id: 'kl0331', },
+        { x: 33.1, y: 71.3, w:1, h: 3.5, forAction: true, id: 'kl036v', },
+        { x: 26.6, y: 84, w:1, h: 3.5, forAction: true, id: 'kl0311', },
+        { x: 20.7, y: 83.9, w:1, h: 3.5, forAction: true, id: 'kl0312', },
+        { x: 14.5, y: 83.6, w:1, h: 3.5, forAction: true, id: 'kl0313', },
+        { x: 14.0, y: 74.6, w:2, h: 3.5, forAction: true, id: 'klOF3', },
+        { x: 20.5, y: 74, w:2, h: 3.5, forAction: true, id: 'klOF2', },
+        { x: 26.0, y: 74, w:2, h: 3.5, forAction: true, id: 'klOF1', },
+        // { x: 35.5, y: 0, w:2, h: 3.5, forAction: true, id: 'kl036b', },
+        // { x: 64.5, y: 9, w:1, h: 4.5, forAction: true, id: 'kl047', },
+        // { x: 70.3, y: 8, w:2, h: 4.5, forAction: true, id: 'kl001a', },
+        // { x: 70.3, y: 9, w:2, h: 4.5, forAction: true, id: 'kl001', },
+        { x: 86.3, y: 1, w:2, h: 2.5, forAction: true, id: 'kl022', },
+        { x: 22.5, y: 46.8, w: 1.7, h: 3.5, forAction: true, id: 'kl054', },
+        { x:76.3, y:24.5, w:2, h: 2.5, forAction: true, id: 'kl002', },
+        { x:21.3, y:10.5, w:7, h: 3.5, forAction: true, id: 'trendy', },
+        { x:12.3, y:10.5, w:9, h: 3.5, forAction: true, id: 'rejimy BVNK', },
+        { x:3.3, y:10.5, w:9, h: 3.5, forAction: true, id: 'Sostoynie BVNK', },
+        { x: 11, y: 59, w: 2, h: 3.5, forAction: true, id: 'kl035', },
+        { x: 35.3, y: 13.5, w: 4, h: 2.5, forAction: true, id: 'Avto', },
+        { x: 35.3, y: 17, w: 4, h: 2.5, forAction: true, id: 'Ruhnoy', },
+        { x: 35.3, y: 20, w: 4, h: 3, forAction: true, id: 'sbros ohibki', },
+        { x: 39.3, y: 17, w: 4, h: 2.5, forAction: true, id: 'rabote', },
+        { x: 39.3, y: 13.6, w: 4, h: 2.5, forAction: true, id: 'baypase', },
+        { x: 44.9, y: 13.6, w: 1.5, h: 2.5, forAction: true, id: 'O_S', },
+        { x: 46.5, y: 13.6, w: 1.5, h: 2.5, forAction: true, id: 'O_R', },
+        { x: 46.5, y: 16.7, w: 1.5, h: 2.5, forAction: true, id: '5_R', },
+        { x: 44.9, y: 16.7, w: 1.5, h: 2.5, forAction: true, id: '5_s', },
       ]
     },
     {
@@ -158,6 +200,33 @@ const devHelper = {
         { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
         { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
         { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+        { x:69, y:30, w:2, h:3, forAction: true, id: 'kl048', },
+        { x:62.5, y:34.9, w:2, h:2, forAction: true, id: 'kl039', },
+        { x:77, y:34.9, w:2, h:2, forAction: true, id: 'kl030', },
+        { x:77, y:40.9, w:2, h:2, forAction: true, id: 'kl037', },
+        { x:63, y:40.9, w:2, h:2, forAction: true, id: 'kl038', },
+        { x:63, y:53.9, w:2, h:2, forAction: true, id: 'kl028', },
+        { x:77.5, y:53.9, w:2, h:2, forAction: true, id: 'kl007', },
+        { x:77.5, y:59.9, w:2, h:2, forAction: true, id: 'kl025', },
+        { x:63.5, y:59.9, w:2, h:2, forAction: true, id: 'kl020', },
+        { x:71.5, y:66.9, w:2, h:2, forAction: true, id: 'kl004', },
+        { x:60, y:70.9, w:1, h:3.5, forAction: true, id: 'kl036v', },
+        { x:56.5, y:78.9, w:2, h:2.5, forAction: true, id: 'kl036b', },
+        { x:50.8, y: 82, w:1, h:3.5, forAction: true, id: 'kl0311', },
+        { x:43.7, y:82, w:1, h:3.5, forAction: true, id: 'kl0312', },
+        { x:36.3, y:82, w:1, h:3.5, forAction: true, id: 'kl0313', },
+        { x:39, y:63, w: 1, h:3.5, forAction: true, id: 'kl0333', },
+        { x:46.5, y: 63, w: 1, h: 3.5, forAction: true, id: 'kl0332', },
+        { x: 53.7, y: 63, w: 1, h: 3.5, forAction: true, id: 'kl0331', },
+        { x: 50, y: 75, w: 2, h: 3.5, forAction: true, id: 'klOF1', },
+        { x: 43, y: 75, w: 2, h: 3.5, forAction: true, id: 'klOF2', },
+        { x: 35.7, y: 74, w: 2, h: 3.5, forAction: true, id: 'klOF3', },
+        { x: 29.3, y: 59, w: 2, h: 3.5, forAction: true, id: 'kl035', },
+        { x: 27.3, y: 8, w: 7, h: 3.5, forAction: true, id: 'Maslostanci', },
+        { x: 3.3, y: 8, w: 7, h: 3.5, forAction: true, id: 'Rejim', },
+        { x: 10.3, y: 8, w: 7, h:3.5, forAction: true, id: 'Prekidka', },
+        { x: 17.3, y: 8, w: 10, h: 3.5, forAction: true, id: 'Temperatura Kojuxa', },
+        { x: 34.3, y: 8, w: 7, h: 3.5, forAction: true, id: 'Trendy', },
       ]
     },
     {
@@ -168,16 +237,66 @@ const devHelper = {
         { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
         { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
         { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 } },
+        { x:19, y:26, w:2, h: 3, forAction: true, id: 'kl132', },   
+        { x:13.6, y:37.5, w:2, h: 3, forAction: true, id: 'kl124', },   
+        { x:27, y:26, w:2, h: 3, forAction: true, id: 'kl116', },   
+        { x:33, y:26, w:1.5, h: 3, forAction: true, id: 'kl115', },   
+        { x:46, y:26, w:2, h: 3, forAction: true, id: 'kl113', },   
+        { x:44, y:55, w:2, h: 3, forAction: true, id: 'kl117', },   
+        { x:27.5, y:55, w:1.5, h: 3, forAction: true, id: 'kl123', },   
+        { x:11.4, y:55, w:1.9, h: 3, forAction: true, id: 'kl134', },   
+        { x:31.4, y:72.5, w:1.9, h: 3, forAction: true, id: 'kl111', },   
+        { x:31.4, y:77, w:1.9, h: 3, forAction: true, id: 'kl112', },   
+        { x:73.3, y:77, w:2, h: 3, forAction: true, id: 'kl118', },   
+        { x:73.5, y:83, w:2, h: 3, forAction: true, id: 'kl110', },   
+        { x:73.3, y:70.5, w:2, h: 3, forAction: true, id: 'kl118a', },   
+        { x:72.5, y:62.5, w:2, h: 3, forAction: true, id: 'kl136a', },   
+        { x:65.5, y:43, w:2, h: 3, forAction: true, id: 'kl119', },   
+        { x:40, y:18, w:1.2, h: 3.5, forAction: true, id: 'kl121', },   
+        { x:23.3, y:17.5, w:1, h: 4, forAction: true, id: 'kl127', },   
+        { x:78, y:49.5, w:4, h: 2.5, forAction: true, id: 'Avto', },   
+        { x:78, y:52.9, w:4, h: 2.5, forAction: true, id: 'rucnou', },   
+        { x:78, y:55.9, w:4, h: 3.5, forAction: true, id: 'sbros ohibki', },   
+        { x:34.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'trendy', },   
+        { x:27.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'meteostanci', },   
+        { x:17.7, y:8.9, w:10, h: 2.5, forAction: true, id: 'temperatura kojuxa', },   
+        { x:3.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'rejim', },   
+        { x:38.5, y:43.5, w:1.4, h: 3.5, forAction: true, id: 'kl140', },
       ]
     },
     {
       name: 'BVNK_VNK2', helpers: [
         { x: 1, y: 1, w: 10.5, h: 3, name: 'vnk_main', },
-        { x: 11.6, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK1', },
-        { x: 22.2, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK2', },
-        { x: 32.7, y: 1, w: 10.4, h: 3, name: 'BVNK_VNK3', },
-        { x: 43.4, y: 1, w: 10.3, h: 3, name: 'vnk_spvg', },
+        { x: 11.6, y: 1.0, w: 10.4, h: 3, name: 'BVNK_VNK1', },
+        { x: 22.2, y: 1.0, w: 10.4, h: 3, name: 'BVNK_VNK2', },
+        { x: 32.7, y: 1.0, w: 10.4, h: 3, name: 'BVNK_VNK3', },
+        { x: 43.4, y: 1.0, w: 10.3, h: 3, name: 'vnk_spvg', },
         { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 } },
+        { x: 19.0, y: 26, w:2, h: 3, forAction: true, id: 'kl232', },   
+        { x: 13.6, y: 37.5, w:2, h: 3, forAction: true, id: 'kl224', },   
+        { x: 27.0, y: 26, w:2, h: 3, forAction: true, id: 'kl216', },   
+        { x: 33.0, y: 26, w:1.5, h: 3, forAction: true, id: 'kl215', },   
+        { x: 46.0, y: 26, w:2, h: 3, forAction: true, id: 'kl213', },   
+        { x: 44.0, y: 55, w:2, h: 3, forAction: true, id: 'kl217', },   
+        { x: 27.5, y: 55, w:1.5, h: 3, forAction: true, id: 'kl223', },   
+        { x: 11.4, y: 55, w:1.9, h: 3, forAction: true, id: 'kl234', },   
+        { x: 31.4, y: 72.5, w:1.9, h: 3, forAction: true, id: 'kl211', },   
+        { x: 31.4, y: 77, w:1.9, h: 3, forAction: true, id: 'kl212', },   
+        { x: 73.3, y: 77, w:2, h: 3, forAction: true, id: 'kl218', },   
+        { x: 73.5, y: 83, w:2, h: 3, forAction: true, id: 'kl210', },   
+        { x: 73.3, y: 70.5, w:2, h: 3, forAction: true, id: 'kl218a', },   
+        { x: 72.5, y: 62.5, w:2, h: 3, forAction: true, id: 'kl236a', },   
+        { x: 65.5, y: 43, w:2, h: 3, forAction: true, id: 'kl219', },   
+        { x: 40.0, y: 18, w:1.2, h: 3.5, forAction: true, id: 'kl221', },   
+        { x: 23.3, y: 17.5, w:1, h: 4, forAction: true, id: 'kl227', },   
+        { x: 78.0, y: 49.5, w:4, h: 2.5, forAction: true, id: 'Avto', },   
+        { x: 78.0, y: 52.9, w:4, h: 2.5, forAction: true, id: 'rucnou', },   
+        { x: 78.0, y: 55.9, w:4, h: 3.5, forAction: true, id: 'sbros ohibki', },   
+        { x: 34.2, y: 8.9, w:7, h: 2.5, forAction: true, id: 'trendy', },   
+        { x: 27.2, y: 8.9, w:7, h: 2.5, forAction: true, id: 'meteostanci', },   
+        { x: 17.7, y: 8.9, w:10, h: 2.5, forAction: true, id: 'temperatura kojuxa', },   
+        { x: 3.20, y: 8.9, w:7, h: 2.5, forAction: true, id: 'rejim', },   
+        { x: 38.5, y: 43.5, w:1.4, h: 3.5, forAction: true, id: 'kl240', }, 
       ]
     },
     {
@@ -190,26 +309,94 @@ const devHelper = {
         { x: 73.5, y: 83.0, w: 2, h: 3, forAction: true, id: 'vn_310_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1510, y: 635 }, },  // win 310
         { x: 73.5, y: 76.7, w: 2, h: 3, forAction: true, id: 'vn_318_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1510, y: 635 }, },  // win 318
         { x: 65.35, y: 42.9, w: 2, h: 3, forAction: true, id: 'vn_319_btn', value: { window: 'O_n_k_na_VNK_posle_1', x: 1343, y: 450 }, },  // win 319
+        { x: 19, y:26, w:2, h: 3, forAction: true, id: 'kl332', },   
+        { x: 13.6, y:37.5, w:2, h: 3, forAction: true, id: 'kl324', },   
+        { x: 27, y:26, w:2, h: 3, forAction: true, id: 'kl316', },   
+        { x: 33, y:26, w:1.5, h: 3, forAction: true, id: 'kl315', },   
+        { x: 46, y:26, w:2, h: 3, forAction: true, id: 'kl313', },   
+        { x: 44, y:55, w:2, h: 3, forAction: true, id: 'kl317', },   
+        { x: 27.5, y:55, w:1.5, h: 3, forAction: true, id: 'kl323', },   
+        { x: 11.4, y:55, w:1.9, h: 3, forAction: true, id: 'kl334', },   
+        { x: 31.4, y:72.5, w:1.9, h: 3, forAction: true, id: 'kl311', },   
+        { x: 31.4, y:77, w:1.9, h: 3, forAction: true, id: 'kl312', },     
+        { x: 73.3, y:70.5, w:2, h: 3, forAction: true, id: 'kl318a', },   
+        { x: 72.5, y:62.5, w:2, h: 3, forAction: true, id: 'kl336a', },      
+        { x: 40, y:18, w:1.2, h: 3.5, forAction: true, id: 'kl321', },   
+        { x: 23.3, y:17.5, w:1, h: 4, forAction: true, id: 'kl327', },   
+        { x: 78, y:49.5, w:4, h: 2.5, forAction: true, id: 'Avto', },   
+        { x: 78, y:52.9, w:4, h: 2.5, forAction: true, id: 'rucnou', },   
+        { x: 78, y:55.9, w:4, h: 3.5, forAction: true, id: 'sbros ohibki', },   
+        { x: 34.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'trendy', },   
+        { x: 27.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'meteostanci', },   
+        { x: 17.7, y:8.9, w:10, h: 2.5, forAction: true, id: 'temperatura kojuxa', },   
+        { x: 3.2, y:8.9, w:7, h: 2.5, forAction: true, id: 'rejim', },   
+        { x: 38.5, y:43.5, w:1.4, h: 3.5, forAction: true, id: 'kl340', }, 
       ]
     },
     {
       name: 'O_n_k_na_VNK_posle_1', helpers: [
-        { x: 61.00, y: 47.2, w: 1.5, h: 2.4, forAction: true, id: 'close_w1', removeWindow: 'O_n_k_na_VNK_posle_1', },
-        { x: 53.40, y: 59.1, w: 4.0, h: 2.6, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, realName: 'Открыть', },// open
+        { x: 61.00, y: 47.2, w: 1.5, h: 2.4, forAction: true, id: 'close_w1', removeWindow: 'O_n_k_na_VNK_posle_1', realName: 'Закрыть' },
+        { x: 53.40, y: 59.1, w: 4.0, h: 2.6, forAction: true, id: 'open_vn', value: { window: 'O_n_k_na_VNK_posle_2', x: 1124, y: 546, }, realName: 'Открыть' },// open
         { x: 83.80, y: 78.8, w: 8.6, h: 2.6, forAction: true, id: 'win_posle_1_stop_btn', x: 1124, y: 546, },  // stop  //  freeBTN
       ]
     },
     {
       name: 'O_n_k_na_VNK_posle_2', helpers: [
-        { x: 60.2, y: 57, w: 3.2, h: 2.4, removeWindow: 'O_n_k_na_VNK_posle_2', forAction: true, id: 'close_vn', }, // close
-        { x: 56.5, y: 57, w: 3.2, h: 2.4, removeWindow: 'O_n_k_na_VNK_posle_2', forAction: true, id: 'open_vn1', }, // open
+        { x: 60.2, y: 57, w: 3.2, h: 2.4, removeWindow: 'O_n_k_na_VNK_posle_2', forAction: true, id: 'close_vn', realName: 'Нет'}, // close
+        { x: 56.5, y: 57, w: 3.2, h: 2.4, removeWindow: 'O_n_k_na_VNK_posle_2', forAction: true, id: 'open_vn1', realName: 'Да' }, // open
       ]
     },
     {
       name: 'dp', helpers: [
-        { x: 94.4, y: 26, w: 4, h: 3, forAction: true, id: 't_r_4', value: { window: 'vvod_znachenij', x: 900, y: 300, } },
+        { x: 94.4, y: 26, w: 4, h: 3, forAction: true, id: 't_r_4', value: { window: 'vvod_znachenij', x: 900, y: 300, }, realName: 'F природного газа' },
         { x: 69.4, y: 90, w: 2.5, h: 4, forAction: true, id: 't_b_302_btn', value: { window: 'win_sym_302', x: 56, y: 48, } },
         { x: 94.4, y: 29.6, w: 4, h: 3, forAction: true, id: 't_r_5', value: { window: 'vvod_znachenij', x: 900, y: 300, } },
+        { x: 94.4, y: 22.7, w: 4, h: 3, forAction: true, id: 'T.Gor dutiy', },
+        { x: 94.4, y: 18.7, w: 4, h: 3, forAction: true, id: 'DP obh', },
+        { x: 94.4, y: 14.9, w: 4, h: 3.4, forAction: true, id: 'P cop gaza', },
+        { x: 94.4, y: 36, w: 4, h: 3.4, forAction: true, id: 'Vlajnosti', },
+        { x: 81, y: 15, w: 1.5, h: 3.4, forAction: true, id: 'kl1', },
+        { x: 76.6, y: 15, w: 1.5, h: 3.4, forAction: true, id: 'kl2', },
+        { x: 74.3, y: 15, w: 1.5, h: 3.4, forAction: true, id: 'kl3', },
+        { x: 76.5, y: 19.6, w: 1.5, h: 3.4, forAction: true, id: 'Drosel zel.', },
+        { x: 48.5, y: 29.6, w: 1.5, h: 4.4, forAction: true, id: 'kl83', },
+        { x: 37.5, y: 29.6, w: 1.5, h: 4.4, forAction: true, id: 'kl84', },
+        { x: 45.5, y: 35, w: 2.5, h: 3.4, forAction: true, id: 'kl81', },
+        { x: 15, y: 51, w: 2.5, h: 3.4, forAction: true, id: 'klSBV06', },
+        { x: 15, y: 55, w: 2.5, h: 3, forAction: true, id: 'klMBV06', },
+        { x: 15.5, y: 60, w: 2.5, h: 3, forAction: true, id: 'klTEV06', },
+        { x: 20.5, y: 58.4, w: 3, h: 3, forAction: true, id: 'klOGV06', },
+        { x: 13.6, y: 58.4, w: 2, h: 5, forAction: true, id: 'klIGV06', },
+        { x: 9.3, y: 53.4, w: 1.7, h: 5, forAction: true, id: 'klZel.chistiy gsz', },
+        { x: 11, y: 54.4, w: 1.7, h: 3, forAction: true, id: 'klchistiy gaz', },
+        { x: 6.7, y: 45, w: 1.7, h: 3.5, forAction: true, id: 'klVixod', },
+        { x: 20.7, y: 75.5, w: 2.7, h: 3.5, forAction: true, id: 'kl726', },
+        { x: 25.3, y: 81.5, w: 1.7, h: 3.5, forAction: true, id: 'kl315', },
+        { x: 29.3, y: 90.5, w: 2.5, h: 4, forAction: true, id: 'klXolodnoe dytiy', },
+        { x: 63.4, y: 90, w: 2.5, h: 4, forAction: true, id: 'kl721', },
+        { x: 70.9, y: 95, w: 2.5, h: 4, forAction: true, id: 'kl722', },
+        { x: 72.9, y: 87, w: 2, h: 4, forAction: true, id: 'kl723', },
+        { x: 71.5, y: 67, w: 1.5, h: 4, forAction: true, id: 'kl022', },
+        { x: 56.3, y: 77.5, w: 1.5, h: 4, forAction: true, id: 'kl002', },
+        { x: 56.3, y: 86.5, w: 1.5, h: 4, forAction: true, id: 'klH001', },
+        { x: 58.3, y: 83.5, w: 1.5, h: 4, forAction: true, id: 'klH001a', },
+        { x: 3.3, y: 94.5, w: 3.5, h: 4, forAction: true, id: 'Quantum', },
+        { x: 6.7, y: 94.5, w: 3.5, h: 4, forAction: true, id: 'M340', },
+        { x: 94.4, y: 32.8, w: 4, h: 3, forAction: true, id: 'F par uvl', },
+        { x: 18.4, y: 40.6, w: 3, h: 3, forAction: true, id: 'po min urovny', },
+        { x: 26.6, y: 40.6, w: 3, h: 3, forAction: true, id: 'po max urovny', },
+        { x: 38.6, y: 22.9, w: 5, h: 3.7, forAction: true, id: 'vypusk L3', },
+        { x: 45, y: 22.9, w: 5, h: 3.7, forAction: true, id: 'vypusk L4', },
+        { x: 45, y: 18.9, w: 5, h: 3.7, forAction: true, id: 'vypusk L2', },
+        { x: 38.5, y: 18.9, w: 5, h: 3.7, forAction: true, id: 'vypusk L1', },
+        { x: 37.5, y: 14.9, w: 6.7, h: 3.7, forAction: true, id: 'Mahinist', },
+        { x: 44, y: 14.9, w: 6.7, h: 3.7, forAction: true, id: 'Vyzov prinit', },
+        { x: 1, y: 16.8, w: 3, h: 2.9, forAction: true, id: 'Iskl_Radar1', },
+        { x: 4.6, y: 16.8, w: 3, h: 2.9, forAction: true, id: 'Iskl_Radar2', },
+        { x: 8.5, y: 16.8, w: 3, h: 2.9, forAction: true, id: 'Vkl_Radar3', },
+        { x: 13.7, y: 0, w: 3.4, h: 3.3, name: 'dp', },
+        { x: 18, y: 0, w: 4.5, h: 3.3, id: 'Protechki', },
+        { x: 45.5, y: 0, w: 3.5, h: 3.3, name: 'bzu', },
       ]
     },
     {
@@ -269,6 +456,53 @@ const devHelper = {
         { x: 58.3, y: 35.0, w: 9.8, h: 3.3, forAction: true, id: 'bzu_ZapretSledPorci_btn' },
         { x: 32.1, y: 45.3, w: 4.5, h: 6.1, forAction: true, id: 'bzu_raketaNGUK2_btn' },
         { x: 29.7, y: 53.1, w: 3.9, h: 3.5, forAction: true, id: 'bzu_pause_btn' },
+        { x:58.3, y:39, w:9.8, h: 3.3, forAction: true, id: 'sleduyhai pociy', },
+        { x:72, y:15, w:4, h: 3.8, forAction: true, id: 'Pusk', },
+        { x:76.4, y:15, w: 4, h: 3.8, forAction: true, id: 'stop', },
+        { x:69.5, y: 82.5, w: 5.5, h:3.3, forAction: true, id: 'Izmerit', },
+        { x:2, y:84, w:5.5, h: 3.3, forAction: true, id: 'Datcik_1', },
+        { x:2, y:87.8, w:5.5, h: 3.3, forAction: true, id: 'Datcik_2', },
+        { x:2, y:91, w:5.5, h: 3.3, forAction: true, id: 'Datcik_3', },
+        { x:2, y:94.7, w:5.5, h: 3.3, forAction: true, id: 'Datcik_4', },
+        { x:26.5, y:45, w:5, h: 6.3, forAction: true, id: 'raketaNGUK1', },
+        { x:24, y:46.8, w:2.4, h:2.3, forAction: true, id: 'klNGUK1', },
+        { x:37, y:46.4, w:2, h: 2.3, forAction: true, id: 'klNGUK2', },
+        { x:33.5, y:41.9, w:3, h:3.3, forAction: true, id: 'Vygr_NGUK2', },
+        { x:26.4, y:41.6, w:3, h: 3, forAction: true, id: 'Vygr_NGUK1', },
+        { x:23.3, y:21.5, w:3, h:3.5, forAction: true, id: 'Zagr1', },
+        { x:37, y:21.6, w:3, h: 3.5, forAction: true, id: 'Zagr2', },
+        { x:25, y:13.5, w:3.4, h: 3.3, forAction: true, id: 'Jelob', },
+        { x:27, y:16.8, w:2, h: 2.3, forAction: true, id: 'klVGUK1', },
+        { x:35, y:16.8, w:2, h: 2.3, forAction: true, id: 'klVGUK2', },
+        { x:41, y:26.6, w:1.5, h: 4.3, forAction: true, id: 'klBK-2', },
+        { x:21, y:26.5, w:1.5, h: 4.3, forAction: true, id: 'klBK-1', },
+        { x:21, y:35.9, w:1.5, h: 4.3, forAction: true, id: 'klNKV-1', },
+        { x:17, y:35.9, w:1.5, h: 4.3, forAction: true, id: 'klNKP-1', },
+        { x:41, y:35.9, w:1.5, h: 4.3, forAction: true, id: 'klNKV-2', },
+        { x:45, y:35.9, w:1.5, h: 4.3, forAction: true, id: 'klNKP-2', },
+        { x:40.8, y:32.6, w:1.5, h: 3.3, forAction: true, id: 'Droseli2', },
+        { x:20.8, y:32.6, w:1.5, h: 3.3, forAction: true, id: 'Droseli1', },
+        { x:12.9, y:27.9, w:6.5, h: 3, forAction: true, id: 'hagi upravleniy1', },
+        { x:43.7, y:28.6, w:6.4, h: 2.3, forAction: true, id: 'hagi upravleniy2', },
+        { x:60.4, y:42, w:7, h: 3.3, forAction: true, id: 'ekstraporcii', },
+        { x:73, y:42, w:3.5, h: 3, forAction: true, id: 'vidati', },
+        { x:33.5, y:38.9, w:4, h: 3.3, forAction: true, id: 'vibraciy', },
+        { x:33.5, y:35.9, w:3.9, h: 3.3, forAction: true, id: 'pusto', },
+        { x:78, y:37, w:2.8, h: 3, forAction: true, id: 'sbros', },
+        { x:87, y:46.3, w:4.8, h: 3, forAction: true, id: 'Na konveer', },
+        { x:92, y:46.3, w:1.8, h: 3, forAction: true, id: 'B1', },
+        { x:94, y:46.3, w:1.8, h: 3, forAction: true, id: 'B2', },
+        { x: 96, y: 46.3, w: 2.9, h: 3, forAction: true, id: 'Ekstra', },
+        { x: 97, y: 50.6, w: 2.5, h: 3, forAction: true, id: 'NomerStr', },
+        { x: 92, y: 50.6, w: 2.2, h: 3, forAction: true, id: 'NomerMatr', },
+        { x:85.8, y:50.6, w:2.2, h: 3, forAction: true, id: 'B2_2', },
+        { x:83.8, y:50.6, w:2.2, h: 3, forAction: true, id: 'B1_2', },
+        { x:91.5, y:14.3, w:6.8, h: 3.3, forAction: true, id: 'sbros ohibki', },
+        { x:85.8, y:70.6, w:5.2, h: 3, forAction: true, id: 'Na konveer', },
+        { x:85.8, y:79, w:5.4, h: 3, forAction: true, id: 'V peh', },
+        { x: 13.7, y: 0, w: 3.4, h: 3.3, name: 'dp', },
+        { x: 18, y: 0, w: 4.5, h: 3.3, name: 'Protechki', },
+        { x: 45.5, y: 0, w: 3.5, h: 3.3, name: 'bzu', },
       ]
     },
   ],
@@ -680,38 +914,36 @@ const devHelper = {
   human: true,
 },
 */
+// 007 запкрывается слишком быстро
+// красные круги на 028
+// 028 запкрывается слишком быстро
 const timeDiff = -0;
 let tempActions = [
-  [ // test scenario 1
-    ////--------------------------------2---------------------------------------- 
-    {
-      action: { // замена текстуры но рисунок
-        target3D: 'ea447b82-8145-4ba1-8e9f-abc1360dbcb6',
-        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg'
+  /*
+    [ // test scenario 1
+      ////--------------------------------2---------------------------------------- 
+      {
+        action: {
+          target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+          rotation: { y: 1.571 },
+        },
+        duration: 0.3,
+        startTime: timeDiff + 2,
+        human: true,
       },
-      startTime: timeDiff + 1,
-    },
-    {
-      action: {
-        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        rotation: { y: 1.571 },
+      {
+        action: {
+          target3D: 'fPrirodGazReg',
+          number: '024.5',
+          color: 'red',
+        },
+        startTime: timeDiff + 3,
       },
-      duration: 0.3,
-      startTime: timeDiff + 2,
-      human: true,
-    },
-    {
-      action: {
-        target3D: 'fPrirodGazReg',
-        number: '024.5',
-        color: 'red',
+      {
+        startTime: timeDiff + 5,
       },
-      startTime: timeDiff + 3,
-    },
-    {
-      startTime: timeDiff + 5,
-    },
-  ],
+    ],
+  */
   // Первый сценарий  
   [
     {
@@ -737,16 +969,35 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'title_work_vn', text: 'Управление клапаном 029' },
-            { name: 'status_window_text', text: 'Нет данных' },
-            { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
-            { name: 'polozenie_text', text: '51' },
-            { name: 'polozenie_button_text', color: '#000000' },
+
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_kl029', stroke: '#8F8F8F' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'status_window_text', text: 'Нет данных' },
+
+            // { name: 'skhema_sobrana', color: '#00FF00' },
+            // { name: 'block_open',     color: '#00FF00' },
+            // { name: 'block_close',    color: '#00FF00' },
+
+
+            { name: 'btn_auto_text', color: '#000' },
+            { name: 'btn_auto_2', color: '#fff' },
+
+
+            { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
+            { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'btn_open_text', color: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+
+
+            { name: 'polozenie_text', text: '51' },
+            { name: 'polozenie_button_text', color: '#000000' },
+
+
           ],
         },
       },
@@ -756,7 +1007,6 @@ let tempActions = [
       //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
       // ]
     },
-
     // открыть
     {
       action: {
@@ -791,11 +1041,11 @@ let tempActions = [
             { name: 'right_vn', color: '#00FF00' },
             { name: 'kl029', color: '#00FF00' },
             { name: 'kl029_proc', text: '55' },
-            { name: 'circle_1_kl029', stroke: '#00FF00' },
-            { name: 'circle_2_kl029', stroke: '#00FF00' },
 
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+
+
+            { name: 'circle_kl029', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' }
           ],
         },
       },
@@ -809,11 +1059,8 @@ let tempActions = [
             { name: 'polozenie_text', text: '65' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
-
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
           ],
         },
       },
@@ -827,10 +1074,8 @@ let tempActions = [
             { name: 'polozenie_text', text: '75' },
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_kl029', stroke: '#00FF00' },
-            { name: 'circle_2_kl029', stroke: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_kl029', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
           ],
         },
       },
@@ -844,10 +1089,9 @@ let tempActions = [
             { name: 'polozenie_text', text: '85' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl029', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl029', stroke: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+
+            { name: 'circle_kl029', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
           ],
         },
       },
@@ -861,13 +1105,17 @@ let tempActions = [
             { name: 'kl029_proc', text: '100' },
             { name: 'polozenie_text', text: '100' },
             { name: 'polozenie_button_text', color: '#6E6E6E' },        //  #6E6E6E //  #000;
-            { name: 'btn_open', color: '#E6E6E6', stroke: '#C4C4C4' },  //  #C4C4C4 //  #fff
+
+            { name: 'btn_open_text', color: '#000' },
+            { name: 'btn_open_2', color: '#e6e6e6', stroke: '#b3b3b3' },
+
+
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_kl029', stroke: '#00FF00' },
-            { name: 'circle_2_kl029', stroke: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+
+            { name: 'circle_kl029', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+
           ],
         },
       },
@@ -885,26 +1133,49 @@ let tempActions = [
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 16,
+      startTime: timeDiff + 13,
       human: true,
     },
 
     //// клик по ВН38 на схеме  ОТКРЫТ
     {
       action: {
-        target2D: 'kl038',
+        target2D: 'kl_038',
         window2D: {
           elements: [
+            { name: 'circle_kl038', stroke: '#00FF00' },
+            { name: 'kl_038', color: '#00FF00' },
+
             { name: 'title_work_vn', text: 'Управление клапаном 038' },
-            { name: 'status_window_text', text: 'Открыт' },
-            { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
-            { name: 'polozenie_text', text: '100' },
-            { name: 'polozenie_button_text', color: '#6E6E6E' },        //  #6E6E6E //  #000;
-            { name: 'btn_open', color: '#E6E6E6', stroke: '#C4C4C4' },  //  #C4C4C4 //  #fff
+
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_kl038', stroke: '#00FF00' },
-            { name: 'circle_2_kl038', stroke: '#00FF00' },
+
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'status_window_text', text: 'Открыт' },
+
+            // { name: 'skhema_sobrana', color: '#00FF00' },
+            // { name: 'block_open',     color: '#00FF00' },
+            // { name: 'block_close',    color: '#00FF00' },
+
+            { name: 'btn_auto_text', color: '#000' },
+            { name: 'btn_auto_2', color: '#fff' },
+
+
+            { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
+            { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'btn_open_text', color: '#666' },                        // afk
+            { name: 'btn_open_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'btn_close_text', color: '#000' },
+            { name: 'btn_close_2', color: '#fff', stroke: '#000' },
+
+
+            { name: 'polozenie_text', text: '51' },
+            { name: 'polozenie_button_text', color: '#000000' },
+
           ],
         },
         helper2D: [
@@ -912,13 +1183,14 @@ let tempActions = [
           { x: 51.3, y: 56.1, w: 4, h: 2.5, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 16.1,
+      startTime: timeDiff + 13.1,
       human: true,
     },
     // окно ВН
     {
       action: {
         target2D: 'open_vn',
+        realName: 'Закрыть',
         window2D: {
           newPositionWindow: {  //  wind 2
             x: 942,
@@ -933,7 +1205,7 @@ let tempActions = [
           { x: 47.50, y: 60.6, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 16.2,
+      startTime: timeDiff + 13.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -945,7 +1217,7 @@ let tempActions = [
           { x: 51.3, y: 56.1, w: 0, h: 2.5, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 16.3,
+      startTime: timeDiff + 13.3,
       human: true,
     },
     // мигание 
@@ -954,16 +1226,79 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'status_window_text', text: 'Закрывается' },
-            { name: 'btn_open', color: '', stroke: '' },
+            { name: 'btn_open_2', color: '', stroke: '' },
             { name: 'polozenie_text', text: '45' },
             { name: 'kl038_proc', text: '45' },
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'kl038', color: '#ff1e00' },
-            { name: 'circle_1_kl038', stroke: '#ff1e00' },
-            { name: 'circle_2_kl038', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'kl_038', color: '#ff1e00' },
+            { name: 'circle_kl038', stroke: '#ff1e00' },
+            { name: 'circle_kl038', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+          ],
+        },
+        helper2D: [
+          { x: 54.5, y: 44.0, w: 1.7, h: 2.5, id: 'close_w1' },
+          { x: 51.3, y: 56.1, w: 4, h: 2.5, id: 'open_vn' },     //  win 1
+        ]
+      },
+      startTime: timeDiff + 14,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl038_proc', text: '35' },
+            { name: 'polozenie_text', text: '35' },
+            { name: 'kl_038', color: '#8F8F8F' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_kl038', stroke: '#8F8F8F' },
+            { name: 'circle_kl038', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+          ],
+        },
+        helper2D: [
+          { x: 54.5, y: 44.0, w: 1.7, h: 2.5, id: 'close_w1' },
+          { x: 51.3, y: 56.1, w: 4, h: 2.5, id: 'open_vn' },     //  win 1
+        ]
+      },
+      startTime: timeDiff + 15,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_038', color: '#ff1e00' },
+            { name: 'kl038_proc', text: '25' },
+            { name: 'polozenie_text', text: '25' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_kl038', stroke: '#ff1e00' },
+            { name: 'circle_kl038', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+          ],
+        },
+        helper2D: [
+          { x: 54.5, y: 44.0, w: 1.7, h: 2.5, id: 'close_w1' },
+          { x: 51.3, y: 56.1, w: 4, h: 2.5, id: 'open_vn' },     //  win 1
+        ]
+      },
+      startTime: timeDiff + 16,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_038', color: '#8F8F8F' },
+            { name: 'kl038_proc', text: '15' },
+            { name: 'polozenie_text', text: '15' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_kl038', stroke: '#8F8F8F' },
+            { name: 'circle_kl038', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
           ],
         },
         helper2D: [
@@ -972,94 +1307,40 @@ let tempActions = [
         ]
       },
       startTime: timeDiff + 17,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'kl038_proc', text: '35' },
-            { name: 'polozenie_text', text: '35' },
-            { name: 'kl038', color: '#8F8F8F' },
-            { name: 'left_vn', color: '#8F8F8F' },
-            { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl038', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl038', stroke: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
-          ],
-        },
-        helper2D: [
-          { x: 54.5, y: 44.0, w: 1.7, h: 2.5, id: 'close_w1' },
-          { x: 51.3, y: 56.1, w: 4, h: 2.5, id: 'open_vn' },     //  win 1
-        ]
-      },
-      startTime: timeDiff + 18,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'kl038', color: '#ff1e00' },
-            { name: 'kl038_proc', text: '25' },
-            { name: 'polozenie_text', text: '25' },
-            { name: 'left_vn', color: '#ff1e00' },
-            { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_kl038', stroke: '#ff1e00' },
-            { name: 'circle_2_kl038', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
-          ],
-        },
-        helper2D: [
-          { x: 54.5, y: 44.0, w: 1.7, h: 2.5, id: 'close_w1' },
-          { x: 51.3, y: 56.1, w: 4, h: 2.5, id: 'open_vn' },     //  win 1
-        ]
-      },
-      startTime: timeDiff + 19,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'kl038', color: '#8F8F8F' },
-            { name: 'kl038_proc', text: '15' },
-            { name: 'polozenie_text', text: '15' },
-            { name: 'left_vn', color: '#8F8F8F' },
-            { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl038', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl038', stroke: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
-          ],
-        },
-        helper2D: [
-          { x: 54.5, y: 44.0, w: 1.7, h: 2.5, id: 'close_w1' },
-          { x: 51.3, y: 56.1, w: 4, h: 2.5, id: 'open_vn' },     //  win 1
-        ]
-      },
-      startTime: timeDiff + 20,
     },
     // конечное состояние
     {
       action: {
         window2D: {
           elements: [
-            { name: 'kl038', color: '#ff1e00' },
+            { name: 'kl_038', color: '#ff1e00' },
             { name: 'kl038_proc', text: '0' },
             { name: 'polozenie_text', text: '0' },
             { name: 'status_window_text', text: 'Закрыт' },
             { name: 'polozenie_button_text', color: '#000' },        //  #6E6E6E //  #000;
-            { name: 'btn_open', color: '#fff', stroke: '#000' },  //  #C4C4C4 //  #fff       //  #000
+
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_kl038', stroke: '#ff1e00' },
-            { name: 'circle_2_kl038', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'circle_kl038', stroke: '#ff1e00' },
+            { name: 'circle_kl038', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+
+
+            { name: 'btn_open_text', color: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+
+
+            { name: 'btn_close_text', color: '#666' },                        // afk
+            { name: 'btn_close_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
           ],
         },
         helper2D: [
           { x: 54.5, y: 44.0, w: 1.7, h: 2.5, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 21,
+      startTime: timeDiff + 18,
     },
 
     ////--------------------------------3----------------------------------------
@@ -1074,7 +1355,7 @@ let tempActions = [
           { x: 54.5, y: 44.0, w: 1.7, h: 2.5, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 22,
+      startTime: timeDiff + 19,
     },
 
     // закрыть окно ВН
@@ -1083,27 +1364,41 @@ let tempActions = [
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 23,
+      startTime: timeDiff + 20,
       human: true,
     },
     //// клик по ВН37 на схеме  НЕТ ДАННЫХ
     {
       action: {
-        target2D: 'kl037',
+        target2D: 'kl_037',
         window2D: {
           elements: [
-            { name: 'title_work_vn', text: 'Управление клапаном 037' },
-            { name: 'status_window_text', text: 'Нет данных' },
-            { name: 'polozenie_text', text: '65' },
-            { name: 'polozenie_button_text', color: '#000000' },
-            { name: 'btn_open', color: '#FFFFFF', stroke: '#000000' },
+            { name: 'circle_kl037', stroke: '#8F8F8F' },
+            { name: 'kl_037', color: '#8F8F8F' },
 
+            { name: 'title_work_vn', text: 'Управление клапаном 037' },
+
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl037', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl037', stroke: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'status_window_text', text: 'Нет данных' },
+
+            { name: 'btn_auto_text', color: '#000' },
+            { name: 'btn_auto_2', color: '#fff' },
+
+
+            { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
+            { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'btn_open_text', color: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+
+            { name: 'btn_close_text', color: '#000' },
+            { name: 'btn_close_2', color: '#fff', stroke: '#000' },
+
+            { name: 'polozenie_text', text: '45' },
           ],
         },
         helper2D: [
@@ -1112,7 +1407,7 @@ let tempActions = [
         ]
       },
       // lifeTime: '10:00:00',
-      startTime: timeDiff + 23.1,
+      startTime: timeDiff + 20.1,
       human: true,
     },
     // окно ВН
@@ -1133,7 +1428,7 @@ let tempActions = [
           { x: 60.3, y: 60.6, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 23.2,
+      startTime: timeDiff + 20.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -1145,7 +1440,7 @@ let tempActions = [
           { x: 59.9, y: 56.1, w: 4.0, h: 2.5, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 23.3,
+      startTime: timeDiff + 20.3,
       human: true,
     },
     // мигание 
@@ -1154,16 +1449,79 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'status_window_text', text: 'Закрывается' },
-            { name: 'btn_open', color: '', stroke: '' },
             { name: 'polozenie_text', text: '45' },
             { name: 'kl037_proc', text: '45' },
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'kl037', color: '#ff1e00' },
-            { name: 'circle_1_kl037', stroke: '#ff1e00' },
-            { name: 'circle_2_kl037', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'kl_037', color: '#ff1e00' },
+            { name: 'circle_kl037', stroke: '#ff1e00' },
+            { name: 'circle_kl037', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+          ],
+        },
+        helper2D: [
+          { x: 67.4, y: 44.2, w: 1.7, h: 2.5, id: 'close_w1' },
+          { x: 59.9, y: 56.1, w: 4.0, h: 2.5, id: 'open_vn' },     //  win 1
+        ]
+      },
+      startTime: timeDiff + 21,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl037_proc', text: '35' },
+            { name: 'polozenie_text', text: '35' },
+            { name: 'kl_037', color: '#8F8F8F' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_kl037', stroke: '#8F8F8F' },
+            { name: 'circle_kl037', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+          ],
+        },
+        helper2D: [
+          { x: 67.4, y: 44.2, w: 1.7, h: 2.5, id: 'close_w1' },
+          { x: 59.9, y: 56.1, w: 4.0, h: 2.5, id: 'open_vn' },     //  win 1
+        ]
+      },
+      startTime: timeDiff + 22,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl037_proc', text: '25' },
+            { name: 'polozenie_text', text: '25' },
+            { name: 'kl_037', color: '#ff1e00' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_kl037', stroke: '#ff1e00' },
+            { name: 'circle_kl037', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+
+          ],
+        },
+        helper2D: [
+          { x: 67.4, y: 44.2, w: 1.7, h: 2.5, id: 'close_w1' },
+          { x: 59.9, y: 56.1, w: 4.0, h: 2.5, id: 'open_vn' },     //  win 1
+        ]
+      },
+      startTime: timeDiff + 23,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_037', color: '#8F8F8F' },
+            { name: 'kl037_proc', text: '15' },
+            { name: 'polozenie_text', text: '15' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_kl037', stroke: '#8F8F8F' },
+            { name: 'circle_kl037', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
           ],
         },
         helper2D: [
@@ -1172,19 +1530,41 @@ let tempActions = [
         ]
       },
       startTime: timeDiff + 24,
-    }, {
+    },
+    // конечное состояние
+    {
       action: {
         window2D: {
           elements: [
-            { name: 'kl037_proc', text: '35' },
-            { name: 'polozenie_text', text: '35' },
-            { name: 'kl037', color: '#8F8F8F' },
-            { name: 'left_vn', color: '#8F8F8F' },
-            { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl037', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl037', stroke: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_kl037', stroke: '#ff1e00' },
+            { name: 'kl_037', color: '#ff1e00' },
+
+            { name: 'title_work_vn', text: 'Управление клапаном 037' },
+
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'status_window_text', text: 'Закрыт' },
+
+            { name: 'btn_auto_text', color: '#000' },
+            { name: 'btn_auto_2', color: '#fff' },
+
+
+            { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
+            { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'btn_open_text', color: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+
+            { name: 'btn_close_text', color: '#666' },                        // afk
+            { name: 'btn_close_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'kl037_proc', text: '0' },
+            { name: 'polozenie_text', text: '0' },
+
+
           ],
         },
         helper2D: [
@@ -1193,75 +1573,6 @@ let tempActions = [
         ]
       },
       startTime: timeDiff + 25,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'kl037_proc', text: '25' },
-            { name: 'polozenie_text', text: '25' },
-            { name: 'kl037', color: '#ff1e00' },
-            { name: 'left_vn', color: '#ff1e00' },
-            { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_kl037', stroke: '#ff1e00' },
-            { name: 'circle_2_kl037', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
-
-          ],
-        },
-        helper2D: [
-          { x: 67.4, y: 44.2, w: 1.7, h: 2.5, id: 'close_w1' },
-          { x: 59.9, y: 56.1, w: 4.0, h: 2.5, id: 'open_vn' },     //  win 1
-        ]
-      },
-      startTime: timeDiff + 26,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'kl037', color: '#8F8F8F' },
-            { name: 'kl037_proc', text: '15' },
-            { name: 'polozenie_text', text: '15' },
-            { name: 'left_vn', color: '#8F8F8F' },
-            { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl037', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl037', stroke: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
-          ],
-        },
-        helper2D: [
-          { x: 67.4, y: 44.2, w: 1.7, h: 2.5, id: 'close_w1' },
-          { x: 59.9, y: 56.1, w: 4.0, h: 2.5, id: 'open_vn' },     //  win 1
-        ]
-      },
-      startTime: timeDiff + 27,
-    },
-    // конечное состояние
-    {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'kl037', color: '#ff1e00' },
-            { name: 'kl037_proc', text: '0' },
-            { name: 'polozenie_text', text: '0' },
-            { name: 'status_window_text', text: 'Закрыт' },
-            { name: 'polozenie_button_text', color: '#000' },        //  #6E6E6E //  #000;
-            { name: 'btn_open', color: '#fff', stroke: '#000' },  //  #C4C4C4 //  #fff       //  #000
-            { name: 'left_vn', color: '#ff1e00' },
-            { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_kl037', stroke: '#ff1e00' },
-            { name: 'circle_2_kl037', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
-          ],
-        },
-        helper2D: [
-          { x: 67.4, y: 44.2, w: 1.7, h: 2.5, id: 'close_w1' },
-          { x: 59.9, y: 56.1, w: 4.0, h: 2.5, id: 'open_vn' },     //  win 1
-        ]
-      },
-      startTime: timeDiff + 28,
     },
 
     // ЧАТ
@@ -1270,13 +1581,13 @@ let tempActions = [
       scenarioText: 'Закрыть клапан 007 на подогреватель воздуха.',
       sender: 'Система',
       audio: 'tts-4',
-      startTime: timeDiff + 29,
+      startTime: timeDiff + 26,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 30,
+      startTime: timeDiff + 27,
       human: true,
     },
 
@@ -1290,17 +1601,34 @@ let tempActions = [
             y: 557
           },
           elements: [
+            { name: 'circle_kl007', stroke: '#00FF00' },
+            { name: 'kl007', color: '#00FF00' },
+
             { name: 'title_work_vn', text: 'Управление клапаном 007' },
-            { name: 'status_window_text', text: 'Открыт' },
-            { name: 'polozenie_text', text: '100' },
-            { name: 'polozenie_button_text', color: '#6E6E6E' },
-            { name: 'btn_open', color: '#E6E6E6', stroke: '#C4C4C4' },
+
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_kl007', stroke: '#00FF00' },
-            { name: 'circle_2_kl007', stroke: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'status_window_text', text: 'Открыт' },
+
+            { name: 'btn_auto_text', color: '#000' },
+            { name: 'btn_auto_2', color: '#fff' },
+
+
+            { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
+            { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'btn_open_text', color: '#666' },                        // afk
+            { name: 'btn_open_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'btn_close_text', color: '#000' },
+            { name: 'btn_close_2', color: '#fff', stroke: '#000' },
+
+            { name: 'kl007_proc', text: '100' },
+            { name: 'polozenie_text', text: '100' },
+
           ],
         },
         helper2D: [
@@ -1308,7 +1636,7 @@ let tempActions = [
           { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
-      startTime: timeDiff + 31,
+      startTime: timeDiff + 28,
       human: true,
     },
     // окно ВН
@@ -1329,7 +1657,7 @@ let tempActions = [
           { x: 60.8, y: 73, w: 3.3, h: 2.5, id: 'open_vn1' },  //  wind 2
         ]
       },
-      startTime: timeDiff + 31.1,
+      startTime: timeDiff + 28.1,
       human: true,
     },
     // маленькое окошко ОК
@@ -1341,7 +1669,7 @@ let tempActions = [
           { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
-      startTime: timeDiff + 31.2,
+      startTime: timeDiff + 28.2,
       human: true,
     },
     // мигание 
@@ -1355,10 +1683,10 @@ let tempActions = [
             { name: 'kl007', color: '#ff1e00' },
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_kl007', stroke: '#ff1e00' },
-            { name: 'circle_2_kl007', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'circle_kl007', stroke: '#ff1e00' },
+            { name: 'circle_kl007', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
           ],
         },
         helper2D: [
@@ -1366,7 +1694,7 @@ let tempActions = [
           { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
-      startTime: timeDiff + 32,
+      startTime: timeDiff + 29,
     }, {
       action: {
         window2D: {
@@ -1376,11 +1704,11 @@ let tempActions = [
             { name: 'polozenie_text', text: '35' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl007', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl007', stroke: '#8F8F8F' },
+            { name: 'circle_kl007', stroke: '#8F8F8F' },
+            { name: 'circle_kl007', stroke: '#8F8F8F' },
 
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
           ],
         },
         helper2D: [
@@ -1388,7 +1716,7 @@ let tempActions = [
           { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
-      startTime: timeDiff + 33,
+      startTime: timeDiff + 30,
     }, {
       action: {
         window2D: {
@@ -1398,10 +1726,10 @@ let tempActions = [
             // { name: 'polozenie_text', text: '25' },
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_kl007', stroke: '#ff1e00' },
-            { name: 'circle_2_kl007', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'circle_kl007', stroke: '#ff1e00' },
+            { name: 'circle_kl007', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
           ],
         },
         helper2D: [
@@ -1409,7 +1737,7 @@ let tempActions = [
           { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
-      startTime: timeDiff + 34,
+      startTime: timeDiff + 31,
     }, {
       action: {
         window2D: {
@@ -1419,10 +1747,10 @@ let tempActions = [
             { name: 'polozenie_text', text: '15' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl007', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl007', stroke: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_kl007', stroke: '#8F8F8F' },
+            { name: 'circle_kl007', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
           ],
         },
         helper2D: [
@@ -1430,25 +1758,42 @@ let tempActions = [
           { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
-      startTime: timeDiff + 35,
+      startTime: timeDiff + 32,
     },
     // конечное состояние
     {
       action: {
         window2D: {
           elements: [
+
+            { name: 'circle_kl007', stroke: '#ff1e00' },
             { name: 'kl007', color: '#ff1e00' },
-            { name: 'kl007_proc', text: '0' },
-            { name: 'polozenie_text', text: '0' },
-            { name: 'status_window_text', text: 'Закрыт' },
-            { name: 'polozenie_button_text', color: '#000' },        //  #6E6E6E //  #000;
-            { name: 'btn_open', color: '#fff', stroke: '#000' },  //  #C4C4C4 //  #fff       //  #000
+
+            { name: 'title_work_vn', text: 'Управление клапаном 007' },
+
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_kl007', stroke: '#ff1e00' },
-            { name: 'circle_2_kl007', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'status_window_text', text: 'Открыт' },
+
+            { name: 'btn_auto_text', color: '#000' },
+            { name: 'btn_auto_2', color: '#fff' },
+
+
+            { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
+            { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'btn_open_text', color: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+
+            { name: 'btn_close_text', color: '#666' },                        // afk
+            { name: 'btn_close_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'kl007_proc', text: '0' },
+            { name: 'polozenie_text', text: '0' },
+
           ],
         },
         helper2D: [
@@ -1456,7 +1801,7 @@ let tempActions = [
           { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
-      startTime: timeDiff + 36,
+      startTime: timeDiff + 33,
     },
     // ЧАТ
     {
@@ -1470,7 +1815,7 @@ let tempActions = [
           { x: 64.3, y: 67.8, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1   // ХЗ почему не двигается // Бывает проскакивает по времени МБ 
         ]
       },
-      startTime: timeDiff + 37,
+      startTime: timeDiff + 34,
     },
     ////--------------------------------5----------------------------------------
     // закрыть окно ВН
@@ -1478,7 +1823,7 @@ let tempActions = [
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 38,
+      startTime: timeDiff + 35,
       human: true,
     },
     //// клик по ВН28 на схеме  ОТКРЫТ
@@ -1492,16 +1837,23 @@ let tempActions = [
           },
           elements: [
             { name: 'title_work_vn', text: 'Управление клапаном 028' },
-            { name: 'circle_1_kl028', stroke: '#00FF00' },
-            { name: 'circle_2_kl028', stroke: '#00FF00' },
+            { name: 'circle_kl028', stroke: '#00FF00' },
+            { name: 'circle_kl028', stroke: '#00FF00' },
             { name: 'status_window_text', text: 'Открыт' },
             { name: 'polozenie_text', text: '100' },
             { name: 'polozenie_button_text', color: '#6E6E6E' },
-            { name: 'btn_open', color: '#E6E6E6', stroke: '#C4C4C4' },
+
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+
+            { name: 'btn_open_text', color: '#666' },                        // afk
+            { name: 'btn_open_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'btn_close_text', color: '#000' },
+            { name: 'btn_close_2', color: '#fff', stroke: '#000' },
+
           ],
 
         },
@@ -1510,7 +1862,7 @@ let tempActions = [
           { x: 51.65, y: 66.5, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 38.1,
+      startTime: timeDiff + 35.1,
       human: true,
     },
     // окно ВН
@@ -1531,7 +1883,7 @@ let tempActions = [
           { x: 48.2, y: 72, w: 3.3, h: 2.5, id: 'open_vn1' },  //  wind 2
         ]
       },
-      startTime: timeDiff + 38.2,
+      startTime: timeDiff + 35.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -1543,7 +1895,7 @@ let tempActions = [
           { x: 51.65, y: 66.5, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 38.3,
+      startTime: timeDiff + 35.3,
       human: true,
     },
     // мигание 
@@ -1552,16 +1904,16 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'status_window_text', text: 'Закрывается' },
-            { name: 'btn_open', color: '', stroke: '' },
+            { name: 'btn_open_2', color: '', stroke: '' },
             { name: 'polozenie_text', text: '45' },
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
             { name: 'kl028_proc', text: '45' },
             { name: 'kl028', color: '#ff1e00' },
-            { name: 'circle_1_kl028', stroke: '#ff1e00' },
-            { name: 'circle_2_kl028', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'circle_kl028', stroke: '#ff1e00' },
+            { name: 'circle_kl028', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
           ],
         },
         helper2D: [
@@ -1569,7 +1921,7 @@ let tempActions = [
           { x: 51.65, y: 66.5, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 39,
+      startTime: timeDiff + 36,
     }, {
       action: {
         window2D: {
@@ -1579,10 +1931,10 @@ let tempActions = [
             { name: 'right_vn', color: '#8F8F8F' },
             { name: 'kl028_proc', text: '35' },
             { name: 'kl028', color: '#8F8F8F' },
-            { name: 'circle_1_kl028', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl028', stroke: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_kl028', stroke: '#8F8F8F' },
+            { name: 'circle_kl028', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
           ],
         },
         helper2D: [
@@ -1590,7 +1942,7 @@ let tempActions = [
           { x: 51.65, y: 66.5, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 40,
+      startTime: timeDiff + 37,
     }, {
       action: {
         window2D: {
@@ -1600,10 +1952,10 @@ let tempActions = [
             { name: 'polozenie_text', text: '25' },
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_kl028', stroke: '#ff1e00' },
-            { name: 'circle_2_kl028', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'circle_kl028', stroke: '#ff1e00' },
+            { name: 'circle_kl028', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
           ],
         },
         helper2D: [
@@ -1611,7 +1963,7 @@ let tempActions = [
           { x: 51.65, y: 66.5, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 41,
+      startTime: timeDiff + 38,
     }, {
       action: {
         window2D: {
@@ -1621,10 +1973,10 @@ let tempActions = [
             { name: 'polozenie_text', text: '15' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_kl028', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl028', stroke: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_kl028', stroke: '#8F8F8F' },
+            { name: 'circle_kl028', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
           ],
         },
         helper2D: [
@@ -1632,7 +1984,7 @@ let tempActions = [
           { x: 51.65, y: 66.5, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 42,
+      startTime: timeDiff + 39,
     },
     // конечное состояние
     {
@@ -1647,10 +1999,17 @@ let tempActions = [
             { name: 'btn_open', color: '#fff', stroke: '#000' },     //  #C4C4C4 //  #fff       //  #000
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_kl028', stroke: '#ff1e00' },
-            { name: 'circle_2_kl028', stroke: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'circle_kl028', stroke: '#ff1e00' },
+            { name: 'circle_kl028', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+
+            { name: 'btn_open_text', color: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+
+            { name: 'btn_close_text', color: '#666' },                        // afk
+            { name: 'btn_close_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
           ],
         },
         helper2D: [
@@ -1658,19 +2017,19 @@ let tempActions = [
           { x: 51.65, y: 66.5, w: 4.0, h: 2.6, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 43,
+      startTime: timeDiff + 40,
     },
     // ЧАТ
     {
       text: 'Клапан 028 на подогреватель газа закрыт.',
       sender: 'Система',
-      startTime: timeDiff + 44,
+      startTime: timeDiff + 41,
     },
     {
       text: 'Подогреватели воздуха и газа отделены.',
       audio: 'tts-6',
       sender: 'Система',
-      startTime: timeDiff + 45,
+      startTime: timeDiff + 42,
     },
 
 
@@ -1682,25 +2041,13 @@ let tempActions = [
       audio: 'tts-7',
       sender: 'Система',
       lifeTime: '07:45:00',
-      startTime: timeDiff + 48,
+      startTime: timeDiff + 45,
       action: {
         target2D: 'close_w1',
       },
       human: true,
-    },
-    // {
-    //   action: {
-    //     target2D: 'close_w1',
-    //   },
-    //   startTime: timeDiff + 49.1,
-    //   human: true,
-    // },
-    // {
-    //   scenarioText: 'Газовщик сообщает остановку доменной печи.',
-    //   lifeTime: '07:45:00',
-    //   startTime: timeDiff + 33,
-    // },
 
+    },
     ////--------------------------------1----------------------------------------
     {
       scenarioText: 'Взять в руку трубку и нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС».',
@@ -1740,10 +2087,9 @@ let tempActions = [
           audio: 'tts-vo1',
         }
       ],
-      startTime: timeDiff + 51,
+      startTime: timeDiff + 48,
       human: true,
     },
-    /*
     // 1.2    // DP
     ////--------------------------------1---------------------------------------- 
     {
@@ -1751,7 +2097,7 @@ let tempActions = [
       sender: 'Система',
       audio: 'tts-8',
       lifeTime: '08:00:00',
-      startTime: timeDiff + 59,
+      startTime: timeDiff + 56,
     },
 
     {
@@ -1766,7 +2112,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 61,
+      startTime: timeDiff + 58,
     },
 
     ////--------------------------------2----------------------------------------
@@ -1774,13 +2120,13 @@ let tempActions = [
       scenarioText: ' Расход природного газа увеличиваем для поддержания ТТГ.',
       sender: 'Система',
       audio: 'tts-10',
-      startTime: timeDiff + 66,
+      startTime: timeDiff + 63,
     },
     {
       action: {
         target2D: 't_r_4',
       },
-      startTime: timeDiff + 71,
+      startTime: timeDiff + 68,
       human: true,
     }, {
       action: {
@@ -1791,7 +2137,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 71.1,
+      startTime: timeDiff + 68.1,
       human: true,
     }, {
       action: {
@@ -1802,7 +2148,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 71.2,
+      startTime: timeDiff + 68.2,
       human: true,
     }, {
       action: {
@@ -1813,7 +2159,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 71.3,
+      startTime: timeDiff + 68.3,
       human: true,
     }, {
       action: {
@@ -1824,7 +2170,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 71.4,
+      startTime: timeDiff + 68.4,
       human: true,
     }, {
       action: {
@@ -1835,7 +2181,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 71.5,
+      startTime: timeDiff + 68.5,
       human: true,
     }, {
       action: {
@@ -1846,7 +2192,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 71.6,
+      startTime: timeDiff + 68.6,
       human: true,
     },
     ////--------------------------------3----------------------------------------
@@ -1854,7 +2200,7 @@ let tempActions = [
       scenarioText: 'Настройка значения теоретической температуры горения.',
       sender: 'Система',
       audio: 'tts-11',
-      startTime: timeDiff + 72,
+      startTime: timeDiff + 69,
     },
     {
       action: {
@@ -1865,7 +2211,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 76,
+      startTime: timeDiff + 73,
       human: true,
     },
     {
@@ -1884,7 +2230,7 @@ let tempActions = [
           { x: 18.65, y: 73, w: 8, h: 5.5, id: 'ws3_ttg2_text_btn' },
         ]
       },
-      startTime: timeDiff + 76.1,
+      startTime: timeDiff + 73.1,
       human: true,
     },
     {
@@ -1900,23 +2246,24 @@ let tempActions = [
         },
 
       },
-      startTime: timeDiff + 76.2,
+      startTime: timeDiff + 73.2,
       human: true,
     },
     {
       action: {
         target2D: 'pzs_close_btn',
       },
-      startTime: timeDiff + 76.3,
+      startTime: timeDiff + 73.3,
       human: true,
     },
     {
       action: {
         target2D: 'ws3_close_btn',
       },
-      startTime: timeDiff + 76.4,
+      startTime: timeDiff + 73.4,
       human: true,
     },
+
     ////--------------------------------3.1
     {
       // scenarioText: 'Нажимаем на значение у ТТГ 22000 на общей схеме. Появляется окошко и вводим значение 2200 вручную',
@@ -1929,7 +2276,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 76.5,
+      startTime: timeDiff + 73.5,
       human: true,
     },
 
@@ -1942,7 +2289,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 76.6,
+      startTime: timeDiff + 73.6,
       human: true,
     }, {
       action: {
@@ -1953,7 +2300,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 76.7,
+      startTime: timeDiff + 73.7,
       human: true,
     }, {
       action: {
@@ -1964,7 +2311,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 76.8,
+      startTime: timeDiff + 73.8,
       human: true,
     }, {
       action: {
@@ -1975,7 +2322,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 76.9,
+      startTime: timeDiff + 73.9,
       human: true,
     },
     {
@@ -1987,7 +2334,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 77,
+      startTime: timeDiff + 74,
       human: true,
     },
     ////--------------------------------3.2
@@ -2002,7 +2349,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 77.1,
+      startTime: timeDiff + 74.1,
       human: true,
     },
 
@@ -2018,14 +2365,14 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 77.2,
+      startTime: timeDiff + 74.2,
       human: true,
     },
     {
       action: {
         target2D: 'ws3_close_btn',
       },
-      startTime: timeDiff + 77.3,
+      startTime: timeDiff + 74.3,
       human: true,
     },
     ////--------------------------------4       
@@ -2034,54 +2381,63 @@ let tempActions = [
       sender: 'Система',
       audio: 'tts-12',
       lifeTime: '08:15:00',
-      startTime: timeDiff + 78,
+      startTime: timeDiff + 75,
     },
     {
       action: {
         window2D: {
+          elements: [ // fix
+            { name: 'L4', color: '#fff' },
+            { name: 'L4', stroke: '#fff' },
+
+            { name: 'L3sqr', color: '#F7F700' },
+            { name: 'L2sqr', color: '#F7F700' },
+            { name: 'fyrm_v_rab', text: '9' },
+            { name: 'kol_furm', text: '36' },
+            { name: 'dP_nish_tryba', text: '1,49' },
+            { name: 'dP_obsh_tryba', text: '1,72' },
+            { name: 'dP_verh', text: '1,23' },
+            { name: 'P_vbls', text: '2,26' },
+            { name: 'r_r_niz', text: '-18,3' },
+            { name: 'F_obsh_pyt', text: '9' },
+            { name: 'F_tek_pyt', text: '8,8' },
+            { name: 'F_pg_prir_gaz', text: '18487' },
+            { name: 'dF_pg_prir_gaz', text: '63' },
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fvozdyh_1', text: '18531' },
+            { name: 'Fgaz_1', text: '11354' },
+          ]
+        }
+      },
+      startTime: timeDiff + 80,
+    }, {
+      action: {
+        window2D: {
           elements: [
-            { name: 'field_L2', color: '#F7F700' },
-            { name: 'field_L3', color: '#F7F700' },
-            { name: 'L2', text: '1000' },
-            { name: 'L3', text: '1000' },
+            { name: 'L2sqr', color: '#fff' },
+          ]
+        }
+      },
+      startTime: timeDiff + 81,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'L2sqr', color: '#F7F700' },
+          ]
+        }
+      },
+      startTime: timeDiff + 82,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            // не хватает элементов на схеме
           ]
         }
       },
       startTime: timeDiff + 83,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'field_L2', color: '#FF0000' },
-            { name: 'field_L3', color: '#FF0000' },
-            { name: 'L2', text: '800' },
-            { name: 'L3', text: '800' },
-          ]
-        }
-      },
-      startTime: timeDiff + 84,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'L2', text: '400' },
-            { name: 'L3', text: '400' },
-          ]
-        }
-      },
-      startTime: timeDiff + 85,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'field_L2', color: '#FFFFFF' },
-            { name: 'field_L3', color: '#FFFFFF' },
-            { name: 'L2', text: '0' },
-            { name: 'L3', text: '0' },
-          ]
-        }
-      },
-      startTime: timeDiff + 86,
     },
     // 1.3 
     ////--------------------------------1---------------------------------------- 
@@ -2090,69 +2446,80 @@ let tempActions = [
       sender: 'Система',
       audio: 'tts-13',
       lifeTime: '08:30:00',
-      startTime: timeDiff + 87,
+      startTime: timeDiff + 84,
     },
     {
       text: 'По рации мастер печи сообщил команду газовщикам.',
       sender: 'Система',
-      startTime: timeDiff + 94,
+      startTime: timeDiff + 91,
     },
     {
       text: 'Закрыть кислород на обогащения дутья и оставить 20000.',
       sender: 'Мастер печи',
       audio: 'tts-vo2',
-      startTime: timeDiff + 95,
+      startTime: timeDiff + 92,
     },
     {
       text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 99,
+      startTime: timeDiff + 96,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046'
       },
-      startTime: timeDiff + 100,
+      startTime: timeDiff + 97,
       human: true,
     },
     {
       text: 'Хорошо. Выполняю.',
       sender: 'Газовщик',
       audio: 'tts-vo3',
-      startTime: timeDiff + 101,
+      startTime: timeDiff + 98,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 103,
+      startTime: timeDiff + 100,
     },
+
     ////--------------------------------2
     {
       scenarioText: 'Перекидка клапанов в автоматическом режиме.',
       sender: 'Система',
       audio: 'tts-14',
-      startTime: timeDiff + 104,
+      startTime: timeDiff + 101,
     },
     {
       action: {
         target2D: 'perekidta_btn',
         window2D: {
           elements: [
-            // many gray ??????? не та цветовая палитра
+
+            { name: 'vb_otkr_klap2_rect', color: '#e3d4ce' },
+            { name: 'kl_11_rect', color: '#00FF00' },
+
+            { name: 'avarin_otd_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_nagrev', color: '#e6e6e6', stroke: '#808080' },
+            { name: 'nagrev_otd_2_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_dute', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otd2_otd_rect', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
           ]
         }
       },
-      startTime: timeDiff + 107,      ////    ЭТО    140 
+      startTime: timeDiff + 104,
       human: true,
     },
     {
       action: {
         target2D: 'nagrev_otd2_btn',
       },
-      startTime: timeDiff + 107.1,      //// 140.1
+      startTime: timeDiff + 104.1,
       human: true,
     }, {
       action: {
@@ -2167,179 +2534,657 @@ let tempActions = [
           { x: 34.3, y: 94.9, w: 3.2, h: 2.4, id: 'open_vn1' },  //  wind 2
         ]
       },
-      startTime: timeDiff + 107.2,
+      startTime: timeDiff + 104.2,
       human: true,
     },
     {  // wind 2  ok
       action: {
         target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'text_132', y: 520 },
+            { name: 'text_116', y: 520 },
+            { name: 'text_124', y: 520 },
+            { name: 'text_113', y: 520 },
+            { name: 'text_134', y: 520 },
+            { name: 'text_117', y: 520 },
+            { name: 'text_111', y: 520 },
+            { name: 'text_112', y: 520 },
+
+            { name: 'rect_132', position: { y: 40 } },
+            { name: 'rect_116', position: { y: 40 } },
+            { name: 'rect_124', position: { y: 40 } },
+            { name: 'rect_113', position: { y: 40 } },
+            { name: 'rect_134', position: { y: 40 } },
+            { name: 'rect_117', position: { y: 40 } },
+            { name: 'rect_111', position: { y: 40 } },
+            { name: 'rect_112', position: { y: 40 } },
+
+            { name: 'nagrev_otd_2_rect', color: '#00FF00' },
+
+          ]
+        },
       },
 
-      startTime: timeDiff + 107.3,
+      startTime: timeDiff + 104.3,
       human: true,
     },
-
-    {  // O_p_n_na_k_na-o_2_na_VNK close
-      action: {
-        target2D: 'pericNagrev_close_btn',
-      },
-      startTime: timeDiff + 107.4,
-      human: true,
-    },
-    {  // O_p_n_na_k_p_na_VNK close
-      action: {
-        target2D: 'perekidta_exit_btn',
-      },
-      startTime: timeDiff + 107.5,
-      human: true,
-    },
-    // O_p_n_na_k_na-BVNK_VNK1 схема обновляется
+    //1
     {
       action: {
         window2D: {
           elements: [
             { name: '1PS_03_square', color: '#ff0000' },
 
-            //// ТУТ
-            { name: 'VNK1_7PI_13', text: '10,94' },
-            { name: 'VNK1_1FI_01', text: '56311' },
-            { name: 'VNK1_1PI_02', text: '0,47' },
-            { name: 'VNK1_1TI_43', text: '46' },
-            { name: 'VNK1_1PI_04', text: '0,60' },
-            { name: 'VNK1_1TI_29', text: '26' },
+            { name: '7PI_13', text: '10,94' },
+            { name: '1FI_01', text: '56311' },
+            { name: '1PI_02', text: '0,47' },
+            { name: '1TI_43', text: '46' },
+            { name: '1PI_04', text: '0,60' },
+            { name: '1TI_29', text: '26' },
+
+            { name: 'VNK1_status_1', text: 'Циклический' },
+            { name: 'VNK1_status_2', text: 'Нагрев-Отдел.' },
+
+
+            // Table
+            { name: 'text_132', y: 520 },
+            { name: 'text_116', y: 520 },
+            { name: 'text_124', y: 520 },
+            { name: 'text_113', y: 520 },
+            { name: 'text_134', y: 520 },
+            { name: 'text_117', y: 520 },
+            { name: 'text_111', y: 520 },
+            { name: 'text_112', y: 520 },
+
+            { name: 'rect_132', position: { y: 40 } },
+            { name: 'rect_116', position: { y: 40 } },
+            { name: 'rect_124', position: { y: 40 } },
+            { name: 'rect_113', position: { y: 40 } },
+            { name: 'rect_134', position: { y: 40 } },
+            { name: 'rect_117', position: { y: 40 } },
+            { name: 'rect_111', position: { y: 40 } },
+            { name: 'rect_112', position: { y: 40 } },
+            // End Table
+
+
+          ]
+        }
+      },
+      startTime: timeDiff + 105,
+    },
+    //2
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '10,90' },
+            { name: '1FI_01', text: '45074' },
+            { name: '1PI_02', text: '0,33' },
+            { name: '1PI_04', text: '0,44' },
+
+            { name: 'kl_132', color: '#ff0000' },
+            { name: 'rect_132_2', color: '#000' },
+            { name: 'rect_132_2', position: { x: -3 } },
+
+            // Table
+            { name: 'text_132', y: 565 },
+            { name: 'text_116', y: 565 },
+            { name: 'text_124', y: 565 },
+            { name: 'text_113', y: 565 },
+            { name: 'text_134', y: 565 },
+            { name: 'text_117', y: 565 },
+            { name: 'text_111', y: 565 },
+            { name: 'text_112', y: 565 },
+
+            { name: 'rect_132', position: { y: 81 } },
+            { name: 'rect_116', position: { y: 81 } },
+            { name: 'rect_124', position: { y: 81 } },
+            { name: 'rect_113', position: { y: 81 } },
+            { name: 'rect_134', position: { y: 81 } },
+            { name: 'rect_117', position: { y: 81 } },
+            { name: 'rect_111', position: { y: 81 } },
+            { name: 'rect_112', position: { y: 81 } },
+            // End Table
+
+          ]
+        }
+      },
+      startTime: timeDiff + 106,
+    },
+    //3
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'vnk1_red_Arrow', opacity: '0' },
+            { name: 'vnk1_red_Arrow_border', opacity: '0' },
+            { name: 'kl_132', color: '#ff0000' },
+            { name: 'kl_132_l', color: '#ff0000' },
+            { name: 'kl_127', color: '#b5b3b6' },
+            { name: '7PI_13', text: '9,80' },
+
+            // Table
+            { name: 'text_132', y: 605 },
+            { name: 'text_116', y: 605 },
+            { name: 'text_124', y: 605 },
+            { name: 'text_113', y: 605 },
+            { name: 'text_134', y: 605 },
+            { name: 'text_117', y: 605 },
+            { name: 'text_111', y: 605 },
+            { name: 'text_112', y: 605 },
+
+            { name: 'rect_132', position: { y: 123 } },
+            { name: 'rect_116', position: { y: 123 } },
+            { name: 'rect_124', position: { y: 123 } },
+            { name: 'rect_113', position: { y: 123 } },
+            { name: 'rect_134', position: { y: 123 } },
+            { name: 'rect_117', position: { y: 123 } },
+            { name: 'rect_111', position: { y: 123 } },
+            { name: 'rect_112', position: { y: 123 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 107,
+    },
+    //4
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'vnk1_red_Arrow', opacity: 1 },
+            { name: 'vnk1_red_Arrow_border', opacity: 1 },
+            { name: 'vnk1_red_Arrow', color: '#ffffff' },
+            { name: '1PS_05_square', color: '#ff0000' },
+            { name: '7PI_13', text: '11,20' },
+
+            // Table
+            { name: 'text_132', y: 645 },
+            { name: 'text_116', y: 645 },
+            { name: 'text_124', y: 645 },
+            { name: 'text_113', y: 645 },
+            { name: 'text_134', y: 645 },
+            { name: 'text_117', y: 645 },
+            { name: 'text_111', y: 645 },
+            { name: 'text_112', y: 645 },
+
+            { name: 'rect_132', position: { y: 164 } },
+            { name: 'rect_116', position: { y: 164 } },
+            { name: 'rect_124', position: { y: 164 } },
+            { name: 'rect_113', position: { y: 164 } },
+            { name: 'rect_134', position: { y: 164 } },
+            { name: 'rect_117', position: { y: 164 } },
+            { name: 'rect_111', position: { y: 164 } },
+            { name: 'rect_112', position: { y: 164 } },
+            // End Table
+
+
           ]
         }
       },
       startTime: timeDiff + 108,
     },
+    //5
     {
       action: {
         window2D: {
           elements: [
-            { name: 'VNK1_7PI_13', text: '10,90' },
-            { name: 'VNK1_1FI_01', text: '45074' },
-            { name: 'VNK1_1PI_02', text: '0,33' },
-            { name: 'VNK1_1PI_04', text: '0,44' },
-            { name: 'vn_132', color: '#ff0000' },
-            { name: 'vn_132_l', color: '#ff0000' },
+            { name: '1PI_02', text: '0,17' },
+            { name: 'vnk1_red_Arrow', opacity: '0' },
+            { name: 'vnk1_red_Arrow_border', opacity: '0' },
+            { name: 'vn_116', color: '#ff0000' },
+            { name: 'vn_116_l', color: '#ff0000' },
+            { name: 'vnk_1', color: '#ffffff' },
+            { name: '7PI_13', text: '10,78' },
+
+            // Table
+            { name: 'text_132', y: 685 },
+            { name: 'text_116', y: 685 },
+            { name: 'text_124', y: 685 },
+            { name: 'text_113', y: 685 },
+            { name: 'text_134', y: 685 },
+            { name: 'text_117', y: 685 },
+            { name: 'text_111', y: 685 },
+            { name: 'text_112', y: 685 },
+
+            { name: 'rect_132', position: { y: 205 } },
+            { name: 'rect_116', position: { y: 205 } },
+            { name: 'rect_124', position: { y: 205 } },
+            { name: 'rect_113', position: { y: 205 } },
+            { name: 'rect_134', position: { y: 205 } },
+            { name: 'rect_117', position: { y: 205 } },
+            { name: 'rect_111', position: { y: 205 } },
+            { name: 'rect_112', position: { y: 205 } },
+            // End Table
 
           ]
         }
       },
       startTime: timeDiff + 109,
     },
-    { // FIX DISPLAY NONE
+    //6
+    {
       action: {
         window2D: {
           elements: [
-            { name: 'big_arrow_up', display: 'none' },
-            { name: 'big_arrow_up_border', display: 'none' },
-            { name: 'vn_132', color: '#ff0000' },
-            { name: 'vn_132_l', color: '#ff0000' },
-            { name: 'vn_127', color: '#b5b3b6' },
+            { name: '1FI_03', text: '0' },
+            { name: 'vnk1_red_Arrow', opacity: 1 },
+            { name: '7PI_13', text: '10,70' },
 
+
+            // Table
+            { name: 'text_132', y: 725 },
+            { name: 'text_116', y: 725 },
+            { name: 'text_124', y: 725 },
+            { name: 'text_113', y: 725 },
+            { name: 'text_134', y: 725 },
+            { name: 'text_117', y: 725 },
+            { name: 'text_111', y: 725 },
+            { name: 'text_112', y: 725 },
+
+            { name: 'rect_132', position: { y: 245 } },
+            { name: 'rect_116', position: { y: 245 } },
+            { name: 'rect_124', position: { y: 245 } },
+            { name: 'rect_113', position: { y: 245 } },
+            { name: 'rect_134', position: { y: 245 } },
+            { name: 'rect_117', position: { y: 245 } },
+            { name: 'rect_111', position: { y: 245 } },
+            { name: 'rect_112', position: { y: 245 } },
+            // End Table
           ]
         }
       },
       startTime: timeDiff + 110,
-    }, {
+    },
+    //7
+    {
       action: {
         window2D: {
           elements: [
-            { name: 'big_arrow_up', display: 'block' },
-            { name: 'big_arrow_up_border', display: 'block' },
-            { name: 'big_arrow_up', display: '#ffffff' },
-            { name: '1PS_05_square', color: '#ff0000' },
+            { name: 'vnk1_red_Arrow', opacity: '0' },
+            { name: '7PI_13', text: '10,56' },
+            // Table
+            { name: 'text_132', y: 765 },
+            { name: 'text_116', y: 765 },
+            { name: 'text_124', y: 765 },
+            { name: 'text_113', y: 765 },
+            { name: 'text_134', y: 765 },
+            { name: 'text_117', y: 765 },
+            { name: 'text_111', y: 765 },
+            { name: 'text_112', y: 765 },
+
+            { name: 'rect_132', position: { y: 286 } },
+            { name: 'rect_116', position: { y: 286 } },
+            { name: 'rect_124', position: { y: 286 } },
+            { name: 'rect_113', position: { y: 286 } },
+            { name: 'rect_134', position: { y: 286 } },
+            { name: 'rect_117', position: { y: 286 } },
+            { name: 'rect_111', position: { y: 286 } },
+            { name: 'rect_112', position: { y: 286 } },
+            // End Table
+
+
+
           ]
         }
       },
       startTime: timeDiff + 111,
-    }, {
+    },
+    //8
+    {
       action: {
         window2D: {
           elements: [
-            { name: 'VNK1_1PI_02', text: '0,17' },
-            { name: 'big_arrow_up', display: 'none' },
-            { name: 'big_arrow_up_border', display: 'none' },
-            { name: 'vn_116', color: '#ff0000' },
-            { name: 'vn_116_l', color: '#ff0000' },
-            { name: 'vnk_1', color: '#ffffff' },
+            { name: '1PI_02', text: '0' },
+            { name: 'vn_134', color: '#ff0000' },
+            { name: '7PI_13', text: '10,41' },
+
+
+
+            // Table
+            { name: 'text_132', y: 805 },
+            { name: 'text_116', y: 805 },
+            { name: 'text_124', y: 805 },
+            { name: 'text_113', y: 805 },
+            { name: 'text_134', y: 805 },
+            { name: 'text_117', y: 805 },
+            { name: 'text_111', y: 805 },
+            { name: 'text_112', y: 805 },
+
+            { name: 'rect_132', position: { y: 327 } },
+            { name: 'rect_116', position: { y: 327 } },
+            { name: 'rect_124', position: { y: 327 } },
+            { name: 'rect_113', position: { y: 327 } },
+            { name: 'rect_134', position: { y: 327 } },
+            { name: 'rect_117', position: { y: 327 } },
+            { name: 'rect_111', position: { y: 327 } },
+            { name: 'rect_112', position: { y: 327 } },
+            // End Table
 
           ]
         }
       },
       startTime: timeDiff + 112,
-    }, {
+    },
+    //9
+    {
       action: {
         window2D: {
           elements: [
-            { name: 'VNK1_1FI_03', text: '0' },
-            { name: 'big_arrow_up', display: 'block' },
+            { name: 'vn_117', color: '#b5b3b6' },
+            { name: '1FI_02', text: '0' },
+            { name: '7PI_13', text: '10,08' },
+            // Table
+            { name: 'text_132', y: 845 },
+            { name: 'text_116', y: 845 },
+            { name: 'text_124', y: 845 },
+            { name: 'text_113', y: 845 },
+            { name: 'text_134', y: 845 },
+            { name: 'text_117', y: 845 },
+            { name: 'text_111', y: 845 },
+            { name: 'text_112', y: 845 },
+
+            { name: 'rect_132', position: { y: 368 } },
+            { name: 'rect_116', position: { y: 368 } },
+            { name: 'rect_124', position: { y: 368 } },
+            { name: 'rect_113', position: { y: 368 } },
+            { name: 'rect_134', position: { y: 368 } },
+            { name: 'rect_117', position: { y: 368 } },
+            { name: 'rect_111', position: { y: 368 } },
+            { name: 'rect_112', position: { y: 368 } },
+            // End Table
           ]
         }
       },
       startTime: timeDiff + 113,
     },
+    //10
     {
       action: {
         window2D: {
           elements: [
-            { name: 'big_arrow_up', display: 'none' },
+            { name: 'vn_117', color: '#ff0000' },
+            { name: '1FI_02', text: '0' },
+            { name: '7PI_13', text: '9,81' },
+            // Table
+            { name: 'text_132', y: 885 },
+            { name: 'text_116', y: 885 },
+            { name: 'text_124', y: 885 },
+            { name: 'text_113', y: 885 },
+            { name: 'text_134', y: 885 },
+            { name: 'text_117', y: 885 },
+            { name: 'text_111', y: 885 },
+            { name: 'text_112', y: 885 },
+
+            { name: 'rect_132', position: { y: 409 } },
+            { name: 'rect_116', position: { y: 409 } },
+            { name: 'rect_124', position: { y: 409 } },
+            { name: 'rect_113', position: { y: 409 } },
+            { name: 'rect_134', position: { y: 409 } },
+            { name: 'rect_117', position: { y: 409 } },
+            { name: 'rect_111', position: { y: 409 } },
+            { name: 'rect_112', position: { y: 409 } },
+            // End Table
           ]
         }
       },
       startTime: timeDiff + 114,
     },
+    //11
     {
       action: {
         window2D: {
           elements: [
-            { name: 'VNK1_1PI_02', text: '0' },
-            { name: 'vn_134', color: '#ff0000' },
+            { name: 'kl_112', color: '#ff0000' },
+            // Table
+            { name: 'text_132', y: 925 },
+            { name: 'text_116', y: 925 },
+            { name: 'text_124', y: 925 },
+            { name: 'text_113', y: 925 },
+            { name: 'text_134', y: 925 },
+            { name: 'text_117', y: 925 },
+            { name: 'text_111', y: 925 },
+            { name: 'text_112', y: 925 },
+
+            { name: 'rect_132', position: { y: 450 } },
+            { name: 'rect_116', position: { y: 450 } },
+            { name: 'rect_124', position: { y: 450 } },
+            { name: 'rect_113', position: { y: 450 } },
+            { name: 'rect_134', position: { y: 450 } },
+            { name: 'rect_117', position: { y: 450 } },
+            { name: 'rect_111', position: { y: 450 } },
+            { name: 'rect_112', position: { y: 450 } },
+            // End Table
           ]
         }
       },
       startTime: timeDiff + 115,
-    }, {
+    },
+    //12
+    {
       action: {
         window2D: {
           elements: [
-            { name: 'vn_117', color: '#ff0000' },
-            { name: 'VNK1_1FI_02', text: '0' },
+            { name: 'kl_234', color: '#7b828c' },
+            { name: '2QI_01', text: '15,36' },
+
+            // Table
+            { name: 'text_132', y: 965 },
+            { name: 'text_116', y: 965 },
+            { name: 'text_124', y: 965 },
+            { name: 'text_113', y: 965 },
+            { name: 'text_134', y: 965 },
+            { name: 'text_117', y: 965 },
+            { name: 'text_111', y: 965 },
+            { name: 'text_112', y: 965 },
+
+            { name: 'rect_132', position: { y: 491 } },
+            { name: 'rect_116', position: { y: 491 } },
+            { name: 'rect_124', position: { y: 491 } },
+            { name: 'rect_113', position: { y: 491 } },
+            { name: 'rect_134', position: { y: 491 } },
+            { name: 'rect_117', position: { y: 491 } },
+            { name: 'rect_111', position: { y: 491 } },
+            { name: 'rect_112', position: { y: 491 } },
+            // End Table
+
           ]
         }
       },
       startTime: timeDiff + 116,
-    }, {
+    },
+    //13
+    {
       action: {
         window2D: {
           elements: [
-            { name: 'vn_117', color: '#ff0000' },
-            { name: 'VNK1_1FI_02', text: '0' },
+            { name: 'kl_134', color: '#ff0000' },
+            { name: 'kl_140', color: '#7b828c' },
+            { name: '7PI_13', text: '19,65' },
+            { name: '1TI_02', text: '1264' },
+            { name: '1TI_03', text: '1214' },
+            { name: '1TI_05', text: '1052' },
+            { name: '1TI_28_1', text: '231' },
+            { name: '1TI_28_2', text: '233' },
+            { name: '1QI_01', text: '15,58' },
+
+            // Table
+            { name: 'text_132', y: 1008 },
+            { name: 'text_116', y: 1008 },
+            { name: 'text_124', y: 1008 },
+            { name: 'text_113', y: 1008 },
+            { name: 'text_134', y: 1008 },
+            { name: 'text_117', y: 1008 },
+            { name: 'text_111', y: 1008 },
+            { name: 'text_112', y: 1008 },
+
+            { name: 'rect_132', position: { y: 531 } },
+            { name: 'rect_116', position: { y: 531 } },
+            { name: 'rect_124', position: { y: 531 } },
+            { name: 'rect_113', position: { y: 531 } },
+            { name: 'rect_134', position: { y: 531 } },
+            { name: 'rect_117', position: { y: 531 } },
+            { name: 'rect_111', position: { y: 531 } },
+            { name: 'rect_112', position: { y: 531 } },
+            // End Table
+
           ]
         }
       },
       startTime: timeDiff + 117,
     },
+    //14
     {
       action: {
         window2D: {
           elements: [
-            { name: 'vn_112', color: '#ff0000' },
+            { name: 'kl_140', color: '#00FF00' },
+            { name: 'kl_112', color: '#7b828c' },
+            { name: '1QI_01', text: '15,61' },
+
+            // Table
+            { name: 'text_132', y: 1048 },
+            { name: 'text_116', y: 1048 },
+            { name: 'text_124', y: 1048 },
+            { name: 'text_113', y: 1048 },
+            { name: 'text_134', y: 1048 },
+            { name: 'text_117', y: 1048 },
+            { name: 'text_111', y: 1048 },
+            { name: 'text_112', y: 1048 },
+
+            { name: 'rect_132', position: { y: 572 } },
+            { name: 'rect_116', position: { y: 572 } },
+            { name: 'rect_124', position: { y: 572 } },
+            { name: 'rect_113', position: { y: 572 } },
+            { name: 'rect_134', position: { y: 572 } },
+            { name: 'rect_117', position: { y: 572 } },
+            { name: 'rect_111', position: { y: 572 } },
+            { name: 'rect_112', position: { y: 572 } },
+            // End Table
           ]
         }
       },
       startTime: timeDiff + 118,
-    }, {
+    },
+    //15          
+    {
       action: {
         window2D: {
           elements: [
-            { name: 'vnk_1', color: '#b5b3b6' },
-            { name: 'vn_127', color: '#00FF00' },
+            { name: 'VNK1_status_1', text: 'Циклический' },
+            { name: 'VNK1_status_2', text: 'Отделение 2' },
+            { name: 'kl_132', color: '#ff0000' },
+            { name: 'kl_127', color: '#00FF00' },
+            { name: 'kl_116', color: '#ff0000' },
+            { name: 'kl_121', color: '#00FF00' },
+            { name: 'kl_113', color: '#ff0000' },
+            { name: 'kl_124', color: '#ff0000' },
+            { name: 'kl_134', color: '#ff0000' },
+            { name: 'kl_140', color: '#00FF00' },
+            { name: 'kl_117', color: '#ff0000' },
+            { name: 'kl_111', color: '#00FF00' },
+
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_otdeleniye_2', color: '#00FF00' },
+
+
+            { name: 'Vremya_nagreva', text: '109' },
+
+            { name: '7PI_13', text: '8,62' },
+            { name: '1FI_01', text: '0' },
+            { name: '1PI_02', text: '0,00' },
+            { name: '1TI_43', text: '47' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_02', text: '0' },
+            { name: '1QI_01', text: '13,57' },
+
+            { name: '1TI_28_1', text: '384' },
+            { name: '1TI_28_2', text: '388' },
+
+            { name: '1TI_02', text: '1204' },
+            { name: '1TI_03', text: '1193' },
+            { name: '1TI_05', text: '1069' },
+
+
+            { name: 'Kl115_proc', text: '23' },
+            { name: 'Kl123_proc', text: '22' },
+
+
+
+            { name: 'text_132', y: 1090 },
+            { name: 'text_116', y: 1090 },
+            { name: 'text_124', y: 1090 },
+            { name: 'text_113', y: 1090 },
+            { name: 'text_134', y: 1090 },
+            { name: 'text_117', y: 1090 },
+            { name: 'text_111', y: 1090 },
+            { name: 'text_112', y: 1090 },
+
+
+            { name: 'rect_132', position: { y: 613 } },
+            { name: 'rect_116', position: { y: 613 } },
+            { name: 'rect_124', position: { y: 613 } },
+            { name: 'rect_113', position: { y: 613 } },
+            { name: 'rect_134', position: { y: 613 } },
+            { name: 'rect_117', position: { y: 613 } },
+            { name: 'rect_111', position: { y: 613 } },
+            { name: 'rect_112', position: { y: 613 } },
+            //  End Table
+
+
           ]
         }
       },
       startTime: timeDiff + 119,
+    },
+    //16
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'nagrev_otd_2_rect', color: '#fff' },
+
+            // Table
+            { name: 'text_132', y: 475 },
+            { name: 'text_116', y: 475 },
+            { name: 'text_124', y: 475 },
+            { name: 'text_113', y: 475 },
+            { name: 'text_134', y: 475 },
+            { name: 'text_117', y: 475 },
+            { name: 'text_111', y: 475 },
+            { name: 'text_112', y: 475 },
+
+            { name: 'rect_132', position: { y: 0 } },
+            { name: 'rect_116', position: { y: 0 } },
+            { name: 'rect_124', position: { y: 0 } },
+            { name: 'rect_113', position: { y: 0 } },
+            { name: 'rect_134', position: { y: 0 } },
+            { name: 'rect_117', position: { y: 0 } },
+            { name: 'rect_111', position: { y: 0 } },
+            { name: 'rect_112', position: { y: 0 } },
+            //  End Table
+
+
+          ]
+        }
+      },
+      startTime: timeDiff + 120,
+    },
+    {  // O_p_n_na_k_na-o_2_na_VNK close
+      action: {
+        target2D: 'pericNagrev_close_btn',
+      },
+      startTime: timeDiff + 120.1,
+      human: true,
+    },
+    {  // O_p_n_na_k_p_na_VNK close   
+      action: {
+        target2D: 'perekidta_exit_btn',
+      },
+      startTime: timeDiff + 120.2,
+      human: true,
     },
 
     ////--------------------------------3-------------------------------------
@@ -2347,20 +3192,58 @@ let tempActions = [
       scenarioText: 'Отделить воздухонагреватель ВНК №1.',
       sender: 'Система',
       audio: 'tts-15',
-      startTime: timeDiff + 120,
+      startTime: timeDiff + 121,
     },
+
     {
       action: {
         target2D: 'perekidta_btn',
+        window2D: {
+          elements: [
+            { name: 'text_132', y: 475 },
+            { name: 'text_116', y: 475 },
+            { name: 'text_124', y: 475 },
+            { name: 'text_113', y: 475 },
+            { name: 'text_134', y: 475 },
+            { name: 'text_117', y: 475 },
+            { name: 'text_111', y: 475 },
+            { name: 'text_112', y: 475 },
+
+            { name: 'rect_132', position: { y: 0 } },
+            { name: 'rect_116', position: { y: 0 } },
+            { name: 'rect_124', position: { y: 0 } },
+            { name: 'rect_113', position: { y: 0 } },
+            { name: 'rect_134', position: { y: 0 } },
+            { name: 'rect_117', position: { y: 0 } },
+            { name: 'rect_111', position: { y: 0 } },
+            { name: 'rect_112', position: { y: 0 } },
+
+            { name: 'otd2_otd_rect', color: '#fff' },
+
+            { name: 'nagrev_otd_2_rect', color: '#fff' },
+
+            { name: 'vb_otkr_klap2_rect', color: '#e3d4ce' },
+            { name: 'kl_11_rect', color: '#00FF00' },
+
+            { name: 'avarin_otd_rect', color: '#e6e6e6', stroke: '#808080' },
+            { name: 'otdel_nagrev', color: '#fff', stroke: '#000' },
+            { name: 'nagrev_otd_2_rect', color: '#e6e6e6', stroke: '#808080' },
+
+            { name: 'otdel_dute', color: '#fff', stroke: '#000' },            // color: '#e6e6e6', stroke: '#808080'
+            { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },
+            { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },
+            { name: 'otd2_otd_rect', color: '#fff', stroke: '#000' },
+          ]
+        }
       },
-      startTime: timeDiff + 124,
+      startTime: timeDiff + 125,
       human: true,
     },
     { // win_otdel2_na_vnk OPEN
       action: {
-        target2D: 'otdel_otdel2_btn',
+        target2D: 'otdel2_otdel_btn',
       },
-      startTime: timeDiff + 124.1,
+      startTime: timeDiff + 125.1,
       human: true,
     }, {
       action: {
@@ -2368,6 +3251,7 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'title_open_vn', text: 'Пуск' },
+
           ]
         },
         helper2D: [
@@ -2375,46 +3259,77 @@ let tempActions = [
           { x: 35.8, y: 94, w: 3.2, h: 2.4, id: 'open_vn1' },  //  wind 2
         ]
       },
-      startTime: timeDiff + 124.2,
+      startTime: timeDiff + 125.2,
       human: true,
     },
     {  // wind 2  ok
       action: {
         target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'otd2_otd_rect', color: '#00FF00' },
+
+            { name: 'text_ish_c4', y: 297.5 },   // start 237.5
+            { name: 'text_ish_c5', y: 297.5 },   // start 237.5
+            { name: 'text_ish_c6', y: 297.5 },   // start 237.5
+
+
+            { name: 'rect_ish_c4', position: { y: 60 } },
+            { name: 'rect_ish_c5', position: { y: 60 } },
+            { name: 'rect_ish_c6', position: { y: 60 } },
+          ]
+        }
       },
 
-      startTime: timeDiff + 124.3,
+      startTime: timeDiff + 125.3,
       human: true,
     },
     {  // win_otdel2_na_vnk CLOSE
       action: {
         target2D: 'otdel2_close_btn',
       },
-      startTime: timeDiff + 124.4,
+      startTime: timeDiff + 125.4,
       human: true,
     },
     {  // O_p_n_na_k_p_na_VNK CLOSE
       action: {
         target2D: 'perekidta_exit_btn',
       },
-      startTime: timeDiff + 124.5,
+      startTime: timeDiff + 125.5,
       human: true,
     },
 
-    // todo O_p_n_na_k_na-BVNK_VNK1 схема обновляется
+    // O_p_n_na_k_na-BVNK_VNK1 схема обновляется
     {
       action: {
         window2D: {
           elements: [
-            /////////////////////////////////////////////////////// ЕУЕ ТУТ
-          ]
-        }
-      },
-      startTime: timeDiff + 125,
-    }, {
-      action: {
-        window2D: {
-          elements: [
+            { name: 'vnk1_red_Arrow', opacity: '0' },
+            { name: 'kl_111', color: '#e6e6e6' },
+            { name: 'vnk_1', color: '#e6e6e6' },
+            { name: 'status_1', text: 'Циклический' },
+            { name: 'status_1', text: 'Отдел.2-Отдел.' },
+            { name: '7PI_13', text: '9,54' },
+            { name: '1FI_01', text: '0' },
+            { name: '1PI_02', text: '0,00' },
+            { name: '1TI_43', text: '47' },
+            { name: '1FI_02', text: '0' },
+            { name: '1TI_28_1', text: '381' },
+            { name: '1TI_28_2', text: '385' },
+            { name: '1QI_01', text: '7,31' },
+
+            { name: '1TI_02', text: '1198' },
+            { name: '1TI_03', text: '1190' },
+            { name: '1TI_05', text: '1096' },
+
+
+
+            { name: 'text_ish_c4', y: 237.5 },
+            { name: 'text_ish_c5', y: 237.5 },
+            { name: 'text_ish_c6', y: 237.5 },
+            { name: 'rect_ish_c4', position: { y: 20 } },
+            { name: 'rect_ish_c5', position: { y: 20 } },
+            { name: 'rect_ish_c6', position: { y: 20 } },
 
           ]
         }
@@ -2424,6 +3339,16 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
+            { name: '7PI_13', text: '9,88' },
+            { name: '1FI_01', text: '0' },
+            { name: '1PI_02', text: '0,00' },
+            { name: '1TI_43', text: '47' },
+
+            { name: 'kl_111', color: '#ff0000' },
+            { name: '1TI_28_1', text: '380' },
+            { name: '1TI_28_2', text: '384' },
+
+
 
           ]
         }
@@ -2433,7 +3358,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-
+            { name: 'kl_111', color: '#e6e6e6' },
           ]
         }
       },
@@ -2442,7 +3367,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-
+            { name: 'kl_111', color: '#ff0000' },
           ]
         }
       },
@@ -2451,7 +3376,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-
+            { name: 'kl_111', color: '#e6e6e6' },
           ]
         }
       },
@@ -2460,33 +3385,97 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
+            { name: 'kl_111', color: '#ff0000' },
+            { name: 'vnk_1', color: '#A0AAB9' },
+            { name: 'vnk1_red_Arrow', opacity: '0' },
 
           ]
         }
       },
       startTime: timeDiff + 131,
     },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'rect_132', position: { y: 40 } },
+            { name: 'rect_116', position: { y: 40 } },
+            { name: 'rect_124', position: { y: 40 } },
+            { name: 'rect_113', position: { y: 40 } },
+            { name: 'rect_134', position: { y: 40 } },
+            { name: 'rect_117', position: { y: 40 } },
+            { name: 'rect_111', position: { y: 40 } },
+            { name: 'rect_112', position: { y: 40 } },
+          ]
+        }
+      },
+      startTime: timeDiff + 132,
+    },
 
     ////--------------------------------4-------------------------------------
-
     {
       scenarioText: 'Отделить воздухонагреватель ВНК №2.',
       sender: 'Система',
       audio: 'tts-16',
-      startTime: timeDiff + 132,
+      startTime: timeDiff + 133,
     },
     {
       action: {
-        target2D: 'perekidta_btn',
+        target2D: 'perekidta_btn_vnk2',
+        window2D: {
+          elements: [
+            { name: 'text_132', y: 475 },
+            { name: 'text_116', y: 475 },
+            { name: 'text_124', y: 475 },
+            { name: 'text_113', y: 475 },
+            { name: 'text_134', y: 475 },
+            { name: 'text_117', y: 475 },
+            { name: 'text_111', y: 475 },
+            { name: 'text_112', y: 475 },
+
+            { name: 'rect_132', position: { y: 0 } },
+            { name: 'rect_116', position: { y: 0 } },
+            { name: 'rect_124', position: { y: 0 } },
+            { name: 'rect_113', position: { y: 0 } },
+            { name: 'rect_134', position: { y: 0 } },
+            { name: 'rect_117', position: { y: 0 } },
+            { name: 'rect_111', position: { y: 0 } },
+            { name: 'rect_112', position: { y: 0 } },
+
+            { name: 'avarin_otd_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_nagrev', color: '#e6e6e6', stroke: '#808080' },
+            { name: 'nagrev_otd_2_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_dute', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otd2_otd_rect', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+          ]
+
+        }
       },
-      startTime: timeDiff + 136,
+      startTime: timeDiff + 137,
       human: true,
     },
     { // O_p_n_na_k_na-o_2_na_VNK OPEN
       action: {
         target2D: 'nagrev_otd2_btn',
+        window2D: {
+          elements: [
+            { name: 'Title_window_peric_nagrevotd', text: 'ВН2 Перекидка из Нагрева в Отделение' },
+
+
+            { name: 'rect_132', position: { y: 0 } },
+            { name: 'rect_116', position: { y: 0 } },
+            { name: 'rect_124', position: { y: 0 } },
+            { name: 'rect_113', position: { y: 0 } },
+            { name: 'rect_134', position: { y: 0 } },
+            { name: 'rect_117', position: { y: 0 } },
+            { name: 'rect_111', position: { y: 0 } },
+            { name: 'rect_112', position: { y: 0 } },
+          ]
+        },
       },
-      startTime: timeDiff + 136.1,
+      startTime: timeDiff + 137.1,
       human: true,
     }, {
       action: {
@@ -2501,118 +3490,896 @@ let tempActions = [
           { x: 34.3, y: 94.9, w: 3.2, h: 2.4, id: 'open_vn1' },  //  wind 2
         ]
       },
-      startTime: timeDiff + 136.2,
+      startTime: timeDiff + 137.2,
       human: true,
     },
     {  // wind 2  ok
       action: {
         target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'text_132', y: 520 },
+            { name: 'text_116', y: 520 },
+            { name: 'text_124', y: 520 },
+            { name: 'text_113', y: 520 },
+            { name: 'text_134', y: 520 },
+            { name: 'text_117', y: 520 },
+            { name: 'text_111', y: 520 },
+            { name: 'text_112', y: 520 },
+
+            { name: 'rect_132', position: { y: 40 } },
+            { name: 'rect_116', position: { y: 40 } },
+            { name: 'rect_124', position: { y: 40 } },
+            { name: 'rect_113', position: { y: 40 } },
+            { name: 'rect_134', position: { y: 40 } },
+            { name: 'rect_117', position: { y: 40 } },
+            { name: 'rect_111', position: { y: 40 } },
+            { name: 'rect_112', position: { y: 40 } },
+
+            { name: 'nagrev_otd_2_rect', color: '#00FF00' },
+          ]
+        }
       },
-      startTime: timeDiff + 136.3,
+      startTime: timeDiff + 137.3,
       human: true,
+    },
+    //1
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '2PS_03', color: '#ff0000' },
+            { name: '2PS_05', color: '#ff0000' },
+
+
+            { name: 'kl215_proc', text: '28' },
+
+            { name: '7PI_13', text: '10,52' },
+            { name: '2FI_01', text: '81142' },
+            { name: '2PI_02', text: '2,05' },
+            { name: '1TI_43', text: '47' },
+
+            { name: 'VNK2_status_1', text: 'Циклический' },
+
+
+            { name: 'dym_vybor_signala', text: '245' },
+            { name: '2TI_28_1', text: '239' },
+            { name: '2TI_28_2', text: '241' },
+            { name: '2QI_01', text: '1,48' },
+
+            { name: '2TI_02', text: '1319' },
+            { name: '2TI_03', text: '1304' },
+            { name: '2TI_04', text: '1203' },
+            { name: '2TI_05', text: '-999' },
+
+            { name: '215_SPW', text: '430,0' },
+            { name: '215_SPT', text: '108,0' },
+            { name: '215_KP_2', text: '500,0' },
+            { name: '215_GAZ', text: '101285' },
+            { name: '215_PV', text: '70708' },
+            { name: '215_SP', text: '101289' },
+            { name: '215_KP_1', text: '27,35' },
+
+            { name: 'VNK2_t2_r', text: 'Работа' },
+            { name: 'VNK2_t2_r', color: '#00FF00' },
+            { name: 'VNK2_t3_r', text: 'Работа' },
+            { name: 'VNK2_t3_r', color: '#00FF00' },
+            { name: 'VNK2_t4_r', text: 'Работа' },
+            { name: 'VNK2_t4_r', color: '#00FF00' },
+
+            { name: 'Vremya_nagreva', text: '52' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'VNK2_status_2', text: 'Нагрев-Отдел.' },
+
+            { name: '2FI_02', text: '40634' },
+            { name: 'kl223_proc', text: '24' },
+            { name: '2PI_04', text: '0,66' },
+            { name: '2TI_29', text: '35' },
+
+            { name: '223_PV_2', text: '1319,0' },
+            { name: '223_KP_2', text: '23,03' },
+            { name: '223_PV_1', text: '0,645' },
+            { name: '223_KP_1', text: '23,03' },
+
+
+            // Table
+            { name: 'text_132', y: 520 },
+            { name: 'text_116', y: 520 },
+            { name: 'text_124', y: 520 },
+            { name: 'text_113', y: 520 },
+            { name: 'text_134', y: 520 },
+            { name: 'text_117', y: 520 },
+            { name: 'text_111', y: 520 },
+            { name: 'text_112', y: 520 },
+
+            { name: 'rect_132', position: { y: 40 } },
+            { name: 'rect_116', position: { y: 40 } },
+            { name: 'rect_124', position: { y: 40 } },
+            { name: 'rect_113', position: { y: 40 } },
+            { name: 'rect_134', position: { y: 40 } },
+            { name: 'rect_117', position: { y: 40 } },
+            { name: 'rect_111', position: { y: 40 } },
+            { name: 'rect_112', position: { y: 40 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 138,
+    },
+    //2
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_232', color: '#7b828c' },
+            { name: '2FI_01', text: '54912' },
+            { name: '2PI_02', text: '0,16' },
+            { name: '2TI_43', text: '47' },
+            { name: 'red_back_underArrow', color: '#fff' },
+            { name: 'circle_nagrev', color: '#000' },
+
+            // Table
+            { name: 'text_132', y: 565 },
+            { name: 'text_116', y: 565 },
+            { name: 'text_124', y: 565 },
+            { name: 'text_113', y: 565 },
+            { name: 'text_134', y: 565 },
+            { name: 'text_117', y: 565 },
+            { name: 'text_111', y: 565 },
+            { name: 'text_112', y: 565 },
+
+            { name: 'rect_132', position: { y: 81 } },
+            { name: 'rect_116', position: { y: 81 } },
+            { name: 'rect_124', position: { y: 81 } },
+            { name: 'rect_113', position: { y: 81 } },
+            { name: 'rect_134', position: { y: 81 } },
+            { name: 'rect_117', position: { y: 81 } },
+            { name: 'rect_111', position: { y: 81 } },
+            { name: 'rect_112', position: { y: 81 } },
+            // End Table
+
+          ]
+        }
+      },
+      startTime: timeDiff + 139,
+    },
+    //3
+    {
+      action: {
+        window2D: {
+          elements: [
+            // Table
+            { name: 'text_132', y: 605 },
+            { name: 'text_116', y: 605 },
+            { name: 'text_124', y: 605 },
+            { name: 'text_113', y: 605 },
+            { name: 'text_134', y: 605 },
+            { name: 'text_117', y: 605 },
+            { name: 'text_111', y: 605 },
+            { name: 'text_112', y: 605 },
+
+            { name: 'rect_132', position: { y: 123 } },
+            { name: 'rect_116', position: { y: 123 } },
+            { name: 'rect_124', position: { y: 123 } },
+            { name: 'rect_113', position: { y: 123 } },
+            { name: 'rect_134', position: { y: 123 } },
+            { name: 'rect_117', position: { y: 123 } },
+            { name: 'rect_111', position: { y: 123 } },
+            { name: 'rect_112', position: { y: 123 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 140,
+    },
+    //4
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_216', color: '#ff0000' },
+            { name: 'kl_227', color: '#7b828c' },
+
+            // Table
+            { name: 'text_132', y: 645 },
+            { name: 'text_116', y: 645 },
+            { name: 'text_124', y: 645 },
+            { name: 'text_113', y: 645 },
+            { name: 'text_134', y: 645 },
+            { name: 'text_117', y: 645 },
+            { name: 'text_111', y: 645 },
+            { name: 'text_112', y: 645 },
+
+            { name: 'rect_132', position: { y: 164 } },
+            { name: 'rect_116', position: { y: 164 } },
+            { name: 'rect_124', position: { y: 164 } },
+            { name: 'rect_113', position: { y: 164 } },
+            { name: 'rect_134', position: { y: 164 } },
+            { name: 'rect_117', position: { y: 164 } },
+            { name: 'rect_111', position: { y: 164 } },
+            { name: 'rect_112', position: { y: 164 } },
+            // End Table
+
+
+          ]
+        }
+      },
+      startTime: timeDiff + 141,
+    },
+    //5
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19,70' },
+            { name: '2FI_01', text: '0' },
+            { name: '2PI_02', text: '0,06' },
+            { name: '2TI_43', text: '47' },
+            { name: 'kl215_proc', text: '21' },
+            { name: '2PI_04', text: '0,00' },
+            { name: '2TI_02', text: '1315' },
+            { name: '2TI_03', text: '1301' },
+            { name: '2TI_04', text: '1153' },
+
+
+            // Table
+            { name: 'text_132', y: 685 },
+            { name: 'text_116', y: 685 },
+            { name: 'text_124', y: 685 },
+            { name: 'text_113', y: 685 },
+            { name: 'text_134', y: 685 },
+            { name: 'text_117', y: 685 },
+            { name: 'text_111', y: 685 },
+            { name: 'text_112', y: 685 },
+
+            { name: 'rect_132', position: { y: 205 } },
+            { name: 'rect_116', position: { y: 205 } },
+            { name: 'rect_124', position: { y: 205 } },
+            { name: 'rect_113', position: { y: 205 } },
+            { name: 'rect_134', position: { y: 205 } },
+            { name: 'rect_117', position: { y: 205 } },
+            { name: 'rect_111', position: { y: 205 } },
+            { name: 'rect_112', position: { y: 205 } },
+            // End Table
+
+          ]
+        }
+      },
+      startTime: timeDiff + 142,
+    },
+    //6
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_227', color: '#00FF00' },
+
+            { name: 'rect_216_2', color: '#000' },
+            { name: 'rect_216_2', position: { x: -3 } },
+            { name: 'b_rect_216', position: { x: -3 } },
+            { name: '7PI_13', text: '19,60' },
+            { name: '2PI_02', text: '0,04' },
+            { name: '2TI_43', text: '17' },
+            { name: '2TI_02', text: '1312' },
+            { name: '2TI_03', text: '1297' },
+            { name: '2TI_04', text: '1133' },
+
+
+
+            // Table
+            { name: 'text_132', y: 725 },
+            { name: 'text_116', y: 725 },
+            { name: 'text_124', y: 725 },
+            { name: 'text_113', y: 725 },
+            { name: 'text_134', y: 725 },
+            { name: 'text_117', y: 725 },
+            { name: 'text_111', y: 725 },
+            { name: 'text_112', y: 725 },
+
+            { name: 'rect_132', position: { y: 245 } },
+            { name: 'rect_116', position: { y: 245 } },
+            { name: 'rect_124', position: { y: 245 } },
+            { name: 'rect_113', position: { y: 245 } },
+            { name: 'rect_134', position: { y: 245 } },
+            { name: 'rect_117', position: { y: 245 } },
+            { name: 'rect_111', position: { y: 245 } },
+            { name: 'rect_112', position: { y: 245 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 143,
+    },
+    //7
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '2FI_03', text: '1339' },
+            { name: 'kl_224', color: '#7b828c' },
+            // Table
+            { name: 'text_132', y: 765 },
+            { name: 'text_116', y: 765 },
+            { name: 'text_124', y: 765 },
+            { name: 'text_113', y: 765 },
+            { name: 'text_134', y: 765 },
+            { name: 'text_117', y: 765 },
+            { name: 'text_111', y: 765 },
+            { name: 'text_112', y: 765 },
+
+            { name: 'rect_132', position: { y: 286 } },
+            { name: 'rect_116', position: { y: 286 } },
+            { name: 'rect_124', position: { y: 286 } },
+            { name: 'rect_113', position: { y: 286 } },
+            { name: 'rect_134', position: { y: 286 } },
+            { name: 'rect_117', position: { y: 286 } },
+            { name: 'rect_111', position: { y: 286 } },
+            { name: 'rect_112', position: { y: 286 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 144,
+    },
+    //8
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '2FI_03', text: '1468' },
+            { name: 'kl_224', color: '#00FF00' },
+            { name: '7PI_13', text: '19,48' },
+            { name: '2TI_29', text: '27' },
+            { name: '2PI_04', text: '0,00' },
+            { name: '2TI_28_1', text: '238' },
+            { name: '2TI_28_2', text: '240' },
+
+            // Table
+            { name: 'text_132', y: 805 },
+            { name: 'text_116', y: 805 },
+            { name: 'text_124', y: 805 },
+            { name: 'text_113', y: 805 },
+            { name: 'text_134', y: 805 },
+            { name: 'text_117', y: 805 },
+            { name: 'text_111', y: 805 },
+            { name: 'text_112', y: 805 },
+
+            { name: 'rect_132', position: { y: 327 } },
+            { name: 'rect_116', position: { y: 327 } },
+            { name: 'rect_124', position: { y: 327 } },
+            { name: 'rect_113', position: { y: 327 } },
+            { name: 'rect_134', position: { y: 327 } },
+            { name: 'rect_117', position: { y: 327 } },
+            { name: 'rect_111', position: { y: 327 } },
+            { name: 'rect_112', position: { y: 327 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 145,
+    },
+    //9
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_224', color: '#7b828c' },
+            { name: '2QI_01', text: '19,85' },
+
+            // Table
+            { name: 'text_132', y: 845 },
+            { name: 'text_116', y: 845 },
+            { name: 'text_124', y: 845 },
+            { name: 'text_113', y: 845 },
+            { name: 'text_134', y: 845 },
+            { name: 'text_117', y: 845 },
+            { name: 'text_111', y: 845 },
+            { name: 'text_112', y: 845 },
+
+            { name: 'rect_132', position: { y: 368 } },
+            { name: 'rect_116', position: { y: 368 } },
+            { name: 'rect_124', position: { y: 368 } },
+            { name: 'rect_113', position: { y: 368 } },
+            { name: 'rect_134', position: { y: 368 } },
+            { name: 'rect_117', position: { y: 368 } },
+            { name: 'rect_111', position: { y: 368 } },
+            { name: 'rect_112', position: { y: 368 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 146,
+    },
+    //10
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_224', color: '#ff0000' },
+            { name: '2FI_03', text: '0' },
+            { name: '2PI_02', text: '0,10' },
+            { name: '2TI_43', text: '47' },
+            { name: 'kl_213', color: '#7b828c' },
+            { name: 'kl_221', color: '#7b828c' },
+            { name: '2QI_01', text: '19,43' },
+
+            // Table
+            { name: 'text_132', y: 885 },
+            { name: 'text_116', y: 885 },
+            { name: 'text_124', y: 885 },
+            { name: 'text_113', y: 885 },
+            { name: 'text_134', y: 885 },
+            { name: 'text_117', y: 885 },
+            { name: 'text_111', y: 885 },
+            { name: 'text_112', y: 885 },
+
+            { name: 'rect_132', position: { y: 409 } },
+            { name: 'rect_116', position: { y: 409 } },
+            { name: 'rect_124', position: { y: 409 } },
+            { name: 'rect_113', position: { y: 409 } },
+            { name: 'rect_134', position: { y: 409 } },
+            { name: 'rect_117', position: { y: 409 } },
+            { name: 'rect_111', position: { y: 409 } },
+            { name: 'rect_112', position: { y: 409 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 147,
+    },
+    //11
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_213', color: '#00FF00' },
+            { name: 'kl_221', color: '#00FF00' },
+            { name: '7PI_13', text: '16,69' },
+            { name: '2QI_01', text: '19,47' },
+
+            // Table
+            { name: 'text_132', y: 925 },
+            { name: 'text_116', y: 925 },
+            { name: 'text_124', y: 925 },
+            { name: 'text_113', y: 925 },
+            { name: 'text_134', y: 925 },
+            { name: 'text_117', y: 925 },
+            { name: 'text_111', y: 925 },
+            { name: 'text_112', y: 925 },
+
+            { name: 'rect_132', position: { y: 450 } },
+            { name: 'rect_116', position: { y: 450 } },
+            { name: 'rect_124', position: { y: 450 } },
+            { name: 'rect_113', position: { y: 450 } },
+            { name: 'rect_134', position: { y: 450 } },
+            { name: 'rect_117', position: { y: 450 } },
+            { name: 'rect_111', position: { y: 450 } },
+            { name: 'rect_112', position: { y: 450 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 148,
+    },
+    //12
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_234', color: '#7b828c' },
+            { name: '2QI_01', text: '15,36' },
+
+            // Table
+            { name: 'text_132', y: 965 },
+            { name: 'text_116', y: 965 },
+            { name: 'text_124', y: 965 },
+            { name: 'text_113', y: 965 },
+            { name: 'text_134', y: 965 },
+            { name: 'text_117', y: 965 },
+            { name: 'text_111', y: 965 },
+            { name: 'text_112', y: 965 },
+
+            { name: 'rect_132', position: { y: 491 } },
+            { name: 'rect_116', position: { y: 491 } },
+            { name: 'rect_124', position: { y: 491 } },
+            { name: 'rect_113', position: { y: 491 } },
+            { name: 'rect_134', position: { y: 491 } },
+            { name: 'rect_117', position: { y: 491 } },
+            { name: 'rect_111', position: { y: 491 } },
+            { name: 'rect_112', position: { y: 491 } },
+            // End Table
+
+          ]
+        }
+      },
+      startTime: timeDiff + 149,
+    },
+    //13
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_234', color: '#ff0000' },
+            { name: 'kl_240', color: '#7b828c' },
+            { name: '7PI_13', text: '19,65' },
+            { name: '7PI_13', text: '19,65' },
+            { name: '2TI_02', text: '1264' },
+            { name: '2TI_03', text: '1214' },
+            { name: '2TI_04', text: '1052' },
+            { name: '2TI_28_1', text: '231' },
+            { name: '2TI_28_2', text: '233' },
+            { name: '2QI_01', text: '15,58' },
+
+
+
+            // Table
+            { name: 'text_132', y: 1008 },
+            { name: 'text_116', y: 1008 },
+            { name: 'text_124', y: 1008 },
+            { name: 'text_113', y: 1008 },
+            { name: 'text_134', y: 1008 },
+            { name: 'text_117', y: 1008 },
+            { name: 'text_111', y: 1008 },
+            { name: 'text_112', y: 1008 },
+
+            { name: 'rect_132', position: { y: 531 } },
+            { name: 'rect_116', position: { y: 531 } },
+            { name: 'rect_124', position: { y: 531 } },
+            { name: 'rect_113', position: { y: 531 } },
+            { name: 'rect_134', position: { y: 531 } },
+            { name: 'rect_117', position: { y: 531 } },
+            { name: 'rect_111', position: { y: 531 } },
+            { name: 'rect_112', position: { y: 531 } },
+            // End Table
+
+          ]
+        }
+      },
+      startTime: timeDiff + 150,
+    },
+    //14
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_240', color: '#00FF00' },
+            { name: 'kl_212', color: '#7b828c' },
+            { name: '2QI_01', text: '15,61' },
+
+            // Table
+            { name: 'text_132', y: 1048 },
+            { name: 'text_116', y: 1048 },
+            { name: 'text_124', y: 1048 },
+            { name: 'text_113', y: 1048 },
+            { name: 'text_134', y: 1048 },
+            { name: 'text_117', y: 1048 },
+            { name: 'text_111', y: 1048 },
+            { name: 'text_112', y: 1048 },
+
+            { name: 'rect_132', position: { y: 572 } },
+            { name: 'rect_116', position: { y: 572 } },
+            { name: 'rect_124', position: { y: 572 } },
+            { name: 'rect_113', position: { y: 572 } },
+            { name: 'rect_134', position: { y: 572 } },
+            { name: 'rect_117', position: { y: 572 } },
+            { name: 'rect_111', position: { y: 572 } },
+            { name: 'rect_112', position: { y: 572 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 151,
+    },
+    //15          
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_212', color: '#ff0000' },
+            { name: '2QI_01', text: '15,65' },
+
+            { name: '115_SPW', text: '430,0' },
+            { name: '115_SPT', text: '108,0' },
+            { name: '115_KP_2', text: '230,1' },
+            { name: '115_GAZ', text: '80000' },
+
+            { name: '115_PV', text: '0' },
+            { name: '115_SP', text: '80000' },
+            { name: '115_KP_1', text: '21,66' },
+
+
+            { name: '123_PV_2', text: '1244,8' },
+            { name: '123_SP_2', text: '1200,0' },
+            { name: '123_KP_2', text: '22,00' },
+            { name: '123_GAZ', text: '0,00' },
+
+            { name: '123_PV_1', text: '1,0000' },
+            { name: '123_SP_1', text: '1,000' },
+            { name: '123_KP_1', text: '22,00' },
+
+
+            { name: '1FI_02', text: '0' },
+            { name: '1QI_01', text: '15,65' },
+            { name: '1TI_28_1', text: '228' },
+            { name: '1TI_28_2', text: '231' },
+
+            { name: '1PI_04', text: '0,00' },
+            { name: '1TI_29', text: '28' },
+
+
+            { name: 'text_132', y: 1090 },
+            { name: 'text_116', y: 1090 },
+            { name: 'text_124', y: 1090 },
+            { name: 'text_113', y: 1090 },
+            { name: 'text_134', y: 1090 },
+            { name: 'text_117', y: 1090 },
+            { name: 'text_111', y: 1090 },
+            { name: 'text_112', y: 1090 },
+
+
+            { name: 'rect_132', position: { y: 613 } },
+            { name: 'rect_116', position: { y: 613 } },
+            { name: 'rect_124', position: { y: 613 } },
+            { name: 'rect_113', position: { y: 613 } },
+            { name: 'rect_134', position: { y: 613 } },
+            { name: 'rect_117', position: { y: 613 } },
+            { name: 'rect_111', position: { y: 613 } },
+            { name: 'rect_112', position: { y: 613 } },
+            //  End Table
+
+
+          ]
+        }
+      },
+      startTime: timeDiff + 152,
+    },
+    //16
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'nagrev_otd_2_rect', color: '#fff' },
+
+            // Table
+            { name: 'text_132', y: 475 },
+            { name: 'text_116', y: 475 },
+            { name: 'text_124', y: 475 },
+            { name: 'text_113', y: 475 },
+            { name: 'text_134', y: 475 },
+            { name: 'text_117', y: 475 },
+            { name: 'text_111', y: 475 },
+            { name: 'text_112', y: 475 },
+
+            { name: 'rect_132', position: { y: 0 } },
+            { name: 'rect_116', position: { y: 0 } },
+            { name: 'rect_124', position: { y: 0 } },
+            { name: 'rect_113', position: { y: 0 } },
+            { name: 'rect_134', position: { y: 0 } },
+            { name: 'rect_117', position: { y: 0 } },
+            { name: 'rect_111', position: { y: 0 } },
+            { name: 'rect_112', position: { y: 0 } },
+            //  End Table
+
+
+          ]
+        }
+      },
+      startTime: timeDiff + 153,
     },
     {  // O_p_n_na_k_na-o_2_na_VNK close
       action: {
         target2D: 'pericNagrev_close_btn',
       },
-      startTime: timeDiff + 136.4,
+      startTime: timeDiff + 153.1,
       human: true,
     },
     {  // O_p_n_na_k_p_na_VNK CLOSE
       action: {
         target2D: 'perekidta_exit_btn',
       },
-      startTime: timeDiff + 136.5,
+      startTime: timeDiff + 153.2,
       human: true,
     },
-    // O_p_n_na_k_na-BVNK_VNK2 схема обновляется
+
+    {
+      action: {
+        target2D: 'perekidta_btn_vnk2',
+        window2D: {
+          elements: [
+            { name: 'avarin_otd_rect', color: '#e6e6e6', stroke: '#808080' },
+            { name: 'otdel_nagrev', color: '#fff', stroke: '#000' },
+            { name: 'nagrev_otd_2_rect', color: '#e6e6e6', stroke: '#808080' },
+
+            { name: 'otdel_dute', color: '#fff', stroke: '#000' },            // color: '#e6e6e6', stroke: '#808080'
+            { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },
+            { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },
+            { name: 'otd2_otd_rect', color: '#fff', stroke: '#000' },
+          ]
+        }
+      },
+      startTime: timeDiff + 153.3,
+      human: true,
+    },
+    {
+      action: {
+        target2D: 'otdel2_otdel_btn',
+        window2D: {
+          elements: [
+            { name: 'text_ish_c4', y: 237.5 },
+            { name: 'text_ish_c5', y: 237.5 },
+            { name: 'text_ish_c6', y: 237.5 },
+            { name: 'rect_ish_c4', position: { y: 0 } },
+            { name: 'rect_ish_c5', position: { y: 0 } },
+            { name: 'rect_ish_c6', position: { y: 0 } },
+          ]
+        }
+      },
+      startTime: timeDiff + 153.4,
+      human: true,
+    }, {
+      action: {
+        target2D: 'otdel2_pusk_btn',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Пуск' },
+
+          ]
+        },
+        helper2D: [
+          { x: 39.4, y: 94, w: 3.2, h: 2.4, id: 'close_vn' },
+          { x: 35.8, y: 94, w: 3.2, h: 2.4, id: 'open_vn1' },  //  wind 2
+        ]
+      },
+      startTime: timeDiff + 153.5,
+      human: true,
+    },
+    {  // wind 2  ok
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'otd2_otd_rect', color: '#00FF00' },
+
+            { name: 'text_ish_c4', y: 297.5 },   // start 237.5
+            { name: 'text_ish_c5', y: 297.5 },   // start 237.5
+            { name: 'text_ish_c6', y: 297.5 },   // start 237.5
+
+
+            { name: 'rect_ish_c4', position: { y: 60 } },
+            { name: 'rect_ish_c5', position: { y: 60 } },
+            { name: 'rect_ish_c6', position: { y: 60 } },
+          ]
+        }
+      },
+      startTime: timeDiff + 153.6,
+      human: true,
+    },
+    {
+      action: {
+        target2D: 'otdel2_close_btn',
+        window2D: {
+          elements: []
+        }
+      },
+      startTime: timeDiff + 153.7,
+      human: true,
+    },
     {
       action: {
         window2D: {
           elements: [
+            { name: 'red_Arrow', opacity: '0' },
+            { name: 'red_back_underArrow', color: '#fff' },
 
           ]
         }
       },
-      startTime: timeDiff + 137,
+      startTime: timeDiff + 154,
     }, {
       action: {
         window2D: {
           elements: [
+            { name: 'nagrev_otd_2_rect', color: '#e6e6e6' },
 
           ]
         }
       },
-      startTime: timeDiff + 138,
+      startTime: timeDiff + 155,
     }, {
       action: {
         window2D: {
           elements: [
-
+            { name: 'avarin_otd_rect', color: '#e6e6e6' },
           ]
         }
       },
-      startTime: timeDiff + 139,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-
-          ]
-        }
-      },
-      startTime: timeDiff + 140,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-
-          ]
-        }
-      },
-      startTime: timeDiff + 141,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-
-          ]
-        }
-      },
-      startTime: timeDiff + 142,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-
-          ]
-        }
-      },
-      startTime: timeDiff + 143,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-
-          ]
-        }
-      },
-      startTime: timeDiff + 144,
+      startTime: timeDiff + 156,
     },
+    {
+      action: {
+        target2D: 'perekidta_exit_btn',
+        window2D: {
+          elements: [
+            { name: 'kl_211', color: '#7b828c' },
+            { name: '2QI_01', text: '15,41' },
+          ]
+        }
+      },
+      startTime: timeDiff + 156.1,
+      human: true,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_211', color: '#ff0000' },
+
+            { name: '2QI_01', text: '15,40' },
+
+            { name: '7PI_13', text: '20,19' },
+            { name: '2TI_43', text: '48' },
+            { name: '2TI_02', text: '1226' },
+            { name: '2TI_03', text: '1185' },
+            { name: '2TI_04', text: '1102' },
+          ]
+        }
+      },
+      startTime: timeDiff + 154,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_211', color: '#7b828c' },
+            { name: '2QI_01', text: '15,39' },
+          ]
+        }
+      },
+      startTime: timeDiff + 155,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_211', color: '#ff0000' },
+          ]
+        }
+      },
+      startTime: timeDiff + 156,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#00FF00' },
+            { name: 'red_back_underArrow', color: '#99A0AA' },
+            { name: 'VNK2_status_1', text: 'Циклический' },
+            { name: 'VNK2_status_1', text: 'Отделение' },
+
+
+            { name: '2QI_01', text: '15,36' },
+          ]
+        }
+      },
+      startTime: timeDiff + 157,
+    },
+
     ///5. Вернуться на общую схему ВНК. Нажать на вкладку «Общая схема». Показать измененные значения, как на видео.
     {
       text: 'ВНК №1, ВНК №2 отделены, а ВНК №3 на дутье.',
       sender: 'Система',
       audio: 'tts-17',
-      startTime: timeDiff + 145,
+      startTime: timeDiff + 158,
+    },
+    {
+      lifeTime: '08:45:00',
+      startTime: timeDiff + 161,
     },
     // 1.4 сценарий
     {
       scenarioText: 'Дать команду дежурному водопроводчику на закрытие природного газа на печь задвижками на подводе газа к фурмам.',
       sender: 'Система',
       audio: 'tts-18',
-      lifeTime: '08:45:00',
-      startTime: timeDiff + 152,
+      // lifeTime: '08:45:00',
+      startTime: timeDiff + 165,
     },
     ////--------------------------------1---------------------------------------- РАЦИЯ 
     {
@@ -2622,34 +4389,34 @@ let tempActions = [
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 153,
+      startTime: timeDiff + 173,
       human: true,
     },
     {
       text: 'Закрыть природный газ на фурмах.',
       sender: 'Газовщик',
       audio: 'tts-vo4',
-      startTime: timeDiff + 154,
+      startTime: timeDiff + 174,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 156,
+      startTime: timeDiff + 176,
     },
     {
       text: 'Понял, приступаю.',
       sender: 'Дежурный водопроводчик',
       audio: 'tts-vo5',
-      startTime: timeDiff + 157.5,
+      startTime: timeDiff + 177.5,
     },
     ////--------------------------------2---------------------------------------- 
     {
       scenarioText: 'Перевести клапан 721 в режим управления «Дист.»',
       sender: 'Система',
       audio: 'tts-19',
-      startTime: timeDiff + 161,
+      startTime: timeDiff + 181,
     },
     {
       action: {
@@ -2657,7 +4424,7 @@ let tempActions = [
         rotation: { y: 1.571 },
       },
       duration: 0.15,
-      startTime: timeDiff + 162,
+      startTime: timeDiff + 182,
       human: true,
     },
 
@@ -2666,7 +4433,7 @@ let tempActions = [
       audio: 'tts-20',
       scenarioText: 'Перевести тумблер из положения «Авт.4» в положение «Дист.3» на маркировке «Атмосферные клапана» «Клапан 1», «Клапан 2» и «Клапан 3» поочерёдно.',
       sender: 'Система',
-      startTime: timeDiff + 163,
+      startTime: timeDiff + 183,
     },
     {
       multi: [
@@ -2688,193 +4455,115 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 171,
+      startTime: timeDiff + 191,
       human: true,
     },
 
-    ////--------------------------------4----------------------------------------  fix FIX fix
+    ////--------------------------------4---------------------------------------- 
+
     {
       text: 'Уменьшить значение параметра на регуляторе природного газа.',
       audio: 'tts-21',
-      startTime: timeDiff + 172,
+      startTime: timeDiff + 192,
     },
     {
       action: {
         target3D: 'downBtnFPrirGaza_highlight',
       },
-      startTime: timeDiff + 175.1,
+      startTime: timeDiff + 195.1,
       human: true,
     },
-
-
-
     {
       action: {
-        target3D: 'vozNagr1_1', // TODO заменить на красный циферблат
+        target3D: 'fPrirodGazReg',
+        color: 'red',
         number: '024.5'
       },
-      startTime: timeDiff + 175.11,
+      startTime: timeDiff + 195.11,
     },
     {
       action: {
         target3D: 'Clone_4_progress bar142',
         material: 'Unic_progress bar_off'
       },
-      startTime: timeDiff + 175.12,
+      startTime: timeDiff + 195.12,
     },
     {
       action: {
         target3D: 'downBtnFPrirGaza_highlight',
       },
-      startTime: timeDiff + 175.5,
+      startTime: timeDiff + 195.5,
       human: true,
     },
     {
       action: {
-        target3D: 'vozNagr1_1', // TODO заменить на красный циферблат
+        target3D: 'fPrirodGazReg',
+        color: 'red',
         number: '020.0'
       },
-      startTime: timeDiff + 175.51,
+      startTime: timeDiff + 195.51,
     },
     {
       action: {
         target3D: 'Clone_3_progress bar142',
         material: 'Unic_progress bar_off'
       },
-      startTime: timeDiff + 175.52,
+      startTime: timeDiff + 195.52,
     },
     {
       action: {
         target3D: 'downBtnFPrirGaza_highlight',
       },
-      startTime: timeDiff + 176,
+      startTime: timeDiff + 196,
       human: true,
     },
     {
       action: {
-        target3D: 'vozNagr1_1', // TODO заменить на красный циферблат
+        target3D: 'fPrirodGazReg',
+        color: 'red',
         number: '017.0'
       },
-      startTime: timeDiff + 176.1,
+      startTime: timeDiff + 196.1,
     },
     {
       action: {
         target3D: 'Clone_2_progress bar142',
         material: 'Unic_progress bar_off'
       },
-      startTime: timeDiff + 176.2,
+      startTime: timeDiff + 196.2,
     },
 
     ////--------------------------------5---------------------------------------- 
     {
       text: 'Водопроводчик по рации сообщает о выполненных своих операциях.',
       sender: 'Система',
-      startTime: timeDiff + 177,
+      startTime: timeDiff + 197,
     },
     {
       audio: 'tts-vo6',
       text: 'Газ по фурмам закрыт',
       sender: 'Дежурный водопроводчик',
-      startTime: timeDiff + 177.1,
+      startTime: timeDiff + 197.1,
     },
+
     ////--------------------------------6---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
+      startTime: timeDiff + 199.5,
+    },
+    {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 179,
+      startTime: timeDiff + 202,
       human: true,
     },
     {
       text: 'Природный газ закрыт. На фурмах 3 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo7',
-      startTime: timeDiff + 180,
-    },
-    {
-      action: {
-        target3D: 'Lamp_034',
-        material: 'DonorLamp_off',
-      },
-      startTime: timeDiff + 183,
-    },
-    {
-      audio: 'tts-vo8',
-      text: 'Понял, принял.',
-      sender: 'Дежурный водопроводчик',
-      startTime: timeDiff + 184,
-    },
-    ////--------------------------------7---------------------------------------- 
-    {
-      scenarioText: 'Закрыть задвижку 721.',
-      sender: 'Система',
-      audio: 'tts-22',
-      startTime: timeDiff + 187,
-    },
-    {
-      action: {
-        target3D: 'Handle_014',
-        rotation: { y: 0.7854 }, // 45
-      },
-      duration: 0.3,
-      startTime: timeDiff + 188,
-      human: true,
-    },
-    {
-      action: {
-        target3D: 'Lamp_Red_019',
-        material: 'Unic_Lamp_Red_On'
-      },
-      startTime: timeDiff + 188.1,
-    },
-    {
-      action: {
-        target3D: 'Handle_014',
-        rotation: { y: 0 },
-      },
-      duration: 0.3,
-      startTime: timeDiff + 190,
-      human: true,
-    },
-    {
-      action: {
-        target3D: 'Lamp_Red_019',
-        material: 'Unic_Lamp_Red_Off'
-      },
-      startTime: timeDiff + 190.1,
-    },
-    // 1.5 сценарий ------------------------------------------------------------------------------------------------------------------------------
-    {
-      text: 'По команде мастера печи - газовщик должен открыть клапан «СНОРТ» полностью для сброса в атмосферу излишки.',
-      sender: 'Система',
-      audio: 'tts-23',
-      lifeTime: '09:00:00',
-      startTime: timeDiff + 192,
-    },
-    ////--------------------------------1---------------------------------------- 
-    {
-      text: 'Делаем 2,5 кг.',
-      sender: 'Мастер печи',
-      audio: 'tts-vo9',
-      startTime: timeDiff + 199,
-    },
-    {
-      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
-      sender: 'Система',
-      audio: 'radio_say',
-      action: {
-        target3D: 'ButtonHightlight_046',
-      },
-      startTime: timeDiff + 202.5,
-      human: true,
-    },
-    {
-      text: 'Делаю 2,5 кг.',
-      sender: 'Газовщик',
-      audio: 'tts-vo10',
       startTime: timeDiff + 203,
     },
     {
@@ -2884,12 +4573,99 @@ let tempActions = [
       },
       startTime: timeDiff + 206,
     },
+    {
+      audio: 'tts-vo8',
+      text: 'Понял, принял.',
+      sender: 'Дежурный водопроводчик',
+      startTime: timeDiff + 207,
+    },
+    ////--------------------------------7---------------------------------------- 
+    {
+      scenarioText: 'Закрыть задвижку 721.',
+      sender: 'Система',
+      audio: 'tts-22',
+      startTime: timeDiff + 210,
+    },
+    {
+      action: {
+        target3D: 'Handle_014',
+        rotation: { y: 0.7854 }, // 45
+      },
+      duration: 0.3,
+      startTime: timeDiff + 211,
+      human: true,
+    },
+    {
+      action: {
+        target3D: 'Lamp_Red_019',
+        material: 'Unic_Lamp_Red_On'
+      },
+      startTime: timeDiff + 211.1,
+    },
+    {
+      action: {
+        target3D: 'Handle_014',
+        rotation: { y: 0 },
+      },
+      duration: 0.3,
+      startTime: timeDiff + 213,
+      human: true,
+    },
+    {
+      action: {
+        target3D: 'Lamp_Red_019',
+        material: 'Unic_Lamp_Red_Off'
+      },
+      startTime: timeDiff + 213.1,
+    },
+    // 1.5 сценарий ------------------------------------------------------------------------------------------------------------------------------
+    {
+      text: 'По команде мастера печи - газовщик должен открыть клапан «СНОРТ» полностью для сброса в атмосферу излишки.',
+      sender: 'Система',
+      audio: 'tts-23',
+      lifeTime: '09:00:00',
+      startTime: timeDiff + 215,
+    },
+    ////--------------------------------1---------------------------------------- 
+    {
+      text: 'Делаем 2,5 кг.',
+      sender: 'Мастер печи',
+      audio: 'tts-vo9',
+      startTime: timeDiff + 222,
+    },
+    {
+      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 225.5,
+    },
+    {
+      action: {
+        target3D: 'ButtonHightlight_046',
+      },
+      startTime: timeDiff + 227.5,
+      human: true,
+    },
+    {
+      text: 'Делаю 2,5 кг.',
+      sender: 'Газовщик',
+      audio: 'tts-vo10',
+      startTime: timeDiff + 228,
+    },
+    {
+      action: {
+        target3D: 'Lamp_034',
+        material: 'DonorLamp_off',
+      },
+      startTime: timeDiff + 231,
+    },
+
     ////--------------------------------2----------------------------------------     /// 4 раза как на видео
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 2,5кг.',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 208,
+      startTime: timeDiff + 233,
     },
     {
       action: {
@@ -2897,7 +4673,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 209,
+      startTime: timeDiff + 234,
       human: true,
     },
     {
@@ -2905,7 +4681,7 @@ let tempActions = [
         target3D: 'Lamp_Red_020',
         material: 'Unic_Lamp_Red_Off',
       },
-      startTime: timeDiff + 209.1,
+      startTime: timeDiff + 234.1,
     },
     {
       action: {
@@ -2913,7 +4689,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 210,
+      startTime: timeDiff + 235,
       human: true,
     },
     {
@@ -2922,7 +4698,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 211,
+      startTime: timeDiff + 236,
       human: true,
     },
     {
@@ -2931,19 +4707,98 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 212,
+      startTime: timeDiff + 237,
       human: true,
     },
-    // TODO Добавить подадение давление на фурмах
+
     {
       action: {
         window2D: {
           elements: [
-            { name: 'H_snotr', text: '15' },
+            { name: 'EKZ_H1', text: '16' },
+            { name: 'EKZ_H2', text: '17' },
+            { name: 'EKZ_H3', text: '17' },
+            { name: 'AKZ_17', opacity: 1 },
+
+
+            { name: 'EVS_DP7_O', text: '53808' },
+            { name: 'EVD1_O', text: '8996' },
+            // луавый эвд 2 - pass
+
+            { name: 'EVS_DP7_F', text: '7178' },
+            { name: 'EVS_DP7_F', text: '333934' },
+            { name: 'EVD_F', text: '331113' },
+
+            { name: 'P_1', text: '3.10' },
+            { name: 'F_evd', text: '5565' },
+            { name: 'F_hol_dyt', text: '5544' },
+            { name: 'T_hol_dyt', text: '73' },
+            { name: 'O_hol_dyt', text: '23.9' },
+
+            { name: 'F_par_yvl', text: '1.00' },
+            { name: 'par_yvlaz', text: '0.00' },
+
+            // pass
+            { name: 'Vlaznost', text: '5.0' },
+            { name: 'W_sinij_hol_dyt', text: '8.2' },
+            { name: 'FO2_hol_dyt', text: '1300' },
+
+            { name: 'H_snotr', text: '7' },
+            { name: 'H_progres_7', opacity: 1 },
+
+            { name: 'P_2', text: '2.97' },
+
+            { name: '02_trub', text: '0' },
+            { name: 'N2', text: '51.7' },
+            { name: 'CO', text: '24.8' },
+            { name: 'CO2', text: '21.1' },
+            { name: 'H2_tryb', text: '1.9' },
+            { name: 'Nco_tryb', text: '46.0' },
+            { name: 'Q_domG_tryb', text: '821' },
+            { name: 'P_vozd_tryb', text: '10' },
+            { name: 'P_gaza_tryb', text: '20' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'Tkyp_3', text: '1259' },
+            { name: 'Tkyp_2', text: '1219' },
+            { name: 'Tkyp_1', text: '1212' },
+            { name: 'Tkyp_3_rect', color: '#fff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_1', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_1', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_1', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1', color: '#43A3EF' },
+            { name: 'VNK2_status_1', color: '#ada3b0' },
+            { name: 'VNK1_status_1', color: '#ada3b0' },
+
+            { name: 'VNK3_status_2', text: 'Цикл' },
+            { name: 'VNK2_status_2', text: 'Цикл' },
+            { name: 'VNK1_status_2', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fvozdyh_1', text: '0' },
+
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'Fgaz_1', text: '0' },
+
+            { name: 'Tdym_3', text: '131' },
+            { name: 'Tdym_2', text: '194' },
+            { name: 'Tdym_1', text: '296' },
+            //pass
+
+            { name: 'P_Os_szat_voz', text: '8,42' },
+            //pass
+            { name: 'T_Os_szat_voz', text: '29' },
+
+
           ]
         }
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 237.1,
     },
     ////--------------------------------3----------------------------------------     ////    2   /////
     ////--------------------------------4---------------------------------------- 
@@ -2951,60 +4806,60 @@ let tempActions = [
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 213,
+      startTime: timeDiff + 238,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 214,
+      startTime: timeDiff + 239,
       human: true,
     },
     {
       text: 'На фурмах 2,5 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo11',
-      startTime: timeDiff + 215,
+      startTime: timeDiff + 240,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 219,
+      startTime: timeDiff + 244,
     },
     {
       text: 'Делаем 2 кг.',
       sender: 'Мастер печи',
       audio: 'tts-vo12',
-      startTime: timeDiff + 220,
+      startTime: timeDiff + 245,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 220.1,
+      startTime: timeDiff + 245.1,
       human: true,
     },
     {
       text: 'Делаю 2 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo13',
-      startTime: timeDiff + 221,
+      startTime: timeDiff + 246,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 223.9,
+      startTime: timeDiff + 248.9,
     },
     ////--------------------------------5---------------------------------------- /////   2   ////      4 раза из сценария
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 2кг.',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 224,
+      startTime: timeDiff + 249,
     },
     {
       action: {
@@ -3012,143 +4867,13 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 225,
-      human: true,
-    },
-    {
-      action: {
-        target3D: 'Handle_015',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 226,
-      human: true,
-    },
-    {
-      action: {
-        target3D: 'Handle_015',
-        rotation: { y: -0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 227,
-      human: true,
-    },
-    {
-      action: {
-        target3D: 'Handle_015',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 228,
-      human: true,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '19' },
-          ]
-        }
-      },
-      startTime: timeDiff + 229,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'H_snotr', text: '22' },
-          ]
-        }
-      },
-      startTime: timeDiff + 230,
-    },
-    ////--------------------------------6---------------------------------------- ////   4   ////
-    {
-      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
-      sender: 'Система',
-      audio: 'radio_say',
-      startTime: timeDiff + 230.5,
-    },
-    {
-      action: {
-        target3D: 'ButtonHightlight_046',
-      },
-      startTime: timeDiff + 231,
-      human: true,
-    },
-    {
-      text: 'На фурмах 2 кг.',
-      sender: 'Газовщик',
-      audio: 'tts-vo14',
-      startTime: timeDiff + 232,
-    },
-    {
-      action: {
-        target3D: 'Lamp_034',
-        material: 'DonorLamp_off',
-      },
-      startTime: timeDiff + 235,
-    },
-    {
-      text: 'Делаем 1,5 кг.',
-      sender: 'Мастер печи',
-      audio: 'tts-vo15',
-      startTime: timeDiff + 236,
-    },
-    {
-      action: {
-        target3D: 'ButtonHightlight_046',
-      },
-      startTime: timeDiff + 236.1,
-      human: true,
-    },
-    {
-      text: 'Выполняю.',
-      sender: 'Газовщик',
-      audio: 'tts-vo16',
-      startTime: timeDiff + 237,
-    },
-    {
-      action: {
-        target3D: 'Lamp_034',
-        material: 'DonorLamp_off',
-      },
-      startTime: timeDiff + 240,
-    },
-    ////--------------------------------7---------------------------------------- 
-    {
-      scenarioText: 'Сообщить по телефону в «ЭВС».',
-      sender: 'Система',
-      audio: 'telephone_say',
-      startTime: timeDiff + 242,
-      action: {
-        target3D: 'PhoneButton020',
-      },
-      human: true,
-    },
-    {
-      text: 'Разгрузка на 20000.',
-      sender: 'Газовщик',
-      startTime: timeDiff + 244,
-      audio: 'tts-vo17',
-    },
-    {
-      text: 'Принял',
-      sender: 'Дежурный водопроводчик',
-      audio: 'tts-vo18',
-      startTime: timeDiff + 248.5,
-    },
-    ////--------------------------------8---------------------------------------- //////  2   //////    6-7 раз. БУДЕТ 6  . Из сценария
-    {
-      scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 1,5кг.',
-      sender: 'Система',
-      audio: 'tts-24',
       startTime: timeDiff + 250,
+      human: true,
     },
     {
       action: {
         target3D: 'Handle_015',
-        rotation: { y: -0.785 },
+        rotation: { y: 0 },
       },
       duration: 0.15,
       startTime: timeDiff + 251,
@@ -3157,7 +4882,7 @@ let tempActions = [
     {
       action: {
         target3D: 'Handle_015',
-        rotation: { y: 0 },
+        rotation: { y: -0.785 },
       },
       duration: 0.15,
       startTime: timeDiff + 252,
@@ -3166,7 +4891,7 @@ let tempActions = [
     {
       action: {
         target3D: 'Handle_015',
-        rotation: { y: -0.785 },
+        rotation: { y: 0 },
       },
       duration: 0.15,
       startTime: timeDiff + 253,
@@ -3174,11 +4899,154 @@ let tempActions = [
     },
     {
       action: {
+        window2D: {
+          elements: [
+            { name: 'H_snotr', text: '19' },
+            { name: 'H_progres_19', opacity: 1 },
+            { name: 'P_2', text: '2.36' },
+            { name: 'EKZ_H1', text: '45' },
+            { name: 'EKZ_H2', text: '45' },
+            { name: 'EKZ_H3', text: '45' },
+            { name: 'AKZ_45', opacity: 1 },
+          ]
+        }
+      },
+      startTime: timeDiff + 254,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'H_snotr', text: '22' },
+            { name: 'H_progres_22', opacity: 1 },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 255,
+    },
+    ////--------------------------------6---------------------------------------- ////   4   ////
+    {
+      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 255.5,
+    },
+    {
+      action: {
+        target3D: 'ButtonHightlight_046',
+      },
+      startTime: timeDiff + 256,
+      human: true,
+    },
+    {
+      text: 'На фурмах 2 кг.',
+      sender: 'Газовщик',
+      audio: 'tts-vo14',
+      startTime: timeDiff + 257,
+    },
+    {
+      action: {
+        target3D: 'Lamp_034',
+        material: 'DonorLamp_off',
+      },
+      startTime: timeDiff + 260,
+    },
+    {
+      text: 'Делаем 1,5 кг.',
+      sender: 'Мастер печи',
+      audio: 'tts-vo15',
+      startTime: timeDiff + 261,
+    },
+    {
+      action: {
+        target3D: 'ButtonHightlight_046',
+      },
+      startTime: timeDiff + 261.1,
+      human: true,
+    },
+    {
+      text: 'Выполняю.',
+      sender: 'Газовщик',
+      audio: 'tts-vo16',
+      startTime: timeDiff + 262,
+    },
+    {
+      action: {
+        target3D: 'Lamp_034',
+        material: 'DonorLamp_off',
+      },
+      startTime: timeDiff + 265,
+    },
+
+    ////--------------------------------7----------------------------------------
+    {
+      scenarioText: 'Сообщить по телефону в «ЭВС».',
+      sender: 'Система',
+      audio: 'telephone_say',
+      startTime: timeDiff + 267,
+    },
+    {
+      action: {
+        target3D: 'PhoneButton020',
+      },
+      startTime: timeDiff + 269,
+      human: true,
+    },
+    {
+      text: 'Разгрузка на 20000.',
+      sender: 'Газовщик',
+      startTime: timeDiff + 271,
+      audio: 'tts-vo17',
+    },
+    {
+      text: 'Принял',
+      sender: 'Дежурный водопроводчик',
+      audio: 'tts-vo18',
+      startTime: timeDiff + 275.5,
+    },
+
+    ////--------------------------------8---------------------------------------- //////  2   //////    6-7 раз. БУДЕТ 6  . Из сценария
+    {
+      scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 1,5кг.',
+      sender: 'Система',
+      audio: 'tts-24',
+      startTime: timeDiff + 277,
+    },
+    {
+      action: {
+        target3D: 'Handle_015',
+        rotation: { y: -0.785 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 278,
+      human: true,
+    },
+    {
+      action: {
         target3D: 'Handle_015',
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 254,
+      startTime: timeDiff + 279,
+      human: true,
+    },
+    {
+      action: {
+        target3D: 'Handle_015',
+        rotation: { y: -0.785 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 280,
+      human: true,
+    },
+    {
+      action: {
+        target3D: 'Handle_015',
+        rotation: { y: 0 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 281,
       human: true,
     },
     {
@@ -3186,72 +5054,83 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'H_snotr', text: '33' },
+            { name: 'H_progres_33', opacity: 1 },
+            { name: 'P_2', text: '1.97' },
+            { name: 'EKZ_H1', text: '100' },
+            { name: 'EKZ_H2', text: '100' },
+            { name: 'EKZ_H3', text: '100' },
+
+
+            { name: 'AKZ_17', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_100', opacity: 1 },
+            //100 
           ]
         }
       },
-      startTime: timeDiff + 255,
+      startTime: timeDiff + 282,
     },
     ////--------------------------------9---------------------------------------- /////   4   /////
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 255,
+      startTime: timeDiff + 282,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
       duration: 0.15,
-      startTime: timeDiff + 258,
+      startTime: timeDiff + 285,
       human: true,
     },
     {
       text: 'На фурмах 1,5 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo19',
-      startTime: timeDiff + 259,
+      startTime: timeDiff + 286,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 261,
+      startTime: timeDiff + 288,
     },
     {
       text: 'Делаем 1 кг.',
       sender: 'Мастер печи',
       audio: 'tts-vo20',
-      startTime: timeDiff + 264,
+      startTime: timeDiff + 291,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
       duration: 0.15,
-      startTime: timeDiff + 264.1,
+      startTime: timeDiff + 291.1,
       human: true,
     },
     {
       text: 'Делаю один.',
       sender: 'Газовщик',
       audio: 'tts-vo21',
-      startTime: timeDiff + 265,
+      startTime: timeDiff + 292,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 268,
+      startTime: timeDiff + 295,
     },
     ////--------------------------------10----------------------------------------  ///////   2   //////  7 раз из сценария
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 1кг.',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 271,
+      startTime: timeDiff + 298,
     },
     {
       action: {
@@ -3259,7 +5138,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 272,
+      startTime: timeDiff + 299,
       human: true,
     },
     {
@@ -3268,7 +5147,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 273,
+      startTime: timeDiff + 300,
       human: true,
     },
     {
@@ -3277,7 +5156,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 274,
+      startTime: timeDiff + 301,
       human: true,
     },
     {
@@ -3286,7 +5165,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 275,
+      startTime: timeDiff + 302,
       human: true,
     },
     {
@@ -3294,70 +5173,72 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'H_snotr', text: '49' },
+            { name: 'H_progres_49', opacity: 1 },
+            { name: 'P_2', text: '1.80' },
           ]
         }
       },
-      startTime: timeDiff + 276,
+      startTime: timeDiff + 303,
     },
     ////--------------------------------11----------------------------------------    ////////////////    4   ///////////////   
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 278,
+      startTime: timeDiff + 305,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 279,
+      startTime: timeDiff + 306,
       human: true,
     },
     {
       text: 'На фурмах 1 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo22',
-      startTime: timeDiff + 280,
+      startTime: timeDiff + 307,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 285,
+      startTime: timeDiff + 312,
     },
     {
       text: 'Делаем 0,8 кг. Открываем свечу.',
       sender: 'Мастер печи',
       audio: 'tts-vo23',
-      startTime: timeDiff + 286,
+      startTime: timeDiff + 313,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 289,
+      startTime: timeDiff + 316,
       human: true,
     },
     {
       text: 'Приступаю к выполнению.',
       sender: 'Газовщик',
       audio: 'tts-vo24',
-      startTime: timeDiff + 290,
+      startTime: timeDiff + 317,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 293,
+      startTime: timeDiff + 320,
     },
     ////--------------------------------12---------------------------------------- /////////    2   //////////// 2 РАЗА КРУТИТ  из сценария
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ»',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 296,
+      startTime: timeDiff + 323,
     },
     {
       action: {
@@ -3365,7 +5246,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 297,
+      startTime: timeDiff + 324,
       human: true,
     },
     {
@@ -3374,7 +5255,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 298,
+      startTime: timeDiff + 325,
       human: true,
     },
     {
@@ -3382,10 +5263,12 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'H_snotr', text: '56' },
+            { name: 'H_progres_56', opacity: 1 },
+            { name: 'P_2', text: '1.05' },
           ]
         }
       },
-      startTime: timeDiff + 298.1,
+      startTime: timeDiff + 325.1,
     },
 
     ////--------------------------------13---------------------------------------- 
@@ -3394,7 +5277,7 @@ let tempActions = [
       text: 'Нажать на пульте управления БЗУ кнопку «Открыт» маркировки «Нижний шихтовый затвор».',
       sender: 'Система',
       audio: 'tts-25',
-      startTime: timeDiff + 299,
+      startTime: timeDiff + 326,
     },
     {
       action: {
@@ -3408,13 +5291,13 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 300.5,
+      startTime: timeDiff + 327.5,
     },
     {
       action: {
         target3D: 'Rectangle076',
       },
-      startTime: timeDiff + 302,
+      startTime: timeDiff + 329,
       human: true,
     },
     {
@@ -3422,56 +5305,56 @@ let tempActions = [
         target3D: 'Rectangle076',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 303,
+      startTime: timeDiff + 330,
     }, {
       action: {
         target3D: 'Rectangle076',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 303.5,
+      startTime: timeDiff + 330.5,
     }, {
       action: {
         target3D: 'Rectangle076',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 304,
+      startTime: timeDiff + 331,
     }, {
       action: {
         target3D: 'Rectangle076',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 304.5,
+      startTime: timeDiff + 331.5,
     },
     {
       action: {
         target3D: 'Rectangle076',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 305,
+      startTime: timeDiff + 332,
     }, {
       action: {
         target3D: 'Rectangle076',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 305.5,
+      startTime: timeDiff + 332.5,
     }, {
       action: {
         target3D: 'Rectangle076',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 306,
+      startTime: timeDiff + 333,
     }, {
       action: {
         target3D: 'Rectangle076',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 306.5,
+      startTime: timeDiff + 333.5,
     },
     {
       action: {
         target3D: 'Rectangle053',
       },
-      startTime: timeDiff + 307,
+      startTime: timeDiff + 334,
       human: true,
     },
     {
@@ -3486,13 +5369,13 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 307.5,
+      startTime: timeDiff + 334.5,
     },
     ////--------------------------------14----------------------------------------  /// 2 raza is scenario s intervalom
     {
       scenarioText: 'Продолжить приоткрывать клапан «СНОРТ».',
       sender: 'Система',
-      startTime: timeDiff + 311,
+      startTime: timeDiff + 338,
     },
     {
       action: {
@@ -3500,7 +5383,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 312,
+      startTime: timeDiff + 339,
       human: true,
     },
     {
@@ -3509,7 +5392,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 313,
+      startTime: timeDiff + 340,
       human: true,
     },
     {
@@ -3517,17 +5400,19 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'H_snotr', text: '60' },
+            { name: 'H_progres_60', opacity: 1 },
+            { name: 'P_2', text: '0.88' },
           ]
         }
       },
-      startTime: timeDiff + 313.5,
+      startTime: timeDiff + 340.5,
     },
     ////--------------------------------15---------------------------------------- 
     {
       scenarioText: 'Выгрузить кокс и остановить загрузку.',
       sender: 'Система',
       audio: 'tts-27',
-      startTime: timeDiff + 314,
+      startTime: timeDiff + 341,
     },
     {
       action: {
@@ -3541,7 +5426,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 317,
+      startTime: timeDiff + 344,
       human: true
     },
     {
@@ -3552,7 +5437,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 317.3,
+      startTime: timeDiff + 344.3,
     },
     {
       action: {
@@ -3562,7 +5447,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 317.6,
+      startTime: timeDiff + 344.6,
     },
     {
       action: {
@@ -3572,7 +5457,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 318,
+      startTime: timeDiff + 345,
     },
     {
       action: {
@@ -3582,7 +5467,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 318.3,
+      startTime: timeDiff + 345.3,
     },
     {
       action: {
@@ -3592,7 +5477,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 318.6,
+      startTime: timeDiff + 345.6,
     },
     {
       action: {
@@ -3602,7 +5487,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 319,
+      startTime: timeDiff + 346,
     },
     {
       action: {
@@ -3617,7 +5502,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 319.1,
+      startTime: timeDiff + 346.1,
       human: true
     },
     {
@@ -3629,7 +5514,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 320,
+      startTime: timeDiff + 347,
     },
     {
       action: {
@@ -3639,7 +5524,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 320.5,
+      startTime: timeDiff + 347.5,
     },
     {
       action: {
@@ -3650,7 +5535,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 320.6,
+      startTime: timeDiff + 347.6,
       human: true
     },
     {
@@ -3662,7 +5547,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 321,
+      startTime: timeDiff + 348,
     },
     {
       action: {
@@ -3675,7 +5560,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 322,
+      startTime: timeDiff + 349,
     },
     { //3D
       text: 'На ПУ БЗУ нажать "Приостановить подачу материала".',
@@ -3683,7 +5568,7 @@ let tempActions = [
       action: {
         target3D: 'Rectangle056',
       },
-      startTime: timeDiff + 322.2,
+      startTime: timeDiff + 349.2,
       human: true,
     },
     {
@@ -3691,13 +5576,13 @@ let tempActions = [
         target3D: 'Rectangle056',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 322.3,
+      startTime: timeDiff + 349.3,
     },
     ////--------------------------------16----------------------------------------  //  Газовщик провернул клапан 1 раз.
     {
       text: 'Продолжить приоткрывать клапан «СНОРТ».',
       sender: 'Система',
-      startTime: timeDiff + 323,
+      startTime: timeDiff + 350,
     },
     {
       action: {
@@ -3705,7 +5590,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 323,
+      startTime: timeDiff + 350,
       human: true,
     },
     {
@@ -3714,7 +5599,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 324,
+      startTime: timeDiff + 351,
       human: true,
     },
     {
@@ -3722,6 +5607,8 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'H_snotr', text: '60' },
+            { name: 'H_progres_60', opacity: 1 },
+            { name: 'P_2', text: '0.83' },
             { name: 'btn_ZapSledPorc_border', color: '#00FF00' },
             { name: 'btn_SledPorc_border', color: 'start' },
             { name: 'arrow_right', opacity: '0' },
@@ -3729,19 +5616,20 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 324.1,
+      startTime: timeDiff + 351.1,
     },
+
+
     ////--------------------------------17---------------------------------------- 
     {
       // scenarioText: 'Схема БЗУ и нажать на клавишу «Пауза» кнопка.',
-      scenarioText: 'Загрузка приостановлена.',
+      text: 'Загрузка приостановлена.',
+      scenarioText: 'На схеме БЗУ нажать на кнопка «Пауза».',
       sender: 'Система',
       audio: 'tts-28',
-      startTime: timeDiff + 327,
+      startTime: timeDiff + 354,
     },
     {
-      text: 'На схеме БЗУ нажать на кнопка «Пауза».',
-      sender: 'Система',
       action: {
         target2D: 'bzu_pause_btn',
         window2D: {
@@ -3751,7 +5639,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 327.1,
+      startTime: timeDiff + 354.1,
       human: true
     },
     ////--------------------------------18---------------------------------------- 
@@ -3760,7 +5648,7 @@ let tempActions = [
       text: 'На ПУ ДП-6 перевести тумблеры клапанов 1, 2, 3 до щелчка в положение «2».',
       sender: 'Система',
       audio: 'tts-29',
-      startTime: timeDiff + 328,
+      startTime: timeDiff + 355,
     },
     {
       multi: [
@@ -3786,14 +5674,14 @@ let tempActions = [
           duration: 0.3,
         },
       ],
-      startTime: timeDiff + 330,
+      startTime: timeDiff + 357,
       human: true,
     },
     ////--------------------------------19---------------------------------------- 
     {
       text: 'На ПУ ДП-6 перевести тумблеры клапанов 1, 2, 3 до щелчка в положение «0».',
       sender: 'Система',
-      startTime: timeDiff + 336,
+      startTime: timeDiff + 363,
     },
     {
       multi: [
@@ -3819,106 +5707,107 @@ let tempActions = [
           duration: 0.3,
         },
       ],
-      startTime: timeDiff + 336.1,
+      startTime: timeDiff + 363.1,
       human: true,
     },
     {
-      scenarioText: 'Атмосферные клапаны открыты.',
+      text: 'Атмосферные клапаны открыты.',
       sender: 'Система',
       audio: 'tts-30',
-      startTime: timeDiff + 336.2,
+      startTime: timeDiff + 363.2,
     },
 
     ////--------------------------------20---------------------------------------- 
     { // 3D
-      text: 'По рации сообщить мастеру печи о выполненной операции.',
+      scenarioText: 'По рации сообщить мастеру печи о выполненной операции.',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 340,
+      startTime: timeDiff + 367,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 341,
+      startTime: timeDiff + 368,
       human: true,
     },
     {
       text: 'Атмосферные клапана открыты. На фурмах 0,75 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo25',
-      startTime: timeDiff + 342,
+      startTime: timeDiff + 369,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 348,
+      startTime: timeDiff + 375,
     },
     ////--------------------------------21---------------------------------------- 
     { // 3D
       scenarioText: 'Мастер печи по рации сообщает действия.',
       sender: 'Система',
-      startTime: timeDiff + 350,
+      startTime: timeDiff + 377,
     },
     {
       text: 'Закрывайте кислород и делайте 0,5 кг на фурмах.',
       sender: 'Мастер печи',
       audio: 'tts-vo26',
-      startTime: timeDiff + 351,
+      startTime: timeDiff + 378,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 356.5,
+      startTime: timeDiff + 383.5,
       human: true,
     },
     {
       text: 'Закрываю кислород полностью и делаю 0,5.',
       sender: 'Газовщик',
       audio: 'tts-vo27',
-      startTime: timeDiff + 357.5,
+      startTime: timeDiff + 384.5,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 362.15,
+      startTime: timeDiff + 389.15,
     },
     ////--------------------------------22---------------------------------------- 
     {
       scenarioText: 'Сообщить по телефону в "Кислородный цех".',
       sender: 'Система',
       audio: 'telephone_say',
-      startTime: timeDiff + 363,
+      startTime: timeDiff + 390,
     },
     {
       action: {
         target3D: 'PhoneButton017',
       },
-      startTime: timeDiff + 364,
+      startTime: timeDiff + 391,
       human: true,
     },
     {
       text: 'Закрывайте кислород на выходе.',
       sender: 'Газовщик',
       audio: 'tts-vo28',
-      startTime: timeDiff + 365,
+      startTime: timeDiff + 392,
     },
     {
       text: 'Выполняю',
       sender: 'Дежурный водопроводчик',
       audio: 'tts-vo29',
-      startTime: timeDiff + 369,
+      startTime: timeDiff + 396,
     },
     ////--------------------------------23----------------------------------------   // Газовщик проворачивал клапан 6 раз с интервалом.
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0,5кг.',
       sender: 'Система',
-      startTime: timeDiff + 371,
+      audio: 'tts-24',
+      startTime: timeDiff + 398,
     },
     {
       action: {
@@ -3926,7 +5815,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 371.1,
+      startTime: timeDiff + 400.1,
       human: true,
     },
     {
@@ -3935,7 +5824,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 371.5,
+      startTime: timeDiff + 400.5,
       human: true,
     },
     {
@@ -3944,7 +5833,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 372,
+      startTime: timeDiff + 401,
       human: true,
     },
     {
@@ -3953,7 +5842,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 372.5,
+      startTime: timeDiff + 401.5,
       human: true,
     },
     {
@@ -3961,52 +5850,55 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'H_snotr', text: '67' },
+            { name: 'H_progres_67', opacity: 1 },
+            { name: 'P_2', text: '0.66' },
           ]
         }
       },
-      startTime: timeDiff + 372.6,
+      startTime: timeDiff + 401.6,
     },
     ////--------------------------------24---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 373,
+      startTime: timeDiff + 402,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 373.1,
+      startTime: timeDiff + 402.1,
       human: true,
     },
     {
       text: 'На фурмах 0,5 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo30',
-      startTime: timeDiff + 374,
+      startTime: timeDiff + 403,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 377,
+      startTime: timeDiff + 406,
     },
+
     ////--------------------------------25---------------------------------------- 
     { // 3D
       scenarioText: 'БЗУ снять с автоматического режима.',
       audio: 'tts-31',
       sender: 'Система',
-      startTime: timeDiff + 379,
+      startTime: timeDiff + 408,
     },
     {
+      text: 'На ПУ БЗУ нажать на кнопку «Автоматич. СТОП»',
       sender: 'Система',
-      text: 'На ПУ №2 нажать на кнопку «Автоматич. СТОП»', // TODO Заменить ПУ2 на норм ПУ
       action: {
         target3D: 'Rectangle071',
       },
-      startTime: timeDiff + 380,
+      startTime: timeDiff + 409,
       human: true,
     },
     {
@@ -4014,15 +5906,15 @@ let tempActions = [
         target3D: 'Rectangle071',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 381,
+      startTime: timeDiff + 410,
     },
     {
+      text: 'На ПУ БЗУ нажать на кнопку «ЗАКРЫТ» «Клапан вторичного выравнивания» слева',
       sender: 'Система',
-      text: 'На ПУ №2 нажать на кнопку «ЗАКРЫТ» «Клапан вторичного выравнивания» слева', // TODO Заменить ПУ2 на норм ПУ
       action: {
         target3D: 'Rectangle065',
       },
-      startTime: timeDiff + 381.1,
+      startTime: timeDiff + 410.1,
       human: true,
     },
     {
@@ -4030,64 +5922,64 @@ let tempActions = [
         target3D: 'Rectangle066',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 381.3,
+      startTime: timeDiff + 410.3,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 381.4,
+      startTime: timeDiff + 410.4,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 382,
+      startTime: timeDiff + 411,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 382.5,
+      startTime: timeDiff + 411.5,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 383,
+      startTime: timeDiff + 412,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 383.5,
+      startTime: timeDiff + 412.5,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 384,
+      startTime: timeDiff + 413,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 384.5,
+      startTime: timeDiff + 413.5,
     },
     {
       sender: 'Система',
-      text: 'На ПУ №2 нажать на кнопку «ЗАКРЫТ» «Клапан вторичного выравнивания» слева', // TODO Заменить ПУ2 на норм ПУ
+      text: 'На ПУ БЗУ нажать на кнопку «ЗАКРЫТ» «Клапан вторичного выравнивания» справа',
       action: {
         target3D: 'Rectangle046',
       },
-      startTime: timeDiff + 384.6,
+      startTime: timeDiff + 413.6,
       human: true,
     },
     {
@@ -4095,64 +5987,64 @@ let tempActions = [
         target3D: 'Rectangle047',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 384.7,
+      startTime: timeDiff + 413.7,
     },
     {
       action: {
         target3D: 'Rectangle046',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 385,
+      startTime: timeDiff + 414,
     },
     {
       action: {
         target3D: 'Rectangle046',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 385.5,
+      startTime: timeDiff + 414.5,
     },
     {
       action: {
         target3D: 'Rectangle046',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 386,
+      startTime: timeDiff + 415,
     },
     {
       action: {
         target3D: 'Rectangle046',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 386.5,
+      startTime: timeDiff + 415.5,
     },
     {
       action: {
         target3D: 'Rectangle046',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 387,
+      startTime: timeDiff + 416,
     },
     {
       action: {
         target3D: 'Rectangle046',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 387.5,
+      startTime: timeDiff + 416.5,
     },
     {
       action: {
         target3D: 'Rectangle046',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 388,
+      startTime: timeDiff + 417,
     },
     {
       sender: 'Система',
-      text: 'На ПУ №2 нажать на кнопку «ОТКРЫТ» «Клапан сброса» слева', // TODO Заменить ПУ2 на норм ПУ
+      text: 'На ПУ БЗУ нажать на кнопку «ОТКРЫТ» «Клапан сброса» слева',
       action: {
         target3D: 'Rectangle070',
       },
-      startTime: timeDiff + 388.1,
+      startTime: timeDiff + 417.1,
       human: true,
     },
     {
@@ -4160,64 +6052,64 @@ let tempActions = [
         target3D: 'Rectangle079',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 388.2,
+      startTime: timeDiff + 417.2,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 388.4,
+      startTime: timeDiff + 417.4,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 389,
+      startTime: timeDiff + 418,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 389.5,
+      startTime: timeDiff + 418.5,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 390,
+      startTime: timeDiff + 419,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 390.5,
+      startTime: timeDiff + 419.5,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 391,
+      startTime: timeDiff + 420,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 391.5,
+      startTime: timeDiff + 420.5,
     },
     {
       sender: 'Система',
-      text: 'На ПУ №2 нажать на кнопку «ОТКРЫТ» «Клапан сброса» справа', // TODO Заменить ПУ2 на норм ПУ
+      text: 'На ПУ БЗУ нажать на кнопку «ОТКРЫТ» «Клапан сброса» справа',
       action: {
         target3D: 'Rectangle115',
       },
-      startTime: timeDiff + 391.6,
+      startTime: timeDiff + 420.6,
       human: true,
     },
     {
@@ -4225,96 +6117,103 @@ let tempActions = [
         target3D: 'Rectangle114',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 391.7,
+      startTime: timeDiff + 420.7,
     },
     {
       action: {
         target3D: 'Rectangle115',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 392,
+      startTime: timeDiff + 421,
     },
     {
       action: {
         target3D: 'Rectangle115',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 392.5,
+      startTime: timeDiff + 421.5,
     },
     {
       action: {
         target3D: 'Rectangle115',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 393,
+      startTime: timeDiff + 422,
     },
     {
       action: {
         target3D: 'Rectangle115',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 393.5,
+      startTime: timeDiff + 422.5,
     },
     {
       action: {
         target3D: 'Rectangle115',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 394,
+      startTime: timeDiff + 423,
     },
     {
       action: {
         target3D: 'Rectangle115',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 394.5,
+      startTime: timeDiff + 423.5,
     },
     {
       action: {
         target3D: 'Rectangle115',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 395,
+      startTime: timeDiff + 424,
     },
+
+
+
     ////--------------------------------26---------------------------------------- 
+    //// {
+    ////   text: 'Сообщить по рации в «Литейный фурменный поддоменник».', // нет такого
+    ////   sender: 'Система',
+    ////   audio: 'radio_say',
+    ////  startTime: timeDiff + 424,
+    //// },
     {
       scenarioText: 'Мастер печи по рации сообщает о следующих операциях',
+      startTime: timeDiff + 425,
+    },
+    {
       text: 'Делаем 0,3кг',
       sender: 'Мастер печи',
       audio: 'tts-vo31',
-      startTime: timeDiff + 396,
-    },
-    {
-      text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
-      sender: 'Система',
-      audio: 'radio_say',
-      startTime: timeDiff + 395,
+      startTime: timeDiff + 425.1,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 399,
+      startTime: timeDiff + 428,
       human: true,
     },
     {
       text: 'Принимаю, делаю 0,3.',
       sender: 'Газовщик',
       audio: 'tts-vo32',
-      startTime: timeDiff + 400,
+      startTime: timeDiff + 429,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 404,
+      startTime: timeDiff + 433,
     },
     //--------------------------------27----------------------------------------  // Газовщик проворачивал клапан 6 раз с интервалом.
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0,3кг.',
       sender: 'Система',
-      startTime: timeDiff + 404.1,
+      audio: 'tts-24',
+      startTime: timeDiff + 433.1,
     },
     {
       action: {
@@ -4322,7 +6221,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 404.2,
+      startTime: timeDiff + 435.2,
       human: true,
     },
     {
@@ -4331,7 +6230,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 405,
+      startTime: timeDiff + 436,
       human: true,
     },
     {
@@ -4340,7 +6239,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 406,
+      startTime: timeDiff + 437,
       human: true,
     },
     {
@@ -4349,18 +6248,98 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 407,
+      startTime: timeDiff + 438,
       human: true,
     },
     {
       action: {
         window2D: {
           elements: [
+            { name: 'EKZ_H1', text: '100' },
+            { name: 'EKZ_H2', text: '100' },
+            { name: 'EKZ_H3', text: '100' },
+            { name: 'AKZ_100', opacity: 1 },
+
+
+            { name: 'EVS_DP7_O', text: '54213' },
+            { name: 'EVD1_O', text: '4504' },
+            // луавый эвд 2 - pass
+
+            { name: 'EVS_DP7_F', text: '7208' },
+            { name: 'EVS_DP7_F', text: '312898' },
+            { name: 'EVD_F', text: '311390' },
+
+            { name: 'P_1', text: '0.32' },
+            { name: 'F_evd', text: '5183' },
+            { name: 'F_hol_dyt', text: '641' },
+            { name: 'T_hol_dyt', text: '58' },
+            { name: 'O_hol_dyt', text: '22.9' },
+
+            { name: 'F_par_yvl', text: '1.00' },
+            { name: 'par_yvlaz', text: '0.00' },
+
+            // pass
+            { name: 'Vlaznost', text: '5.0' },
+            { name: 'W_sinij_hol_dyt', text: '8.6' },
+            { name: 'FO2_hol_dyt', text: '1139' },
+
+            //////
             { name: 'H_snotr', text: '89' },
+            { name: 'H_progres_89', opacity: 1 },
+            { name: 'P_2', text: '0.34' },
+            { name: 'P_2_rect', color: '#ffff0f' },
+            ///////
+            { name: '02_trub', text: '0' },
+            { name: 'N2', text: '53.7' },
+            { name: 'CO', text: '22.3' },
+            { name: 'CO2', text: '22.8' },
+            { name: 'H2_tryb', text: '0.8' },
+            { name: 'Nco_tryb', text: '50.6' },
+            { name: 'Q_domG_tryb', text: '715' },
+            { name: 'P_vozd_tryb', text: '0' },
+            { name: 'P_gaza_tryb', text: '12' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'Tkyp_3', text: '1234' },
+            { name: 'Tkyp_2', text: '1195' },
+            { name: 'Tkyp_1', text: '1187' },
+            { name: 'Tkyp_3_rect', color: '#fff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_1', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_1', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_1', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1', color: '#43A3EF' },
+            { name: 'VNK2_status_1', color: '#ada3b0' },
+            { name: 'VNK1_status_1', color: '#ada3b0' },
+
+            { name: 'VNK3_status_2', text: 'Цикл' },
+            { name: 'VNK2_status_2', text: 'Цикл' },
+            { name: 'VNK1_status_2', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fvozdyh_1', text: '0' },
+
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'Fgaz_1', text: '0' },
+
+            { name: 'Tdym_3', text: '133' },
+            { name: 'Tdym_2', text: '185' },
+            { name: 'Tdym_1', text: '275' },
+            //pass
+
+            { name: 'P_Os_szat_voz', text: '8,31' },
+            //pass
+            { name: 'T_Os_szat_voz', text: '31' },
+
+
           ]
         }
       },
-      startTime: timeDiff + 407.1,
+      startTime: timeDiff + 438.1,
     },
     {
       text: 'Смесительный клапан 002 закрывается.',
@@ -4373,7 +6352,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 408,
+      startTime: timeDiff + 439,
     }, {
       action: {
         window2D: {
@@ -4382,116 +6361,12 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 409,
+      startTime: timeDiff + 440,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'vn_002', color: '#ff0000' },
-          ]
-        }
-      },
-      startTime: timeDiff + 410,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'vn_002', color: '#8F8F8F' },
-          ]
-        }
-      },
-      startTime: timeDiff + 409,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'vn_002', color: '#ff0000' },
-            { name: 'circle_1_kl002', stroke: '#ff0000' },
-            { name: 'circle_2_kl002', stroke: '#ff0000' },
-          ]
-        }
-      },
-      startTime: timeDiff + 412,
-    },
-    ////--------------------------------28---------------------------------------- 
-    {
-      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
-      sender: 'Система',
-      audio: 'radio_say',
-      startTime: timeDiff + 413,
-    },
-    {
-      action: {
-        target3D: 'ButtonHightlight_046',
-      },
-      startTime: timeDiff + 413.1,
-      human: true,
-    },
-    {
-      text: 'На фурмах 0,3 кг.',
-      sender: 'Газовщик',
-      audio: 'tts-vo33',
-      startTime: timeDiff + 414,
-    },
-    {
-      action: {
-        target3D: 'Lamp_034',
-        material: 'DonorLamp_off',
-      },
-      startTime: timeDiff + 418,
-    },
-    {
-      text: 'Закрывайте отсечной.',
-      sender: 'Мастер печи',
-      audio: 'tts-vo34',
-      startTime: timeDiff + 420,
-    },
-    {
-      action: {
-        target3D: 'ButtonHightlight_046',
-      },
-      startTime: timeDiff + 420.1,
-      human: true,
-    },
-    {
-      text: 'Понятно, Артём Викторович – закрывай отсечной.',
-      sender: 'Газовщик',
-      audio: 'tts-vo35',
-      startTime: timeDiff + 421.5,
-    },
-    {
-      action: {
-        target3D: 'Lamp_034',
-        material: 'DonorLamp_off',
-      },
-      startTime: timeDiff + 426,
-    },
-    {
-      text: 'Понял, закрываю отсечной клапан.',
-      sender: 'Дежурный водопроводчик',
-      audio: 'tts-vo36',
-      startTime: timeDiff + 427,
-    },
-    ////--------------------------------29---------------------------------------- 
-    {
-      text: 'Отсечной клапан закрывыается.',
-      sender: 'Система',
-      startTime: timeDiff + 438,
-    },
-    {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'kl_81', color: '#BD0606' },
-          ]
-        }
-      },
-      startTime: timeDiff + 440.5,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'kl_81', color: '#06DA06' },
           ]
         }
       },
@@ -4500,11 +6375,97 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
+            { name: 'vn_002', color: '#8F8F8F' },
+          ]
+        }
+      },
+      startTime: timeDiff + 440,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'vn_002', color: '#ff0000' },
+            { name: 'circle_kl002', stroke: '#ff0000' },
+            { name: 'circle_kl002', stroke: '#ff0000' },
+          ]
+        }
+      },
+      startTime: timeDiff + 443,
+    },
+    ////--------------------------------28---------------------------------------- 
+    {
+      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 444,
+    },
+    {
+      action: {
+        target3D: 'ButtonHightlight_046',
+      },
+      startTime: timeDiff + 444.1,
+      human: true,
+    },
+    {
+      text: 'На фурмах 0,3 кг.',
+      sender: 'Газовщик',
+      audio: 'tts-vo33',
+      startTime: timeDiff + 445,
+    },
+    {
+      action: {
+        target3D: 'Lamp_034',
+        material: 'DonorLamp_off',
+      },
+      startTime: timeDiff + 449,
+    },
+    {
+      text: 'Закрывайте отсечной.',
+      sender: 'Мастер печи',
+      audio: 'tts-vo34',
+      startTime: timeDiff + 451,
+    },
+    {
+      action: {
+        target3D: 'ButtonHightlight_046',
+      },
+      startTime: timeDiff + 451.1,
+      human: true,
+    },
+    {
+      text: 'Понятно, Артём Викторович – закрывай отсечной.',
+      sender: 'Газовщик',
+      audio: 'tts-vo35',
+      startTime: timeDiff + 452.5,
+    },
+    {
+      action: {
+        target3D: 'Lamp_034',
+        material: 'DonorLamp_off',
+      },
+      startTime: timeDiff + 457,
+    },
+    {
+      text: 'Понял, закрываю отсечной клапан.',
+      sender: 'Дежурный водопроводчик',
+      audio: 'tts-vo36',
+      startTime: timeDiff + 458,
+    },
+    ////--------------------------------29---------------------------------------- 
+    {
+      text: 'Отсечной клапан закрывыается.',
+      sender: 'Система',
+      startTime: timeDiff + 469,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
             { name: 'kl_81', color: '#BD0606' },
           ]
         }
       },
-      startTime: timeDiff + 441.5,
+      startTime: timeDiff + 471.5,
     }, {
       action: {
         window2D: {
@@ -4513,7 +6474,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 442,
+      startTime: timeDiff + 472,
     }, {
       action: {
         window2D: {
@@ -4522,24 +6483,48 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 442.5,
+      startTime: timeDiff + 472.5,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_81', color: '#06DA06' },
+          ]
+        }
+      },
+      startTime: timeDiff + 473,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_81', color: '#BD0606' },
+          ]
+        }
+      },
+      startTime: timeDiff + 473.5,
     },
+
     {
       text: 'Отсечной клапан закрыт.',
       sender: 'Система',
       audio: 'tts-33',
-      startTime: timeDiff + 443,
+      startTime: timeDiff + 474,
     },
-    ////--------------------------------30---------------------------------------- 
+
+    ////--------------------------------30---------------------------------------- \
     {
       scenarioText: 'Открыть сбросной клапан 723',
       sender: 'Система',
+      audio: 'tts-34',
+      startTime: timeDiff + 477,
+    },
+    {
       action: {
         target3D: 'Handle_012',
         rotation: { y: -0.785 },
       },
       duration: 0.3,
-      startTime: timeDiff + 446,
+      startTime: timeDiff + 480,
       human: true,
     },
     {
@@ -4547,14 +6532,14 @@ let tempActions = [
         target3D: 'Lamp_Red_017',
         material: 'Unic_Lamp_Red_Off'
       },
-      startTime: timeDiff + 446.5,
+      startTime: timeDiff + 480.5,
     },
     {
       action: {
         target3D: 'Lamp_Green_021',
         material: 'Unic_Lamp_Green_On'
       },
-      startTime: timeDiff + 447,
+      startTime: timeDiff + 481,
     },
     {
       action: {
@@ -4562,18 +6547,18 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.3,
-      startTime: timeDiff + 447.5,
+      startTime: timeDiff + 481.5,
       human: true,
     },
     {
       action: {
         window2D: {
           elements: [
-            { name: 'kl_723', color: '#00DA01' }, // TODO сделать верхнюю часть клана зелёнок, перерисовать клапан
+            { name: 'kl_723_t', color: '#00DA01' }, // TODO сделать верхнюю часть клапана зелёной, перерисовать клапан
           ]
         }
       },
-      startTime: timeDiff + 447.6,
+      startTime: timeDiff + 481.6,
     },
 
 
@@ -4582,33 +6567,33 @@ let tempActions = [
       text: 'Третью закрыли 1.1 по второму толкателю.',
       sender: 'Мастер печи',
       audio: 'tts-vo37',
-      startTime: timeDiff + 449,
+      startTime: timeDiff + 483,
     },
     {
       scenarioText: 'Сообщить по рации в «Лётки №3».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 451,
+      startTime: timeDiff + 488,
     },
     {
       action: {
         target3D: 'ButtonHightlight_006',
       },
-      startTime: timeDiff + 451.5,
+      startTime: timeDiff + 490.5,
       human: true,
     },
     {
       text: '1.1 второй толкатель.',
       sender: 'Газовщик',
       audio: 'tts-vo38',
-      startTime: timeDiff + 452.5,
+      startTime: timeDiff + 491.5,
     },
     {
       action: {
         target3D: 'Lamp_006',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 456,
+      startTime: timeDiff + 495,
     },
 
 
@@ -4617,59 +6602,59 @@ let tempActions = [
       scenarioText: 'Сообщить по телефону в "Дисп.комб".',
       sender: 'Система',
       audio: 'telephone_say',
-      startTime: timeDiff + 457,
+      startTime: timeDiff + 496,
     },
     {
       action: {
         target3D: 'PhoneButton012',
       },
-      startTime: timeDiff + 458,
+      startTime: timeDiff + 497,
       human: true,
     },
     {
       text: 'Слева 1.1 по второму от толкателя.',
       sender: 'Газовщик',
       audio: 'tts-vo39',
-      startTime: timeDiff + 459,
+      startTime: timeDiff + 498,
     },
     {
       text: 'Хорошо, принял.',
       sender: 'Дежурный водопроводчик',
       audio: 'tts-vo40',
-      startTime: timeDiff + 464,
+      startTime: timeDiff + 503,
     },
     {
       text: 'Справа пока не сдавай.',
       sender: 'Газовщик',
       audio: 'tts-vo41',
-      startTime: timeDiff + 467,
+      startTime: timeDiff + 506,
     },
     ////--------------------------------33---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Лётки №3».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 471,
+      startTime: timeDiff + 510,
     },
     {
       action: {
         target3D: 'ButtonHightlight_006',
       },
-      startTime: timeDiff + 471.5,
+      startTime: timeDiff + 510.5,
       human: true,
     },
     {
       text: 'Третья лётка, отдавайте ковши.',
       sender: 'Газовщик',
       audio: 'tts-vo42',
-      startTime: timeDiff + 472.5,
+      startTime: timeDiff + 511.5,
     },
     {
       action: {
         target3D: 'Lamp_006',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 477,
+      startTime: timeDiff + 516,
     },
 
     ////--------------------------------34---------------------------------------- 
@@ -4677,59 +6662,67 @@ let tempActions = [
       text: 'Отсечной закрыт.',
       sender: 'Мастер печи',
       audio: 'tts-vo43',
-      startTime: timeDiff + 479,
+      startTime: timeDiff + 518,
+    },
+    {
+      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 520,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 479.1,
+      startTime: timeDiff + 522.1,
       human: true,
     },
     {
       text: 'Отсечной закрыт, на фурмах 0,3.',
       sender: 'Газовщик',
       audio: 'tts-vo44',
-      startTime: timeDiff + 480,
+      startTime: timeDiff + 523,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 487,
+      startTime: timeDiff + 530,
     },
     {
       text: 'Делаем 0,2 кг.',
       sender: 'Мастер печи',
       audio: 'tts-vo45',
-      startTime: timeDiff + 488,
+      startTime: timeDiff + 531,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 488.1,
+      startTime: timeDiff + 531.1,
       human: true,
     },
     {
       text: 'Принял, делаю 0,2.',
       sender: 'Газовщик',
       audio: 'tts-vo46',
-      startTime: timeDiff + 489,
+      startTime: timeDiff + 532,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 493,
+      startTime: timeDiff + 536,
     },
+
     ////--------------------------------35---------------------------------------- 
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0,2кг.',
+      audio: 'tts-24',
       sender: 'Система',
-      startTime: timeDiff + 494,
+      startTime: timeDiff + 537,
     },
     {
       action: {
@@ -4737,7 +6730,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 494.2,
+      startTime: timeDiff + 539.2,
       human: true,
     },
     {
@@ -4746,7 +6739,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 495,
+      startTime: timeDiff + 540,
       human: true,
     },
     {
@@ -4755,7 +6748,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 495.5,
+      startTime: timeDiff + 540.5,
       human: true,
     },
     {
@@ -4764,7 +6757,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 496,
+      startTime: timeDiff + 541,
       human: true,
     },
     {
@@ -4772,69 +6765,74 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'H_snotr', text: '93' },
+
+            { name: 'P_2', text: '0.22' },
+
           ]
         }
       },
-      startTime: timeDiff + 496.1,
+      startTime: timeDiff + 541.1,
     },
     ////--------------------------------36---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 497,
+      startTime: timeDiff + 542,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 497.1,
+      startTime: timeDiff + 542.1,
       human: true,
     },
     {
       text: 'На фурмах 0,2.',
       sender: 'Газовщик',
       audio: 'tts-vo47',
-      startTime: timeDiff + 498,
+      startTime: timeDiff + 543,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 502,
+      startTime: timeDiff + 547,
     },
     {
       text: 'Делаем 0.',
       sender: 'Мастер печи',
       audio: 'tts-vo48',
-      startTime: timeDiff + 504,
+      startTime: timeDiff + 549,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 504.1,
+      startTime: timeDiff + 549.1,
       human: true,
     },
     {
       text: 'Понял, делаю 0.',
       sender: 'Газовщик',
       audio: 'tts-vo49',
-      startTime: timeDiff + 505,
+      startTime: timeDiff + 550,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 509,
+      startTime: timeDiff + 554,
     },
+
     ////--------------------------------37---------------------------------------- 
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0кг.',
+      audio: 'tts-24',
       sender: 'Система',
-      startTime: timeDiff + 509.1,
+      startTime: timeDiff + 554.1,
     },
     {
       action: {
@@ -4842,7 +6840,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 509.2,
+      startTime: timeDiff + 554.2,
       human: true,
     },
     {
@@ -4851,7 +6849,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 510,
+      startTime: timeDiff + 555,
       human: true,
     },
     {
@@ -4860,7 +6858,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 510.5,
+      startTime: timeDiff + 555.5,
       human: true,
     },
     {
@@ -4869,7 +6867,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 511,
+      startTime: timeDiff + 556,
       human: true,
     },
     {
@@ -4877,93 +6875,114 @@ let tempActions = [
         target3D: 'Lamp_Red_020',
         material: 'Unic_Lamp_Red_Off'
       },
-      startTime: timeDiff + 510.6,
+      startTime: timeDiff + 555.6,
     },
     {
       action: {
         target3D: 'Lamp_Green_024',
         material: 'Unic_Lamp_Green_On'
       },
-      startTime: timeDiff + 510.7,
+      startTime: timeDiff + 555.7,
     },
     {
       action: {
         window2D: {
           elements: [
-            { name: 'H_snotr', text: '100' }, // TODO Где давление на фурмах до 0.00 упадёт!?
+
+
+            { name: 'H_snotr', text: '100' },
+            { name: 'H_progres_100', opacity: 1 },
+            { name: 'P_2', text: '0' },
+            { name: 'P_2_rect', color: '#ff0000' },
           ]
         }
       },
-      startTime: timeDiff + 511.2,
+      startTime: timeDiff + 556.2,
     },
     {
-      text: 'Прекращение церкуляции кокса.',
+      text: 'Прекращение циркуляции кокса.',
       sender: 'Система',
-      startTime: timeDiff + 512,
+      startTime: timeDiff + 557,
     },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        material: 'media/images/monitors/Kamera-nablyudeniya.jpg' //todo 
+      },
+      startTime: timeDiff + 557.1,
+    },
+    {
+      action: {
+        target3D: 'Display_flat006',
+        material: 'media/images/monitors/Kamera-nablyudeniya.jpg' //todo 
+      },
+      startTime: timeDiff + 557.2,
+    },
+
     {
       text: 'Клапан «СНОРТ» полностью открыт.',
       sender: 'Система',
-      startTime: timeDiff + 513,
+      startTime: timeDiff + 558,
     },
     {
       text: 'Прекращение дутья.',
       sender: 'Система',
-      startTime: timeDiff + 514,
+      startTime: timeDiff + 559,
     },
     ////--------------------------------38---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 515,
+      startTime: timeDiff + 560,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 515.1,
+      startTime: timeDiff + 560.1,
       human: true,
     },
     {
       text: '«СНОРТ» раскручен полностью. На фурмах 0.',
       sender: 'Газовщик',
       audio: 'tts-vo50',
-      startTime: timeDiff + 516,
+      startTime: timeDiff + 561,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 520,
+      startTime: timeDiff + 565,
     },
     {
       text: 'Закрывайте шибера.',
       sender: 'Мастер печи',
       audio: 'tts-vo51',
-      startTime: timeDiff + 521,
+      startTime: timeDiff + 566,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 521.1,
+      startTime: timeDiff + 566.1,
       human: true,
     },
     {
       text: 'Закрываю шибера.',
       sender: 'Газовщик',
       audio: 'tts-vo52',
-      startTime: timeDiff + 522,
+      startTime: timeDiff + 567,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 525,
+      startTime: timeDiff + 570,
     },
+
     ////--------------------------------39---------------------------------------- 
     // scenarioText: 'Делаем 310 318 и 319 поочерёдно.',
     ////--------------------------------клапан 310----------------------------------------Закрыт. Автоматический в ручной-------------------------------
@@ -4976,10 +6995,15 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 525.1,
+      startTime: timeDiff + 570.1,
     },
     {
       scenarioText: 'Перевести ВНК №3 на ручной режим.',
+      audio: 'tts-38',
+      sender: 'Система',
+      startTime: timeDiff + 571,
+    },
+    {
       text: 'Перевести клапан 310 на ручной режим.',
       sender: 'Система',
       action: {
@@ -4989,8 +7013,8 @@ let tempActions = [
             { name: 'title_work_vn', text: 'Управление клапаном 310' },
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
             { name: 'status_control_vnk_text', text: 'Автоматический' },
             { name: 'status_window_text', text: 'Закрыт' },
             { name: 'btn_auto_text', color: '#6E6E6E' },
@@ -5022,7 +7046,7 @@ let tempActions = [
           { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 526,
+      startTime: timeDiff + 574,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -5040,7 +7064,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 526.2,
+      startTime: timeDiff + 574.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -5069,7 +7093,7 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 526.4,
+      startTime: timeDiff + 574.4,
       human: true,
     },
     // окно ВН  //  клик байпас
@@ -5087,11 +7111,12 @@ let tempActions = [
           { x: 88.20, y: 93, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 526.6,
+      startTime: timeDiff + 574.6,
       human: true,
     },
     // маленькое окошко ОК
     {
+
       action: {
         target2D: 'open_vn1',
         window2D: {
@@ -5104,21 +7129,23 @@ let tempActions = [
           { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 526.8,
+      startTime: timeDiff + 574.8,
       human: true,
     },
     {
+      text: 'Перевести клапан 318 на ручной режим.',
+      sender: 'Система',
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 527,
+      startTime: timeDiff + 575,
       human: true,
     },
     ////
     ////--------------------------------клапан 318----------------------------------------Открыт. Автоматический в ручной-------------------------------
     {
-      text: 'Перевести клапан 318 на ручной режим.',
-      sender: 'Система',
+      // text: 'Перевести клапан 318 на ручной режим.',
+      // sender: 'Система',
       action: {
         target2D: 'vn_318_btn',
         window2D: {
@@ -5126,8 +7153,8 @@ let tempActions = [
             { name: 'title_work_vn', text: 'Управление клапаном 318' },
             { name: 'left_vn', color: '#07FF05' },
             { name: 'right_vn', color: '#07FF05' },
-            { name: 'circle_1_win1', stroke: '#07FF05' },
-            { name: 'circle_2_win1', stroke: '#07FF05' },
+            { name: 'circle_n_winVN', stroke: '#07FF05' },
+            { name: 'circle_n_winVN', stroke: '#07FF05' },
             { name: 'status_control_vnk_text', text: 'Автоматический' },
             { name: 'status_window_text', text: 'Открыт' },
             { name: 'btn_auto_text', color: '#6E6E6E' },
@@ -5158,7 +7185,7 @@ let tempActions = [
           { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 527.1,
+      startTime: timeDiff + 575.1,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -5176,7 +7203,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 527.2,
+      startTime: timeDiff + 575.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -5207,7 +7234,7 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 527.4,
+      startTime: timeDiff + 575.4,
       human: true,
     },
     // окно ВН  //  клик байпас
@@ -5225,7 +7252,7 @@ let tempActions = [
           { x: 88.20, y: 93, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 527.6,
+      startTime: timeDiff + 575.6,
       human: true,
     },
     // маленькое окошко ОК
@@ -5242,21 +7269,23 @@ let tempActions = [
           { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 527.8,
+      startTime: timeDiff + 575.8,
       human: true,
     },
     {
+      text: 'Перевести клапан 319 на ручной режим.',
+      sender: 'Система',
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 528,
+      startTime: timeDiff + 576,
       human: true,
     },
 
     ////--------------------------------клапан 319----------------------------------------Открыт. Автоматический в ручной-------------------------------
     {
-      text: 'Перевести клапан 319 на ручной режим.',
-      sender: 'Система',
+      // text: 'Перевести клапан 319 на ручной режим.',
+      // sender: 'Система',
       action: {
         target2D: 'vn_319_btn',
         window2D: {
@@ -5264,8 +7293,8 @@ let tempActions = [
             { name: 'title_work_vn', text: 'Управление клапаном 319' },
             { name: 'left_vn', color: '#07FF05' },
             { name: 'right_vn', color: '#07FF05' },
-            { name: 'circle_1_win1', stroke: '#07FF05' },
-            { name: 'circle_2_win1', stroke: '#07FF05' },
+            { name: 'circle_n_winVN', stroke: '#07FF05' },
+            { name: 'circle_n_winVN', stroke: '#07FF05' },
             { name: 'status_control_vnk_text', text: 'Автоматический' },
             { name: 'status_window_text', text: 'Открыт' },
             { name: 'btn_auto_text', color: '#6E6E6E' },
@@ -5296,7 +7325,7 @@ let tempActions = [
           { x: 79.8, y: 53.2, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 528.1,
+      startTime: timeDiff + 576.1,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -5314,7 +7343,7 @@ let tempActions = [
           { x: 84.4, y: 60.5, w: 3.2, h: 2.5, id: 'close_vn' },
         ]
       },
-      startTime: timeDiff + 528.2,
+      startTime: timeDiff + 576.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -5343,7 +7372,7 @@ let tempActions = [
           { x: 75.4, y: 70.4, w: 8.6, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 528.4,
+      startTime: timeDiff + 576.4,
       human: true,
     },
     // окно ВН  //  клик байпас
@@ -5361,7 +7390,7 @@ let tempActions = [
           { x: 80.7, y: 70.7, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 528.6,
+      startTime: timeDiff + 576.6,
       human: true,
     },
     // маленькое окошко ОК
@@ -5379,23 +7408,28 @@ let tempActions = [
           { x: 79.8, y: 53.2, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 528.8,
+      startTime: timeDiff + 576.8,
       human: true,
     },
-    {
-      action: {
-        target2D: 'close_w1',
-      },
-      startTime: timeDiff + 529,
-      human: true,
-    },
+
+
+
+
     ////--------------------------------40---------------------------------------- 
     {
       scenarioText: 'Открыть клапан 310 для сброса давления.',
       sender: 'Система',
       audio: 'tts-39',
-      startTime: timeDiff + 529.1,
+      startTime: timeDiff + 577,
     },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 577.1,
+      human: true,
+    },
+
     {
       action: {
         target2D: 'vn_310_btn',
@@ -5404,8 +7438,8 @@ let tempActions = [
             { name: 'title_work_vn', text: 'Управление клапаном 310' },
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
             { name: 'status_control_vnk_text', text: 'Ручной' },
             { name: 'status_window_text', text: 'Закрыт' },
             { name: 'btn_auto_text', color: '#000000' },
@@ -5431,8 +7465,8 @@ let tempActions = [
             { name: 'btn_stop_2', color: '#ffffff', stroke: '#000000' },
             { name: 'btn_baypas_vsekh_blokirovok_1', color: '#6DE90C' },
             { name: 'btn_baypas_vsekh_blokirovok_2', color: '#6DE90C' },
-            { name: 'block_open', color: '#ff1e00' },
-            { name: 'block_close', color: '#07FF05' },
+
+
           ]
         },
         helper2D: [
@@ -5440,7 +7474,7 @@ let tempActions = [
           { x: 83.80, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  «Открыть»
         ]
       },
-      startTime: timeDiff + 529.8,
+      startTime: timeDiff + 580,
       human: true,
     },
 
@@ -5462,7 +7496,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 530,
+      startTime: timeDiff + 581,
       human: true,
     },
     //  маленькое окошко ОК
@@ -5482,8 +7516,8 @@ let tempActions = [
             { name: 'status_window_text', text: 'Открывается' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_310_1', color: '#8F8F8F' },
             { name: 'kl_310_2', color: '#8F8F8F' },
           ]
@@ -5493,7 +7527,7 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1
         ]
       },
-      startTime: timeDiff + 530.2,
+      startTime: timeDiff + 581.2,
       human: true,
     },
     //  мигание
@@ -5503,60 +7537,60 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
 
             { name: 'kl_310_1', color: '#00FF00' },
             { name: 'kl_310_2', color: '#00FF00' },
           ]
         }
       },
-      startTime: timeDiff + 531,
+      startTime: timeDiff + 582,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
 
             { name: 'kl_310_1', color: '#8F8F8F' },
             { name: 'kl_310_2', color: '#8F8F8F' },
           ]
         }
       },
-      startTime: timeDiff + 532,
+      startTime: timeDiff + 583,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
 
             { name: 'kl_310_1', color: '#00FF00' },
             { name: 'kl_310_2', color: '#00FF00' },
           ]
         }
       },
-      startTime: timeDiff + 533,
+      startTime: timeDiff + 584,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
 
             { name: 'kl_310_1', color: '#8F8F8F' },
             { name: 'kl_310_2', color: '#8F8F8F' },
           ]
         }
       },
-      startTime: timeDiff + 534,
+      startTime: timeDiff + 585,
     }, {
       action: {
         window2D: {
@@ -5564,14 +7598,23 @@ let tempActions = [
             { name: 'status_window_text', text: 'Открыт' },
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
             { name: 'kl_310_1', color: '#00FF00' },
             { name: 'kl_310_2', color: '#00FF00' },
           ]
         }
       },
-      startTime: timeDiff + 535,
+      startTime: timeDiff + 586,
+    },
+
+
+    ////--------------------------------41---------------------------------------- 318
+    {
+      scenarioText: 'Закрыть клапан 318.',
+      sender: 'Система',
+      audio: 'tts-40',
+      startTime: timeDiff + 586.2,
     },
     {
       action: {
@@ -5581,16 +7624,10 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1
         ]
       },
-      startTime: timeDiff + 535.2,
+      startTime: timeDiff + 586.3,
       human: true,
     },
-    ////--------------------------------41---------------------------------------- 318
-    {
-      scenarioText: 'Закрыть клапан 318.',
-      sender: 'Система',
-      audio: 'tts-40',
-      startTime: timeDiff + 535.3,
-    },
+
     {
       action: {
         target2D: 'vn_318_btn',
@@ -5599,8 +7636,8 @@ let tempActions = [
             { name: 'title_work_vn', text: 'Управление клапаном 318' },
             { name: 'left_vn', color: '#07FF05' },
             { name: 'right_vn', color: '#07FF05' },
-            { name: 'circle_1_win1', stroke: '#07FF05' },
-            { name: 'circle_2_win1', stroke: '#07FF05' },
+            { name: 'circle_n_winVN', stroke: '#07FF05' },
+            { name: 'circle_n_winVN', stroke: '#07FF05' },
             { name: 'status_window_text', text: 'Открыт' },
             { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
             { name: 'btn_reset_1', color: '#E6E6E6' },
@@ -5633,7 +7670,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 535.4,
+      startTime: timeDiff + 589.4,
       human: true,
     },
     // окно ВН  // закрыть
@@ -5654,7 +7691,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 535.6,
+      startTime: timeDiff + 589.6,
       human: true,
     },
     //  маленькое окошко ОК //  ВН Закрывается
@@ -5674,8 +7711,8 @@ let tempActions = [
             { name: 'status_window_text', text: 'Закрывается' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_318', color: '#8F8F8F' },
           ]
         },
@@ -5685,7 +7722,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 535.8,
+      startTime: timeDiff + 589.8,
       human: true,
     },
     //мигание пару секунд
@@ -5695,53 +7732,53 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#FF0000' },
             { name: 'right_vn', color: '#FF0000' },
-            { name: 'circle_1_win1', stroke: '#FF0000' },
-            { name: 'circle_2_win1', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
             { name: 'kl_318', color: '#FF0000' },
           ]
         },
       },
-      startTime: timeDiff + 536.3,
+      startTime: timeDiff + 590.3,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_318', color: '#8F8F8F' },
           ]
         },
       },
-      startTime: timeDiff + 537,
+      startTime: timeDiff + 591,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#FF0000' },
             { name: 'right_vn', color: '#FF0000' },
-            { name: 'circle_1_win1', stroke: '#FF0000' },
-            { name: 'circle_2_win1', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
             { name: 'kl_318', color: '#FF0000' },
           ]
         },
       },
-      startTime: timeDiff + 538,
+      startTime: timeDiff + 592,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_318', color: '#8F8F8F' },
           ]
         },
 
       },
-      startTime: timeDiff + 539,
+      startTime: timeDiff + 593,
     },
     // ОКНО ВН  // КЛИК СТОП
     {
@@ -5761,7 +7798,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 539.2,
+      startTime: timeDiff + 593.2,
       human: true
     },
 
@@ -5785,7 +7822,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 539.4,
+      startTime: timeDiff + 593.4,
       human: true,
     },
     //  маленькое окошко ОК //  ВН Закрывается
@@ -5805,8 +7842,8 @@ let tempActions = [
             { name: 'status_window_text', text: 'Закрывается' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_318', color: '#8F8F8F' },
           ]
         },
@@ -5816,7 +7853,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 539.6,
+      startTime: timeDiff + 593.6,
       human: true,
     },
     //мигание пару секунд
@@ -5826,53 +7863,53 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#FF0000' },
             { name: 'right_vn', color: '#FF0000' },
-            { name: 'circle_1_win1', stroke: '#FF0000' },
-            { name: 'circle_2_win1', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
             { name: 'kl_318', color: '#FF0000' },
           ]
         },
       },
-      startTime: timeDiff + 540.3,
+      startTime: timeDiff + 594.3,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_318', color: '#8F8F8F' },
           ]
         },
       },
-      startTime: timeDiff + 541,
+      startTime: timeDiff + 595,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#FF0000' },
             { name: 'right_vn', color: '#FF0000' },
-            { name: 'circle_1_win1', stroke: '#FF0000' },
-            { name: 'circle_2_win1', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
             { name: 'kl_318', color: '#FF0000' },
           ]
         },
       },
-      startTime: timeDiff + 542,
+      startTime: timeDiff + 596,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_318', color: '#8F8F8F' },
           ]
         },
 
       },
-      startTime: timeDiff + 543,
+      startTime: timeDiff + 597,
     },
     // ОКНО ВН  // КЛИК СТОП
     {
@@ -5896,7 +7933,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 543.2,
+      startTime: timeDiff + 597.2,
       human: true
     },
     ///////
@@ -5918,7 +7955,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 543.4,
+      startTime: timeDiff + 597.4,
       human: true,
     },
     //  маленькое окошко ОК //  ВН Закрывается
@@ -5938,8 +7975,8 @@ let tempActions = [
             { name: 'status_window_text', text: 'Закрывается' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_318', color: '#8F8F8F' },
           ]
         },
@@ -5949,7 +7986,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 543.6,
+      startTime: timeDiff + 597.6,
       human: true,
     },
     //мигание пару секунд
@@ -5959,57 +7996,60 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#FF0000' },
             { name: 'right_vn', color: '#FF0000' },
-            { name: 'circle_1_win1', stroke: '#FF0000' },
-            { name: 'circle_2_win1', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
             { name: 'kl_318', color: '#FF0000' },
           ]
         },
       },
-      startTime: timeDiff + 544.3,
+      startTime: timeDiff + 598.3,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_318', color: '#8F8F8F' },
           ]
         },
       },
-      startTime: timeDiff + 545,
+      startTime: timeDiff + 599,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#FF0000' },
             { name: 'right_vn', color: '#FF0000' },
-            { name: 'circle_1_win1', stroke: '#FF0000' },
-            { name: 'circle_2_win1', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
             { name: 'kl_318', color: '#FF0000' },
             { name: 'status_window_text', text: 'Закрыт' },
           ]
         },
       },
-      startTime: timeDiff + 546,
+      startTime: timeDiff + 600,
     },
     ////--------------------------------клапан 318----------------------------------------Закрыт. Закрыт в закрыт-------------------------------    //  2
-    {
-      action: {
-        target2D: 'close_w1',
-      },
-      startTime: timeDiff + 546.3,
-      human: true,
-    },
 
     ////--------------------------------42---------------------------------------- 319
     {
       scenarioText: 'Закрыть клапан 319.',
       sender: 'Система',
       audio: 'tts-41',
-      startTime: timeDiff + 547,
+      startTime: timeDiff + 601,
     },
+
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 601.1,
+      human: true,
+    },
+
+
     {
       action: {
         target2D: 'vn_319_btn',
@@ -6018,8 +8058,8 @@ let tempActions = [
             { name: 'title_work_vn', text: 'Управление клапаном 319' },
             { name: 'left_vn', color: '#07FF05' },
             { name: 'right_vn', color: '#07FF05' },
-            { name: 'circle_1_win1', stroke: '#07FF05' },
-            { name: 'circle_2_win1', stroke: '#07FF05' },
+            { name: 'circle_n_winVN', stroke: '#07FF05' },
+            { name: 'circle_n_winVN', stroke: '#07FF05' },
             { name: 'status_window_text', text: 'Открыт' },
             { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
             { name: 'btn_reset_1', color: '#E6E6E6' },
@@ -6052,7 +8092,7 @@ let tempActions = [
           { x: 79.80, y: 57.2, w: 4.0, h: 2.6, id: 'open_vn' },   //  клапан 319 //  win 1  //  "Закрыть"
         ]
       },
-      startTime: timeDiff + 547.4,
+      startTime: timeDiff + 604.4,
       human: true,
     },
     {
@@ -6072,7 +8112,7 @@ let tempActions = [
           { x: 82.15, y: 60.8, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 547.6,
+      startTime: timeDiff + 604.6,
       human: true,
     },
     {
@@ -6091,8 +8131,8 @@ let tempActions = [
             { name: 'btn_open_text', color: '#000000' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_319', color: '#8F8F8F' },
           ]
         },
@@ -6100,7 +8140,7 @@ let tempActions = [
           { x: 82.90, y: 45.2, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 547.8,
+      startTime: timeDiff + 604.8,
       human: true,
     },
     //мигание пару секунд
@@ -6110,13 +8150,13 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#FF0000' },
             { name: 'right_vn', color: '#FF0000' },
-            { name: 'circle_1_win1', stroke: '#FF0000' },
-            { name: 'circle_2_win1', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
             { name: 'kl_318', color: '#FF0000' },
           ]
         },
       },
-      startTime: timeDiff + 548.8,
+      startTime: timeDiff + 605.8,
     },
     {
       action: {
@@ -6124,13 +8164,13 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_319', color: '#8F8F8F' },
           ]
         },
       },
-      startTime: timeDiff + 549.8,
+      startTime: timeDiff + 606.8,
     },
     {
       action: {
@@ -6138,30 +8178,31 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#FF0000' },
             { name: 'right_vn', color: '#FF0000' },
-            { name: 'circle_1_win1', stroke: '#FF0000' },
-            { name: 'circle_2_win1', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
             { name: 'kl_319', color: '#FF0000' },
             { name: 'status_window_text', text: 'Закрыт' },
             { name: 'polozenie_button_text', color: '#000000' },
           ]
         },
       },
-      startTime: timeDiff + 550.8,
+      startTime: timeDiff + 607.8,
+    },
+    ////--------------------------------43---------------------------------------- 310
+    {
+      scenarioText: 'Закрыть клапан 310.',
+      sender: 'Система',
+      audio: 'tts-42',
+      startTime: timeDiff + 608,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 551,
+      startTime: timeDiff + 608.1,
       human: true,
     },
-    ////--------------------------------43---------------------------------------- 319
-    {
-      scenarioText: 'Закрыть клапан 310.',
-      sender: 'Система',
-      audio: 'tts-42',
-      startTime: timeDiff + 552,
-    },
+
     {
       action: {
         target2D: 'vn_310_btn',
@@ -6172,8 +8213,8 @@ let tempActions = [
             { name: 'status_window_text', text: 'Открыт' },
             { name: 'left_vn', color: '#07FF05' },
             { name: 'right_vn', color: '#07FF05' },
-            { name: 'circle_1_win1', stroke: '#07FF05' },
-            { name: 'circle_2_win1', stroke: '#07FF05' },
+            { name: 'circle_n_winVN', stroke: '#07FF05' },
+            { name: 'circle_n_winVN', stroke: '#07FF05' },
             { name: 'status_window_text', text: 'Открыт' },
             { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
             { name: 'btn_reset_1', color: '#E6E6E6' },
@@ -6205,7 +8246,7 @@ let tempActions = [
           { x: 88.15, y: 75.7, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 552.4,
+      startTime: timeDiff + 609.5,
       human: true,
     },
     {
@@ -6222,7 +8263,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 552.6,
+      startTime: timeDiff + 609.6,
       human: true,
     },
     {
@@ -6241,8 +8282,8 @@ let tempActions = [
             { name: 'btn_open_text', color: '#000000' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_319', color: '#8F8F8F' },
           ]
         },
@@ -6250,7 +8291,7 @@ let tempActions = [
           { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 552.8,
+      startTime: timeDiff + 609.8,
       human: true,
     },
     //мигание пару секунд
@@ -6260,13 +8301,13 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#FF0000' },
             { name: 'right_vn', color: '#FF0000' },
-            { name: 'circle_1_win1', stroke: '#FF0000' },
-            { name: 'circle_2_win1', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
             { name: 'kl_310', color: '#FF0000' },
           ]
         },
       },
-      startTime: timeDiff + 553.8,
+      startTime: timeDiff + 610.8,
     },
     {
       action: {
@@ -6274,13 +8315,13 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_310', color: '#8F8F8F' },
           ]
         },
       },
-      startTime: timeDiff + 554.8,
+      startTime: timeDiff + 611.8,
     },
     {
       action: {
@@ -6288,79 +8329,84 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#FF0000' },
             { name: 'right_vn', color: '#FF0000' },
-            { name: 'circle_1_win1', stroke: '#FF0000' },
-            { name: 'circle_2_win1', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
+            { name: 'circle_n_winVN', stroke: '#FF0000' },
             { name: 'kl_310', color: '#FF0000' },
             { name: 'status_window_text', text: 'Закрыт' },
             { name: 'polozenie_button_text', color: '#000000' },
           ]
         },
       },
-      startTime: timeDiff + 555.8,
+      startTime: timeDiff + 612.8,
     },
-    {
-      action: {
-        target2D: 'close_w1',
-      },
-      startTime: timeDiff + 556,
-      human: true,
-    },
+
     ////--------------------------------44---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
+      startTime: timeDiff + 613,
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 613.1,
+      human: true,
+    },
+    {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 557,
+      startTime: timeDiff + 615,
       human: true,
     },
     {
       text: 'Шибера закрыты.',
       sender: 'Газовщик',
       audio: 'tts-vo53',
-      startTime: timeDiff + 558,
+      startTime: timeDiff + 616,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 561,
+      startTime: timeDiff + 619,
     },
     {
       text: 'Берём печь на тягу.',
       sender: 'Мастер печи',
       audio: 'tts-vo54',
-      startTime: timeDiff + 563,
+      startTime: timeDiff + 621,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 563.1,
+      startTime: timeDiff + 621.1,
       human: true,
     },
     {
       text: 'Выполняю, берём печь на тягу.',
       sender: 'Газовщик',
       audio: 'tts-vo55',
-      startTime: timeDiff + 564,
+      startTime: timeDiff + 622,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 566,
+      startTime: timeDiff + 624,
     },
+
     ////--------------------------------45---------------------------------------- 
     {
       scenarioText: 'Перевести на дистанцию клапан тяги 022.',
       sender: 'Система',
       audio: 'tts-43',
-      startTime: timeDiff + 567,
+      startTime: timeDiff + 625,
     },
     {
       action: {
@@ -6368,14 +8414,14 @@ let tempActions = [
         rotation: { y: 6.283185307179586 },
       },
       duration: 0.3,
-      startTime: timeDiff + 568,
+      startTime: timeDiff + 626,
       human: true,
     },
     ////--------------------------------46---------------------------------------- 
     {
       scenarioText: 'Открыть клапан тяги 022 на «Общей схеме ВНК».',
       sender: 'Система',
-      startTime: timeDiff + 569,
+      startTime: timeDiff + 627,
     },
     {
       action: {
@@ -6390,8 +8436,8 @@ let tempActions = [
             { name: 'block_close', color: '#6DE90B' },
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_1_win1', stroke: '#ff1e00' },
-            { name: 'circle_2_win1', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
             { name: 'btn_auto_text', color: '#6E6E6E' },
             { name: 'btn_auto_1', color: '#E6E6E6' },
             { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
@@ -6420,7 +8466,7 @@ let tempActions = [
           { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 569.1,
+      startTime: timeDiff + 627.1,
       human: true
     },
     {
@@ -6437,7 +8483,7 @@ let tempActions = [
           { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 569.2,
+      startTime: timeDiff + 627.2,
       human: true,
     },
     {
@@ -6448,8 +8494,8 @@ let tempActions = [
             { name: 'status_window_text', text: 'Открывается' },
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'btn_close_text', color: '#000000' },
             { name: 'btn_close_1', color: '#ffffff' },
             { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
@@ -6457,8 +8503,8 @@ let tempActions = [
             { name: 'btn_open_1', color: '#E6E6E6' },
             { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
             { name: 'kl_022', color: '#8F8F8F' },
-            { name: 'circle_1_kl022', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
           ]
         },
         helper2D: [
@@ -6467,7 +8513,7 @@ let tempActions = [
           { x: 87.2, y: 40.8, w: 8.6, h: 2.6, id: 'win_posle_1_stop_btn' },
         ]
       },
-      startTime: timeDiff + 569.3,
+      startTime: timeDiff + 627.3,
       human: true,
     },
     {
@@ -6476,60 +8522,60 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
             { name: 'kl_022', color: '#00FF00' },
-            { name: 'circle_1_kl022', stroke: '#00FF00' },
-            { name: 'circle_2_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
           ]
         }
       },
-      startTime: timeDiff + 570,
+      startTime: timeDiff + 628,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_022', color: '#8F8F8F' },
-            { name: 'circle_1_kl022', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
           ]
         }
       },
-      startTime: timeDiff + 571,
+      startTime: timeDiff + 629,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
             { name: 'kl_022', color: '#00FF00' },
-            { name: 'circle_1_kl022', stroke: '#00FF00' },
-            { name: 'circle_2_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
           ]
         }
       },
-      startTime: timeDiff + 572,
+      startTime: timeDiff + 630,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_022', color: '#8F8F8F' },
-            { name: 'circle_1_kl022', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
           ]
         }
       },
-      startTime: timeDiff + 573,
+      startTime: timeDiff + 631,
     },
     ////--------------------------------46-2---------------------------------------- 
     {
@@ -6547,7 +8593,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 573.1,
+      startTime: timeDiff + 631.1,
       human: true
     },
     {
@@ -6564,7 +8610,7 @@ let tempActions = [
           { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 573.2,
+      startTime: timeDiff + 631.2,
       human: true,
     },
     {
@@ -6586,7 +8632,7 @@ let tempActions = [
           { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 573.3,
+      startTime: timeDiff + 631.3,
       human: true,
     },
     {
@@ -6595,60 +8641,60 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
             { name: 'kl_022', color: '#00FF00' },
-            { name: 'circle_1_kl022', stroke: '#00FF00' },
-            { name: 'circle_2_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
           ]
         }
       },
-      startTime: timeDiff + 574,
+      startTime: timeDiff + 632,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_022', color: '#8F8F8F' },
-            { name: 'circle_1_kl022', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
           ]
         }
       },
-      startTime: timeDiff + 575,
+      startTime: timeDiff + 633,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
             { name: 'kl_022', color: '#00FF00' },
-            { name: 'circle_1_kl022', stroke: '#00FF00' },
-            { name: 'circle_2_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
           ]
         }
       },
-      startTime: timeDiff + 576,
+      startTime: timeDiff + 634,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_022', color: '#8F8F8F' },
-            { name: 'circle_1_kl022', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
           ]
         }
       },
-      startTime: timeDiff + 577,
+      startTime: timeDiff + 635,
     },
     ////--------------------------------46-3---------------------------------------- 
     {
@@ -6666,7 +8712,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 577.1,
+      startTime: timeDiff + 635.1,
       human: true
     },
     {
@@ -6683,7 +8729,7 @@ let tempActions = [
           { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 577.2,
+      startTime: timeDiff + 635.2,
       human: true,
     },
     {
@@ -6705,7 +8751,7 @@ let tempActions = [
           { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 577.3,
+      startTime: timeDiff + 635.3,
       human: true,
     },
     {
@@ -6714,141 +8760,835 @@ let tempActions = [
           elements: [
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
             { name: 'kl_022', color: '#00FF00' },
-            { name: 'circle_1_kl022', stroke: '#00FF00' },
-            { name: 'circle_2_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
           ]
         }
       },
-      startTime: timeDiff + 578,
+      startTime: timeDiff + 636,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#8F8F8F' },
             { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_1_win1', stroke: '#8F8F8F' },
-            { name: 'circle_2_win1', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
             { name: 'kl_022', color: '#8F8F8F' },
-            { name: 'circle_1_kl022', stroke: '#8F8F8F' },
-            { name: 'circle_2_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
           ]
         }
       },
-      startTime: timeDiff + 579,
+      startTime: timeDiff + 637,
     }, {
       action: {
         window2D: {
           elements: [
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_1_win1', stroke: '#00FF00' },
-            { name: 'circle_2_win1', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
             { name: 'kl_022', color: '#00FF00' },
-            { name: 'circle_1_kl022', stroke: '#00FF00' },
-            { name: 'circle_2_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
           ]
         }
       },
-      startTime: timeDiff + 580,
+      startTime: timeDiff + 638,
     },
     {
-      scenarioText: 'Клапан тяги открыт',
+      text: 'Клапан тяги открыт',
       sender: 'Система',
       audio: 'tts-44',
-      startTime: timeDiff + 581,
+      startTime: timeDiff + 639,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 581.1,
+      startTime: timeDiff + 639.1,
       human: true,
     },
+
     ////--------------------------------47---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
+      startTime: timeDiff + 641.4,
+    },
+    {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 582,
+      startTime: timeDiff + 643,
       human: true,
     },
     {
       text: 'Печь на тяге.',
       sender: 'Газовщик',
       audio: 'tts-vo56',
-      startTime: timeDiff + 583,
+      startTime: timeDiff + 644,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 586,
+      startTime: timeDiff + 647,
     },
     {
       text: 'Хорошо.',
       sender: 'Мастер печи',
       audio: 'tts-vo57',
-      startTime: timeDiff + 587,
+      startTime: timeDiff + 648,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 587.1,
+      startTime: timeDiff + 648.1,
       human: true,
     },
     {
       text: 'Доменная печь №6 остановлена.',
       sender: 'Газовщик',
       audio: 'tts-vo58',
-      startTime: timeDiff + 588,
+      startTime: timeDiff + 649,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 591,
+      startTime: timeDiff + 652,
     },
     {
-      scenarioText: 'Доменная печь №6 остановлена.',
+      text: 'Доменная печь №6 остановлена.',
       sender: 'Система',
-      startTime: timeDiff + 592,
+      startTime: timeDiff + 653,
     },
-    {
-      startTime: timeDiff + 594,
-    },
-    */
+
+
   ],
-  [ // Второй сценарий
+
+
+
+
+  // 2 scenario
+  [
+    /*
     {
-      scenarioText: 'Заменить1',
+      text: 'Сообщить о намеченном пуске доменной печи.',
+      sender: 'Система',
+      audio: 'tts-45',
+      lifeTime: '11:50:00',
+      startTime: timeDiff + 2,
+    },
+    ////--------------------------------0----------------------------------------
+    {
+      scenarioText: 'Взять в руку трубку и нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС».',
+      sender: 'Система',
+      multi: [  //  activeMeshsToArr
+        {
+          text: 'Сейчас будем раздувать доменную печь №6.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton001',
+          },
+          audio: 'tts-vo59',
+        },
+        {
+          text: 'Сейчас будем раздувать доменную печь №6.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton006',
+          },
+          audio: 'tts-vo59',
+        },
+        {
+          text: 'Сейчас будем раздувать доменную печь №6.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton017',
+          },
+          audio: 'tts-vo59',
+        },
+        {
+          text: 'Сейчас будем раздувать доменную печь №6.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton020',
+          },
+          audio: 'tts-vo59',
+        }
+      ],
+      startTime: timeDiff + 6,
+      human: true,
+    },
+    ////--------------------------------1----------------------------------------
+    {
+      text: 'Снять печь с тяги.',
+      sender: 'Система',
+      audio: 'tts-46',
+      lifeTime: '12:00:00',
+      startTime: timeDiff + 10,
+    },
+    ////--------------------------------1.1----------------------------------------
+    {
+      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       action: {
-        target: 'kl021',
-        position: { x: 0.2 },
-        rotation: {},
+        target3D: 'ButtonHightlight_046', // Литейный фурменный поддоменник
       },
-      startTime: timeDiff + 1,
+      startTime: timeDiff + 13,
       human: true,
     },
     {
-      text: 'Заменить1',
       action: {
-        target: 'kl019',
-        position: {},
-        rotation: { y: 90 },
+        target3D: 'Lamp_034',
+        material: 'DonorLamp_on',
       },
-      startTime: timeDiff + 4,
+      startTime: timeDiff + 14,
     },
-  ],
+    {
+      text: 'Печь с тяги снята.',
+      sender: 'Газовщик',
+      audio: 'tts-vo60',
+      startTime: timeDiff + 15,
+    },
+    {
+      action: {
+        target3D: 'Lamp_034',
+        material: 'DonorLamp_off',
+      },
+      startTime: timeDiff + 17,
+    },
+    ////--------------------------------1.2----------------------------------------
+    {
+      text: 'Открывайте шибера и делайте 0,3.',
+      audio: 'tts-vo61',
+      sender: 'Мастер печи',
+      startTime: timeDiff + 18,
+    },
+    {
+      scenarioText: 'Ответить мастеру по рации.',
+      sender: 'Система',
+      action: {
+        target3D: 'ButtonHightlight_046', // Литейный фурменный поддоменник
+      },
+      startTime: timeDiff + 23,
+      human: true,
+    },
+    {
+      action: {
+        target3D: 'Lamp_034',
+        material: 'DonorLamp_on',
+      },
+      startTime: timeDiff + 24,
+    },
+    {
+      text: 'Открываю шибера и делаю 0,3 кг.',
+      sender: 'Газовщик',
+      audio: 'tts-vo62',
+      startTime: timeDiff + 25,
+    },
+    ////--------------------------------1.3----------------------------------------
+    {
+      text: 'Установить ВНК №1 в положение «Индивидуальное дутье».',
+      sender: 'Система',
+      audio: 'tts-vo60',
+      startTime: timeDiff + 30,
+    },
+    
+    {
+      scenarioText: 'Перевести клапан 110 в ручной режим.',
+      sender: 'Система',
+      startTime: timeDiff + 35,
+    },
+    //  Клапан 110
+    {
+      action: {
+        target2D: 'kl110',  
+        window2D: {
+          elements: [ 
+            { name: 'title_work_vn', text: 'Управление клапаном 110' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+ 
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+ 
+            { name: 'status_control_vnk_text', text: 'Автоматический' },
+            { name: 'status_window_text', text: 'Закрыт' },
+            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+          ]
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 110 -> окно ВН ( ручной )
+        ]
+      },
+      startTime: timeDiff + 36,
+      human: true,
+    },
+    // окно ВН  // клик ручной
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          newPositionWindow: {  //  wind 2
+            x: 1756,
+            y: 770
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Ручной' },
+          ],
+        },
+        helper2D: [
+          { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
+          { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 36.2,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+          ]
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+          { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 110 -> окно ВН ( Байпас всех блокировок )
+        ]
+      },
+      startTime: timeDiff + 36.4,
+      human: true,
+    },
+    ////////  -------
+    {
+      scenarioText: 'Нажать на «Байпас всех блокировок»',
+      sender: 'Система',
+      startTime: timeDiff + 36.8,
+    },
+    // окно ВН // Байпас всех блокировок
+    {
+      action: {
+        target2D: 'open_vn', 
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1728,
+            y: 930
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Байпас всех БЛОК' },
+          ]
+        }, 
+        helper2D: [
+          { x: 90.3, y: 96, w: 3.2, h: 2.5, id: 'close_vn' },  // нет
+          { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 37,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1741,
+            y: 930
+          },
+          elements: [],
+        },
+        helper2D: [ //// NE RABATOET TUT.
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
+          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
+        ]
+      },
+      startTime: timeDiff + 37.2,
+      human: true,
+    },
+    ////////  -------
+    {
+      scenarioText: 'Перевести клапан 110 в открытый режим.',
+      sender: 'Система',
+      action:{
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
+          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
+        ]
+      },
+      startTime: timeDiff + 37.3,
+    },
+    // окно ВН  // Открыть
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1692,
+            y: 810
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+        helper2D: [
+          { x: 88.5, y: 83.9, w: 3.2, h: 2.6, id: 'close_vn' },   // net
+          { x: 84.9, y: 83.9, w: 3.2, h: 2.6, id: 'open_vn1' },       // da
+        ]
+      },
+      startTime: timeDiff + 37.4,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
+          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
+        ]
+      },
+      startTime: timeDiff + 37.6,
+      human: true,
+    },
+    {
+      startTime: timeDiff + 39, //  1
+    },{ 
+      startTime: timeDiff + 40, //  2
+    },{
+      startTime: timeDiff + 41, //  3
+    },{
+      startTime: timeDiff + 42, //  4
+    },{
+      startTime: timeDiff + 43, //  5
+    },{
+      startTime: timeDiff + 44, //  6
+    },{
+      startTime: timeDiff + 45, //  7
+    },{
+      startTime: timeDiff + 46, //  8
+    },{
+      startTime: timeDiff + 47, //  9
+    },{
+      startTime: timeDiff + 48, //  10  // Клапан мигает приблизительно 10 раз и после фиксируется.
+    },
+    ////////  -------
+    ////--------------------------------1.4----------------------------------------
+    {
+      scenarioText: 'Нажать на «Байпас всех блокировок» на клапане 118а.',
+      sender: 'Система',
+      startTime: timeDiff + 50,
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
+          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // ОТКРЫТЬ
+        ]
+      },
+      startTime: timeDiff + 50.2,
+      human: true,
+    },
+    
+    //  Клапан 118a
+    {
+      action: {
+        target2D: 'kl118a',  
+        window2D: {
+          elements: [ 
+            { name: 'title_work_vn', text: 'Управление клапаном 118а' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+ 
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+ 
+            { name: 'status_control_vnk_text', text: 'Автоматический' },
+            { name: 'status_window_text', text: 'Закрыт' },
+            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+          ]
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+          { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( Байпас всех блокировок )
+        ]
+      },
+      startTime: timeDiff + 51,
+      human: true,
+    },
+    // окно ВН // Байпас всех блокировок
+    {
+      action: {
+        target2D: 'open_vn', 
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1728,
+            y: 930
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Байпас всех БЛОК' },
+          ]
+        }, 
+        helper2D: [
+          { x: 90.3, y: 96, w: 3.2, h: 2.5, id: 'close_vn' },  // нет
+          { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 51.2,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1741,
+            y: 930
+          },
+          elements: [],
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( ручной )
+        ]
+      },
+      startTime: timeDiff + 51.4,
+      human: true,
+    },
+    ////////  -------
+    {
+      scenarioText: 'Перевести клапан 118а в ручной режим.',
+      sender: 'Система',
+      action:{
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( ручной )
+        ]
+      },
+      startTime: timeDiff + 52,
+    },
+    // окно ВН  // клик ручной
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          newPositionWindow: {  //  wind 2
+            x: 1756,
+            y: 770
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Ручной' },
+          ],
+        },
+        helper2D: [
+          { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
+          { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 52.2,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+          ]
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+          { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( Байпас всех блокировок )
+        ]
+      },
+      startTime: timeDiff + 54.4,
+      human: true,
+    },
+    ////--------------------------------1.5---------------------------------------- 118
+    {
+      scenarioText: 'Аналогично п.4, только клапан 118',
+      sender: 'Система',
+      action:{
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+          { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( Байпас всех блокировок )
+        ]
+      },
+      startTime: timeDiff + 55,
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 55.2,
+      human: true,
+    },
+ 
+ 
+    ////////  -------
+ 
+ 
+    //  Клапан 118  //kl118
+    {
+      action: {
+        target2D: 'kl118',  
+        window2D: {
+          elements: [ 
+            { name: 'title_work_vn', text: 'Управление клапаном 118' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+ 
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+ 
+            { name: 'status_control_vnk_text', text: 'Автоматический' },
+            { name: 'status_window_text', text: 'Закрыт' },
+            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+          ]
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 118 -> окно ВН ( ручной )
+        ]
+      },
+      startTime: timeDiff + 55.4,
+      human: true,
+    },
+    // окно ВН  // клик ручной
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          newPositionWindow: {  //  wind 2
+            x: 1756,
+            y: 770
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Ручной' },
+          ],
+        },
+        helper2D: [
+          { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
+          { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 55.6,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+          ]
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+          { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118 -> окно ВН ( Байпас всех блокировок )
+        ]
+      },
+      startTime: timeDiff + 55.8,
+      human: true,
+    },
+    ////////  -------
+    // окно ВН // Байпас всех блокировок
+    {
+      action: {
+        target2D: 'open_vn', 
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1728,
+            y: 930
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Байпас всех БЛОК' },
+          ]
+        }, 
+        helper2D: [
+          { x: 90.3, y: 96, w: 3.2, h: 2.5, id: 'close_vn' },  // нет
+          { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 56.0,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1741,
+            y: 930
+          },
+          elements: [],
+        },
+        helper2D: [ 
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
+          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 118 -> окно ВН ( ОТКРЫТЬ )
+        ]
+      },
+      startTime: timeDiff + 56.2,
+      human: true,
+    },
+    ////////  -------
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1692,
+            y: 810
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+        helper2D: [
+          { x: 88.5, y: 83.9, w: 3.2, h: 2.6, id: 'close_vn' },   // net
+          { x: 84.9, y: 83.9, w: 3.2, h: 2.6, id: 'open_vn1' },   // da
+        ]
+      },
+      startTime: timeDiff + 56.6,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
+          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
+        ]
+      },
+      startTime: timeDiff + 56.8,
+      human: true,
+    },
+    ////////  -------
+ 
+    ////--------------------------------1.6---------------------------------------- 119
+    {
+      scenarioText: 'Аналогично п.4, только клапан 119',
+      sender: 'Система',
+      action:{
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
+          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
+        ]
+      },
+      startTime: timeDiff + 57,
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 57.2,
+      human: true,
+    },
+    ////////  -------
+*/
+    /*
+         // клапан 119
+         {
+           action: {
+             target2D: 'kl119',  
+             window2D: {
+               elements: [ 
+                 { name: 'title_work_vn', text: 'Управление клапаном 119' },
+                 { name: 'left_vn', color: '#ff1e00' },
+                 { name: 'right_vn', color: '#ff1e00' },
+     
+                 { name: 'circle_n_winVN', stroke: '#ff1e00' },
+                 { name: 'circle_n_winVN', stroke: '#ff1e00' },
+     
+                 { name: 'status_control_vnk_text', text: 'Автоматический' },
+                 { name: 'status_window_text', text: 'Закрыт' },
+                 // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+               ]
+             },
+             helper2D: [
+               { x: 83.10, y: 44.15, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+               { x: 80.10, y: 52.00, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 119 -> окно ВН ( ручной )
+             ]
+           },
+           startTime: timeDiff + 57.4,
+           human: true,
+         },
+         // окно ВН  // клик ручной
+         {
+           action: {
+             target2D: 'open_vn',
+             window2D: {
+               newPositionWindow: {  //  wind 2
+                 x: 1756,
+                 y: 770
+               },
+               elements: [
+                 { name: 'title_open_vn', text: 'Ручной' },
+               ],
+             },
+             helper2D: [
+               { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
+               { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+             ]
+           },
+           startTime: timeDiff + 57.6,
+           human: true,
+         },
+         // маленькое окошко ОК
+         {
+           action: {
+             target2D: 'open_vn1',
+             window2D: {
+               elements: [
+                 { name: 'status_control_vnk_text', text: 'Ручной' },
+                 // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+               ]
+             },
+             helper2D: [
+               { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
+               { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118 -> окно ВН ( Байпас всех блокировок )
+             ]
+           },
+           startTime: timeDiff + 57.8,
+           human: true,
+         },
+         ////////  -------
+     */
+
+  ]
 ]
 
 // Массив исходных состояний

@@ -46,11 +46,16 @@ window.addEventListener('load', function () {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '4,32') { addSvgElem(Index, Element, 'P_1'); }
         if (Element.innerHTML === '4,22') { addSvgElem(Index, Element, 'P_2', 'start'); }
-        if (Element.innerHTML === '30') {
-          if (TextIndex < 307)
-            addSvgElem(Index, Element, 'EKZ_H' + (TextIndex - 233)); else
-            addSvgElem(Index, Element, 'kol_furm');
-        }
+        // if (Element.innerHTML === '30') {
+        //   if (TextIndex < 307)
+        //     addSvgElem(Index, Element, 'EKZ_H' + (TextIndex - 233)); else
+        //     addSvgElem(Index, Element, 'kol_furm');
+        // }
+        if (Element.innerHTML === '30' && Element.getAttribute('y') == 779.37) { addSvgElem(Index, Element, 'kol_furm'); }
+        if (Element.innerHTML === '30' && Element.getAttribute('y') == 598.79) { addSvgElem(Index, Element, 'EKZ_H1'); }
+        if (Element.innerHTML === '30' && Element.getAttribute('y') == 631.95) { addSvgElem(Index, Element, 'EKZ_H2'); }
+        if (Element.innerHTML === '30' && Element.getAttribute('y') == 666.32) { addSvgElem(Index, Element, 'EKZ_H3'); }
+
         if (Element.innerHTML === '0,70') { addSvgElem(Index, Element, 'radar1_text'); }
         if (Element.innerHTML === '0,97') { addSvgElem(Index, Element, 'radar2_text'); }
         if (Element.innerHTML === '-1,67') { addSvgElem(Index, Element, 'radar3_text', 'start'); }
@@ -187,6 +192,9 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '30719') { addSvgElem(Index, Element, 'F_pg_prir_gaz', 'start'); }
         if (Element.innerHTML === '-93') { addSvgElem(Index, Element, 'dF_pg_prir_gaz'); }
         if (Element.innerHTML === '1487') { addSvgElem(Index, Element, 'L4'); }
+        if (Element.innerHTML === '456' && Element.getAttribute('x') == 816.69) { addSvgElem(Index, Element, 'L2'); }
+        if (Element.innerHTML === '125' && Element.getAttribute('y') == 845.8) { addSvgElem(Index, Element, 'L3'); }
+
         if (Element.innerHTML === '49,4') { addSvgElem(Index, Element, 'H_step_isp'); }
         if (Element.innerHTML === '46,0') { addSvgElem(Index, Element, 'HCO_step_isp'); }
         if (Element.innerHTML === '216,1') { addSvgElem(Index, Element, 'V_dyt', 'start'); }
@@ -218,6 +226,10 @@ window.addEventListener('load', function () {
             addSvgElem(Index, Element, 'EVD2_O'); else if (TextIndex === 327)
             addSvgElem(Index, Element, 'H_par_yvlaz');
         }
+        if (Element.innerHTML === '10' && Element.getAttribute('x') == 707.62) { addSvgElem(Index, Element, 'P_vozd_tryb'); }
+        if (Element.innerHTML === '9' && Element.getAttribute('x') == 718.7) { addSvgElem(Index, Element, 'P_gaza_tryb'); }
+        if (Element.innerHTML === '0,00' && Element.getAttribute('x') == 706) { addSvgElem(Index, Element, 'CO_bor_tryb'); }
+
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.getAttribute('d') === 'M14.06 778.51c4.03 0 7.29 3.27 7.29 7.3 0 4.03-3.26 7.29-7.29 7.29s-7.29-3.26-7.29-7.29 3.26-7.3 7.29-7.3z') { addSvgElem(Index, Element, 'EVS 7'); }
@@ -231,7 +243,11 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'm957.81 359.24-36.45 21.88v-21.88l36.45 21.88z') { addSvgElem(Index, Element, 'kl_81'); }
         if (Element.getAttribute('d') === 'M497.4 887.89c2.58 0 4.68 2.1 4.68 4.69 0 2.59-2.1 4.69-4.68 4.69a4.69 4.69 0 0 1 0-9.38zm2.6 2.08a3.632 3.632 0 0 0-2.6-1.08c-1.02 0-1.95.42-2.61 1.08-.67.67-1.08 1.59-1.08 2.61 0 1.02.41 1.94 1.08 2.61.66.66 1.59 1.08 2.61 1.08a3.69 3.69 0 0 0 3.68-3.69c0-1.02-.41-1.94-1.07-2.61H500z') { addSvgElem(Index, Element, 'W g/m3'); }
         if (Element.getAttribute('d') === 'm1306.77 925.91-36.46-21.87v21.87l36.46-21.87z') { addSvgElem(Index, Element, 'kl_722'); }
-        if (Element.getAttribute('d') === 'm1494.27 899.87-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'kl_723'); }
+
+        // if (Element.getAttribute('d') === 'm1494.27 899.87-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'kl_723'); }
+        if (Element.getAttribute('d') === 'm1422.83 770.52 5.84-9.36 5.84-9.36h-23.37l5.84 9.36z') { addSvgElem(Index, Element, 'kl_723_t'); }
+        if (Element.getAttribute('d') === 'm1422.83 768.79 5.84 9.36 5.84 9.37h-23.37l5.84-9.37z') { addSvgElem(Index, Element, 'kl_723_b'); }
+
         if (Element.getAttribute('d') === 'm1457.81 670.7-23.95 33.34h23.95l-23.95-33.34z') { addSvgElem(Index, Element, 'kl_022'); }
         if (Element.getAttribute('d') === 'M1200.52 679.04a4.165 4.165 0 1 1 0 8.33 4.165 4.165 0 1 1 0-8.33z') { addSvgElem(Index, Element, 'menihe 0.2_P'); }
         if (Element.getAttribute('d') === 'M1200.52 692.06a4.165 4.165 0 1 1 0 8.33 4.165 4.165 0 1 1 0-8.33z') { addSvgElem(Index, Element, 'menihe 0.5_P'); }
@@ -391,6 +407,29 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'm232.67 559.85-13.4 8.25v-16.67l13.41 8.77z') { addSvgElem(Index, Element, 'krasniy treygolnik_cistiy gaz'); }
         if (Element.getAttribute('d') === 'm246.35 551.43-13.97 8.6-.01-.03 13.98 9.14z') { addSvgElem(Index, Element, 'zeliniy treygolnik_cistiy gaz'); }
         if (Element.getAttribute('d') === '') { addSvgElem(Index, Element, ''); }
+
+        if (Element.getAttribute('d') === 'M806.25 629.56h71.88v27.08h-71.88z') { addSvgElem(Index, Element, 'Tkyp_3_rect'); }
+        if (Element.getAttribute('d') === 'M898.96 629.56h71.87v27.08h-71.87z') { addSvgElem(Index, Element, 'Tkyp_2_rect'); }
+        if (Element.getAttribute('d') === 'M991.67 629.56h71.87v28.12h-71.87z') { addSvgElem(Index, Element, 'Tkyp_1_rect'); }
+        if (Element.getAttribute('d') === 'M1126.04 682.68h66.67v32.29h-66.67z') { addSvgElem(Index, Element, 'P_2_rect'); }
+        if (Element.getAttribute('d') === 'M1628 824.12h70v28h-70z') { addSvgElem(Index, Element, 'L3sqr'); }
+        if (Element.getAttribute('d') === 'M1628 795.12h70v28h-70z') { addSvgElem(Index, Element, 'L4sqr'); }
+        if (Element.getAttribute('d') === 'M578.98 777.01h10.05v9.68h-10.05z') { addSvgElem(Index, Element, 'H_progres_7'); }
+        if (Element.getAttribute('d') === 'M578.98 766.49h10.05v10.55h-10.05z') { addSvgElem(Index, Element, 'H_progres_19'); }
+        if (Element.getAttribute('d') === 'M578.98 763.24h10.05v3.42h-10.05z') { addSvgElem(Index, Element, 'H_progres_22'); }
+        if (Element.getAttribute('d') === 'M578.98 753.04h10.05v10.36h-10.05z') { addSvgElem(Index, Element, 'H_progres_33'); }
+        if (Element.getAttribute('d') === 'M578.98 738.98h10.05v14.21h-10.05z') { addSvgElem(Index, Element, 'H_progres_49'); }
+        if (Element.getAttribute('d') === 'M578.98 732.48h10.05v6.71h-10.05z') { addSvgElem(Index, Element, 'H_progres_56'); }
+        if (Element.getAttribute('d') === 'M578.98 728.41h10.05v4.22h-10.05z') { addSvgElem(Index, Element, 'H_progres_60'); }
+        if (Element.getAttribute('d') === 'M578.98 701.46h10.05v27h-10.05z') { addSvgElem(Index, Element, 'H_progres_67'); }
+        if (Element.getAttribute('d') === 'M578.98 697.74h10.05v3.86h-10.05z') { addSvgElem(Index, Element, 'H_progres_89'); }
+        if (Element.getAttribute('d') === 'M578.98 690.12h10.05v7.65h-10.05z') { addSvgElem(Index, Element, 'H_progres_100'); }
+        if (Element.getAttribute('d') === 'M112.01 474.12h10v78.95h-10zM133.98 474.12h10v78.95h-10zM155.03 474.12h10v78.95h-10z') { addSvgElem(Index, Element, 'AKZ_100'); }
+        if (Element.getAttribute('d') === 'M112.01 474.12h10v40.42h-10zM133.98 474.12h10v40.42h-10zM155.03 474.12h10v40.42h-10z') { addSvgElem(Index, Element, 'AKZ_45-100'); }
+        if (Element.getAttribute('d') === 'M112.01 514.46h10v11.21h-10zM133.98 514.46h10v11.21h-10zM155.03 514.46h10v11.21h-10z') { addSvgElem(Index, Element, 'AKZ_45'); }
+        if (Element.getAttribute('d') === 'M112.01 525.6h10v12.09h-10zM133.98 525.6h10v12.09h-10zM155.03 525.6h10v12.09h-10z') { addSvgElem(Index, Element, 'AKZ_30'); }
+        if (Element.getAttribute('d') === 'M112.01 537.71h10v15.36h-10zM133.98 537.71h10v15.36h-10zM155.03 537.71h10v15.36h-10z') { addSvgElem(Index, Element, 'AKZ_17'); }
+
       })
       ObjectSvg.svg.querySelectorAll('circle').forEach((Element) => {
         if (Element.getAttribute('cy') === '214.97' && Element.getAttribute('cx') === '1584.9' && Element.getAttribute('r') === '4.17') { addSvgElem(Index, Element, 'circle_otk'); }
@@ -710,17 +749,33 @@ window.addEventListener('load', function () {
     }
     if (ObjectSvg.name === 'vnk_main') {
       ObjectSvg.svg.querySelectorAll('circle').forEach((Element) => {
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') === '858.16' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_win1'); }
-        if (Element.hasAttribute('cx') && Element.getAttribute('cx') === '858.16' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_win1'); }
-        if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '750.32' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl028'); }
-        if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '750.32' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl028'); }
-        if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '1001.82' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl007'); }
-        if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '1001.82' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl007'); }
-        if (Element.getAttribute('cy') === '629.53' && Element.getAttribute('cx') === '1000.92' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl025'); }
-        if (Element.getAttribute('cy') === '224.95' && Element.getAttribute('cx') === '1754.85' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl022'); }
-        if (Element.getAttribute('cy') === '224.95' && Element.getAttribute('cx') === '1754.85' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl022'); }
-        if (Element.getAttribute('cy') === '260.06' && Element.getAttribute('cx') === '1550.69' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_1_kl002'); }
-        if (Element.getAttribute('cy') === '260.06' && Element.getAttribute('cx') === '1550.69' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_2_kl002'); }
+        // if (Element.getAttribute('cx') === '858.16' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_win1'); }
+        // if (Element.getAttribute('cx') === '858.16' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_win1'); }
+        // if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '750.32' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl028'); }
+        // if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '750.32' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl028'); }
+        // if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '1001.82' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl007'); }
+        // if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '1001.82' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl007'); }
+        // if (Element.getAttribute('cy') === '629.53' && Element.getAttribute('cx') === '1000.92' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl025'); }
+        // if (Element.getAttribute('cy') === '224.95' && Element.getAttribute('cx') === '1754.85' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_kl022'); }
+        // if (Element.getAttribute('cy') === '224.95' && Element.getAttribute('cx') === '1754.85' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_kl022'); }
+        // if (Element.getAttribute('cy') === '260.06' && Element.getAttribute('cx') === '1550.69' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_1_kl002'); }
+        // if (Element.getAttribute('cy') === '260.06' && Element.getAttribute('cx') === '1550.69' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_2_kl002'); }
+        if (Element.getAttribute('cx') === '858.16' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_kl029'); }
+        if (Element.getAttribute('cx') === '858.16' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_kl029'); }
+        if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '750.32' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_kl028'); }
+        if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '750.32' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_kl028'); }
+        if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '1001.82' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_kl007'); }
+        if (Element.getAttribute('cy') === '568.43' && Element.getAttribute('cx') === '1001.82' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_kl007'); }
+        if (Element.getAttribute('cy') === '629.53' && Element.getAttribute('cx') === '1000.92' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_kl025'); }
+        if (Element.getAttribute('cy') === '224.95' && Element.getAttribute('cx') === '1754.85' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_kl022'); }
+        if (Element.getAttribute('cy') === '224.95' && Element.getAttribute('cx') === '1754.85' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_kl022'); }
+        if (Element.getAttribute('cy') === '260.06' && Element.getAttribute('cx') === '1550.69' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_kl002'); }
+        if (Element.getAttribute('cy') === '260.06' && Element.getAttribute('cx') === '1550.69' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_kl002'); }
+        if (Element.getAttribute('cy') === '452.81' && Element.getAttribute('cx') === '743.93' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_kl038'); }
+        if (Element.getAttribute('cy') === '452.81' && Element.getAttribute('cx') === '743.93' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_kl038'); }
+        if (Element.getAttribute('cy') === '452.21' && Element.getAttribute('cx') === '1003.04' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_kl037'); }
+        if (Element.getAttribute('cy') === '452.21' && Element.getAttribute('cx') === '1003.04' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_kl037'); }
+
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
@@ -935,7 +990,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M730.54 896.31h88.09v26.56h-88.09z') { addSvgElem(Index, Element, 'ramka_6TI_31_3'); }
         if (Element.getAttribute('d') === 'M880.55 896.31h88.09v26.56h-88.09z') { addSvgElem(Index, Element, 'ramka_6TI_31_2'); }
         if (Element.getAttribute('d') === 'M1016.87 896.31h88.09v26.56h-88.09z') { addSvgElem(Index, Element, 'ramka_6TI_31_1'); }
-        if (Element.getAttribute('d') === 'm1413.5 266.46-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_029'); }
+        if (Element.getAttribute('d') === 'm1413.5 266.46-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl029'); }
         if (Element.getAttribute('d') === 'm1420.5 327.96-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_048'); }
         if (Element.getAttribute('d') === 'm1290.44 372.38-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_039'); }
         if (Element.getAttribute('d') === 'm1577.55 372.38-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_030'); }
@@ -987,8 +1042,10 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M9.78 190.88h141.98v21.19H9.78z') { addSvgElem(Index, Element, 'skhema_sobrana'); }
       })
       ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element) => {
-        if (Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_1_win1'); }
-        if (Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_2_win1'); }
+        // if (Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_1_win1'); }
+        // if (Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_2_win1'); }
+        if (Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_n_winVN'); }
+        if (Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_n_winVN'); }
       })
       ObjectSvg.svg.querySelectorAll('rect').forEach((Element) => {
         if (Element.getAttribute('rx') === '4.14' && Element.getAttribute('x') === '169.84' && Element.getAttribute('y') === '121.6') { addSvgElem(Index, Element, 'btn_open_2'); }
@@ -1343,6 +1400,18 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '27' && TextIndex === 61) { addSvgElem(Index, Element, 'Zakryt_dymovoy_klapan_12'); }
         if (Element.innerHTML === '27' && TextIndex === 62) { addSvgElem(Index, Element, 'Otkryt_sbrosnoy_klapan_13'); }
         if (Element.innerHTML === '0') { addSvgElem(Index, Element, 'Vremya_do_kontsa_shaga'); }
+
+        if (Element.innerHTML === 'ВН1 Перекидка из Нагрева в Отделение') { addSvgElem(Index, Element, 'Title_window_peric_nagrevotd'); }
+
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -170.582 -209.832)') { addSvgElem(Index, Element, 'text_132'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -109.787 -209.832)') { addSvgElem(Index, Element, 'text_116'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -43.62 -210.215)') { addSvgElem(Index, Element, 'text_124'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 23.125 -209.832)') { addSvgElem(Index, Element, 'text_113'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 92.167 -208.104)') { addSvgElem(Index, Element, 'text_134'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 163.51 -208.104)') { addSvgElem(Index, Element, 'text_117'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 234.852 -208.104)') { addSvgElem(Index, Element, 'text_111'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 295.839 -208.104)') { addSvgElem(Index, Element, 'text_112'); }
+
       });
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, TextIndex) => {
         if (Element.getAttribute('d') === 'M158.11 187.58h26.7v17.46h-26.7z') { addSvgElem(Index, Element, 'shag_1'); }
@@ -1385,6 +1454,16 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M187 104.3h36.2v24.08H187z') { addSvgElem(Index, Element, 'c_3_4'); }
         if (Element.getAttribute('d') === 'M223.72 104.3h40.62v24.08h-40.62z') { addSvgElem(Index, Element, 'c_3_5'); }
         if (Element.getAttribute('d') === 'M264.35 104.3h83.2v24.08h-83.2z') { addSvgElem(Index, Element, 'c_3_6'); }
+
+        if (Element.getAttribute('d') === 'M296.01 249.63h57.56v42.23h-57.56z') { addSvgElem(Index, Element, 'rect_132'); }
+        if (Element.getAttribute('d') === 'M353.54 249.63h64.67v42.23h-64.67z') { addSvgElem(Index, Element, 'rect_116'); }
+        if (Element.getAttribute('d') === 'M418.41 248.8h67.12v42.23h-67.12z') { addSvgElem(Index, Element, 'rect_124'); }
+        if (Element.getAttribute('d') === 'M486.31 249.63h64.06v42.23h-64.06z') { addSvgElem(Index, Element, 'rect_113'); }
+        if (Element.getAttribute('d') === 'M549.53 249.63h77.11v42.23h-77.11z') { addSvgElem(Index, Element, 'rect_134'); }
+        if (Element.getAttribute('d') === 'M627.05 249.63h64.32v42.23h-64.32z') { addSvgElem(Index, Element, 'rect_117'); }
+        if (Element.getAttribute('d') === 'M690.96 249.63h70.92v42.23h-70.92z') { addSvgElem(Index, Element, 'rect_111'); }
+        if (Element.getAttribute('d') === 'M761.88 249.63h56.08v42.23h-56.08z') { addSvgElem(Index, Element, 'rect_112'); }
+
       })
     }
     if (ObjectSvg.name === 'O_p_n_na_k_p_na_VNK') {
@@ -1412,6 +1491,16 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('x') === '17.13' && Element.getAttribute('y') === '231.48') { addSvgElem(Index, Element, 'kl_11'); }
         if (Element.getAttribute('x') === '19.12' && Element.getAttribute('y') === '251.14') { addSvgElem(Index, Element, 'kl_12'); }
         if (Element.getAttribute('x') === '17.13' && Element.getAttribute('y') === '249.52') { addSvgElem(Index, Element, 'kl_12'); }
+
+        if (Element.getAttribute('x') == 4029 && Element.getAttribute('y') == 49105 && Element.getAttribute('rx') == 1230) { addSvgElem(Index, Element, 'kl_11_rect'); }
+        if (Element.getAttribute('x') == 4029 && Element.getAttribute('y') == 9733 && Element.getAttribute('rx') == 1230) { addSvgElem(Index, Element, 'avarin_otd_rect'); }
+        if (Element.getAttribute('x') == 4029 && Element.getAttribute('y') == 13825 && Element.getAttribute('rx') == 1230) { addSvgElem(Index, Element, 'otdel_nagrev'); }
+        if (Element.getAttribute('x') == 4029 && Element.getAttribute('y') == 17915 && Element.getAttribute('rx') == 1230) { addSvgElem(Index, Element, 'nagrev_otd_2_rect'); }
+        if (Element.getAttribute('x') == 4029 && Element.getAttribute('y') == 22005 && Element.getAttribute('rx') == 1230) { addSvgElem(Index, Element, 'otdel_dute'); }
+        if (Element.getAttribute('x') == 4029 && Element.getAttribute('y') == 26095 && Element.getAttribute('rx') == 1230) { addSvgElem(Index, Element, 'dute_otdel'); }
+        if (Element.getAttribute('x') == 4029 && Element.getAttribute('y') == 30185 && Element.getAttribute('rx') == 1230) { addSvgElem(Index, Element, 'otdel_otdel2'); }
+        if (Element.getAttribute('x') == 4029 && Element.getAttribute('y') == 34275 && Element.getAttribute('rx') == 1230) { addSvgElem(Index, Element, 'otd2_otd_rect'); }
+
       })
     }
     if (ObjectSvg.name === 'Osnovnye_parametry_DP') {
@@ -1793,6 +1882,18 @@ window.addEventListener('load', function () {
     if (ObjectSvg.name === 'priczvuksinal') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
         if (Element.innerHTML === 'БЗУ не готово принимать порцию после т.Р2') { addSvgElem(Index, Element, 'prixZvykSig_text', 'start'); }
+      })
+    }
+    if (ObjectSvg.name === 'win_otdel2_na_vnk') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
+        if (Element.innerHTML === 'Закрыт' && Element.getAttribute('transform') == 'matrix(.99692 0 0 1 62.29 90.383)') { addSvgElem(Index, Element, 'text_ish_c4'); }
+        if (Element.innerHTML === 'Открыт' && Element.getAttribute('transform') == 'matrix(.99692 0 0 1 130.01 90.383)') { addSvgElem(Index, Element, 'text_ish_c5'); }
+        if (Element.innerHTML === 'Закрыт' && Element.getAttribute('transform') == 'matrix(.99692 0 0 1 198.933 90.383)') { addSvgElem(Index, Element, 'text_ish_c6'); }
+      })
+      ObjectSvg.svg.querySelectorAll('path').forEach((Element) => {
+        if (Element.getAttribute('d') === 'M327.2 291.87h67.75v60.96H327.2z') { addSvgElem(Index, Element, 'rect_ish_c4'); }
+        if (Element.getAttribute('d') === 'M395.95 291.87h68.79v60.96h-68.79z') { addSvgElem(Index, Element, 'rect_ish_c5'); }
+        if (Element.getAttribute('d') === 'M466.76 291.87h62.94v60.96h-62.94z') { addSvgElem(Index, Element, 'rect_ish_c6'); }
       })
     }
   })

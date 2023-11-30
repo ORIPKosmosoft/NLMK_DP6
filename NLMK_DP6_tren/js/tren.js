@@ -1573,12 +1573,37 @@ document.getElementById('b_help').querySelector('.click-button-tren').addEventLi
     if (tempMesh) changeColorTexture(tempMesh, true, true);
     document.querySelector('.box-help').innerHTML = 'Нажать курсором на 3Д объект,<br> выделенный жёлтым цветом.';
   } else if (currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
-    let tempNameSvg = document.querySelector('#svg-helper').forScheme;
-    let tempRealShemeName = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
-    let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === currentAction.action.target2D);
-    let tempRealHelperName = tempRealHelper.realName ? tempRealHelper.realName : '';
-    if (currentAction.action.realName) tempRealHelperName = currentAction.action.realName;
-    document.querySelector('.box-help').innerHTML = `Нажать курсором по элементу ${tempRealHelperName} на схеме ${tempRealShemeName ? tempRealShemeName : ''}.`;
+    let tempRealShemeName, tempRealHelperName, tempRealHelper;
+    if (document.querySelector('#svg-helper')) {
+      let tempNameSvg = document.querySelector('#svg-helper').forScheme;
+      let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === currentAction.action.target2D);
+      if (tempRealHelper) {
+        tempRealShemeName = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
+        tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
+        if (currentAction.action.realName) tempRealHelperName = currentAction.action.realName;
+      } else {
+        devHelper.svgHelpers.some(element => {
+          if (element.helpers && Array.isArray(element.helpers)) {
+            tempRealHelper = element.helpers.find(helper => helper.id === currentAction.action.target2D);
+            tempRealShemeName = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
+            return tempRealHelper;
+          }
+          return false;
+        });
+        tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
+      }
+    } else {
+      devHelper.svgHelpers.some(element => {
+        if (element.helpers && Array.isArray(element.helpers)) {
+          tempRealHelper = element.helpers.find(helper => helper.id === currentAction.action.target2D);
+          tempRealShemeName = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
+          return tempRealHelper;
+        }
+        return false;
+      });
+      tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
+    }
+    document.querySelector('.box-help').innerHTML = `Нажать курсором по элементу ${tempRealHelperName ? tempRealHelperName : ''} на схеме ${tempRealShemeName ? tempRealShemeName : ''}.`;
   } else {
     document.querySelector('.box-help').innerHTML = '';
     document.querySelector('.box-help').classList.toggle('opacity-1-Temp', false);
