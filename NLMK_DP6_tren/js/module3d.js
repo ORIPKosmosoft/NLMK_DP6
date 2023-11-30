@@ -273,6 +273,38 @@ window.addEventListener('load', function () {
               clone.position.x += (i + 1) * meshWidth;
             }
           }
+          const dp6MeshesIdDupl = [
+            'd35a945e-6098-413c-85fc-ec03675b2b5c', // DP6 Р колошникового газа            
+            '54aef8ff-43e1-46a9-811e-d82e2b22471d', // DP6 dp верхний            
+            '7561228f-cbe4-4094-b7cf-4dc9c7670544', // DP6 dp общий            
+            '8fcdf048-da99-4a7b-b10a-4e1a9f79abab', // DP6 dp нижний            
+            '0ade6fb4-862a-48a1-b10d-cfbdd38e773b', // DP6 F холодного дутья            
+            'bf4940b2-342f-4124-aa54-c64b51e9eef5', // DP6 F горячего дутья            
+            '5a23380c-a320-4d63-8b0d-2da82755a220', // DP6 Уровень засыпи датчик 1            
+            'd0acec57-fa5c-4995-b3ab-16ecf8829ee7', // DP6 Уровень засыпи датчик 2            
+            '7ccf0961-7311-4c27-bbaa-12b2dec45ec9', // DP6 Уровень засыпи механический            
+            '9071a277-fcb6-405b-8af1-f65ccc2bb6e7', // DP6 Т в газоотводе Т.1            
+            '2a199899-7a38-4f54-987d-8c88e3aaef67', // DP6 Т в газоотводе Т.2            
+            'cf1b0be1-d720-4be2-b1af-d459c16e3a62', // DP6 Т в газоотводе Т.3            
+            'd7f093e4-3fad-4764-bcad-cfc4e8848bcc', // DP6 Т в газоотводе Т.4            
+            'e5b790a4-1bdf-43c1-9e62-f4fc12304623', // DP6 F азота общего            
+            '7944e7da-dce6-4a38-b735-6cedc4e531c1', // DP6 Содержание кислорода в азоте            
+            '2a471a82-ab01-42bf-91e5-6ceee0477d76', // DP6 Т горячего дутья            
+            '039d8c28-77d1-4fe9-9d3d-e3bb57bad86f', // DP6 P технической воды Т.1            
+            'b9339fcf-a848-430c-a6c8-3aa0f115b494', // DP6 P технической воды Т.2            
+            '98ce2502-03bb-4d18-b164-75a45ee543da', // DP6 P сжатого воздуха            
+            '34c66f86-b540-4f7d-bd78-9c4be2dca03a', // DP6 P осушенного сжатого воздуха            
+            'f2cfaacd-ad85-400b-bbe6-12b47f3c56d5', // DP6 P азота к затворам            
+            'd0164997-c397-410f-a6c9-7380c9d73944', // DP6 T редуктора            
+            '5e0f2c52-4c56-4fb6-b194-e8923c4a9d05', // DP6 F воды на редуктор            
+            'de15bb4a-f57f-498b-a392-1052df17fc1d', // DP6 F природного газа            
+          ];
+          dp6MeshesIdDupl.forEach((Element) => {
+            if (mesh.id && mesh.id === Element) {
+              const clone = mesh.clone();
+              clone.name = 'Clone_' + mesh.name;
+            }
+          });
         })
         var box = BABYLON.MeshBuilder.CreateBox("downBtnFPrirGaza_highlight", { size: 1 }, Scene);
         box.position = new BABYLON.Vector3(2.993, 1.184, 0.353);

@@ -111,6 +111,8 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '1327') { addSvgElem(Index, Element, 'Tkyp_3', 'start'); }
         if (Element.innerHTML === '102016') { addSvgElem(Index, Element, 'Fvozdyh_3', 'start'); }
         if (Element.innerHTML === '80994') { addSvgElem(Index, Element, 'Fgaz_3', 'start'); }
+        if (Element.getAttribute('x') === '1022.95' && Element.getAttribute('y') === '773.85') { addSvgElem(Index, Element, 'VNK1_Fb'); } // Sergey
+        if (Element.getAttribute('x') === '1022.95' && Element.getAttribute('y') === '807.2') { addSvgElem(Index, Element, 'VNK1_Fr'); } // Sergey
         if (Element.innerHTML === '1328') { addSvgElem(Index, Element, 'Tkyp_2', 'start'); }
         if (Element.innerHTML === '120222') { addSvgElem(Index, Element, 'Fvozdyh_2', 'start'); }
         if (Element.innerHTML === '101351') { addSvgElem(Index, Element, 'Fgaz_2', 'start'); }
@@ -118,12 +120,12 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '141') { addSvgElem(Index, Element, 'Tdym_3'); }
         if (Element.innerHTML === '306') { addSvgElem(Index, Element, 'Tdym_2'); }
         if (Element.innerHTML === '174') { addSvgElem(Index, Element, 'Tdym_1'); }
-        if (Element.getAttribute('x') === '996.88' && Element.getAttribute('y') === '703.28') { addSvgElem(Index, Element, 'VNK1_status_1'); }
-        if (Element.getAttribute('x') === '898.69' && Element.getAttribute('y') === '703.51') { addSvgElem(Index, Element, 'VNK2_status_1'); }
-        if (Element.getAttribute('x') === '803.4' && Element.getAttribute('y') === '702.01') { addSvgElem(Index, Element, 'VNK3_status_1'); }
-        if (Element.getAttribute('x') === '1010.96' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK1_status_2'); }
-        if (Element.getAttribute('x') === '918.26' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK2_status_2'); }
-        if (Element.getAttribute('x') === '825.55' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK3_status_2'); }
+        if (Element.getAttribute('x') === '996.88' && Element.getAttribute('y') === '703.28') { addSvgElem(Index, Element, 'VNK1_status_2'); } // Sergey
+        if (Element.getAttribute('x') === '898.69' && Element.getAttribute('y') === '703.51') { addSvgElem(Index, Element, 'VNK2_status_2'); } // Sergey
+        if (Element.getAttribute('x') === '803.4' && Element.getAttribute('y') === '702.01') { addSvgElem(Index, Element, 'VNK3_status_2'); } // Sergey
+        if (Element.getAttribute('x') === '1010.96' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK1_status_1_1'); } // Sergey
+        if (Element.getAttribute('x') === '918.26' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK2_status_1_2'); } // Sergey
+        if (Element.getAttribute('x') === '825.55' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK3_status_1_3'); } // Sergey
         if (Element.innerHTML === '68') { addSvgElem(Index, Element, 'Temp_peref_1'); }
         if (Element.innerHTML === '140,0' && TextIndex === 296) { addSvgElem(Index, Element, 'nizkoe'); }
         if (Element.innerHTML === 'Р кол. газа' && TextIndex === 532) { addSvgElem(Index, Element, 'P col. gaza'); }
@@ -191,10 +193,10 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '8,56') { addSvgElem(Index, Element, 'P_pg_prir_gaz'); }
         if (Element.innerHTML === '30719') { addSvgElem(Index, Element, 'F_pg_prir_gaz', 'start'); }
         if (Element.innerHTML === '-93') { addSvgElem(Index, Element, 'dF_pg_prir_gaz'); }
-        if (Element.innerHTML === '1487') { addSvgElem(Index, Element, 'L4'); }
-        if (Element.innerHTML === '456' && Element.getAttribute('x') == 816.69) { addSvgElem(Index, Element, 'L2'); }
-        if (Element.innerHTML === '125' && Element.getAttribute('y') == 845.8) { addSvgElem(Index, Element, 'L3'); }
-
+        if (Element.innerHTML === '1487' && Element.getAttribute('x') === '1599.25' && Element.getAttribute('y') === '933.1') { addSvgElem(Index, Element, 'L1'); } // Sergey
+        if (Element.innerHTML === '1487' && Element.getAttribute('x') === '1703.94' && Element.getAttribute('y') === '933.1') { addSvgElem(Index, Element, 'L2'); } // Sergey
+        if (Element.innerHTML === '1487' && Element.getAttribute('x') === '1703.94' && Element.getAttribute('y') === '963.83') { addSvgElem(Index, Element, 'L3'); } // Sergey
+        if (Element.innerHTML === '1487' && Element.getAttribute('x') === '1599.25' && Element.getAttribute('y') === '961.75') { addSvgElem(Index, Element, 'L4'); } // Sergey
         if (Element.innerHTML === '49,4') { addSvgElem(Index, Element, 'H_step_isp'); }
         if (Element.innerHTML === '46,0') { addSvgElem(Index, Element, 'HCO_step_isp'); }
         if (Element.innerHTML === '216,1') { addSvgElem(Index, Element, 'V_dyt', 'start'); }
@@ -229,6 +231,12 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '10' && Element.getAttribute('x') == 707.62) { addSvgElem(Index, Element, 'P_vozd_tryb'); }
         if (Element.innerHTML === '9' && Element.getAttribute('x') == 718.7) { addSvgElem(Index, Element, 'P_gaza_tryb'); }
         if (Element.innerHTML === '0,00' && Element.getAttribute('x') == 706) { addSvgElem(Index, Element, 'CO_bor_tryb'); }
+        // Sergey
+        if (Element.innerHTML === '1210' && Element.getAttribute('x') === '1917.7' && Element.getAttribute('y') === '248.82') { addSvgElem(Index, Element, 't_gor_dut'); }
+        if (Element.innerHTML === '1210' && Element.getAttribute('x') === '1275.31' && Element.getAttribute('y') === '708.13') { addSvgElem(Index, Element, 't_gor_dut'); }
+        if (Element.innerHTML === '1210' && Element.getAttribute('x') === '1347.06' && Element.getAttribute('y') === '710.66') { addSvgElem(Index, Element, 't_gor_dut'); }
+        if (Element.innerHTML === '15' && Element.getAttribute('x') === '1254.49' && Element.getAttribute('y') === '893.55') { addSvgElem(Index, Element, 't_prirodn_gaz'); }
+        if (Element.innerHTML === 'Выпуск Л3' && Element.getAttribute('x') === '779.42' && Element.getAttribute('y') === '252.37') { addSvgElem(Index, Element, 'vipusk_L3'); }
 
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
@@ -265,9 +273,9 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'm776.56 338.41-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'kl_84'); }
         if (Element.getAttribute('d') === 'm998.44 338.41-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'kl_83'); }
         if (Element.getAttribute('d') === 'm957.81 359.24-36.45 21.88v-21.88l36.45 21.88z') { addSvgElem(Index, Element, 'kl_81'); }
-        if (Element.getAttribute('d') === 'M792.71 684.77h90.62v28.12h-90.62z') { addSvgElem(Index, Element, 'VNK3_status_1'); }
-        if (Element.getAttribute('d') === 'M886.46 684.77h90.62v28.12h-90.62z') { addSvgElem(Index, Element, 'VNK2_status_1'); }
-        if (Element.getAttribute('d') === 'M981.25 684.77h90.63v28.12h-90.63z') { addSvgElem(Index, Element, 'VNK1_status_1'); }
+        if (Element.getAttribute('d') === 'M792.71 684.77h90.62v28.12h-90.62z') { addSvgElem(Index, Element, 'VNK3_status_1_fon'); } // Sergey
+        if (Element.getAttribute('d') === 'M886.46 684.77h90.62v28.12h-90.62z') { addSvgElem(Index, Element, 'VNK2_status_1_fon'); } // Sergey
+        if (Element.getAttribute('d') === 'M981.25 684.77h90.63v28.12h-90.63z') { addSvgElem(Index, Element, 'VNK1_status_1_fon'); } // Sergey
         if (Element.getAttribute('d') === 'M804.17 714.97h71.87v25h-71.87z') { addSvgElem(Index, Element, 'VNK3_status_2'); }
         if (Element.getAttribute('d') === 'M896.88 714.97h71.87v25h-71.87z') { addSvgElem(Index, Element, 'VNK2_status_2'); }
         if (Element.getAttribute('d') === 'M989.58 714.97h71.88v25h-71.88z') { addSvgElem(Index, Element, 'VNK1_status_2'); }
@@ -429,6 +437,8 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M112.01 514.46h10v11.21h-10zM133.98 514.46h10v11.21h-10zM155.03 514.46h10v11.21h-10z') { addSvgElem(Index, Element, 'AKZ_45'); }
         if (Element.getAttribute('d') === 'M112.01 525.6h10v12.09h-10zM133.98 525.6h10v12.09h-10zM155.03 525.6h10v12.09h-10z') { addSvgElem(Index, Element, 'AKZ_30'); }
         if (Element.getAttribute('d') === 'M112.01 537.71h10v15.36h-10zM133.98 537.71h10v15.36h-10zM155.03 537.71h10v15.36h-10z') { addSvgElem(Index, Element, 'AKZ_17'); }
+        // Sergey
+        if (Element.getAttribute('d') === 'M1695.84 909.77h72.91v29.16h-72.91z') { addSvgElem(Index, Element, 'L2_elem'); }
 
       })
       ObjectSvg.svg.querySelectorAll('circle').forEach((Element) => {
@@ -552,6 +562,19 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1402.6 518.84c8.06 0 14.59 5.82 14.59 13.02 0 7.19-6.53 13.01-14.59 13.01-8.05 0-14.58-5.82-14.58-13.01 0-7.2 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_nagrev'); }
         if (Element.getAttribute('d') === 'M1402.6 548c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_1'); }
         if (Element.getAttribute('d') === 'M1402.6 576.13c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_2'); }
+        // Sergey
+        if (Element.getAttribute('d') === 'M679.12 263.96a2.99 2.99 0 0 1 4.2-.6c1.33.99 1.6 2.87.6 4.2l-4.8-3.6zM664 284.17l15.12-20.21 4.8 3.6-15.12 20.21-4.8-3.6zm4.8 3.6a2.99 2.99 0 0 1-4.2.6 2.99 2.99 0 0 1-.6-4.2l4.8 3.6z') { addSvgElem(Index, Element, '115_stripe'); }
+        if (Element.getAttribute('d') === 'M564.54 549.37a3.008 3.008 0 0 1 4.2-.6c1.32.99 1.59 2.87.6 4.2l-4.8-3.6zm-15.13 20.22 15.13-20.22 4.8 3.6-15.12 20.21-4.81-3.59zm4.81 3.59a3.002 3.002 0 0 1-4.81-3.59l4.81 3.59z') { addSvgElem(Index, Element, '123_stripe'); }
+        if (Element.getAttribute('d') === 'M1077.08 451.13h5.21v120.83h-5.21z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1090.62 451.13h5.21v120.83h-5.21z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1106.25 451.13h3.13v120.83h-3.13z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1119.79 451.13h5.21v120.83h-5.21z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1134.37 451.13h4.17v120.83h-4.17z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1146.87 451.13h5.21v120.83h-5.21z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1162.5 451.13h4.17v120.83h-4.17z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1178.12 451.13h4.17v120.83h-4.17z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1190.62 451.13h5.21v120.83h-5.21z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1206.25 451.13h4.17v120.83h-4.17z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
       })
     }
     if (ObjectSvg.name === 'BVNK_VNK2') {
@@ -565,7 +588,7 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '9,03') { addSvgElem(Index, Element, '2PI_04'); }
         if (Element.innerHTML === '124123') { addSvgElem(Index, Element, '2FI_02', 'start'); }
         if (Element.innerHTML === '2,79') { addSvgElem(Index, Element, '2QI_01'); }
-        if (Element.innerHTML === '345') { addSvgElem(Index, Element, 'dym_vybor_signala'); }
+        if (Element.innerHTML === '345') { addSvgElem(Index, Element, 'dym_vybor_signala_2'); } // Sergey
         if (Element.innerHTML === '1330' && TextIndex === 108) { addSvgElem(Index, Element, 'vybor_signala'); }
         if (Element.innerHTML === '1330' && TextIndex === 112) { addSvgElem(Index, Element, '2TI_02'); }
         if (Element.innerHTML === '1316') { addSvgElem(Index, Element, '2TI_03'); }
@@ -775,6 +798,14 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('cy') === '452.81' && Element.getAttribute('cx') === '743.93' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_kl038'); }
         if (Element.getAttribute('cy') === '452.21' && Element.getAttribute('cx') === '1003.04' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_kl037'); }
         if (Element.getAttribute('cy') === '452.21' && Element.getAttribute('cx') === '1003.04' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_kl037'); }
+        // Sergey
+        if (Element.getAttribute('cx') === '589.47' && Element.getAttribute('cy') === '641') { addSvgElem(Index, Element, 'circle_kl0331'); }
+        if (Element.getAttribute('cx') === '467.87' && Element.getAttribute('cy') === '639.14') { addSvgElem(Index, Element, 'circle_kl0332'); }
+        if (Element.getAttribute('cx') === '297.8' && Element.getAttribute('cy') === '757.44') { addSvgElem(Index, Element, 'circle_0F3'); }
+        if (Element.getAttribute('cx') === '423.12' && Element.getAttribute('cy') === '754.44') { addSvgElem(Index, Element, 'circle_0F2'); }
+        if (Element.getAttribute('cx') === '541.19' && Element.getAttribute('cy') === '754.44') { addSvgElem(Index, Element, 'circle_0F1'); }
+        if (Element.getAttribute('cx') === '1427.41' && Element.getAttribute('cy') === '300.17') { addSvgElem(Index, Element, 'circle_001a'); }
+        if (Element.getAttribute('cx') === '398.19' && Element.getAttribute('cy') === '389.87') { addSvgElem(Index, Element, 'circle_053'); }
 
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
@@ -836,10 +867,54 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1688.17 731.33h71.89v21.09h-71.89z') { addSvgElem(Index, Element, 'Fb_159'); }
         if (Element.getAttribute('d') === 'm319.38 690.85-13.51-8.52m-10.72-12.08h.24l28.1.3.05 20.37-4.14.03c1.79 14.07-9.1 28.16-24.25 28.16-13.49 0-24.43-10.94-24.43-24.43 0-13.5 10.94-24.43 24.43-24.43z') { addSvgElem(Index, Element, 'B3_1'); }
         if (Element.getAttribute('d') === 'm267.51 724.77.01-6.07h7.39l4.01-5.13 2.46-46.23h25.17l2.16 47.15 4.11 4.42h7.29v5.86z') { addSvgElem(Index, Element, 'B3_2'); }
+        if (Element.getAttribute('d') === 'M294.91 685.22c5.45 0 9.86 4.41 9.86 9.86 0 5.44-4.41 9.86-9.86 9.86-5.45 0-9.86-4.42-9.86-9.86 0-5.45 4.41-9.86 9.86-9.86z') { addSvgElem(Index, Element, 'B3_3'); } // Sergey
         if (Element.getAttribute('d') === 'm445.43 689.64-13.4-8.46M421.4 669.2h.23l27.87.31.05 20.2-4.11.02c1.78 13.96-9.02 27.93-24.04 27.93-13.38 0-24.23-10.85-24.23-24.23s10.85-24.23 24.23-24.23z') { addSvgElem(Index, Element, 'B2_1'); }
         if (Element.getAttribute('d') === 'M394.39 723.37v-6.02h7.34l3.97-5.09 2.44-45.85h24.97l2.14 46.77 4.07 4.38h7.24v5.81z') { addSvgElem(Index, Element, 'B2_2'); }
+        if (Element.getAttribute('d') === 'M421.56 684.14c5.4 0 9.78 4.38 9.78 9.78 0 5.4-4.38 9.78-9.78 9.78-5.4 0-9.78-4.38-9.78-9.78 0-5.4 4.38-9.78 9.78-9.78z') { addSvgElem(Index, Element, 'B2_3'); } // Sergey
         if (Element.getAttribute('d') === 'm564.44 696.82-13.5-8.53m-10.72-12.08h.24l28.09.31.05 20.36-4.14.03c1.79 14.07-9.09 28.16-24.24 28.16-13.49 0-24.43-10.94-24.43-24.43s10.94-24.43 24.43-24.43z') { addSvgElem(Index, Element, 'B1_1'); }
         if (Element.getAttribute('d') === 'M512.99 730.82v-6.06h7.39l4.01-5.14 2.46-46.22h25.17l2.16 47.15 4.11 4.41h7.29v5.86z') { addSvgElem(Index, Element, 'B1_2'); }
+        if (Element.getAttribute('d') === 'M540.38 691.27c5.45 0 9.86 4.42 9.86 9.86 0 5.45-4.41 9.86-9.86 9.86-5.44 0-9.86-4.41-9.86-9.86 0-5.44 4.42-9.86 9.86-9.86z') { addSvgElem(Index, Element, 'B1_3'); } // Sergey
+        // Sergey
+        if (Element.getAttribute('d') === 'M1695.71 610.01h2.63v155.55h-2.63z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1702.09 610.01h2.64v155.55h-2.64z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1709.36 610.01h1.82v155.55h-1.82z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1715.25 610.01h2.92v155.55h-2.92z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1722.42 610.01h2.74v155.55h-2.74z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1728.45 610.01h2.92v155.55h-2.92z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1736.09 610.01h1.82v155.55h-1.82z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1743 610.01h2.51v155.55H1743z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1749.17 610.01h2.64v155.55h-2.64z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1756.46 610.01h2.34v155.55h-2.34z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
+        if (Element.getAttribute('d') === 'M1284.83 610.01h2.63v155.55h-2.63z') { addSvgElem(Index, Element, 'vnk3_stripes'); }
+        if (Element.getAttribute('d') === 'M1291.21 610.01h2.64v155.55h-2.64z') { addSvgElem(Index, Element, 'vnk3_stripes'); }
+        if (Element.getAttribute('d') === 'M1298.49 610.01h1.82v155.55h-1.82z') { addSvgElem(Index, Element, 'vnk3_stripes'); }
+        if (Element.getAttribute('d') === 'M1304.37 610.01h2.92v155.55h-2.92z') { addSvgElem(Index, Element, 'vnk3_stripes'); }
+        if (Element.getAttribute('d') === 'M1311.54 610.01h2.74v155.55h-2.74z') { addSvgElem(Index, Element, 'vnk3_stripes'); }
+        if (Element.getAttribute('d') === 'M1317.57 610.01h2.92v155.55h-2.92z') { addSvgElem(Index, Element, 'vnk3_stripes'); }
+        if (Element.getAttribute('d') === 'M1325.21 610.01h1.82v155.55h-1.82z') { addSvgElem(Index, Element, 'vnk3_stripes'); }
+        if (Element.getAttribute('d') === 'M1332.12 610.01h2.51v155.55h-2.51z') { addSvgElem(Index, Element, 'vnk3_stripes'); }
+        if (Element.getAttribute('d') === 'M1338.29 610.01h2.64v155.55h-2.64z') { addSvgElem(Index, Element, 'vnk3_stripes'); }
+        if (Element.getAttribute('d') === 'M1345.59 610.01h2.34v155.55h-2.34z') { addSvgElem(Index, Element, 'vnk3_stripes'); }
+        if (Element.getAttribute('d') === 'm1306.95 554.03-5.25 2.01 12.84-23.48 10.38 23.48-4.67-3.31 8.17 26.27-5.38-5.51-7.91 17.25-8.82-17.19-5.91 3.44z') { addSvgElem(Index, Element, 'vnk3_fire'); }
+        if (Element.getAttribute('d') === 'm437.18 752.42-26.04.19') { addSvgElem(Index, Element, '0F2_stripe'); }
+        if (Element.getAttribute('d') === 'm548.58 764.75-16.39-20.25') { addSvgElem(Index, Element, '0F1_stripe'); }
+        if (Element.getAttribute('d') === 'm411.09 389.1-26.26.2') { addSvgElem(Index, Element, '053_stripe_1'); }
+        if (Element.getAttribute('d') === 'm398.12 401.65.14-23.57') { addSvgElem(Index, Element, '053_stripe_2'); }
+        if (Element.getAttribute('d') === 'm352.88 494.61-16.52-20.41') { addSvgElem(Index, Element, '051_stripe_1'); }
+        if (Element.getAttribute('d') === 'm357.71 484.94-26.26.19') { addSvgElem(Index, Element, '051_stripe_2'); }
+        if (Element.getAttribute('d') === 'm352.88 566.91-16.52-20.42') { addSvgElem(Index, Element, '052_stripe_1'); }
+        if (Element.getAttribute('d') === 'm357.71 557.23-26.26.2') { addSvgElem(Index, Element, '052_stripe_2'); }
+        if (Element.getAttribute('d') === 'm244.32 616.19-16.53-20.42') { addSvgElem(Index, Element, '035_stripe_1'); }
+        if (Element.getAttribute('d') === 'm249.14 606.51-26.26.19') { addSvgElem(Index, Element, '035_stripe_2'); }
+        if (Element.getAttribute('d') === 'm310.18 756.97-26.26.2') { addSvgElem(Index, Element, '0F3_stripe_1'); }
+        if (Element.getAttribute('d') === 'm297.73 769.23.14-23.57') { addSvgElem(Index, Element, '0F3_stripe_2'); }
+        if (Element.getAttribute('d') === 'm423.05 766.23.14-23.57') { addSvgElem(Index, Element, '0F2_stripe_1'); }
+        if (Element.getAttribute('d') === 'm436.25 753.72-26.26.19') { addSvgElem(Index, Element, '0F2_stripe_2'); }
+        if (Element.getAttribute('d') === 'm436.25 753.72-26.26.19') { addSvgElem(Index, Element, '0F2_stripe_3'); }
+        if (Element.getAttribute('d') === 'm541.12 766.23.14-23.57') { addSvgElem(Index, Element, '0F1_stripe_1'); }
+        if (Element.getAttribute('d') === 'm1435.73 214.52-26.25.2') { addSvgElem(Index, Element, '001_stripe_1'); }
+        if (Element.getAttribute('d') === 'm1439.1 300.33-26.26.19') { addSvgElem(Index, Element, '001a_stripe_1'); }
+        if (Element.getAttribute('d') === 'm1427.33 311.96.15-23.58') { addSvgElem(Index, Element, '001a_stripe_2'); }
       })
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
@@ -861,9 +936,9 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '20' && TextIndex === 172) { addSvgElem(Index, Element, '7TI_40'); }
         if (Element.innerHTML === '0,00' && TextIndex === 173) { addSvgElem(Index, Element, '7PI_11'); }
         if (Element.innerHTML === '0' && TextIndex === 174) { addSvgElem(Index, Element, '7FI_04'); }
-        if (Element.innerHTML === '0,00' && TextIndex === 177) { addSvgElem(Index, Element, '8QI_05_01'); }
-        if (Element.innerHTML === '0,00' && TextIndex === 178) { addSvgElem(Index, Element, '8QI_05_01'); }
-        if (Element.innerHTML === '0,00' && TextIndex === 179) { addSvgElem(Index, Element, '8QI_05_01'); }
+        if (Element.innerHTML === '0,00' && TextIndex === 177) { addSvgElem(Index, Element, '8QI_05_01'); } // Segey
+        if (Element.innerHTML === '0,00' && TextIndex === 178) { addSvgElem(Index, Element, '8QI_05_02'); } // Segey
+        if (Element.innerHTML === '0,00' && TextIndex === 179) { addSvgElem(Index, Element, '8QI_05_04'); } // Segey
         if (Element.innerHTML === '9,15' && TextIndex === 180) { addSvgElem(Index, Element, '7PI_13'); }
         if (Element.innerHTML === '91' && TextIndex === 181) { addSvgElem(Index, Element, '7PI_42'); }
         if (Element.innerHTML === '412' && TextIndex === 182) { addSvgElem(Index, Element, '5PI_08'); }
@@ -872,8 +947,8 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '1202' && TextIndex === 183) { addSvgElem(Index, Element, '5TI_21'); }
         if (Element.innerHTML === '1210' && TextIndex === 184) { addSvgElem(Index, Element, '5TI_22'); }
         if (Element.innerHTML === '526,80' && TextIndex === 187) { addSvgElem(Index, Element, 'PI_09'); }
-        if (Element.innerHTML === '0' && TextIndex === 193) { addSvgElem(Index, Element, 'VNK1_Fr'); }
-        if (Element.innerHTML === '0' && TextIndex === 194) { addSvgElem(Index, Element, 'VNK1_Fb'); }
+        if (Element.innerHTML === '0' && TextIndex === 193) { addSvgElem(Index, Element, 'VNK1_Fr', 'end'); } // Sergey
+        if (Element.innerHTML === '0' && TextIndex === 194) { addSvgElem(Index, Element, 'VNK1_Fb', 'end'); } // Sergey
         if (Element.innerHTML === '159' && TextIndex === 94) { addSvgElem(Index, Element, 'Tdym_1'); }
         if (Element.innerHTML === '1296' && TextIndex === 95) { addSvgElem(Index, Element, 'Tkyp_1'); }
         if (Element.innerHTML === '105385' && TextIndex === 191) { addSvgElem(Index, Element, 'VNK2_Fr'); }
@@ -928,8 +1003,90 @@ window.addEventListener('load', function () {
       });
     }
     if (ObjectSvg.name === 'vnk_spvg') {
+      // Sergey
+      ObjectSvg.svg.querySelectorAll('circle').forEach((Element, TextIndex) => {
+        if (Element.getAttribute('cx') === '734.36' && Element.getAttribute('cy') === '698.3') { addSvgElem(Index, Element, 'B3_3'); }
+        if (Element.getAttribute('cx') === '880.65' && Element.getAttribute('cy') === '702.01') { addSvgElem(Index, Element, 'B2_3'); }
+        if (Element.getAttribute('cx') === '1024.4' && Element.getAttribute('cy') === '702.01') { addSvgElem(Index, Element, 'B1_3'); }
+        if (Element.getAttribute('cx') === '936.28' && Element.getAttribute('cy') === '646.42') { addSvgElem(Index, Element, 'circle_kl0332'); }
+        if (Element.getAttribute('cx') === '936.28' && Element.getAttribute('cy') === '646.58') { addSvgElem(Index, Element, 'circle_kl0332'); }
+        if (Element.getAttribute('cx') === '1084.1' && Element.getAttribute('cy') === '646.42') { addSvgElem(Index, Element, 'circle_kl0331'); }
+        if (Element.getAttribute('cx') === '1084.1' && Element.getAttribute('cy') === '646.58') { addSvgElem(Index, Element, 'circle_kl0331'); }
+        if (Element.getAttribute('cx') === '732.01' && Element.getAttribute('cy') === '757.9') { addSvgElem(Index, Element, 'circle_0F3'); }
+        if (Element.getAttribute('cx') === '732.01' && Element.getAttribute('cy') === '758.13') { addSvgElem(Index, Element, 'circle_0F3'); }
+        if (Element.getAttribute('cx') === '878.82' && Element.getAttribute('cy') === '759.98') { addSvgElem(Index, Element, 'circle_0F2'); }
+        if (Element.getAttribute('cx') === '878.82' && Element.getAttribute('cy') === '760.22') { addSvgElem(Index, Element, 'circle_0F2'); }
+        if (Element.getAttribute('cx') === '1022.05' && Element.getAttribute('cy') === '761.39') { addSvgElem(Index, Element, 'circle_0F1'); }
+        if (Element.getAttribute('cx') === '1022.05' && Element.getAttribute('cy') === '761.15') { addSvgElem(Index, Element, 'circle_0F1'); }
+        if (Element.getAttribute('cx') === '1282.67' && Element.getAttribute('cy') === '548.14') { addSvgElem(Index, Element, 'circle_kl028'); }
+        if (Element.getAttribute('cx') === '1282.67' && Element.getAttribute('cy') === '547.98') { addSvgElem(Index, Element, 'circle_kl028'); }
+        if (Element.getAttribute('cx') === '1573.3' && Element.getAttribute('cy') === '548.77') { addSvgElem(Index, Element, 'circle_kl007'); }
+        if (Element.getAttribute('cx') === '1573.3' && Element.getAttribute('cy') === '548.61') { addSvgElem(Index, Element, 'circle_kl007'); }
+      });
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
+        // Sergey
+        if (Element.getAttribute('x') === '125.37' && Element.getAttribute('y') === '343.41') { addSvgElem(Index, Element, '6TI_39_1'); }
+        if (Element.getAttribute('x') === '249.58' && Element.getAttribute('y') === '345.23') { addSvgElem(Index, Element, '6TI_38_1'); }
+        if (Element.getAttribute('x') === '376.67' && Element.getAttribute('y') === '343.41') { addSvgElem(Index, Element, '6TI_37_1'); }
+        if (Element.getAttribute('x') === '124.58' && Element.getAttribute('y') === '390.87') { addSvgElem(Index, Element, '6TI_39_2'); }
+        if (Element.getAttribute('x') === '249.58' && Element.getAttribute('y') === '390.87') { addSvgElem(Index, Element, '6TI_38_2'); }
+        if (Element.getAttribute('x') === '376.15' && Element.getAttribute('y') === '390.87') { addSvgElem(Index, Element, '6TI_37_2'); }
+        if (Element.getAttribute('x') === '124.58' && Element.getAttribute('y') === '473.49') { addSvgElem(Index, Element, '6TI_39_3'); }
+        if (Element.getAttribute('x') === '249.58' && Element.getAttribute('y') === '473.49') { addSvgElem(Index, Element, '6TI_38_3'); }
+        if (Element.getAttribute('x') === '375.76' && Element.getAttribute('y') === '473.49') { addSvgElem(Index, Element, '6TI_37_3'); }
+        if (Element.getAttribute('x') === '125' && Element.getAttribute('y') === '517.11') { addSvgElem(Index, Element, '6TI_39_4'); }
+        if (Element.getAttribute('x') === '250.39' && Element.getAttribute('y') === '517.11') { addSvgElem(Index, Element, '6TI_38_4'); }
+        if (Element.getAttribute('x') === '376.17' && Element.getAttribute('y') === '517.11') { addSvgElem(Index, Element, '6TI_37_4'); }
+        if (Element.getAttribute('x') === '125' && Element.getAttribute('y') === '562.42') { addSvgElem(Index, Element, '6TI_39_5'); }
+        if (Element.getAttribute('x') === '250.39' && Element.getAttribute('y') === '562.42') { addSvgElem(Index, Element, '6TI_38_5'); }
+        if (Element.getAttribute('x') === '376.17' && Element.getAttribute('y') === '562.42') { addSvgElem(Index, Element, '6TI_37_5'); }
+        if (Element.getAttribute('x') === '125' && Element.getAttribute('y') === '607.74') { addSvgElem(Index, Element, '6TI_39_6'); }
+        if (Element.getAttribute('x') === '250.39' && Element.getAttribute('y') === '607.74') { addSvgElem(Index, Element, '6TI_38_6'); }
+        if (Element.getAttribute('x') === '376.17' && Element.getAttribute('y') === '607.74') { addSvgElem(Index, Element, '6TI_37_6'); }
+        if (Element.getAttribute('x') === '125' && Element.getAttribute('y') === '653.44') { addSvgElem(Index, Element, '6TI_39_7'); }
+        if (Element.getAttribute('x') === '250.39' && Element.getAttribute('y') === '653.44') { addSvgElem(Index, Element, '6TI_38_7'); }
+        if (Element.getAttribute('x') === '376.17' && Element.getAttribute('y') === '653.44') { addSvgElem(Index, Element, '6TI_37_7'); }
+        if (Element.getAttribute('x') === '125' && Element.getAttribute('y') === '698.75') { addSvgElem(Index, Element, '6TI_39_8'); }
+        if (Element.getAttribute('x') === '250.39' && Element.getAttribute('y') === '698.75') { addSvgElem(Index, Element, '6TI_38_8'); }
+        if (Element.getAttribute('x') === '376.17' && Element.getAttribute('y') === '698.75') { addSvgElem(Index, Element, '6TI_37_8'); }
+        if (Element.getAttribute('x') === '125' && Element.getAttribute('y') === '781.17') { addSvgElem(Index, Element, '6TI_39_9'); }
+        if (Element.getAttribute('x') === '250.39' && Element.getAttribute('y') === '781.17') { addSvgElem(Index, Element, '6TI_38_9'); }
+        if (Element.getAttribute('x') === '376.17' && Element.getAttribute('y') === '781.17') { addSvgElem(Index, Element, '6TI_37_9'); }
+        if (Element.getAttribute('x') === '125' && Element.getAttribute('y') === '826.1') { addSvgElem(Index, Element, '6TI_39_10'); }
+        if (Element.getAttribute('x') === '250.39' && Element.getAttribute('y') === '826.1') { addSvgElem(Index, Element, '6TI_38_10'); }
+        if (Element.getAttribute('x') === '376.17' && Element.getAttribute('y') === '826.1') { addSvgElem(Index, Element, '6TI_37_10'); }
+        if (Element.getAttribute('x') === '671.5' && Element.getAttribute('y') === '415.55') { addSvgElem(Index, Element, '6VI_3_1'); }
+        if (Element.getAttribute('x') === '821.5' && Element.getAttribute('y') === '415.55') { addSvgElem(Index, Element, '6VI_2_1'); }
+        if (Element.getAttribute('x') === '974.23' && Element.getAttribute('y') === '415.55') { addSvgElem(Index, Element, '6VI_1_1'); }
+        if (Element.getAttribute('x') === '671.5' && Element.getAttribute('y') === '461.25') { addSvgElem(Index, Element, '6VI_3_2'); }
+        if (Element.getAttribute('x') === '821.5' && Element.getAttribute('y') === '461.25') { addSvgElem(Index, Element, '6VI_2_2'); }
+        if (Element.getAttribute('x') === '974.23' && Element.getAttribute('y') === '461.25') { addSvgElem(Index, Element, '6VI_1_2'); }
+        if (Element.getAttribute('x') === '671.5' && Element.getAttribute('y') === '504.22') { addSvgElem(Index, Element, '6VI_3_3'); }
+        if (Element.getAttribute('x') === '821.5' && Element.getAttribute('y') === '504.22') { addSvgElem(Index, Element, '6VI_2_3'); }
+        if (Element.getAttribute('x') === '974.23' && Element.getAttribute('y') === '504.22') { addSvgElem(Index, Element, '6VI_1_3'); }
+        if (Element.getAttribute('x') === '671.5' && Element.getAttribute('y') === '547.58') { addSvgElem(Index, Element, '6VI_3_4'); }
+        if (Element.getAttribute('x') === '821.5' && Element.getAttribute('y') === '547.58') { addSvgElem(Index, Element, '6VI_2_4'); }
+        if (Element.getAttribute('x') === '974.23' && Element.getAttribute('y') === '547.58') { addSvgElem(Index, Element, '6VI_1_4'); }
+        if (Element.innerHTML === '18' && TextIndex === 381) { addSvgElem(Index, Element, '6TI_31_3'); }
+        if (Element.innerHTML === '20' && TextIndex === 382) { addSvgElem(Index, Element, '6TI_31_2'); }
+        if (Element.innerHTML === '18' && TextIndex === 383) { addSvgElem(Index, Element, '6TI_31_1'); }
+        if (Element.innerHTML === '0,00' && TextIndex === 378) { addSvgElem(Index, Element, '8QI_05_1'); }
+        if (Element.innerHTML === '0,00' && TextIndex === 379) { addSvgElem(Index, Element, '8QI_05_2'); }
+        if (Element.innerHTML === '0,00' && TextIndex === 380) { addSvgElem(Index, Element, '8QI_05_4'); }
+        if (Element.innerHTML === '30' && TextIndex === 384) { addSvgElem(Index, Element, '9TI_41'); }
+        if (Element.innerHTML === '86' && TextIndex === 385) { addSvgElem(Index, Element, '9TI_42'); }
+        if (Element.innerHTML === '92' && TextIndex === 386) { addSvgElem(Index, Element, '7TI_42'); }
+        if (Element.innerHTML === '134' && TextIndex === 387) { addSvgElem(Index, Element, '9TI_34'); }
+        if (Element.innerHTML === '226' && TextIndex === 388) { addSvgElem(Index, Element, '9TI_32'); }
+        if (Element.innerHTML === '73' && TextIndex === 390) { addSvgElem(Index, Element, '9TI_35'); }
+        if (Element.innerHTML === '58' && TextIndex === 389) { addSvgElem(Index, Element, '9TI_33'); }
+        if (Element.innerHTML === '36' && TextIndex === 391) { addSvgElem(Index, Element, '9TI_30'); }
+        if (Element.innerHTML === '36' && TextIndex === 392) { addSvgElem(Index, Element, '9TI_44'); }
+        if (Element.innerHTML === '10,00' && TextIndex === 393) { addSvgElem(Index, Element, 'PI_16'); }
+        if (Element.innerHTML === '64  %' && TextIndex === 208) { addSvgElem(Index, Element, 'klOF3_proc'); }
+        if (Element.innerHTML === '0  %' && TextIndex === 209) { addSvgElem(Index, Element, 'klOF2_proc'); }
+        if (Element.innerHTML === '65  %' && TextIndex === 210) { addSvgElem(Index, Element, 'klOF1_proc'); }
       });
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, TextIndex) => {
         if (Element.getAttribute('d') === 'M67.66 323.97h88.09v26.56H67.66z') { addSvgElem(Index, Element, 'ramka_6TI_39_1'); }
@@ -996,8 +1153,8 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'm1577.55 372.38-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_030'); }
         if (Element.getAttribute('d') === 'm1291.95 430.56-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_038'); }
         if (Element.getAttribute('d') === 'm1580.5 430.46-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_037'); }
-        if (Element.getAttribute('d') === 'm1298.5 557.46-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_028'); }
-        if (Element.getAttribute('d') === 'm1588.5 557.46-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_007'); }
+        if (Element.getAttribute('d') === 'm1298.5 557.46-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl028'); } // Sergey
+        if (Element.getAttribute('d') === 'm1588.5 557.46-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl007'); } // Sergey
         if (Element.getAttribute('d') === 'm1302.5 616.71-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_020'); }
         if (Element.getAttribute('d') === 'm1588.97 617.24-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_025'); }
         if (Element.getAttribute('d') === 'm1461.68 687.99-31-18v18l31-18z') { addSvgElem(Index, Element, 'kl_004'); }
@@ -1015,6 +1172,16 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M854.6 730.23v-5.76h7.03l3.81-4.88 2.35-43.95h23.92l2.05 44.83 3.91 4.19h6.93v5.57z') { addSvgElem(Index, Element, 'B2_2'); }
         if (Element.getAttribute('d') === 'm1047.27 697.91-12.84-8.11m-10.19-11.48h.23l26.71.29.05 19.36-3.94.03c1.7 13.37-8.65 26.76-23.05 26.76-12.82 0-23.22-10.39-23.22-23.22 0-12.83 10.4-23.22 23.22-23.22z') { addSvgElem(Index, Element, 'B1_1'); }
         if (Element.getAttribute('d') === 'M998.35 730.23v-5.76h7.04l3.8-4.88 2.35-43.95h23.92l2.06 44.83 3.9 4.19h6.93v5.57z') { addSvgElem(Index, Element, 'B1_2'); }
+        // Sergey
+        if (Element.getAttribute('d') === 'm1013.18 749.06 15.86 23.79') { addSvgElem(Index, Element, '0F1_stripe'); }
+        if (Element.getAttribute('d') === 'M864.62 758.77h28.6') { addSvgElem(Index, Element, '0F2_stripe'); }
+        if (Element.getAttribute('d') === 'm722.28 745.75 15.78 23.85') { addSvgElem(Index, Element, '0F3_stripe'); }
+        if (Element.getAttribute('d') === 'M717.16 756.55h28.6') { addSvgElem(Index, Element, '0F3_stripe_1'); }
+        if (Element.getAttribute('d') === 'M732.07 746.57v22.81') { addSvgElem(Index, Element, '0F3_stripe_2'); }
+        if (Element.getAttribute('d') === 'M878.88 748.65v22.82') { addSvgElem(Index, Element, '0F2_stripe_2'); }
+        if (Element.getAttribute('d') === 'M1022.11 749.83v22.81') { addSvgElem(Index, Element, '0F1_stripe_1'); }
+        if (Element.getAttribute('d') === 'm592.79 594.7 15.77 23.85') { addSvgElem(Index, Element, '035_stripe_1'); }
+        if (Element.getAttribute('d') === 'M588.91 605.5h28.59') { addSvgElem(Index, Element, '035_stripe_2'); }
       })
     }
     if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
@@ -1567,6 +1734,10 @@ window.addEventListener('load', function () {
       });
     }
     if (ObjectSvg.name === 'bzu') {
+      // Sergey
+      ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element, Index) => {
+        if (Element.getAttribute('cx') === '540.29' && Element.getAttribute('cy') === '234.41' && Element.getAttribute('rx') === '19.47' && Element.getAttribute('ry') === '17.71') { addSvgElem(Index, Element, 'left_ellipse'); }
+      })
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '17,1' && TextIndex === 323) { addSvgElem(Index, Element, 'B1_ves'); }
         if (Element.innerHTML === '24,8' && TextIndex === 324) { addSvgElem(Index, Element, 'B2_ves'); }
@@ -1715,6 +1886,24 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '0' && TextIndex === 406) { addSvgElem(Index, Element, 'str51_SM_9'); }
         if (Element.innerHTML === '0' && TextIndex === 407) { addSvgElem(Index, Element, 'str51_SM_10'); }
         if (Element.innerHTML === '14,0' && TextIndex === 418) { addSvgElem(Index, Element, 'str51_SM_11'); }
+        // Sergey
+        if (Element.innerHTML === '4' && Element.getAttribute('transform') === 'matrix(1.06968 0 0 1 290.773 -182.401)') { addSvgElem(Index, Element, 'zaprosi_shp_stroka'); }
+        if (Element.innerHTML === '263' && Element.getAttribute('transform') === 'matrix(1.10402 0 0 1 269.054 -254.938)') { addSvgElem(Index, Element, 'dlina_porcii'); }
+        if (Element.innerHTML === 'К' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 666.134 101.028)') { addSvgElem(Index, Element, 'B1_Tip_text'); }
+        if (Element.innerHTML === 'См' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 675.968 127.83)') { addSvgElem(Index, Element, 'B2_Tip_text'); }
+        if (Element.innerHTML === 'К' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 666.134 152.977)') { addSvgElem(Index, Element, 'T3_Tip_text'); }
+        if (Element.innerHTML === 'Р' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 668.038 181.991)') { addSvgElem(Index, Element, 'T2_Tip_text'); }
+        if (Element.innerHTML === 'К' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 666.134 209.123)') { addSvgElem(Index, Element, 'T1_Tip_text'); }
+        if (Element.innerHTML === 'К' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 666.787 101.845)') { addSvgElem(Index, Element, 'B1_Tip_text'); }
+        if (Element.innerHTML === 'См' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 676.593 128.454)') { addSvgElem(Index, Element, 'B2_Tip_text'); }
+        if (Element.innerHTML === 'К' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 666.787 153.793)') { addSvgElem(Index, Element, 'T3_Tip_text'); }
+        if (Element.innerHTML === 'Р' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 668.736 182.805)') { addSvgElem(Index, Element, 'T2_Tip_text'); }
+        if (Element.innerHTML === 'К' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 666.787 209.94)') { addSvgElem(Index, Element, 'T1_Tip_text'); }
+        if (Element.innerHTML === 'См' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 379.982 440.594)') { addSvgElem(Index, Element, 'str51_down'); }
+        if (Element.innerHTML === 'См' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 380.485 441.096)') { addSvgElem(Index, Element, 'str51_down'); }
+        if (Element.innerHTML === 'К' && Element.getAttribute('transform') === 'matrix(1.14419 0 0 1 -611.004 -249.71)') { addSvgElem(Index, Element, 'left_ellipse_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.10719 0 0 1 -550.241 -220.669)') { addSvgElem(Index, Element, 'left_matrix_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.10719 0 0 1 -337.526 -221.799)') { addSvgElem(Index, Element, 'right_matrix_text'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.getAttribute('d') === 'M1438.84 676.74h82.67c1.33 0 2.42 1.09 2.42 2.42v24.62c0 1.34-1.09 2.42-2.42 2.42h-82.67c-1.33 0-2.42-1.08-2.42-2.42v-24.62c0-1.33 1.09-2.42 2.42-2.42z') { addSvgElem(Index, Element, 'btn_Gryzit_1'); }
@@ -1866,7 +2055,8 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1979.91 923.31c-3.12-2.19-7.44-1.4-9.65 1.76-2.22 3.17-1.48 7.5 1.64 9.68 3.12 2.19 7.45 1.4 9.66-1.76s1.47-7.5-1.65-9.68z') { addSvgElem(Index, Element, 'Str51_Oh'); }
         if (Element.getAttribute('d') === 'M1458.19 159.4h61.85c1.31 0 2.38 1.62 2.38 3.61v17.96c0 1.98-1.07 3.6-2.38 3.6h-61.85c-1.32 0-2.39-1.62-2.39-3.6v-17.96c0-1.99 1.07-3.61 2.39-3.61z') { addSvgElem(Index, Element, 'Pusk'); }
         if (Element.getAttribute('d') === 'M1547.16 159.4h61.85c1.31 0 2.38 1.62 2.38 3.61v17.96c0 1.98-1.07 3.6-2.38 3.6h-61.85c-1.32 0-2.39-1.62-2.39-3.6v-17.96c0-1.99 1.07-3.61 2.39-3.61z') { addSvgElem(Index, Element, 'Stop'); }
-        if (Element.getAttribute('d') === '') { addSvgElem(Index, Element, ''); }
+        // Sergey
+        if (Element.getAttribute('d') === 'M548.13 515.11h68.36v10.04h-68.36z') { addSvgElem(Index, Element, 'pech_left_down_zaglushka'); }
       })
     }
     if (ObjectSvg.name === 'vvod_znachenij') {
