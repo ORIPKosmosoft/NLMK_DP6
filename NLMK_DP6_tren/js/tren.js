@@ -1,5 +1,6 @@
 /*                TODO
 ----------------------------------------------------
+Изменить время которое считается в окончатор на время реальное за компом
 ----------------------------------------------------
 */
 function loadTrenActions() {
@@ -108,35 +109,6 @@ function startTren(Restart = false) {
   if (Restart === false)
     window.requestAnimationFrame(trenTimeTick);
 }
-
-
-// function observeTimeChanges(callback) {
-//   let lastTime = new Date();
-//   function checkTime() {
-//     const currentTime = new Date();
-//     if (currentTime.getTime() - lastTime.getTime() >= 1000) {
-//       callback();
-//       lastTime = currentTime;
-//     }
-//     requestAnimationFrame(checkTime);
-//   }
-//   checkTime();
-// }
-
-// // Пример использования
-// observeTimeChanges(() => {
-//   const currentTime = new Date();
-//   const hours = currentTime.getHours();
-//   const minutes = currentTime.getMinutes();
-//   const seconds = currentTime.getSeconds();
-// //   document.querySelector(".time-hour").textContent = time.split(":")[0];
-// //   document.querySelector(".time-minute").textContent = time.split(":")[1];
-// //   document.querySelector(".time-second").textContent = time.split(":")[2];
-
-//   document.querySelector(".time-hour").textContent = hours.toString().padStart(2, "0");
-//   document.querySelector(".time-minute").textContent = minutes.toString().padStart(2, "0");
-//   document.querySelector(".time-second").textContent = seconds.toString().padStart(2, "0");
-// });
 
 function convertMilliseconds(milliseconds) {
   const seconds = Math.floor(milliseconds / 1000);
@@ -402,7 +374,6 @@ function handleError(Mesh) {
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name ? Mesh.name : Mesh} в действии ${devHelper.trenVals.currentAction} неверный.`);
   sendMessage("Ошибка", "Вы совершили неверное действие.");
   devHelper.endVals.errors[devHelper.endVals.currentChapter]++;
-  console.log('Ошибка', devHelper.endVals.errors, 'чаптер', devHelper.endVals.currentChapter);
 }
 
 function trenClickOnSvgElem(SvgElemHelper = undefined) {
@@ -605,10 +576,6 @@ function trenFinish() {
       }
     })
   })
-  
-
-  //------------------------------------------------------------------------------------------------------------------------------------------
-  console.log(devHelper.endVals);
   //------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -783,8 +750,6 @@ function newActionStartHelper(Action) {
       }
     }
   } else {
-    //   if (document.querySelector('.box-scenario-text'))
-    //     document.querySelector('.box-scenario-text').classList.toggle('current', true);
   }
   
   if (devHelper.endVals.currentActionCount <= devHelper.endVals.actionChapter[devHelper.endVals.currentChapter]) {
@@ -792,9 +757,9 @@ function newActionStartHelper(Action) {
     devHelper.endVals.currentChapter++;
     devHelper.endVals.errors.push(0);
     if (devHelper.endVals.currentChapter !== 1) {
-      let newVal = devHelper.trenVals.timers.allTime / 1000 - devHelper.endVals.humanTime[devHelper.endVals.humanTime.length - 1];
+      let newVal = document.querySelector('.box-time').milisecs / 1000 - devHelper.endVals.humanTime.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
       devHelper.endVals.humanTime.push(Math.ceil(newVal))
-    } else devHelper.endVals.humanTime.push(Math.ceil(devHelper.trenVals.timers.allTime / 1000));
+    } else devHelper.endVals.humanTime.push(Math.ceil(document.querySelector('.box-time').milisecs / 1000));
   } else {
     devHelper.endVals.currentActionCount++;
   }
