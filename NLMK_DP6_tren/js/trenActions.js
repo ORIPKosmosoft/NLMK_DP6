@@ -934,7 +934,7 @@ const devHelper = {
 // красные круги на 028
 const timeDiff = -0;
 let tempActions = [
-
+/*
   [ // test scenario 1
     ////--------------------------------2---------------------------------------- 
     // {
@@ -977,32 +977,98 @@ let tempActions = [
     //   startTime: timeDiff + 1,
     //   human: true,
     // },
+    // {
+    //   action: {
+    //     target2D: 'kl029',
+    //     // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+    //     // rotation: { y: 1.571 },
+    //   },
+    //   // duration: 0.3,
+    //   startTime: timeDiff + 1,
+    //   human: true,
+    //   // concentration: [
+    //   //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
+    //   // ]
+    // },
+    // {
+    //   action: {
+    //     target3D: 'fPrirodGazReg',
+    //     number: '024.5',
+    //     color: 'red',
+    //   },
+    //   startTime: timeDiff + 6,
+    // },
     {
+      scenarioText: 'Текст 1',
+      sender: 'Система',
       action: {
-        target2D: 'kl029',
-        // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        // rotation: { y: 1.571 },
+        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        rotation: { y: 1.571 },
       },
-      // duration: 0.3,
+      duration: 0.3,
       startTime: timeDiff + 1,
       human: true,
-      // concentration: [
-      //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-      // ]
     },
     {
+      scenarioText: 'Текст 2',
+      sender: 'Система',
       action: {
-        target3D: 'fPrirodGazReg',
-        number: '024.5',
-        color: 'red',
+        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        rotation: { y: 1.571 },
       },
-      startTime: timeDiff + 30,
+      duration: 0.3,
+      startTime: timeDiff + 2,
+      human: true,
     },
     {
-      startTime: timeDiff + 50,
+      scenarioText: 'Текст 3',
+      sender: 'Система',
+      action: {
+        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        rotation: { y: 1.571 },
+      },
+      duration: 0.3,
+      startTime: timeDiff + 3,
+      human: true,
+    },
+    {
+      scenarioText: 'Текст 4',
+      sender: 'Система',
+      action: {
+        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        rotation: { y: 1.571 },
+      },
+      duration: 0.3,
+      startTime: timeDiff + 4,
+      human: true,
+    },
+    {
+      scenarioText: 'Текст 5',
+      sender: 'Система',
+      action: {
+        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        rotation: { y: 1.571 },
+      },
+      duration: 0.3,
+      startTime: timeDiff + 5,
+      human: true,
+    },
+    {
+      scenarioText: 'Текст 6',
+      sender: 'Система',
+      action: {
+        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        rotation: { y: 1.571 },
+      },
+      duration: 0.3,
+      startTime: timeDiff + 6,
+      human: true,
+    },
+    {
+      startTime: timeDiff + 7,
     },
   ],
-
+*/
   // Первый сценарий  
   [
     {

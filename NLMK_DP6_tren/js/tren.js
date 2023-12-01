@@ -57,7 +57,7 @@ function startTren(Restart = false) {
   // TODO тут сделать исчезание 
   document.querySelector('.end-cointainer').style.opacity = '';
   document.querySelector('.end-cointainer').style.display = '';
-  let maxChapterActions = Math.ceil(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length / 6);
+  let maxChapterActions = Math.floor(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length / 6);
   devHelper.endVals.actionChapter = [maxChapterActions, maxChapterActions, maxChapterActions, maxChapterActions, maxChapterActions, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length - maxChapterActions * 5];
   devHelper.endVals.currentChapter = 0;
   devHelper.endVals.currentActionCount = 0;
@@ -105,7 +105,6 @@ function startTren(Restart = false) {
     }
   })
   devHelper.endVals.currentChapter = 0;
-
   if (Restart === false)
     window.requestAnimationFrame(trenTimeTick);
 }
@@ -402,10 +401,8 @@ function handlePosition(currentAction, Mesh) {
 function handleError(Mesh) {
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name ? Mesh.name : Mesh} в действии ${devHelper.trenVals.currentAction} неверный.`);
   sendMessage("Ошибка", "Вы совершили неверное действие.");
-  // if (!devHelper.endVals.errors[devHelper.endVals.currentChapter + 1])
-  //   devHelper.endVals.errors.push(1);
-  // else 
-  devHelper.endVals.errors[devHelper.endVals.currentChapter + 1]++;
+  devHelper.endVals.errors[devHelper.endVals.currentChapter]++;
+  console.log('Ошибка', devHelper.endVals.errors, 'чаптер', devHelper.endVals.currentChapter);
 }
 
 function trenClickOnSvgElem(SvgElemHelper = undefined) {
@@ -608,6 +605,10 @@ function trenFinish() {
       }
     })
   })
+  
+
+  //------------------------------------------------------------------------------------------------------------------------------------------
+  console.log(devHelper.endVals);
   //------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -785,15 +786,17 @@ function newActionStartHelper(Action) {
     //   if (document.querySelector('.box-scenario-text'))
     //     document.querySelector('.box-scenario-text').classList.toggle('current', true);
   }
-  devHelper.endVals.currentActionCount++;
-  if (devHelper.endVals.currentActionCount > devHelper.endVals.actionChapter[devHelper.endVals.currentChapter]) {
+  
+  if (devHelper.endVals.currentActionCount <= devHelper.endVals.actionChapter[devHelper.endVals.currentChapter]) {
     devHelper.endVals.currentActionCount = 1;
     devHelper.endVals.currentChapter++;
-    devHelper.endVals.errors.push([0]);
+    devHelper.endVals.errors.push(0);
     if (devHelper.endVals.currentChapter !== 1) {
       let newVal = devHelper.trenVals.timers.allTime / 1000 - devHelper.endVals.humanTime[devHelper.endVals.humanTime.length - 1];
       devHelper.endVals.humanTime.push(Math.ceil(newVal))
     } else devHelper.endVals.humanTime.push(Math.ceil(devHelper.trenVals.timers.allTime / 1000));
+  } else {
+    devHelper.endVals.currentActionCount++;
   }
 }
 
