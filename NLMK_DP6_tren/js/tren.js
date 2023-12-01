@@ -49,6 +49,7 @@ function startTren(Restart = false) {
   }
   setTextScenario(devHelper.trenVals.scenario);
   takeStartingState(Restart);
+  changeTimerText(true);
   if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human && devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human &&
     devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].startTime === 0) {
     devHelper.trenVals.waitingInput = true;
@@ -108,12 +109,79 @@ function startTren(Restart = false) {
   if (Restart === false)
     window.requestAnimationFrame(trenTimeTick);
 }
+
+
+// function observeTimeChanges(callback) {
+//   let lastTime = new Date();
+//   function checkTime() {
+//     const currentTime = new Date();
+//     if (currentTime.getTime() - lastTime.getTime() >= 1000) {
+//       callback();
+//       lastTime = currentTime;
+//     }
+//     requestAnimationFrame(checkTime);
+//   }
+//   checkTime();
+// }
+
+// // Пример использования
+// observeTimeChanges(() => {
+//   const currentTime = new Date();
+//   const hours = currentTime.getHours();
+//   const minutes = currentTime.getMinutes();
+//   const seconds = currentTime.getSeconds();
+// //   document.querySelector(".time-hour").textContent = time.split(":")[0];
+// //   document.querySelector(".time-minute").textContent = time.split(":")[1];
+// //   document.querySelector(".time-second").textContent = time.split(":")[2];
+
+//   document.querySelector(".time-hour").textContent = hours.toString().padStart(2, "0");
+//   document.querySelector(".time-minute").textContent = minutes.toString().padStart(2, "0");
+//   document.querySelector(".time-second").textContent = seconds.toString().padStart(2, "0");
+// });
+
+function convertMilliseconds(milliseconds) {
+  const seconds = Math.floor(milliseconds / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+
+  const remainingSeconds = seconds % 60;
+  const remainingMinutes = minutes % 60;
+
+  return {
+    hours: hours.toString().padStart(2, "0"),
+    minutes: remainingMinutes.toString().padStart(2, "0"),
+    seconds: remainingSeconds.toString().padStart(2, "0")
+  };
+}
+
+function changeTimerText(Start = false) {
+  if (Start === true) {
+    document.querySelector('.box-time').startRealTime = new Date();
+    document.querySelector('.box-time').textTime = '00:00:00';
+    document.querySelector('.box-time').milisecs = 0;
+  } else {
+    const currentTime = new Date();
+    const lastTime = document.querySelector('.box-time').startRealTime;
+    if (currentTime.getTime() - lastTime.getTime() >= 1000) {
+      document.querySelector('.box-time').milisecs += currentTime.getTime() - lastTime.getTime();
+      document.querySelector('.box-time').textTime = String(getMyTime(document.querySelector('.box-time').milisecs))
+      document.querySelector('.box-time').startRealTime = currentTime;
+    }
+  }
+  let tempTextTime = convertMilliseconds(document.querySelector('.box-time').milisecs);
+  document.querySelector(".time-hour").textContent = tempTextTime.hours;
+  document.querySelector(".time-minute").textContent = tempTextTime.minutes;
+  document.querySelector(".time-second").textContent = tempTextTime.seconds;
+}
+
+
 function trenTimeTick(timeStamp) {
   if (devHelper.trenVals.scenario !== undefined) {
     devHelper.model3DVals.scene.render();
     if (devHelper.trenVals.ended === false) {
       if (devHelper.trenVals.timers.allTimeHelper === 0) devHelper.trenVals.timers.allTimeHelper = timeStamp;
       devHelper.trenVals.timers.allTime = Number(timeStamp - devHelper.trenVals.timers.allTimeHelper).toFixed(2);
+      changeTimerText();
       if (devHelper.trenVals.waitingInput === false) {
         if (devHelper.trenVals.timers.actionTimeHelper === 0) {
           devHelper.trenVals.timers.scenarioTimeHelper = devHelper.trenVals.timers.scenarioTime;
@@ -1124,9 +1192,9 @@ function clickCloseChat(e) {
 
 function setLifeTime(time) {
   devHelper.trenVals.timers.lifeTime = time;
-  document.querySelector(".time-hour").textContent = time.split(":")[0];
-  document.querySelector(".time-minute").textContent = time.split(":")[1];
-  document.querySelector(".time-second").textContent = time.split(":")[2];
+  // document.querySelector(".time-hour").textContent = time.split(":")[0];
+  // document.querySelector(".time-minute").textContent = time.split(":")[1];
+  // document.querySelector(".time-second").textContent = time.split(":")[2];
 }
 // TIMER
 {
@@ -1384,7 +1452,9 @@ function newImageCollapseMenu(e) {
 // ЦЕНТРОВАТЬ ОКНА от КНОПКИ
 function setCenterWindow(item) {
   let helperWindow = document.querySelector(`.${item.getAttribute('window-interface')}`)
-  helperWindow.classList.add('transition-0');
+  // helperWindow.classList.add('transition-0');
+  // setTimeout(() => {
+  helperWindow.classList.remove('transition-0');
   let b_center = item.getBoundingClientRect().height / 2;
   let w_center = helperWindow.getBoundingClientRect().height / 2;
   helperWindow.style.top = ConvertPxToVh(item.getBoundingClientRect().y + b_center - w_center) + 'vh';
@@ -1392,7 +1462,7 @@ function setCenterWindow(item) {
     helperWindow.style.top = (99 - ConvertPxToVh(helperWindow.getBoundingClientRect().height)) + 'vh';
     helperWindow.setAttribute('sy', helperWindow.style.top);
   }
-  setTimeout(() => { helperWindow.classList.remove('transition-0'); }, 50);
+  // }, 50);
 }
 
 // БОЛЬШОЙ БИНД НА СМЕНУ ЦВЕТА КНОПОК // НОВОЕ СВП В 1Ю КНОПКУ  // КЛИК
@@ -1578,10 +1648,10 @@ document.getElementById('b_chat').addEventListener("mouseover", (e) => { setMini
 document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseover", (e) => {
   let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   if (currentAction && currentAction.concentration) createConcentrationEffectCondition(currentAction.concentration);
-  else if (currentAction && currentAction.action && currentAction.action.target3D && currentAction.human) {
-    let tempMesh = findMesh(currentAction.action.target3D);
-    if (tempMesh) changeColorTexture(tempMesh, true, true);
-    document.querySelector('.box-help').innerHTML = 'Нажать курсором на 3Д объект,<br> выделенный жёлтым цветом.';
+  else if (devHelper.trenVals.multiAction && devHelper.trenVals.multiAction.length > 0) {
+    helperHighlightOn(devHelper.trenVals.multiAction)
+  } else if (currentAction && currentAction.action && currentAction.action.target3D && currentAction.human) {
+    helperHighlightOn(currentAction.action);
   } else if (currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
     let tempRealShemeName, tempRealHelperName, tempRealHelper;
     if (document.querySelector('#svg-helper')) {
@@ -1622,8 +1692,13 @@ document.getElementById('b_help').querySelector('.click-button-tren').addEventLi
 document.getElementById('b_help').querySelector('.click-button-tren').addEventListener("mouseout", (e) => {
   let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   if (currentAction && currentAction.action && currentAction.action.target3D && currentAction.human) {
-    let tempMesh = findMesh(currentAction.action.target3D);
-    if (tempMesh) changeColorTexture(tempMesh, false, true);
+    helperHighlightOff(currentAction.action.target3D);
+  } else if (devHelper.trenVals.multiAction && devHelper.trenVals.multiAction.length > 0) {
+    devHelper.trenVals.multiAction.forEach(obj => {
+      if (obj.action && obj.action.target3D) {
+        helperHighlightOff(obj.action.target3D);
+      }
+    });
   }
   if (document.querySelector('.concentration')) document.querySelector('.concentration').style.opacity = 0;
   if (document.getElementById('b_help').active3DTexture) {
@@ -1781,4 +1856,42 @@ function areObjectsEqual(obj1, obj2) {
     }
   }
   return true;
+}
+
+function helperHighlightOn(Actions) {
+  if (Array.isArray(Actions)) {
+    let teamMeshNames = '', placeName = '';
+    Actions.forEach(obj => {
+      if (obj.action && obj.action.target3D) {
+        let tempMesh = findMesh(obj.action.target3D);
+        if (tempMesh) {
+          let tempName = (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)) ?
+            (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)).realName : tempMesh.name;
+          teamMeshNames += tempName + ', ';
+          changeColorTexture(tempMesh, true, true);
+          let tempMeshPosition = (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)) ?
+            (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)).position : undefined;
+          placeName = devHelper.model3DVals.cameraPositions.find(elem => elem.position === tempMeshPosition).name;
+        }
+      }
+    });
+    teamMeshNames = teamMeshNames.slice(0, -2);
+    document.querySelector('.box-help').innerHTML = `Нажать курсором на 3Д объект${Actions.length > 1 ? 'ы' : ''} ${teamMeshNames}, расположенны${Actions.length > 1 ? 'е' : 'й'} на позиции "${placeName}".`;
+  } else {
+    let tempMesh = findMesh(Actions.target3D);
+    if (tempMesh) {
+      let teamMeshName = (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)) ?
+        (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)).realName : tempMesh.name;
+      let tempMeshPosition = (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)) ?
+        (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)).position : undefined;
+      let placeName = devHelper.model3DVals.cameraPositions.find(elem => elem.position === tempMeshPosition).name;
+      document.querySelector('.box-help').innerHTML = `Нажать курсором на 3Д объект ${teamMeshName}, расположенный на позиции "${placeName}".`;
+      changeColorTexture(tempMesh, true, true);
+    }
+    // document.querySelector('.box-help').innerHTML = 'Нажать курсором на 3Д объект,<br> выделенный жёлтым цветом.';
+  }
+}
+function helperHighlightOff(Target) {
+  let tempMesh = findMesh(Target);
+  if (tempMesh) changeColorTexture(tempMesh, false, true);
 }

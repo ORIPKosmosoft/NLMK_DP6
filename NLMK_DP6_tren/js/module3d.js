@@ -262,7 +262,7 @@ window.addEventListener('load', function () {
             box.material = lightMat;
           } else if (mesh.id && mesh.id === '0429fd81-7fa5-481b-890c-d87b0f7097fe') {
             let box = BABYLON.MeshBuilder.CreateBox("DP6_tumblers", { size: 1 }, Scene);
-            box.position = new BABYLON.Vector3(2.963, 0.973, -0.152);
+            box.position = new BABYLON.Vector3(2.963, 0.972, -0.152);
             box.scaling = new BABYLON.Vector3(1.35, 0.2, 0.8);
             box.rotation = new BABYLON.Vector3(175 * (Math.PI / 180), 0, 0);
             box.material = lightMat;

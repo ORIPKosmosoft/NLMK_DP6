@@ -80,6 +80,11 @@ const devHelper = {
       'Console_UGKS',
     ],
     activeMeshsToArr: [
+      { name: 'PhoneButton001', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', realName: 'Кнопка "Газовый цех"', position: 6, },
+      { name: 'PhoneButton006', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', realName: 'Кнопка "Насосный цех"', position: 6, },
+      { name: 'PhoneButton012', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', realName: 'Кнопка "ЭВС"', position: 6, },
+      { name: 'PhoneButton017', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', realName: 'Кнопка "Кислородный цех"', position: 6, },
+      { name: 'PhoneButton020', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', realName: 'Кнопка "Дипс. комб..."', position: 6, },
       { name: 'PhoneButton', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', },
       { name: 'kl022', id: '25408591-8ddd-4b64-a7ad-499aaa995ae6', audio: 'Zvuk_klapana_022_na_BVNK' },
       { name: 'kl021', id: '8d7497bf-6a8b-4906-8a35-1dc986e6e655', audio: 'Zvuk_klapana_022_na_BVNK' },
@@ -87,13 +92,14 @@ const devHelper = {
       { name: 'Handle_034', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: '01834b40-8c3e-4255-a91f-2b003c55050d', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
       { name: 'Handle_033', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: 'efc63ae6-10c1-45f4-a1a1-b5499b4d29b3', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
       { name: 'Handle_032', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: '43bc2cd8-96bd-4063-b5c2-a4873277d1e9', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
+      { name: 'Handle_013', audio: 'Zvuk_tumblera', realName: 'Тумблер клапана 722', position: 9, },
       { name: 'Handle_', parentName: 'DP-6', audio: 'Zvuk_tumblera' },
       { name: 'ButtonHightlight_046', changeMeshmaterial: { meshName: 'Lamp_034', material: 'DonorLamp_on' } },
       { name: 'ButtonHightlight_006', changeMeshmaterial: { meshName: 'Lamp_006', material: 'DonorLamp_on' } },
       { name: 'ButtonHightlight_' },
     ],
     movePointMeshToArr: [
-      { name: 'Display_flat002', point: 1 },
+      { name: 'Display_flat002', point: 1, },
       { name: 'Display_flat003', point: 2 },
       { name: 'Console_BVNK_highlight', point: 3 },
       { name: 'Display_flat014', point: 4 },
@@ -863,7 +869,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
     intervalFon: undefined,
   },
@@ -929,33 +935,73 @@ const devHelper = {
 const timeDiff = -0;
 let tempActions = [
 
-  // [ // test scenario 1
-  //   ////--------------------------------2---------------------------------------- 
-  //   {
-  //     action: {
-  //       target2D: 'kl029',
-  //       // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-  //       // rotation: { y: 1.571 },
-  //     },
-  //     // duration: 0.3,
-  //     startTime: timeDiff + 2,
-  //     human: true,
-  //     concentration: [
-  //       { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-  //     ]
-  //   },
-  //   {
-  //     action: {
-  //       target3D: 'fPrirodGazReg',
-  //       number: '024.5',
-  //       color: 'red',
-  //     },
-  //     startTime: timeDiff + 3,
-  //   },
-  //   {
-  //     startTime: timeDiff + 5,
-  //   },
-  // ],
+  [ // test scenario 1
+    ////--------------------------------2---------------------------------------- 
+    // {
+    //   scenarioText: 'Тест непоследовательных действий',
+    //   sender: 'Газовщик',
+    //   multi: [
+    //     {
+    //       text: '1. .',
+    //       sender: 'Газовщик',
+    //       action: {
+    //         target3D: 'PhoneButton001',
+    //       },
+    //       audio: 'tts-vo1',
+    //     },
+    //     {
+    //       text: '2. ',
+    //       sender: 'Газовщик',
+    //       action: {
+    //         target3D: 'PhoneButton006',
+    //       },
+    //       audio: 'tts-vo1',
+    //     },
+    //     {
+    //       text: '3. ',
+    //       sender: 'Газовщик',
+    //       action: {
+    //         target3D: 'PhoneButton017',
+    //       },
+    //       audio: 'tts-vo1',
+    //     },
+    //     {
+    //       text: '4. ',
+    //       sender: 'Газовщик',
+    //       action: {
+    //         target3D: 'PhoneButton020',
+    //       },
+    //       audio: 'tts-vo1',
+    //     }
+    //   ],
+    //   startTime: timeDiff + 1,
+    //   human: true,
+    // },
+    {
+      action: {
+        target2D: 'kl029',
+        // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        // rotation: { y: 1.571 },
+      },
+      // duration: 0.3,
+      startTime: timeDiff + 1,
+      human: true,
+      // concentration: [
+      //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
+      // ]
+    },
+    {
+      action: {
+        target3D: 'fPrirodGazReg',
+        number: '024.5',
+        color: 'red',
+      },
+      startTime: timeDiff + 30,
+    },
+    {
+      startTime: timeDiff + 50,
+    },
+  ],
 
   // Первый сценарий  
   [
@@ -2219,7 +2265,7 @@ let tempActions = [
       startTime: timeDiff + 69,
     },
     { // TODO не нашёл имя и схему в помощи
-      text: 'Вырать 302',
+      text: 'Выбрать 302',
       sender: 'Система',
       action: {
         target2D: 't_b_302_btn',
@@ -2360,7 +2406,7 @@ let tempActions = [
     },
     ////--------------------------------3.2
     {
-      text: 'Вырать 302',
+      text: 'Выбрать 302',
       sender: 'Система',
       action: { // TODO клик по 302!?
         target2D: 't_b_302_btn',
@@ -10123,10 +10169,10 @@ let startState3D = [
     // Третий щит
     { id: 'eaa4b36d-fa7d-4ea6-b928-fd91ee72d79d', rotation: { y: (90 * Math.PI) / 180 } }, // Местн. цпу
     { name: 'Handle_06', rotation: { y: (326 * Math.PI) / 180 } }, // Выбор режима управления КГ
-    { id: '46dd9fce-1386-4ad0-94c9-de4cda5d1503', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_1
-    { id: '31f7b14d-862e-4e43-993a-60b6539a2771', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_2
-    { name: 'Handle_08', rotation: { y: (90 * Math.PI) / 180 } }, // Клапан 721 выбо режима управления
-    { id: '07ed087c-0c84-47ef-a9c9-e7b170b65c60', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_2
+    // { id: '46dd9fce-1386-4ad0-94c9-de4cda5d1503', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_1
+    // { id: '31f7b14d-862e-4e43-993a-60b6539a2771', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_2
+    // { name: 'Handle_08', rotation: { y: (90 * Math.PI) / 180 } }, // Клапан 721 выбо режима управления
+    // { id: '07ed087c-0c84-47ef-a9c9-e7b170b65c60', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_2
     { id: 'f6d934e8-12af-4fc1-b553-7b3eccaef38a', rotation: { y: (320 * Math.PI) / 180 } }, // Предупредительная сигнализация
     { id: 'aad627dd-1ef6-4417-b4f9-3c8821f7bab4', rotation: { y: (90 * Math.PI) / 180 } }, // Дроссельный клапан THROTTLE
     { id: 'fc3caa09-a4c4-42e0-a0b7-aec41de8d029', rotation: { y: (45 * Math.PI) / 180 } }, // М81
@@ -10248,7 +10294,7 @@ let startState3D = [
     { name: 'fPrirodGazReg', number: '028.5', color: 'red' },
     { name: 'fParaUvlajDutReg', number: '00.27', color: 'red' }, // par_yvlaz
     // Второй щит
-    { id: '6ddce191-0d83-43c2-af7e-ebdaddf5ab37', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор бункера
+    { id: '.53ce370c-847a-41d5-ad4b-8acfa136f7fd', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор бункера
     { id: '53ce370c-847a-41d5-ad4b-8acfa136f7fd', rotation: { y: (90 * Math.PI) / 180 } }, // Выбор режима
     { id: '9c84c3c4-e56b-4c5d-ab4d-dd1e3dd93833', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор уровнемера
 
@@ -10340,7 +10386,7 @@ let startState3D = [
     { name: 'obshKlapVozGorBRU_r', number: '079.0', color: 'red' },
 
     // Второй щит
-    { id: '6ddce191-0d83-43c2-af7e-ebdaddf5ab37', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор бункера
+    { id: '.53ce370c-847a-41d5-ad4b-8acfa136f7fd', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор бункера
     { id: '53ce370c-847a-41d5-ad4b-8acfa136f7fd', rotation: { y: (90 * Math.PI) / 180 } }, // Выбор режима
     { id: '9c84c3c4-e56b-4c5d-ab4d-dd1e3dd93833', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор уровнемера
 
@@ -10359,10 +10405,10 @@ let startState3D = [
     // Третий щит
     { id: 'eaa4b36d-fa7d-4ea6-b928-fd91ee72d79d', rotation: { y: (90 * Math.PI) / 180 } }, // Местн. цпу
     { name: 'Handle_06', rotation: { y: (326 * Math.PI) / 180 } }, // Выбор режима управления КГ
-    { id: '46dd9fce-1386-4ad0-94c9-de4cda5d1503', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_1
-    { id: '31f7b14d-862e-4e43-993a-60b6539a2771', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_2
-    { name: 'Handle_08', rotation: { y: (90 * Math.PI) / 180 } }, // Клапан 721 выбо режима управления
-    { id: '07ed087c-0c84-47ef-a9c9-e7b170b65c60', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_2
+    // { id: '46dd9fce-1386-4ad0-94c9-de4cda5d1503', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_1
+    // { id: '31f7b14d-862e-4e43-993a-60b6539a2771', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_2
+    // { name: 'Handle_08', rotation: { y: (90 * Math.PI) / 180 } }, // Клапан 721 выбо режима управления
+    // { id: '07ed087c-0c84-47ef-a9c9-e7b170b65c60', rotation: { y: (90 * Math.PI) / 180 } }, // Местн Дистн Авт_2
     { id: 'f6d934e8-12af-4fc1-b553-7b3eccaef38a', rotation: { y: (320 * Math.PI) / 180 } }, // Предупредительная сигнализация
     { id: 'aad627dd-1ef6-4417-b4f9-3c8821f7bab4', rotation: { y: (90 * Math.PI) / 180 } }, // Дроссельный клапан THROTTLE
     { id: 'fc3caa09-a4c4-42e0-a0b7-aec41de8d029', rotation: { y: (45 * Math.PI) / 180 } }, // М81
