@@ -929,33 +929,33 @@ const devHelper = {
 const timeDiff = -0;
 let tempActions = [
 
-  [ // test scenario 1
-    ////--------------------------------2---------------------------------------- 
-    {
-      action: {
-        target2D: 'kl029',
-        // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        // rotation: { y: 1.571 },
-      },
-      // duration: 0.3,
-      startTime: timeDiff + 2,
-      human: true,
-      concentration: [
-        { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-      ]
-    },
-    {
-      action: {
-        target3D: 'fPrirodGazReg',
-        number: '024.5',
-        color: 'red',
-      },
-      startTime: timeDiff + 3,
-    },
-    {
-      startTime: timeDiff + 5,
-    },
-  ],
+  // [ // test scenario 1
+  //   ////--------------------------------2---------------------------------------- 
+  //   {
+  //     action: {
+  //       target2D: 'kl029',
+  //       // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+  //       // rotation: { y: 1.571 },
+  //     },
+  //     // duration: 0.3,
+  //     startTime: timeDiff + 2,
+  //     human: true,
+  //     concentration: [
+  //       { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
+  //     ]
+  //   },
+  //   {
+  //     action: {
+  //       target3D: 'fPrirodGazReg',
+  //       number: '024.5',
+  //       color: 'red',
+  //     },
+  //     startTime: timeDiff + 3,
+  //   },
+  //   {
+  //     startTime: timeDiff + 5,
+  //   },
+  // ],
 
   // Первый сценарий  
   [

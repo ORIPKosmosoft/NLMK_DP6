@@ -20,7 +20,7 @@ window.addEventListener('load', function () {
         ObjectSvg.name === 'BVNK_VNK2' ? 'ВНК №2' :
           ObjectSvg.name === 'BVNK_VNK3' ? 'ВНК №3' :
             ObjectSvg.name === 'bzu' ? 'БЗУ' :
-              ObjectSvg.name === 'vnk_main' ? 'Общая схема' :
+              ObjectSvg.name === 'vnk_main' ? 'Общая схема ВНК' :
                 ObjectSvg.name === 'vnk_spvg' ? 'СПВГ' :
                   ObjectSvg.name === 'O_n_k_na_VNK' ? 'Управление клапаном' :
                     ObjectSvg.name === 'O_n_k_na_VNK_posle_1' ? 'Управление клапаном' :
