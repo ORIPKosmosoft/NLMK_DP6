@@ -869,7 +869,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: true,
+    enable: false,
     perfomance: undefined,
     intervalFon: undefined,
   },
@@ -935,73 +935,73 @@ const devHelper = {
 const timeDiff = -0;
 let tempActions = [
 
-  [ // test scenario 1
-    ////--------------------------------2---------------------------------------- 
-    // {
-    //   scenarioText: 'Тест непоследовательных действий',
-    //   sender: 'Газовщик',
-    //   multi: [
-    //     {
-    //       text: '1. .',
-    //       sender: 'Газовщик',
-    //       action: {
-    //         target3D: 'PhoneButton001',
-    //       },
-    //       audio: 'tts-vo1',
-    //     },
-    //     {
-    //       text: '2. ',
-    //       sender: 'Газовщик',
-    //       action: {
-    //         target3D: 'PhoneButton006',
-    //       },
-    //       audio: 'tts-vo1',
-    //     },
-    //     {
-    //       text: '3. ',
-    //       sender: 'Газовщик',
-    //       action: {
-    //         target3D: 'PhoneButton017',
-    //       },
-    //       audio: 'tts-vo1',
-    //     },
-    //     {
-    //       text: '4. ',
-    //       sender: 'Газовщик',
-    //       action: {
-    //         target3D: 'PhoneButton020',
-    //       },
-    //       audio: 'tts-vo1',
-    //     }
-    //   ],
-    //   startTime: timeDiff + 1,
-    //   human: true,
-    // },
-    {
-      action: {
-        target2D: 'kl029',
-        // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        // rotation: { y: 1.571 },
-      },
-      // duration: 0.3,
-      startTime: timeDiff + 1,
-      human: true,
-      // concentration: [
-      //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-      // ]
-    },
-    {
-      action: {
-        target3D: 'fPrirodGazReg',
-        number: '024.5',
-        color: 'red',
-      },
-      startTime: timeDiff + 30,
-    },
-    {
-      startTime: timeDiff + 50,
-    },
-  ],
+  // [ // test scenario 1
+  //   ////--------------------------------2---------------------------------------- 
+  //   // {
+  //   //   scenarioText: 'Тест непоследовательных действий',
+  //   //   sender: 'Газовщик',
+  //   //   multi: [
+  //   //     {
+  //   //       text: '1. .',
+  //   //       sender: 'Газовщик',
+  //   //       action: {
+  //   //         target3D: 'PhoneButton001',
+  //   //       },
+  //   //       audio: 'tts-vo1',
+  //   //     },
+  //   //     {
+  //   //       text: '2. ',
+  //   //       sender: 'Газовщик',
+  //   //       action: {
+  //   //         target3D: 'PhoneButton006',
+  //   //       },
+  //   //       audio: 'tts-vo1',
+  //   //     },
+  //   //     {
+  //   //       text: '3. ',
+  //   //       sender: 'Газовщик',
+  //   //       action: {
+  //   //         target3D: 'PhoneButton017',
+  //   //       },
+  //   //       audio: 'tts-vo1',
+  //   //     },
+  //   //     {
+  //   //       text: '4. ',
+  //   //       sender: 'Газовщик',
+  //   //       action: {
+  //   //         target3D: 'PhoneButton020',
+  //   //       },
+  //   //       audio: 'tts-vo1',
+  //   //     }
+  //   //   ],
+  //   //   startTime: timeDiff + 1,
+  //   //   human: true,
+  //   // },
+  //   {
+  //     action: {
+  //       target2D: 'kl029',
+  //       // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+  //       // rotation: { y: 1.571 },
+  //     },
+  //     // duration: 0.3,
+  //     startTime: timeDiff + 1,
+  //     human: true,
+  //     // concentration: [
+  //     //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
+  //     // ]
+  //   },
+  //   {
+  //     action: {
+  //       target3D: 'fPrirodGazReg',
+  //       number: '024.5',
+  //       color: 'red',
+  //     },
+  //     startTime: timeDiff + 30,
+  //   },
+  //   {
+  //     startTime: timeDiff + 50,
+  //   },
+  // ],
 
   // Первый сценарий  
   [

@@ -119,7 +119,7 @@ body {
   visibility: visible;
   opacity: 0;
   top: 29vh;
-  left: 4vw;
+  left: 4.3vw;
   height: 70vh;
   width: 6vw;
   z-index: 1;
@@ -2152,7 +2152,7 @@ ul {
   position: fixed;
   width: 17.5vw;
   height: 52vh;
-  left: 4vw;
+  left: 4.3vw;
   border-radius: 0.52vw;
   opacity: 0;
   z-index: -1;
@@ -2600,7 +2600,7 @@ ul {
   height: 99vh;
   /* overflow: hidden; */
   padding: 5px 5px 5px 0.52vw;
-  width: 3vw;
+  width: 3.3vw;
   position: fixed;
   transition: all 0.3s ease;
   border-top-right-radius: 0.52vw;
@@ -2608,7 +2608,7 @@ ul {
 }
 
 .tren-ui-long {
-  width: 8vw;
+  width: 8.3vw;
 }
 
 .box-tren-ui {
@@ -2628,6 +2628,7 @@ ul {
   display: flex;
   align-items: center;
   /* cursor: pointer; */
+  margin-left: 7%;
 }
 
 .button-tren {

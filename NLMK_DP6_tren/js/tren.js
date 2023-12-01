@@ -660,7 +660,10 @@ function takeStartingState(Restart = false) {
             if (oldActiveElement.element.id === activeElement.id) {
               let cloneNode = activeElement.cloneNode(true);
               oldActiveElement.element = cloneNode;
-              element.svg.getElementById(activeElement.id).replaceWith(cloneNode);
+              // TODO Починить
+              if (element.svg.getElementById(activeElement.id)) {
+                element.svg.getElementById(activeElement.id).replaceWith(cloneNode);
+              }
             }
           })
         })
@@ -1559,7 +1562,7 @@ function setNewPositionWindow(elem, state = false) {
 document.getElementById('b_collapseMenu').addEventListener("click", (e) => {
   newImageCollapseMenu(e);
   if (!document.querySelector('.tren-ui').classList.contains('tren-ui-long')) {
-    document.querySelector('.section-copy').style.left = '9vw';
+    document.querySelector('.section-copy').style.left = '9.3vw';
     document.querySelector('.tren-ui').classList.add('tren-ui-long');
     document.querySelector('.box-collapse').classList.remove('opacity-1-Temp');
     Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
