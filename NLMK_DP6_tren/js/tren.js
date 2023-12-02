@@ -372,7 +372,15 @@ function handlePosition(currentAction, Mesh) {
 
 function handleError(Mesh) {
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name ? Mesh.name : Mesh} в действии ${devHelper.trenVals.currentAction} неверный.`);
-  sendMessage("Ошибка", "Вы совершили неверное действие.");
+  let currentName = Mesh.name ? ((devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)) ?
+  (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : Mesh.name) : Mesh;
+  let curAction = findCurrentAction();
+  let rightAnswerLocation;
+  if (curAction.action && (curAction.action.target2D || curAction.action.target3D)) {
+    rightAnswerName = findRealName(curAction.action.target2D || curAction.action.target3D).name;
+    rightAnswerLocation = findRealName(curAction.action.target2D || curAction.action.target3D).location;
+  }
+  sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName}. Нужно кликнуть по ${rightAnswerName} на ${rightAnswerLocation}.`);
   devHelper.endVals.errors[devHelper.endVals.currentChapter]++;
 }
 
@@ -751,7 +759,7 @@ function newActionStartHelper(Action) {
     }
   } else {
   }
-  
+
   if (devHelper.endVals.currentActionCount <= devHelper.endVals.actionChapter[devHelper.endVals.currentChapter]) {
     devHelper.endVals.currentActionCount = 1;
     devHelper.endVals.currentChapter++;
@@ -1624,36 +1632,37 @@ document.getElementById('b_help').querySelector('.click-button-tren').addEventLi
   } else if (currentAction && currentAction.action && currentAction.action.target3D && currentAction.human) {
     helperHighlightOn(currentAction.action);
   } else if (currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
-    let tempRealShemeName, tempRealHelperName, tempRealHelper;
-    if (document.querySelector('#svg-helper')) {
-      let tempNameSvg = document.querySelector('#svg-helper').forScheme;
-      let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === currentAction.action.target2D);
-      if (tempRealHelper) {
-        tempRealShemeName = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
-        tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
-        if (currentAction.action.realName) tempRealHelperName = currentAction.action.realName;
-      } else {
-        devHelper.svgHelpers.some(element => {
-          if (element.helpers && Array.isArray(element.helpers)) {
-            tempRealHelper = element.helpers.find(helper => helper.id === currentAction.action.target2D);
-            tempRealShemeName = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
-            return tempRealHelper;
-          }
-          return false;
-        });
-        tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
-      }
-    } else {
-      devHelper.svgHelpers.some(element => {
-        if (element.helpers && Array.isArray(element.helpers)) {
-          tempRealHelper = element.helpers.find(helper => helper.id === currentAction.action.target2D);
-          tempRealShemeName = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
-          return tempRealHelper;
-        }
-        return false;
-      });
-      tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
-    }
+    let tempRealHelperName = findRealName(currentAction.action.target2D).name;
+    let tempRealShemeName = findRealName(currentAction.action.target2D).location;
+    // if (document.querySelector('#svg-helper')) {
+    //   let tempNameSvg = document.querySelector('#svg-helper').forScheme;
+    //   let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === currentAction.action.target2D);
+    //   if (tempRealHelper) {
+    //     tempRealShemeName = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
+    //     tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
+    //     if (currentAction.action.realName) tempRealHelperName = currentAction.action.realName;
+    //   } else {
+    //     devHelper.svgHelpers.some(element => {
+    //       if (element.helpers && Array.isArray(element.helpers)) {
+    //         tempRealHelper = element.helpers.find(helper => helper.id === currentAction.action.target2D);
+    //         tempRealShemeName = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
+    //         return tempRealHelper;
+    //       }
+    //       return false;
+    //     });
+    //     tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
+    //   }
+    // } else {
+    //   devHelper.svgHelpers.some(element => {
+    //     if (element.helpers && Array.isArray(element.helpers)) {
+    //       tempRealHelper = element.helpers.find(helper => helper.id === currentAction.action.target2D);
+    //       tempRealShemeName = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
+    //       return tempRealHelper;
+    //     }
+    //     return false;
+    //   });
+    //   tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
+    // }
     document.querySelector('.box-help').innerHTML = `Нажать курсором по элементу ${tempRealHelperName ? tempRealHelperName : ''} на схеме ${tempRealShemeName ? tempRealShemeName : ''}.`;
   } else {
     document.querySelector('.box-help').innerHTML = '';
@@ -1865,4 +1874,52 @@ function helperHighlightOn(Actions) {
 function helperHighlightOff(Target) {
   let tempMesh = findMesh(Target);
   if (tempMesh) changeColorTexture(tempMesh, false, true);
+}
+
+function findRealName(TargetName) {
+  let returnObj = {
+    name : undefined,
+    location: undefined,
+  }
+  let currentAction = findCurrentAction();
+  if (currentAction.action.realName) returnObj.name = currentAction.action.realName;
+  else {
+    let temp3D = devHelper.model3DVals.activeMeshsToArr.find(elem => elem.name === TargetName || elem.id === TargetName);
+    if (temp3D && temp3D.realName) {
+      returnObj.name = temp3D.realName;
+      returnObj.location = devHelper.model3DVals.cameraPositions.find(elem => elem.position === temp3D.position).name;
+    } else {
+      let tempRealHelper;
+      if (document.querySelector('#svg-helper')) {
+        let tempNameSvg = document.querySelector('#svg-helper').forScheme;
+        let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === currentAction.action.target2D);
+        if (tempRealHelper) {
+          returnObj.location = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
+          returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
+          if (currentAction.action.realName) returnObj.name = currentAction.action.realName;
+        } else {
+          devHelper.svgHelpers.some(element => {
+            if (element.helpers && Array.isArray(element.helpers)) {
+              tempRealHelper = element.helpers.find(helper => helper.id === TargetName);
+              returnObj.location = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
+              return tempRealHelper;
+            }
+            return false;
+          });
+          returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
+        }
+      } else {
+        devHelper.svgHelpers.some(element => {
+          if (element.helpers && Array.isArray(element.helpers)) {
+            tempRealHelper = element.helpers.find(helper => helper.id === TargetName);
+            returnObj.location = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
+            return tempRealHelper;
+          }
+          return false;
+        });
+        returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
+      }
+    }
+  }
+  return returnObj;
 }

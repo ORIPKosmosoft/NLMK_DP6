@@ -87,10 +87,12 @@ const devHelper = {
       { name: 'kl022', id: '25408591-8ddd-4b64-a7ad-499aaa995ae6', audio: 'Zvuk_klapana_022_na_BVNK' },
       { name: 'kl021', id: '8d7497bf-6a8b-4906-8a35-1dc986e6e655', audio: 'Zvuk_klapana_022_na_BVNK' },
       { name: 'Rectangle', startY: 0, endY: -0.003, duration: 0.15, audio: 'Zvuk_nazhatiya_knopok_na_BZU', parentName: 'Lighting' },
-      { name: 'Handle_034', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: '01834b40-8c3e-4255-a91f-2b003c55050d', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
-      { name: 'Handle_033', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: 'efc63ae6-10c1-45f4-a1a1-b5499b4d29b3', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
-      { name: 'Handle_032', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: '43bc2cd8-96bd-4063-b5c2-a4873277d1e9', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
-      { name: 'Handle_013', audio: 'Zvuk_tumblera', realName: 'Тумблер клапана 722', position: 9, },
+      { name: '45232239-cfcf-4de6-ab80-663e0c750915', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: '01834b40-8c3e-4255-a91f-2b003c55050d', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
+      { name: 'bdf3b4dc-bdda-4ea7-a09f-6e7be5bcaaf7', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: 'efc63ae6-10c1-45f4-a1a1-b5499b4d29b3', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
+      { name: '1be1d999-92ac-4d4c-8896-f78a1c5cd350', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: '43bc2cd8-96bd-4063-b5c2-a4873277d1e9', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
+      { name: 'b6cc151c-004a-4e3f-bb7b-921c4300993c', audio: 'Zvuk_tumblera', realName: 'Тумблер клапана 721', position: 9, },
+      { name: '96378261-ad8d-4410-ad46-36a776a8b7b2', audio: 'Zvuk_tumblera', realName: 'Тумблер клапана 722', position: 9, },
+      { name: 'ebc13da1-0cf6-47e7-b08b-b39f7100bc44 ', audio: 'Zvuk_tumblera', realName: 'Тумблер клапана 723', position: 9, },
       { name: 'Handle_', parentName: 'DP-6', audio: 'Zvuk_tumblera' },
       { name: 'ButtonHightlight_046', changeMeshmaterial: { meshName: 'Lamp_034', material: 'DonorLamp_on' } },
       { name: 'ButtonHightlight_006', changeMeshmaterial: { meshName: 'Lamp_006', material: 'DonorLamp_on' } },
@@ -867,7 +869,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
     intervalFon: undefined,
   },
@@ -975,19 +977,19 @@ let tempActions = [
     //   startTime: timeDiff + 1,
     //   human: true,
     // },
-    // {
-    //   action: {
-    //     target2D: 'kl029',
-    //     // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-    //     // rotation: { y: 1.571 },
-    //   },
-    //   // duration: 0.3,
-    //   startTime: timeDiff + 1,
-    //   human: true,
-    //   // concentration: [
-    //   //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-    //   // ]
-    // },
+    {
+      action: {
+        // target2D: 'kl029',
+        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        rotation: { y: 1.571 },
+      },
+      // duration: 0.3,
+      startTime: timeDiff + 1,
+      human: true,
+      // concentration: [
+      //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
+      // ]
+    },
     // {
     //   action: {
     //     target3D: 'fPrirodGazReg',
@@ -996,75 +998,75 @@ let tempActions = [
     //   },
     //   startTime: timeDiff + 6,
     // },
-    {
-      scenarioText: 'Текст 1',
-      sender: 'Система',
-      action: {
-        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        rotation: { y: 1.571 },
-      },
-      duration: 0.3,
-      startTime: timeDiff + 1,
-      human: true,
-    },
-    {
-      scenarioText: 'Текст 2',
-      sender: 'Система',
-      action: {
-        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        rotation: { y: 1.571 },
-      },
-      duration: 0.3,
-      startTime: timeDiff + 2,
-      human: true,
-    },
-    {
-      scenarioText: 'Текст 3',
-      sender: 'Система',
-      action: {
-        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        rotation: { y: 1.571 },
-      },
-      duration: 0.3,
-      startTime: timeDiff + 3,
-      human: true,
-    },
-    {
-      scenarioText: 'Текст 4',
-      sender: 'Система',
-      action: {
-        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        rotation: { y: 1.571 },
-      },
-      duration: 0.3,
-      startTime: timeDiff + 4,
-      human: true,
-    },
-    {
-      scenarioText: 'Текст 5',
-      sender: 'Система',
-      action: {
-        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        rotation: { y: 1.571 },
-      },
-      duration: 0.3,
-      startTime: timeDiff + 5,
-      human: true,
-    },
-    {
-      scenarioText: 'Текст 6',
-      sender: 'Система',
-      action: {
-        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        rotation: { y: 1.571 },
-      },
-      duration: 0.3,
-      startTime: timeDiff + 6,
-      human: true,
-    },
-    {
-      startTime: timeDiff + 7,
-    },
+    // {
+    //   scenarioText: 'Текст 1',
+    //   sender: 'Система',
+    //   action: {
+    //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+    //     rotation: { y: 1.571 },
+    //   },
+    //   duration: 0.3,
+    //   startTime: timeDiff + 1,
+    //   human: true,
+    // },
+    // {
+    //   scenarioText: 'Текст 2',
+    //   sender: 'Система',
+    //   action: {
+    //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+    //     rotation: { y: 1.571 },
+    //   },
+    //   duration: 0.3,
+    //   startTime: timeDiff + 2,
+    //   human: true,
+    // },
+    // {
+    //   scenarioText: 'Текст 3',
+    //   sender: 'Система',
+    //   action: {
+    //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+    //     rotation: { y: 1.571 },
+    //   },
+    //   duration: 0.3,
+    //   startTime: timeDiff + 3,
+    //   human: true,
+    // },
+    // {
+    //   scenarioText: 'Текст 4',
+    //   sender: 'Система',
+    //   action: {
+    //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+    //     rotation: { y: 1.571 },
+    //   },
+    //   duration: 0.3,
+    //   startTime: timeDiff + 4,
+    //   human: true,
+    // },
+    // {
+    //   scenarioText: 'Текст 5',
+    //   sender: 'Система',
+    //   action: {
+    //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+    //     rotation: { y: 1.571 },
+    //   },
+    //   duration: 0.3,
+    //   startTime: timeDiff + 5,
+    //   human: true,
+    // },
+    // {
+    //   scenarioText: 'Текст 6',
+    //   sender: 'Система',
+    //   action: {
+    //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+    //     rotation: { y: 1.571 },
+    //   },
+    //   duration: 0.3,
+    //   startTime: timeDiff + 6,
+    //   human: true,
+    // },
+    // {
+    //   startTime: timeDiff + 7,
+    // },
   ],
 
   // Первый сценарий  
