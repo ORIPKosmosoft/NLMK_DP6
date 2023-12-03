@@ -89,7 +89,7 @@ const devHelper = {
       { name: 'Rectangle', startY: 0, endY: -0.003, duration: 0.15, audio: 'Zvuk_nazhatiya_knopok_na_BZU', parentName: 'Lighting' },
       { name: '45232239-cfcf-4de6-ab80-663e0c750915', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: '01834b40-8c3e-4255-a91f-2b003c55050d', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
       { name: 'bdf3b4dc-bdda-4ea7-a09f-6e7be5bcaaf7', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: 'efc63ae6-10c1-45f4-a1a1-b5499b4d29b3', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
-      { name: '1be1d999-92ac-4d4c-8896-f78a1c5cd350', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: '43bc2cd8-96bd-4063-b5c2-a4873277d1e9', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
+      { name: '1be1d999-92ac-4d4d-8896-f78a1c5cd350', audio: 'Zvuk_tumblera', changeMeshmaterial: { meshName: '43bc2cd8-96bd-4063-b5c2-a4873277d1e9', material: 'Unic_Lamp_Green_On', material2: 'Unic_Lamp_Green_Off', times: 9, condition: { rotation: { y: -0.785 } } } },
       { name: 'b6cc151c-004a-4e3f-bb7b-921c4300993c', audio: 'Zvuk_tumblera', realName: 'Тумблер клапана 721', position: 9, },
       { name: '96378261-ad8d-4410-ad46-36a776a8b7b2', audio: 'Zvuk_tumblera', realName: 'Тумблер клапана 722', position: 9, },
       { name: 'ebc13da1-0cf6-47e7-b08b-b39f7100bc44 ', audio: 'Zvuk_tumblera', realName: 'Тумблер клапана 723', position: 9, },
@@ -10139,11 +10139,11 @@ let startState2D = [
 
   ]
 ]
+
 // Лучше всего искать по id а не имени.
 let startState3D = [
   [// Первый сценарий
     // ЩИТ БВНК 1
-    { name: 'kl022', rotation: { y: 5.5850536063818545, } },
     // { id: '96378261-ad8d-4410-ad46-36a776a8b7b2', rotation: { y: 5, } },
     { id: '6c116935-27e8-4508-bbbd-e16306343c49', material: 'Unic_ScaleDot_donor_green' },
     { id: '0376bd70-dc53-46d7-a9b6-9f2a0fbe9a44', material: 'Unic_progress bar_on' },
@@ -10161,6 +10161,8 @@ let startState3D = [
     { id: '7cd2a16b-0f5e-4691-9f5b-bd8e7dc3c3c7', position: { x: 0.042 }, material: 'd46ce2bf-329c-4b0b-932f-04e9aa6686bb' }, // точка зел экран1
 
     // Первый щит
+    // { name: 'kl022', rotation: { y: 5.5850536063818545, } },
+    { name: '25408591-8ddd-4b64-a7ad-499aaa995ae6', rotation: { y: 5.5850536063818545, } },
     { id: 'ba8bad48-50eb-4074-bead-95ba0273eb82', rotation: { y: (145 * Math.PI) / 180 } }, // #025 Местн.-0-Дист.
     { id: 'bb05c72d-78ed-4e3f-8e40-aa055bf38e35', rotation: { y: (145 * Math.PI) / 180 } }, // #020 Местн.-0-Дист.
     { id: '7822fd13-7df1-4d3e-aef4-eb11da234c6f', rotation: { y: (145 * Math.PI) / 180 } }, // #030 Местн.-0-Дист.
@@ -10171,7 +10173,7 @@ let startState3D = [
     { id: '9085a856-b82c-45cf-a865-bff87e112ddb', rotation: { y: (145 * Math.PI) / 180 } }, // #136a Местн.-0-Дист.
     { id: '0d0230f9-12fc-4b6b-b237-efb065b3b3c1', rotation: { y: (145 * Math.PI) / 180 } }, // #036b Местн.-0-Дист.
     { id: 'ea0081c0-c200-44ca-b7b7-1f38dc60681e', rotation: { y: (145 * Math.PI) / 180 } }, // #036v Местн.-0-Дист.
-    { id: '.a971f049-55f8-48cc-aafa-d56ce1a158b9', rotation: { y: (145 * Math.PI) / 180 } }, // #047v Местн.-0-Дист.
+    { id: 'a971f049-55f8-48cc-aafa-d56ce1a158b9', rotation: { y: (145 * Math.PI) / 180 } }, // #047v Местн.-0-Дист.
 
     // d46ce2bf-329c-4b0b-932f-04e9aa6686bb зелёная точка квадрат
     // d731d161-f41e-465a-9fb0-b1ac09cb8062 жёлтая точка квадрат
@@ -10360,7 +10362,7 @@ let startState3D = [
     { name: 'fPrirodGazReg', number: '028.5', color: 'red' },
     { name: 'fParaUvlajDutReg', number: '00.27', color: 'red' }, // par_yvlaz
     // Второй щит
-    { id: '.53ce370c-847a-41d5-ad4b-8acfa136f7fd', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор бункера
+    { id: '6ddce191-0d83-43c2-af7e-ebdaddf5ab37', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор бункера
     { id: '53ce370c-847a-41d5-ad4b-8acfa136f7fd', rotation: { y: (90 * Math.PI) / 180 } }, // Выбор режима
     { id: '9c84c3c4-e56b-4c5d-ab4d-dd1e3dd93833', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор уровнемера
 
@@ -10390,7 +10392,7 @@ let startState3D = [
     { id: '9085a856-b82c-45cf-a865-bff87e112ddb', rotation: { y: (145 * Math.PI) / 180 } }, // #136a Местн.-0-Дист.
     { id: '0d0230f9-12fc-4b6b-b237-efb065b3b3c1', rotation: { y: (145 * Math.PI) / 180 } }, // #036b Местн.-0-Дист.
     { id: 'ea0081c0-c200-44ca-b7b7-1f38dc60681e', rotation: { y: (145 * Math.PI) / 180 } }, // #036v Местн.-0-Дист.
-    { id: '.a971f049-55f8-48cc-aafa-d56ce1a158b9', rotation: { y: (145 * Math.PI) / 180 } }, // #047v Местн.-0-Дист.
+    { id: 'a971f049-55f8-48cc-aafa-d56ce1a158b9', rotation: { y: (145 * Math.PI) / 180 } }, // #047v Местн.-0-Дист.
 
     // d46ce2bf-329c-4b0b-932f-04e9aa6686bb зелёная точка квадрат
     // d731d161-f41e-465a-9fb0-b1ac09cb8062 жёлтая точка квадрат
@@ -10452,7 +10454,7 @@ let startState3D = [
     { name: 'obshKlapVozGorBRU_r', number: '079.0', color: 'red' },
 
     // Второй щит
-    { id: '.53ce370c-847a-41d5-ad4b-8acfa136f7fd', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор бункера
+    { id: '6ddce191-0d83-43c2-af7e-ebdaddf5ab37', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор бункера
     { id: '53ce370c-847a-41d5-ad4b-8acfa136f7fd', rotation: { y: (90 * Math.PI) / 180 } }, // Выбор режима
     { id: '9c84c3c4-e56b-4c5d-ab4d-dd1e3dd93833', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор уровнемера
 

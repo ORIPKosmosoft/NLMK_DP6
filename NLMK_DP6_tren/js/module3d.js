@@ -437,9 +437,10 @@ function setImageOnMonitor(url, scene, mesh) {
 
 function createCloneInstancedMesh(mesh, url = undefined, scene = undefined, duplcitate = false) {
   let newMesh = duplcitate ? mesh : mesh.sourceMesh.clone();
+  newMesh.id = mesh.id;
   newMesh.name = mesh.name;
   newMesh.setParent(mesh.parent);
-  newMesh.rotation = new BABYLON.Vector3(0, 0, 0);
+  newMesh.rotation = mesh.rotation;
   if (url !== undefined) {
     if (!newMesh.material || newMesh.material.name !== 'material_' + newMesh.name) {
       newMesh.material = new BABYLON.StandardMaterial('material_' + newMesh.name, scene);
@@ -463,7 +464,7 @@ function createCloneInstancedMesh(mesh, url = undefined, scene = undefined, dupl
   mesh = newMesh;
   mesh.doNotSyncBoundingInfo = false;
   if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
-    devHelper.model3DVals.octree.dynamicContent.push(mesh);
+  devHelper.model3DVals.octree.dynamicContent.push(mesh);
   return mesh;
 }
 
@@ -513,11 +514,12 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     return;
   } else {
     const mesh = Mesh._sourceMesh !== undefined ? createCloneInstancedMesh(Mesh) : Mesh;
-    // meshOptimization(mesh);
+    meshOptimization(mesh);
     if (Vals.name) {
       mesh.name = Vals.name;
       mesh.currentPosition = Vals.posIndex;
       devHelper.model3DVals.activeMeshs.push(mesh);
+      
     } else if (typeof Vals === 'number') {
       mesh.isPickable = true;
       devHelper.model3DVals.movePointMesh.push(mesh);
@@ -573,6 +575,7 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
       diffuseTexture: undefined,
       emissiveTexture: undefined,
     }
+    return mesh;
   }
 }
 
@@ -743,6 +746,8 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
     if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
   }
   if (Mesh !== undefined || Axis !== undefined) {
+    if (typeof Mesh === 'string') 
+      Mesh = findMesh(Mesh);
     Mesh.unfreezeWorldMatrix();
     if (!Mesh.startState) {
       Mesh.startState = {
@@ -1628,7 +1633,7 @@ function findMaterial(Name) {
   return tempMaterial || console.warn(`Material ${Name} not found`);
 }
 function findMesh(Name) {
-  const mesh = devHelper.model3DVals.scene.meshes && devHelper.model3DVals.scene.meshes.find(mesh => (mesh.name === Name || mesh.id === Name));
+  const mesh = devHelper.model3DVals.scene.meshes && devHelper.model3DVals.scene.meshes.find(mesh => (mesh.uniqueId === Name || mesh.name === Name || mesh.id === Name));
   return mesh || (devHelper.dev.enable === true && console.warn(`Mesh ${Name} not found`));
 }
 

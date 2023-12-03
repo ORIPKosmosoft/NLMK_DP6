@@ -373,7 +373,7 @@ function handlePosition(currentAction, Mesh) {
 function handleError(Mesh) {
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name ? Mesh.name : Mesh} в действии ${devHelper.trenVals.currentAction} неверный.`);
   let currentName = Mesh.name ? ((devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)) ?
-  (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : Mesh.name) : Mesh;
+    (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : Mesh.name) : Mesh;
   let curAction = findCurrentAction();
   let rightAnswerLocation;
   if (curAction.action && (curAction.action.target2D || curAction.action.target3D)) {
@@ -689,13 +689,13 @@ function takeStartingState(Restart = false) {
         if (element.number)
           changeScreenVals(element.name, element.number, element.color ? element.color : 'green');
         else {
-          const mesh = findMesh(element.id || element.name);
+          let mesh = findMesh(element.id || element.name);
           if (!mesh) {
             let tempInterval = setInterval(() => {
               const mesh = findMesh(element.id || element.name);
               if (mesh) {
                 if (!devHelper.model3DVals.activeMeshs.includes(mesh))
-                  makeActiveMesh(mesh, { name: element.id ? element.name : mesh.name });
+                  mesh = makeActiveMesh(mesh, { name: element.id ? element.name : mesh.name });
                 let tempobj = { action: element };
                 tempobj.duration = 0;
                 if (mesh !== undefined) {
@@ -710,18 +710,15 @@ function takeStartingState(Restart = false) {
                 clearInterval(tempInterval);
               }
             }, 1500)
-          }
-          else {
+          } else {
             if (!devHelper.model3DVals.activeMeshs.includes(mesh))
-              makeActiveMesh(mesh, { name: element.id ? element.name : mesh.name });
+              mesh = makeActiveMesh(mesh, { name: element.id ? element.name : mesh.name });
             let tempobj = { action: element };
             tempobj.duration = 0;
             if (mesh !== undefined) {
               handleRotation(tempobj, mesh);
               handlePosition(tempobj, mesh);
-              if (element.material) {
-                mesh.material = findMaterial(element.material);
-              }
+              if (element.material) mesh.material = findMaterial(element.material);
             } else {
               devHelper.dev.enable && console.warn(`Не найден объект ${element.name || element.id} в тренажёре.`);
             }
@@ -1878,7 +1875,7 @@ function helperHighlightOff(Target) {
 
 function findRealName(TargetName) {
   let returnObj = {
-    name : undefined,
+    name: undefined,
     location: undefined,
   }
   let currentAction = findCurrentAction();
