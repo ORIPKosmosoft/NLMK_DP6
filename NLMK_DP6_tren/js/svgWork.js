@@ -2186,9 +2186,9 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
                       changeSvgtexture(DisplayMesh, Vals.name, true);
                       createSvghelper(CurrentPosition, Vals.name);
                     }
-                  } else handleError(invisElem.id);
+                  } else handleError(invisElem);
                 } else if (currentActonObject && currentActonObject.action && currentActonObject.action.target3D)
-                  handleError(invisElem.id);
+                  handleError(invisElem);
               } else {
                 // if (Vals.id !== undefined) trenClickOnSvgElem(invisElem);
                 if (Vals.removeWindow) {

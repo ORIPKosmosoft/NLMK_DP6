@@ -822,6 +822,15 @@ ul {
   position: absolute;
   display: none;
   opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.end-cointainer .block-info {
+  position: absolute;
   width: 50vw;
   height: 70vh;
   left: 25vw;
@@ -829,7 +838,16 @@ ul {
   background-color: #f4f4f4;
   border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.end-cointainer .block-interaction-end {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
 }
 
 .end-cointainer .end-title {
@@ -997,6 +1015,13 @@ ul {
 .invisible-element-svg {
   position: absolute;
   cursor: pointer;
+  transition: opacity 0.25s ease;
+  background-color: rgba(255, 0, 0, 0.3);
+  opacity: 0;
+}
+
+.invisible-element-svg.error-helper {
+  opacity: 1;
 }
 
 .invisible-element-svg-helper {
@@ -2883,6 +2908,18 @@ ul {
   width: 5vw;
   height: 3vh;
   visibility: hidden;
+}
+
+.error-block-view {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0;
+  background: radial-gradient(ellipse 104% 107% at center, transparent 0%, transparent 50%, #ff0000 100%, #ff0000 100%);
+  transition: opacity 0.3s ease;
 }
 
 

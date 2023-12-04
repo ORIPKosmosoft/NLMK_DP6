@@ -362,7 +362,8 @@ function playAudio(AudioName) {
   if (!audioTag) return;
   else {
     audioTag.play();
-    document.body.append(createCustomElement('div', '', { 'class': 'block-interaction' }));
+    if (!document.querySelector('.block-interaction'))
+      document.body.append(createCustomElement('div', '', { 'class': 'block-interaction' }));
   }
 }
 function handleRotation(currentAction, Mesh) {
@@ -379,7 +380,6 @@ function handlePosition(currentAction, Mesh) {
 }
 
 function handleError(Mesh) {
-  devHelper.dev.enable && console.warn(`Клик на ${Mesh.name ? Mesh.name : Mesh} в действии ${devHelper.trenVals.currentAction} неверный.`);
   if (Mesh.name && Mesh.uniqueId) {
     if (Mesh.overlayColor !== BABYLON.Color3.Red()) Mesh.overlayColor = BABYLON.Color3.Red();
     Mesh.renderOverlay = true;
@@ -387,15 +387,13 @@ function handleError(Mesh) {
       Mesh.renderOverlay = false;
     }, 300)
   } else {
-    // TODO
-    // Mesh Это id 2Д хелпера
-    // Можно этому элемнету дать нужный класс, а потмо класс удалить. И всё.
-    // только сделать с анмиацией появления.
-
-    console.log('Клик по 2Д элемнеты ,сделать подсветку', Mesh);
+    Mesh.classList.toggle('error-helper', true);
+    setTimeout(() => {
+      Mesh.classList.toggle('error-helper', false);
+    }, 300);
   }
-  let currentName = Mesh.name ? ((devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)) ?
-    (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : Mesh.name) : Mesh;
+  let currentName = (Mesh.name && Mesh.uniqueId) ? ((devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)) ?
+    (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : Mesh.name) : findRealName(Mesh.id).name;
   let curAction = findCurrentAction();
   let rightAnswerLocation;
   if (curAction.action && (curAction.action.target2D || curAction.action.target3D)) {
@@ -403,8 +401,20 @@ function handleError(Mesh) {
     rightAnswerLocation = findRealName(curAction.action.target2D || curAction.action.target3D).location;
   }
   playAudio('tren_error');
-  sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName}. Нужно кликнуть по ${rightAnswerName} на ${rightAnswerLocation}.`);
+  if (!document.querySelector('.error-block-view')) {
+    let errorLight = createCustomElement('div', '', { 'class': 'error-block-view' });
+    document.body.querySelector('.game-view').append(errorLight);
+    errorLight.style.opacity = 1;
+    setTimeout(() => {
+      errorLight.style.opacity = 0;
+      setTimeout(() => {
+        errorLight.remove();
+      }, 300)
+    }, 300);
+  }
+  sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName ? currentName : 'неверные элемент'}. Нужно кликнуть по ${rightAnswerName} на ${rightAnswerLocation}.`);
   devHelper.endVals.errors[devHelper.endVals.currentChapter]++;
+  devHelper.dev.enable && console.warn(`Клик на ${Mesh.name || Mesh.id} в действии ${devHelper.trenVals.currentAction} неверный.`);
 }
 
 function trenClickOnSvgElem(SvgElemHelper = undefined) {
@@ -1915,7 +1925,7 @@ function findRealName(TargetName) {
       let tempRealHelper;
       if (document.querySelector('#svg-helper')) {
         let tempNameSvg = document.querySelector('#svg-helper').forScheme;
-        let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === currentAction.action.target2D);
+        let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === TargetName);
         if (tempRealHelper) {
           returnObj.location = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
           returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
