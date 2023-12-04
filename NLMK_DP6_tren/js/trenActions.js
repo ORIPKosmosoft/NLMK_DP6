@@ -974,7 +974,7 @@ let tempActions = [
     //       audio: 'tts-vo1',
     //     }
     //   ],
-    //   startTime: timeDiff + 1,
+    //   startTime: timeDiff + 0.5,
     //   human: true,
     // },
     {

@@ -206,6 +206,9 @@ function domLoaded() {
     document.querySelector('.helper-tooltip').classList.toggle('visible-tiiltip', false);
   });
 
+  let tempAudio1 = new Audio(`/media/audio/effects/right.mp3`);
+  let tempAudio2 = new Audio(`/media/audio/effects/error.mp3`);
+  document.querySelector('.tests-container-elem').append(tempAudio1, tempAudio2);
   loadTrenActions();
 }
 
@@ -376,12 +379,10 @@ function radioButtonChange(elem) {
 // Подтверждение ответа в тестах
 function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
   let selfcheckContainer = elem.closest('.tests-container-elem').querySelector('.selfcheck-visible');
-
   let selfcheckcontainerIndex;
   let radioContainer;
   let radioButtSelectIndex;
   let textSelectRadioButt;
-
   // Если DragDrop элемент
   if (selfcheckContainer.classList.contains('container-dragDrop') === true) {
     selfcheckcontainerIndex = Array.from(selfcheckContainer.closest('.selfcheck-container-main').querySelectorAll('.selfcheck-container')).indexOf(selfcheckContainer);
@@ -411,9 +412,10 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       selfcheckContainer.classList.toggle('block-selfcheck-container', true);
       if (selfcheckContainer.querySelector('.wrong-dragDrop') != null) {
         elem.querySelector('span').textContent = 'Повторить';
+        const audioElement = document.querySelector('audio[src*="error.mp3"]');
+        if (audioElement) audioElement.play();
       } else {
-        elem.classList.toggle('disabled-button', true);
-        selfcheckContainer.classList.toggle('correct-dragDrop-container', true);
+        rightAnswer(elem, selfcheckContainer, 'correct-dragDrop-container');
       }
     } else if (elem.querySelector('span').textContent === 'Повторить') {
       selfcheckContainer.querySelectorAll('.correct-dragDrop').forEach((Element) => {
@@ -443,11 +445,11 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       });
       if (selfcheckContainer.querySelector('.dropDown-wrong') != null) {
         elem.querySelector('span').textContent = 'Повторить';
+        const audioElement = document.querySelector('audio[src*="error.mp3"]');
+        if (audioElement) audioElement.play();
         selfcheckContainer.classList.toggle('block-selfcheck-container', true);
       } else {
-        elem.classList.toggle('disabled-button', true);
-        selfcheckContainer.classList.toggle('correct-dropDownMenu-container', true);
-        selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+        rightAnswer(elem, selfcheckContainer, 'correct-dropDownMenu-container');
       }
     } else if (elem.querySelector('span').textContent === 'Повторить') {
       selfcheckContainer.querySelectorAll('.dropDown-currect').forEach((Element) => {
@@ -476,11 +478,11 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
       });
       if (selfcheckContainer.querySelector('.consecutive-wrong') != null) {
         elem.querySelector('span').textContent = 'Повторить';
+        const audioElement = document.querySelector('audio[src*="error.mp3"]');
+        if (audioElement) audioElement.play();
         selfcheckContainer.classList.toggle('block-selfcheck-container', true);
       } else {
-        elem.classList.toggle('disabled-button', true);
-        selfcheckContainer.classList.toggle('correct-consecutive-container', true);
-        selfcheckContainer.classList.toggle('block-selfcheck-container', true);
+        rightAnswer(elem, selfcheckContainer, 'correct-consecutive-container');
       }
     } else if (elem.querySelector('span').textContent === 'Повторить') {
       selfcheckContainer.querySelectorAll('.consecutive-currect').forEach((Element) => {
@@ -521,10 +523,10 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
         selfcheckContainer.classList.toggle('block-selfcheck-container', true);
         // elem.classList.toggle('active-button', true);
         elem.querySelector('span').textContent = 'Повторить';
+        const audioElement = document.querySelector('audio[src*="error.mp3"]');
+        if (audioElement) audioElement.play();
       } else {
-        selfcheckContainer.classList.toggle('correct-radioButton-container', true);
-        selfcheckContainer.classList.toggle('block-selfcheck-container', true);
-        elem.classList.toggle('disabled-button', true);
+        rightAnswer(elem, selfcheckContainer, 'correct-radioButton-container');
       }
     } else if (elem.querySelector('span').textContent === 'Повторить') {
       radioContainer.querySelectorAll('.correct-answer').forEach((Element) => {
@@ -861,8 +863,6 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     titleInfo();
     return;
   }
-
-
   // Если radio ответы правильные
   if (devHelper.testVals.previousContainer.classList.contains('container-radioButton') && devHelper.testVals.previousContainer.classList.contains('correct-radioButton-container')) {
     devHelper.testVals.previousContainer.classList.toggle('selfcheck-invisible', true);
@@ -962,6 +962,15 @@ function glavTestFun(pressedButtonName, pressedButton) {
       document.querySelector('.selfcheck-confirm-button').classList.toggle('active-button', false);
     }
   }
+}
+
+function rightAnswer(Elem, SelfcheckContainer, newClass) {
+  Elem.classList.toggle('disabled-button', true);
+  SelfcheckContainer.classList.toggle(newClass, true);
+  if (newClass !== 'correct-dragDrop-container')
+    SelfcheckContainer.classList.toggle('block-selfcheck-container', true);
+  const audioElement = document.querySelector('audio[src="/media/audio/effects/right.mp3"]');
+  if (audioElement) audioElement.play();
 }
 
 // Фукция создания тестов
@@ -1073,7 +1082,7 @@ function openPopupPdf(url) {
   const screenWidth = window.screen.width;
   const screenHeight = window.screen.height;
   const width = Math.round(screenWidth * 0.4);
-  const height = Math.round(screenHeight * 0.9);
+  const height = Math.round(screenHeight * 0.8);
   const left = Math.round((screenWidth - width) / 2);
   const top = Math.round((screenHeight - height) / 2);
   window.open(url, 'popup', `width=${width}, height=${height}, left=${left}, top=${top}`);

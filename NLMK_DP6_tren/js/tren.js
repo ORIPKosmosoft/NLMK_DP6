@@ -4,6 +4,12 @@
 ----------------------------------------------------
 */
 function loadTrenActions() {
+
+  let effectsArr = ['error', 'right', 'tren_click', 'tren_error', 'ui_click'];
+  effectsArr.forEach(audioName => {
+    if (!devHelper.audio.find(element => element.name === audioName))
+      devHelper.audio.push({ name: audioName, element: new Audio(`/media/audio/effects/${audioName}.mp3`) });
+  })
   devHelper.trenVals.scenarioArr = [];
   Array.from(document.querySelectorAll('.drop-item')).forEach((Element, Index) => {
     let tempObjTren = {
@@ -31,15 +37,16 @@ function loadTrenActions() {
           if (devHelper.audio.find(element => element.name === state.audio) === undefined)
             devHelper.audio.push({ name: state.audio, element: new Audio(`/media/audio/${state.audio}.mp3`) });
       })
-      devHelper.audio.forEach(element => {
-        element.element.addEventListener('ended', function () {
-          const activeAudio = devHelper.audio.some(audioFile => !audioFile.element.paused);
-          if (!activeAudio)
-            document.querySelector('.block-interaction')?.remove();
-        });
-      });
+
     }
   })
+  devHelper.audio.forEach(element => {
+    element.element.addEventListener('ended', function () {
+      const activeAudio = devHelper.audio.some(audioFile => !audioFile.element.paused);
+      if (!activeAudio)
+        Array.from(document.querySelectorAll('.block-interaction')).forEach(element => element.remove());
+    });
+  });
 }
 
 function startTren(Restart = false) {
@@ -245,6 +252,7 @@ function trenTimeTick(timeStamp) {
 }
 
 function actionAfterClickOnMesh(Action, Mesh, Text) {
+  playAudio('tren_click');
   let standartActionMesh = devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.id === elem.id || Mesh.name.includes(elem.name || elem));
   if (standartActionMesh) {
     if (standartActionMesh.endY || standartActionMesh.endX || standartActionMesh.endZ) {
@@ -350,7 +358,7 @@ function trenClickOnMesh(Mesh) {
 }
 
 function playAudio(AudioName) {
-  let audioTag = devHelper.audio.find(element => element.name === AudioName).element;
+  let audioTag = devHelper.audio.find(element => element.name === AudioName)?.element;
   if (!audioTag) return;
   else {
     audioTag.play();
@@ -372,6 +380,13 @@ function handlePosition(currentAction, Mesh) {
 
 function handleError(Mesh) {
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name ? Mesh.name : Mesh} в действии ${devHelper.trenVals.currentAction} неверный.`);
+  if (Mesh.name && Mesh.uniqueId) {
+    if (Mesh.overlayColor !== BABYLON.Color3.Red()) Mesh.overlayColor = BABYLON.Color3.Red();
+    Mesh.renderOverlay = true;
+    setTimeout(() => {
+      Mesh.renderOverlay = false;
+    }, 300)
+  }
   let currentName = Mesh.name ? ((devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)) ?
     (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : Mesh.name) : Mesh;
   let curAction = findCurrentAction();
@@ -380,6 +395,7 @@ function handleError(Mesh) {
     rightAnswerName = findRealName(curAction.action.target2D || curAction.action.target3D).name;
     rightAnswerLocation = findRealName(curAction.action.target2D || curAction.action.target3D).location;
   }
+  playAudio('tren_error');
   sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName}. Нужно кликнуть по ${rightAnswerName} на ${rightAnswerLocation}.`);
   devHelper.endVals.errors[devHelper.endVals.currentChapter]++;
 }
@@ -400,6 +416,7 @@ function trenClickOnSvgElem(SvgElemHelper = undefined) {
       if (currentActonObject.action && currentActonObject.action.helper2D) {
         createSvghelper(devHelper.model3DVals.currentPosition)
       }
+      playAudio('tren_click');
       newActionStartHelper(currentActonObject);
     }
   }
@@ -407,6 +424,7 @@ function trenClickOnSvgElem(SvgElemHelper = undefined) {
 
 function trenFinish() {
   devHelper.trenVals.ended = true;
+  playAudio('right');
   //------------------------------------------------------------------------------------------------------------------------------------------
   const endContainer = document.querySelector('.end-cointainer');
   endContainer.style.opacity = 1;
@@ -742,6 +760,7 @@ function saveStart2DIF() {
 }
 
 function newActionStartHelper(Action) {
+
   devHelper.trenVals.timers.actionTimeHelper = 0;
   Action.passed = true;
   devHelper.trenVals.waitingInput = false;
