@@ -386,6 +386,13 @@ function handleError(Mesh) {
     setTimeout(() => {
       Mesh.renderOverlay = false;
     }, 300)
+  } else {
+    // TODO
+    // Mesh Это id 2Д хелпера
+    // Можно этому элемнету дать нужный класс, а потмо класс удалить. И всё.
+    // только сделать с анмиацией появления.
+
+    console.log('Клик по 2Д элемнеты ,сделать подсветку', Mesh);
   }
   let currentName = Mesh.name ? ((devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)) ?
     (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : Mesh.name) : Mesh;

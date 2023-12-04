@@ -1,5 +1,6 @@
 /*                 TODO
 ----------------------------------------------------
+Жду исправлений от Сергей по поводу верного описания сути вопроса
 ----------------------------------------------------
 */
 
@@ -636,35 +637,35 @@ function reviveArray(min) {
 }
 
 // Изменение текста плана действий в title
-function titleInfo() {
-  if (devHelper.testVals.previousContainer.querySelector('.radio-title-info').textContent !== '') return;
-  const container = devHelper.testVals.previousContainer;
-  const containerIndex = devHelper.testVals.containerArray.indexOf(container);
-  const answerLength = devHelper.testVals.answersArray[containerIndex].length;
+// function titleInfo() {
+//   if (devHelper.testVals.previousContainer.querySelector('.radio-title-info').textContent !== '') return;
+//   const container = devHelper.testVals.previousContainer;
+//   const containerIndex = devHelper.testVals.containerArray.indexOf(container);
+//   const answerLength = devHelper.testVals.answersArray[containerIndex].length;
 
-  if (container.classList.contains('container-dragDrop')) {
-    container.querySelector('.radio-title-info').textContent = devHelper.testVals.dragDropHelperText;
-  }
-  if (container.classList.contains('container-dropDownMenu')) {
-    container.querySelector('.radio-title-info').textContent = devHelper.testVals.dropDownHelperText;
-  }
-  if (container.classList.contains('container-consecutive')) {
-    container.querySelector('.radio-title-info').textContent = devHelper.testVals.consecutiveHelperText;
-  }
-  if (container.classList.contains('container-radioButton')) {
-    if (answerLength > 4) {
-      container.querySelector('.radio-title-info').textContent = `Выберите ${answerLength} верных ответов и нажмите подтвердить.`;
-      return;
-    }
-    if (answerLength > 1) {
-      container.querySelector('.radio-title-info').textContent = `Выберите ${answerLength} верных ответа и нажмите подтвердить.`;
-      return;
-    } else {
-      container.querySelector('.radio-title-info').textContent = devHelper.testVals.radioSelfcheckHelperText;
-      return;
-    }
-  }
-}
+//   if (container.classList.contains('container-dragDrop')) {
+//     container.querySelector('.radio-title-info').textContent = devHelper.testVals.dragDropHelperText;
+//   }
+//   if (container.classList.contains('container-dropDownMenu')) {
+//     container.querySelector('.radio-title-info').textContent = devHelper.testVals.dropDownHelperText;
+//   }
+//   if (container.classList.contains('container-consecutive')) {
+//     container.querySelector('.radio-title-info').textContent = devHelper.testVals.consecutiveHelperText;
+//   }
+//   if (container.classList.contains('container-radioButton')) {
+//     if (answerLength > 4) {
+//       container.querySelector('.radio-title-info').textContent = `Выберите ${answerLength} верных ответов и нажмите подтвердить.`;
+//       return;
+//     }
+//     if (answerLength > 1) {
+//       container.querySelector('.radio-title-info').textContent = `Выберите ${answerLength} верных ответа и нажмите подтвердить.`;
+//       return;
+//     } else {
+//       container.querySelector('.radio-title-info').textContent = devHelper.testVals.radioSelfcheckHelperText;
+//       return;
+//     }
+//   }
+// }
 
 function navIconClick(randomContainer, min) {
   randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
@@ -676,7 +677,7 @@ function navIconClick(randomContainer, min) {
     document.querySelector('.selfcheck-confirm-button').classList.toggle('active-button', true);
   }
   devHelper.testVals.previousContainer = randomContainer;
-  titleInfo();
+  // titleInfo();
 }
 
 function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
@@ -718,7 +719,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     randomContainer.classList.toggle('selfcheck-invisible', false);
     randomContainer.classList.toggle('selfcheck-visible', true);
     devHelper.testVals.previousContainer = randomContainer;
-    titleInfo();
+    // titleInfo();
     if (devHelper.testVals.containerArray.length === 0) {
       devHelper.testVals.previousContainer = undefined;
     }
@@ -770,7 +771,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     randomContainer.classList.toggle('selfcheck-invisible', false);
     randomContainer.classList.toggle('selfcheck-visible', true);
     devHelper.testVals.previousContainer = randomContainer;
-    titleInfo();
+    // titleInfo();
     if (devHelper.testVals.containerArray.length === 0) {
       devHelper.testVals.previousContainer = undefined;
     }
@@ -802,7 +803,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').querySelector('span').textContent = 'Подтвердить';
 
     devHelper.testVals.previousContainer = randomContainer;
-    titleInfo();
+    // titleInfo();
     return;
   }
 
@@ -828,7 +829,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     randomContainer.classList.toggle('selfcheck-invisible', false);
     randomContainer.classList.toggle('selfcheck-visible', true);
     devHelper.testVals.previousContainer = randomContainer;
-    titleInfo();
+    // titleInfo();
     if (devHelper.testVals.containerArray.length === 0) {
       devHelper.testVals.previousContainer = undefined;
     }
@@ -860,7 +861,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').querySelector('span').textContent = 'Подтвердить';
 
     devHelper.testVals.previousContainer = randomContainer;
-    titleInfo();
+    // titleInfo();
     return;
   }
   // Если radio ответы правильные
@@ -885,7 +886,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     randomContainer.classList.toggle('selfcheck-invisible', false);
     randomContainer.classList.toggle('selfcheck-visible', true);
     devHelper.testVals.previousContainer = randomContainer;
-    titleInfo();
+    // titleInfo();
     if (devHelper.testVals.containerArray.length === 0) {
       devHelper.testVals.previousContainer = undefined;
     }
@@ -919,7 +920,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
     devHelper.testVals.previousContainer.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button').querySelector('span').textContent = 'Подтвердить';
 
     devHelper.testVals.previousContainer = randomContainer;
-    titleInfo();
+    // titleInfo();
     return;
   }
 
@@ -936,7 +937,7 @@ function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
   randomContainer.classList.toggle('selfcheck-invisible', false);
   randomContainer.classList.toggle('selfcheck-visible', true);
   devHelper.testVals.previousContainer = randomContainer;
-  titleInfo();
+  // titleInfo();
   return;
 }
 
@@ -976,6 +977,15 @@ function rightAnswer(Elem, SelfcheckContainer, newClass) {
 // Фукция создания тестов
 function createTests(elem, index) {
   if (elem.questionType === 'radio') {
+    let radioTitleInfoText;
+    const answerLength = elem.rightAnswers.length;
+    if (answerLength > 4) {
+      radioTitleInfoText = `Выберите ${answerLength} верных ответов и нажмите подтвердить.`;
+    } else if (answerLength > 1) {
+      radioTitleInfoText = `Выберите ${answerLength} верных ответа и нажмите подтвердить.`;
+    } else {
+      radioTitleInfoText = devHelper.testVals.radioSelfcheckHelperText;
+    }
     const div = document.createElement('div');
     div.classList.add('selfcheck-container', 'selfcheck-invisible', 'container-radioButton');
     let answerElem = ``;
@@ -989,9 +999,11 @@ function createTests(elem, index) {
       `;
     });
     devHelper.testVals.answersArray.push(elem.rightAnswers);
-    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div));
+    // document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div));
+    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div, radioTitleInfoText));
   }
   if (elem.questionType === 'dragDrop') {
+    const radioTitleInfoText = devHelper.testVals.dragDropHelperText;
     const div = document.createElement('div');
     div.classList.add('selfcheck-container', 'selfcheck-invisible', 'container-dragDrop');
     let answerElem = ``;
@@ -1004,9 +1016,11 @@ function createTests(elem, index) {
       `;
     });
     devHelper.testVals.answersArray.push(elem.rightAnswers);
-    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div));
+    // document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div));
+    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div, radioTitleInfoText));
   }
   if (elem.questionType === 'dropDownMenu') {
+    const radioTitleInfoText = devHelper.testVals.dropDownHelperText;
     const div = document.createElement('div');
     div.classList.add('selfcheck-container', 'selfcheck-invisible', 'container-dropDownMenu');
     let answerElem = ``;
@@ -1035,9 +1049,10 @@ function createTests(elem, index) {
       `;
     });
     devHelper.testVals.answersArray.push(elem.rightAnswers);
-    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div));
+    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div, radioTitleInfoText));
   }
   if (elem.questionType === 'consecutive') {
+    const radioTitleInfoText = devHelper.testVals.consecutiveHelperText;
     const div = document.createElement('div');
     div.classList.add('selfcheck-container', 'selfcheck-invisible', 'container-consecutive');
     let answerElem = ``;
@@ -1049,18 +1064,17 @@ function createTests(elem, index) {
       `;
     });
     devHelper.testVals.answersArray.push(elem.rightAnswers);
-    // document.querySelector('.selfcheck-container-main').appendChild(div);
-    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div));
+    document.querySelector('.selfcheck-container-main').appendChild(createSelfcheckForTests(elem, answerElem, div, radioTitleInfoText));
   }
 }
 
 // создает selfcheck контейнеры для функции createTests
-function createSelfcheckForTests(elem, answerElem, div) {
+function createSelfcheckForTests(elem, answerElem, div, radioTitleInfoText) {
   const selfcheckContainer = `
       <span class="selfcheck-title">${elem.questionTopic}</span>
       <div class="selfcheck-radio-container">
         <span class="radio-title">${elem.questionText}</span>
-        <span class="radio-title-info"></span>
+        <span class="radio-title-info">${radioTitleInfoText}</span>
         ${answerElem}
       </div>
     `;
