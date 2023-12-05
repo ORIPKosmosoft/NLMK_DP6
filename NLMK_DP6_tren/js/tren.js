@@ -393,7 +393,7 @@ function handleError(Mesh) {
     }, 300);
   }
   let currentName = (Mesh.name && Mesh.uniqueId) ? ((devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)) ?
-    (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : Mesh.name) : findRealName(Mesh.id).name;
+    (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : '') : findRealName(Mesh.id).name;
   let curAction = findCurrentAction();
   let rightAnswerLocation;
   if (curAction.action && (curAction.action.target2D || curAction.action.target3D)) {
@@ -412,7 +412,7 @@ function handleError(Mesh) {
       }, 300)
     }, 300);
   }
-  sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName ? currentName : 'неверные элемент'}. Нужно кликнуть по ${rightAnswerName} на ${rightAnswerLocation}.`);
+  sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName ? currentName : 'неверный элемент'}. Нужно кликнуть по ${rightAnswerName} на ${rightAnswerLocation}.`);
   devHelper.endVals.errors[devHelper.endVals.currentChapter]++;
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name || Mesh.id} в действии ${devHelper.trenVals.currentAction} неверный.`);
 }
