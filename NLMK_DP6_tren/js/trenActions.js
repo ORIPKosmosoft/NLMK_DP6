@@ -3,14 +3,6 @@
 ----------------------------------------------------
 Научить сначала выдавать сценариоТекст, а потом обычный текст
 ----------------------------------------------------
-нужно обновлить пару звуков
-----------------------------------------------------
-исправить пару звуков
-----------------------------------------------------
-Вообще обновлять схемы в течении работы
-----------------------------------------------------
-Выдать правильную инфу в конце работы
-----------------------------------------------------
 */
 const devHelper = {
   trenVals: {
@@ -53,14 +45,14 @@ const devHelper = {
       svgNames: [],
     },
     cameraPositions: [
-      { positionCoordinates: [0.35, 2.15, -3.4], lookAt: [0.1913, -0.0046, 0], position: undefined, name: 'главный вид' },
-      { positionCoordinates: [-6.58, 1.12, -0.78], lookAt: [-0.0165, -0.7836, 0], position: 1, name: 'монитор #6 Воздухонагрев' },
-      { positionCoordinates: [-6.15, 1.12, -0.33], lookAt: [-0.0165, -0.7836, 0], position: 2, name: 'монитор #5 Воздухонагрев' },
+      { positionCoordinates: [0.35, 2.15, -3.4], lookAt: [0.1913, -0.0046, 0], position: undefined, name: 'Главный вид' },
+      { positionCoordinates: [-6.58, 1.12, -0.78], lookAt: [-0.0165, -0.7836, 0], position: 1, name: 'Монитор #6 Воздухонагрев' },
+      { positionCoordinates: [-6.15, 1.12, -0.33], lookAt: [-0.0165, -0.7836, 0], position: 2, name: 'Монитор #5 Воздухонагрев' },
       { positionCoordinates: [-3.56, 1.73, -1], lookAt: [0.5216195764415446, 0.007373100235868478, 0], position: 3, name: 'ПУ №1 – Пульт управления клапанами блока воздухонагревателей конструкции Калугина (БВНК)' },
-      { positionCoordinates: [0.06, 1.12, 0.11], lookAt: [-0.017735496836921723, -0.00104686817450884, 0], position: 4, name: 'монитор #2' },
-      { positionCoordinates: [0.75, 1.12, 0.01], lookAt: [-0.02523549683692173, 0.3476621849510065, 0], position: 5, name: 'монитор #1' },
-      { positionCoordinates: [0.1, 1.22, 0.03], lookAt: [1.077429069342384, -0.3353050130723554, 0], position: 6, name: 'телефон' },
-      { positionCoordinates: [0.92, 1.31, -0.05], lookAt: [0.9778930701860019, 1.5707867182903412, 0], position: 7, name: 'рация' },
+      { positionCoordinates: [0.06, 1.12, 0.11], lookAt: [-0.017735496836921723, -0.00104686817450884, 0], position: 4, name: 'Монитор #2' },
+      { positionCoordinates: [0.75, 1.12, 0.01], lookAt: [-0.02523549683692173, 0.3476621849510065, 0], position: 5, name: 'Монитор #1' },
+      { positionCoordinates: [0.1, 1.22, 0.03], lookAt: [1.077429069342384, -0.3353050130723554, 0], position: 6, name: 'Телефон' },
+      { positionCoordinates: [0.92, 1.31, -0.05], lookAt: [0.9778930701860019, 1.5707867182903412, 0], position: 7, name: 'Рация' },
       { positionCoordinates: [1.77, 1.59, -0.48], lookAt: [1.111833144037235, -0.0018067781465321568, 0], position: 8, name: 'ПУ №2 – Пуль управления бесконусное загрузочное устройство (БЗУ)' },
       { positionCoordinates: [2.96, 1.95, -1.0], lookAt: [0.6879109600288498, 0.001624744992681849, 0], position: 9, name: 'ПУ №3 – Пульт управления основных механизмов доменной печи №6 (ДП-6)' },
       { positionCoordinates: [-3.54, 1.32, -0.22], lookAt: [-0.0002711024344136115, 0.0013731002358684753, 0], position: 101, name: 'ПУ БВНК экраны' },
@@ -112,12 +104,13 @@ const devHelper = {
       { name: 'DP6_tumblers', point: 104 },
     ],
     svgDisplaysArr: [
-      { name: 'Display_flat002', svgName: 'BVNK_VNK1' },
-      { name: 'Display_flat003', svgName: 'vnk_main' },
+      { name: 'Display_flat002', svgName: 'BVNK_VNK1', possibleSchemes: ['BVNK_VNK1', 'BVNK_VNK2', 'BVNK_VNK3', 'vnk_main', 'vnk_spvg'] },
+      // { name: 'Display_flat003', svgName: 'vnk_main', possibleSchemes: ['BVNK_VNK1', 'BVNK_VNK2', 'BVNK_VNK3', 'vnk_main', 'vnk_spvg'] },
+      { name: 'Display_flat003', svgName: 'BVNK_VNK1', possibleSchemes: ['BVNK_VNK1', 'BVNK_VNK2', 'BVNK_VNK3', 'vnk_main', 'vnk_spvg'] },
       { name: 'Display_flat010', svgName: 'Osnovnye_parametry_DP' },
       { name: 'Display_flat012', svgName: 'vnk_spvg' },
-      { name: 'Display_flat014', svgName: 'dp' },
-      { name: 'Display_flat015', svgName: 'bzu' },
+      { name: 'Display_flat014', svgName: 'dp', possibleSchemes: ['dp', 'bzu',] },
+      { name: 'Display_flat015', svgName: 'bzu', possibleSchemes: ['dp', 'bzu',] },
       { name: 'Display_TV', svgName: 'bzu' },
       { name: 'Display_TV001', svgName: 'dp' },
     ],
@@ -355,7 +348,7 @@ const devHelper = {
     {
       name: 'dp', helpers: [
         { x: 94.4, y: 26, w: 4, h: 3, forAction: true, id: 't_r_4', value: { window: 'vvod_znachenij', x: 900, y: 300, }, realName: 'F природного газа' },
-        { x: 69.4, y: 90, w: 2.5, h: 4, forAction: true, id: 't_b_302_btn', value: { window: 'win_sym_302', x: 56, y: 48, realName: 'Символ «302»' } },
+        { x: 69.4, y: 90, w: 2.5, h: 4, forAction: true, id: 't_b_302_btn', value: { window: 'win_sym_302', x: 56, y: 48, realName: 'Дроссель регулятор природного газа на печь, 302' } },
         { x: 94.4, y: 29.6, w: 4, h: 3, forAction: true, id: 't_r_5', value: { window: 'vvod_znachenij', x: 900, y: 300, }, realName: 'ТТГ' },
         { x: 94.4, y: 22.7, w: 4, h: 3, forAction: true, id: 'T.Gor dutiy', },
         { x: 94.4, y: 18.7, w: 4, h: 3, forAction: true, id: 'DP obh', },
@@ -885,9 +878,6 @@ const devHelper = {
   }
 };
 
-/* TODO --------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------*/
-
 /*
 Пример мультидействия с 3Д
 { 
@@ -931,8 +921,7 @@ const devHelper = {
   human: true,
 },
 */
-// красные круги на 028
-const timeDiff = -0;
+const timeDiff = -68.5;
 let tempActions = [
 
   [ // test scenario 1
@@ -979,12 +968,32 @@ let tempActions = [
     // },
     {
       action: {
-        // target2D: 'kl029',
-        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        rotation: { y: 1.571 },
+        target2D: 'kl029',
+        // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        // rotation: { y: 1.571 },
       },
       // duration: 0.3,
       startTime: timeDiff + 1,
+      human: true,
+      // concentration: [
+      //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
+      // ]
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 1.1,
+      human: true,
+    },
+    {
+      action: {
+        target2D: 'kl038',
+        // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        // rotation: { y: 1.571 },
+      },
+      // duration: 0.3,
+      startTime: timeDiff + 2,
       human: true,
       // concentration: [
       //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
@@ -1071,6 +1080,7 @@ let tempActions = [
 
   // Первый сценарий  
   [
+    /*
     {
       lifeTime: '07:30:00',
       startTime: timeDiff + 0,
@@ -2323,6 +2333,7 @@ let tempActions = [
       startTime: timeDiff + 68.6,
       human: true,
     },
+    */
     ////--------------------------------3----------------------------------------
     {
       scenarioText: 'Настройка значения теоретической температуры горения.',
@@ -6194,7 +6205,7 @@ let tempActions = [
     },
     {
       action: {
-        target3D: 'Rectangle079',
+        target3D: 'Rectangle069',
         material: 'Unic_Botton_Off',
       },
       startTime: timeDiff + 417.2,

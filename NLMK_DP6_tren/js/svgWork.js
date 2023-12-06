@@ -1,5 +1,4 @@
 /*----------TODO----------------------------------------------------
-ntcn dtnrb
 --------------------------------------------------------------------
 */
 
@@ -35,7 +34,7 @@ window.addEventListener('load', function () {
                                       ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                         ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK1') {
+    if (ObjectSvg.name === 'bzu1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -449,7 +448,7 @@ window.addEventListener('load', function () {
 
       })
     }
-    if (ObjectSvg.name === 'BVNK_VNK1') {
+    else if (ObjectSvg.name === 'BVNK_VNK1') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '92') { addSvgElem(Index, Element, '1TI_43'); }
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
@@ -578,7 +577,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1206.25 451.13h4.17v120.83h-4.17z') { addSvgElem(Index, Element, 'vnk1_stripes'); }
       })
     }
-    if (ObjectSvg.name === 'BVNK_VNK2') {
+    else if (ObjectSvg.name === 'BVNK_VNK2') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
         if (Element.innerHTML === '9,00') { addSvgElem(Index, Element, '7PI_13'); }
@@ -673,7 +672,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1402.6 576.13c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_2'); }
       })
     }
-    if (ObjectSvg.name === 'BVNK_VNK3') {
+    else if (ObjectSvg.name === 'BVNK_VNK3') {
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'fire_vnk_3'); }
         if (Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_3'); }
@@ -771,7 +770,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('x') === '1096.84') { addSvgElem(Index, Element, 'VNK3_status_2'); }
       });
     }
-    if (ObjectSvg.name === 'vnk_main') {
+    else if (ObjectSvg.name === 'vnk_main') {
       ObjectSvg.svg.querySelectorAll('circle').forEach((Element) => {
         // if (Element.getAttribute('cx') === '858.16' && Element.getAttribute('r') === '9.18') { addSvgElem(Index, Element, 'circle_1_win1'); }
         // if (Element.getAttribute('cx') === '858.16' && Element.getAttribute('r') === '5.61') { addSvgElem(Index, Element, 'circle_2_win1'); }
@@ -1003,7 +1002,7 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '63' && TextIndex === 284) { addSvgElem(Index, Element, 'klOF1_proc'); }
       });
     }
-    if (ObjectSvg.name === 'vnk_spvg') {
+    else if (ObjectSvg.name === 'vnk_spvg') {
       // Sergey
       ObjectSvg.svg.querySelectorAll('circle').forEach((Element, TextIndex) => {
         if (Element.getAttribute('cx') === '734.36' && Element.getAttribute('cy') === '698.3') { addSvgElem(Index, Element, 'B3_3'); }
@@ -1185,7 +1184,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M588.91 605.5h28.59') { addSvgElem(Index, Element, '035_stripe_2'); }
       })
     }
-    if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
+    else if (ObjectSvg.name === 'O_n_k_na_VNK_posle_1') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
         if (Element.innerHTML === 'Управление клапаном 116') { addSvgElem(Index, Element, 'title_work_vn',); }
         if (Element.innerHTML === 'Открыт') { addSvgElem(Index, Element, 'status_window_text', 'start'); }
@@ -1234,12 +1233,12 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('x') === '87.79' && Element.getAttribute('y') === '255.8') { addSvgElem(Index, Element, 'block_close'); }
       })
     }
-    if (ObjectSvg.name === 'O_n_k_na_VNK_posle_2') {
+    else if (ObjectSvg.name === 'O_n_k_na_VNK_posle_2') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
         if (Element.innerHTML === 'Закрыть') { addSvgElem(Index, Element, 'title_open_vn', 'start'); }
       })
     }
-    if (ObjectSvg.name === 'Kontrol_progara') {
+    else if (ObjectSvg.name === 'Kontrol_progara') {
       ObjectSvg.svg.querySelectorAll('rect').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
         if (Element.getAttribute('x') === '401.43' && Element.getAttribute('y') === '183.87') { addSvgElem(Index, Element, 'KP_c_1_1'); }
@@ -1502,7 +1501,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1807.23 742.31h86.8v19.84h-86.8z') { addSvgElem(Index, Element, 'KP_c_16_2'); }
       });
     }
-    if (ObjectSvg.name === 'O_n_k_na_VNK') {
+    else if (ObjectSvg.name === 'O_n_k_na_VNK') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
         if (Element.innerHTML === '60') { addSvgElem(Index, Element, 'time_full_vnk_text'); }
@@ -1549,7 +1548,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M9.78 192.48h141.98v21.19H9.78z') { addSvgElem(Index, Element, 'kontrgruz_prizhat'); }
       })
     }
-    if (ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK') {
+    else if (ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
         if (Element.innerHTML === '180' && TextIndex === 48) { addSvgElem(Index, Element, 'Ustanovit_klapany_15_i_23_na_ugol_zazhig'); }
@@ -1634,7 +1633,7 @@ window.addEventListener('load', function () {
 
       })
     }
-    if (ObjectSvg.name === 'O_p_n_na_k_p_na_VNK') {
+    else if (ObjectSvg.name === 'O_p_n_na_k_p_na_VNK') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
       });
@@ -1671,7 +1670,7 @@ window.addEventListener('load', function () {
 
       })
     }
-    if (ObjectSvg.name === 'Osnovnye_parametry_DP') {
+    else if (ObjectSvg.name === 'Osnovnye_parametry_DP') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
         if (Element.innerHTML === '2.30') { addSvgElem(Index, Element, 'c_1_1', 'start'); }
@@ -1734,9 +1733,9 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '40' && TextIndex === 55) { addSvgElem(Index, Element, 'c_8_4', 'start'); }
       });
     }
-    if (ObjectSvg.name === 'bzu') {
+    else if (ObjectSvg.name === 'bzu') {
       // Sergey
-      ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element, Index) => {
+      ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element, ElemIndex) => {
         if (Element.getAttribute('cx') === '540.29' && Element.getAttribute('cy') === '234.41' && Element.getAttribute('rx') === '19.47' && Element.getAttribute('ry') === '17.71') { addSvgElem(Index, Element, 'left_ellipse'); }
       })
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
@@ -2060,22 +2059,22 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M548.13 515.11h68.36v10.04h-68.36z') { addSvgElem(Index, Element, 'pech_left_down_zaglushka'); }
       })
     }
-    if (ObjectSvg.name === 'vvod_znachenij') {
+    else if (ObjectSvg.name === 'vvod_znachenij') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '0' && TextIndex === 1) { addSvgElem(Index, Element, 'vz_number', 'start'); }
       })
     }
-    if (ObjectSvg.name === 'win_sym_302') {
+    else if (ObjectSvg.name === 'win_sym_302') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
         if (Element.innerHTML === 'ТТГ') { addSvgElem(Index, Element, 'ws3_ttg', 'start'); }
       })
     }
-    if (ObjectSvg.name === 'priczvuksinal') {
+    else if (ObjectSvg.name === 'priczvuksinal') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
         if (Element.innerHTML === 'БЗУ не готово принимать порцию после т.Р2') { addSvgElem(Index, Element, 'prixZvykSig_text', 'start'); }
       })
     }
-    if (ObjectSvg.name === 'win_otdel2_na_vnk') {
+    else if (ObjectSvg.name === 'win_otdel2_na_vnk') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
         if (Element.innerHTML === 'Закрыт' && Element.getAttribute('transform') == 'matrix(.99692 0 0 1 62.29 90.383)') { addSvgElem(Index, Element, 'text_ish_c4'); }
         if (Element.innerHTML === 'Открыт' && Element.getAttribute('transform') == 'matrix(.99692 0 0 1 130.01 90.383)') { addSvgElem(Index, Element, 'text_ish_c5'); }
@@ -2118,6 +2117,7 @@ function addSvgElem(SvgIndex, Element, Name, Move = 'middle') {//start middle en
     element: Element,
     name: Name,
   })
+
   if (Move !== false) {
     if (Element.tagName === 'text') {
       let moveAtrribute = Move === 'end' ? 'end' : Move === 'right' ? 'end' : Move === 'left' ? 'start' : Move === 'start' ? 'start' : Move === 'center' ? 'middle' : Move === 'middle' ? 'middle' : 'end';
@@ -2209,6 +2209,11 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
 
             }
           });
+          invisElem.addEventListener('transitionstart', (e) => { 
+            if (e.propertyName === 'opacity') {
+              invisElem.style.backgroundColor = getComputedStyle(invisElem).backgroundColor;
+            }
+          })
           return invisElem;
         }
         function createSvgHelperButtons(Arr, TextureSvgName) {

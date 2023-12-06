@@ -1,6 +1,5 @@
 /*                TODO
 ----------------------------------------------------
-Изменить время которое считается в окончатор на время реальное за компом
 ----------------------------------------------------
 */
 function loadTrenActions() {
@@ -62,7 +61,6 @@ function startTren(Restart = false) {
     devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].startTime === 0) {
     devHelper.trenVals.waitingInput = true;
   } else devHelper.trenVals.waitingInput = false;
-  // TODO тут сделать исчезание 
   document.querySelector('.end-cointainer').style.opacity = '';
   document.querySelector('.end-cointainer').style.display = '';
   let maxChapterActions = Math.floor(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length / 6);
@@ -168,7 +166,7 @@ function trenTimeTick(timeStamp) {
         devHelper.trenVals.timers.actionTime = Number((timeStamp - devHelper.trenVals.timers.actionTimeHelper).toFixed(2));
         devHelper.trenVals.timers.scenarioTime = Number((devHelper.trenVals.timers.scenarioTimeHelper + devHelper.trenVals.timers.actionTime).toFixed(2));
       }
-      if (devHelper.dev.enable === true && document.querySelector('.info-tren')) {
+      if (devHelper.dev.enable && document.querySelector('.info-tren')) {
         document.querySelector('.info-tren').innerHTML = `<p>Время действия ${devHelper.trenVals.currentAction} = ${devHelper.trenVals.timers.actionTime / 1000};</p>`
         document.querySelector('.info-tren').innerHTML += `<p>Время сценария = ${devHelper.trenVals.timers.scenarioTime / 1000};</p>`
         document.querySelector('.info-tren').innerHTML += `<p>Общее время в сценарии = ${devHelper.trenVals.timers.allTime / 1000};</p>`
@@ -622,7 +620,7 @@ function trenFinish() {
   //------------------------------------------------------------------------------------------------------------------------------------------
 
 
-  if (devHelper.dev.enable === true && document.querySelector('.info-tren'))
+  if (devHelper.dev.enable && document.querySelector('.info-tren'))
     document.querySelector('.info-tren').innerHTML = `Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`;
   devHelper.dev.enable && console.warn(`Вы успешно завершили сценарий ${devHelper.trenVals.scenario}. Ваше время затраченное на прохождение тренажёра = ${devHelper.trenVals.timers.allTime / 1000} сек.`);
 }
@@ -671,10 +669,7 @@ function takeStartingState(Restart = false) {
             if (oldActiveElement.element.id === activeElement.id) {
               let cloneNode = activeElement.cloneNode(true);
               oldActiveElement.element = cloneNode;
-              // TODO Починить
-              if (element.svg.getElementById(activeElement.id)) {
-                element.svg.getElementById(activeElement.id).replaceWith(cloneNode);
-              }
+              element.svg.getElementById(activeElement.id).replaceWith(cloneNode);
             }
           })
         })
@@ -843,14 +838,7 @@ function createConcentrationEffectCondition(Arr) {
         createConcentrationEffect(Arr);
         document.querySelector('.box-help').classList.remove('opacity-1-Temp');
       } else {
-        if (document.getElementById('b_help').interval)
-          clearInterval(document.getElementById('b_help').interval);
-        document.getElementById('b_help').interval = setInterval(changeBorder, 310);
-        function changeBorder() {
-          document.getElementById('b_GeneralView').style.border =
-            document.getElementById('b_GeneralView').style.border === '' ? '2px solid #2c5289' : '';
-        }
-        document.querySelector('.box-help').innerHTML = 'Вернуться на главный вид.'
+        helpBackToMain();
       }
     }
   } else {
@@ -862,13 +850,8 @@ function createConcentrationEffectCondition(Arr) {
         document.querySelector('.box-help').classList.remove('opacity-1-Temp');
       } else {
         document.querySelector('.box-help').innerHTML = 'Включить схему ' + devHelper.svgVals.find(element => element.name === Arr[0].scheme).realName;
-        // Добавить выделение на активатор
-        // найти сейчас главные хелпер
-        // найти в нём все хелперБатоны
-        // найти хелпер, который включит нужную схему
       }
     } else {
-      // TODO тут сделать выделение 3Д активного элемента.
     }
   }
 }
@@ -1023,6 +1006,7 @@ function sendMessage(Sender = 'Система', TextMessage) {
     notIcon.style.visibility = "visible";
     notIcon.style.left = (document.getElementById('b_chat').getBoundingClientRect().right - notIcon.getBoundingClientRect().width / 1.5) + 'px';
     notIcon.style.top = (document.getElementById('b_chat').getBoundingClientRect().top - notIcon.getBoundingClientRect().height / 3) + 'px';
+    document.querySelector('.box-chat-window-mini').style.height = document.querySelector('.box-chat-window-mini').querySelector('.chat').children[0].getBoundingClientRect().height + 35 + 18 + 'px';
   }
 }
 
@@ -1460,21 +1444,18 @@ function newImageCollapseMenu(e) {
   }
 }
 
-
 // ЦЕНТРОВАТЬ ОКНА от КНОПКИ
 function setCenterWindow(item) {
   let helperWindow = document.querySelector(`.${item.getAttribute('window-interface')}`)
-  // helperWindow.classList.add('transition-0');
-  // setTimeout(() => {
   helperWindow.classList.remove('transition-0');
   let b_center = item.getBoundingClientRect().height / 2;
   let w_center = helperWindow.getBoundingClientRect().height / 2;
-  helperWindow.style.top = ConvertPxToVh(item.getBoundingClientRect().y + b_center - w_center) + 'vh';
   if (helperWindow.getBoundingClientRect().bottom >= window.innerHeight * 0.99) {
-    helperWindow.style.top = (99 - ConvertPxToVh(helperWindow.getBoundingClientRect().height)) + 'vh';
+    helperWindow.style.top = (99.1 - ConvertPxToVh(helperWindow.getBoundingClientRect().height)) + 'vh';
     helperWindow.setAttribute('sy', helperWindow.style.top);
+  } else {
+    helperWindow.style.top = ConvertPxToVh(item.getBoundingClientRect().y + b_center - w_center) + 'vh';
   }
-  // }, 50);
 }
 
 // БОЛЬШОЙ БИНД НА СМЕНУ ЦВЕТА КНОПОК // НОВОЕ СВП В 1Ю КНОПКУ  // КЛИК
@@ -1667,36 +1648,67 @@ document.getElementById('b_help').querySelector('.click-button-tren').addEventLi
   } else if (currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
     let tempRealHelperName = findRealName(currentAction.action.target2D).name;
     let tempRealShemeName = findRealName(currentAction.action.target2D).location;
-    // if (document.querySelector('#svg-helper')) {
-    //   let tempNameSvg = document.querySelector('#svg-helper').forScheme;
-    //   let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === currentAction.action.target2D);
-    //   if (tempRealHelper) {
-    //     tempRealShemeName = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
-    //     tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
-    //     if (currentAction.action.realName) tempRealHelperName = currentAction.action.realName;
-    //   } else {
-    //     devHelper.svgHelpers.some(element => {
-    //       if (element.helpers && Array.isArray(element.helpers)) {
-    //         tempRealHelper = element.helpers.find(helper => helper.id === currentAction.action.target2D);
-    //         tempRealShemeName = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
-    //         return tempRealHelper;
-    //       }
-    //       return false;
-    //     });
-    //     tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
-    //   }
-    // } else {
-    //   devHelper.svgHelpers.some(element => {
-    //     if (element.helpers && Array.isArray(element.helpers)) {
-    //       tempRealHelper = element.helpers.find(helper => helper.id === currentAction.action.target2D);
-    //       tempRealShemeName = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
-    //       return tempRealHelper;
-    //     }
-    //     return false;
-    //   });
-    //   tempRealHelperName = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
-    // }
-    document.querySelector('.box-help').innerHTML = `Нажать курсором по элементу ${tempRealHelperName ? tempRealHelperName : ''} на схеме ${tempRealShemeName ? tempRealShemeName : ''}.`;
+    let requiredPosition = undefined;
+    let svgName;
+    let displayNameArr = [];
+    let displayMesh;
+    devHelper.model3DVals.svgDisplays.meshs.forEach(displayMesh => {
+      displayMesh.svgArr.forEach(svg => {
+        if (devHelper.svgVals.find(svg2 => svg2.name === svg.name).realName === tempRealShemeName) {
+          requiredPosition = displayMesh.positionIndex;
+        }
+      })
+    })
+    devHelper.svgHelpers.find(obj => {
+      if (obj.helpers.find(objHelper => objHelper.id === currentAction.action.target2D)) {
+        svgName = obj.name;
+        return obj.name;
+      }
+    });
+    devHelper.model3DVals.svgDisplaysArr.find(obj => {
+      if (obj.possibleSchemes && obj.possibleSchemes.includes(svgName)) {
+        displayNameArr.push(obj.name);
+      }
+    })
+
+    if (devHelper.model3DVals.currentPosition === undefined) {
+      let tempMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.name === displayNameArr[0]);
+      if (tempMesh && !requiredPosition) {
+        requiredPosition = tempMesh.positionIndex;
+      }
+    } else {
+      let currentPosMeshName = devHelper.model3DVals.movePointMeshToArr.find(obj => obj.point === devHelper.model3DVals.currentPosition).name;
+      if (displayNameArr.find(name => name === currentPosMeshName)) {
+        let tempMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.name === displayNameArr.find(name => name === currentPosMeshName));
+        if (tempMesh) {
+          requiredPosition = tempMesh.positionIndex;
+        }
+      } else {
+        if (devHelper.dev.enable) console.log('Не найдено 1');
+      }
+    }
+
+    if (devHelper.model3DVals.currentPosition !== undefined) {
+      if (requiredPosition !== devHelper.model3DVals.currentPosition) {
+        document.querySelector('.box-help').innerHTML = `Вернуться на "Главный вид".`;
+        helpBackToMain();
+      } else {
+        displayMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.positionIndex === requiredPosition);
+        if (displayMesh) {
+          if (displayMesh.svgArr && displayMesh.svgArr.find(obj => obj.name === svgName)) {
+            document.querySelector('.box-help').innerHTML = `Нажать курсором по элементу ${tempRealHelperName ? '"' + tempRealHelperName + '"' : ''}.`;
+            let temp2D = document.querySelector(`#${currentAction.action.target2D}`);
+            if (temp2D) temp2D.classList.toggle('hightlight-helper', true);
+          } else {
+            document.querySelector('.box-help').innerHTML = `Включить схему ${tempRealShemeName ? '"' + tempRealShemeName + '"' : ''}.`;
+          }
+        } else {
+          if (devHelper.dev.enable) console.log('Не найдено 2');
+        }
+      }
+    } else {
+      document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту "${devHelper.model3DVals.cameraPositions[requiredPosition].name}".`;
+    }
   } else {
     document.querySelector('.box-help').innerHTML = '';
     document.querySelector('.box-help').classList.toggle('opacity-1-Temp', false);
@@ -1712,6 +1724,8 @@ document.getElementById('b_help').querySelector('.click-button-tren').addEventLi
         helperHighlightOff(obj.action.target3D);
       }
     });
+  } else if(currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
+    if (document.querySelector('.hightlight-helper')) document.querySelector('.hightlight-helper').classList.toggle('hightlight-helper', false);
   }
   if (document.querySelector('.concentration')) document.querySelector('.concentration').style.opacity = 0;
   if (document.getElementById('b_help').active3DTexture) {
@@ -1897,16 +1911,40 @@ function helperHighlightOn(Actions) {
         (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)).realName : tempMesh.name;
       let tempMeshPosition = (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)) ?
         (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)).position : undefined;
-      let placeName = devHelper.model3DVals.cameraPositions.find(elem => elem.position === tempMeshPosition).name;
-      document.querySelector('.box-help').innerHTML = `Нажать курсором на 3Д объект ${teamMeshName}, расположенный на позиции "${placeName}".`;
-      changeColorTexture(tempMesh, true, true);
+      // let placeName = devHelper.model3DVals.cameraPositions.find(elem => elem.position === tempMeshPosition).name;
+      if (tempMeshPosition !== devHelper.model3DVals.currentPosition) {
+        if (devHelper.model3DVals.currentPosition === undefined) {
+          document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту "${devHelper.model3DVals.cameraPositions[tempMeshPosition].name}".`;
+          changeColorTexture(devHelper.model3DVals.movePointMesh.find(m => m.positionIndex === tempMeshPosition), true, true);
+        } else {
+          helpBackToMain();
+        }
+      } else {
+        // document.querySelector('.box-help').innerHTML = `Нажать курсором на 3Д объект ${teamMeshName}, расположенный на позиции "${placeName}".`;
+        document.querySelector('.box-help').innerHTML = `Нажать курсором на 3Д объект "${teamMeshName}".`;
+        changeColorTexture(tempMesh, true, true);
+      }
     }
-    // document.querySelector('.box-help').innerHTML = 'Нажать курсором на 3Д объект,<br> выделенный жёлтым цветом.';
   }
 }
+
 function helperHighlightOff(Target) {
   let tempMesh = findMesh(Target);
-  if (tempMesh) changeColorTexture(tempMesh, false, true);
+  if (tempMesh && tempMesh.renderOverlay !== false) changeColorTexture(tempMesh, false, true);
+  devHelper.model3DVals.movePointMesh.forEach(element => {
+    if (element.renderOverlay !== false) changeColorTexture(element, false, true);
+  })
+}
+
+function helpBackToMain() {
+  document.querySelector('.box-help').innerHTML = `Вернуться на "Главный вид".`;
+  if (document.getElementById('b_help').interval)
+    clearInterval(document.getElementById('b_help').interval);
+  document.getElementById('b_help').interval = setInterval(changeBorder, 310);
+  function changeBorder() {
+    document.getElementById('b_GeneralView').style.border =
+      document.getElementById('b_GeneralView').style.border === '' ? '2px solid #2c5289' : '';
+  }
 }
 
 function findRealName(TargetName) {

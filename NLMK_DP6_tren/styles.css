@@ -1016,11 +1016,16 @@ ul {
   position: absolute;
   cursor: pointer;
   transition: opacity 0.25s ease;
-  background-color: rgba(255, 0, 0, 0.3);
   opacity: 0;
 }
 
 .invisible-element-svg.error-helper {
+  background-color: rgba(255, 0, 0, 0.3);
+  opacity: 1;
+}
+
+.invisible-element-svg.hightlight-helper {
+  background-color: rgba(255, 255, 0, 0.6);
   opacity: 1;
 }
 
@@ -1840,12 +1845,15 @@ ul {
   z-index: 3;
 }
 
-
 .time-header-title {
   width: 280px;
   width: 100%;
+  cursor: grab;
 }
 
+.time-header-title:active {
+  cursor: grabbing;
+}
 
 .time-header-display {
   display: flex;
@@ -2370,6 +2378,11 @@ ul {
 .chat-header-title {
   width: 280px;
   width: 100%;
+  cursor: grab;
+}
+
+.chat-header-title:active {
+  cursor: grabbing;
 }
 
 .chat-header-button {
