@@ -52,7 +52,7 @@ const devHelper = {
       { positionCoordinates: [0.06, 1.12, 0.11], lookAt: [-0.017735496836921723, -0.00104686817450884, 0], position: 4, name: 'Монитор #2' },
       { positionCoordinates: [0.75, 1.12, 0.01], lookAt: [-0.02523549683692173, 0.3476621849510065, 0], position: 5, name: 'Монитор #1' },
       { positionCoordinates: [0.1, 1.22, 0.03], lookAt: [1.077429069342384, -0.3353050130723554, 0], position: 6, name: 'Телефон' },
-      { positionCoordinates: [0.92, 1.31, -0.05], lookAt: [0.9778930701860019, 1.5707867182903412, 0], position: 7, name: 'Рация' },
+      { positionCoordinates: [0.99, 1.2, -0.08], lookAt: [1.133525791597969, 1.572786718290341, 0], position: 7, name: 'Рация' },
       { positionCoordinates: [1.77, 1.59, -0.48], lookAt: [1.111833144037235, -0.0018067781465321568, 0], position: 8, name: 'ПУ №2 – Пуль управления бесконусное загрузочное устройство (БЗУ)' },
       { positionCoordinates: [2.96, 1.95, -1.0], lookAt: [0.6879109600288498, 0.001624744992681849, 0], position: 9, name: 'ПУ №3 – Пульт управления основных механизмов доменной печи №6 (ДП-6)' },
       { positionCoordinates: [-3.54, 1.32, -0.22], lookAt: [-0.0002711024344136115, 0.0013731002358684753, 0], position: 101, name: 'ПУ БВНК экраны' },
@@ -122,6 +122,7 @@ const devHelper = {
       'Rectangle001',
       'd77660f1-f36a-489c-b0a4-e0cbb5d74f0a',
       'ba053138-9c06-4271-90be-d8be4f72543e',
+      '48cd6e49-fd52-49b4-b02b-1c164a18f2c1',
     ],
     receiveShadowMeshes: [
       'a618e236-5f05-4c16-a5f4-806a8575cd48',
@@ -131,6 +132,7 @@ const devHelper = {
       'Rectangle001',
       'd77660f1-f36a-489c-b0a4-e0cbb5d74f0a',
       'ba053138-9c06-4271-90be-d8be4f72543e',
+      '48cd6e49-fd52-49b4-b02b-1c164a18f2c1',
     ],
   },
   svgVals: [],
@@ -968,37 +970,37 @@ let tempActions = [
     // },
     {
       action: {
-        target2D: 'kl029',
-        // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        // rotation: { y: 1.571 },
+        // target2D: 'kl029',
+        target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+        rotation: { y: 1.571 },
       },
-      // duration: 0.3,
+      duration: 0.3,
       startTime: timeDiff + 1,
       human: true,
       // concentration: [
       //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
       // ]
     },
-    {
-      action: {
-        target2D: 'close_w1',
-      },
-      startTime: timeDiff + 1.1,
-      human: true,
-    },
-    {
-      action: {
-        target2D: 'kl038',
-        // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-        // rotation: { y: 1.571 },
-      },
-      // duration: 0.3,
-      startTime: timeDiff + 2,
-      human: true,
-      // concentration: [
-      //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-      // ]
-    },
+    // {
+    //   action: {
+    //     target2D: 'close_w1',
+    //   },
+    //   startTime: timeDiff + 1.1,
+    //   human: true,
+    // },
+    // {
+    //   action: {
+    //     target2D: 'kl038',
+    //     // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
+    //     // rotation: { y: 1.571 },
+    //   },
+    //   // duration: 0.3,
+    //   startTime: timeDiff + 2,
+    //   human: true,
+    //   // concentration: [
+    //   //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
+    //   // ]
+    // },
     // {
     //   action: {
     //     target3D: 'fPrirodGazReg',
