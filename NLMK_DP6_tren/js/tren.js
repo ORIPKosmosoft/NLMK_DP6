@@ -532,20 +532,13 @@ function trenFinish() {
     {
       name: 'endBarGraph',
       options: {
-        // onHover: function (event) {
-          // let chartElement = chartConfigs[2];
-        //   console.log(chartElement);
-        //   // if (chartElement[0] && chartElement[0]._datasetIndex === 0 && chartElement[0]._index === 1) {
-        //   //   event.stopPropagation();
-        //   // }
-        // },
-        onHover: function(event, elements) {
-          if (elements.length > 0 && elements[0]._datasetIndex === 1) {
-            // Элементы колонок датасета 0 не будут реагировать на события
-            return;
+        onHover: function (event, elements) {
+          // console.log(elements[0], elements[0].datasetIndex);
+          devHelper.endVals.charts[2].config.options.tooltips = {
+            enabled: (elements[0] && elements[0].datasetIndex === 1),
           }
-          // Обработка события для всех остальных элементов
-          console.log("Clicked on an element:", elements);
+          // devHelper.endVals.charts[2].options.tooltips.enabled = elements[0] && elements[0].datasetIndex === 1;
+          // devHelper.endVals.charts[2].update();
         },
         maintainAspectRatio: false,
         scales: {
