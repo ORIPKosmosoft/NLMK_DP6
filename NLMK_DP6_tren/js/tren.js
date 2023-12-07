@@ -1561,23 +1561,23 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   // СХ СУ - БАЗА
   let b_action = item.querySelector('.click-button-tren');
   b_action.addEventListener('mouseover', (e) => {
-    if (b_action.closest('#b_help')) {
-      reavialTextHelp();
-    }
     if (b_action.closest('.button-tren-active') === null) {
       _item.classList.add('opacity-1-Temp');
       _item.classList.remove('transition-0');
       _item.style.left = !document.querySelector('.tren-ui-long') ? _item.getAttribute('sx') : _item.getAttribute('sx2');
+    }
+    if (b_action.closest('#b_help')) {
+      reavialTextHelp();
     }
     if (!_item.classList.contains('opacity-1-Always')) {
       setCenterWindow(item);
     }
   });
   b_action.addEventListener('mouseout', (e) => {
+    _item.classList.remove('opacity-1-Temp');
     if (b_action.closest('#b_help')) {
       hideTextHelp();
     }
-    _item.classList.remove('opacity-1-Temp');
   });
 })
 
@@ -1708,7 +1708,6 @@ document.getElementById('b_chat').addEventListener("mouseover", (e) => { setMini
 
 // ПОМОЩЬ
 function reavialTextHelp() {
-  // document.getElementById('b_help').addEventListener("mouseover", (e) => {
   let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   if (currentAction && currentAction.concentration) createConcentrationEffectCondition(currentAction.concentration);
   else if (devHelper.trenVals.multiAction && devHelper.trenVals.multiAction.length > 0) {
@@ -1718,6 +1717,7 @@ function reavialTextHelp() {
   } else if (currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
     let tempRealHelperName = findRealName(currentAction.action.target2D).name;
     let tempRealShemeName = findRealName(currentAction.action.target2D).location;
+    console.log(currentAction.action.target2D, tempRealHelperName, tempRealShemeName);
     let requiredPosition = undefined;
     let svgName;
     let displayNameArr = [];
@@ -1788,7 +1788,6 @@ function reavialTextHelp() {
     document.querySelector('.box-help').innerHTML = '';
     document.querySelector('.box-help').classList.toggle('opacity-1-Temp', false);
   }
-  // })
 }
 
 function hideTextHelp() {
@@ -2026,32 +2025,19 @@ function findRealName(TargetName) {
     location: undefined,
   }
   let currentAction = findCurrentAction();
-  if (currentAction.action.realName) returnObj.name = currentAction.action.realName;
-  else {
-    let temp3D = devHelper.model3DVals.activeMeshsToArr.find(elem => elem.name === TargetName || elem.id === TargetName);
-    if (temp3D && temp3D.realName) {
-      returnObj.name = temp3D.realName;
-      returnObj.location = devHelper.model3DVals.cameraPositions.find(elem => elem.position === temp3D.position).name;
-    } else {
-      let tempRealHelper;
-      if (document.querySelector('#svg-helper')) {
-        let tempNameSvg = document.querySelector('#svg-helper').forScheme;
-        let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === TargetName);
-        if (tempRealHelper) {
-          returnObj.location = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
-          returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
-          if (currentAction.action.realName) returnObj.name = currentAction.action.realName;
-        } else {
-          devHelper.svgHelpers.some(element => {
-            if (element.helpers && Array.isArray(element.helpers)) {
-              tempRealHelper = element.helpers.find(helper => helper.id === TargetName);
-              returnObj.location = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
-              return tempRealHelper;
-            }
-            return false;
-          });
-          returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
-        }
+  let temp3D = devHelper.model3DVals.activeMeshsToArr.find(elem => elem.name === TargetName || elem.id === TargetName);
+  if (temp3D && temp3D.realName) {
+    returnObj.name = temp3D.realName;
+    returnObj.location = devHelper.model3DVals.cameraPositions.find(elem => elem.position === temp3D.position).name;
+  } else {
+    let tempRealHelper;
+    if (document.querySelector('#svg-helper')) {
+      let tempNameSvg = document.querySelector('#svg-helper').forScheme;
+      let tempRealHelper = devHelper.svgHelpers.find(element => element.name === tempNameSvg).helpers.find(element => element.id === TargetName);
+      if (tempRealHelper) {
+        returnObj.location = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
+        returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
+        if (currentAction.action.realName) returnObj.name = currentAction.action.realName;
       } else {
         devHelper.svgHelpers.some(element => {
           if (element.helpers && Array.isArray(element.helpers)) {
@@ -2063,7 +2049,18 @@ function findRealName(TargetName) {
         });
         returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
       }
+    } else {
+      devHelper.svgHelpers.some(element => {
+        if (element.helpers && Array.isArray(element.helpers)) {
+          tempRealHelper = element.helpers.find(helper => helper.id === TargetName);
+          returnObj.location = devHelper.svgVals.find(element2 => element2.name === element.name).realName;
+          return tempRealHelper;
+        }
+        return false;
+      });
+      returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
     }
   }
+  if (currentAction.action.realName) returnObj.name = currentAction.action.realName;
   return returnObj;
 }

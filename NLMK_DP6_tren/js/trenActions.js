@@ -104,8 +104,7 @@ const devHelper = {
       { name: 'DP6_tumblers', point: 104 },
     ],
     svgDisplaysArr: [
-      { name: 'Display_flat002', svgName: 'BVNK_VNK1', possibleSchemes: ['BVNK_VNK1', 'BVNK_VNK2', 'BVNK_VNK3', 'vnk_main', 'vnk_spvg'] },
-      // { name: 'Display_flat003', svgName: 'vnk_main', possibleSchemes: ['BVNK_VNK1', 'BVNK_VNK2', 'BVNK_VNK3', 'vnk_main', 'vnk_spvg'] },
+      { name: 'Display_flat002', svgName: 'vnk_main', possibleSchemes: ['BVNK_VNK1', 'BVNK_VNK2', 'BVNK_VNK3', 'vnk_main', 'vnk_spvg'] },
       { name: 'Display_flat003', svgName: 'BVNK_VNK1', possibleSchemes: ['BVNK_VNK1', 'BVNK_VNK2', 'BVNK_VNK3', 'vnk_main', 'vnk_spvg'] },
       { name: 'Display_flat010', svgName: 'Osnovnye_parametry_DP' },
       { name: 'Display_flat012', svgName: 'vnk_spvg' },
@@ -928,7 +927,6 @@ const devHelper = {
 */
 const timeDiff = 0;
 let tempActions = [
-
   // [ // test scenario 1
   //   ////--------------------------------2---------------------------------------- 
   //   // {
@@ -1095,10 +1093,8 @@ let tempActions = [
   //   //   startTime: timeDiff + 7,
   //   // },
   // ],
-
   // Первый сценарий  
   [
-    /*
     {
       lifeTime: '07:30:00',
       startTime: timeDiff + 0,
@@ -2351,7 +2347,6 @@ let tempActions = [
       startTime: timeDiff + 68.6,
       human: true,
     },
-    */
     ////--------------------------------3----------------------------------------
     {
       scenarioText: 'Настройка значения теоретической температуры горения.',
@@ -9048,10 +9043,6 @@ let tempActions = [
 
 
   ],
-
-
-
-
   // 2 scenario
   [
     /*
