@@ -210,6 +210,25 @@ function domLoaded() {
   let tempAudio1 = new Audio(`/media/audio/effects/right.mp3`);
   let tempAudio2 = new Audio(`/media/audio/effects/error.mp3`);
   document.querySelector('.tests-container-elem').append(tempAudio1, tempAudio2);
+
+  const endContainer = document.querySelector('.end-cointainer');
+  Array.from(document.querySelectorAll('.end-button')).forEach(button => {
+    button.addEventListener('click', function (e) {
+      endContainer.style.opacity = 0;
+      endContainer.style.display = 'none';
+      if (e.currentTarget.innerHTML === 'Повторить') {
+        startTren(true);
+      } else {
+        startChangeFon();
+        document.querySelector('.tren-container').style.opacity = 0;
+        Array.from(document.querySelectorAll('.button-tren-active')).forEach(btn => {
+          btn.querySelector('.click-button-tren').dispatchEvent(new Event('click'));
+          btn.dispatchEvent(new Event('click'));
+        })
+      }
+    })
+  })
+
   loadTrenActions();
 }
 

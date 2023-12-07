@@ -1,5 +1,8 @@
 /*                TODO
 ----------------------------------------------------
+Проверить количество вызовов клика евента после перезапуска тренажёа
+если клик по 3Д
+если клик по 2Д
 ----------------------------------------------------
 */
 function loadTrenActions() {
@@ -63,12 +66,17 @@ function startTren(Restart = false) {
   } else devHelper.trenVals.waitingInput = false;
   document.querySelector('.end-cointainer').style.opacity = '';
   document.querySelector('.end-cointainer').style.display = '';
+  if (Restart) {
+    devHelper.endVals.previousEndVals = { ...devHelper.endVals };
+    delete devHelper.endVals.previousEndVals.previousEndVals;
+  }
   let maxChapterActions = Math.floor(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length / 6);
   devHelper.endVals.actionChapter = [maxChapterActions, maxChapterActions, maxChapterActions, maxChapterActions, maxChapterActions, devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length - maxChapterActions * 5];
   devHelper.endVals.currentChapter = 0;
   devHelper.endVals.currentActionCount = 0;
   devHelper.endVals.errors = [0];
   devHelper.endVals.humanTime = [];
+  devHelper.endVals.maxTimeArr = [];
   let tempArr = Array.from(devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions);
   tempArr.sort((a, b) => a.startTime - b.startTime);
 
@@ -243,11 +251,6 @@ function trenTimeTick(timeStamp) {
         }
       }
       let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
-      if (devHelper.dev.enable) {
-        devHelper.endVals.averageTime = [500, 500, 500, 500, 500, 500];
-        devHelper.endVals.humanTime = [600, 800, 534, 458, 125, 486];
-        devHelper.endVals.errors = [10, 20, 30, 40, 50, 60];
-      }
       if (lastAction === undefined) trenFinish();
     }
     window.requestAnimationFrame(trenTimeTick);
@@ -446,6 +449,22 @@ function trenFinish() {
   devHelper.trenVals.ended = true;
   playAudio('right');
   //------------------------------------------------------------------------------------------------------------------------------------------
+  devHelper.endVals.restarts++;
+  if (devHelper.endVals.humanTime.length > 0 && devHelper.endVals.averageTime.length > 0) {
+    const comparedArray = devHelper.endVals.humanTime.map((value, index) => Math.round(Math.max(value, devHelper.endVals.averageTime[index]) * 1.1));
+    const maxElement = Math.max(...comparedArray);
+    devHelper.endVals.maxTimeArr = comparedArray.map(value => value === maxElement ? value + value * 0.1 : value);
+    devHelper.endVals.maxTimeArr.fill(maxElement);
+    if (devHelper.endVals.previousEndVals) {
+      const comparedArray2 = devHelper.endVals.previousEndVals.humanTime.map((value, index) => Math.round(Math.max(value, devHelper.endVals.previousEndVals.averageTime[index]) * 1.1));
+      const comparedArray3 = comparedArray2.map((value, index) => Math.round(Math.max(value, devHelper.endVals.maxTimeArr[index])));
+      const maxElement2 = Math.max(...comparedArray3);
+      devHelper.endVals.maxTimeArr = comparedArray.map(value => value === maxElement2 ? value + value * 0.1 : value);
+      devHelper.endVals.maxTimeArr.fill(maxElement2);
+    }
+  } else {
+    if (devHelper.dev.enable) console.error('Один или оба массива пусты');
+  }
   const endContainer = document.querySelector('.end-cointainer');
   endContainer.style.opacity = 1;
   endContainer.style.display = 'unset';
@@ -490,12 +509,17 @@ function trenFinish() {
       name: 'endLineGraph',
       type: 'line',
       options: {
+        onHover: function (event, elements) {
+          if (devHelper.endVals.previousEndVals) {
+            devHelper.endVals.charts[1].config.options.plugins.tooltip.enabled = elements[0] ? (elements[0].datasetIndex !== 1 ? true : false) : true;
+          }
+          devHelper.endVals.charts[1].update();
+        },
         maintainAspectRatio: false,
         responsive: true,
         scales: {
           y: {
             beginAtZero: true,
-            max: 40
           }
         },
         plugins: {
@@ -524,8 +548,23 @@ function trenFinish() {
           data: devHelper.endVals.errors,
           fill: false,
           borderWidth: Math.round(window.innerWidth / 100 * 0.11),
-          borderColor: '#2c5289',
-          tension: 0.4
+          borderColor: 'rgb(29, 86, 155)',
+          pointRadius: 4,
+          pointHoverRadius: 7,
+          offset: 0.2,
+          tension: 0.3,
+        }, {
+          label: 'Прошлые ошибки',
+          data: devHelper.endVals.previousEndVals ? devHelper.endVals.previousEndVals.errors : [0],
+          fill: false,
+          borderWidth: Math.round(window.innerWidth / 100 * 0.11),
+          borderColor: 'rgb(155, 155, 155)',
+          pointRadius: devHelper.endVals.previousEndVals ? 4 : 0,
+          pointHoverRadius: devHelper.endVals.previousEndVals ? 7 : 0,
+          offset: 0.2,
+          tension: 0.3,
+          borderDash: [10, 10],
+          showLine: devHelper.endVals.previousEndVals ? true : false,
         }]
       }
     },
@@ -533,12 +572,12 @@ function trenFinish() {
       name: 'endBarGraph',
       options: {
         onHover: function (event, elements) {
-          // console.log(elements[0], elements[0].datasetIndex);
-          devHelper.endVals.charts[2].config.options.tooltips = {
-            enabled: (elements[0] && elements[0].datasetIndex === 1),
+          if (devHelper.endVals.previousEndVals) {
+            devHelper.endVals.charts[2].config.options.plugins.tooltip.enabled = elements[0] ? (elements[0].datasetIndex !== 2 ? true : false) : true;
+          } else {
+            devHelper.endVals.charts[2].config.options.plugins.tooltip.enabled = elements[0] ? ((elements[0].datasetIndex !== 2 && elements[0].datasetIndex !== 1) ? true : false) : true;
           }
-          // devHelper.endVals.charts[2].options.tooltips.enabled = elements[0] && elements[0].datasetIndex === 1;
-          // devHelper.endVals.charts[2].update();
+          devHelper.endVals.charts[2].update();
         },
         maintainAspectRatio: false,
         scales: {
@@ -555,6 +594,13 @@ function trenFinish() {
             display: false
           },
           tooltip: {
+            enabled: true,
+            animation: {
+              duration: 0,
+              animateScale: false,
+              animateRotate: false,
+            },
+            position: 'nearest',
             callbacks: {
               label: context => {
                 let label = context.dataset.label || '';
@@ -575,22 +621,37 @@ function trenFinish() {
           type: 'line',
           label: 'Ваше время',
           data: devHelper.endVals.humanTime.map(number => Math.round(number / 60)),
-          borderColor: 'rgb(54, 162, 235)',
+          borderColor: 'rgb(29, 86, 155)',
           pointRadius: 4,
-          tension: 0.2
+          pointHoverRadius: 7,
+          offset: 0.2,
+          tension: 0.3,
+          fill: false,
+        }, {
+          type: 'line',
+          label: 'Прошлое время',
+          data: devHelper.endVals.previousEndVals ? devHelper.endVals.previousEndVals.humanTime.map(number => Math.round(number / 60)) : [0, 0, 0, 0, 0, 0],
+          fill: false,
+          borderColor: 'rgb(155, 155, 155)',
+          pointRadius: devHelper.endVals.previousEndVals ? 4 : 0,
+          pointHoverRadius: devHelper.endVals.previousEndVals ? 7 : 0,
+          offset: 0.2,
+          tension: 0.3,
+          borderDash: [10, 10],
+          showLine: devHelper.endVals.previousEndVals ? true : false,
         }, {
           type: 'bar',
           label: 'Максимальное время',
-          data: [20, 20, 20, 20, 20, 20], // TODO найти максимальное время прохождения среди humanTime и averageTime
-          borderColor: 'rgb(255, 99, 132)',
-          backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          data: devHelper.endVals.maxTimeArr.map(number => Math.round(number / 60)),
+          borderColor: 'rgb(238, 238, 238)',
+          backgroundColor: 'rgba(0, 0, 0, 0.1)',
           barPercentage: 0.4,
         }, {
           type: 'bar',
           label: 'Среднее время',
           data: devHelper.endVals.averageTime.map(number => Math.round(number / 60)),
-          borderColor: 'rgb(255, 99, 132)',
-          backgroundColor: 'rgba(19, 71, 144, 0.8)',
+          borderColor: 'rgb(238, 238, 238)',
+          backgroundColor: 'rgba(0, 0, 0, 0.1)',
           barPercentage: 0.4,
           borderRadius: Math.round(window.innerWidth / 100 * 0.3),
         },]
@@ -620,22 +681,6 @@ function trenFinish() {
     var formattedTime = hours + " ч " + minutes + " м " + remainingSeconds + " с";
     return formattedTime;
   }
-  Array.from(document.querySelectorAll('.end-button')).forEach(button => {
-    button.addEventListener('click', function (e) {
-      endContainer.style.opacity = 0;
-      endContainer.style.display = 'none';
-      if (e.currentTarget.innerHTML === 'Повторить') {
-        startTren(true);
-      } else {
-        startChangeFon();
-        document.querySelector('.tren-container').style.opacity = 0;
-        Array.from(document.querySelectorAll('.button-tren-active')).forEach(btn => {
-          btn.querySelector('.click-button-tren').dispatchEvent(new Event('click'));
-          btn.dispatchEvent(new Event('click'));
-        })
-      }
-    })
-  })
   //------------------------------------------------------------------------------------------------------------------------------------------
 
 
