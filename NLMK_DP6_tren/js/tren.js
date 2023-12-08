@@ -1669,7 +1669,9 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
       }
       return;
     } else {
-      item.style.border = '0.15vw solid #2c5289';
+      if (item.id !== 'b_GeneralView') {
+        item.style.border = '0.15vw solid #2c5289';
+      }
       if (document.querySelectorAll('.opacity-1-Always').length > 0) {
         let tempItem = document.querySelector(`.${item.getAttribute('window-interface')}`);
         raiseUpBox(tempItem);
