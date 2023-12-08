@@ -25,6 +25,7 @@ const devHelper = {
     messages: [],
     ended: false,
     multiAction: [],
+    windowIntersec: []
   },
   model3DVals: {
     activeControlCamera: true,

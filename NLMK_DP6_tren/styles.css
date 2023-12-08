@@ -114,15 +114,15 @@ body {
   transition: all 0.3s ease;
 }
 
-.section.section-copy {
+.section-copy {
   position: absolute;
   visibility: visible;
-  opacity: 0;
   top: 29vh;
   left: 4.3vw;
   height: 70vh;
   width: 6vw;
   z-index: 1;
+  opacity: 0;
   pointer-events: none;
 }
 
@@ -457,7 +457,7 @@ body {
   margin-bottom: 0.52vw;
   text-align: left;
   border-radius: 0.52vw;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .scenario-box:hover {
@@ -1792,7 +1792,7 @@ ul {
   width: 102%;
   height: 143%;
   z-index: -1;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 1);
 }
 
 
@@ -1813,7 +1813,7 @@ ul {
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
-  border: solid 0.15vw rgba(255, 255, 255, 0.8);
+  /* border: solid 0.15vw rgba(255, 255, 255, 0.8); */
 }
 
 .box-time .block-button {
@@ -1843,15 +1843,22 @@ ul {
   opacity: 0;
   transition: all 0.3s ease;
   z-index: 3;
-}
-
-.time-header-title {
-  width: 280px;
-  width: 100%;
   cursor: grab;
+  /* align-items: center; */
 }
 
-.time-header-title:active {
+.horizontal-line-box {
+  border-top: 1px solid #939393;
+  border-bottom: 1px solid #939393;
+  width: 50%;
+  margin: 1.3vh 0;
+  border-radius: 21px;
+  height: 0.15vh;
+  background-color: #939393;
+  transition: all 0.3s ease;
+}
+
+.time-header:active {
   cursor: grabbing;
 }
 
@@ -1865,7 +1872,7 @@ ul {
   font-size: 26px;
   display: flex;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 1.8vh;
   align-items: center;
   cursor: pointer;
 }
@@ -2195,14 +2202,14 @@ ul {
   padding-bottom: 1.7vh;
   display: flex;
   flex-direction: column;
-  border: solid 0.15vw rgba(255, 255, 255, 0.8);
+  /* border: solid 0.15vw rgba(255, 255, 255, 0.8); */
 }
 
 .box-chat-window-mini {
   height: 11vh;
   padding-top: 0px;
   padding-bottom: 0px;
-  border: solid 0.15vw rgba(255, 255, 255, 0.8);
+  /* border: solid 0.15vw rgba(255, 255, 255, 0.8); */
 }
 
 .box-chat-window .block-button {
@@ -2373,15 +2380,11 @@ ul {
   z-index: 3;
   transition: all 0.3s ease;
   border: none !important;
-}
-
-.chat-header-title {
-  width: 280px;
-  width: 100%;
+  z-index: 3;
   cursor: grab;
 }
 
-.chat-header-title:active {
+.box-chat-header:active {
   cursor: grabbing;
 }
 
@@ -2390,7 +2393,7 @@ ul {
   font-size: 26px;
   display: flex;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 1.8vh;
   align-items: center;
   cursor: pointer;
   margin-right: 3px;
@@ -2475,7 +2478,7 @@ ul {
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
-  border: solid 2px rgba(255, 255, 255, 0.8);
+  /* border: solid 2px rgba(255, 255, 255, 0.8); */
 }
 
 .box-exit {
@@ -2494,7 +2497,7 @@ ul {
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
-  border: solid 2px rgba(255, 255, 255, 0.8);
+  /* border: solid 2px rgba(255, 255, 255, 0.8); */
 }
 
 .help-text-block {
@@ -2550,7 +2553,7 @@ ul {
   position: fixed;
   height: 98%;
   width: calc(21vw - 0.52vw);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 1);
   border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   padding-left: 0.52vw;
@@ -2682,6 +2685,7 @@ ul {
   background-color: white;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  border: 0.15vw solid #fff;
 
   /* svg */
   display: flex;
@@ -2694,7 +2698,6 @@ ul {
 }
 
 .button-tren:hover {
-  /* background-color: #1b569b; */
   border: 0.15vw solid #2c5289;
 }
 
@@ -2744,7 +2747,22 @@ ul {
   color: #6e6e6e;
   line-height: 30px;
   padding: 0.52vw;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
+  border: 0;
+  border-radius: 0.52vw;
+  box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
+  font-family: 'Circe-Bold', sans-serif;
+  transition: all 0.3s ease;
+  opacity: 0;
+  padding-bottom: 7px;
+}
+
+.box-back {
+  position: fixed;
+  color: #6e6e6e;
+  line-height: 30px;
+  padding: 0.52vw;
+  background-color: rgba(255, 255, 255, 1);
   border: 0;
   border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
@@ -2759,7 +2777,7 @@ ul {
   color: #6e6e6e;
   line-height: 30px;
   padding: 0.52vw;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
   border: 0;
   border-radius: 0.52vw;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
@@ -2949,16 +2967,9 @@ ul {
   opacity: 0.8;
 }
 
-.opacity-1-Always {
-  opacity: 1;
-  z-index: 1;
-  border: 0.15vw solid rgba(255, 255, 255, 1);
-  /* visibility: visible; */
-}
-
 .opacity-1-Temp {
   opacity: 1;
-  z-index: 1;
+  z-index: 10;
   /* visibility: visible; */
 }
 
@@ -3019,6 +3030,14 @@ ul {
 
 .backArea-white-100 {
   background: rgba(255, 255, 255, 1);
+}
+
+.opacity-1-Always {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: all;
+  /* border: 0.15vw solid rgba(255, 255, 255, 1); */
+  /* visibility: visible; */
 }
 
 /*  ВСЯЧИНА */

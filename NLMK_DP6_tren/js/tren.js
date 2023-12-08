@@ -1,12 +1,38 @@
 /*                TODO
 ----------------------------------------------------
-Проверить количество вызовов клика евента после перезапуска тренажёа
-если клик по 3Д
-если клик по 2Д
+При НАВЕДЕНИИ
+на любую
+  если opacity-1-Always и пересечние
+    то opacity 0.2 или 0
+----------------------------------------------------
+ПРИ КЛИКЕ
+ клик на часы
+  если открыт сценарий
+    то часы уйдут на право
+  клик на чат
+    если открыт сценарий
+      то чат уйдёт на право
+  клик на справку
+    если открыт сценарий
+      то закроется сценарий
+
+если есть opacity-1-Always
+  то изменить z-index
+
+на справка
+  если box-scenario с классом opacity-1-Always
+    то закрыть Справка
+
+
+на рестарт
+  блок всего
+
+на выход
+  блок всего
+
 ----------------------------------------------------
 */
 function loadTrenActions() {
-
   let effectsArr = ['error', 'right', 'tren_click', 'tren_error', 'ui_click'];
   effectsArr.forEach(audioName => {
     if (!devHelper.audio.find(element => element.name === audioName))
@@ -1106,6 +1132,7 @@ function stopMoveContainer(Document, MoveWindow) {
   MoveWindow.classList.remove('transition-0');
   MoveWindow.style.left = ConvertPxToVw(parseFloat(MoveWindow.style.left)) + 'vw';
   MoveWindow.style.top = ConvertPxToVh(parseFloat(MoveWindow.style.top)) + 'vh';
+  MoveWindow.classList.toggle('raise-up', false);
 }
 function dragAndDrop(e, moveWindow) {
   moveWindow.classList.add('transition-0');
@@ -1117,6 +1144,29 @@ function dragAndDrop(e, moveWindow) {
     moveWindow.style.left = (e.pageX - shiftX) /*/ vW*/ + 'px';
     moveWindow.style.top = (e.pageY - shiftY) /*/ vH*/ + 'px';
     fixEdge(e);
+
+    if (moveWindow.style.opacity !== '1') {
+      moveWindow.style.opacity = '1';
+      // moveWindow.old
+    }
+    if (document.querySelectorAll('.opacity-1-Always').length > 1) {
+      Array.from(document.querySelectorAll('.opacity-1-Always')).forEach((item) => {
+        if (item !== moveWindow && item.style.opacity !== '' && !areElementsIntersecting(item, moveWindow)) {
+          let intersecObj = devHelper.trenVals.windowIntersec.find(el => el.main === moveWindow);
+          if (intersecObj) {
+            let intersecWindow = intersecObj.below.find(el => el === item);
+            let intersecWindowIndex = intersecObj.below.findIndex(el => el === item);
+            if (intersecWindow) {
+              intersecWindow.style.opacity = '';
+              intersecObj.below.splice(intersecWindowIndex, 1);
+              if (intersecObj.below.length === 0) {
+                devHelper.trenVals.windowIntersec.splice(devHelper.trenVals.windowIntersec.findIndex(el => el.main === moveWindow), 1)
+              }
+            }
+          }
+        }
+      })
+    }
   }
   function fixEdge(e) {
     if (parseInt(moveWindow.style.left) <= document.querySelector('.tren-ui').offsetWidth) {
@@ -1162,7 +1212,8 @@ function raiseUpBox(e) {
   if (document.querySelector('.z-index9')) {
     document.querySelector('.z-index9').classList.remove('z-index9');
   }
-  e.currentTarget.parentElement.parentElement.classList.add('z-index9')
+  e.classList.toggle('raise-up', true);
+  e.classList.add('z-index9')
 }
 
 
@@ -1170,6 +1221,26 @@ function clickCloseTime(e) {
   if (document.getElementById('b_oclock').classList.contains('button-tren-active')) {
     document.getElementById('b_oclock').classList.remove('button-tren-active')
     setNewFillButtonSVG(document.getElementById('b_oclock').querySelector('object'), COLOR_STATE_BUTTON.Normal);
+  }
+  document.getElementById('b_oclock').style.border = '';
+  if (document.querySelectorAll('.opacity-1-Always').length > 0) {
+    let tempItem = document.querySelector(`.${document.getElementById('b_oclock').getAttribute('window-interface')}`);
+    Array.from(document.querySelectorAll('.opacity-1-Always')).forEach((domEle) => {
+      if (tempItem !== domEle && areElementsIntersecting(tempItem, domEle)) {
+        let intersecObj = devHelper.trenVals.windowIntersec.find(el => el.main === tempItem);
+        if (intersecObj) {
+          let intersecWindow = intersecObj.below.find(el => el === domEle);
+          let intersecWindowIndex = intersecObj.below.findIndex(el => el === domEle);
+          if (intersecWindow) {
+            intersecWindow.style.opacity = '';
+            intersecObj.below.splice(intersecWindowIndex, 1);
+            if (intersecObj.below.length === 0) {
+              devHelper.trenVals.windowIntersec.splice(devHelper.trenVals.windowIntersec.findIndex(el => el.main === tempItem), 1)
+            }
+          }
+        }
+      }
+    })
   }
   document.querySelector('.box-time').classList.remove('z-index9');
   document.querySelector('.box-time').classList.remove("opacity-1-Always");
@@ -1200,6 +1271,26 @@ function clickCloseChat(e) {
     document.getElementById('b_chat').classList.remove('button-tren-active')
     setNewFillButtonSVG(document.getElementById('b_chat').querySelector('object'), COLOR_STATE_BUTTON.Normal);
   }
+  document.getElementById('b_chat').style.border = '';
+  if (document.querySelectorAll('.opacity-1-Always').length > 0) {
+    let tempItem = document.querySelector(`.${document.getElementById('b_chat').getAttribute('window-interface')}`);
+    Array.from(document.querySelectorAll('.opacity-1-Always')).forEach((domEle) => {
+      if (tempItem !== domEle && areElementsIntersecting(tempItem, domEle)) {
+        let intersecObj = devHelper.trenVals.windowIntersec.find(el => el.main === tempItem);
+        if (intersecObj) {
+          let intersecWindow = intersecObj.below.find(el => el === domEle);
+          let intersecWindowIndex = intersecObj.below.findIndex(el => el === domEle);
+          if (intersecWindow) {
+            intersecWindow.style.opacity = '';
+            intersecObj.below.splice(intersecWindowIndex, 1);
+            if (intersecObj.below.length === 0) {
+              devHelper.trenVals.windowIntersec.splice(devHelper.trenVals.windowIntersec.findIndex(el => el.main === tempItem), 1)
+            }
+          }
+        }
+      }
+    })
+  }
   document.querySelector('.box-chat-window').classList.remove('z-index9');
   document.querySelector('.box-chat-window').classList.remove("opacity-1-Temp"); // БОЛЬШОЕ ОКНО
   document.querySelector('.box-chat-window').classList.remove("opacity-1-Always"); // БОЛЬШОЕ ОКНО
@@ -1221,20 +1312,36 @@ function clickCloseChat(e) {
 
 // Рамки вокруг окон
 {
-  Array.from(document.querySelectorAll('.time-header-title')).forEach(element => {
+  Array.from(document.querySelectorAll('.time-header')).forEach(element => {
     element.onmouseover = (e) => {
-      element.parentElement.parentElement.classList.add('border-window')
+      // element.parentElement.classList.add('border-window')
+      if (element.querySelector('.horizontal-line-box')) {
+        element.querySelector('.horizontal-line-box').style.borderColor = '#2c5289';
+        element.querySelector('.horizontal-line-box').style.backgroundColor = '#2c5289';
+      }
     }
     element.onmouseout = (e) => {
-      element.parentElement.parentElement.classList.remove('border-window')
+      // element.parentElement.classList.remove('border-window')
+      if (element.querySelector('.horizontal-line-box')) {
+        element.querySelector('.horizontal-line-box').style.borderColor = '';
+        element.querySelector('.horizontal-line-box').style.backgroundColor = '';
+      }
     }
   });
-  Array.from(document.querySelectorAll('.chat-header-title')).forEach(element => {
+  Array.from(document.querySelectorAll('.box-chat-header')).forEach(element => {
     element.onmouseover = (e) => {
-      element.parentElement.parentElement.classList.add('border-window')
+      // element.parentElement.classList.add('border-window')
+      if (element.querySelector('.horizontal-line-box')) {
+        element.querySelector('.horizontal-line-box').style.borderColor = '#2c5289';
+        element.querySelector('.horizontal-line-box').style.backgroundColor = '#2c5289';
+      }
     }
     element.onmouseout = (e) => {
-      element.parentElement.parentElement.classList.remove('border-window')
+      // element.parentElement.classList.remove('border-window')
+      if (element.querySelector('.horizontal-line-box')) {
+        element.querySelector('.horizontal-line-box').style.borderColor = '';
+        element.querySelector('.horizontal-line-box').style.backgroundColor = '';
+      }
     }
   });
 }
@@ -1243,9 +1350,9 @@ function clickCloseChat(e) {
   // КЛИК ЗАКРЫТЬ TIME
   document.querySelector('.time-header-button').addEventListener("click", clickCloseTime)
   // BIND mouseDown
-  document.querySelector('.time-header-title').onmousedown = (e) => {
-    raiseUpBox(e);
-    dragAndDrop(e, e.currentTarget.parentElement.parentElement /*box-time*/);
+  document.querySelector('.time-header').onmousedown = (e) => {
+    raiseUpBox(e.currentTarget.parentElement);
+    dragAndDrop(e, e.currentTarget.parentElement);
   };
 }
 
@@ -1261,7 +1368,7 @@ function setLifeTime(time) {
   setLifeTime(devHelper.trenVals.timers.lifeTime);  // 2d 
   // BIND mouseDown
   document.querySelector('.dialogHeader .time-header-title').onmousedown = (e) => {
-    raiseUpBox(e);
+    raiseUpBox(e.currentTarget.parentElement);
     dragAndDrop(e, e.currentTarget.parentElement.parentElement);
   };
 
@@ -1478,14 +1585,10 @@ function setMiniChat() {
     miniChat.style.width = miniChat.getAttribute('maxWidth');
     miniChat.style.height = miniChat.getAttribute('maxHeight');
   }
-
-  // клик закрыть CHAT
   document.querySelector('.box-chat-window .chat-header-button').addEventListener("click", clickCloseChat);
-
-  // Bind mouseDown
-  document.querySelector('.box-chat-window .chat-header-title').onmousedown = (e) => {
-    raiseUpBox(e);
-    dragAndDrop(e, e.currentTarget.parentElement.parentElement);
+  document.querySelector('.box-chat-header').onmousedown = (e) => {
+    raiseUpBox(e.currentTarget.parentElement);
+    dragAndDrop(e, e.currentTarget.parentElement);
   };
 
 }
@@ -1543,7 +1646,53 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
       }
       item.classList.remove('button-tren-active');
       setNewFillButtonSVG(item.querySelector('object'), COLOR_STATE_BUTTON.Normal);
+      item.style.border = '';
+
+      if (document.querySelectorAll('.opacity-1-Always').length > 0) {
+        let tempItem = document.querySelector(`.${item.getAttribute('window-interface')}`);
+        Array.from(document.querySelectorAll('.opacity-1-Always')).forEach((domEle) => {
+          if (tempItem !== domEle && areElementsIntersecting(tempItem, domEle)) {
+            let intersecObj = devHelper.trenVals.windowIntersec.find(el => el.main === tempItem);
+            if (intersecObj) {
+              let intersecWindow = intersecObj.below.find(el => el === domEle);
+              let intersecWindowIndex = intersecObj.below.findIndex(el => el === domEle);
+              if (intersecWindow) {
+                intersecWindow.style.opacity = '';
+                intersecObj.below.splice(intersecWindowIndex, 1);
+                if (intersecObj.below.length === 0) {
+                  devHelper.trenVals.windowIntersec.splice(devHelper.trenVals.windowIntersec.findIndex(el => el.main === tempItem), 1)
+                }
+              }
+            }
+          }
+        })
+      }
       return;
+    } else {
+      item.style.border = '0.15vw solid #2c5289';
+      if (document.querySelectorAll('.opacity-1-Always').length > 0) {
+        let tempItem = document.querySelector(`.${item.getAttribute('window-interface')}`);
+        raiseUpBox(tempItem);
+        Array.from(document.querySelectorAll('.opacity-1-Always')).forEach((item2) => {
+          if (item2 !== tempItem && areElementsIntersecting(item2, tempItem) && item2.style.opacity !== '0.2') {
+            if (!devHelper.trenVals.windowIntersec.find(el => el.main === tempItem)) {
+              devHelper.trenVals.windowIntersec.push({
+                main: tempItem,
+                below: [item2],
+              })
+            } else {
+              if (devHelper.trenVals.windowIntersec.find(el => el.main === tempItem).below.find(el => el !== item2)) {
+                devHelper.trenVals.windowIntersec.find(el => el.main === tempItem).below.push(item2)
+              }
+            }
+          }
+        })
+        if (devHelper.trenVals.windowIntersec.find(el => el.main === tempItem)) {
+          devHelper.trenVals.windowIntersec.find(el => el.main === tempItem).below.forEach((opaDom) => {
+            opaDom.style.opacity = '0.2';
+          })
+        }
+      }
     }
     // if (item.id !== 'b_restart' && item.id !== 'b_exit') {
     item.classList.add('button-tren-active');
@@ -1551,6 +1700,7 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
     // }
   })
 });
+
 //  // БОЛЬШОЙ БИНД НА СМЕНУ ОТОБРАЖЕНИЕ ОКОШЕК // НАВЕДЕНИЕ
 Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   // СХ СУ - БАЗА
@@ -1561,20 +1711,54 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   // СХ СУ - БАЗА
   let b_action = item.querySelector('.click-button-tren');
   b_action.addEventListener('mouseover', (e) => {
-    if (b_action.closest('.button-tren-active') === null) {
-      _item.classList.add('opacity-1-Temp');
-      _item.classList.remove('transition-0');
-      _item.style.left = !document.querySelector('.tren-ui-long') ? _item.getAttribute('sx') : _item.getAttribute('sx2');
-    }
-    if (b_action.closest('#b_help')) {
-      reavialTextHelp();
-    }
-    if (!_item.classList.contains('opacity-1-Always')) {
-      setCenterWindow(item);
+    if (b_action.closest('button').hasAttribute('disabled')) return;
+    else {
+      if (b_action.closest('.button-tren-active') === null) {
+        if (document.querySelectorAll('.opacity-1-Always').length > 0) {
+          Array.from(document.querySelectorAll('.opacity-1-Always')).forEach((item2) => {
+            if (item2 !== _item && areElementsIntersecting(item2, _item) && item2.style.opacity !== '0.2') {
+              if (!devHelper.trenVals.windowIntersec.find(el => el.main === _item)) {
+                devHelper.trenVals.windowIntersec.push({
+                  main: _item,
+                  below: [item2],
+                })
+              } else {
+                if (devHelper.trenVals.windowIntersec.find(el => el.main === _item).below.find(el => el !== item2)) {
+                  devHelper.trenVals.windowIntersec.find(el => el.main === _item).below.push(item2)
+                }
+              }
+            }
+          })
+          if (devHelper.trenVals.windowIntersec.find(el => el.main === _item)) {
+            devHelper.trenVals.windowIntersec.find(el => el.main === _item).below.forEach((opaDom) => {
+              opaDom.style.opacity = '0.2';
+            })
+          }
+        }
+        _item.classList.add('opacity-1-Temp');
+        raiseUpBox(_item);
+        _item.classList.remove('transition-0');
+        _item.style.left = !document.querySelector('.tren-ui-long') ? _item.getAttribute('sx') : _item.getAttribute('sx2');
+      }
+      if (b_action.closest('#b_help')) {
+        reavialTextHelp();
+      }
+      if (!_item.classList.contains('opacity-1-Always')) {
+        setCenterWindow(item);
+      }
     }
   });
   b_action.addEventListener('mouseout', (e) => {
     _item.classList.remove('opacity-1-Temp');
+    _item.style.opacity = '';
+    if (!_item.classList.contains('opacity-1-Always')) {
+      if (devHelper.trenVals.windowIntersec.find(el => el.main === _item)) {
+        devHelper.trenVals.windowIntersec.find(el => el.main === _item).below.forEach((opaDom) => {
+          opaDom.style.opacity = '';
+        })
+        devHelper.trenVals.windowIntersec.splice(devHelper.trenVals.windowIntersec.findIndex(el => el.main === _item), 1);
+      }
+    }
     if (b_action.closest('#b_help')) {
       hideTextHelp();
     }
@@ -1689,6 +1873,7 @@ function disableGeneralView(state = true) {
 }
 // КЛИК ОБРАТНО
 document.getElementById('b_GeneralView').addEventListener("click", (e) => {
+  document.querySelector('.box-back').classList.toggle('opacity-1-Temp', false);
   e.currentTarget.classList.remove('button-tren-active');
   devHelper.model3DVals.movePointMesh.forEach(mesh => {
     mesh.isPickable = false;
@@ -1717,7 +1902,6 @@ function reavialTextHelp() {
   } else if (currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
     let tempRealHelperName = findRealName(currentAction.action.target2D).name;
     let tempRealShemeName = findRealName(currentAction.action.target2D).location;
-    console.log(currentAction.action.target2D, tempRealHelperName, tempRealShemeName);
     let requiredPosition = undefined;
     let svgName;
     let displayNameArr = [];
@@ -1828,7 +2012,24 @@ function clickCloseHelperWIndow(e) {
   helperWindow.classList.remove('z-index9');
   helperWindow.classList.remove("opacity-1-Always");
   helperWindow.classList.remove("opacity-1-Temp");
-
+  if (document.querySelectorAll('.opacity-1-Always').length > 0) {
+    Array.from(document.querySelectorAll('.opacity-1-Always')).forEach((item) => {
+      if (item !== helperWindow && item.style.opacity !== '' && areElementsIntersecting(item, helperWindow)) {
+        let intersecObj = devHelper.trenVals.windowIntersec.find(el => el.main === helperWindow);
+        if (intersecObj) {
+          let intersecWindow = intersecObj.below.find(el => el === item);
+          let intersecWindowIndex = intersecObj.below.findIndex(el => el === item);
+          if (intersecWindow) {
+            intersecWindow.style.opacity = '';
+            intersecObj.below.splice(intersecWindowIndex, 1);
+            if (intersecObj.below.length === 0) {
+              devHelper.trenVals.windowIntersec.splice(devHelper.trenVals.windowIntersec.findIndex(el => el.main === helperWindow), 1)
+            }
+          }
+        }
+      }
+    })
+  }
   helperWindow.ontransitionend = (e) => {
     helperWindow.classList.add('transition-0');
     helperWindow.querySelector('.block-button').classList.remove("z-index-1");
@@ -1838,9 +2039,9 @@ function clickCloseHelperWIndow(e) {
     setStartPosition(helperWindow);
     helperWindow.ontransitionend = null;
   }
-
   let btnName = helperWindow.classList[0].substring(helperWindow.classList[0].indexOf('-') + 1);
   document.getElementById('b_' + btnName).classList.remove('button-tren-active');
+  document.getElementById('b_' + btnName).style.border = '';
   setNewFillButtonSVG(document.getElementById('b_' + btnName).querySelector('object'), COLOR_STATE_BUTTON.Normal);
 }
 function clickYesHelperWIndow(e) {
@@ -1849,6 +2050,25 @@ function clickYesHelperWIndow(e) {
   helperWindow.classList.remove("opacity-1-Always");
   helperWindow.classList.remove("opacity-1-Temp");
 
+  if (document.querySelectorAll('.opacity-1-Always').length > 0) {
+    Array.from(document.querySelectorAll('.opacity-1-Always')).forEach((item) => {
+      if (item !== helperWindow && item.style.opacity !== '' && areElementsIntersecting(item, helperWindow)) {
+        let intersecObj = devHelper.trenVals.windowIntersec.find(el => el.main === helperWindow);
+        if (intersecObj) {
+          let intersecWindow = intersecObj.below.find(el => el === item);
+          let intersecWindowIndex = intersecObj.below.findIndex(el => el === item);
+          if (intersecWindow) {
+            intersecWindow.style.opacity = '';
+            intersecObj.below.splice(intersecWindowIndex, 1);
+            if (intersecObj.below.length === 0) {
+              devHelper.trenVals.windowIntersec.splice(devHelper.trenVals.windowIntersec.findIndex(el => el.main === helperWindow), 1)
+            }
+          }
+        }
+      }
+    })
+  }
+
   helperWindow.ontransitionend = (e) => {
     helperWindow.classList.add('transition-0');
     helperWindow.querySelector('.block-button').classList.remove("z-index-1");
@@ -1861,6 +2081,7 @@ function clickYesHelperWIndow(e) {
 
   let btnName = helperWindow.classList[0].substring(helperWindow.classList[0].indexOf('-') + 1);
   document.getElementById('b_' + btnName).classList.remove('button-tren-active');
+  document.getElementById('b_' + btnName).style.border = '';
   setNewFillButtonSVG(document.getElementById('b_' + btnName).querySelector('object'), COLOR_STATE_BUTTON.Normal);
 
   if (btnName === 'restart') {
@@ -1894,7 +2115,9 @@ function clickCloseHelp(e) {
   }
 }
 document.getElementById('b_reference').addEventListener("click", (e) => {
-  document.querySelector('.section-copy').style.opacity = e.currentTarget.classList.contains('button-tren-active') ? 1 : 0;
+  // document.querySelector('.section-copy').style.opacity = e.currentTarget.classList.contains('button-tren-active') ? 1 : 0;
+  document.querySelector('.section-copy').classList.toggle('opacity-1-Always', e.currentTarget.classList.contains('button-tren-active'));
+
   document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.toggle('opacity-1-Temp', false);
   document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.toggle('transition-0', true);
 })
