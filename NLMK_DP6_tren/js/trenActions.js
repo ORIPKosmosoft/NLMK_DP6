@@ -880,6 +880,7 @@ const devHelper = {
   }
 };
 
+
 /*
 Пример мультидействия с 3Д
 { 
@@ -925,6 +926,7 @@ const devHelper = {
 */
 const timeDiff = -0;
 let tempActions = [
+  // Первый сценарий  
   [
     {
       lifeTime: '07:30:00',
@@ -9118,6 +9120,7 @@ let tempActions = [
             { name: 'FO2_hol_dyt', text: '1300' },
 
             { name: 'H_snotr', text: '7' },
+            { name: 'dp_kl_red', color: '#75788E' },
             { name: 'H_progres_7', opacity: '1' },
             { name: 'H_progres_19', opacity: '0' },
             { name: 'H_progres_22', opacity: '0' },
@@ -21009,6 +21012,7 @@ let tempActions = [
             { name: 'CO_bor_tryb', text: '0.00' },
 
             { name: 'H_snotr', text: '100' },
+            { name: 'dp_kl_red', color: '#00DA01' },
             { name: 'H_progres_7', opacity: '1' },
             { name: 'H_progres_19', opacity: '1' },
             { name: 'H_progres_22', opacity: '1' },
@@ -25377,6 +25381,26 @@ let startState2D = [
     { name: 'TTG_raschet', text: '2122' },
     { name: 'F_pg_prir_gaz', text: '28869' },
     { name: 'dF_pg_prir_gaz', text: '-191' },
+    { name: 'EKZ_H1', text: '17' },
+    { name: 'EKZ_H2', text: '17' },
+    { name: 'EKZ_H3', text: '17' },
+    { name: 'AKZ_100', opacity: 0 },
+    { name: 'AKZ_45-100', opacity: 0 },
+    { name: 'AKZ_45', opacity: 0 },
+    { name: 'AKZ_30', opacity: 0 },
+    { name: 'AKZ_17', opacity: 1 },
+    { name: 'H_snotr', text: '-0' },
+    { name: 'H_progres_7', opacity: '0' },
+    { name: 'H_progres_19', opacity: '0' },
+    { name: 'H_progres_22', opacity: '0' },
+    { name: 'H_progres_33', opacity: '0' },
+    { name: 'H_progres_49', opacity: '0' },
+    { name: 'H_progres_56', opacity: '0' },
+    { name: 'H_progres_60', opacity: '0' },
+    { name: 'H_progres_67', opacity: '0' },
+    { name: 'H_progres_89', opacity: '0' },
+    { name: 'H_progres_100', opacity: '0' },
+    { name: 'dp_kl_red', color: '#ff1e00' },
     // { name: 'kol_furm', text: '30' },
     { name: 'fyrm_v_rab', text: '29' },
     { name: 'F_tryba', text: '657115' },

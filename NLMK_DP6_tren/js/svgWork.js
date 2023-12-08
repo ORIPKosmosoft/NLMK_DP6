@@ -2341,7 +2341,6 @@ function pushSvgDisplaysArr(ObjectSvg) {
 
 function createSvghelper(CurrentPosition, SvgName = undefined) {
   if (CurrentPosition !== undefined) {
-    // console.log(1);
     setTimeout(() => {
       if (CurrentPosition === 1 || CurrentPosition === 2 || CurrentPosition === 4 || CurrentPosition === 5) {
         let mainMesh = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === CurrentPosition);
@@ -2356,7 +2355,6 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
             invisElem.classList.add('invisible-element-svg-helper');
             // invisElem.innerHTML = Vals.id === undefined ? 'test' : Vals.id;
           }
-          // console.log(invisElem.id, Vals);
           invisElem.style.left = Vals.x + '%';
           invisElem.style.top = Vals.y + '%';
           invisElem.style.width = Vals.w + '%';
