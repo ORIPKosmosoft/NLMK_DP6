@@ -2377,7 +2377,6 @@ ul {
   margin-left: 0.52vw;
   margin-right: 2px;
   opacity: 0;
-  z-index: 3;
   transition: all 0.3s ease;
   border: none !important;
   z-index: 3;

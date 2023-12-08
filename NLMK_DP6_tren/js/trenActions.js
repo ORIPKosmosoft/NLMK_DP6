@@ -861,7 +861,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
     intervalFon: undefined,
   },
@@ -924,10 +924,12 @@ const devHelper = {
   human: true,
 },
 */
-const timeDiff = -0;
+const timeDiff = -73;
 let tempActions = [
   // Первый сценарий  
   [
+    /*
+
     {
       lifeTime: '07:30:00',
       startTime: timeDiff + 0,
@@ -2566,6 +2568,7 @@ let tempActions = [
       },
       startTime: timeDiff + 58,
     },
+
     ////--------------------------------2----------------------------------------
     {
       scenarioText: ' Расход природного газа увеличиваем для поддержания ТТГ. Установить на 37000.',
@@ -2579,7 +2582,8 @@ let tempActions = [
       },
       startTime: timeDiff + 68,
       human: true,
-    }, {
+    },
+     {
       action: {
         target2D: 'vz_3',
         window2D: {
@@ -3341,6 +3345,7 @@ let tempActions = [
       },
       startTime: timeDiff + 74.02,
     },
+*/
 
     ////--------------------------------3.2
     {
@@ -24350,10 +24355,6 @@ let tempActions = [
 
     /***/
   ],
-
-
-
-
   // 2 scenario
   [
     /*

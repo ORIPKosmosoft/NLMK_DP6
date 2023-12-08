@@ -2384,7 +2384,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
                       createSvghelper(CurrentPosition, Vals.name);
                     }
                   } else handleError(invisElem);
-                } else if (currentActonObject && currentActonObject.action && currentActonObject.action.target3D)
+                } else if (currentActonObject && ((currentActonObject.action && currentActonObject.action.target3D) || currentActonObject.multi))
                   handleError(invisElem);
               } else {
                 // if (Vals.id !== undefined) trenClickOnSvgElem(invisElem);

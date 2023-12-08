@@ -395,13 +395,20 @@ function handleError(Mesh) {
       Mesh.classList.toggle('error-helper', false);
     }, 300);
   }
-  let currentName = (Mesh.name && Mesh.uniqueId) ? ((devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)) ?
-    (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : '') : findRealName(Mesh.id).name;
+  // let currentName = (Mesh.name && Mesh.uniqueId) ? ((devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)) ?
+  //   (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : '') : findRealName(Mesh.id).name;
+  let currentName = findRealName(Mesh.name || Mesh.id).name;
   let curAction = findCurrentAction();
   let rightAnswerLocation;
   if (curAction.action && (curAction.action.target2D || curAction.action.target3D)) {
     rightAnswerName = findRealName(curAction.action.target2D || curAction.action.target3D).name;
     rightAnswerLocation = findRealName(curAction.action.target2D || curAction.action.target3D).location;
+  } else if (curAction.multi && devHelper.trenVals.multiAction.length > 0) {
+    rightAnswerName = '';
+    devHelper.trenVals.multiAction.forEach((element, index) => {
+      if (index === 0) rightAnswerLocation = findRealName(element.action.target3D).location;
+      rightAnswerName += (index === 0 ? '' : ', ') + findRealName(element.action.target3D).name
+    })
   }
   playAudio('tren_error');
   if (!document.querySelector('.error-block-view')) {
@@ -415,7 +422,8 @@ function handleError(Mesh) {
       }, 300)
     }, 300);
   }
-  sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName ? currentName : 'неверный элемент'}. Нужно кликнуть по ${rightAnswerName} на ${rightAnswerLocation}.`);
+  // TODO ошитбка в rightAnswerName
+  sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName ? currentName : 'неверный элемент'}. Нужно кликнуть по ${rightAnswerName ? rightAnswerName : 'элементу'} на ${rightAnswerLocation}.`);
   devHelper.endVals.errors[devHelper.endVals.currentChapter]++;
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name || Mesh.id} в действии ${devHelper.trenVals.currentAction} неверный.`);
 }
@@ -1186,6 +1194,10 @@ function raiseUpBox(e) {
   e.classList.toggle('raise-up', true);
   e.classList.add('z-index9')
 }
+function raiseDownBox(e) {
+  e.classList.toggle('raise-up', false);
+  e.classList.toggle('z-index9', false);
+}
 
 
 function clickCloseTime(e) {
@@ -1266,7 +1278,8 @@ function clickCloseChat(e) {
   document.querySelector('.box-chat-window').classList.remove("opacity-1-Temp"); // БОЛЬШОЕ ОКНО
   document.querySelector('.box-chat-window').classList.remove("opacity-1-Always"); // БОЛЬШОЕ ОКНО
   document.querySelector('.box-chat-window .block-button').classList.remove("z-index-1"); // БЛОКИРОВКА КНОПОК
-  document.querySelector('.box-chat-window .box-chat-header').classList.remove("opacity-1-Always"); // ЛИНИЯ С НАЗВАНИЕ И Х
+  // document.querySelector('.box-chat-window .box-chat-header').classList.remove("opacity-1-Always"); // ЛИНИЯ С НАЗВАНИЕ И Х
+  document.querySelector('.box-chat-window .box-chat-header').style.opacity = '';
 
   document.querySelector('.box-chat-window').ontransitionend = (e) => {
     document.querySelector('.box-chat-window').classList.add('transition-0');
@@ -1621,6 +1634,7 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
 
       if (document.querySelectorAll('.opacity-1-Always').length > 0) {
         let tempItem = document.querySelector(`.${item.getAttribute('window-interface')}`);
+        raiseDownBox(tempItem);
         Array.from(document.querySelectorAll('.opacity-1-Always')).forEach((domEle) => {
           if (tempItem !== domEle && areElementsIntersecting(tempItem, domEle)) {
             let intersecObj = devHelper.trenVals.windowIntersec.find(el => el.main === tempItem);
@@ -1722,6 +1736,7 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
     }
   });
   b_action.addEventListener('mouseout', (e) => {
+    raiseDownBox(_item);
     _item.classList.remove('opacity-1-Temp');
     _item.style.opacity = '';
     if (!_item.classList.contains('opacity-1-Always')) {
@@ -1815,7 +1830,8 @@ document.getElementById('b_chat').addEventListener("click", (e) => {
     document.querySelector('.box-chat-window').classList.add("visibility-visible");
     document.querySelector('.box-chat-window').classList.add("opacity-1-Always");
     document.querySelector('.box-chat-window .block-button').classList.add("z-index-1");
-    document.querySelector('.box-chat-window .box-chat-header').classList.add("opacity-1-Always");
+    // document.querySelector('.box-chat-window .box-chat-header').classList.add("opacity-1-Always");
+    document.querySelector('.box-chat-window .box-chat-header').style.opacity = '1';
     document.querySelector('.box-chat-window .backArea').classList.add('backArea-white-100')
     setNormalChat();
   }
@@ -2232,7 +2248,7 @@ function findRealName(TargetName) {
       if (tempRealHelper) {
         returnObj.location = devHelper.svgVals.find(element => element.name === tempNameSvg).realName;
         returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
-        if (currentAction.action.realName) returnObj.name = currentAction.action.realName;
+        if (currentAction.action && currentAction.action.realName) returnObj.name = currentAction.action.realName;
       } else {
         devHelper.svgHelpers.some(element => {
           if (element.helpers && Array.isArray(element.helpers)) {
@@ -2256,6 +2272,6 @@ function findRealName(TargetName) {
       returnObj.name = tempRealHelper ? tempRealHelper.realName ? tempRealHelper.realName : '' : '';
     }
   }
-  if (currentAction.action.realName) returnObj.name = currentAction.action.realName;
+  if (currentAction.action && currentAction.action.realName) returnObj.name = currentAction.action.realName;
   return returnObj;
 }
