@@ -1,8 +1,5 @@
 
 /*                 TODO
-----------------------------------------------------
-Научить сначала выдавать сценариоТекст, а потом обычный текст
-----------------------------------------------------
 */
 const devHelper = {
   trenVals: {
@@ -272,7 +269,7 @@ const devHelper = {
         { x: 22.2, y: 1.0, w: 10.4, h: 3, name: 'BVNK_VNK2', },
         { x: 32.7, y: 1.0, w: 10.4, h: 3, name: 'BVNK_VNK3', },
         { x: 43.4, y: 1.0, w: 10.3, h: 3, name: 'vnk_spvg', },
-        { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 }, realName: 'Перекидка' },
+        { x: 10.1, y: 8.5, w: 7, h: 3, forAction: true, id: 'perekidta2_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 }, realName: 'Перекидка' },
         { x: 19.0, y: 26, w: 2, h: 3, forAction: true, id: 'kl232', },
         { x: 13.6, y: 37.5, w: 2, h: 3, forAction: true, id: 'kl224', },
         { x: 27.0, y: 26, w: 2, h: 3, forAction: true, id: 'kl216', },
@@ -926,175 +923,8 @@ const devHelper = {
   human: true,
 },
 */
-const timeDiff = 0;
+const timeDiff = -0;
 let tempActions = [
-  // [ // test scenario 1
-  //   ////--------------------------------2---------------------------------------- 
-  //   // {
-  //   //   scenarioText: 'Тест непоследовательных действий',
-  //   //   sender: 'Газовщик',
-  //   //   multi: [
-  //   //     {
-  //   //       text: '1. .',
-  //   //       sender: 'Газовщик',
-  //   //       action: {
-  //   //         target3D: 'PhoneButton001',
-  //   //       },
-  //   //       audio: 'tts-vo1',
-  //   //     },
-  //   //     {
-  //   //       text: '2. ',
-  //   //       sender: 'Газовщик',
-  //   //       action: {
-  //   //         target3D: 'PhoneButton006',
-  //   //       },
-  //   //       audio: 'tts-vo1',
-  //   //     },
-  //   //     {
-  //   //       text: '3. ',
-  //   //       sender: 'Газовщик',
-  //   //       action: {
-  //   //         target3D: 'PhoneButton017',
-  //   //       },
-  //   //       audio: 'tts-vo1',
-  //   //     },
-  //   //     {
-  //   //       text: '4. ',
-  //   //       sender: 'Газовщик',
-  //   //       action: {
-  //   //         target3D: 'PhoneButton020',
-  //   //       },
-  //   //       audio: 'tts-vo1',
-  //   //     }
-  //   //   ],
-  //   //   startTime: timeDiff + 0.5,
-  //   //   human: true,
-  //   // },
-  //   // {
-  //   //   action: {
-  //   //     // target2D: 'kl029',
-  //   //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-  //   //     rotation: { y: 1.571 },
-  //   //   },
-  //   //   duration: 0.3,
-  //   //   startTime: timeDiff + 1,
-  //   //   human: true,
-  //   //   // concentration: [
-  //   //   //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-  //   //   // ]
-  //   // },
-  //   // {
-  //   //   action: {
-  //   //     target2D: 'close_w1',
-  //   //   },
-  //   //   startTime: timeDiff + 1.1,
-  //   //   human: true,
-  //   // },
-  //   // {
-  //   //   action: {
-  //   //     target2D: 'kl038',
-  //   //     // target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-  //   //     // rotation: { y: 1.571 },
-  //   //   },
-  //   //   // duration: 0.3,
-  //   //   startTime: timeDiff + 1,
-  //   //   human: true,
-  //   //   // concentration: [
-  //   //   //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-  //   //   // ]
-  //   // },
-  //   // {
-  //   //   action: {
-  //   //     // target2D: 'kl038',
-  //   //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-  //   //     rotation: { y: 1.571 },
-  //   //   },
-  //   //   duration: 0.3,
-  //   //   startTime: timeDiff + 2,
-  //   //   human: true,
-  //   //   // concentration: [
-  //   //   //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-  //   //   // ]
-  //   // },
-  //   // {
-  //   //   action: {
-  //   //     target3D: 'fPrirodGazReg',
-  //   //     number: '024.5',
-  //   //     color: 'red',
-  //   //   },
-  //   //   startTime: timeDiff + 2,
-  //   // },
-  //   // {
-  //   //   scenarioText: 'Текст 1',
-  //   //   sender: 'Система',
-  //   //   action: {
-  //   //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-  //   //     rotation: { y: 1.571 },
-  //   //   },
-  //   //   duration: 0.3,
-  //   //   startTime: timeDiff + 1,
-  //   //   human: true,
-  //   // },
-  //   // {
-  //   //   scenarioText: 'Текст 2',
-  //   //   sender: 'Система',
-  //   //   action: {
-  //   //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-  //   //     rotation: { y: 1.571 },
-  //   //   },
-  //   //   duration: 0.3,
-  //   //   startTime: timeDiff + 2,
-  //   //   human: true,
-  //   // },
-  //   // {
-  //   //   scenarioText: 'Текст 3',
-  //   //   sender: 'Система',
-  //   //   action: {
-  //   //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-  //   //     rotation: { y: 1.571 },
-  //   //   },
-  //   //   duration: 0.3,
-  //   //   startTime: timeDiff + 3,
-  //   //   human: true,
-  //   // },
-  //   // {
-  //   //   scenarioText: 'Текст 4',
-  //   //   sender: 'Система',
-  //   //   action: {
-  //   //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-  //   //     rotation: { y: 1.571 },
-  //   //   },
-  //   //   duration: 0.3,
-  //   //   startTime: timeDiff + 4,
-  //   //   human: true,
-  //   // },
-  //   // {
-  //   //   scenarioText: 'Текст 5',
-  //   //   sender: 'Система',
-  //   //   action: {
-  //   //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-  //   //     rotation: { y: 1.571 },
-  //   //   },
-  //   //   duration: 0.3,
-  //   //   startTime: timeDiff + 5,
-  //   //   human: true,
-  //   // },
-  //   // {
-  //   //   scenarioText: 'Текст 6',
-  //   //   sender: 'Система',
-  //   //   action: {
-  //   //     target3D: '96378261-ad8d-4410-ad46-36a776a8b7b2',
-  //   //     rotation: { y: 1.571 },
-  //   //   },
-  //   //   duration: 0.3,
-  //   //   startTime: timeDiff + 6,
-  //   //   human: true,
-  //   // },
-  //   // {
-  //   //   startTime: timeDiff + 7,
-  //   // },
-  // ],
-  // Первый сценарий  
   [
     {
       lifeTime: '07:30:00',
@@ -1284,6 +1114,236 @@ let tempActions = [
       },
       startTime: timeDiff + 13,
       human: true,
+    },
+
+    // Sergey (vnk_main После закрытия 029) 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7TI_41', text: '28' },
+            { name: '7PI_12', text: '17,89' },
+            { name: 'ramka_7PI_12', color: '#ffff0f' },
+            { name: '7FI_05', text: '176253' },
+            { name: '7TI_40', text: '11' },
+            { name: '7PI_11', text: '0,00' },
+            { name: '7FI_04', text: '0' },
+
+            { name: '5QI_01_01', text: '9' },
+            { name: '5QI_01_02', text: '79' },
+
+            { name: 'PV2', text: '9,18' },
+            { name: 'SP2', text: '9,00' },
+            { name: 'PV2_1', text: '34,63' },
+            { name: 'M_t1_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'PV3', text: '0,00' },
+            { name: 'SP3', text: '0,00' },
+            { name: 'PV3_1', text: '0,00' },
+            { name: 'M_t2_4', text: 'Соглас', color: '#000' },
+
+            { name: 'PV4', text: '9,78' },
+            { name: 'SP4', text: '10,00' },
+            { name: 'PV4_1', text: '52,16' },
+            { name: 'M_t3_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl053_proc', text: '35' },
+            { name: 'kl051_proc', text: '0' },
+            { name: 'kl052_proc', text: '0' },
+            { name: 'kl035_proc', text: '0' },
+
+            { name: 'klOF3_proc', text: '52' },
+            { name: 'klOF2_proc', text: '52' },
+            { name: 'klOF1_proc', text: '0' },
+
+            { name: 'kl0333_proc', text: '100' },
+            { name: 'kl0313_proc', text: '100' },
+
+            { name: 'kl0332_proc', text: '100' },
+            { name: 'kl0312_proc', text: '100' },
+
+            { name: 'kl0331_proc', text: '0' },
+            { name: 'kl0311_proc', text: '100' },
+
+            { name: '7QI_01', text: '-999,00' },
+
+            // { name: 'kl038_proc',   text: '0' },
+            { name: 'kl028_proc', text: '100' },
+            // { name: 'kl020_proc',   text: '100' },
+            // { name: 'kl036v_proc',  text: '0' },
+            // { name: 'kl036b_proc',  text: '0' },
+
+            // { name: 'kl048_proc', text: '0' },
+            { name: 'kl029_proc', text: '100' },
+            // { name: 'kl004_proc', text: '100' },
+
+            { name: 'PI_16_proc', text: '9,53' },
+            { name: '9TI_44_proc', text: '28' },
+
+            // { name: 'kl037_proc', text: '0' },
+            { name: 'kl007_proc', text: '100' },
+            // { name: 'kl025_proc', text: '100' },
+
+            { name: '8QI_05_01', text: '7,53' },
+            { name: '8QI_05_02', text: '78,06' },
+            { name: '8QI_05_04', text: '0,00' },
+            { name: '7PI_13', text: '8,98' },
+            { name: '7PI_42', text: '91' },
+
+            { name: 'PV1', text: '1209,70' },
+            { name: 'SP1', text: '1210,00' },
+            { name: 'PV1_1', text: '31,12' },
+            { name: 'M_t4_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk_3', color: '#0033FF' }, // задник стрелки
+            { name: 'Tkyp_3', text: '1296' },
+            { name: 'VNK3_status_1', text: 'Автоматический' },
+            { name: 'VNK3_status_2', text: 'Дутье' },
+            { name: 'vnk3_stripes', color: '#0033FF' },
+            { name: 'VNK3_Fr', text: '0' },
+            { name: 'VNK3_Fb', text: '0' },
+            { name: 'Tdym_3', text: '180' },
+
+            { name: 'kl001_proc', text: '0' },
+            { name: 'kl001a_proc', text: '31' },
+
+            { name: 'vnk2_fire', opacity: '1' }, // стрелка
+            { name: 'vnk_2', color: '#ff0000' }, // задник стрелки
+            { name: 'Tkyp_2', text: '1329' },
+            { name: 'VNK2_status_1', text: 'Автоматический' },
+            { name: 'VNK2_status_2', text: 'Нагрев' },
+            { name: 'vnk2_stripes', color: '#ff0000' },
+            { name: 'VNK2_Fr', text: '81782' },
+            { name: 'VNK2_Fb', text: '104004' },
+            { name: 'Tdym_2', text: '140' },
+
+            { name: '5PI_08', text: '406' },
+            { name: 'TI_36', text: '15' },
+            { name: 'FI_03', text: '947' },
+
+            { name: 'vnk1_fire', opacity: '1' }, // стрелка
+            { name: 'vnk_1', color: '#ff0000' }, // задник стрелки
+            { name: 'Tkyp_1', text: '1333' },
+            { name: 'VNK1_status_1', text: 'Автоматический' },
+            { name: 'VNK1_status_2', text: 'Нагрев' },
+            { name: 'vnk1_stripes', color: '#ff0000' },
+            { name: 'VNK1_Fr', text: '88754' },
+            { name: 'VNK1_Fb', text: '110435' },
+            { name: 'Tdym_1', text: '300' },
+
+            { name: 'vybor_signala', text: '1210' },
+            { name: '5TI_21', text: '1200' },
+            { name: '5TI_22', text: '1210' },
+            { name: 'PI_09', text: '546,64' },
+          ],
+        },
+      },
+      startTime: timeDiff + 13.01,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_1', // Tkyp_1
+        color: 'green',
+        number: '1333',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_2', // Tdym_1
+        color: 'green',
+        number: '300.0',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr2_1', // Tkyp_2
+        color: 'green',
+        number: '1329',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr2_2', // Tdym_2
+        color: 'green',
+        number: '140.0',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr3_1', // Tkyp_3
+        color: 'green',
+        number: '1296',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr3_2', // Tdym_3
+        color: 'green',
+        number: '180.0',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'rashodSmeshGaza_1', // VNK1_Fr /10^4
+        color: 'green',
+        number: '008.8',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'rashodSmeshGaza_2', // VNK2_Fr /10^4
+        color: 'green',
+        number: '008.1',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'rashodSmeshGaza_3', // VNK3_Fr /10^4
+        color: 'green',
+        number: '000.0',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'rashodVozdyhGor_1', // VNK1_Fb /10^4
+        color: 'green',
+        number: '011.0',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'rashodVozdyhGor_2', // VNK2_Fb /10^4
+        color: 'green',
+        number: '010.4',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'rashodVozdyhGor_3', // VNK3_Fb /10^4
+        color: 'green',
+        number: '000.0',
+      },
+      startTime: timeDiff + 13.02,
+    },
+    {
+      action: {
+        target3D: 'davVozGorBVN', // PI_16_proc
+        color: 'green',
+        number: '09.53',
+      },
+      startTime: timeDiff + 13.02,
     },
 
     //// клик по ВН38 на схеме  ОТКРЫТ
@@ -1516,6 +1576,79 @@ let tempActions = [
       startTime: timeDiff + 20,
       human: true,
     },
+    // Sergey (vnk_main После закрытия 038) 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_12', text: '18,26' },
+            { name: '7FI_05', text: '179015' },
+            { name: '7PI_13', text: '9,19' },
+            { name: 'FI_03', text: '940' },
+            { name: 'PI_09', text: '546,48' },
+            { name: 'Tdym_3', text: '179' },
+            { name: 'Tdym_1', text: '302' },
+            { name: 'PI_16_proc', text: '8,94' },
+            { name: 'klOF3_proc', text: '53' },
+            { name: 'klOF2_proc', text: '53' },
+            { name: 'Tkyp_2', text: '1330' },
+            { name: 'Tkyp_1', text: '1336' },
+            { name: '5PI_08', text: '405' },
+            { name: 'VNK2_Fr', text: '82405' },
+          ],
+        },
+      },
+      startTime: timeDiff + 20.01,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_1', // Tkyp_1
+        color: 'green',
+        number: '1336',
+      },
+      startTime: timeDiff + 20.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_2', // Tdym_1
+        color: 'green',
+        number: '302.0',
+      },
+      startTime: timeDiff + 20.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr2_1', // Tkyp_2
+        color: 'green',
+        number: '1330',
+      },
+      startTime: timeDiff + 20.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr3_2', // Tdym_3
+        color: 'green',
+        number: '179.0',
+      },
+      startTime: timeDiff + 20.02,
+    },
+    {
+      action: {
+        target3D: 'rashodSmeshGaza_2', // VNK2_Fr /10^4
+        color: 'green',
+        number: '008.2',
+      },
+      startTime: timeDiff + 20.02,
+    },
+    {
+      action: {
+        target3D: 'davVozGorBVN', // PI_16_proc
+        color: 'green',
+        number: '08.94',
+      },
+      startTime: timeDiff + 20.02,
+    },
+
     //// клик по ВН37 на схеме  НЕТ ДАННЫХ
     {
       action: {
@@ -1740,6 +1873,71 @@ let tempActions = [
       startTime: timeDiff + 27,
       human: true,
     },
+    // Sergey (vnk_main После закрытия 037) 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_12', text: '18,05' },
+            { name: '7FI_05', text: '178287' },
+            { name: '7PI_13', text: '9,08' },
+            { name: 'FI_03', text: '919' },
+            { name: 'PI_09', text: '541,80' },
+            { name: 'Tdym_1', text: '304' },
+            { name: 'PI_16_proc', text: '9,42' },
+            { name: 'klOF3_proc', text: '55' },
+            { name: 'klOF2_proc', text: '55' },
+            { name: 'Tkyp_3', text: '1297' },
+            { name: 'Tkyp_2', text: '1330' },
+            { name: 'Tkyp_1', text: '1334' },
+            { name: '8QI_05_01', text: '24,83' },
+            { name: 'ramka_8QI_05_1', color: '#FFFD06' },
+            { name: '8QI_05_02', text: '88,06' },
+          ],
+        },
+      },
+      startTime: timeDiff + 27.01,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_1', // Tkyp_1
+        color: 'green',
+        number: '1334',
+      },
+      startTime: timeDiff + 27.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_2', // Tdym_1
+        color: 'green',
+        number: '304.0',
+      },
+      startTime: timeDiff + 27.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr2_1', // Tkyp_2
+        color: 'green',
+        number: '1330',
+      },
+      startTime: timeDiff + 27.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr3_1', // Tkyp_3
+        color: 'green',
+        number: '1297',
+      },
+      startTime: timeDiff + 27.02,
+    },
+    {
+      action: {
+        target3D: 'davVozGorBVN', // PI_16_proc
+        color: 'green',
+        number: '09.42',
+      },
+      startTime: timeDiff + 27.02,
+    },
 
     //// клик по ВН07 на схеме  ОТКРЫТ
     {
@@ -1927,7 +2125,7 @@ let tempActions = [
             { name: 'right_vn', color: '#ff1e00' },
 
             { name: 'status_control_vnk_text', text: 'Ручной' },
-            { name: 'status_window_text', text: 'Открыт' },
+            { name: 'status_window_text', text: 'Закрыт' },
 
             { name: 'btn_auto_text', color: '#000' },
             { name: 'btn_auto_2', color: '#fff' },
@@ -1977,6 +2175,55 @@ let tempActions = [
       startTime: timeDiff + 35,
       human: true,
     },
+    // Sergey (vnk_main После закрытия 007) 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_12', text: '17,60' },
+            { name: '7FI_05', text: '175309' },
+            { name: '7PI_13', text: '8,85' },
+            { name: '7PI_42', text: '88' },
+            { name: 'PI_16_proc', text: '10,04' },
+            { name: 'klOF3_proc', text: '56' },
+            { name: 'klOF2_proc', text: '56' },
+            { name: '8QI_05_01', text: '7,40' },
+            { name: 'ramka_8QI_05_1', color: '#BEBEBE' },
+            { name: '8QI_05_02', text: '86,92' },
+            { name: 'FI_03', text: '912' },
+            { name: 'PI_09', text: '536,98' },
+            { name: 'Tkyp_1', text: '1327' },
+            { name: 'Tdym_1', text: '307' },
+          ],
+        },
+      },
+      startTime: timeDiff + 35.01,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_1', // Tkyp_1
+        color: 'green',
+        number: '1327',
+      },
+      startTime: timeDiff + 35.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_2', // Tdym_1
+        color: 'green',
+        number: '307.0',
+      },
+      startTime: timeDiff + 35.02,
+    },
+    {
+      action: {
+        target3D: 'davVozGorBVN', // PI_16_proc
+        color: 'green',
+        number: '10.04',
+      },
+      startTime: timeDiff + 35.02,
+    },
+
     //// клик по ВН28 на схеме  ОТКРЫТ
     {
       action: {
@@ -2195,6 +2442,55 @@ let tempActions = [
       },
       human: true,
     },
+    // Sergey (vnk_main После закрытия 028) 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_12', text: '17,14' },
+            { name: '7FI_05', text: '181317' },
+            { name: 'klOF3_proc', text: '54' },
+            { name: 'klOF2_proc', text: '55' },
+            { name: '7PI_13', text: '9,17' },
+            { name: '7PI_42', text: '86' },
+            { name: 'PI_16_proc', text: '10,64' },
+            { name: '8QI_05_01', text: '6,93' },
+            { name: 'ramka_8QI_05_1', color: '#BEBEBE' },
+            { name: '8QI_05_02', text: '82,30' },
+            { name: 'FI_03', text: '925' },
+            { name: 'PI_09', text: '543,36' },
+            { name: 'Tkyp_1', text: '1324' },
+            { name: 'Tdym_1', text: '308' },
+          ],
+        },
+      },
+      startTime: timeDiff + 45.01,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_1', // Tkyp_1
+        color: 'green',
+        number: '1324',
+      },
+      startTime: timeDiff + 45.02,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_2', // Tdym_1
+        color: 'green',
+        number: '308.0',
+      },
+      startTime: timeDiff + 45.02,
+    },
+    {
+      action: {
+        target3D: 'davVozGorBVN', // PI_16_proc
+        color: 'green',
+        number: '10.64',
+      },
+      startTime: timeDiff + 45.02,
+    },
+
     {
       scenarioText: 'В случае запланированной остановки доменной печи газовщик сообщает об этом.',
       audio: 'tts-7',
@@ -2348,6 +2644,190 @@ let tempActions = [
       startTime: timeDiff + 68.6,
       human: true,
     },
+    // Sergey (Изменение Dp после телефона)
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'radar1_text', text: '1,24' },
+            { name: 'radar2_text', text: '1,69' },
+            { name: 'radar3_text', text: '-1,69' },
+
+            { name: 'EKZ_H1', text: '16' },
+            { name: 'EKZ_H2', text: '16' },
+            { name: 'EKZ_H3', text: '16' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 0 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '52964' },
+            { name: 'EVD1_O', text: '40687' },
+            { name: 'EVS_DP7_F', text: '7251' },
+            { name: 'EVD1_F', text: '342749' },
+            { name: 'EVD_F', text: '263334' },
+            { name: 'P_1', text: '4,10' },
+            { name: 'F_evd', text: '6052' },
+            { name: 'F_hol_dyt', text: '5841' },
+            { name: 'T_hol_dyt', text: '78' },
+            { name: 'O_hol_dyt', text: '29,5' },
+            { name: 'par_yvlaz', text: '0,00' },
+            { name: 'W_sinij_hol_dyt', text: '7,3' },
+            { name: 'FO2_hol_dyt', text: '1758' },
+
+            { name: 'N2', text: '42,8' },
+            { name: 'CO', text: '26,5' },
+            { name: 'CO2', text: '21,5' },
+            { name: 'H2_tryb', text: '8,8' },
+            { name: 'Nco_tryb', text: '44,8' },
+            { name: 'Q_domG_tryb', text: '1051' },
+            { name: 'P_vozd_tryb', text: '11' },
+            { name: 'P_gaza_tryb', text: '10' },
+            { name: 'CO_bor_tryb', text: '0,34' },
+
+            { name: 'H_step_isp', text: '35,4' },
+            { name: 'HCO_step_isp', text: '42,7' },
+            { name: 'Tkyp_3', text: '1295' },
+            { name: 'Tkyp_2', text: '1329' },
+            { name: 'Tkyp_1', text: '1328' },
+            { name: 'Fvozdyh_2', text: '94775' },
+            { name: 'Fgaz_2', text: '81539' },
+            { name: 'VNK1_Fb', text: '96320' },
+            { name: 'VNK1_Fr', text: '98349' },
+            { name: 'Tdym_3', text: '164' },
+            { name: 'Tdym_2', text: '154' },
+            { name: 'Tdym_1', text: '329' },
+            { name: 'P_Os_szat_voz', text: '8,38' },
+            { name: 'T_Os_szat_voz', text: '30' },
+
+            { name: 'Temp_peref_1', text: '84' },
+            { name: 'Temp_peref_2', text: '79' },
+            { name: 'Temp_peref_3', text: '79' },
+            { name: 'Temp_peref_4', text: '85' },
+            { name: 'Temp_peref_5', text: '81' },
+            { name: 'Temp_peref_6', text: '81' },
+            { name: 'Temp_peref_7', text: '85' },
+            { name: 'Temp_peref_8', text: '64' },
+            { name: 'Temp_peref_9', text: '73' },
+            { name: 'Temp_peref_10', text: '78' },
+            { name: 'Temp_peref_11', text: '136' },
+            { name: 'Temp_peref_12', text: '94' },
+            { name: 'Temp_peref_13', text: '118' },
+            { name: 'Temp_peref_14', text: '82' },
+            { name: 'Temp_peref_15', text: '89' },
+            { name: 'Temp_peref_16', text: '78' },
+            { name: 'T1', text: '156' },
+            { name: 'T2', text: '155' },
+            { name: 'T3', text: '155' },
+            { name: 'T4', text: '146' },
+            { name: 'P_2', text: '3.99' },
+            { name: 't_gor_dut', text: '1211' },
+            { name: 'P_pg_prir_gaz', text: '8,44' },
+            { name: 'F_prir_gaz_table', text: '37000' },
+            { name: 'F_pg_sym_prir_gaz', text: '37000' },
+            { name: 'H_Os_szat_voz', text: '29' },
+            { name: 't_prirodn_gaz', text: '8' },
+            { name: 'H_prir_gaz', text: '8' },
+
+            { name: 'F_tryba', text: '631747' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0,0' },
+            { name: 'P_vbls', text: '2,29' },
+            { name: 'dP_verh', text: '0,23' },
+            { name: 'dP_obsh_tryba', text: '1,68' },
+            { name: 'dP_nish_tryba', text: '1,45' },
+            { name: 'TTG_zadanie', text: '22000' },
+            { name: 'TTG_raschet', text: '2239' },
+            { name: 'F_pg_prir_gaz', text: '34670' },
+            { name: 'dF_pg_prir_gaz', text: '-57' },
+            { name: 'L2', text: '1474' },
+
+            { name: 'Dp_obsh', text: '1,60' },
+            { name: 'F_prir_gaz_table', text: '37000' },
+            { name: 'TTG_zadanie', text: '22000' },
+            { name: 'P_tryba_3_590', text: '2,48' },
+            { name: 'P_tryba_3_591', text: '2,48' },
+            { name: 'P_tryba_4_1', text: '2,95' },
+            { name: 'P_tryba_4_2', text: '2,60' },
+            { name: 'P_tryba_4_3', text: '3,02' },
+            { name: 'P_tryba_4_4', text: '2,20' },
+            { name: 'P_tryba_5_1', text: '2,82' },
+            { name: 'P_tryba_5_2', text: '2,71' },
+            { name: 'P_tryba_5_3', text: '2,89' },
+            { name: 'P_tryba_5_4', text: '3,20' },
+            { name: 'ydel_tep_18', text: '28,2' },
+            { name: 'ydel_tep_17', text: '51,2' },
+            { name: 'ydel_tep_16', text: '37,4' },
+            { name: 'ydel_tep_15', text: '49,6' },
+            { name: 'ydel_tep_12_14', text: '83,6' },
+            { name: 'ydel_tep_10_11', text: '50,2' },
+            { name: 'ydel_tep_9', text: '47,4' },
+            { name: 'ydel_tep_8', text: '47,3' },
+            { name: 'ydel_tep_7', text: '38,2' },
+            { name: 'fyrm_v_rab', text: '1' },
+          ],
+        },
+      },
+      startTime: timeDiff + 68.61,
+    },
+    {
+      action: {
+        target3D: 'dpVerh', // dP_verh
+        color: 'green',
+        number: '00.23',
+      },
+      startTime: timeDiff + 68.62,
+    },
+    {
+      action: {
+        target3D: 'dpObsh', // dP_obsh_tryba
+        color: 'green',
+        number: '01.68',
+      },
+      startTime: timeDiff + 68.62,
+    },
+    {
+      action: {
+        target3D: 'dpNiz', // dP_nish_tryba
+        color: 'green',
+        number: '01.45',
+      },
+      startTime: timeDiff + 68.62,
+    },
+    {
+      action: {
+        target3D: 'pGorDut', // P_2
+        color: 'green',
+        number: '03.99',
+      },
+      startTime: timeDiff + 68.62,
+    },
+    {
+      action: {
+        target3D: 'tGorDut', // t_gor_dut
+        color: 'green',
+        number: '1211',
+      },
+      startTime: timeDiff + 68.62,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd', // P_Os_szat_voz
+        color: 'green',
+        number: '1211',
+      },
+      startTime: timeDiff + 68.62,
+    },
+    {
+      action: {
+        target3D: 'fParaUvlajDutReg', // par_yvlaz
+        color: 'green',
+        number: '00.00',
+      },
+      startTime: timeDiff + 68.62,
+    },
+
     ////--------------------------------3----------------------------------------
     {
       scenarioText: 'Настройка значения теоретической температуры горения.',
@@ -2355,7 +2835,7 @@ let tempActions = [
       audio: 'tts-11',
       startTime: timeDiff + 69,
     },
-    { // TODO не нашёл имя и схему в помощи
+    {
       text: 'Выбрать 302',
       sender: 'Система',
       action: {
@@ -2420,6 +2900,186 @@ let tempActions = [
       },
       startTime: timeDiff + 73.4,
       human: true,
+    },
+    // Sergey (DP после закрытия онка символа 302)
+    {
+      action: {
+        window2D: {
+          elements: [
+
+            { name: 'EKZ_H1', text: '15' },
+            { name: 'EKZ_H2', text: '15' },
+            { name: 'EKZ_H3', text: '15' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 0 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '52964' },
+            { name: 'EVD1_O', text: '40687' },
+            { name: 'EVS_DP7_F', text: '7251' },
+            { name: 'EVD1_F', text: '342749' },
+            { name: 'EVD_F', text: '263334' },
+            { name: 'P_1', text: '4,17' },
+            { name: 'F_evd', text: '5964' },
+            { name: 'F_hol_dyt', text: '5824' },
+            { name: 'T_hol_dyt', text: '78' },
+            { name: 'O_hol_dyt', text: '29,5' },
+            { name: 'par_yvlaz', text: '0,00' },
+            { name: 'W_sinij_hol_dyt', text: '7,3' },
+            { name: 'FO2_hol_dyt', text: '1754' },
+
+            { name: 'N2', text: '42,8' },
+            { name: 'CO', text: '26,5' },
+            { name: 'CO2', text: '21,4' },
+            { name: 'H2_tryb', text: '8,7' },
+            { name: 'Nco_tryb', text: '44,8' },
+            { name: 'Q_domG_tryb', text: '1051' },
+            { name: 'P_vozd_tryb', text: '11' },
+            { name: 'P_gaza_tryb', text: '9' },
+            { name: 'CO_bor_tryb', text: '0,34' },
+
+            { name: 'H_step_isp', text: '33,1' },
+            { name: 'HCO_step_isp', text: '42,2' },
+            { name: 'Tkyp_3', text: '1295' },
+            { name: 'Tkyp_2', text: '1321' },
+            { name: 'Tkyp_1', text: '1321' },
+            { name: 'Fvozdyh_2', text: '94775' },
+            { name: 'Fgaz_2', text: '81539' },
+            { name: 'VNK1_Fb', text: '96320' },
+            { name: 'VNK1_Fr', text: '98349' },
+            { name: 'Tdym_3', text: '161' },
+            { name: 'Tdym_2', text: '158' },
+            { name: 'Tdym_1', text: '324' },
+            { name: 'P_Os_szat_voz', text: '8,42' },
+            { name: 'T_Os_szat_voz', text: '30' },
+
+            { name: 'Temp_peref_1', text: '84' },
+            { name: 'Temp_peref_2', text: '79' },
+            { name: 'Temp_peref_3', text: '79' },
+            { name: 'Temp_peref_4', text: '84' },
+            { name: 'Temp_peref_5', text: '81' },
+            { name: 'Temp_peref_6', text: '85' },
+            { name: 'Temp_peref_7', text: '85' },
+            { name: 'Temp_peref_8', text: '64' },
+            { name: 'Temp_peref_9', text: '73' },
+            { name: 'Temp_peref_10', text: '78' },
+            { name: 'Temp_peref_11', text: '136' },
+            { name: 'Temp_peref_12', text: '94' },
+            { name: 'Temp_peref_13', text: '118' },
+            { name: 'Temp_peref_14', text: '82' },
+            { name: 'Temp_peref_15', text: '89' },
+            { name: 'Temp_peref_16', text: '78' },
+            { name: 'T1', text: '160' },
+            { name: 'T2', text: '143' },
+            { name: 'T3', text: '154' },
+            { name: 'T4', text: '148' },
+            { name: 'P_2', text: '4.07' },
+            { name: 't_gor_dut', text: '1209' },
+            { name: 'P_pg_prir_gaz', text: '8,38' },
+            { name: 'F_prir_gaz_table', text: '37000' },
+            { name: 'F_pg_sym_prir_gaz', text: '33547' },
+            { name: 'H_Os_szat_voz', text: '36' },
+            { name: 't_prirodn_gaz', text: '8' },
+            { name: 'H_prir_gaz', text: '41' },
+
+            { name: 'F_tryba', text: '422273' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0,0' },
+            { name: 'P_vbls', text: '2,30' },
+            { name: 'dP_verh', text: '0,22' },
+            { name: 'dP_obsh_tryba', text: '1,74' },
+            { name: 'dP_nish_tryba', text: '1,53' },
+            { name: 'TTG_zadanie', text: '22000' },
+            { name: 'TTG_raschet', text: '2237' },
+            { name: 'F_pg_prir_gaz', text: '33456' },
+            { name: 'dF_pg_prir_gaz', text: '-57' },
+            { name: 'L2', text: '1474' },
+
+            { name: 'Dp_obsh', text: '1,60' },
+            { name: 'F_prir_gaz_table', text: '37000' },
+            { name: 'TTG_zadanie', text: '22000' },
+            { name: 'P_tryba_3_590', text: '2,48' },
+            { name: 'P_tryba_3_591', text: '2,48' },
+            { name: 'P_tryba_4_1', text: '4,18' },
+            { name: 'P_tryba_4_2', text: '3,41' },
+            { name: 'P_tryba_4_3', text: '4,29' },
+            { name: 'P_tryba_4_4', text: '3,29' },
+            { name: 'P_tryba_5_1', text: '3,13' },
+            { name: 'P_tryba_5_2', text: '2,71' },
+            { name: 'P_tryba_5_3', text: '2,87' },
+            { name: 'P_tryba_5_4', text: '2,81' },
+            { name: 'ydel_tep_18', text: '29,2' },
+            { name: 'ydel_tep_17', text: '51,2' },
+            { name: 'ydel_tep_16', text: '34,4' },
+            { name: 'ydel_tep_15', text: '49,6' },
+            { name: 'ydel_tep_12_14', text: '83,6' },
+            { name: 'ydel_tep_10_11', text: '48,2' },
+            { name: 'ydel_tep_9', text: '47,4' },
+            { name: 'ydel_tep_8', text: '47,3' },
+            { name: 'ydel_tep_7', text: '38,2' },
+            { name: 'fyrm_v_rab', text: '29' },
+          ],
+        },
+      },
+      startTime: timeDiff + 73.41,
+    },
+    {
+      action: {
+        target3D: 'dpVerh', // dP_verh
+        color: 'green',
+        number: '00.22',
+      },
+      startTime: timeDiff + 73.42,
+    },
+    {
+      action: {
+        target3D: 'dpObsh', // dP_obsh_tryba
+        color: 'green',
+        number: '01.74',
+      },
+      startTime: timeDiff + 73.42,
+    },
+    {
+      action: {
+        target3D: 'dpNiz', // dP_nish_tryba
+        color: 'green',
+        number: '01.53',
+      },
+      startTime: timeDiff + 73.42,
+    },
+    {
+      action: {
+        target3D: 'pGorDut', // dP_nish_tryba
+        color: 'green',
+        number: '04.07',
+      },
+      startTime: timeDiff + 73.42,
+    },
+    {
+      action: {
+        target3D: 'tGorDut', // t_gor_dut
+        color: 'green',
+        number: '1209',
+      },
+      startTime: timeDiff + 73.42,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd', // P_Os_szat_voz
+        color: 'green',
+        number: '08.42',
+      },
+      startTime: timeDiff + 73.42,
+    },
+    {
+      action: {
+        target3D: 'fParaUvlajDutReg', // par_yvlaz
+        color: 'green',
+        number: '00.00',
+      },
+      startTime: timeDiff + 73.42,
     },
 
     ////--------------------------------3.1
@@ -2495,11 +3155,196 @@ let tempActions = [
       startTime: timeDiff + 74,
       human: true,
     },
+    // Sergey (DP ТТГ 2200)
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'radar1_text', text: '1,24' },
+            { name: 'radar2_text', text: '1,67' },
+            { name: 'radar3_text', text: '-1,67' },
+
+            { name: 'EKZ_H1', text: '15' },
+            { name: 'EKZ_H2', text: '15' },
+            { name: 'EKZ_H3', text: '15' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 0 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '52964' },
+            { name: 'EVD1_O', text: '48175' },
+            { name: 'EVS_DP7_F', text: '7154' },
+            { name: 'EVD1_F', text: '342749' },
+            { name: 'EVD_F', text: '263334' },
+            { name: 'P_1', text: '4,17' },
+            { name: 'F_evd', text: '6653' },
+            { name: 'F_hol_dyt', text: '5841' },
+            { name: 'T_hol_dyt', text: '78' },
+            { name: 'O_hol_dyt', text: '29,5' },
+            { name: 'par_yvlaz', text: '0,34' },
+            { name: 'W_sinij_hol_dyt', text: '7,3' },
+            { name: 'FO2_hol_dyt', text: '1755' },
+
+            { name: 'N2', text: '42,8' },
+            { name: 'CO', text: '26,5' },
+            { name: 'CO2', text: '21,4' },
+            { name: 'H2_tryb', text: '8,7' },
+            { name: 'Nco_tryb', text: '44,8' },
+            { name: 'Q_domG_tryb', text: '1051' },
+            { name: 'P_vozd_tryb', text: '11' },
+            { name: 'P_gaza_tryb', text: '9' },
+            { name: 'CO_bor_tryb', text: '0,34' },
+
+            { name: 'H_step_isp', text: '35,8' },
+            { name: 'HCO_step_isp', text: '42,8' },
+            { name: 'Tkyp_3', text: '1295' },
+            { name: 'Tkyp_2', text: '1321' },
+            { name: 'Tkyp_1', text: '1322' },
+            { name: 'Fvozdyh_2', text: '94775' },
+            { name: 'Fgaz_2', text: '81539' },
+            { name: 'VNK1_Fb', text: '96320' },
+            { name: 'VNK1_Fr', text: '98349' },
+            { name: 'Tdym_3', text: '161' },
+            { name: 'Tdym_2', text: '158' },
+            { name: 'Tdym_1', text: '326' },
+            { name: 'P_Os_szat_voz', text: '8,43' },
+            { name: 'T_Os_szat_voz', text: '30' },
+
+            { name: 'Temp_peref_1', text: '84' },
+            { name: 'Temp_peref_2', text: '79' },
+            { name: 'Temp_peref_3', text: '79' },
+            { name: 'Temp_peref_4', text: '84' },
+            { name: 'Temp_peref_5', text: '81' },
+            { name: 'Temp_peref_6', text: '85' },
+            { name: 'Temp_peref_7', text: '85' },
+            { name: 'Temp_peref_8', text: '64' },
+            { name: 'Temp_peref_9', text: '73' },
+            { name: 'Temp_peref_10', text: '78' },
+            { name: 'Temp_peref_11', text: '136' },
+            { name: 'Temp_peref_12', text: '94' },
+            { name: 'Temp_peref_13', text: '118' },
+            { name: 'Temp_peref_14', text: '82' },
+            { name: 'Temp_peref_15', text: '89' },
+            { name: 'Temp_peref_16', text: '78' },
+            { name: 'T1', text: '160' },
+            { name: 'T2', text: '143' },
+            { name: 'T3', text: '158' },
+            { name: 'T4', text: '148' },
+            { name: 'P_2', text: '4.07' },
+            { name: 't_gor_dut', text: '1209' },
+            { name: 'P_pg_prir_gaz', text: '8,38' },
+            { name: 'F_prir_gaz_table', text: '37000' },
+            { name: 'F_pg_sym_prir_gaz', text: '34290' },
+            { name: 'H_Os_szat_voz', text: '36' },
+            { name: 't_prirodn_gaz', text: '8' },
+            { name: 'H_prir_gaz', text: '45' },
+
+            { name: 'F_tryba', text: '629229' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0,0' },
+            { name: 'P_vbls', text: '2,30' },
+            { name: 'dP_verh', text: '0,22' },
+            { name: 'dP_obsh_tryba', text: '1,74' },
+            { name: 'dP_nish_tryba', text: '1,53' },
+            { name: 'TTG_zadanie', text: '22000' },
+            { name: 'TTG_raschet', text: '2230' },
+            { name: 'F_pg_prir_gaz', text: '34225' },
+            { name: 'dF_pg_prir_gaz', text: '65' },
+            { name: 'V_dyt', text: '220' },
+            { name: 'L2', text: '1472' },
+
+            { name: 'Dp_obsh', text: '1,60' },
+            { name: 'F_prir_gaz_table', text: '37000' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'P_tryba_3_590', text: '2,48' },
+            { name: 'P_tryba_3_591', text: '2,48' },
+            { name: 'P_tryba_4_1', text: '4,11' },
+            { name: 'P_tryba_4_2', text: '3,42' },
+            { name: 'P_tryba_4_3', text: '4,36' },
+            { name: 'P_tryba_4_4', text: '3,29' },
+            { name: 'P_tryba_5_1', text: '2,75' },
+            { name: 'P_tryba_5_2', text: '3,60' },
+            { name: 'P_tryba_5_3', text: '2,85' },
+            { name: 'P_tryba_5_4', text: '3,81' },
+            { name: 'ydel_tep_18', text: '29,2' },
+            { name: 'ydel_tep_17', text: '51,2' },
+            { name: 'ydel_tep_16', text: '34,4' },
+            { name: 'ydel_tep_15', text: '49,6' },
+            { name: 'ydel_tep_12_14', text: '83,6' },
+            { name: 'ydel_tep_10_11', text: '48,2' },
+            { name: 'ydel_tep_9', text: '47,4' },
+            { name: 'ydel_tep_8', text: '47,3' },
+            { name: 'ydel_tep_7', text: '38,2' },
+            { name: 'fyrm_v_rab', text: '29' },
+          ],
+        },
+      },
+      startTime: timeDiff + 74.01,
+    },
+    {
+      action: {
+        target3D: 'dpVerh', // dP_verh
+        color: 'green',
+        number: '00.22',
+      },
+      startTime: timeDiff + 74.02,
+    },
+    {
+      action: {
+        target3D: 'dpObsh', // dP_obsh_tryba
+        color: 'green',
+        number: '01.74',
+      },
+      startTime: timeDiff + 74.02,
+    },
+    {
+      action: {
+        target3D: 'dpNiz', // dP_nish_tryba
+        color: 'green',
+        number: '01.53',
+      },
+      startTime: timeDiff + 74.02,
+    },
+    {
+      action: {
+        target3D: 'pGorDut', // P_2
+        color: 'green',
+        number: '04.07',
+      },
+      startTime: timeDiff + 74.02,
+    },
+    {
+      action: {
+        target3D: 'tGorDut', // t_gor_dut
+        color: 'green',
+        number: '1209',
+      },
+      startTime: timeDiff + 74.02,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd', // P_Os_szat_voz
+        color: 'green',
+        number: '08.43',
+      },
+      startTime: timeDiff + 74.02,
+    },
+    {
+      action: {
+        target3D: 'fParaUvlajDutReg', // par_yvlaz
+        color: 'green',
+        number: '00.34',
+      },
+      startTime: timeDiff + 74.02,
+    },
+
     ////--------------------------------3.2
     {
       text: 'Выбрать 302',
       sender: 'Система',
-      action: { // TODO клик по 302!?
+      action: {
         target2D: 't_b_302_btn',
         window2D: {
           elements: [
@@ -2537,6 +3382,191 @@ let tempActions = [
       startTime: timeDiff + 74.3,
       human: true,
     },
+    // Sergey (DP Повторно 302)
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'radar1_text', text: '1,40' },
+            { name: 'radar2_text', text: '1,67' },
+            { name: 'radar3_text', text: '-1,67' },
+
+            { name: 'EKZ_H1', text: '19' },
+            { name: 'EKZ_H2', text: '19' },
+            { name: 'EKZ_H3', text: '19' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 0 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '52964' },
+            { name: 'EVD1_O', text: '48284' },
+            { name: 'EVS_DP7_F', text: '7154' },
+            { name: 'EVD1_F', text: '342749' },
+            { name: 'EVD_F', text: '263334' },
+            { name: 'P_1', text: '4,17' },
+            { name: 'F_evd', text: '6014' },
+            { name: 'F_hol_dyt', text: '5718' },
+            { name: 'T_hol_dyt', text: '78' },
+            { name: 'O_hol_dyt', text: '29,5' },
+            { name: 'par_yvlaz', text: '0,34' },
+            { name: 'W_sinij_hol_dyt', text: '7,3' },
+            { name: 'FO2_hol_dyt', text: '1755' },
+
+            { name: 'N2', text: '42,8' },
+            { name: 'CO', text: '26,5' },
+            { name: 'CO2', text: '21,4' },
+            { name: 'H2_tryb', text: '8,7' },
+            { name: 'Nco_tryb', text: '44,8' },
+            { name: 'Q_domG_tryb', text: '1051' },
+            { name: 'P_vozd_tryb', text: '11' },
+            { name: 'P_gaza_tryb', text: '9' },
+            { name: 'CO_bor_tryb', text: '0,34' },
+
+            { name: 'H_step_isp', text: '35,8' },
+            { name: 'HCO_step_isp', text: '42,8' },
+            { name: 'Tkyp_3', text: '1295' },
+            { name: 'Tkyp_2', text: '1331' },
+            { name: 'Tkyp_1', text: '1329' },
+            { name: 'Fvozdyh_2', text: '94775' },
+            { name: 'Fgaz_2', text: '81539' },
+            { name: 'VNK1_Fb', text: '96320' },
+            { name: 'VNK1_Fr', text: '98349' },
+            { name: 'Tdym_3', text: '161' },
+            { name: 'Tdym_2', text: '158' },
+            { name: 'Tdym_1', text: '326' },
+            { name: 'P_Os_szat_voz', text: '8,38' },
+            { name: 'T_Os_szat_voz', text: '30' },
+
+            { name: 'Temp_peref_1', text: '84' },
+            { name: 'Temp_peref_2', text: '79' },
+            { name: 'Temp_peref_3', text: '79' },
+            { name: 'Temp_peref_4', text: '84' },
+            { name: 'Temp_peref_5', text: '81' },
+            { name: 'Temp_peref_6', text: '85' },
+            { name: 'Temp_peref_7', text: '85' },
+            { name: 'Temp_peref_8', text: '64' },
+            { name: 'Temp_peref_9', text: '73' },
+            { name: 'Temp_peref_10', text: '78' },
+            { name: 'Temp_peref_11', text: '136' },
+            { name: 'Temp_peref_12', text: '94' },
+            { name: 'Temp_peref_13', text: '118' },
+            { name: 'Temp_peref_14', text: '82' },
+            { name: 'Temp_peref_15', text: '89' },
+            { name: 'Temp_peref_16', text: '78' },
+            { name: 'T1', text: '161' },
+            { name: 'T2', text: '143' },
+            { name: 'T3', text: '157' },
+            { name: 'T4', text: '147' },
+            { name: 'P_2', text: '4.11' },
+            { name: 't_gor_dut', text: '1209' },
+            { name: 'P_pg_prir_gaz', text: '8,39' },
+            { name: 'F_prir_gaz_table', text: '37000' },
+            { name: 'F_pg_sym_prir_gaz', text: '34223' },
+            { name: 'H_Os_szat_voz', text: '36' },
+            { name: 't_prirodn_gaz', text: '8' },
+            { name: 'H_prir_gaz', text: '45' },
+
+            { name: 'F_tryba', text: '558642' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0,0' },
+            { name: 'P_vbls', text: '2,30' },
+            { name: 'dP_verh', text: '0,22' },
+            { name: 'dP_obsh_tryba', text: '1,74' },
+            { name: 'dP_nish_tryba', text: '1,53' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2221' },
+            { name: 'F_pg_prir_gaz', text: '34193' },
+            { name: 'dF_pg_prir_gaz', text: '40' },
+            { name: 'V_dyt', text: '215,2' },
+            { name: 'L2', text: '1472' },
+
+            { name: 'Dp_obsh', text: '1,60' },
+            { name: 'F_prir_gaz_table', text: '37000' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'P_tryba_3_590', text: '2,48' },
+            { name: 'P_tryba_3_591', text: '2,48' },
+            { name: 'P_tryba_4_1', text: '4,11' },
+            { name: 'P_tryba_4_2', text: '3,42' },
+            { name: 'P_tryba_4_3', text: '4,36' },
+            { name: 'P_tryba_4_4', text: '3,29' },
+            { name: 'P_tryba_5_1', text: '2,75' },
+            { name: 'P_tryba_5_2', text: '3,60' },
+            { name: 'P_tryba_5_3', text: '2,85' },
+            { name: 'P_tryba_5_4', text: '3,81' },
+            { name: 'ydel_tep_18', text: '29,2' },
+            { name: 'ydel_tep_17', text: '51,2' },
+            { name: 'ydel_tep_16', text: '34,4' },
+            { name: 'ydel_tep_15', text: '49,6' },
+            { name: 'ydel_tep_12_14', text: '83,6' },
+            { name: 'ydel_tep_10_11', text: '48,2' },
+            { name: 'ydel_tep_9', text: '47,4' },
+            { name: 'ydel_tep_8', text: '47,3' },
+            { name: 'ydel_tep_7', text: '38,2' },
+            { name: 'fyrm_v_rab', text: '29' },
+          ],
+        },
+      },
+      startTime: timeDiff + 74.31,
+    },
+    {
+      action: {
+        target3D: 'dpVerh', // dP_verh
+        color: 'green',
+        number: '00.22',
+      },
+      startTime: timeDiff + 74.32,
+    },
+    {
+      action: {
+        target3D: 'dpObsh', // dP_obsh_tryba
+        color: 'green',
+        number: '01.74',
+      },
+      startTime: timeDiff + 74.32,
+    },
+    {
+      action: {
+        target3D: 'dpNiz', // dP_nish_tryba
+        color: 'green',
+        number: '01.53',
+      },
+      startTime: timeDiff + 74.32,
+    },
+    {
+      action: {
+        target3D: 'pGorDut', // P_2
+        color: 'green',
+        number: '04.11',
+      },
+      startTime: timeDiff + 74.32,
+    },
+    {
+      action: {
+        target3D: 'tGorDut', // t_gor_dut
+        color: 'green',
+        number: '1209',
+      },
+      startTime: timeDiff + 74.32,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd', // P_Os_szat_voz
+        color: 'green',
+        number: '08.38',
+      },
+      startTime: timeDiff + 74.32,
+    },
+    {
+      action: {
+        target3D: 'fParaUvlajDutReg', // par_yvlaz
+        color: 'green',
+        number: '00.34',
+      },
+      startTime: timeDiff + 74.32,
+    },
+
     ////--------------------------------4       
     {
       text: 'Выпуск чугуна из лёток, продвука, понижения давления температуры.',
@@ -2634,6 +3664,221 @@ let tempActions = [
       startTime: timeDiff + 97,
       human: true,
     },
+    // Ilay F main + vnk_spvg
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7TI_41', text: '40' },
+            { name: '7PI_12', text: '17,76' },
+            { name: 'ramka_7PI_12', color: '#ffff0f' },
+            { name: '7FI_05', text: '208926' },
+            { name: '7TI_40', text: '11' },
+            { name: '7PI_11', text: '0,00' },
+            { name: '7FI_04', text: '0' },
+
+            { name: '5QI_01_01', text: '10' },
+            { name: '5QI_01_02', text: '78' },
+
+            //{ name: 'PV2', text: '' },
+            { name: 'SP2', text: '9,00' },
+            { name: 'PV2_1', text: '23,00' },
+            { name: 'M_t1_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'PV3', text: '0,00' },
+            { name: 'SP3', text: '0,00' },
+            { name: 'PV3_1', text: '0,00' },
+            { name: 'M_t2_4', text: 'Соглас', color: '#000' },
+
+            { name: 'PV4', text: '11,07' },
+            { name: 'SP4', text: '10,00' },
+            { name: 'PV4_1', text: '11,64' },
+            { name: 'M_t3_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl053_proc', text: '40' },
+            { name: 'kl051_proc', text: '0' },
+            { name: 'kl052_proc', text: '0' },
+            { name: 'kl035_proc', text: '0' },
+
+            // { name: 'klOF3_proc', text: '56' },
+            { name: 'klOF2_proc', text: '56' },
+            { name: 'klOF1_proc', text: '0' },
+
+            { name: 'klOF1_proc', text: '0' },
+
+            { name: 'kl0333_proc', text: '100' },
+            { name: 'kl0313_proc', text: '100' },
+
+            { name: 'kl0332_proc', text: '100' },
+            { name: 'kl0312_proc', text: '100' },
+
+            { name: 'kl0331_proc', text: '0' },
+            { name: 'kl0311_proc', text: '100' },
+
+            { name: '7QI_01', text: '-999,00' },
+
+            // { name: 'kl038_proc',   text: '0' },
+            // { name: 'kl028_proc',   text: '0' },
+            // { name: 'kl020_proc',   text: '100' },
+            // { name: 'kl036v_proc',  text: '0' },
+            // { name: 'kl036b_proc',  text: '0' },
+
+            // { name: 'kl048_proc', text: '0' },
+            // { name: 'kl029_proc', text: '100' },
+            // { name: 'kl004_proc', text: '100' },
+
+            { name: 'PI_16_proc', text: '11,12' },
+            { name: '9TI_44_proc', text: '28' },
+
+            // { name: 'kl037_proc', text: '0' },
+            // { name: 'kl007_proc', text: '0' },
+            // { name: 'kl025_proc', text: '100' },
+
+            { name: '8QI_05_01', text: '6,92' },
+            { name: '8QI_05_02', text: '85,08' },
+            { name: '8QI_05_04', text: '0,00' },
+            { name: '7PI_13', text: '8,98' },
+            { name: '7PI_42', text: '44' },
+
+            { name: 'PV1', text: '1200,00' },
+            { name: 'SP1', text: '1230,00' },
+            { name: 'PV1_1', text: '23,33' },
+            { name: 'M_t4_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk_3', color: '#0033FF' }, // задник стрелки
+            { name: 'Tkyp_3', text: '1277' },
+            { name: 'VNK3_status_1', text: 'Циклический' },
+            { name: 'VNK3_status_2', text: 'Дутье' },
+            { name: 'vnk3_stripes', color: '#0033FF' },
+            { name: 'VNK3_Fr', text: '0' },
+            { name: 'VNK3_Fb', text: '0' },
+            { name: 'Tdym_3', text: '139' },
+
+            { name: 'kl001_proc', text: '0' },
+            { name: 'kl001a_proc', text: '22' },
+
+            { name: 'vnk2_fire', opacity: '1' }, // стрелка
+            { name: 'vnk_2', color: '#ff0000' }, // задник стрелки
+            { name: 'Tkyp_2', text: '1326' },
+            { name: 'VNK2_status_1', text: 'Циклический' },
+            { name: 'VNK2_status_2', text: 'Нагрев' },
+            { name: 'vnk2_stripes', color: '#ff0000' },
+            { name: 'VNK2_Fr', text: '111915' },
+            { name: 'VNK2_Fb', text: '104399' },
+            { name: 'Tdym_2', text: '233' },
+
+            { name: '5PI_08', text: '386' },
+            { name: '5PI_08', text: '16' },
+            { name: 'FI_03', text: '934' },
+
+            { name: 'vnk1_fire', opacity: '1' }, // стрелка
+            { name: 'vnk_1', color: '#ff0000' }, // задник стрелки
+            { name: 'Tkyp_1', text: '1322' },
+            { name: 'VNK1_status_1', text: 'Циклический' },
+            { name: 'VNK1_status_2', text: 'Нагрев' },
+            { name: 'vnk1_stripes', color: '#ff0000' },
+            { name: 'VNK1_Fr', text: '110014' },
+            { name: 'VNK1_Fb', text: '100130' },
+            { name: 'Tdym_1', text: '423' },
+
+            { name: 'vybor_signala', text: '1210' },
+            { name: '5TI_21', text: '1201' },
+            { name: '5TI_22', text: '1210' },
+            { name: 'PI_09', text: '536б65' },
+
+
+            // vnk_spvg
+            { name: '6TI_39_1', text: '40' },
+            { name: '6TI_39_2', text: '32' },
+            { name: '6TI_39_3', text: '59' },
+            { name: '6TI_39_4', text: '58' },
+            { name: '6TI_39_5', text: '58' },
+            { name: '6TI_39_6', text: '56' },
+            { name: '6TI_39_7', text: '62' },
+            { name: '6TI_39_8', text: '55' },
+            { name: '6TI_39_9', text: '31' },
+            { name: '6TI_39_10', text: '36' },
+
+            { name: '6TI_38_1', text: '37' },
+            { name: '6TI_38_2', text: '42' },
+            { name: '6TI_38_3', text: '67' },
+            { name: '6TI_38_4', text: '66' },
+            { name: '6TI_38_5', text: '69' },
+            { name: '6TI_38_6', text: '67' },
+            { name: '6TI_38_7', text: '69' },
+            { name: '6TI_38_8', text: '67' },
+            { name: '6TI_38_9', text: '33' },
+            { name: '6TI_38_10', text: '41' },
+
+            { name: '6TI_37_1', text: '12' },
+            { name: '6TI_37_2', text: '13' },
+            { name: '6TI_37_3', text: '14' },
+            { name: '6TI_37_4', text: '15' },
+            { name: '6TI_37_5', text: '15' },
+            { name: '6TI_37_6', text: '15' },
+            { name: '6TI_37_7', text: '14' },
+            { name: '6TI_37_8', text: '15' },
+            { name: '6TI_37_9', text: '13' },
+            { name: '6TI_37_10', text: '14' },
+
+            { name: 'klO35_proc', text: '0' },
+            //table1
+            //table1
+            //table1
+            { name: 'spvg_t1_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'vnk_spvg_B3_1', color: '#00FF00' },
+            { name: 'vnk_spvg_B2_1', color: '#00FF00' },
+            { name: 'vnk_spvg_B1_1', color: '#808080' },
+
+
+
+            { name: '6VI_3_1', text: '0,81' },
+            { name: '6VI_3_2', text: '1,96' },
+            { name: '6VI_3_3', text: '1,43' },
+            { name: '6VI_3_4', text: '1,73' },
+
+            { name: '6VI_2_1', text: '0,94' },
+            { name: '6VI_2_2', text: '1,32' },
+            { name: '6VI_2_3', text: '1,31' },
+            { name: '6VI_2_4', text: '2,06' },
+
+            { name: 'klOF3_proc', text: '38' },
+            { name: '6TI_31_3', text: '12' },
+
+
+            // { name: '8QI_05_1', text: '' },
+            { name: '8QI_05_2', text: '85,57' },
+            { name: '8QI_05_4', text: '0,00' },
+
+            { name: '6VI_1_1', text: '0,04' },
+            { name: '6VI_1_2', text: '0,15' },
+            { name: '6VI_1_3', text: '0,22' },
+            { name: '6VI_1_4', text: '0,16' },
+
+            { name: 'klOF2_proc', text: '0' },
+            { name: '6TI_31_2', text: '12' },
+
+            { name: 'klOF1_proc', text: '0' },
+            { name: '6TI_31_1', text: '12' },
+
+            { name: '9TI_41', text: '40' },
+            { name: '9TI_34', text: '127' },
+            { name: '9TI_35', text: '65' },
+            { name: '9TI_30', text: '28' },
+            { name: '9TI_44', text: '28' },
+            { name: '9TI_42', text: '41' },
+            { name: '9TI_32', text: '138' },
+            { name: '9TI_42', text: '44' },
+            // { name: '9TI_33', text: '' },
+            // { name: '9TI_16', text: '' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 97.1,
+    },
     {
       text: 'Хорошо. Выполняю.',
       sender: 'Газовщик',
@@ -2653,6 +3898,182 @@ let tempActions = [
       sender: 'Система',
       audio: 'tts-14',
       startTime: timeDiff + 101,
+    },
+    // Ilay vnk1 + main
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '8,96' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '110037' },
+
+            { name: '115_SPW', text: '433,0' },
+            { name: '115_SPT', text: '108,0' },
+            { name: '115_KP_2', text: '500,0' },
+            { name: '115_GAZ', text: '112221' },
+            { name: 'V1_t1_5', text: 'Работа', color: '#00FF00' },
+
+            { name: '123_PV_2', text: '1221,1' },
+            { name: '123_SP_2', text: '1200,0' },
+            { name: '123_KP_2', text: '28,54' },
+            { name: '123_GAZ', text: '0,00' },
+            { name: 'V1_t2_4', text: 'Работа', color: '#00FF00' },
+
+            { name: '1FI_02', text: '99784' },
+
+            { name: '115_PV', text: '109961' },
+            { name: '115_SP', text: '113391' },
+            { name: '115_KP_1', text: '41,34' },
+            { name: 'V1_t3_4', text: 'Соглас', color: '#000' },
+
+            { name: '123_PV_1', text: '1,000' },
+            { name: '123_SP_1', text: '1,000' },
+            { name: '123_KP_1', text: '16,83' },
+            { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '1PI_02', text: '8,53' },
+            { name: '1PS_03', color: '#00FF00' },
+            { name: 'Kl115_proc', text: '41' },
+            { name: '1PI_04', text: '3,21' },
+            { name: 'Kl123_proc', text: '36' },
+            { name: '1QI_01', text: '2,19' },
+
+            { name: '1TI_43', text: '46' },
+            { name: '1TI_29', text: '26' },
+            { name: 'dym_vybor_signala', text: '424' },
+            { name: '1TI_28_1', text: '421' },
+            { name: '1TI_28_2', text: '425' },
+
+            { name: 'vnk1_fire', opacity: '1' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '1' }, // обводка стрелка
+            { name: 'vnk_1', color: '#ff0000' }, // задник стрелки
+            { name: 'VNK1_status_1', text: 'Циклический' },
+            { name: 'VNK1_status_2', text: 'Нагрев' },
+            { name: 'vnk1_stripes', color: '#ff0000' },
+            { name: 'Vremya_nagreva', text: '108' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '0' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1321' },
+            { name: '1TI_03', text: '1305' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1209' },
+            { name: 'vybor_signala', text: '1221' },
+
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_nagrev', color: '#00FF00' },
+
+            //main
+            { name: '7PI_12', text: '17,60' },
+            { name: 'ramka_7PI_12', color: '#ffff0f' },
+            { name: '7FI_05', text: '103147' },
+            { name: '7TI_40', text: '11' },
+
+            { name: '5QI_01_01', text: '10' },
+            { name: '5QI_01_02', text: '77' },
+
+            { name: 'M_t1_4', text: 'Работа', color: '#00FF00' },
+            { name: 'M_t2_4', text: 'Соглас', color: '#000' },
+            { name: 'M_t3_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl053_proc', text: '27' },
+            { name: 'kl051_proc', text: '0' },
+            { name: 'kl052_proc', text: '0' },
+            { name: 'kl035_proc', text: '0' },
+
+            { name: 'klOF3_proc', text: '33' },
+            { name: 'klOF2_proc', text: '22' },
+            { name: 'klOF1_proc', text: '0' },
+            { name: 'vnk_main_klOF3_proc', text: '0' },
+
+            { name: 'kl0333_proc', text: '100' },
+            { name: 'kl0313_proc', text: '100' },
+
+            { name: 'kl0332_proc', text: '100' },
+            { name: 'kl0312_proc', text: '100' },
+
+            { name: 'kl0331_proc', text: '0' },
+            { name: 'kl0311_proc', text: '100' },
+
+            { name: '7QI_01', text: '-999,00' },
+
+            // { name: 'kl038_proc',   text: '0' },
+            // { name: 'kl028_proc',   text: '0' },
+            // { name: 'kl020_proc',   text: '100' },
+            // { name: 'kl036v_proc',  text: '0' },
+            // { name: 'kl036b_proc',  text: '0' },
+
+            // { name: 'kl048_proc', text: '0' },
+            // { name: 'kl029_proc', text: '100' },
+            // { name: 'kl004_proc', text: '100' },
+
+            { name: 'PI_16_proc', text: '11,12' },
+            { name: '9TI_44_proc', text: '28' },
+
+            // { name: 'kl037_proc', text: '0' },
+            // { name: 'kl007_proc', text: '0' },
+            // { name: 'kl025_proc', text: '100' },
+
+            { name: '8QI_05_01', text: '6,92' },
+            { name: '8QI_05_02', text: '85,08' },
+            { name: '8QI_05_04', text: '0,00' },
+            { name: '7PI_13', text: '8,98' },
+            { name: '7PI_42', text: '44' },
+
+            { name: 'PV1', text: '1200,00' },
+            { name: 'SP1', text: '1230,00' },
+            { name: 'PV1_1', text: '23,33' },
+            { name: 'M_t4_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk_3', color: '#0033FF' }, // задник стрелки
+            { name: 'Tkyp_3', text: '1277' },
+            { name: 'VNK3_status_1', text: 'Циклический' },
+            { name: 'VNK3_status_2', text: 'Дутье' },
+            { name: 'vnk3_stripes', color: '#0033FF' },
+            { name: 'VNK3_Fr', text: '0' },
+            { name: 'VNK3_Fb', text: '0' },
+            { name: 'Tdym_3', text: '139' },
+
+            { name: 'kl001_proc', text: '0' },
+            { name: 'kl001a_proc', text: '22' },
+
+            { name: 'vnk2_fire', opacity: '1' }, // стрелка
+            { name: 'vnk_2', color: '#ff0000' }, // задник стрелки
+            { name: 'Tkyp_2', text: '1326' },
+            { name: 'VNK2_status_1', text: 'Циклический' },
+            { name: 'VNK2_status_2', text: 'Нагрев' },
+            { name: 'vnk2_stripes', color: '#ff0000' },
+            { name: 'VNK2_Fr', text: '111915' },
+            { name: 'VNK2_Fb', text: '104399' },
+            { name: 'Tdym_2', text: '233' },
+
+            { name: '5PI_08', text: '386' },
+            { name: '5PI_08', text: '16' },
+            { name: 'FI_03', text: '934' },
+
+            { name: 'vnk1_fire', opacity: '1' }, // стрелка
+            { name: 'vnk_1', color: '#ff0000' }, // задник стрелки
+            { name: 'Tkyp_1', text: '1322' },
+            { name: 'VNK1_status_1', text: 'Циклический' },
+            { name: 'VNK1_status_2', text: 'Нагрев' },
+            { name: 'vnk1_stripes', color: '#ff0000' },
+            { name: 'VNK1_Fr', text: '110014' },
+            { name: 'VNK1_Fb', text: '100130' },
+            { name: 'Tdym_1', text: '423' },
+
+            { name: 'vybor_signala', text: '1210' },
+            { name: '5TI_21', text: '1201' },
+            { name: '5TI_22', text: '1210' },
+            { name: 'PI_09', text: '536б65' },
+          ]
+        }
+      },
+      startTime: timeDiff + 101.01,
     },
     {
       action: {
@@ -3342,13 +4763,114 @@ let tempActions = [
       startTime: timeDiff + 120.1,
       human: true,
     },
-    {  // O_p_n_na_k_p_na_VNK close   
+    // Ilay F vnk1 + main
+    {
       action: {
-        target2D: 'perekidta_exit_btn',
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '8,75' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' },
+
+            { name: '115_SPW', text: '433,0' },
+            { name: '115_SPT', text: '108,0' },
+            { name: '115_KP_2', text: '283,3' },
+            { name: '115_GAZ', text: '600000' },
+            { name: 'V1_t1_5', text: 'Соглас', color: '#000' },
+
+            { name: '123_PV_2', text: '1221,7' },
+            { name: '123_SP_2', text: '1200,0' },
+            { name: '123_KP_2', text: '22,54' },
+            { name: '123_GAZ', text: '0,00' },
+            { name: 'V1_t2_4', text: 'Соглас', color: '#000' },
+
+            { name: '1FI_02', text: '0' },
+
+            { name: '115_PV', text: '0' },
+            { name: '115_SP', text: '99966' },
+            { name: '115_KP_1', text: '22,71' },
+            { name: 'V1_t3_4', text: 'Соглас', color: '#000' },
+
+            { name: '123_PV_1', text: '1,000' },
+            { name: '123_SP_1', text: '1,000' },
+            { name: '123_KP_1', text: '16,00' },
+            { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '1PI_02', text: '0,00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0,00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '12,34' },
+
+            { name: '1TI_43', text: '47' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '385' },
+            { name: '1TI_28_1', text: '383' },
+            { name: '1TI_28_2', text: '387' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_1', color: '#808080' }, // задник стрелки
+            { name: 'VNK1_status_1', text: 'Циклический' },
+            { name: 'VNK1_status_2', text: 'Отделение 2' },
+            { name: 'vnk1_stripes', color: '#ff0000' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '0' },
+
+            { name: '1PI_01', text: '0' },
+
+            { name: '1TI_02', text: '1203' },
+            { name: '1TI_03', text: '1195' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1089' },
+            { name: 'vybor_signala', text: '1222' },
+
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#000' },
+            { name: 'circle_otdeleniye_2', color: '#00FF00' },
+
+            //VN
+            { name: 'rect_132_2', position: { x: -3 }, color: '#000' },
+            { name: 'kl_132', color: '#ff0000' },
+            { name: 'kl_127', color: '#00FF00' },
+            { name: 'rect_116_2', position: { x: -3 }, color: '#000' },
+            { name: 'kl_116', color: '#ff0000' },
+
+            { name: '1PS_03', color: '#00FF00' },
+            { name: 'kl_121', color: '#ff0000' },
+            { name: 'kl_113', color: '#ff0000' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: 'kl_124', color: '#ff0000' },
+            { name: 'kl_134', color: '#ff0000' },
+            { name: '1PS_05', color: '#ff0000' },
+            { name: 'kl_140', color: '#00FF00' },
+            { name: 'kl_117', color: '#ff0000' },
+            { name: 'kl_119', color: '#ff0000' },
+            { name: 'kl_111', color: '#ff0000' },
+            { name: 'kl_112', color: '#00FF00' },
+
+            { name: 'kl_112', color: '#ff0000' },
+            { name: 'kl_136a', color: '#ff0000' },
+            { name: 'kl_118a', color: '#ff0000' },
+            { name: 'kl_118', color: '#ff0000' },
+
+
+
+          ]
+        }
       },
-      startTime: timeDiff + 120.2,
-      human: true,
+      startTime: timeDiff + 120.11,
     },
+    // {  // O_p_n_na_k_p_na_VNK close   
+    //   action: {
+    //     target2D: 'perekidta_exit_btn',
+    //   },
+    //       startTime: timeDiff + 120.2,
+    //   human: true,
+    // },
 
     ////--------------------------------3-------------------------------------
     {
@@ -3358,57 +4880,92 @@ let tempActions = [
       startTime: timeDiff + 121,
     },
 
-    {
-      action: {
-        target2D: 'perekidta_btn',
-        window2D: {
-          elements: [
-            { name: 'text_132', y: 475 },
-            { name: 'text_116', y: 475 },
-            { name: 'text_124', y: 475 },
-            { name: 'text_113', y: 475 },
-            { name: 'text_134', y: 475 },
-            { name: 'text_117', y: 475 },
-            { name: 'text_111', y: 475 },
-            { name: 'text_112', y: 475 },
+    // {
+    //   action: {
+    //     target2D: 'perekidta_btn',
+    //     window2D: {
+    //       elements: [
+    //         { name: 'text_132', y: 475 },
+    //         { name: 'text_116', y: 475 },
+    //         { name: 'text_124', y: 475 },
+    //         { name: 'text_113', y: 475 },
+    //         { name: 'text_134', y: 475 },
+    //         { name: 'text_117', y: 475 },
+    //         { name: 'text_111', y: 475 },
+    //         { name: 'text_112', y: 475 },
 
-            { name: 'rect_132', position: { y: 0 } },
-            { name: 'rect_116', position: { y: 0 } },
-            { name: 'rect_124', position: { y: 0 } },
-            { name: 'rect_113', position: { y: 0 } },
-            { name: 'rect_134', position: { y: 0 } },
-            { name: 'rect_117', position: { y: 0 } },
-            { name: 'rect_111', position: { y: 0 } },
-            { name: 'rect_112', position: { y: 0 } },
+    //         { name: 'rect_132', position: { y: 0 } },
+    //         { name: 'rect_116', position: { y: 0 } },
+    //         { name: 'rect_124', position: { y: 0 } },
+    //         { name: 'rect_113', position: { y: 0 } },
+    //         { name: 'rect_134', position: { y: 0 } },
+    //         { name: 'rect_117', position: { y: 0 } },
+    //         { name: 'rect_111', position: { y: 0 } },
+    //         { name: 'rect_112', position: { y: 0 } },
 
-            { name: 'otd2_otd_rect', color: '#fff' },
+    //         { name: 'otd2_otd_rect', color: '#fff' },
 
-            { name: 'nagrev_otd_2_rect', color: '#fff' },
+    //         { name: 'nagrev_otd_2_rect', color: '#fff' },
 
-            { name: 'vb_otkr_klap2_rect', color: '#e3d4ce' },
-            { name: 'kl_11_rect', color: '#00FF00' },
+    //         { name: 'vb_otkr_klap2_rect', color: '#e3d4ce' },
+    //         { name: 'kl_11_rect', color: '#00FF00' },
 
-            { name: 'avarin_otd_rect', color: '#e6e6e6', stroke: '#808080' },
-            { name: 'otdel_nagrev', color: '#fff', stroke: '#000' },
-            { name: 'nagrev_otd_2_rect', color: '#e6e6e6', stroke: '#808080' },
+    //         { name: 'avarin_otd_rect', color: '#e6e6e6', stroke: '#808080' },
+    //         { name: 'otdel_nagrev', color: '#fff', stroke: '#000' },
+    //         { name: 'nagrev_otd_2_rect', color: '#e6e6e6', stroke: '#808080' },
 
-            { name: 'otdel_dute', color: '#fff', stroke: '#000' },            // color: '#e6e6e6', stroke: '#808080'
-            { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },
-            { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },
-            { name: 'otd2_otd_rect', color: '#fff', stroke: '#000' },
-          ]
-        }
-      },
-      startTime: timeDiff + 125,
-      human: true,
-    },
+    //         { name: 'otdel_dute', color: '#fff', stroke: '#000' },            // color: '#e6e6e6', stroke: '#808080'
+    //         { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },
+    //         { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },
+    //         { name: 'otd2_otd_rect', color: '#fff', stroke: '#000' },
+    //       ]
+    //     }
+    //   },
+    //       startTime: timeDiff + 125,
+    //   human: true,
+    // },
     { // win_otdel2_na_vnk OPEN
       action: {
         target2D: 'otdel2_otdel_btn',
       },
       startTime: timeDiff + 125.1,
       human: true,
-    }, {
+    },
+    // Ilay vnk1 + main
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '9,18' },
+
+            { name: '1TI_43', text: '47' },
+
+            { name: '1QI_01', text: '10,25' },
+
+            { name: '1TI_02', text: '1201' },
+            { name: '1TI_03', text: '1191' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1091' },
+            { name: 'vybor_signala', text: '1221' },
+
+            // main
+            { name: '7TI_41', text: '40' },
+            { name: '7PI_12', text: '18,10' },
+            { name: 'ramka_7PI_12', color: '#ffff0f' },
+            { name: '7FI_05', text: '105200' },
+            { name: '7TI_40', text: '11' },
+            { name: '7PI_11', text: '0,00' },
+            { name: '7FI_04', text: '0' },
+
+            { name: '5QI_01_01', text: '10' },
+            { name: '5QI_01_02', text: '77' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 125.11,
+    },
+    {
       action: {
         target2D: 'otdel2_pusk_btn',
         window2D: {
@@ -3574,7 +5131,119 @@ let tempActions = [
       },
       startTime: timeDiff + 132,
     },
+    // Ilay vnk1 + main
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '9,19' },
 
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' },
+
+            // { name: '115_SPW',  text: '420,0' },
+            // { name: '115_SPT',  text: '108,0' },
+            // { name: '115_KP_2', text: '377,3' },
+            // { name: '115_GAZ',  text: '800000' },
+            { name: 'V1_t1_5', text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_2', text: '1182,6' },
+            // { name: '123_SP_2', text: '1200,0' },
+            // { name: '123_KP_2', text: '23,00' },
+            // { name: '123_GAZ',  text: '0,00' },
+            { name: 'V1_t2_4', text: 'Соглас', color: '#000' },
+
+            { name: '1FI_02', text: '0' },
+
+            // { name: '115_PV',   text: '0' },
+            // { name: '115_SP',   text: '99966' },
+            // { name: '115_KP_1', text: '23,71' },
+            { name: 'V1_t3_4', text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_1', text: '1,000' },
+            // { name: '123_SP_1', text: '1,000' },
+            // { name: '123_KP_1', text: '16,00' },
+            { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '1PI_02', text: '0,00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0,00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '3,09' },
+
+            { name: '1TI_43', text: '47' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '377' },
+            { name: '1TI_28_1', text: '375' },
+            { name: '1TI_28_2', text: '380' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_1', color: '#808080' }, // задник стрелки
+            { name: 'VNK1_status_1', text: 'Циклический' },
+            { name: 'VNK1_status_2', text: 'Отделение' },
+            { name: 'vnk1_stripes', color: '#808080' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '0' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1194' },
+            { name: '1TI_03', text: '1189' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1104' },
+            { name: 'vybor_signala', text: '1134' },
+
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#00FF00' },
+            { name: 'circle_otdeleniye_2', color: '#000' },
+
+            //VN
+            { name: 'rect_132_2', position: { x: -3 }, color: '#000' },
+            { name: 'kl_132', color: '#ff0000' },
+            { name: 'kl_127', color: '#00FF00' },
+            { name: 'rect_116_2', position: { x: -3 }, color: '#000' },
+            { name: 'kl_116', color: '#ff0000' },
+
+            { name: '1PS_03', color: '#ff0000' },
+            { name: 'kl_121', color: '#00FF00' },
+            { name: 'kl_113', color: '#ff0000' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: 'kl_124', color: '#ff0000' },
+            { name: 'kl_134', color: '#ff0000' },
+            { name: '1PS_05', color: '#ff0000' },
+            { name: 'kl_140', color: '#00FF00' },
+            { name: 'kl_117', color: '#ff0000' },
+            { name: 'kl_119', color: '#ff0000' },
+            { name: 'kl_111', color: '#ff0000' },
+            { name: 'kl_112', color: '#ff0000' },
+
+            { name: 'kl_112', color: '#ff0000' },
+            { name: 'kl_136a', color: '#ff0000' },
+            { name: 'kl_118a', color: '#ff0000' },
+            { name: 'kl_118', color: '#ff0000' },
+
+            // main
+            { name: '7TI_41', text: '40' },
+            { name: '7PI_12', text: '19,05' },
+            { name: 'ramka_7PI_12', color: '#ffff0f' },
+            { name: '7FI_05', text: '208926' },
+            { name: '7TI_40', text: '11' },
+            { name: '7PI_11', text: '0,00' },
+            { name: '7FI_04', text: '0' },
+
+            { name: '5QI_01_01', text: '10' },
+            { name: '5QI_01_02', text: '78' },
+
+
+
+          ]
+        }
+      },
+      startTime: timeDiff + 132.1,
+    },
     ////--------------------------------4-------------------------------------
     {
       scenarioText: 'Отделить воздухонагреватель ВНК №2.',
@@ -3584,7 +5253,7 @@ let tempActions = [
     },
     {
       action: {
-        target2D: 'perekidta_btn', // perekidta_btn
+        target2D: 'perekidta2_btn', // perekidta_btn
         window2D: {
           elements: [
             { name: 'text_132', y: 475 },
@@ -3625,6 +5294,27 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'Title_window_peric_nagrevotd', text: 'ВН2 Перекидка из Нагрева в Отделение' },
+            { name: 'text_Nagrev_111', text: '211' },
+            { name: 'text_Nagrev_112', text: '212' },
+            { name: 'text_Nagrev_113', text: '213' },
+            { name: 'text_Nagrev_121', text: '221' },
+            { name: 'text_Nagrev_117', text: '217' },
+            { name: 'text_Nagrev_143', text: '243' },
+            { name: 'text_Nagrev_110', text: '210' },
+            { name: 'text_Nagrev_124_1', text: '224' },
+            { name: 'text_Nagrev_124_2', text: '224' },
+            { name: 'text_Nagrev_123', text: '223' },
+            { name: 'text_Nagrev_114', text: '214' },
+            { name: 'text_Nagrev_127', text: '227' },
+            { name: 'text_Nagrev_132_down', text: '232' },
+            { name: 'text_Nagrev_116_down', text: '216' },
+            { name: 'text_Nagrev_124_down', text: '224' },
+            { name: 'text_Nagrev_113_down', text: '213' },
+            { name: 'text_Nagrev_134_down', text: '234' },
+            { name: 'text_Nagrev_117_down', text: '217' },
+            { name: 'text_Nagrev_111_down', text: '211' },
+            { name: 'text_Nagrev_112_down', text: '212' },
+
 
 
             { name: 'rect_132', position: { y: 0 } },
@@ -3779,6 +5469,7 @@ let tempActions = [
             { name: '2PI_02', text: '0,16' },
             { name: '2TI_43', text: '47' },
             { name: 'red_back_underArrow', color: '#fff' },
+            // 
             { name: 'circle_nagrev', color: '#000' },
 
             // Table
@@ -4329,6 +6020,190 @@ let tempActions = [
       },
       startTime: timeDiff + 153,
     },
+    // Ilay F vnk2 + main
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '8,75' },
+            { name: 'ramka_7PI_13', color: '#ffff0f' },
+
+            { name: '2FI_03', text: '0' },
+            { name: '2FI_01', text: '0' },
+
+            { name: '215_SPW', text: '433,0' },
+            { name: '215_SPT', text: '108,0' },
+            { name: '215_KP_2', text: '229,9' },
+            { name: '215_GAZ', text: '800000' },
+            { name: 'V2_t1_5', text: 'Соглас', color: '#000' },
+
+            { name: '223_PV_2', text: '1242,7' },
+            { name: '223_SP_2', text: '1200,0' },
+            { name: '223_KP_2', text: '22,00' },
+            { name: '223_GAZ', text: '0,00' },
+            { name: 'V2_t2_4', text: 'Соглас', color: '#000' },
+
+            { name: '2FI_02', text: '0' },
+
+            { name: '215_PV', text: '0' },
+            { name: '215_SP', text: '90000' },
+            { name: '215_KP_1', text: '22,87' },
+            { name: 'V2_t3_4', text: 'Соглас', color: '#000' },
+
+            // { name: '223_PV_1', text: '1,000' },
+            // { name: '223_SP_1', text: '1,000' },
+            { name: '223_KP_1', text: '22,00' },
+            { name: 'V2_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '2PI_02', text: '0,00' },
+            { name: 'Kl215_proc', text: '21' },
+            { name: '2PI_04', text: '0,00' },
+            { name: 'Kl223_proc', text: '21' },
+            { name: '2QI_01', text: '15,65' },
+
+            { name: '2TI_43', text: '48' },
+            { name: '2TI_29', text: '28' },
+            { name: 'dym_vybor_signala_2', text: '230' },
+            { name: '2TI_28_1', text: '229' },
+            { name: '2TI_28_2', text: '231' },
+
+            { name: 'vnk2_fire', opacity: '0' }, // стрелка
+            { name: 'vnk2_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_2', color: '#fff' }, // задник стрелки
+            { name: 'VNK2_status_1', text: 'Циклический' },
+            { name: 'VNK2_status_2', text: 'Нагрев-Отдел.' },
+            { name: 'vnk2_stripes', color: '#fff' },
+            { name: 'Vremya_nagreva', text: '52' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '0' },
+
+            { name: '2PI_01', text: '0' },
+
+            { name: '2TI_02', text: '1343' },
+            { name: '2TI_03', text: '1188' },
+            { name: '2TI_04', text: '1080' },
+            { name: '2TI_05', text: '-999' },
+            { name: 'vybor_signala', text: '1343' },
+
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#000' },
+            { name: 'circle_otdeleniye_2', color: '#000' },
+
+            //VN
+            { name: 'rect_232_2', position: { x: -3 }, color: '#000' },
+            { name: 'kl_232', color: '#ff0000' },
+            { name: 'kl_227', color: '#00FF00' },
+            { name: 'rect_216_2', position: { x: -3 }, color: '#000' },
+            { name: 'kl_216', color: '#ff0000' },
+
+            { name: '2PS_03', color: '#ff0000' },
+            { name: 'kl_221', color: '#ff0000' },
+            { name: 'kl_213', color: '#ff0000' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: 'kl_224', color: '#ff0000' },
+            { name: 'kl_234', color: '#ff0000' },
+            { name: '2PS_05', color: '#ff0000' },
+            { name: 'kl_240', color: '#00FF00' },
+            { name: 'kl_217', color: '#ff0000' },
+            { name: 'kl_219', color: '#ff0000' },
+            { name: 'kl_211', color: '#ff0000' },
+            { name: 'kl_212', color: '#00FF00' },
+
+            { name: 'kl_212', color: '#ff0000' },
+            { name: 'kl_236a', color: '#ff0000' },
+            { name: 'kl_218a', color: '#ff0000' },
+            { name: 'kl_218', color: '#ff0000' },
+
+
+            // main
+            { name: '7TI_41', text: '39' },
+            { name: '7PI_12', text: '20,06' },
+            { name: 'ramka_7PI_12', color: '#ffff0f' },
+            { name: '7FI_05', text: '0' },
+            { name: '7TI_40', text: '12' },
+            { name: '7PI_11', text: '0,00' },
+            { name: '7FI_04', text: '0' },
+
+            { name: '5QI_01_01', text: '10' },
+            { name: '5QI_01_02', text: '77' },
+
+            //{ name: 'PV2', text: '' },
+            // { name: 'SP2',    text: '9,00' },
+            // { name: 'PV2_1',  text: '23,00' },
+            { name: 'M_t1_4', text: 'Работа', color: '#00FF00' },
+
+            // { name: 'PV3',    text: '0,00' },
+            // { name: 'SP3',    text: '0,00' },
+            // { name: 'PV3_1',  text: '0,00' },
+            { name: 'M_t2_4', text: 'Соглас', color: '#000' },
+
+            // { name: 'PV4',    text: '11,07' },
+            // { name: 'SP4',    text: '10,00' },
+            // { name: 'PV4_1',  text: '11,64' },
+            { name: 'M_t3_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl053_proc', text: '16' },
+            { name: 'kl051_proc', text: '0' },
+            { name: 'kl052_proc', text: '0' },
+            { name: 'kl035_proc', text: '0' },
+
+            { name: 'klOF3_proc', text: '11' },
+            { name: 'klOF2_proc', text: '10' },
+            { name: 'klOF1_proc', text: '0' },
+
+            // { name: 'kl0333_proc', text: '100' },
+            // { name: 'kl0313_proc', text: '100' },
+
+            // { name: 'kl0332_proc', text: '100' },
+            // { name: 'kl0312_proc', text: '100' },
+
+            // { name: 'kl0331_proc', text: '0' },
+            // { name: 'kl0311_proc', text: '100' },
+
+            { name: '7QI_01', text: '-999,00' },
+
+            // { name: 'kl038_proc',   text: '0' },
+            // { name: 'kl028_proc',   text: '0' },
+            // { name: 'kl020_proc',   text: '100' },
+            // { name: 'kl036v_proc',  text: '0' },
+            // { name: 'kl036b_proc',  text: '0' },
+
+            // { name: 'kl048_proc', text: '0' },
+            // { name: 'kl029_proc', text: '100' },
+            // { name: 'kl004_proc', text: '100' },
+
+            { name: 'PI_16_proc', text: '6,12' },
+            { name: '9TI_44_proc', text: '28' },
+
+            // { name: 'kl037_proc', text: '0' },
+            // { name: 'kl007_proc', text: '0' },
+            // { name: 'kl025_proc', text: '100' },
+
+            // { name: '8QI_05_01',  text: '6,92' },
+            { name: '8QI_05_02', text: '36,08' },
+            { name: '8QI_05_04', text: '0,00' },
+            { name: '7PI_13', text: '22,03' },
+            { name: 'ramka_7PI_13', color: '#ffff0f' },
+            { name: '7PI_42', text: '48' },
+
+            // { name: 'PV1',    text: '1200,00' },
+            // { name: 'SP1',    text: '1230,00' },
+            // { name: 'PV1_1',  text: '23,33' },
+            { name: 'M_t4_4', text: 'Работа', color: '#00FF00' },
+
+
+
+            // { name: 'vybor_signala',  text: '1210' },
+            // { name: '5TI_21',         text: '1201' },
+            // { name: '5TI_22',         text: '1210' },
+            // { name: 'PI_09',          text: '536б65' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 153.01,
+    },
     {  // O_p_n_na_k_na-o_2_na_VNK close
       action: {
         target2D: 'pericNagrev_close_btn',
@@ -4336,38 +6211,44 @@ let tempActions = [
       startTime: timeDiff + 153.1,
       human: true,
     },
-    {  // O_p_n_na_k_p_na_VNK CLOSE
-      action: {
-        target2D: 'perekidta_exit_btn',
-      },
-      startTime: timeDiff + 153.2,
-      human: true,
-    },
+    // {  // O_p_n_na_k_p_na_VNK CLOSE
+    //   action: {
+    //     target2D: 'perekidta_exit_btn',
+    //   },
+    //       startTime: timeDiff + 153.2,
+    //   human: true,
+    // },
 
-    {
-      action: {
-        target2D: 'perekidta_btn',
-        window2D: {
-          elements: [
-            { name: 'avarin_otd_rect', color: '#e6e6e6', stroke: '#808080' },
-            { name: 'otdel_nagrev', color: '#fff', stroke: '#000' },
-            { name: 'nagrev_otd_2_rect', color: '#e6e6e6', stroke: '#808080' },
+    // {
+    //   action: {
+    //     target2D: 'perekidta2_btn',
+    //     window2D: {
+    //       elements: [
+    //         { name: 'avarin_otd_rect', color: '#e6e6e6', stroke: '#808080' },
+    //         { name: 'otdel_nagrev', color: '#fff', stroke: '#000' },
+    //         { name: 'nagrev_otd_2_rect', color: '#e6e6e6', stroke: '#808080' },
 
-            { name: 'otdel_dute', color: '#fff', stroke: '#000' },            // color: '#e6e6e6', stroke: '#808080'
-            { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },
-            { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },
-            { name: 'otd2_otd_rect', color: '#fff', stroke: '#000' },
-          ]
-        }
-      },
-      startTime: timeDiff + 153.3,
-      human: true,
-    },
+    //         { name: 'otdel_dute', color: '#fff', stroke: '#000' },            // color: '#e6e6e6', stroke: '#808080'
+    //         { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },
+    //         { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },
+    //         { name: 'otd2_otd_rect', color: '#fff', stroke: '#000' },
+    //       ]
+    //     }
+    //   },
+    //       startTime: timeDiff + 153.3,
+    //   human: true,
+    // },
     {
       action: {
         target2D: 'otdel2_otdel_btn',
         window2D: {
           elements: [
+            { name: 'Title_window_otdel2_otdel', text: 'ВН2 Перекидка из Отделения2 в Отделение' },
+            { name: 'text_otdel2_110', text: '210' },
+            { name: 'text_otdel2_111', text: '211' },
+            { name: 'text_otdel2_112', text: '212' },
+
+
             { name: 'text_ish_c4', y: 237.5 },
             { name: 'text_ish_c5', y: 237.5 },
             { name: 'text_ish_c6', y: 237.5 },
@@ -4471,6 +6352,7 @@ let tempActions = [
       startTime: timeDiff + 156.1,
       human: true,
     },
+    // TODO time esli cho
     {
       action: {
         window2D: {
@@ -4487,7 +6369,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 154,
+      startTime: timeDiff + 156.2,
     }, {
       action: {
         window2D: {
@@ -4497,7 +6379,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 155,
+      startTime: timeDiff + 156.3,
     }, {
       action: {
         window2D: {
@@ -4506,7 +6388,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 156,
+      startTime: timeDiff + 156.4,
     }, {
       action: {
         window2D: {
@@ -4522,7 +6404,278 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 157,
+      startTime: timeDiff + 156.6,
+    },
+    // Ilay F vnk2 + main + svpg
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '8,75' },
+            { name: 'ramka_7PI_13', color: '#ffff0f' },
+
+            { name: '2FI_03', text: '0' },
+            { name: '2FI_01', text: '0' },
+
+            { name: '215_SPW', text: '433,0' },
+            { name: '215_SPT', text: '108,0' },
+            { name: '215_KP_2', text: '229,9' },
+            { name: '215_GAZ', text: '800000' },
+            { name: 'V2_t1_5', text: 'Соглас', color: '#000' },
+
+            { name: '223_PV_2', text: '1242,7' },
+            { name: '223_SP_2', text: '1200,0' },
+            { name: '223_KP_2', text: '22,00' },
+            { name: '223_GAZ', text: '0,00' },
+            { name: 'V2_t2_4', text: 'Соглас', color: '#000' },
+
+            { name: '2FI_02', text: '0' },
+
+            { name: '215_PV', text: '0' },
+            { name: '215_SP', text: '90000' },
+            { name: '215_KP_1', text: '22,87' },
+            { name: 'V2_t3_4', text: 'Соглас', color: '#000' },
+
+            // { name: '223_PV_1', text: '1,000' },
+            // { name: '223_SP_1', text: '1,000' },
+            { name: '223_KP_1', text: '22,00' },
+            { name: 'V2_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '2PI_02', text: '0,00' },
+            { name: 'Kl215_proc', text: '21' },
+            { name: '2PI_04', text: '0,00' },
+            { name: 'Kl223_proc', text: '21' },
+            { name: '2QI_01', text: '15,65' },
+
+            { name: '2TI_43', text: '48' },
+            { name: '2TI_29', text: '28' },
+            { name: 'dym_vybor_signala_2', text: '230' },
+            { name: '2TI_28_1', text: '229' },
+            { name: '2TI_28_2', text: '231' },
+
+            { name: 'vnk2_fire', opacity: '0' }, // стрелка
+            { name: 'vnk2_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_2', color: '#fff' }, // задник стрелки
+            { name: 'VNK2_status_1', text: 'Циклический' },
+            { name: 'VNK2_status_2', text: 'Нагрев-Отдел.' },
+            { name: 'vnk2_stripes', color: '#fff' },
+            { name: 'Vremya_nagreva', text: '52' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '0' },
+
+            { name: '2PI_01', text: '0' },
+
+            { name: '2TI_02', text: '1343' },
+            { name: '2TI_03', text: '1188' },
+            { name: '2TI_04', text: '1080' },
+            { name: '2TI_05', text: '-999' },
+            { name: 'vybor_signala', text: '1343' },
+
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#000' },
+            { name: 'circle_otdeleniye_2', color: '#000' },
+
+            //VN
+            { name: 'rect_232_2', position: { x: -3 }, color: '#000' },
+            { name: 'kl_232', color: '#ff0000' },
+            { name: 'kl_227', color: '#00FF00' },
+            { name: 'rect_216_2', position: { x: -3 }, color: '#000' },
+            { name: 'kl_216', color: '#ff0000' },
+
+            { name: '2PS_03', color: '#ff0000' },
+            { name: 'kl_221', color: '#ff0000' },
+            { name: 'kl_213', color: '#ff0000' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: 'kl_224', color: '#ff0000' },
+            { name: 'kl_234', color: '#ff0000' },
+            { name: '2PS_05', color: '#ff0000' },
+            { name: 'kl_240', color: '#00FF00' },
+            { name: 'kl_217', color: '#ff0000' },
+            { name: 'kl_219', color: '#ff0000' },
+            { name: 'kl_211', color: '#ff0000' },
+            { name: 'kl_212', color: '#00FF00' },
+
+            { name: 'kl_212', color: '#ff0000' },
+            { name: 'kl_236a', color: '#ff0000' },
+            { name: 'kl_218a', color: '#ff0000' },
+            { name: 'kl_218', color: '#ff0000' },
+
+
+            // main
+            { name: '7TI_41', text: '39' },
+            { name: '7PI_12', text: '20,06' },
+            { name: 'ramka_7PI_12', color: '#ffff0f' },
+            { name: '7FI_05', text: '0' },
+            { name: '7TI_40', text: '12' },
+            { name: '7PI_11', text: '0,00' },
+            { name: '7FI_04', text: '0' },
+
+            { name: '5QI_01_01', text: '10' },
+            { name: '5QI_01_02', text: '77' },
+
+            //{ name: 'PV2', text: '' },
+            // { name: 'SP2',    text: '9,00' },
+            // { name: 'PV2_1',  text: '23,00' },
+            { name: 'M_t1_4', text: 'Работа', color: '#00FF00' },
+
+            // { name: 'PV3',    text: '0,00' },
+            // { name: 'SP3',    text: '0,00' },
+            // { name: 'PV3_1',  text: '0,00' },
+            { name: 'M_t2_4', text: 'Соглас', color: '#000' },
+
+            // { name: 'PV4',    text: '11,07' },
+            // { name: 'SP4',    text: '10,00' },
+            // { name: 'PV4_1',  text: '11,64' },
+            { name: 'M_t3_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl053_proc', text: '16' },
+            { name: 'kl051_proc', text: '0' },
+            { name: 'kl052_proc', text: '0' },
+            { name: 'kl035_proc', text: '0' },
+
+            { name: 'klOF3_proc', text: '11' },
+            { name: 'klOF2_proc', text: '10' },
+            { name: 'klOF1_proc', text: '0' },
+
+            // { name: 'kl0333_proc', text: '100' },
+            // { name: 'kl0313_proc', text: '100' },
+
+            // { name: 'kl0332_proc', text: '100' },
+            // { name: 'kl0312_proc', text: '100' },
+
+            // { name: 'kl0331_proc', text: '0' },
+            // { name: 'kl0311_proc', text: '100' },
+
+            { name: '7QI_01', text: '-999,00' },
+
+            // { name: 'kl038_proc',   text: '0' },
+            // { name: 'kl028_proc',   text: '0' },
+            // { name: 'kl020_proc',   text: '100' },
+            // { name: 'kl036v_proc',  text: '0' },
+            // { name: 'kl036b_proc',  text: '0' },
+
+            // { name: 'kl048_proc', text: '0' },
+            // { name: 'kl029_proc', text: '100' },
+            // { name: 'kl004_proc', text: '100' },
+
+            { name: 'PI_16_proc', text: '6,12' },
+            { name: '9TI_44_proc', text: '28' },
+
+            // { name: 'kl037_proc', text: '0' },
+            // { name: 'kl007_proc', text: '0' },
+            // { name: 'kl025_proc', text: '100' },
+
+            // { name: '8QI_05_01',  text: '6,92' },
+            { name: '8QI_05_02', text: '36,08' },
+            { name: '8QI_05_04', text: '0,00' },
+            { name: '7PI_13', text: '22,03' },
+            { name: 'ramka_7PI_13', color: '#ffff0f' },
+            { name: '7PI_42', text: '48' },
+
+            // { name: 'PV1',    text: '1200,00' },
+            // { name: 'SP1',    text: '1230,00' },
+            // { name: 'PV1_1',  text: '23,33' },
+            { name: 'M_t4_4', text: 'Работа', color: '#00FF00' },
+
+
+
+            // { name: 'vybor_signala',  text: '1210' },
+            // { name: '5TI_21',         text: '1201' },
+            // { name: '5TI_22',         text: '1210' },
+            // { name: 'PI_09',          text: '536б65' },
+
+
+            // vnk_spvg 
+            { name: '6TI_39_1', text: '40' },
+            { name: '6TI_39_2', text: '32' },
+            { name: '6TI_39_3', text: '58' },
+            { name: '6TI_39_4', text: '57' },
+            { name: '6TI_39_5', text: '58' },
+            { name: '6TI_39_6', text: '55' },
+            { name: '6TI_39_7', text: '62' },
+            { name: '6TI_39_8', text: '54' },
+            { name: '6TI_39_9', text: '32' },
+            { name: '6TI_39_10', text: '36' },
+
+            { name: '6TI_38_1', text: '37' },
+            { name: '6TI_38_2', text: '43' },
+            { name: '6TI_38_3', text: '66' },
+            { name: '6TI_38_4', text: '63' },
+            { name: '6TI_38_5', text: '68' },
+            { name: '6TI_38_6', text: '66' },
+            { name: '6TI_38_7', text: '68' },
+            { name: '6TI_38_8', text: '64' },
+            { name: '6TI_38_9', text: '33' },
+            { name: '6TI_38_10', text: '41' },
+
+            { name: '6TI_37_1', text: '12' },
+            { name: '6TI_37_2', text: '13' },
+            { name: '6TI_37_3', text: '14' },
+            { name: '6TI_37_4', text: '15' },
+            { name: '6TI_37_5', text: '15' },
+            { name: '6TI_37_6', text: '13' },
+            { name: '6TI_37_7', text: '14' },
+            { name: '6TI_37_8', text: '15' },
+            { name: '6TI_37_9', text: '13' },
+            { name: '6TI_37_10', text: '14' },
+
+            { name: 'klO35_proc', text: '0' },
+            //table1
+            //table1
+            //table1
+            { name: 'spvg_t1_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'vnk_spvg_B3_1', color: '#00FF00' },
+            { name: 'vnk_spvg_B2_1', color: '#00FF00' },
+            { name: 'vnk_spvg_B1_1', color: '#808080' },
+
+
+
+            { name: '6VI_3_1', text: '1,12' },
+            { name: '6VI_3_2', text: '2,33' },
+            { name: '6VI_3_3', text: '1,43' },
+            { name: '6VI_3_4', text: '1,78' },
+
+            { name: '6VI_2_1', text: '1,80' },
+            { name: '6VI_2_2', text: '2,14' },
+            { name: '6VI_2_3', text: '1,33' },
+            { name: '6VI_2_4', text: '2,63' },
+
+            { name: 'klOF3_proc', text: '38' },
+            { name: '6TI_31_3', text: '12' },
+
+
+            // { name: '8QI_05_1', text: '' },
+            { name: '8QI_05_2', text: '85,57' },
+            { name: '8QI_05_4', text: '0,00' },
+
+            { name: '6VI_1_1', text: '0,04' },
+            { name: '6VI_1_2', text: '0,15' },
+            { name: '6VI_1_3', text: '0,22' },
+            { name: '6VI_1_4', text: '0,16' },
+
+            { name: 'klOF2_proc', text: '0' },
+            { name: '6TI_31_2', text: '12' },
+
+            { name: 'klOF1_proc', text: '0' },
+            { name: '6TI_31_1', text: '12' },
+
+            { name: '9TI_41', text: '40' },
+            { name: '9TI_34', text: '127' },
+            { name: '9TI_35', text: '65' },
+            { name: '9TI_30', text: '28' },
+            { name: '9TI_44', text: '28' },
+            { name: '9TI_42', text: '41' },
+            { name: '9TI_32', text: '138' },
+            { name: '9TI_42', text: '44' },
+            // { name: '9TI_33', text: '' },
+            // { name: '9TI_16', text: '' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 157.5,
     },
 
     ///5. Вернуться на общую схему ВНК. Нажать на вкладку «Общая схема». Показать измененные значения, как на видео.
@@ -4574,6 +6727,632 @@ let tempActions = [
       audio: 'tts-vo5',
       startTime: timeDiff + 177.5,
     },
+    // ilay 3d - s
+    {
+      action: {
+        target3D: 'Rectangle111',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    },
+    {
+      action: {
+        target3D: 'Rectangle113',
+        material: 'off',
+      },
+      startTime: timeDiff + 177.53,
+    },
+    {
+      action: {
+        target3D: 'Rectangle112',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 177.53,
+    },
+    {
+      action: {
+        target3D: 'Rectangle069',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    },
+    {
+      action: {
+        target3D: 'Rectangle071', //todo zel
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    },
+    {
+      action: {
+        target3D: 'Rectangle066',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle067',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle060',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle057',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle074', // todo zel
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle097',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    },
+    // {
+    //   action: {
+    //     target3D: 'Rectangle080', 
+    //     material: 'ButtonLightOn',
+    //   },
+    //       startTime: timeDiff + 177.53,
+    // },
+    {
+      action: {
+        target3D: 'Rectangle079',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle084',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle055',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle063',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle114',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle044',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    },
+    {
+      action: {
+        target3D: 'Rectangle039',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle041',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle029',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle031',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle049',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle051',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle034',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle036',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    }, {
+      action: {
+        target3D: 'Rectangle096',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.53,
+    },
+
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '01.94'
+      },
+      startTime: timeDiff + 177.54,
+    }, {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '002.5'
+      },
+      startTime: timeDiff + 177.54,
+    }, {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '037.8'
+      },
+      startTime: timeDiff + 177.54,
+    }, {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0080'
+      },
+      startTime: timeDiff + 177.54,
+    }, {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '009.9'
+      },
+      startTime: timeDiff + 177.54,
+    }, {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00'
+      },
+      startTime: timeDiff + 177.54,
+    }, {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '023.1'
+      },
+      startTime: timeDiff + 177.54,
+    }, {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '015.0'
+      },
+      startTime: timeDiff + 177.54,
+    }, {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3'
+      },
+      startTime: timeDiff + 177.54,
+    }, {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0104'
+      },
+      startTime: timeDiff + 177.54,
+    }, {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.05'
+      },
+      startTime: timeDiff + 177.54,
+    },
+    {
+      action: {
+        target3D: 'Handle_013',
+        rotation: { y: 0.785398 }
+      },
+      startTime: timeDiff + 177.55,
+    }, {
+      action: {
+        target3D: 'Handle_014',
+        rotation: { y: 0.785398 }
+      },
+      startTime: timeDiff + 177.55,
+    },
+
+    ///------ ep2
+    {
+      action: {
+        target3D: 'pKolGaz', //1-1
+        color: 'green',
+        number: '1.904'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'dpVerh', //2
+        color: 'green',
+        number: '0.182'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'dpObsh', //3
+        color: 'green',
+        number: '1.541'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'dpNiz', //4
+        color: 'green',
+        number: '1.200'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'fHolodDut', //5
+        color: 'green',
+        number: '5711.'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'pGorDut', //6
+        color: 'green',
+        number: '3.516'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'urZasDat1', //7
+        color: 'green',
+        number: '01.10'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'urZasDat2', //8
+        color: 'green',
+        number: '01.10'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'urZasMeh', //9
+        color: 'green',
+        number: '0000'
+      },
+      startTime: timeDiff + 177.56,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1', //2-1
+        color: 'green',
+        number: '0154.'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'tVGazT2', //2
+        color: 'green',
+        number: '0168.'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'tVGazT3', //3
+        color: 'green',
+        number: '0163.'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'tVGazT4', //4
+        color: 'green',
+        number: '0150.'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'tVGazT5', //5
+        color: 'green',
+        number: '07.94'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'tVGazT6', //6
+        color: 'green',
+        number: '00.40'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'tVGazT7', //7
+        color: 'green',
+        number: '1109.'
+      },
+      startTime: timeDiff + 177.56,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1', //3-1
+        color: 'green',
+        number: '10.13'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'pTechVodT2', //2
+        color: 'green',
+        number: '10.14'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'pSjatVozd', //3
+        color: 'green',
+        number: '04.60'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'pOsyshSjatVozd', //4
+        color: 'green',
+        number: '04.15'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'pAzotkZatv', //5
+        color: 'green',
+        number: '2.281'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'tReduct', //6
+        color: 'green',
+        number: '052.3'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'fVodNaReduct', //7
+        color: 'green',
+        number: '25.17'
+      },
+      startTime: timeDiff + 177.56,
+    }, {
+      action: {
+        target3D: 'fPrirodGaz', //8
+        color: 'green',
+        number: '2.303'
+      },
+      startTime: timeDiff + 177.56,
+    },
+    {
+      action: {
+        target3D: 'fPrirodGazReg', // l
+        color: 'red',
+        number: '028.5'
+      },
+      startTime: timeDiff + 177.57,
+    }, {
+      action: {
+        target3D: 'fParaUvlajDutReg', // r
+        color: 'red',
+        number: '000.8'
+      },
+      startTime: timeDiff + 177.57,
+    },
+    ///----
+    {
+      action: {
+        target3D: 'Lamp_Red_007',
+        material: 'Red_Lamp_On',
+      },
+      startTime: timeDiff + 177.58,
+    }, {
+      action: {
+        target3D: 'Lamp_Red_006',
+        material: 'Red_Lamp_On',
+      },
+      startTime: timeDiff + 177.58,
+    }, {
+      action: {
+        target3D: 'Lamp_Red_005',
+        material: 'Red_Lamp_On',
+      },
+      startTime: timeDiff + 177.58,
+    }, {
+      action: {
+        target3D: 'Lamp_Red_019',
+        material: 'Red_Lamp_Off',
+      },
+      startTime: timeDiff + 177.58,
+    }, {
+      action: {
+        target3D: 'Lamp_Green_023',
+        material: 'Green_Lamp_On',
+      },
+      startTime: timeDiff + 177.58,
+    },
+    {
+      action: {
+        target3D: 'Lamp_Red_008',
+        material: 'Red_Lamp_On',
+      },
+      startTime: timeDiff + 177.58,
+    }, {
+      action: {
+        target3D: 'Lamp_Red_003',
+        material: 'Red_Lamp_On',
+      },
+      startTime: timeDiff + 177.58,
+    }, {
+      action: {
+        target3D: 'Lamp_Red_002',
+        material: 'Red_Lamp_On',
+      },
+      startTime: timeDiff + 177.58,
+    }, {
+      action: {
+        target3D: 'Lamp_Red_009',
+        material: 'Red_Lamp_On',
+      },
+      startTime: timeDiff + 177.58,
+    },
+
+    {
+      action: {
+        target3D: 'Rectangle066',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle067',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle047',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle045',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle044',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle075',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle074',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle073',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle082',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle081',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle080',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 177.59,
+    },
+    {
+      action: {
+        target3D: 'Rectangle079',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 177.59,
+    },
     ////--------------------------------2---------------------------------------- 
     {
       scenarioText: 'Перевести клапан 721 в режим управления «Дист.»',
@@ -4590,8 +7369,180 @@ let tempActions = [
       startTime: timeDiff + 182,
       human: true,
     },
+    // ilay
+    {
+      action: {
+        target3D: 'pKolGaz', //1-1
+        color: 'green',
+        number: '1.805'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'dpVerh', //2
+        color: 'green',
+        number: '0.202'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'dpObsh', //3
+        color: 'green',
+        number: '1.601'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'dpNiz', //4
+        color: 'green',
+        number: '1.243'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'fHolodDut', //5
+        color: 'green',
+        number: '5748.'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'pGorDut', //6
+        color: 'green',
+        number: '3.451'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'urZasDat1', //7
+        color: 'green',
+        number: '01.17'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'urZasDat2', //8
+        color: 'green',
+        number: '01.27'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'urZasMeh', //9
+        color: 'green',
+        number: '0000'
+      },
+      startTime: timeDiff + 182.1,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1', //2-1
+        color: 'green',
+        number: '0155.'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'tVGazT2', //2
+        color: 'green',
+        number: '0163.'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'tVGazT3', //3
+        color: 'green',
+        number: '0164.'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'tVGazT4', //4
+        color: 'green',
+        number: '0150.'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'tVGazT5', //5
+        color: 'green',
+        number: '06.90'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'tVGazT6', //6
+        color: 'green',
+        number: '00.40'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'tVGazT7', //7
+        color: 'green',
+        number: '1209.'
+      },
+      startTime: timeDiff + 182.1,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1', //3-1
+        color: 'green',
+        number: '10.14'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'pTechVodT2', //2
+        color: 'green',
+        number: '10.14'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'pSjatVozd', //3
+        color: 'green',
+        number: '04.60'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'pOsyshSjatVozd', //4
+        color: 'green',
+        number: '04.15'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'pAzotkZatv', //5
+        color: 'green',
+        number: '2.293'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'tReduct', //6
+        color: 'green',
+        number: '052.2'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'fVodNaReduct', //7
+        color: 'green',
+        number: '25.17'
+      },
+      startTime: timeDiff + 182.1,
+    }, {
+      action: {
+        target3D: 'fPrirodGaz', //8
+        color: 'green',
+        number: '2.285'
+      },
+      startTime: timeDiff + 182.1,
+    },
 
-    ////--------------------------------3---------------------------------------- 
+    ////--------------------------------3----------------------------------------  
     {
       audio: 'tts-20',
       scenarioText: 'Перевести тумблер из положения «Авт.4» в положение «Дист.3» на маркировке «Атмосферные клапана» «Клапан 1», «Клапан 2» и «Клапан 3» поочерёдно.',
@@ -4621,7 +7572,178 @@ let tempActions = [
       startTime: timeDiff + 191,
       human: true,
     },
-
+    // ilay
+    {
+      action: {
+        target3D: 'pKolGaz', //1-1
+        color: 'green',
+        number: '1.823'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'dpVerh', //2
+        color: 'green',
+        number: '0.203'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'dpObsh', //3
+        color: 'green',
+        number: '1.565'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'dpNiz', //4
+        color: 'green',
+        number: '1.209'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'fHolodDut', //5
+        color: 'green',
+        number: '5677.'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'pGorDut', //6
+        color: 'green',
+        number: '3.432'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'urZasDat1', //7
+        color: 'green',
+        number: '01.20'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'urZasDat2', //8
+        color: 'green',
+        number: '01.29'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'urZasMeh', //9
+        color: 'green',
+        number: '0000'
+      },
+      startTime: timeDiff + 191.1,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1', //2-1
+        color: 'green',
+        number: '0156.'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'tVGazT2', //2
+        color: 'green',
+        number: '0163.'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'tVGazT3', //3
+        color: 'green',
+        number: '0165.'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'tVGazT4', //4
+        color: 'green',
+        number: '0150.'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'tVGazT5', //5
+        color: 'green',
+        number: '06.94'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'tVGazT6', //6
+        color: 'green',
+        number: '00.40'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'tVGazT7', //7
+        color: 'green',
+        number: '1210.'
+      },
+      startTime: timeDiff + 191.1,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1', //3-1
+        color: 'green',
+        number: '10.14'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'pTechVodT2', //2
+        color: 'green',
+        number: '10.14'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'pSjatVozd', //3
+        color: 'green',
+        number: '04.60'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'pOsyshSjatVozd', //4
+        color: 'green',
+        number: '04.15'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'pAzotkZatv', //5
+        color: 'green',
+        number: '2.294'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'tReduct', //6
+        color: 'green',
+        number: '052.2'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'fVodNaReduct', //7
+        color: 'green',
+        number: '25.16'
+      },
+      startTime: timeDiff + 191.1,
+    }, {
+      action: {
+        target3D: 'fPrirodGaz', //8
+        color: 'green',
+        number: '2.280'
+      },
+      startTime: timeDiff + 191.1,
+    },
     ////--------------------------------4---------------------------------------- 
 
     {
@@ -4673,6 +7795,180 @@ let tempActions = [
       },
       startTime: timeDiff + 195.52,
     },
+
+    // ilay
+    {
+      action: {
+        target3D: 'pKolGaz', //1-1
+        color: 'green',
+        number: '1.788'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'dpVerh', //2
+        color: 'green',
+        number: '0.192'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'dpObsh', //3
+        color: 'green',
+        number: '1.570'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'dpNiz', //4
+        color: 'green',
+        number: '1.226'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'fHolodDut', //5
+        color: 'green',
+        number: '5715.'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'pGorDut', //6
+        color: 'green',
+        number: '3.425'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'urZasDat1', //7
+        color: 'green',
+        number: '01.20'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'urZasDat2', //8
+        color: 'green',
+        number: '01.29'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'urZasMeh', //9
+        color: 'green',
+        number: '0000'
+      },
+      startTime: timeDiff + 195.53,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1', //2-1
+        color: 'green',
+        number: '0156.'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'tVGazT2', //2
+        color: 'green',
+        number: '0162.'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'tVGazT3', //3
+        color: 'green',
+        number: '0165.'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'tVGazT4', //4
+        color: 'green',
+        number: '0150.'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'tVGazT5', //5
+        color: 'green',
+        number: '07.91'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'tVGazT6', //6
+        color: 'green',
+        number: '00.40'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'tVGazT7', //7
+        color: 'green',
+        number: '1209.'
+      },
+      startTime: timeDiff + 195.53,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1', //3-1
+        color: 'green',
+        number: '10.15'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'pTechVodT2', //2
+        color: 'green',
+        number: '10.15'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'pSjatVozd', //3
+        color: 'green',
+        number: '04.68'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'pOsyshSjatVozd', //4
+        color: 'green',
+        number: '04.15'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'pAzotkZatv', //5
+        color: 'green',
+        number: '2.293'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'tReduct', //6
+        color: 'green',
+        number: '052.2'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'fVodNaReduct', //7
+        color: 'green',
+        number: '25.16'
+      },
+      startTime: timeDiff + 195.53,
+    }, {
+      action: {
+        target3D: 'fPrirodGaz', //8
+        color: 'green',
+        number: '2.278'
+      },
+      startTime: timeDiff + 195.53,
+    },
+
     {
       action: {
         target3D: 'downBtnFPrirGaza_highlight',
@@ -4696,6 +7992,396 @@ let tempActions = [
       startTime: timeDiff + 196.2,
     },
 
+    // ilay
+
+    {
+      action: {
+        target3D: 'pKolGaz', //1-1
+        color: 'green',
+        number: '1.727'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'dpVerh', //2
+        color: 'green',
+        number: '0.193'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'dpObsh', //3
+        color: 'green',
+        number: '1.1614'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'dpNiz', //4
+        color: 'green',
+        number: '1.262'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'fHolodDut', //5
+        color: 'green',
+        number: '2800.'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'pGorDut', //6
+        color: 'green',
+        number: '3.404'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'urZasDat1', //7
+        color: 'green',
+        number: '01.20'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'urZasDat2', //8
+        color: 'green',
+        number: '01.31'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'urZasMeh', //9
+        color: 'green',
+        number: '0000'
+      },
+      startTime: timeDiff + 196.21,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1', //2-1
+        color: 'green',
+        number: '0157.'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'tVGazT2', //2
+        color: 'green',
+        number: '0161.'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'tVGazT3', //3
+        color: 'green',
+        number: '0165.'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'tVGazT4', //4
+        color: 'green',
+        number: '0150.'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'tVGazT5', //5
+        color: 'green',
+        number: '06.83'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'tVGazT6', //6
+        color: 'green',
+        number: '00.40'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'tVGazT7', //7
+        color: 'green',
+        number: '1210.'
+      },
+      startTime: timeDiff + 196.21,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1', //3-1
+        color: 'green',
+        number: '10.13'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'pTechVodT2', //2
+        color: 'green',
+        number: '10.13'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'pSjatVozd', //3
+        color: 'green',
+        number: '04.68'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'pOsyshSjatVozd', //4
+        color: 'green',
+        number: '04.15'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'pAzotkZatv', //5
+        color: 'green',
+        number: '2.301'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'tReduct', //6
+        color: 'green',
+        number: '052.2'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'fVodNaReduct', //7
+        color: 'green',
+        number: '25.16'
+      },
+      startTime: timeDiff + 196.21,
+    }, {
+      action: {
+        target3D: 'fPrirodGaz', //8
+        color: 'green',
+        number: '1.170'
+      },
+      startTime: timeDiff + 196.21,
+    },
+
+
+    {
+      action: {
+        target3D: 'Rectangle111',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle109',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '000.1',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0098',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '157.8',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '09.12',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '014.4',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '01.04',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.16',
+      },
+      startTime: timeDiff + 196.22,
+    },
+
+    {
+      action: {
+        target3D: 'Rectangle066',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle067',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle047',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle045',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle044',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle097',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle075',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle074',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle073',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle082',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle081',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle080',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 196.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle079',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 196.22,
+    },
     ////--------------------------------5---------------------------------------- 
     {
       text: 'Водопроводчик по рации сообщает о выполненных своих операциях.',
@@ -4742,6 +8428,144 @@ let tempActions = [
       sender: 'Дежурный водопроводчик',
       startTime: timeDiff + 207,
     },
+    // ilay dp 
+    {
+      action: {
+        window2D: {
+          elements: [
+            // { name: 'radar1_text', text: '1,24' },
+            // { name: 'radar2_text', text: '1,69' },
+            // { name: 'radar3_text', text: '-1,69' },
+
+            // { name: 'EKZ_H1', text: '16' },
+            // { name: 'EKZ_H2', text: '16' },
+            // { name: 'EKZ_H3', text: '16' },
+            // { name: 'AKZ_100', opacity: 0 },
+            // { name: 'AKZ_45-100', opacity: 0 },
+            // { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            // { name: 'EVS_DP7_O', text: '52964' },
+            // { name: 'EVD1_O', text: '40687' },
+            { name: 'EVS_DP7_F', text: '7214' },
+            { name: 'EVD1_F', text: '322952' },
+            { name: 'EVD_F', text: '333978' },
+            { name: 'P_1', text: '3,18' },
+            { name: 'F_evd', text: '5349' },
+            { name: 'F_hol_dyt', text: '5500' },
+            { name: 'T_hol_dyt', text: '74' },
+            { name: 'O_hol_dyt', text: '23,9' },
+            { name: 'par_yvlaz', text: '0,00' },
+            { name: 'W_sinij_hol_dyt', text: '8,1' },
+            { name: 'FO2_hol_dyt', text: '1758' },
+
+            { name: 'N2', text: '50,1' },
+            { name: 'CO', text: '23,3' },
+            { name: 'CO2', text: '20,4' },
+            { name: 'H2_tryb', text: '5,7' },
+            { name: 'Nco_tryb', text: '46,7' },
+            { name: 'Q_domG_tryb', text: '879' },
+            { name: 'P_vozd_tryb', text: '10' },
+            { name: 'P_gaza_tryb', text: '10' },
+            { name: 'CO_bor_tryb', text: '0,34' },
+
+            { name: 'H_step_isp', text: '35,4', opacity: '0' },
+            { name: 'HCO_step_isp', text: '34,4' },
+            { name: 'Tkyp_3', text: '1291' },
+            { name: 'Tkyp_2', text: '1218' },
+            { name: 'Tkyp_1', text: '1218' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '131' },
+            { name: 'Tdym_2', text: '188' },
+            { name: 'Tdym_1', text: '299' },
+            { name: 'P_Os_szat_voz', text: '8,43' },
+            { name: 'T_Os_szat_voz', text: '29' },
+
+            // { name: 'Temp_peref_1', text: '84' },
+            // { name: 'Temp_peref_2', text: '79' },
+            // { name: 'Temp_peref_3', text: '79' },
+            // { name: 'Temp_peref_4', text: '85' },
+            // { name: 'Temp_peref_5', text: '81' },
+            // { name: 'Temp_peref_6', text: '81' },
+            // { name: 'Temp_peref_7', text: '85' },
+            // { name: 'Temp_peref_8', text: '64' },
+            // { name: 'Temp_peref_9', text: '73' },
+            // { name: 'Temp_peref_10', text: '78' },
+            // { name: 'Temp_peref_11', text: '136' },
+            // { name: 'Temp_peref_12', text: '94' },
+            // { name: 'Temp_peref_13', text: '118' },
+            // { name: 'Temp_peref_14', text: '82' },
+            // { name: 'Temp_peref_15', text: '89' },
+            // { name: 'Temp_peref_16', text: '78' },
+            //// { name: 'T1', text: '156' },
+            //// { name: 'T2', text: '155' },
+            //// { name: 'T3', text: '155' },
+            //// { name: 'T4', text: '146' },
+            //// { name: 'P_2', text: '3.99' },
+            //// { name: 't_gor_dut', text: '1211' },
+            //// { name: 'P_pg_prir_gaz', text: '8,44' },
+            //// { name: 'F_prir_gaz_table', text: '37000' },
+            //// { name: 'F_pg_sym_prir_gaz', text: '37000' },
+            //// { name: 'H_Os_szat_voz', text: '29' },
+            //// { name: 't_prirodn_gaz', text: '8' },
+            //// { name: 'H_prir_gaz', text: '8' },
+
+            { name: 'F_tryba', text: '631327' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0,0' },
+            { name: 'P_vbls', text: '1,45' },
+            { name: 'dP_verh', text: '0,23' },
+            { name: 'dP_obsh_tryba', text: '1,57' },
+            { name: 'dP_nish_tryba', text: '1,34' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2234' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '-0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1440', opacity: '1' },
+            { name: 'L2_elem', color: '#ffff0f' },
+            { name: 'L3', text: '1498', opacity: '1' },
+            { name: 'L3_elem', color: '#ffffff' },
+
+            // { name: 'Dp_obsh', text: '1,60' },
+            // { name: 'F_prir_gaz_table', text: '37000' },
+            // { name: 'TTG_zadanie', text: '22000' },
+            // { name: 'P_tryba_3_590', text: '2,48' },
+            // { name: 'P_tryba_3_591', text: '2,48' },
+            // { name: 'P_tryba_4_1', text: '2,95' },
+            // { name: 'P_tryba_4_2', text: '2,60' },
+            // { name: 'P_tryba_4_3', text: '3,02' },
+            // { name: 'P_tryba_4_4', text: '2,20' },
+            // { name: 'P_tryba_5_1', text: '2,82' },
+            // { name: 'P_tryba_5_2', text: '2,71' },
+            // { name: 'P_tryba_5_3', text: '2,89' },
+            // { name: 'P_tryba_5_4', text: '3,20' },
+            // { name: 'ydel_tep_18', text: '28,2' },
+            // { name: 'ydel_tep_17', text: '51,2' },
+            // { name: 'ydel_tep_16', text: '37,4' },
+            // { name: 'ydel_tep_15', text: '49,6' },
+            // { name: 'ydel_tep_12_14', text: '83,6' },
+            // { name: 'ydel_tep_10_11', text: '50,2' },
+            // { name: 'ydel_tep_9', text: '47,4' },
+            // { name: 'ydel_tep_8', text: '47,3' },
+            // { name: 'ydel_tep_7', text: '38,2' },
+
+            { name: 'fyrm_v_rab', text: '0' },
+          ]
+        }
+      },
+      startTime: timeDiff + 207.01
+    },
     ////--------------------------------7---------------------------------------- 
     {
       scenarioText: 'Закрыть задвижку 721.',
@@ -4761,9 +8585,16 @@ let tempActions = [
     {
       action: {
         target3D: 'Lamp_Red_019',
-        material: 'Unic_Lamp_Red_On'
+        material: 'Red_Lamp_On'
       },
       startTime: timeDiff + 211.1,
+    },
+    {
+      action: {
+        target3D: 'Lamp_Green_023',
+        material: 'Green_Lamp_Off'
+      },
+      startTime: timeDiff + 211.2,
     },
     {
       action: {
@@ -4781,6 +8612,376 @@ let tempActions = [
       },
       startTime: timeDiff + 213.1,
     },
+    // ilay
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '01.94',
+      },
+      startTime: timeDiff + 213.11,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '016.4',
+      },
+      startTime: timeDiff + 213.11,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 213.11,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0098',
+      },
+      startTime: timeDiff + 213.11,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '200.2',
+      },
+      startTime: timeDiff + 213.11,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 213.11,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '09.12',
+      },
+      startTime: timeDiff + 213.11,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 213.11,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '045.5',
+      },
+      startTime: timeDiff + 213.11,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0101',
+      },
+      startTime: timeDiff + 213.11,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.76',
+      },
+      startTime: timeDiff + 213.11,
+    },
+
+
+    {
+      action: {
+        target3D: 'pKolGaz', //1-1
+        color: 'green',
+        number: '1.350'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'dpVerh', //2
+        color: 'green',
+        number: '0.0240'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'dpObsh', //3
+        color: 'green',
+        number: '1.525'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'dpNiz', //4
+        color: 'green',
+        number: '1.233'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'fHolodDut', //5
+        color: 'green',
+        number: '5000.'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'pGorDut', //6
+        color: 'green',
+        number: '3.325'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'urZasDat1', //7
+        color: 'green',
+        number: '00.75'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'urZasDat2', //8
+        color: 'green',
+        number: '01.95'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'urZasMeh', //9
+        color: 'green',
+        number: '0000'
+      },
+      startTime: timeDiff + 213.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1', //2-1
+        color: 'green',
+        number: '0157.'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'tVGazT2', //2
+        color: 'green',
+        number: '0161.'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'tVGazT3', //3
+        color: 'green',
+        number: '0162.'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'tVGazT4', //4
+        color: 'green',
+        number: '0141.'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'tVGazT5', //5
+        color: 'green',
+        number: '06.50'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'tVGazT6', //6
+        color: 'green',
+        number: '00.60'
+      },
+      startTime: timeDiff + 213.12,
+    }, {
+      action: {
+        target3D: 'tVGazT7', //7
+        color: 'green',
+        number: '1210.'
+      },
+      startTime: timeDiff + 213.12,
+    },
+
+    // ilay dp F 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'radar1_text', text: '0.75' },
+            { name: 'radar2_text', text: '0.97' },
+            { name: 'radar3_text', text: '0.61' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+
+            { name: 'EKZ_H1', text: '28' },
+            { name: 'EKZ_H2', text: '29' },
+            { name: 'EKZ_H3', text: '29' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '53379' },
+            { name: 'EVD1_O', text: '8333' },
+            { name: 'EVS_DP7_F', text: '7231' },
+            { name: 'EVD1_F', text: '331490' },
+            { name: 'EVD_F', text: '330995' },
+            { name: 'P_1', text: '3.16' },
+            { name: 'F_evd', text: '5292' },
+            { name: 'F_hol_dyt', text: '5498' },
+            { name: 'T_hol_dyt', text: '74' },
+            { name: 'O_hol_dyt', text: '23.9' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.1' },
+            { name: 'FO2_hol_dyt', text: '1280' },
+
+            { name: 'N2', text: '50.1' },
+            { name: 'CO', text: '23.3' },
+            { name: 'CO2', text: '20.4' },
+            { name: 'H2_tryb', text: '5.6' },
+            { name: 'Nco_tryb', text: '46.7' },
+            { name: 'Q_domG_tryb', text: '871' },
+            { name: 'P_vozd_tryb', text: '10' },
+            { name: 'P_gaza_tryb', text: '19' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_step_isp', text: '35,4', opacity: '0' },
+            { name: 'HCO_step_isp', text: '34,6' },
+            { name: 'Tkyp_3', text: '1261' },
+            { name: 'Tkyp_2', text: '1220' },
+            { name: 'Tkyp_1', text: '1214' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK2_Fb', text: '0' },
+            { name: 'VNK2_Fr', text: '0' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '131' },
+            { name: 'Tdym_2', text: '196' },
+            { name: 'Tdym_1', text: '299' },
+            { name: 'P_Os_szat_voz', text: '8.42' },
+            { name: 'T_Os_szat_voz', text: '29' },
+
+            { name: 'Temp_peref_1', text: '83' },
+            { name: 'Temp_peref_2', text: '75' },
+            { name: 'Temp_peref_3', text: '80' },
+            { name: 'Temp_peref_4', text: '75' },
+            { name: 'Temp_peref_5', text: '76' },
+            { name: 'Temp_peref_6', text: '78' },
+            { name: 'Temp_peref_7', text: '76' },
+            { name: 'Temp_peref_8', text: '74' },
+            { name: 'Temp_peref_9', text: '78' },
+            { name: 'Temp_peref_10', text: '62' },
+            { name: 'Temp_peref_11', text: '67' },
+            { name: 'Temp_peref_12', text: '73' },
+            { name: 'Temp_peref_13', text: '102' },
+            { name: 'Temp_peref_14', text: '84' },
+            { name: 'Temp_peref_15', text: '98' },
+            { name: 'Temp_peref_16', text: '85' },
+            //// { name: 'T1', text: '156' },
+            //// { name: 'T2', text: '155' },
+            //// { name: 'T3', text: '155' },
+            //// { name: 'T4', text: '146' },
+            { name: 'P_2', text: '3.04' },
+            { name: 't_gor_dut', text: '1209' },
+            { name: 'H_Os_szat_voz', text: '9' },
+            { name: 't_prirodn_gaz', text: '9' },
+            { name: 'P_pg_prir_gaz', text: '8,75' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '470842' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0,0' },
+            { name: 'P_vbls', text: '1,45' },
+            { name: 'dP_verh', text: '0,24' },
+            { name: 'dP_obsh_tryba', text: '1,58' },
+            { name: 'dP_nish_tryba', text: '1,34' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2524' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '-0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1410', opacity: '1' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L3', text: '1502', opacity: '1' },
+            { name: 'L3_elem', color: '#ffffff' },
+
+
+
+            { name: 'P_tryba_1_590', text: '1.50' },
+            { name: 'P_tryba_1_591', text: '1.50' },
+            { name: 'P_tryba_1_592', text: '1.50' },
+            { name: 'P_tryba_1_593', text: '1.50' },
+            { name: 'P_tryba_2_1', text: '1.59' },
+            { name: 'P_tryba_2_2', text: '1.59' },
+            { name: 'P_tryba_2_3', text: '1.59' },
+            { name: 'P_tryba_2_4', text: '1.59' },
+            { name: 'P_tryba_3_590', text: '1.69' },
+            { name: 'P_tryba_3_591', text: '1.66' },
+            { name: 'P_tryba_4_1', text: '5.58' },
+            { name: 'P_tryba_4_2', text: '3.86' },
+            { name: 'P_tryba_4_3', text: '2.58' },
+            { name: 'P_tryba_4_4', text: '5.58' },
+
+            { name: 'P_tryba_5_1', text: '1.96' },
+            { name: 'P_tryba_5_2', text: '1.95' },
+            { name: 'P_tryba_5_3', text: '2.20' },
+            { name: 'P_tryba_5_4', text: '2.70' },
+            { name: 'V_dyt', text: '235.4' },
+            { name: 'fyrm_v_rab', text: '0' },
+
+            { name: 'ydel_tep_18', text: '25.4' },
+            { name: 'ydel_tep_17', text: '40.3' },
+            { name: 'ydel_tep_16', text: '32.4' },
+            { name: 'ydel_tep_15', text: '47.8' },
+            { name: 'ydel_tep_12_14', text: '80.3' },
+            { name: 'ydel_tep_10_11', text: '41.4' },
+            { name: 'ydel_tep_9', text: '40.1' },
+            { name: 'ydel_tep_8', text: '39.2' },
+            { name: 'ydel_tep_7', text: '34.6' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 213.13,
+    },
+
     // 1.5 сценарий ------------------------------------------------------------------------------------------------------------------------------
     {
       text: 'По команде мастера печи - газовщик должен открыть клапан «СНОРТ» полностью для сброса в атмосферу излишки.',
@@ -4821,6 +9022,17 @@ let tempActions = [
         material: 'DonorLamp_off',
       },
       startTime: timeDiff + 231,
+    },
+    // ilay dp 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+          ]
+        }
+      },
+      startTime: timeDiff + 231.01,
     },
     ////--------------------------------2----------------------------------------     /// 4 раза как на видео
     {
@@ -4906,7 +9118,15 @@ let tempActions = [
             { name: 'FO2_hol_dyt', text: '1300' },
 
             { name: 'H_snotr', text: '7' },
-            { name: 'H_progres_7', opacity: 1 },
+            { name: 'H_progres_7', opacity: '1' },
+            { name: 'H_progres_19', opacity: '0' },
+            { name: 'H_progres_22', opacity: '0' },
+            { name: 'H_progres_33', opacity: '0' },
+            { name: 'H_progres_49', opacity: '0' },
+            { name: 'H_progres_56', opacity: '0' },
+            { name: 'H_progres_60', opacity: '0' },
+            { name: 'H_progres_89', opacity: '0' },
+            { name: 'H_progres_100', opacity: '0' },
 
             { name: 'P_2', text: '2.97' },
 
@@ -4931,9 +9151,9 @@ let tempActions = [
             { name: 'VNK3_status_1', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_1', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_1', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1', color: '#43A3EF' },
-            { name: 'VNK2_status_1', color: '#ada3b0' },
-            { name: 'VNK1_status_1', color: '#ada3b0' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK1_status_1_fon', color: '#ada3b0' },
 
             { name: 'VNK3_status_2', text: 'Цикл' },
             { name: 'VNK2_status_2', text: 'Цикл' },
@@ -4962,6 +9182,356 @@ let tempActions = [
       },
       startTime: timeDiff + 237.1,
     },
+    // ilay bzu F
+    {
+      action: {
+        window2D: {
+          elements: [
+            // bzu
+            { name: 'ochistka sedel_P', text: '6.01' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '3.96' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '29' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '4455' },
+
+            { name: 'B1_dp Bunker', text: '0.00' },
+            { name: 'B1_P compes', text: '0.99' },
+            { name: 'B1_vremy vygruski', text: '96' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '97' },
+            { name: 'B1_vremy sbrosa P ', text: '10' },
+            { name: 'B1_vremy nabora P ', text: '7' },
+            { name: 'B1_ves s SHP', text: '16.4' },
+            { name: 'B1_vibratciya', text: '2' },
+
+            { name: 'V linii P_B1', text: '202' }, // Б1
+            { name: 'V linii dP_B1', text: '231' },
+            { name: 'V sisteme vzveh_B1', text: '191' },
+
+            { name: 'V linii P_B2', text: '152' }, // Б2
+            { name: 'V linii dP_B2', text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '167' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '1.00' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '1.02' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '1.01' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '1.01' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '1' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '132' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+
+            { name: 'stanciia', text: '1' },
+            { name: 'ugol naklona_tekushiy', text: '14.2' },
+            { name: 'ugol naklona_zadanyi', text: '14.3' },
+
+
+            { name: 'prochent1', text: '35' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#00FF00' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', opacity: '0' },
+            { name: 'left_ellipse', opacity: '0' }, // K
+            { name: 'left_matrix_text', text: '12' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.99' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '-0.7' }, // T
+            { name: 'matrix 1 str 1_M', text: '-1.6' }, // M3
+            // не хватает схемы ПУСТ
+            { name: 'beliy primoygolinik_smehivateli', opacity: '0' }, // зеленая палочка
+            { name: 'zelyniy primoygolinik_smehivateli', opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '37.3' }, // ШЗ
+            { name: 'left_rect_yellow_arrow', opacity: '1' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '0' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+
+            { name: 'verx', text: '-0' }, // цифры сверху
+            { name: 'tr_3_str_1_', text: '13' }, // 
+            { name: 'tr_2_str_2_', text: '13' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' }, // 
+            { name: 'dlina_porcii', text: '113' }, // длина порции
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '13' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '1.06' }, // 
+            { name: 'matrix 1 str 14_T', text: '93.0' }, // 
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'matrix 1 str 14_M', text: '47.7' }, // 
+            { name: 'HZ2', text: '1.4' }, // 
+
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '3.96' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '29' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+
+            { name: 'B2_Dp bunker', text: '-0.10' }, // 
+            { name: 'B2_P compens', text: '1.11' }, // 
+            { name: 'B2_time vygruski', text: '101' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '106' }, // 
+            { name: 'B2_time sbrosa P', text: '9' }, // 
+            { name: 'B2_time nabora P', text: '6' }, // 
+            { name: 'B2_ves s HP', text: '93.0' }, // 
+            { name: 'B2_vibratciya', text: '51' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '6' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            { name: 'zaprosi_shp_stroka', text: '1' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '0.90' }, // 
+            { name: 'radar 1', text: '0.84' }, // 
+            { name: 'radar 2', text: '1.07' }, // 
+            { name: 'mexan', text: '-1.67' }, // 
+            { name: 'do zapuska mexan min', text: '1' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'bg_vRabote', color: '#EADCC2' }, // в работе
+
+            { name: 'B1_nomerstr', text: '12' }, // 
+            { name: 'B2_nomerstr', text: '13' }, // 
+            { name: 'T3_nomerstr', text: '13' }, // 
+            { name: 'T2_nomerstr', text: '13' }, // 
+            { name: 'T1_nomerstr', text: '14' }, // 
+
+            { name: 'B1_Tip_text', text: 'К' }, // 
+            { name: 'B2_Tip_text', text: 'Р' }, // 
+            { name: 'T3_Tip_text', text: 'Р' }, // 
+            { name: 'T2_Tip_text', text: 'Р' }, // 
+            { name: 'T1_Tip_text', text: 'См' }, // 
+
+            { name: 'B1_Tip', color: '#008600' }, // 
+            { name: 'B2_Tip', color: '#860004' }, // 
+            { name: 'T2_Tip', color: '#860004' }, // 
+            { name: 'T2_color', color: '#860004' }, // 
+            { name: 'T1_Tip', color: '#D0D1D3' }, // 
+
+            { name: 'B1_ves', text: '16.4' }, // 
+            { name: 'B2_ves', text: '93.0' }, // 
+            { name: 'T3_ves', text: '93.0' }, // 
+            { name: 'T2_ves', text: '93.0' }, // 
+            { name: 'T1_ves', text: '19.9' }, // 
+
+            { name: 'v_pech_str3_str', text: '12' }, // 
+            { name: 'bzu_str51_SM_7', text: '0  0' }, // 
+            { name: '', text: '' }, // 
+
+          ]
+        }
+      },
+      startTime: timeDiff + 237.101,
+    },
+    {
+      action: {
+        target3D: 'pKolGaz', //1-1
+        color: 'green',
+        number: '1.928'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'dpVerh', //2
+        color: 'green',
+        number: '0.211'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'dpObsh', //3
+        color: 'green',
+        number: '1.601'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'dpNiz', //4
+        color: 'green',
+        number: '1.225'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'fHolodDut', //5
+        color: 'green',
+        number: '5464.'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'pGorDut', //6
+        color: 'green',
+        number: '2.561'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'urZasDat1', //7
+        color: 'green',
+        number: '00.89'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'urZasDat2', //8
+        color: 'green',
+        number: '01.04'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'urZasMeh', //9
+        color: 'green',
+        number: '0000'
+      },
+      startTime: timeDiff + 237.11,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1', //2-1
+        color: 'green',
+        number: '0167.'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'tVGazT2', //2
+        color: 'green',
+        number: '0171.'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'tVGazT3', //3
+        color: 'green',
+        number: '0171.'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'tVGazT4', //4
+        color: 'green',
+        number: '0156.'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'tVGazT5', //5
+        color: 'green',
+        number: '06.85'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'tVGazT6', //6
+        color: 'green',
+        number: '00.39'
+      },
+      startTime: timeDiff + 237.11,
+    }, {
+      action: {
+        target3D: 'tVGazT7', //7
+        color: 'green',
+        number: '1208.'
+      },
+      startTime: timeDiff + 237.11,
+    },
+
+    {
+      action: {
+        target3D: 'fVodNaReduct', //7
+        color: 'green',
+        number: '25.12'
+      },
+      startTime: timeDiff + 237.11,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.64',
+      },
+      startTime: timeDiff + 237.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '009.5',
+      },
+      startTime: timeDiff + 237.12,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 237.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0098',
+      },
+      startTime: timeDiff + 237.12,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '160.1',
+      },
+      startTime: timeDiff + 237.12,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '01.06',
+      },
+      startTime: timeDiff + 237.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '093.0',
+      },
+      startTime: timeDiff + 237.12,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 237.12,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '018.3',
+      },
+      startTime: timeDiff + 237.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0101',
+      },
+      startTime: timeDiff + 237.12,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.87',
+      },
+      startTime: timeDiff + 237.12,
+    },
+
     ////--------------------------------3----------------------------------------     ////    2   /////
     ////--------------------------------4---------------------------------------- 
     {
@@ -5015,6 +9585,247 @@ let tempActions = [
         material: 'DonorLamp_off',
       },
       startTime: timeDiff + 248.9,
+    },
+    // ilay bzu
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '30' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+
+            { name: 'B2_Dp bunker', text: '-0.16' }, // 
+            { name: 'B2_P compens', text: '1.10' }, // 
+            { name: 'B2_time vygruski', text: '101' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '106' }, // 
+            { name: 'B2_time sbrosa P', text: '9' }, // 
+            { name: 'B2_time nabora P', text: '6' }, // 
+            { name: 'B2_ves s HP', text: '93.0' }, // 
+            { name: 'B2_vibratciya', text: '52' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '6' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            { name: 'zaprosi_shp_stroka', text: '1' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '0.75' }, // 
+            { name: 'radar 1', text: '0.88' }, // 
+            { name: 'radar 2', text: '1.07' }, // 
+            { name: 'mexan', text: '0.75' }, // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'bg_vRabote', color: '#0f0' }, // в работе
+
+            { name: 'B1_nomerstr', text: '12' }, // 
+            { name: 'B2_nomerstr', text: '13' }, // 
+            { name: 'T3_nomerstr', text: '13' }, // 
+            { name: 'T2_nomerstr', text: '13' }, // 
+            { name: 'T1_nomerstr', text: '14' }, // 
+
+            { name: 'B1_Tip_text', text: 'К' }, // 
+            { name: 'B2_Tip_text', text: 'Р' }, // 
+            { name: 'T3_Tip_text', text: 'Р' }, // 
+            { name: 'T2_Tip_text', text: 'Р' }, // 
+            { name: 'T1_Tip_text', text: 'См' }, // 
+
+            { name: 'B1_Tip', color: '#008600' }, // 
+            { name: 'B2_Tip', color: '#860004' }, // 
+            { name: 'T2_Tip', color: '#860004' }, // 
+            { name: 'T2_color', color: '#860004' }, // 
+            { name: 'T1_Tip', color: '#D0D1D3' }, // 
+
+            { name: 'B1_ves', text: '16.4' }, // 
+            { name: 'B2_ves', text: '93.0' }, // 
+            { name: 'T3_ves', text: '93.0' }, // 
+            { name: 'T2_ves', text: '93.0' }, // 
+            { name: 'T1_ves', text: '19.9' }, // 
+
+            { name: 'v_pech_str3_str', text: '13' }, // 
+            { name: 'bzu_str51_SM_7', text: '0  0' }, // 
+            { name: '', text: '' }, // 
+
+          ]
+        }
+      },
+      startTime: timeDiff + 248.91,
+    },
+    {
+      action: {
+        target3D: 'pKolGaz', //1-1
+        color: 'green',
+        number: '0.071'
+      },
+      startTime: timeDiff + 248.92,
+    }, {
+      action: {
+        target3D: 'dpVerh', //2
+        color: 'green',
+        number: '0.226'
+      },
+      startTime: timeDiff + 248.92,
+    }, {
+      action: {
+        target3D: 'dpObsh', //3
+        color: 'green',
+        number: '1.599'
+      },
+      startTime: timeDiff + 248.92,
+    }, {
+      action: {
+        target3D: 'dpNiz', //4
+        color: 'green',
+        number: '1.220'
+      },
+      startTime: timeDiff + 248.92,
+    }, {
+      action: {
+        target3D: 'fHolodDut', //5
+        color: 'green',
+        number: '5405.'
+      },
+      startTime: timeDiff + 248.92,
+    }, {
+      action: {
+        target3D: 'pGorDut', //6
+        color: 'green',
+        number: '2.495'
+      },
+      startTime: timeDiff + 248.92,
+    }, {
+      action: {
+        target3D: 'urZasDat1', //7
+        color: 'green',
+        number: '00.92'
+      },
+      startTime: timeDiff + 248.92,
+    }, {
+      action: {
+        target3D: 'urZasDat2', //8
+        color: 'green',
+        number: '01.14'
+      },
+      startTime: timeDiff + 248.92,
+    }, {
+      action: {
+        target3D: 'urZasMeh', //9
+        color: 'green',
+        number: '0000'
+      },
+      startTime: timeDiff + 248.92,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1', //2-1
+        color: 'green',
+        number: '0158.'
+      },
+      startTime: timeDiff + 248.92,
+    }, {
+      action: {
+        target3D: 'tVGazT2', //2
+        color: 'green',
+        number: '0167.'
+      },
+      startTime: timeDiff + 248.92,
+    }, {
+      action: {
+        target3D: 'tVGazT3', //3
+        color: 'green',
+        number: '0158.'
+      },
+      startTime: timeDiff + 248.92,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 248.93,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '000.1',
+      },
+      startTime: timeDiff + 248.93,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 248.93,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0098',
+      },
+      startTime: timeDiff + 248.93,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '052.8',
+      },
+      startTime: timeDiff + 248.93,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '01.04',
+      },
+      startTime: timeDiff + 248.93,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '093.0',
+      },
+      startTime: timeDiff + 248.93,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 248.93,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '047.0',
+      },
+      startTime: timeDiff + 248.93,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0101',
+      },
+      startTime: timeDiff + 248.93,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.89',
+      },
+      startTime: timeDiff + 248.93,
     },
     ////--------------------------------5---------------------------------------- /////   2   ////      4 раза из сценария
     {
@@ -5086,6 +9897,573 @@ let tempActions = [
         }
       },
       startTime: timeDiff + 255,
+    },
+    // ilay
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 255.01,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '018.2',
+      },
+      startTime: timeDiff + 255.01,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 255.01,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0098',
+      },
+      startTime: timeDiff + 255.01,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '261.4',
+      },
+      startTime: timeDiff + 255.01,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.66',
+      },
+      startTime: timeDiff + 255.01,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '094.2',
+      },
+      startTime: timeDiff + 255.01,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '012.1',
+      },
+      startTime: timeDiff + 255.01,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '045.2',
+      },
+      startTime: timeDiff + 255.01,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0002',
+      },
+      startTime: timeDiff + 255.01,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.10',
+      },
+      startTime: timeDiff + 255.01,
+    },
+
+    {
+      action: {
+        target3D: 'pKolGaz', //1-1
+        color: 'green',
+        number: '0.476'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'dpVerh', //2
+        color: 'green',
+        number: '0.232'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'dpObsh', //3
+        color: 'green',
+        number: '1.507'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'dpNiz', //4
+        color: 'green',
+        number: '1.203'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'fHolodDut', //5
+        color: 'green',
+        number: '5008.'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'pGorDut', //6
+        color: 'green',
+        number: '2.086'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'urZasDat1', //7
+        color: 'green',
+        number: '01.27'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'urZasDat2', //8
+        color: 'green',
+        number: '01.53'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'urZasMeh', //9
+        color: 'green',
+        number: '0000'
+      },
+      startTime: timeDiff + 255.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1', //2-1
+        color: 'green',
+        number: '0166.'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'tVGazT2', //2
+        color: 'green',
+        number: '0160.'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'tVGazT3', //3
+        color: 'green',
+        number: '0170.'
+      },
+      startTime: timeDiff + 255.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4', //4
+        color: 'green',
+        number: '0147.'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'tVGazT5', //5
+        color: 'green',
+        number: '00.26'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'tVGazT6', //6
+        color: 'green',
+        number: '00.39'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'tVGazT7', //7
+        color: 'green',
+        number: '1205.'
+      },
+      startTime: timeDiff + 255.02,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1', //3-1
+        color: 'green',
+        number: '10.15'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'pTechVodT2', //2
+        color: 'green',
+        number: '10.15'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'pSjatVozd', //3
+        color: 'green',
+        number: '04.74'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'pOsyshSjatVozd', //4
+        color: 'green',
+        number: '04.70'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'pAzotkZatv', //5
+        color: 'green',
+        number: '2.330'
+      },
+      startTime: timeDiff + 255.02,
+    }, {
+      action: {
+        target3D: 'tReduct', //6
+        color: 'green',
+        number: '047.4'
+      },
+      startTime: timeDiff + 255.02,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct', //7
+        color: 'green',
+        number: '24.19'
+      },
+      startTime: timeDiff + 255.02,
+    },
+    {
+      action: {
+        target3D: 'fPrirodGaz', //8
+        color: 'green',
+        number: '2.285'
+      },
+      startTime: timeDiff + 255.02,
+    },
+    // bzu F
+    {
+      action: {
+        window2D: {
+          elements: [
+            // bzu
+            { name: 'ochistka sedel_P', text: '5.96' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '30' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+
+            { name: 'B1_dp Bunker', text: '0.72' },
+            { name: 'B1_P compes', text: '0.00' },
+            { name: 'B1_vremy vygruski', text: '96' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '23' },
+            { name: 'B1_vremy sbrosa P ', text: '8' },
+            { name: 'B1_vremy nabora P ', text: '7' },
+            { name: 'B1_ves s SHP', text: '16.4' },
+            { name: 'B1_vibratciya', text: '49' },
+
+            { name: 'V linii P_B1', text: '203' }, // Б1
+            { name: 'V linii dP_B1', text: '230' },
+            { name: 'V sisteme vzveh_B1', text: '192' },
+
+            { name: 'V linii P_B2', text: '151' }, // Б2
+            { name: 'V linii dP_B2', text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '167' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.73' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.74' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.74' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.74' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '1' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '131' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+
+            { name: 'stanciia', text: '8' },
+            { name: 'ugol naklona_tekushiy', text: '46.7' },
+            { name: 'ugol naklona_zadanyi', text: '46.7' },
+
+
+            { name: 'prochent1', text: '0' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#00FF00' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', opacity: '0' },
+            { name: 'left_ellipse', opacity: '0' }, // K
+            { name: 'left_matrix_text', text: '14' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.00' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '0.2' }, // T
+            { name: 'matrix 1 str 1_M', text: '0.1' }, // M3
+            // не хватает схемы ПУСТ
+            { name: 'beliy primoygolinik_smehivateli', opacity: '0' }, // зеленая палочка
+            { name: 'zelyniy primoygolinik_smehivateli', opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.4' }, // ШЗ
+            // { name: 'left_vugr_rect', color: '#00FF00' }, //
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+
+            { name: 'verx', text: '-91' }, // цифры сверху
+            { name: 'tr_3_str_1_', text: '14' }, // 
+            { name: 'tr_2_str_2_', text: '14' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' }, //
+            { name: 'dlina_porcii', text: '113' }, // длина порции
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '13' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '1.05' }, // 
+            { name: 'matrix 1 str 14_T', text: '93.0' }, // 
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'matrix 1 str 14_M', text: '47.7' }, // 
+            { name: 'HZ2', text: '1.4' }, // 
+
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '30' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+
+            { name: 'B2_Dp bunker', text: '-0.35' }, // 
+            { name: 'B2_P compens', text: '1.09' }, // 
+            { name: 'B2_time vygruski', text: '101' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '106' }, // 
+            { name: 'B2_time sbrosa P', text: '9' }, // 
+            { name: 'B2_time nabora P', text: '6' }, // 
+            { name: 'B2_ves s HP', text: '93.0' }, // 
+            { name: 'B2_vibratciya', text: '51' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '6' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            { name: 'zaprosi_shp_stroka', text: '1' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '0.88' }, // 
+            { name: 'radar 1', text: '0.99' }, // 
+            { name: 'radar 2', text: '1.26' }, // 
+            { name: 'mexan', text: '0.88' }, // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'bg_vRabote', color: '#EADCC2' }, // в работе
+
+            { name: 'B1_nomerstr', text: '14' }, // 
+            { name: 'B2_nomerstr', text: '13' }, // 
+            { name: 'T3_nomerstr', text: '14' }, // 
+            { name: 'T2_nomerstr', text: '14' }, // 
+            { name: 'T1_nomerstr', text: '14' }, // 
+
+            { name: 'B1_Tip_text', text: 'См' }, // 
+            { name: 'B2_Tip_text', text: 'Р' }, // 
+            { name: 'T3_Tip_text', text: 'См' }, // 
+            { name: 'T2_Tip_text', text: 'См' }, // 
+            { name: 'T1_Tip_text', text: 'См' }, // 
+
+            { name: 'B1_Tip', color: '#D0D1D3' }, // 
+            { name: 'B2_Tip', color: '#860004' }, // 
+            { name: 'T2_Tip', color: '#D0D1D3' }, // 
+            { name: 'T2_color', color: '#D0D1D3' }, // 
+            { name: 'T1_Tip', color: '#D0D1D3' }, // 
+
+            { name: 'B1_ves', text: '19.8' }, // 
+            { name: 'B2_ves', text: '92.9' }, // 
+            { name: 'T3_ves', text: '93.9' }, // 
+            { name: 'T2_ves', text: '93.9' }, // 
+            { name: 'T1_ves', text: '19.9' }, // 
+
+            { name: 'v_pech_str3_str', text: '13' }, // 
+            { name: 'bzu_str51_SM_7', text: '0  0' }, // 
+
+            { name: 'bzu_P_str2', color: '#2B2A29' }, // 
+            { name: 'na_conveer_s1_bukca', text: 'см' }, // 
+            { name: '', text: '' }, // 
+
+          ]
+        }
+      },
+      startTime: timeDiff + 255.03,
+    },//  dp F 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'radar1_text', text: '0.99' },
+            { name: 'radar2_text', text: '1.27' },
+            { name: 'radar3_text', text: '0.89' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+
+            { name: 'EKZ_H1', text: '45' },
+            { name: 'EKZ_H2', text: '45' },
+            { name: 'EKZ_H3', text: '45' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 1 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '53177' },
+            { name: 'EVD1_O', text: '9432' },
+            { name: 'EVS_DP7_F', text: '7185' },
+            { name: 'EVD1_F', text: '332009' },
+            { name: 'EVD_F', text: '331225' },
+            { name: 'P_1', text: '2.45' },
+            { name: 'F_evd', text: '5550' },
+            { name: 'F_hol_dyt', text: '4498' },
+            { name: 'T_hol_dyt', text: '70' },
+            { name: 'O_hol_dyt', text: '23.9' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.1' },
+            { name: 'FO2_hol_dyt', text: '1296' },
+
+            { name: 'N2', text: '52.0' },
+            { name: 'CO', text: '25.1' },
+            { name: 'CO2', text: '21.5' },
+            { name: 'H2_tryb', text: '0.9' },
+            { name: 'Nco_tryb', text: '46.1' },
+            { name: 'Q_domG_tryb', text: '806' },
+            { name: 'P_vozd_tryb', text: '10' },
+            { name: 'P_gaza_tryb', text: '20' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_step_isp', text: '54,4', opacity: '1' },
+            { name: 'HCO_step_isp', text: '46,4' },
+            { name: 'Tkyp_3', text: '1254' },
+            { name: 'Tkyp_2', text: '1216' },
+            { name: 'Tkyp_1', text: '1207' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '129' },
+            { name: 'Tdym_2', text: '191' },
+            { name: 'Tdym_1', text: '290' },
+            { name: 'P_Os_szat_voz', text: '8.39' },
+            { name: 'T_Os_szat_voz', text: '30' },
+
+            { name: 'Temp_peref_1', text: '82' },
+            { name: 'Temp_peref_2', text: '74' },
+            { name: 'Temp_peref_3', text: '80' },
+            { name: 'Temp_peref_4', text: '75' },
+            { name: 'Temp_peref_5', text: '75' },
+            { name: 'Temp_peref_6', text: '78' },
+            { name: 'Temp_peref_7', text: '75' },
+            { name: 'Temp_peref_8', text: '73' },
+            { name: 'Temp_peref_9', text: '76' },
+            { name: 'Temp_peref_10', text: '62' },
+            { name: 'Temp_peref_11', text: '65' },
+            { name: 'Temp_peref_12', text: '72' },
+            { name: 'Temp_peref_13', text: '102' },
+            { name: 'Temp_peref_14', text: '83' },
+            { name: 'Temp_peref_15', text: '95' },
+            { name: 'Temp_peref_16', text: '84' },
+            //// { name: 'T1', text: '156' },
+            //// { name: 'T2', text: '155' },
+            //// { name: 'T3', text: '155' },
+            //// { name: 'T4', text: '146' },
+            { name: 'P_2', text: '2.34' },
+            { name: 't_gor_dut', text: '1206' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '9' },
+            { name: 'P_pg_prir_gaz', text: '8,58' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '557309' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0.00' },
+            { name: 'P_vbls', text: '0.70' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.23' },
+            { name: 'dP_obsh_tryba', text: '1.59' },
+            { name: 'dP_nish_tryba', text: '1.36' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2519' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1416', opacity: '1' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L3', text: '1502', opacity: '1' },
+            { name: 'L3_elem', color: '#ffffff' },
+
+
+
+            { name: 'P_tryba_1_590', text: '0.85' },
+            { name: 'P_tryba_1_591', text: '0.85' },
+            { name: 'P_tryba_1_592', text: '0.76' },
+            { name: 'P_tryba_1_593', text: '0.85' },
+            { name: 'P_tryba_2_1', text: '0.88' },
+            { name: 'P_tryba_2_2', text: '0.87' },
+            { name: 'P_tryba_2_3', text: '0.87' },
+            { name: 'P_tryba_2_4', text: '0.87' },
+            { name: 'P_tryba_3_590', text: '1.00' },
+            { name: 'P_tryba_3_591', text: '0.95' },
+            { name: 'P_tryba_4_1', text: '2.21' },
+            { name: 'P_tryba_4_2', text: '1.97' },
+            { name: 'P_tryba_4_3', text: '2.34' },
+            { name: 'P_tryba_4_4', text: '1.60' },
+
+            { name: 'P_tryba_5_1', text: '1.40' },
+            { name: 'P_tryba_5_2', text: '1.50' },
+            { name: 'P_tryba_5_3', text: '1.77' },
+            { name: 'P_tryba_5_4', text: '2.40' },
+            { name: 'V_dyt', text: '230.8' },
+            { name: 'fyrm_v_rab', text: '0' },
+
+            { name: 'ydel_tep_18', text: '29.2' },
+            { name: 'ydel_tep_17', text: '45.3' },
+            { name: 'ydel_tep_16', text: '32.2' },
+            { name: 'ydel_tep_15', text: '46.2' },
+            { name: 'ydel_tep_12_14', text: '79.0' },
+            { name: 'ydel_tep_10_11', text: '39.4' },
+            { name: 'ydel_tep_9', text: '37.1' },
+            { name: 'ydel_tep_8', text: '36.6' },
+            { name: 'ydel_tep_7', text: '38.2' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 255.04,
     },
     ////--------------------------------6---------------------------------------- ////   4   ////
     {
@@ -5168,6 +10546,918 @@ let tempActions = [
       startTime: timeDiff + 275.5,
     },
 
+    // ilay dp  bzu F old
+    {
+      action: {
+        window2D: {
+          elements: [
+            // bzu
+            { name: 'ochistka sedel_P', text: '5.94' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '20' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+
+            { name: 'B1_dp Bunker', text: '-0.11' },
+            { name: 'B1_P compes', text: '0.68' },
+            { name: 'B1_vremy vygruski', text: '16' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '23' },
+            { name: 'B1_vremy sbrosa P ', text: '1' },
+            { name: 'B1_vremy nabora P ', text: '4' },
+            { name: 'B1_ves s SHP', text: '18.6' },
+            { name: 'B1_vibratciya', text: '2' },
+
+            { name: 'V linii P_B1', text: '202' }, // Б1
+            { name: 'V linii dP_B1', text: '209' },
+            { name: 'V sisteme vzveh_B1', text: '192' },
+
+            { name: 'V linii P_B2', text: '180' }, // Б2
+            { name: 'V linii dP_B2', text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '167' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.37' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.34' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.30' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.38' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '158' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '131' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+
+            { name: 'stanciia', text: '3' },
+            { name: 'ugol naklona_tekushiy', text: '32.4' },
+            { name: 'ugol naklona_zadanyi', text: '33.3' },
+
+
+            // { name: 'prochent1', text: '35' }, // %
+            // { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            // { name: 'zagr_ramka_l',  color: '#00FF00' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', opacity: '0' },
+            // { name: 'left_ellipse',  opacity: '0' }, // K
+            // { name: 'left_matrix_text',  text: '12' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.48' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '18.9' }, // T
+            { name: 'matrix 1 str 1_M', text: '18.3' }, // M3
+            // не хватает схемы ПУСТ
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'HZ1', text: '37.3' }, // ШЗ
+            // { name: 'left_vugr_rect', color: '#00FF00' }, // 
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+
+            { name: 'verx', text: '-0' }, // цифры сверху
+            { name: 'tr_3_str_1_', text: '14' }, // 
+            { name: 'tr_2_str_2_', text: '14' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E ' }, //  
+            { name: 'dlina_porcii', text: '185' }, // длина порции
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            // { name: 'right_matrix_text', text: '13' }, // матр 1 загр 51
+            // { name: 'matrix 1 str 14_kgc', text: '1.06' }, // 
+            // { name: 'matrix 1 str 14_T', text: '93.0' }, // 
+            { name: 'pust_ramka_r', opacity: '1' }, // 
+            { name: 'r_pust', opacity: '1' }, // 
+            { name: 'matrix 1 str 14_M', text: '47.7' }, // 
+            // { name: 'HZ2', text: '1.4' }, // 
+
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '30' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '664' }, // 
+
+            { name: 'B2_Dp bunker', text: '-0.00' }, // 
+            { name: 'B2_P compens', text: '0.41' }, // 
+            { name: 'B2_time vygruski', text: '333' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '106' }, // 
+            { name: 'B2_time sbrosa P', text: '9' }, // 
+            { name: 'B2_time nabora P', text: '6' }, // 
+            { name: 'B2_ves s HP', text: '93.0' }, // 
+            { name: 'B2_vibratciya', text: '50' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '7' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            { name: 'zaprosi_shp_stroka', text: '2' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '0.91' }, // 
+            // { name: 'radar 1', text: '0.84' }, // 
+            // { name: 'radar 2', text: '1.07' }, // 
+            // { name: 'mexan', text: '-1.67' }, // 
+            { name: 'do zapuska mexan min', text: '1' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'bg_vRabote', color: '#EADCC2' }, // в работе
+            { name: 'ismetir_ramki', color: '#EADCC2' }, // в работе
+
+            { name: 'B1_nomerstr', text: '18' }, // 
+            { name: 'B2_nomerstr', text: '13' }, // 
+            { name: 'T3_nomerstr', text: '13' }, // 
+            { name: 'T2_nomerstr', text: '14' }, // 
+            { name: 'T1_nomerstr', text: '0' }, // 
+
+            { name: 'B1_Tip_text', text: 'См' }, // 
+            { name: 'B2_Tip_text', text: 'Р' }, // 
+            { name: 'T3_Tip_text', text: 'См' }, // 
+            { name: 'T2_Tip_text', text: 'См' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+
+            { name: 'B1_Tip', color: '#D0D1D3' }, // 
+            { name: 'B2_Tip', color: '#860004' }, // 
+            { name: 'T2_Tip', color: '#D0D1D3' }, // 
+            { name: 'T2_color', color: '#D0D1D3' }, // 
+            { name: 'T1_Tip', color: '#008600' }, // 
+
+            // { name: 'B1_ves', text: '16.4' }, // 
+            // { name: 'B2_ves', text: '93.0' }, // 
+            // { name: 'T3_ves', text: '93.0' }, // 
+            // { name: 'T2_ves', text: '93.0' }, // 
+            // { name: 'T1_ves', text: '19.9' }, // 
+
+
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#860004' }, // str 2 color
+            { name: 'K_str1', color: '#008600' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+            // { name: 'str51_down', text: 'К' }, // str 51 color
+
+
+            // dp
+            { name: 'radar1_text', text: '0.86' },
+            { name: 'radar2_text', text: '1.19' },
+            { name: 'radar3_text', text: '-1.67' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+
+            { name: 'EKZ_H1', text: '100' },
+            { name: 'EKZ_H2', text: '100' },
+            { name: 'EKZ_H3', text: '100' },
+            { name: 'AKZ_100', opacity: 1 },
+            { name: 'AKZ_45-100', opacity: 1 },
+            { name: 'AKZ_45', opacity: 1 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '52699' },
+            { name: 'EVD1_O', text: '9438' },
+            { name: 'EVS_DP7_F', text: '7198' },
+            { name: 'EVD1_F', text: '333477' },
+            { name: 'EVD_F', text: '331991' },
+            { name: 'P_1', text: '2.07' },
+            { name: 'F_evd', text: '5525' },
+            { name: 'F_hol_dyt', text: '4075' },
+            { name: 'T_hol_dyt', text: '69' },
+            { name: 'O_hol_dyt', text: '23.9' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.1' },
+            { name: 'FO2_hol_dyt', text: '1280' },
+
+            { name: 'N2', text: '52.0' },
+            { name: 'CO', text: '25.1' },
+            { name: 'CO2', text: '21.5' },
+            { name: 'H2_tryb', text: '0.9' },
+            { name: 'Nco_tryb', text: '46.1' },
+            { name: 'Q_domG_tryb', text: '806' },
+            { name: 'P_vozd_tryb', text: '10' },
+            { name: 'P_gaza_tryb', text: '19' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_step_isp', text: '54,5', opacity: '1' },
+            { name: 'HCO_step_isp', text: '46,5' },
+            { name: 'Tkyp_3', text: '1252' },
+            { name: 'Tkyp_2', text: '1214' },
+            { name: 'Tkyp_1', text: '1204' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+
+            { name: 'Tdym_3', text: '129' },
+            { name: 'Tdym_2', text: '189' },
+            { name: 'Tdym_1', text: '288' },
+            { name: 'P_Os_szat_voz', text: '8.36' },
+            { name: 'T_Os_szat_voz', text: '30' },
+
+            { name: 'Temp_peref_1', text: '81' },
+            { name: 'Temp_peref_2', text: '74' },
+            { name: 'Temp_peref_3', text: '79' },
+            { name: 'Temp_peref_4', text: '74' },
+            { name: 'Temp_peref_5', text: '78' },
+            { name: 'Temp_peref_6', text: '78' },
+            { name: 'Temp_peref_7', text: '79' },
+            { name: 'Temp_peref_8', text: '73' },
+            { name: 'Temp_peref_9', text: '78' },
+            { name: 'Temp_peref_10', text: '62' },
+            { name: 'Temp_peref_11', text: '65' },
+            { name: 'Temp_peref_12', text: '72' },
+            { name: 'Temp_peref_13', text: '102' },
+            { name: 'Temp_peref_14', text: '83' },
+            { name: 'Temp_peref_15', text: '94' },
+            { name: 'Temp_peref_16', text: '84' },
+            //// { name: 'T1', text: '156' },
+            //// { name: 'T2', text: '155' },
+            //// { name: 'T3', text: '155' },
+            //// { name: 'T4', text: '146' },
+            { name: 'P_2', text: '1.97' },
+            { name: 't_gor_dut', text: '1204' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '9' },
+            { name: 'P_pg_prir_gaz', text: '8,58' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '468748' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0,0' },
+            { name: 'P_vbls', text: '0,24' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0,24' },
+            { name: 'dP_obsh_tryba', text: '1,58' },
+            { name: 'dP_nish_tryba', text: '1,33' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2517' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '-0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1435', opacity: '1' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L3', text: '1488', opacity: '1' },
+            { name: 'L3_elem', color: '#ffffff' },
+
+
+            { name: 'P_tryba_1_590', text: '0.44' },
+            { name: 'P_tryba_1_591', text: '0.44' },
+            { name: 'P_tryba_1_592', text: '0.44' },
+            { name: 'P_tryba_1_593', text: '0.44' },
+            { name: 'P_tryba_2_1', text: '0.54' },
+            { name: 'P_tryba_2_2', text: '0.54' },
+            { name: 'P_tryba_2_3', text: '0.54' },
+            { name: 'P_tryba_2_4', text: '0.54' },
+            { name: 'P_tryba_3_590', text: '0.62' },
+            { name: 'P_tryba_3_591', text: '0.62' },
+
+            // { name: 'P_tryba_4_1', text: '5.58' },
+            // { name: 'P_tryba_4_2', text: '3.86' },
+            // { name: 'P_tryba_4_3', text: '2.58' },
+            // { name: 'P_tryba_4_4', text: '5.58' },
+
+            // { name: 'P_tryba_5_1', text: '1.96' },
+            // { name: 'P_tryba_5_2', text: '1.95' },
+            // { name: 'P_tryba_5_3', text: '2.20' },
+            // { name: 'P_tryba_5_4', text: '2.70' },
+            { name: 'V_dyt', text: '234.8' },
+            { name: 'fyrm_v_rab', text: '0' },
+
+            // { name: 'ydel_tep_18',    text: '25.4' },
+            // { name: 'ydel_tep_17',    text: '40.3' },
+            // { name: 'ydel_tep_16',    text: '32.4' },
+            // { name: 'ydel_tep_15',    text: '47.8' },
+            // { name: 'ydel_tep_12_14', text: '80.3' },
+            // { name: 'ydel_tep_10_11', text: '41.4' },
+            // { name: 'ydel_tep_9',     text: '40.1' },
+            // { name: 'ydel_tep_8',     text: '39.2' },
+            // { name: 'ydel_tep_7',     text: '34.6' },
+          ]
+        }
+      },
+      startTime: timeDiff + 275.51,
+    },
+
+    {
+      action: {
+        target3D: 'Rectangle111',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle109',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle113',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle112',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle071',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle072',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle070',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle069',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle068',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle066',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle067',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle065',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle086',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle087',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle088',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle089',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle090',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle091',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle097',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle098',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle099',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle100',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle101',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle102',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle103',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle104',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle105',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle106',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle107',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle092',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle093',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle094',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle095',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle096',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle085',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle058',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle057',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle059',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle060',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle075',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle074',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle073',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle079',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    // {
+    //   action: {
+    //     target3D: 'Rectangle080', 
+    //     material: 'ButtonLightOn',
+    //   },
+    //   startTime: timeDiff + 275.52,
+    // },
+    {
+      action: {
+        target3D: 'Rectangle064',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle114',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle041',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle039',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle029',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle031',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle034',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle036',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle048',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    }, {
+      action: {
+        target3D: 'Rectangle050',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 275.52,
+    },
+
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '0.00',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '000.1',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0028',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '085.7',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '015.5',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '00.13',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '044.4',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0104',
+      },
+      startTime: timeDiff + 275.52,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.75',
+      },
+      startTime: timeDiff + 275.52,
+    },
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0314',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0181',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '1278',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0967',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '4248',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '1591',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '0074',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '0124',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0165',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0177',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0171',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0156',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '0738',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1282',
+      },
+      startTime: timeDiff + 275.53,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1',
+        color: 'green',
+        number: '1710',
+      },
+      startTime: timeDiff + 275.53,
+    },
     ////--------------------------------8---------------------------------------- //////  2   //////    6-7 раз. БУДЕТ 6  . Из сценария
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 1,5кг.',
@@ -5216,7 +11506,16 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'H_snotr', text: '33' },
+            { name: 'H_progres_7', opacity: 1 },
+            { name: 'H_progres_19', opacity: 1 },
+            { name: 'H_progres_22', opacity: 1 },
             { name: 'H_progres_33', opacity: 1 },
+            { name: 'H_progres_49', opacity: 0 },
+            { name: 'H_progres_56', opacity: 0 },
+            { name: 'H_progres_60', opacity: 0 },
+            { name: 'H_progres_89', opacity: 0 },
+            { name: 'H_progres_100', opacity: 0 },
+
             { name: 'P_2', text: '1.97' },
             { name: 'EKZ_H1', text: '100' },
             { name: 'EKZ_H2', text: '100' },
@@ -5230,7 +11529,224 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 282,
+      startTime: timeDiff + 281.5,
+    },
+    // ilay
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'EKZ_H1', text: '100' },
+            { name: 'EKZ_H2', text: '100' },
+            { name: 'EKZ_H3', text: '100' },
+            { name: 'AKZ_100', opacity: 1 },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '000.1',
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0028',
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '189.1',
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '016.4',
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '044.4',
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0104',
+      },
+      startTime: timeDiff + 281.51,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.76',
+      },
+      startTime: timeDiff + 281.51,
+    },
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0312',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0178',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '1244',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0946',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '4257',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '1590',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '0075',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '0129',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0161',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0179',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0171',
+      },
+      startTime: timeDiff + 281.52,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0156',
+      },
+      startTime: timeDiff + 281.52,
+    },
+
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1282',
+      },
+      startTime: timeDiff + 281.52,
     },
     ////--------------------------------9---------------------------------------- /////   4   /////
     {
@@ -5287,6 +11803,262 @@ let tempActions = [
       },
       startTime: timeDiff + 295,
     },
+    // ilay
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0302',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0153',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '1106',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0846',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '3989',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '1411',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '0095',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '0144',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0172',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0174',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0152',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '0704',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '0239',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1281',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '1469',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'tReduct',
+        color: 'green',
+        number: '0461',
+      },
+      startTime: timeDiff + 295.01,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '2438',
+      },
+      startTime: timeDiff + 295.01,
+    },
+
+    {
+      action: {
+        target3D: 'Rectangle111',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 295.02,
+    }, {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle109',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '000.4',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0028',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '303.3',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '016.4',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.4',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '047.0',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0104',
+      },
+      startTime: timeDiff + 295.02,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.93',
+      },
+      startTime: timeDiff + 295.02,
+    },
+
     ////--------------------------------10----------------------------------------  ///////   2   //////  7 раз из сценария
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 1кг.',
@@ -5342,6 +12114,452 @@ let tempActions = [
       },
       startTime: timeDiff + 303,
     },
+    // ilay dp f new
+    {
+      action: {
+        window2D: {
+          elements: [
+            // dp
+            { name: 'radar1_text', text: '1.21' },
+            { name: 'radar2_text', text: '1.60' },
+            { name: 'radar3_text', text: '-1.66' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+
+            { name: 'EKZ_H1', text: '100' },
+            { name: 'EKZ_H2', text: '100' },
+            { name: 'EKZ_H3', text: '100' },
+            { name: 'AKZ_100', opacity: 1 },
+            { name: 'AKZ_45-100', opacity: 1 },
+            { name: 'AKZ_45', opacity: 1 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '54335' },
+            { name: 'EVD1_O', text: '11713' },
+            { name: 'EVS_DP7_F', text: '7200' },
+            { name: 'EVD1_F', text: '308078' },
+            { name: 'EVD_F', text: '309442' },
+            { name: 'P_1', text: '1.09' },
+            { name: 'F_evd', text: '5230' },
+            { name: 'F_hol_dyt', text: '2232' },
+            { name: 'T_hol_dyt', text: '64' },
+            { name: 'O_hol_dyt', text: '24.1' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.3' },
+            { name: 'FO2_hol_dyt', text: '1251' },
+
+            { name: 'N2', text: '60.0' },
+            { name: 'CO', text: '20.4' },
+            { name: 'CO2', text: '18.4' },
+            { name: 'H2_tryb', text: '0.7' },
+            { name: 'Nco_tryb', text: '47.4' },
+            { name: 'Q_domG_tryb', text: '654' },
+            { name: 'P_vozd_tryb', text: '10' },
+            { name: 'P_gaza_tryb', text: '19' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_step_isp', text: '68,6', opacity: '1' },
+            { name: 'HCO_step_isp', text: '48,6' },
+            { name: 'Tkyp_3', text: '1244' },
+            { name: 'Tkyp_2', text: '1206' },
+            { name: 'Tkyp_1', text: '1197' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '130' },
+            { name: 'Tdym_2', text: '187' },
+            { name: 'Tdym_1', text: '282' },
+            { name: 'P_Os_szat_voz', text: '8.38' },
+            { name: 'T_Os_szat_voz', text: '30' },
+
+            { name: 'Temp_peref_1', text: '80' },
+            { name: 'Temp_peref_2', text: '72' },
+            { name: 'Temp_peref_3', text: '78' },
+            { name: 'Temp_peref_4', text: '73' },
+            { name: 'Temp_peref_5', text: '74' },
+            { name: 'Temp_peref_6', text: '76' },
+            { name: 'Temp_peref_7', text: '74' },
+            { name: 'Temp_peref_8', text: '71' },
+            { name: 'Temp_peref_9', text: '74' },
+            { name: 'Temp_peref_10', text: '61' },
+            { name: 'Temp_peref_11', text: '64' },
+            { name: 'Temp_peref_12', text: '70' },
+            { name: 'Temp_peref_13', text: '101' },
+            { name: 'Temp_peref_14', text: '80' },
+            { name: 'Temp_peref_15', text: '90' },
+            { name: 'Temp_peref_16', text: '82' },
+            //// { name: 'T1', text: '156' },
+            //// { name: 'T2', text: '155' },
+            //// { name: 'T3', text: '155' },
+            //// { name: 'T4', text: '146' },
+            { name: 'P_2', text: '1.05' },
+            { name: 't_gor_dut', text: '1197' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '10' },
+            { name: 'P_pg_prir_gaz', text: '8,59' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '256648' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0.0' },
+            { name: 'P_vbls', text: '0.25' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.10' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '0.79' },
+            { name: 'dP_obsh_trybarect', color: '#ffff0f' },
+            { name: 'dP_nish_tryba', text: '0.69' },
+            { name: 'dP_nish_rect', color: '#ffff0f' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2521' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1437', opacity: '1' },
+            { name: 'L2_elem', color: '#ffff0f' },
+            { name: 'L3', text: '1436', opacity: '1' },
+            { name: 'L3_elem', color: '#ffff0f' },
+
+
+
+            { name: 'P_tryba_1_590', text: '0.27' },
+            { name: 'P_tryba_1_591', text: '0.27' },
+            { name: 'P_tryba_1_592', text: '0.27' },
+            { name: 'P_tryba_1_593', text: '0.27' },
+            { name: 'P_tryba_2_1', text: '0.31' },
+            { name: 'P_tryba_2_2', text: '0.32' },
+            { name: 'P_tryba_2_3', text: '0.31' },
+            { name: 'P_tryba_2_4', text: '0.31' },
+            { name: 'P_tryba_3_590', text: '0.35' },
+            { name: 'P_tryba_3_591', text: '0.35' },
+            { name: 'P_tryba_4_1', text: '2.70' },
+            { name: 'P_tryba_4_2', text: '2.05' },
+            { name: 'P_tryba_4_3', text: '2.82' },
+            { name: 'P_tryba_4_4', text: '2.00' },
+
+            { name: 'P_tryba_5_1', text: '0.85' },
+            { name: 'P_tryba_5_2', text: '1.45' },
+            { name: 'P_tryba_5_3', text: '1.81' },
+            { name: 'P_tryba_5_4', text: '2.70' },
+            { name: 'V_dyt', text: '187.4' },
+            { name: 'fyrm_v_rab', text: '0' },
+
+            { name: 'ydel_tep_18', text: '28.6' },
+            { name: 'ydel_tep_17', text: '46.7' },
+            { name: 'ydel_tep_16', text: '31.6' },
+            { name: 'ydel_tep_15', text: '43.3' },
+            { name: 'ydel_tep_12_14', text: '77.2' },
+            { name: 'ydel_tep_10_11', text: '33.9' },
+            { name: 'ydel_tep_9', text: '33.3' },
+            { name: 'ydel_tep_8', text: '32.0' },
+            { name: 'ydel_tep_7', text: '35.4' },
+          ]
+        }
+      },
+      startTime: timeDiff + 303.01,
+    },
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0259',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0107',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0836',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0647',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '3328',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '1.094',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '01.13',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '0144',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0181',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0098',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0182',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0166',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '0782',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '0039',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1198',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1',
+        color: 'green',
+        number: '1112',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT2',
+        color: 'green',
+        number: '1113',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '1467',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd',
+        color: 'green',
+        number: '0112',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2344',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '2473',
+      },
+      startTime: timeDiff + 303.02,
+    },
+
+    {
+      action: {
+        target3D: 'Rectangle111',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 303.02,
+    },
+
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '093.5',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0028',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '124.3',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '000.2',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '015.2',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0099',
+      },
+      startTime: timeDiff + 303.02,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.93',
+      },
+      startTime: timeDiff + 303.02,
+    },
     ////--------------------------------11----------------------------------------    ////////////////    4   ///////////////   
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
@@ -5395,6 +12613,107 @@ let tempActions = [
       },
       startTime: timeDiff + 320,
     },
+    // ilay ne vido
+    {
+      action: {
+        window2D: {
+          elements: [
+
+          ]
+        }
+      },
+      startTime: timeDiff + 320.1,
+    },
+
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.26',
+      },
+      startTime: timeDiff + 320.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '093.8',
+      },
+      startTime: timeDiff + 320.12,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '023.5',
+      },
+      startTime: timeDiff + 320.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0003',
+      },
+      startTime: timeDiff + 320.12,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '112.0',
+      },
+      startTime: timeDiff + 320.12,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 320.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '000.2',
+      },
+      startTime: timeDiff + 320.12,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 320.12,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '045.4',
+      },
+      startTime: timeDiff + 320.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0099',
+      },
+      startTime: timeDiff + 320.12,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.21',
+      },
+      startTime: timeDiff + 320.12,
+    },
+
 
     ////--------------------------------12---------------------------------------- /////////    2   //////////// 2 РАЗА КРУТИТ  из сценария
     {
@@ -5421,6 +12740,7 @@ let tempActions = [
       startTime: timeDiff + 325,
       human: true,
     },
+
     {
       action: {
         window2D: {
@@ -5433,6 +12753,287 @@ let tempActions = [
       },
       startTime: timeDiff + 325.1,
     },
+
+    // ilay   tables-NO
+    {
+      action: {
+        window2D: {
+          elements: [
+
+          ]
+        }
+      },
+      startTime: timeDiff + 325.11,
+    },
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0252',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0096',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0756',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0592',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '3211',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '1012',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '01.28',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '0166',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0189',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0192',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0154',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0154',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '0650',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '0039',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1159',
+      },
+      startTime: timeDiff + 325.12,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '1463',
+      },
+      startTime: timeDiff + 325.12,
+    },
+
+
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'Rectangle057',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.25',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '084.0',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '037.5',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0016',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '313.4 ',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '000.2',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '045.4',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0099',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.21',
+      },
+      startTime: timeDiff + 325.13,
+    },
+    {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 325.14,
+    },
+    {
+      action: {
+        target3D: 'Rectangle075',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 325.14,
+    },
+    {
+      action: {
+        target3D: 'Rectangle074',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 325.14,
+    },
+    {
+      action: {
+        target3D: 'Rectangle073',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 325.14,
+    },
+
     ////--------------------------------13---------------------------------------- 
     {
       scenarioText: 'Открыть нижний шихтовый затвор.',
@@ -5512,6 +13113,120 @@ let tempActions = [
       },
       startTime: timeDiff + 333.5,
     },
+
+    // ilay
+
+    {
+      action: {
+        target3D: 'Rectangle111',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'Rectangle109',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.28',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '067.3',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '042.6',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0028',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '094.1',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '000.2',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '044.2',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0099',
+      },
+      startTime: timeDiff + 333.51,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.16',
+      },
+      startTime: timeDiff + 333.51,
+    },
+
+
     {
       text: 'Нажать на кнопку "Сброс сигнала тревоги" на ПУ БЗУ. ',
       sender: 'Система',
@@ -5538,6 +13253,196 @@ let tempActions = [
       },
       startTime: timeDiff + 334.5,
     },
+    // ilay
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.28',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '070.9',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '042.6',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0026',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '058.4',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '000.2',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '044.5',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0099',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.16',
+      },
+      startTime: timeDiff + 334.51,
+    },
+
+
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0732',
+      },
+      startTime: timeDiff + 334.51,
+    },
+
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '3233',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0986',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '01.18',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '0170',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0154',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0180',
+      },
+      startTime: timeDiff + 334.51,
+    },
+
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0164',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '0678',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '0039',
+      },
+      startTime: timeDiff + 334.51,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1157',
+      },
+      startTime: timeDiff + 334.51,
+    },
+
     ////--------------------------------14----------------------------------------  /// 2 raza is scenario s intervalom
     {
       scenarioText: 'Продолжить приоткрывать клапан «СНОРТ».',
@@ -5567,12 +13472,170 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'H_snotr', text: '60' },
-            { name: 'H_progres_60', opacity: 1 },
+            { name: 'H_progres_7', opacity: '1' },
+            { name: 'H_progres_19', opacity: '1' },
+            { name: 'H_progres_22', opacity: '1' },
+            { name: 'H_progres_33', opacity: '1' },
+            { name: 'H_progres_49', opacity: '1' },
+            { name: 'H_progres_56', opacity: '1' },
+            { name: 'H_progres_60', opacity: '1' },
+            { name: 'H_progres_67', opacity: '0' },
+            { name: 'H_progres_89', opacity: '0' },
+            { name: 'H_progres_100', opacity: '0' },
             { name: 'P_2', text: '0.88' },
           ]
         }
       },
       startTime: timeDiff + 340.5,
+    },
+    // ilay bzu dp-ne-vidno
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'B1_nomerstr', text: '3' }, // 
+            { name: 'B2_nomerstr', text: '2' }, // 
+            { name: 'T3_nomerstr', text: '3' }, // 
+            { name: 'T2_nomerstr', text: '4' }, // 
+            { name: 'T1_nomerstr', text: '4' }, // 
+
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'Р' }, // 
+            { name: 'T1_Tip_text', text: 'Р' }, // 
+
+            { name: 'B1_Tip', color: '#860004' }, // 
+            { name: 'B2_Tip', color: '#008600' }, // 
+            { name: 'T2_Tip', color: '#008600' }, // 
+            { name: 'T2_color', color: '#860004' }, // 
+            { name: 'T1_Tip', color: '#D0D1D3' }, // #D0D1D3  #860004   #008600
+
+            { name: 'B1_ves', text: '19.7' }, // 
+            { name: 'B2_ves', text: '18.3' }, // 
+            { name: 'T3_ves', text: '18.3' }, // 
+            { name: 'T2_ves', text: '-1.9' }, // 
+            { name: 'T1_ves', text: '-1.6' }, // 
+
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#860004' }, // str 2 color
+            { name: 'K_str1', color: '#008600' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+            { name: 'str51_down', text: 'К' }, // str 51 color
+          ]
+        }
+      },
+      startTime: timeDiff + 340.51,
+    },
+
+    {
+      action: {
+        target3D: 'Rectangle111',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'Rectangle109',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '000.0',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0085',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '314.8',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.21',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '016.2',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '045.5',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0099',
+      },
+      startTime: timeDiff + 340.52,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.70',
+      },
+      startTime: timeDiff + 340.52,
     },
     ////--------------------------------15---------------------------------------- 
     {
@@ -5748,6 +13811,636 @@ let tempActions = [
       },
       startTime: timeDiff + 349.3,
     },
+
+    // ilay dp 
+
+    {
+      action: {
+        window2D: {
+          elements: [
+            // dp
+            // { name: 'radar1_text', text: '1.21' },
+            { name: 'radar2_text', text: '1.23' },
+            // { name: 'radar3_text', text: '-1.66' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+
+            { name: 'EKZ_H1', text: '100' },
+            { name: 'EKZ_H2', text: '100' },
+            { name: 'EKZ_H3', text: '100' },
+            { name: 'AKZ_100', opacity: 1 },
+            { name: 'AKZ_45-100', opacity: 1 },
+            { name: 'AKZ_45', opacity: 1 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            // { name: 'EVS_DP7_O', text: '54335' },
+            { name: 'EVD1_O', text: '11418' },
+            { name: 'EVS_DP7_F', text: '7166' },
+            { name: 'EVD1_F', text: '311876' },
+            { name: 'EVD_F', text: '212344' },
+            { name: 'P_1', text: '0.88' },
+            { name: 'F_evd', text: '5188' },
+            { name: 'F_hol_dyt', text: '1879' },
+            { name: 'T_hol_dyt', text: '63' },
+            { name: 'O_hol_dyt', text: '24.5' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.3' },
+            { name: 'FO2_hol_dyt', text: '1244' },
+
+            { name: 'N2', text: '63.1' },
+            { name: 'CO', text: '20.3' },
+            { name: 'CO2', text: '18.3' },
+            { name: 'H2_tryb', text: '0.7' },
+            { name: 'Nco_tryb', text: '47.4' },
+            { name: 'Q_domG_tryb', text: '653' },
+            { name: 'P_vozd_tryb', text: '7' },
+            { name: 'P_gaza_tryb', text: '19' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_step_isp', text: '68,2', opacity: '1' },
+            { name: 'HCO_step_isp', text: '48,6' },
+            { name: 'Tkyp_3', text: '1241' },
+            { name: 'Tkyp_2', text: '1233' },
+            { name: 'Tkyp_1', text: '1184' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '132' },
+            { name: 'Tdym_2', text: '188' },
+            { name: 'Tdym_1', text: '279' },
+            { name: 'P_Os_szat_voz', text: '8.36' },
+            { name: 'T_Os_szat_voz', text: '31' },
+
+            { name: 'Temp_peref_1', text: '79' },
+            { name: 'Temp_peref_2', text: '79' },
+            { name: 'Temp_peref_3', text: '77' },
+            { name: 'Temp_peref_4', text: '73' },
+            { name: 'Temp_peref_5', text: '79' },
+            { name: 'Temp_peref_6', text: '73' },
+            { name: 'Temp_peref_7', text: '73' },
+            { name: 'Temp_peref_8', text: '76' },
+            { name: 'Temp_peref_9', text: '78' },
+            { name: 'Temp_peref_10', text: '68' },
+            { name: 'Temp_peref_11', text: '64' },
+            { name: 'Temp_peref_12', text: '78' },
+            { name: 'Temp_peref_13', text: '101' },
+            { name: 'Temp_peref_14', text: '79' },
+            { name: 'Temp_peref_15', text: '90' },
+            { name: 'Temp_peref_16', text: '89' },
+            //// { name: 'T1', text: '156' },
+            //// { name: 'T2', text: '155' },
+            //// { name: 'T3', text: '155' },
+            //// { name: 'T4', text: '146' },
+            { name: 'P_2', text: '0.83' },
+            { name: 't_gor_dut', text: '1195' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '10' },
+            { name: 'P_pg_prir_gaz', text: '8,61' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '29287' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0.0' },
+            { name: 'P_vbls', text: '0.23' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.07' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '0.59' },
+            { name: 'dP_obsh_trybarect', color: '#ffff0f' },
+            { name: 'dP_nish_tryba', text: '0.52' },
+            { name: 'dP_nish_rect', color: '#ffff0f' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2537' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1482', opacity: '1' },
+            { name: 'L2_elem', color: '#ffff0f' },
+            { name: 'L3', text: '1396', opacity: '1' },
+            { name: 'L3_elem', color: '#ffffff' },
+
+
+
+            { name: 'P_tryba_1_590', text: '1.29' },
+            { name: 'P_tryba_1_591', text: '1.29' },
+            { name: 'P_tryba_1_592', text: '1.29' },
+            { name: 'P_tryba_1_593', text: '1.29' },
+            // { name: 'P_tryba_2_1', text: '0.31' },
+            // { name: 'P_tryba_2_2', text: '0.32' },
+            // { name: 'P_tryba_2_3', text: '0.31' },
+            // { name: 'P_tryba_2_4', text: '0.31' },
+            // { name: 'P_tryba_3_590', text: '0.35' },
+            // { name: 'P_tryba_3_591', text: '0.35' },
+            // { name: 'P_tryba_4_1', text: '2.70' },
+            // { name: 'P_tryba_4_2', text: '2.05' },
+            // { name: 'P_tryba_4_3', text: '2.82' },
+            // { name: 'P_tryba_4_4', text: '2.00' },
+
+            // { name: 'P_tryba_5_1', text: '0.85' },
+            // { name: 'P_tryba_5_2', text: '1.45' },
+            // { name: 'P_tryba_5_3', text: '1.81' },
+            // { name: 'P_tryba_5_4', text: '2.70' },
+            // { name: 'V_dyt', text: '187.4' },
+            // { name: 'fyrm_v_rab', text: '0' },
+
+            // { name: 'ydel_tep_18',    text: '28.6' },
+            // { name: 'ydel_tep_17',    text: '46.7' },
+            // { name: 'ydel_tep_16',    text: '31.6' },
+            // { name: 'ydel_tep_15',    text: '43.3' },
+            // { name: 'ydel_tep_12_14', text: '77.2' },
+            // { name: 'ydel_tep_10_11', text: '33.9' },
+            // { name: 'ydel_tep_9',     text: '33.3' },
+            // { name: 'ydel_tep_8',     text: '32.0' },
+            // { name: 'ydel_tep_7',     text: '35.4' },
+          ]
+        }
+      },
+      startTime: timeDiff + 349.31,
+    },
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0236',
+      },
+      startTime: timeDiff + 349.31,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0072',
+      },
+      startTime: timeDiff + 349.31,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0536',
+      },
+      startTime: timeDiff + 349.31,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0165',
+      },
+      startTime: timeDiff + 349.31,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '2538',
+      },
+      startTime: timeDiff + 349.31,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0032',
+      },
+      startTime: timeDiff + 349.31,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '0007',
+      },
+      startTime: timeDiff + 349.31,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '2128',
+      },
+      startTime: timeDiff + 349.31,
+    },
+    {
+      action: {
+        target3D: 'Rectangle111',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle109',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle113',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle112',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle071',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle072',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle070',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle069',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle068',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle066',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle067',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle065',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle086',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle087',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle088',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle089',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle090',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle091',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle097',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle098',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle099',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle100',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle101',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle102',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle103',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle104',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle105',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle106',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle107',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle092',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle093',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle094',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle095',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle096',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle085',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle058',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle057',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle059',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle060',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle075',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle074',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'Rectangle073',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '000.1',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0085',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '152.5',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.20',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '011.4',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '038.3',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '042.6',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0028',
+      },
+      startTime: timeDiff + 349.32,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.76',
+      },
+      startTime: timeDiff + 349.32,
+    },
+
+
+
     ////--------------------------------16----------------------------------------  //  Газовщик провернул клапан 1 раз.
     {
       text: 'Продолжить приоткрывать клапан «СНОРТ».',
@@ -5788,7 +14481,309 @@ let tempActions = [
       },
       startTime: timeDiff + 351.1,
     },
+    // ilay dp - bzu f NEW
+    {
+      action: {
+        window2D: {
+          elements: [
 
+            { name: 'EVS_DP7_F', text: '7187' },
+            { name: 'P_1', text: '0.89' },
+            { name: 'F_evd', text: '5238' },
+            { name: 'F_hol_dyt', text: '1787' },
+            { name: 'T_hol_dyt', text: '62' },
+            { name: 'O_hol_dyt', text: '24.5' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.4' },
+            { name: 'FO2_hol_dyt', text: '1296' },
+
+            { name: 'N2', text: '60.1' },
+            { name: 'CO', text: '70.3' },
+            { name: 'CO2', text: '18.3' },
+            { name: 'H2_tryb', text: '0.7' },
+            { name: 'Nco_tryb', text: '47.4' },
+            // { name: 'Q_domG_tryb',  text: '654' },
+            { name: 'P_vozd_tryb', text: '2' },
+            // { name: 'P_gaza_tryb',  text: '19' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            // { name: 'H_step_isp',   text: '68,6', opacity: '1' },
+            // { name: 'HCO_step_isp', text: '48,6' },
+
+            { name: 'Tdym_3', text: '132' },
+            { name: 'Tdym_2', text: '184' },
+            { name: 'Tdym_1', text: '176' },
+            { name: 'P_Os_szat_voz', text: '8.41' },
+            { name: 'T_Os_szat_voz', text: '31' },
+
+            //// { name: 'T1', text: '156' },
+            //// { name: 'T2', text: '155' },
+            //// { name: 'T3', text: '155' },
+            //// { name: 'T4', text: '146' },
+            { name: 'P_2', text: '0.78' },
+            { name: 't_gor_dut', text: '1195' },
+            // { name: 'H_Os_szat_voz', text: '0' },
+            // { name: 't_prirodn_gaz', text: '10' },
+            { name: 'P_pg_prir_gaz', text: '8,61' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            // { name: 'F_pg_sym_prir_gaz', text: '0' },
+            // { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '172887' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0.0' },
+            { name: 'P_vbls', text: '0.22' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.06' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '0.55' },
+            { name: 'dP_obsh_trybarect', color: '#ffff0f' },
+            { name: 'dP_nish_tryba', text: '0.48' },
+            { name: 'dP_nish_rect', color: '#ffff0f' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2533' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1142', opacity: '1' },
+            { name: 'L2_elem', color: '#ffff0f' },
+            { name: 'L3', text: '1434', opacity: '1' },
+            { name: 'L3_elem', color: '#ffff0f' },
+
+            // bzu
+            { name: 'ochistka sedel_P', text: '6.12' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '30' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+
+            { name: 'B1_dp Bunker', text: '0.22' },
+            { name: 'B1_P compes', text: '0.00' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP', text: '93.5' },
+            { name: 'B1_vibratciya', text: '11' },
+
+            { name: 'V linii P_B1', text: '213' }, // Б1
+            { name: 'V linii dP_B1', text: '209' },
+            { name: 'V sisteme vzveh_B1', text: '192' },
+
+            { name: 'V linii P_B2', text: '180' }, // Б2
+            { name: 'V linii dP_B2', text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '167' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.22' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.23' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.23' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.23' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '139' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+
+            { name: 'stanciia', text: '1' },
+            { name: 'ugol naklona_tekushiy', text: '14.2' },
+            { name: 'ugol naklona_zadanyi', text: '14.3' },
+
+            // { name: 'gradusow ugol', text: '281.3' },
+
+
+            // { name: 'prochent1', text: '35' }, // %
+            // { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            // { name: 'zagr_ramka_l',  color: '#00FF00' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', opacity: '0' },
+            // { name: 'left_ellipse',  opacity: '0' }, // K
+            // { name: 'left_matrix_text',  text: '12' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.83' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '21.9' }, // T
+            { name: 'matrix 1 str 1_M', text: '15.7' }, // M3
+            // не хватает схемы ПУСТ
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'HZ1', text: '37.3' }, // ШЗ
+            // { name: 'left_vugr_rect', color: '#00FF00' }, // 
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+
+            { name: 'verx', text: '-0' }, // цифры сверху
+            { name: 'tr_3_str_1_', text: '4' }, // 
+            { name: 'tr_2_str_2_', text: '4' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '121' }, // длина порции
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '3' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '0.13' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '0.1' }, // t
+            { name: 'pust_ramka_r', opacity: '1' }, // 
+            { name: 'r_pust', opacity: '1' }, // 
+            // { name: 'matrix 1 str 14_M', text: '47.7' }, // 
+            { name: 'HZ2', text: '38.0' }, // 
+            { name: 'prochent2', text: '14' }, // 
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '0' }, // красная палка справа
+            { name: 'arrow_right', opacity: '1' }, // зеленая стрелка справа
+
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '30' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '1453' }, // 
+
+            { name: 'B2_Dp bunker', text: '0.00' }, // 
+            { name: 'B2_P compens', text: '0.27' }, // 
+            { name: 'B2_time vygruski', text: '90' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '99' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '14.3' }, // 
+            { name: 'B2_vibratciya', text: '47' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '7' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '0.78' }, // 
+            { name: 'radar 1', text: '0.61' }, // 
+            { name: 'radar 2', text: '1.83' }, // 
+            { name: 'mexan', text: '1.97' }, // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '6' }, // 
+            { name: 'bg_vRabote', color: '#EADCC2' }, // в работе
+            { name: 'ismetir_ramki', color: '#EADCC2' }, // в работе
+
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '3' }, // 
+            { name: 'T3_nomerstr', text: '4' }, // 
+            { name: 'T2_nomerstr', text: '3' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'Р' }, // 
+            { name: 'T2_Tip_text', text: 'Р' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+
+            { name: 'B1_Tip', color: '#860004' }, // 
+            { name: 'B2_Tip', color: '#008600' }, // 
+            { name: 'T2_Tip', color: '#860004' }, // 
+            { name: 'T2_color', color: '#860004' }, // 
+            { name: 'T1_Tip', color: '#008600' }, // 
+
+            // { name: 'B1_ves', text: '16.4' }, // 
+            // { name: 'B2_ves', text: '93.0' }, // 
+            // { name: 'T3_ves', text: '93.0' }, // 
+            // { name: 'T2_ves', text: '93.0' }, // 
+            // { name: 'T1_ves', text: '19.9' }, // 
+
+
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#860004' }, // str 2 color
+            { name: 'K_str1', color: '#008600' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+            { name: 'str51_down', text: 'К' }, // str 51 color
+          ]
+        }
+      },
+      startTime: timeDiff + 351.11,
+    },
+
+
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 351.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '013.8',
+      },
+      startTime: timeDiff + 351.12,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 351.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0085',
+      },
+      startTime: timeDiff + 351.12,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '192.4',
+      },
+      startTime: timeDiff + 351.12,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.20',
+      },
+      startTime: timeDiff + 351.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '000.0',
+      },
+      startTime: timeDiff + 351.12,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '038.1',
+      },
+      startTime: timeDiff + 351.12,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '032.2',
+      },
+      startTime: timeDiff + 351.12,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0082',
+      },
+      startTime: timeDiff + 351.12,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.59',
+      },
+      startTime: timeDiff + 351.12,
+    },
 
     ////--------------------------------17---------------------------------------- 
     {
@@ -5811,6 +14806,152 @@ let tempActions = [
       },
       startTime: timeDiff + 354.1,
       human: true
+    },
+    // ilay bzu f
+    {
+      action: {
+        window2D: {
+          elements: [
+            // bzu
+            { name: 'ochistka sedel_P', text: '6.13' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '30' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+
+            { name: 'B1_dp Bunker', text: '0.22' },
+            { name: 'B1_P compes', text: '0.00' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP', text: '93.3' },
+            { name: 'B1_vibratciya', text: '7' },
+
+            { name: 'V linii P_B1', text: '202' }, // Б1
+            { name: 'V linii dP_B1', text: '226' },
+            { name: 'V sisteme vzveh_B1', text: '134' },
+
+            { name: 'V linii P_B2', text: '149' }, // Б2
+            { name: 'V linii dP_B2', text: '275' },
+            { name: 'V sisteme vzveh_B2', text: '169' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.22' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.23' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.23' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.23' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '150' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '130' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '142' },
+
+            { name: 'stanciia', text: '1' },
+            { name: 'ugol naklona_tekushiy', text: '14.2' },
+            { name: 'ugol naklona_zadanyi', text: '14.3' },
+            { name: 'gradusow ugol', text: '281.3' },
+
+
+            // { name: 'prochent1', text: '35' }, // %
+            // { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            // { name: 'zagr_ramka_l',  color: '#00FF00' }, // загр слева
+            // не хватает схемы 
+            // { name: 'left_ellipse',  opacity: '0' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.00' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '52.8' }, // T
+            { name: 'matrix 1 str 1_M', text: '27.3' }, // M3
+            // не хватает схемы ПУСТ
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'HZ1', text: '37.3' }, // ШЗ
+            { name: 'left_vugr_rect', color: '#00FF00' },
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+
+            { name: 'verx', text: '-01' }, // цифры сверху
+            { name: 'tr_3_str_1_', text: '4' }, // 
+            { name: 'tr_2_str_2_', text: '4' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '121' }, // длина порции
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '3' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '0.19' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '-0.0' }, // t
+            { name: 'pust_ramka_r', opacity: '1' }, // 
+            { name: 'r_pust', opacity: '1' }, // 
+            { name: 'matrix 1 str 14_M', text: '0.5' }, //  меленькое окошко после 14_T
+            { name: 'HZ2', text: '25.1' }, // 
+            { name: 'prochent2', text: '12' }, // 
+            { name: 'right_rect_yellow_arrow', opacity: '1' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '0' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '30' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '1453' }, // 
+
+            { name: 'B2_Dp bunker', text: '-0.00' }, // 
+            { name: 'B2_P compens', text: '0.27' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '99' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.3' }, // 
+            { name: 'B2_vibratciya', text: '47' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '0.75' }, // 
+            { name: 'radar 1', text: '0.61' }, // 
+            { name: 'radar 2', text: '1.05' }, // 
+            { name: 'mexan', text: '-1.67' }, // 
+            { name: 'do zapuska mexan min', text: '1' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'bg_vRabote', color: '#EADCC2' }, // в работе
+            { name: 'ismetir_ramki', color: '#EADCC2' }, // в работе
+
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '3' }, // 
+            { name: 'T3_nomerstr', text: '4' }, // 
+            { name: 'T2_nomerstr', text: '4' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'Р' }, // 
+            { name: 'T2_Tip_text', text: 'Р' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+
+            { name: 'B1_Tip', color: '#860004' }, // 
+            { name: 'B2_Tip', color: '#008600' }, // 
+            { name: 'T2_Tip', color: '#860004' }, // 
+            { name: 'T2_color', color: '#860004' }, // 
+            { name: 'T1_Tip', color: '#008600' }, // 
+
+            // { name: 'B1_ves', text: '16.4' }, // 
+            // { name: 'B2_ves', text: '93.0' }, // 
+            // { name: 'T3_ves', text: '93.0' }, // 
+            // { name: 'T2_ves', text: '93.0' }, // 
+            // { name: 'T1_ves', text: '19.9' }, // 
+
+
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#860004' }, // str 2 color
+            { name: 'K_str1', color: '#008600' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+            { name: 'str51_down', text: 'К' }, // str 51 color
+          ]
+        }
+      },
+      startTime: timeDiff + 354.11,
     },
     ////--------------------------------18---------------------------------------- 
     {
@@ -5846,6 +14987,241 @@ let tempActions = [
       ],
       startTime: timeDiff + 357,
       human: true,
+    },
+    // ilay
+    {
+      action: {
+        target3D: 'Lamp_Red_007',
+        material: 'Red_Lamp_Off',
+      },
+      startTime: timeDiff + 357.01,
+    }, {
+      action: {
+        target3D: 'Lamp_Red_006',
+        material: 'Red_Lamp_Off',
+      },
+      startTime: timeDiff + 357.01,
+    }, {
+      action: {
+        target3D: 'Lamp_Red_005',
+        material: 'Red_Lamp_Off',
+      },
+      startTime: timeDiff + 357.01,
+    },
+
+    {
+      action: {
+        target3D: 'Lamp_Green_007',
+        material: 'Green_Lamp_On',
+      },
+      startTime: timeDiff + 357.01,
+    }, {
+      action: {
+        target3D: 'Lamp_Green_006',
+        material: 'Green_Lamp_On',
+      },
+      startTime: timeDiff + 357.01,
+    }, {
+      action: {
+        target3D: 'Lamp_Green_005',
+        material: 'Green_Lamp_On',
+      },
+      startTime: timeDiff + 357.01,
+    },
+
+
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0.133',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0.037',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.564',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.468',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '2779.',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.738',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '00.67',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '01.14',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0114.',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0156.',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0174.',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0148.',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '0696',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '0039',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1194',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1',
+        color: 'green',
+        number: '1020',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT2',
+        color: 'green',
+        number: '1020',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '0484',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd',
+        color: 'green',
+        number: '0409',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2310',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'tReduct',
+        color: 'green',
+        number: '0455',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '2435',
+      },
+      startTime: timeDiff + 357.01,
+    },
+    {
+      action: {
+        target3D: 'fPrirodGaz',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 357.01,
     },
     ////--------------------------------19---------------------------------------- 
     {
@@ -5886,6 +15262,105 @@ let tempActions = [
       audio: 'tts-30',
       startTime: timeDiff + 363.2,
     },
+    // ilay  
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '0481',
+      },
+      startTime: timeDiff + 363.21,
+    },
+
+
+
+    {
+      action: {
+        target3D: 'Rectangle111',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 363.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 363.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle097',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 363.22,
+    },
+    {
+      action: {
+        target3D: 'Rectangle102',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 363.22,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '083.2',
+      },
+      startTime: timeDiff + 363.22,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '168.7',
+      },
+      startTime: timeDiff + 363.22,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 363.22,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '00.13',
+      },
+      startTime: timeDiff + 363.22,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '014.4',
+      },
+      startTime: timeDiff + 363.22,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0096',
+      },
+      startTime: timeDiff + 363.22,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.69',
+      },
+      startTime: timeDiff + 363.22,
+    },
+
+
+
 
     ////--------------------------------20---------------------------------------- 
     { // 3D
@@ -5913,6 +15388,279 @@ let tempActions = [
         material: 'DonorLamp_off',
       },
       startTime: timeDiff + 375,
+    },
+    // ilay
+    {
+      action: {
+        window2D: {
+          elements: [
+            // dp
+            // { name: 'radar1_text', text: '1.21' },
+            { name: 'radar2_text', text: '1.11' },
+            { name: 'radar3_text', text: '0.66' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+
+            { name: 'EKZ_H1', text: '100' },
+            { name: 'EKZ_H2', text: '100' },
+            { name: 'EKZ_H3', text: '100' },
+            { name: 'AKZ_100', opacity: 1 },
+            { name: 'AKZ_45-100', opacity: 1 },
+            { name: 'AKZ_45', opacity: 1 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '54481' },
+            { name: 'EVD1_O', text: '11198' },
+            { name: 'EVS_DP7_F', text: '7193' },
+            { name: 'EVD1_F', text: '314218' },
+            { name: 'EVD_F', text: '313401' },
+            { name: 'P_1', text: '0.76' },
+            { name: 'F_evd', text: '5174' },
+            { name: 'F_hol_dyt', text: '1817' },
+            { name: 'T_hol_dyt', text: '62' },
+            { name: 'O_hol_dyt', text: '24.6' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.3' },
+            { name: 'FO2_hol_dyt', text: '1235' },
+
+            { name: 'N2', text: '59.3' },
+            { name: 'CO', text: '19.5' },
+            { name: 'CO2', text: '19.9' },
+            { name: 'H2_tryb', text: '0.8' },
+            { name: 'Nco_tryb', text: '50.6' },
+            { name: 'Q_domG_tryb', text: '626' },
+            { name: 'P_vozd_tryb', text: '0' },
+            { name: 'P_gaza_tryb', text: '16' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_step_isp', text: '67.1', opacity: '1' },
+            { name: 'HCO_step_isp', text: '51.5' },
+            { name: 'Tkyp_3', text: '1239' },
+            { name: 'Tkyp_2', text: '1201' },
+            { name: 'Tkyp_1', text: '1192' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '132' },
+            { name: 'Tdym_2', text: '186' },
+            { name: 'Tdym_1', text: '278' },
+            { name: 'P_Os_szat_voz', text: '8.36' },
+            { name: 'T_Os_szat_voz', text: '31' },
+
+            { name: 'Temp_peref_1', text: '78' },
+            { name: 'Temp_peref_2', text: '71' },
+            { name: 'Temp_peref_3', text: '76' },
+            { name: 'Temp_peref_4', text: '72' },
+            { name: 'Temp_peref_5', text: '72' },
+            { name: 'Temp_peref_6', text: '74' },
+            { name: 'Temp_peref_7', text: '73' },
+            { name: 'Temp_peref_8', text: '70' },
+            { name: 'Temp_peref_9', text: '73' },
+            { name: 'Temp_peref_10', text: '60' },
+            { name: 'Temp_peref_11', text: '63' },
+            { name: 'Temp_peref_12', text: '69' },
+            { name: 'Temp_peref_13', text: '101' },
+            { name: 'Temp_peref_14', text: '78' },
+            { name: 'Temp_peref_15', text: '87' },
+            { name: 'Temp_peref_16', text: '80' },
+            { name: 'T1', text: '143' },
+            { name: 'T2', text: '126' },
+            { name: 'T3', text: '143' },
+            { name: 'T4', text: '121' },
+            { name: 'P_2', text: '0.72' },
+            { name: 't_gor_dut', text: '1194' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '10' },
+            { name: 'P_pg_prir_gaz', text: '8,61' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '0' },
+            { name: 'F_obsh_pyt', text: '0' },
+            { name: 'F_tek_pyt', text: '0.0' },
+            { name: 'P_vbls', text: '0.08' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.06' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '0.62' },
+            { name: 'dP_obsh_trybarect', color: '#ffff0f' },
+            { name: 'dP_nish_tryba', text: '0.56' },
+            { name: 'dP_nish_rect', color: '#ffff0f' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2528' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1449', opacity: '1' },
+            { name: 'L2_elem', color: '#ffff0f' },
+            { name: 'L3', text: '1436', opacity: '1' },
+            { name: 'L3_elem', color: '#ffffff' },
+
+
+
+            { name: 'P_tryba_1_590', text: '0.10' },
+            { name: 'P_tryba_1_591', text: '0.10' },
+            { name: 'P_tryba_1_592', text: '0.10' },
+            { name: 'P_tryba_1_593', text: '0.10' },
+            { name: 'P_tryba_2_1', text: '0.13' },
+            { name: 'P_tryba_2_2', text: '0.13' },
+            { name: 'P_tryba_2_3', text: '0.13' },
+            { name: 'P_tryba_2_4', text: '0.13' },
+            { name: 'P_tryba_3_590', text: '0.16' },
+            { name: 'P_tryba_3_591', text: '0.16' },
+            { name: 'P_tryba_4_1', text: '2.79' },
+            { name: 'P_tryba_4_2', text: '2.08' },
+            { name: 'P_tryba_4_3', text: '2.90' },
+            { name: 'P_tryba_4_4', text: '2.10' },
+
+            { name: 'P_tryba_5_1', text: '0.80' },
+            { name: 'P_tryba_5_2', text: '1.50' },
+            { name: 'P_tryba_5_3', text: '1.86' },
+            { name: 'P_tryba_5_4', text: '2.70' },
+            { name: 'V_dyt', text: '181.4' },
+            { name: 'fyrm_v_rab', text: '0' },
+
+            { name: 'ydel_tep_18', text: '28.2' },
+            { name: 'ydel_tep_17', text: '45.0' },
+            { name: 'ydel_tep_16', text: '30.7' },
+            { name: 'ydel_tep_15', text: '40.9' },
+            { name: 'ydel_tep_12_14', text: '75.4' },
+            { name: 'ydel_tep_10_11', text: '29.3' },
+            { name: 'ydel_tep_9', text: '29.7' },
+            { name: 'ydel_tep_8', text: '29.5' },
+            { name: 'ydel_tep_7', text: '35.4' },
+
+            // bzu++
+            { name: 'ochistka sedel_P', text: '6.15' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '30' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+
+            { name: 'B1_dp Bunker', text: '0.09' },
+            { name: 'B1_P compes', text: '0.00' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP', text: '93.3' },
+            { name: 'B1_vibratciya', text: '3' },
+
+            { name: 'V linii P_B1', text: '204' }, // Б1
+            { name: 'V linii dP_B1', text: '229' },
+            { name: 'V sisteme vzveh_B1', text: '193' },
+
+            { name: 'V linii P_B2', text: '151' }, // Б2
+            { name: 'V linii dP_B2', text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '167' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.08' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.09' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.09' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.09' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '150' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '130' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+
+            { name: 'stanciia', text: '1' },
+            { name: 'ugol naklona_tekushiy', text: '14.3' },
+            { name: 'ugol naklona_zadanyi', text: '14.3' },
+            { name: 'gradusow ugol', text: '122.3' },
+
+
+            { name: 'prochent1', text: '0' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#00FF00' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', opacity: '1' },
+            { name: 'left_ellipse', opacity: '1', color: "#ff1e00" }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.00' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '91.6' }, // T
+            { name: 'matrix 1 str 1_M', text: '46.8' }, // M3
+            // не хватает схемы ПУСТ
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.4' }, // ШЗ
+            { name: 'left_vugr_rect', color: '#00FF00' },
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+
+
+          ]
+        }
+      },
+      startTime: timeDiff + 375.01,
+    },
+
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 375.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle109',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 375.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '092.2',
+      },
+      startTime: timeDiff + 375.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '325.7',
+      },
+      startTime: timeDiff + 375.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '000.1',
+      },
+      startTime: timeDiff + 375.02,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.71',
+      },
+      startTime: timeDiff + 375.02,
     },
     ////--------------------------------21---------------------------------------- 
     { // 3D
@@ -5946,6 +15694,189 @@ let tempActions = [
       },
       startTime: timeDiff + 389.15,
     },
+    // ilay bzu f new
+    {
+      action: {
+        window2D: {
+          elements: [
+
+            // bzu++
+            { name: 'ochistka sedel_P', text: '6.16' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '30' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+
+            { name: 'B1_dp Bunker', text: '0.10' },
+            { name: 'B1_P compes', text: '0.00' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '104' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP', text: '93.0' },
+            { name: 'B1_vibratciya', text: '2' },
+
+            { name: 'V linii P_B1', text: '204' }, // Б1
+            { name: 'V linii dP_B1', text: '229' },
+            { name: 'V sisteme vzveh_B1', text: '193' },
+
+            { name: 'V linii P_B2', text: '149' }, // Б2
+            { name: 'V linii dP_B2', text: '274' },
+            { name: 'V sisteme vzveh_B2', text: '167' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.09' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.10' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.10' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.10' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '130' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+
+            { name: 'stanciia', text: '1' },
+            { name: 'ugol naklona_tekushiy', text: '14.2' },
+            { name: 'ugol naklona_zadanyi', text: '14.3' },
+            { name: 'gradusow ugol', text: '251.2' },
+
+
+            { name: 'prochent1', text: '0' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#E6E6E6' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', opacity: '1' },
+            { name: 'left_ellipse', opacity: '1', color: "#ff1e00" }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.00' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '91.1' }, // T
+            { name: 'matrix 1 str 1_M', text: '47.7' }, // M3
+            // не хватает схемы ПУСТ
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.3' }, // ШЗ
+            { name: 'left_vugr_rect', color: '#00FF00' },
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+
+            { name: 'verx', text: '72' }, // цифры сверху
+            { name: 'tr_3_str_1_', text: '4' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' }, //  
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+            { name: 'zagr_ramka_r', color: '#00FF00' }, // загр справа
+            { name: 'right_matrix_text', text: '3' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '0.00' }, // 
+            { name: 'matrix 1 str 14_T', text: '0.1' }, // 
+            { name: 'pust_ramka_r', opacity: '1' }, // 
+            { name: 'r_pust', opacity: '1' }, // 
+            { name: 'matrix 1 str 14_M', text: '47.7' }, // 
+            { name: 'HZ2', text: '1.4' }, // 
+            { name: 'prochent2', text: '0.3' }, //%  справа выше хз2
+            // { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '3.96' }, // 
+            // { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '29' }, // 
+            // { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+
+            { name: 'B2_Dp bunker', text: '0.10' }, // 
+            { name: 'B2_P compens', text: '1.11' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '99' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.3' }, // 
+            { name: 'B2_vibratciya', text: '56' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            // { name: 'zaprosi_shp_stroka', text: '1' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '0.62' }, // 
+            { name: 'radar 1', text: '0.72' }, // 
+            { name: 'radar 2', text: '1.11' }, // 
+            { name: 'mexan', text: '0.63' }, // 
+            { name: 'do zapuska mexan min', text: '1' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'bg_vRabote', color: '#008600' }, // в работе
+
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '3' }, // 
+            { name: 'T3_nomerstr', text: '4' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'Р' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+
+            { name: 'B1_Tip', color: '#860004' }, // 
+            { name: 'B2_Tip', color: '#008600' }, // 
+            { name: 'T2_Tip', color: '#860004' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip', color: '#008600' }, // 
+
+            { name: 'B1_ves', text: '82.8' }, // 
+            { name: 'B2_ves', text: '18.3' }, // 
+            { name: 'T3_ves', text: '83.0' }, // 
+            { name: 'T2_ves', text: '18.4' }, // 
+            { name: 'T1_ves', text: '18.4' }, // 
+
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#008600' }, // str 2 color
+            { name: 'K_str1', color: '#008600' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+            { name: 'str51_down', text: 'К' }, // str 51 color
+
+          ]
+        }
+      },
+      startTime: timeDiff + 389.16,
+    },
+    {
+      action: {
+        target3D: 'Rectangle085',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 389.17,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '093.0',
+      },
+      startTime: timeDiff + 389.17,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '045.8',
+      },
+      startTime: timeDiff + 389.17,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '000.2',
+      },
+      startTime: timeDiff + 389.17,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.76',
+      },
+      startTime: timeDiff + 389.17,
+    },
+
     ////--------------------------------22---------------------------------------- 
     {
       scenarioText: 'Сообщить по телефону в "Кислородный цех".',
@@ -5972,6 +15903,624 @@ let tempActions = [
       audio: 'tts-vo29',
       startTime: timeDiff + 396,
     },
+    // ilay
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0.090',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0.072',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.604',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.472',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '2877.',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.697',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '00.70',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '01.12',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0170.',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0147.',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0169.',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0143.',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '0684',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '0039',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1194',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1',
+        color: 'green',
+        number: '1022',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT2',
+        color: 'green',
+        number: '1022',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '0481',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd',
+        color: 'green',
+        number: '0410',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2373',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'tReduct',
+        color: 'green',
+        number: '0453',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '24.74',
+      },
+      startTime: timeDiff + 396.01,
+    },
+    {
+      action: {
+        target3D: 'fPrirodGaz',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 396.01,
+    },
+
+
+    {
+      action: {
+        target3D: 'Rectangle111',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle109',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle113',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle112',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle071',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle072',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle070',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle069',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle068',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle066',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle067',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle065',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle086',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle087',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle088',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle089',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle090',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle091',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle097',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle098',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle099',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle100',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle101',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle102',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle103',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle104',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle105',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle106',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle107',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle092',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle093',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle094',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle095',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle096',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle085',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle058',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle057',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle059',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle060',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle075',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle074',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle073',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle049',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    }, {
+      action: {
+        target3D: 'Rectangle051',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 396.02,
+    }, {
+      action: {
+        target3D: 'Rectangle048',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    }, {
+      action: {
+        target3D: 'Rectangle050',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.11',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '093.0',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0085',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '276.4',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '000.2',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '00.13',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '037.0',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0096',
+      },
+      startTime: timeDiff + 396.02,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.76',
+      },
+      startTime: timeDiff + 396.02,
+    },
+
     ////--------------------------------23----------------------------------------   // Газовщик проворачивал клапан 6 раз с интервалом.
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0,5кг.',
@@ -6027,6 +16576,273 @@ let tempActions = [
       },
       startTime: timeDiff + 401.6,
     },
+    // ilay
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0.071',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0.052',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.460',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.362',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '1736.',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.526',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '00.95',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '01.40',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0160.',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0136.',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0159.',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0134.',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '07.11',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '00.39',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1191.',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1',
+        color: 'green',
+        number: '10.12',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT2',
+        color: 'green',
+        number: '10.12',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '04.83',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd',
+        color: 'green',
+        number: '04.11',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2.380',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'tReduct',
+        color: 'green',
+        number: '045.1',
+      },
+      startTime: timeDiff + 401.61,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '24.73',
+      },
+      startTime: timeDiff + 401.61,
+    },
+
+    {
+      action: {
+        target3D: 'Rectangle110',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 401.62,
+    },
+    {
+      action: {
+        target3D: 'Rectangle104',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 401.62,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.08',
+      },
+      startTime: timeDiff + 401.62,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '238.9',
+      },
+      startTime: timeDiff + 401.62,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.07',
+      },
+      startTime: timeDiff + 401.62,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '016.2',
+      },
+      startTime: timeDiff + 401.62,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '047.0',
+      },
+      startTime: timeDiff + 401.62,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.93',
+      },
+      startTime: timeDiff + 401.62,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            // bzu short
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+
+            { name: 'B1_Tip', color: '#860004' }, // 
+            { name: 'B2_Tip', color: '#008600' }, // 
+            { name: 'T2_Tip', color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip', color: '#008600' }, // 
+
+            { name: 'P_str2', color: '#008600' }, // str 2 color
+            { name: 'K_str1', color: '#860004' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+
+          ]
+        }
+      },
+      startTime: timeDiff + 401.63,
+    },
     ////--------------------------------24---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
@@ -6054,6 +16870,255 @@ let tempActions = [
       },
       startTime: timeDiff + 406,
     },
+    // ilay
+
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '068.5',
+      },
+      startTime: timeDiff + 406.02,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.08',
+      },
+      startTime: timeDiff + 406.02,
+    },
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0.070',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0.049',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.445',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.350',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '1800.',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.510',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0159.',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0135.',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0158.',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '00.38',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT2',
+        color: 'green',
+        number: '10.13',
+      },
+      startTime: timeDiff + 406.03,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2.383',
+      },
+      startTime: timeDiff + 406.03,
+    },
+
+    {
+      action: {
+        target3D: 'Rectangle071',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle068',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle066',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle067',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle065',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle047',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle045',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle044',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle097',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle104',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle075',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle074',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle073',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle082',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle081',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle080',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 406.04,
+    },
+    {
+      action: {
+        target3D: 'Rectangle079',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 406.04,
+    },
 
     ////--------------------------------25---------------------------------------- 
     { // 3D
@@ -6066,18 +17131,27 @@ let tempActions = [
       text: 'На ПУ БЗУ нажать на кнопку «Автоматич. СТОП»',
       sender: 'Система',
       action: {
-        target3D: 'Rectangle071',
+        target3D: 'Rectangle072',
       },
       startTime: timeDiff + 409,
       human: true,
     },
     {
       action: {
-        target3D: 'Rectangle071',
+        target3D: 'Rectangle072',
         material: 'Unic_Botton_On',
       },
       startTime: timeDiff + 410,
     },
+    // ilay
+    {
+      action: {
+        target3D: 'Rectangle071',
+        material: 'Unic_Botton_Off',
+      },
+      startTime: timeDiff + 410.01,
+    },
+
     {
       text: 'На ПУ БЗУ нажать на кнопку «ЗАКРЫТ» «Клапан вторичного выравнивания» слева',
       sender: 'Система',
@@ -6217,6 +17291,7 @@ let tempActions = [
       startTime: timeDiff + 417.1,
       human: true,
     },
+
     {
       action: {
         target3D: 'Rectangle069',
@@ -6337,6 +17412,90 @@ let tempActions = [
         material: 'Unic_Botton_On',
       },
       startTime: timeDiff + 424,
+    },// ilay
+
+    {
+      action: {
+        target3D: 'Rectangle071',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 424.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle072',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 424.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle070',
+        material: 'ButtonLightOn',
+      },
+      startTime: timeDiff + 424.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle069',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 424.02,
+    },
+    {
+      action: {
+        target3D: 'Rectangle066',
+        material: 'ButtonLightOff',
+      },
+      startTime: timeDiff + 424.02,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.03',
+      },
+      startTime: timeDiff + 424.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '093.1',
+      },
+      startTime: timeDiff + 424.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '170.4',
+      },
+      startTime: timeDiff + 424.02,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.16',
+      },
+      startTime: timeDiff + 424.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '016.6',
+      },
+      startTime: timeDiff + 424.02,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '00.98',
+      },
+      startTime: timeDiff + 424.02,
     },
 
 
@@ -6372,6 +17531,201 @@ let tempActions = [
       },
       startTime: timeDiff + 433,
     },
+    // ilay
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0.068',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0.046',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.419',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.331',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '1893.',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.482',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '01.00',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '01.42',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0156.',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0133.',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0156.',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0132.',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '06.92',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '00.39',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1191.',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1',
+        color: 'green',
+        number: '10.12',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT2',
+        color: 'green',
+        number: '10.12',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '04.83',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd',
+        color: 'green',
+        number: '04.11',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2.387',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'tReduct',
+        color: 'green',
+        number: '045.1',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '24.74',
+      },
+      startTime: timeDiff + 433.02,
+    },
+    {
+      action: {
+        target3D: 'fPrirodGaz',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 433.02,
+    },
+
     //--------------------------------27----------------------------------------  // Газовщик проворачивал клапан 6 раз с интервалом.
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0,3кг.',
@@ -6474,9 +17828,9 @@ let tempActions = [
             { name: 'VNK3_status_1', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_1', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_1', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1', color: '#43A3EF' },
-            { name: 'VNK2_status_1', color: '#ada3b0' },
-            { name: 'VNK1_status_1', color: '#ada3b0' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK1_status_1_fon', color: '#ada3b0' },
 
             { name: 'VNK3_status_2', text: 'Цикл' },
             { name: 'VNK2_status_2', text: 'Цикл' },
@@ -6505,6 +17859,202 @@ let tempActions = [
       },
       startTime: timeDiff + 438.1,
     },
+    // ilay
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0.058',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0.028',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.287',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.229',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '0857.',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.339',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '01.17',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '01.47',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0146.',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0126.',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0146.',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0125.',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '06.89',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '00.38',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1190.',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1',
+        color: 'green',
+        number: '10.11',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT2',
+        color: 'green',
+        number: '10.11',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '04.83',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd',
+        color: 'green',
+        number: '04.11',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2.410',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'tReduct',
+        color: 'green',
+        number: '045.0',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '24.74',
+      },
+      startTime: timeDiff + 438.12,
+    },
+    {
+      action: {
+        target3D: 'fPrirodGaz',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 438.12,
+    },
+
+
     {
       text: 'Смесительный клапан 002 закрывается.',
       audio: 'tts-32',
@@ -6543,7 +18093,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 440,
+      startTime: timeDiff + 442,
     }, {
       action: {
         window2D: {
@@ -6555,7 +18105,447 @@ let tempActions = [
         }
       },
       startTime: timeDiff + 443,
+    },// ilay bzu FF
+    {
+      action: {
+        window2D: {
+          elements: [
+            // bzu
+            { name: 'ochistka sedel_P', text: '6.23' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '30' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+
+            { name: 'B1_dp Bunker', text: '0.06' },
+            { name: 'B1_P compes', text: '0.00' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP', text: '93.0' },
+            { name: 'B1_vibratciya', text: '2' },
+
+            { name: 'V linii P_B1', text: '202' }, // Б1
+            { name: 'V linii dP_B1', text: '229' },
+            { name: 'V sisteme vzveh_B1', text: '193' },
+
+            { name: 'V linii P_B2', text: '150' }, // Б2
+            { name: 'V linii dP_B2', text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '168' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.05' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.07' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.06' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.07' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '130' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+
+            { name: 'stanciia', text: '8' },
+            { name: 'ugol naklona_tekushiy', text: '46.7' },
+            { name: 'ugol naklona_zadanyi', text: '46.7' },
+
+            { name: 'gradusow ugol', text: '145.1' },
+
+
+            { name: 'prochent1', text: '0' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#00FF00' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', text: 'Р', opacity: '1' },
+            { name: 'left_ellipse', opacity: '1' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.00' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '93.0' }, // T
+            { name: 'matrix 1 str 1_M', text: '47.7' }, // M3
+            // не хватает схемы ПУСТ
+
+
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.4' }, // ШЗ слева
+            { name: 'left_vugr_rect', color: '#00FF00' }, //  Выгр зеленые зеленые рамки
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            { name: 'btn_Pause_border', color: '#00FF00' }, // пауза по центру
+
+            // { name: 'leviy', color: '#860004' }, // палка от цифр слева
+            { name: 'verx', text: '-0' }, // цифры сверху
+            // { name: 'praviy', color: '#860004' }, // палка от цифр справа
+
+            { name: 'tr_3_str_1_', text: '5' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            { name: 'tekushiy rezym_A', color: '#CEC7B5' }, // текущий режим А задник
+            { name: 'tek rejim_A', color: '#B7B2AE' }, // текущий режим А задник
+
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '0.00' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '13.3' }, // t
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            // { name: 'matrix 1 str 14_M', text: '47.7' }, // 
+            { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            { name: 'prochent2', text: '2' }, // % справа
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '31' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+
+            { name: 'B2_Dp bunker', text: '0.06' }, // 
+            { name: 'B2_P compens', text: '0.05' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '81' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.4' }, // 
+            { name: 'B2_vibratciya', text: '47' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '1.07' }, // 
+            { name: 'radar 1', text: '1.18' }, // 
+            { name: 'radar 2', text: '1.46' }, // 
+            { name: 'mexan', text: '1.04' }, // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'bg_vRabote', color: '#2B2A29' }, // в работе
+            { name: 'ismetir_ramki', color: '#00FF00' }, // в работе
+
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '5' }, // 
+            { name: 'T3_nomerstr', text: '5' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+
+            { name: 'B1_Tip', color: '#860004' }, // 
+            { name: 'B2_Tip', color: '#008600' }, // 
+            { name: 'T2_Tip', color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip', color: '#008600' }, // 
+
+            { name: 'B1_ves', text: '93.0' }, // 
+            { name: 'B2_ves', text: '13.3' }, // 
+            { name: 'T3_ves', text: '16.4' }, // 
+            { name: 'T2_ves', text: '16.4' }, // 
+            { name: 'T1_ves', text: '16.4' }, // 
+
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#CEC7B5' }, // str 2 color
+            { name: 'K_str1', color: '#860004' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+            { name: 'na_conveer_s1_bukca', text: 'Р', opacity: '0' }, // str 2 
+            { name: 'str1_down', text: 'Р' }, // str 2 
+            { name: 'str51_down', text: 'К' }, // str 51 
+
+            { name: 'str2_P_1', text: '0' }, // str 2-11 t
+            { name: 'str2_P_2', text: '0' }, // str 2-10 t
+            { name: 'str2_P_3', text: '0' }, // str 2-9 t
+            { name: 'str2_P_4', text: '13' }, // str 2-8 t
+            { name: 'str2_P_5', text: '13' }, // str 2-7 t
+            { name: 'str2_P_6', text: '13' }, // str 2-6 t
+            { name: 'str2_P_7', text: '11' }, // str 2-5 t
+            { name: 'str2_P_8', text: '10' }, // str 2-4 t
+            { name: 'str2_P_9', text: '10' }, // str 2-3 t
+            { name: 'str2_P_10', text: '9' }, // str 2-2 t
+            { name: 'str2_P_11', text: '21' }, // str 2-1 t
+            { name: 'str2_P_12', text: '16.2' }, // str 2-ves t
+
+            { name: 'Str1_8', color: '#008600' }, // str 1-8 r
+            { name: 'Str1_4', color: '#C7B295' }, // str 1-4 r
+            { name: 'str1_K_1', text: '0' }, // str 1-11 t
+            { name: 'str1_K_2', text: '0' }, // str 1-10 t
+            { name: 'str1_K_3', text: '0' }, // str 1-9 t
+            { name: 'str1_K_4', text: '22' }, // str 1-8 t
+            { name: 'str1_K_5', text: '21' }, // str 1-7 t
+            { name: 'str1_K_6', text: '19' }, // str 1-6 t
+            { name: 'str1_K_7', text: '15' }, // str 1-5 t
+            { name: 'str1_K_8', text: '13' }, // str 1-4 t
+            { name: 'str1_K_9', text: '10' }, // str 1-3 t
+            { name: 'str1_K_10', text: '0' }, // str 1-2 t
+            { name: 'str1_K_11', text: '0' }, // str 1-1 t
+            { name: 'str1_K_12', text: '93.0' }, // str 1-ves t
+
+            { name: 'str51_SM_1', text: '0' }, // str 51-11 t
+            { name: 'str51_SM_2', text: '0' }, // str 51-10 t
+            { name: 'str51_SM_3', text: '0' }, // str 51-9 t
+            { name: 'str51_SM_4', text: '0' }, // str 51-8 t
+            { name: 'str51_SM_5', text: '0' }, // str 51-7 t
+            { name: 'str51_SM_6', text: '0' }, // str 51-6 t
+            { name: 'str51_SM_7', text: '0  0' }, // str 51-5-4 t
+            { name: 'str51_SM_8', text: '0' }, // str 51-3 t
+            { name: 'str51_SM_9', text: '0' }, // str 51-2 t
+            { name: 'str51_SM_10', text: '100' }, // str 51-1 t
+            { name: 'str51_SM_11', text: '15.0' }, // str 51-ves t
+          ]
+        }
+      },
+      startTime: timeDiff + 443.01,
     },
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0.058',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0.028',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.287',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.229',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '0848.',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.339',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '01.17',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '01.47',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0146.',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0126.',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0146.',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0125.',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '06.88',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '00.38',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1190.',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1',
+        color: 'green',
+        number: '10.11',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT2',
+        color: 'green',
+        number: '10.11',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '04.83',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd',
+        color: 'green',
+        number: '04.11',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2.410',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'tReduct',
+        color: 'green',
+        number: '045.0',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '24.74',
+      },
+      startTime: timeDiff + 443.02,
+    },
+
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '093.0',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '008.7',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '013.3',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '046.9',
+      },
+      startTime: timeDiff + 443.02,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.16',
+      },
+      startTime: timeDiff + 443.02,
+    },
+
     ////--------------------------------28---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
@@ -6615,6 +18605,7 @@ let tempActions = [
       audio: 'tts-vo36',
       startTime: timeDiff + 458,
     },
+    // ilay ничего 
     ////--------------------------------29---------------------------------------- 
     {
       text: 'Отсечной клапан закрывыается.',
@@ -6674,6 +18665,181 @@ let tempActions = [
       audio: 'tts-33',
       startTime: timeDiff + 474,
     },
+    // ilay dp fF
+    {
+      action: {
+        window2D: {
+          elements: [
+            // dp
+            { name: 'radar1_text', text: '1.21' },
+            { name: 'radar2_text', text: '1.48' },
+            { name: 'radar3_text', text: '1.11' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+
+            { name: 'EKZ_H1', text: '100' },
+            { name: 'EKZ_H2', text: '100' },
+            { name: 'EKZ_H3', text: '100' },
+            { name: 'AKZ_100', opacity: 1 },
+            { name: 'AKZ_45-100', opacity: 1 },
+            { name: 'AKZ_45', opacity: 1 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '52861' },
+            { name: 'EVD1_O', text: '4504' },
+            { name: 'EVS_DP7_F', text: '7192' },
+            { name: 'EVD1_F', text: '311954' },
+            { name: 'EVD_F', text: '313904' },
+            { name: 'P_1', text: '0.34' },
+            { name: 'F_evd', text: '5222' },
+            { name: 'F_hol_dyt', text: '606' },
+            { name: 'T_hol_dyt', text: '57' },
+            { name: 'O_hol_dyt', text: '22.5' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.6' },
+            { name: 'FO2_hol_dyt', text: '1146' },
+
+            { name: 'N2', text: '53.7' },
+            { name: 'CO', text: '22.3' },
+            { name: 'CO2', text: '22.8' },
+            { name: 'H2_tryb', text: '0.8' },
+            { name: 'Nco_tryb', text: '50.6' },
+            { name: 'Q_domG_tryb', text: '715' },
+            { name: 'P_vozd_tryb', text: '0' },
+            { name: 'P_gaza_tryb', text: '12' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_snotr', text: '89' },
+            { name: 'H_progres_7', opacity: '1' },
+            { name: 'H_progres_19', opacity: '1' },
+            { name: 'H_progres_22', opacity: '1' },
+            { name: 'H_progres_33', opacity: '1' },
+            { name: 'H_progres_49', opacity: '1' },
+            { name: 'H_progres_56', opacity: '1' },
+            { name: 'H_progres_60', opacity: '1' },
+            { name: 'H_progres_67', opacity: '1' },
+            { name: 'H_progres_89', opacity: '1' },
+            { name: 'H_progres_100', opacity: '0' },
+
+            { name: 'H_step_isp', text: '57.8', opacity: '1' },
+            { name: 'HCO_step_isp', text: '50.9' },
+            { name: 'Tkyp_3', text: '1234' },
+            { name: 'Tkyp_2', text: '1195' },
+            { name: 'Tkyp_1', text: '1187' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '133' },
+            { name: 'Tdym_2', text: '185' },
+            { name: 'Tdym_1', text: '275' },
+            { name: 'P_Os_szat_voz', text: '8.36' },
+            { name: 'T_Os_szat_voz', text: '31' },
+
+            { name: 'Temp_peref_1', text: '75' },
+            { name: 'Temp_peref_2', text: '69' },
+            { name: 'Temp_peref_3', text: '74' },
+            { name: 'Temp_peref_4', text: '70' },
+            { name: 'Temp_peref_5', text: '71' },
+            { name: 'Temp_peref_6', text: '72' },
+            { name: 'Temp_peref_7', text: '71' },
+            { name: 'Temp_peref_8', text: '68' },
+            { name: 'Temp_peref_9', text: '72' },
+            { name: 'Temp_peref_10', text: '59' },
+            { name: 'Temp_peref_11', text: '63' },
+            { name: 'Temp_peref_12', text: '68' },
+            { name: 'Temp_peref_13', text: '101' },
+            { name: 'Temp_peref_14', text: '76' },
+            { name: 'Temp_peref_15', text: '85' },
+            { name: 'Temp_peref_16', text: '78' },
+            { name: 'T1', text: '118' },
+            { name: 'T2', text: '101' },
+            { name: 'T3', text: '119' },
+            { name: 'T4', text: '101' },
+            { name: 'P_2', text: '0.33' },
+            { name: 't_gor_dut', text: '1189' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '10' },
+            { name: 'P_pg_prir_gaz', text: '8,60' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '0' },
+
+            { name: 'F_tryba', text: '0' },
+            { name: 'F_obsh_pyt', text: '0.00' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.05' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.03' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '0.27' },
+            { name: 'dP_obsh_trybarect', color: '#ffff0f' },
+            { name: 'dP_nish_tryba', text: '0.24' },
+            { name: 'dP_nish_rect', color: '#ffff0f' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2443' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1441', opacity: '1' },
+            { name: 'L2_elem', color: '#ffff0f' },
+            { name: 'L3', text: '1483', opacity: '1' },
+            { name: 'L3_elem', color: '#ffff0f' },
+
+            { name: 'P_tryba_1_590', text: '0.06' },
+            { name: 'P_tryba_1_591', text: '0.06' },
+            { name: 'P_tryba_1_592', text: '0.06' },
+            { name: 'P_tryba_1_593', text: '0.06' },
+            { name: 'P_tryba_2_1', text: '0.07' },
+            { name: 'P_tryba_2_2', text: '0.07' },
+            { name: 'P_tryba_2_3', text: '0.07' },
+            { name: 'P_tryba_2_4', text: '0.07' },
+            { name: 'P_tryba_3_590', text: '0.08' },
+            { name: 'P_tryba_3_591', text: '0.09' },
+            { name: 'P_tryba_4_1', text: '2.20' },
+            { name: 'P_tryba_4_2', text: '1.58' },
+            { name: 'P_tryba_4_3', text: '2.29' },
+            { name: 'P_tryba_4_4', text: '1.50' },
+
+            { name: 'P_tryba_5_1', text: '0.39' },
+            { name: 'P_tryba_5_2', text: '0.96' },
+            { name: 'P_tryba_5_3', text: '1.27' },
+            { name: 'P_tryba_5_4', text: '2.20' },
+            { name: 'V_dyt', text: '77.1' },
+            { name: 'fyrm_v_rab', text: '0' },
+
+            { name: 'ydel_tep_18', text: '27.2' },
+            { name: 'ydel_tep_17', text: '43.5' },
+            { name: 'ydel_tep_16', text: '45.0' },
+            { name: 'ydel_tep_15', text: '35.5' },
+            { name: 'ydel_tep_12_14', text: '73.8' },
+            { name: 'ydel_tep_10_11', text: '24.3' },
+            { name: 'ydel_tep_9', text: '26.2' },
+            { name: 'ydel_tep_8', text: '26.3' },
+            { name: 'ydel_tep_7', text: '35.2' },
+          ]
+        }
+      },
+      startTime: timeDiff + 474.1,
+    },
     ////--------------------------------30---------------------------------------- \
     {
       scenarioText: 'Открыть сбросной клапан 723',
@@ -6717,11 +18883,377 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_723_t', color: '#00DA01' }, // TODO сделать верхнюю часть клапана зелёной, перерисовать клапан
+            { name: 'kl_723_t', color: '#00DA01' },
           ]
         }
       },
       startTime: timeDiff + 481.6,
+    },
+    // ilay dp ff
+    {
+      action: {
+        window2D: {
+          elements: [
+            // dp
+            // { name: 'radar1_text', text: '1.21' },
+            // { name: 'radar2_text', text: '1.48' },
+            // { name: 'radar3_text', text: '1.11' },
+            // { name: 'zadan_yrov_sin', text: '0.90' },
+
+            // { name: 'EKZ_H1', text: '100' },
+            // { name: 'EKZ_H2', text: '100' },
+            // { name: 'EKZ_H3', text: '100' },
+            // { name: 'AKZ_100', opacity: 1 },
+            // { name: 'AKZ_45-100', opacity: 1 },
+            // { name: 'AKZ_45', opacity: 1 },
+            // { name: 'AKZ_30', opacity: 1 },
+            // { name: 'AKZ_17', opacity: 1 },
+
+            // { name: 'EVS_DP7_O', text: '52861' },
+            // { name: 'EVD1_O', text: '4504' },
+            { name: 'EVS_DP7_F', text: '7202' },
+            { name: 'EVD1_F', text: '312002' },
+            { name: 'EVD_F', text: '309551' },
+            { name: 'P_1', text: '0.33' },
+            { name: 'F_evd', text: '5191' },
+            { name: 'F_hol_dyt', text: '605' },
+            { name: 'T_hol_dyt', text: '57' },
+            { name: 'O_hol_dyt', text: '21.8' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.6' },
+            { name: 'FO2_hol_dyt', text: '1146' },
+
+            { name: 'N2', text: '53.7' },
+            { name: 'CO', text: '22.3' },
+            { name: 'CO2', text: '22.8' },
+            { name: 'H2_tryb', text: '0.8' },
+            { name: 'Nco_tryb', text: '50.6' },
+            { name: 'Q_domG_tryb', text: '715' },
+            { name: 'P_vozd_tryb', text: '0' },
+            { name: 'P_gaza_tryb', text: '12' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_snotr', text: '89' },
+            { name: 'H_progres_7', opacity: '1' },
+            { name: 'H_progres_19', opacity: '1' },
+            { name: 'H_progres_22', opacity: '1' },
+            { name: 'H_progres_33', opacity: '1' },
+            { name: 'H_progres_49', opacity: '1' },
+            { name: 'H_progres_56', opacity: '1' },
+            { name: 'H_progres_60', opacity: '1' },
+            { name: 'H_progres_89', opacity: '1' },
+            { name: 'H_progres_100', opacity: '0' },
+
+            { name: 'H_step_isp', text: '56.9', opacity: '1' },
+            { name: 'HCO_step_isp', text: '50.8' },
+            { name: 'Tkyp_3', text: '1233' },
+            { name: 'Tkyp_2', text: '1194' },
+            { name: 'Tkyp_1', text: '1186' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '133' },
+            { name: 'Tdym_2', text: '185' },
+            { name: 'Tdym_1', text: '274' },
+            { name: 'P_Os_szat_voz', text: '8.34' },
+            { name: 'T_Os_szat_voz', text: '32' },
+
+            { name: 'Temp_peref_1', text: '75' },
+            { name: 'Temp_peref_2', text: '69' },
+            { name: 'Temp_peref_3', text: '74' },
+            { name: 'Temp_peref_4', text: '70' },
+            { name: 'Temp_peref_5', text: '71' },
+            { name: 'Temp_peref_6', text: '72' },
+            { name: 'Temp_peref_7', text: '71' },
+            { name: 'Temp_peref_8', text: '68' },
+            { name: 'Temp_peref_9', text: '72' },
+            { name: 'Temp_peref_10', text: '59' },
+            { name: 'Temp_peref_11', text: '63' },
+            { name: 'Temp_peref_12', text: '68' },
+            { name: 'Temp_peref_13', text: '101' },
+            { name: 'Temp_peref_14', text: '76' },
+            { name: 'Temp_peref_15', text: '85' },
+            { name: 'Temp_peref_16', text: '78' },
+            { name: 'T1', text: '116' },
+            { name: 'T2', text: '100' },
+            { name: 'T3', text: '117' },
+            { name: 'T4', text: '100' },
+            { name: 'P_2', text: '0.32' },
+            { name: 't_gor_dut', text: '1189' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '10' },
+            { name: 'P_pg_prir_gaz', text: '8,59' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '0' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.05' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.03' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '0.27' },
+            { name: 'dP_obsh_trybarect', color: '#ffff0f' },
+            { name: 'dP_nish_tryba', text: '0.24' },
+            { name: 'dP_nish_rect', color: '#ffff0f' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2409' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1450', opacity: '1' },
+            { name: 'L2_elem', color: '#ffff0f' },
+            { name: 'L3', text: '1472', opacity: '1' },
+            { name: 'L3_elem', color: '#ffff0f' },
+
+            { name: 'P_tryba_1_590', text: '0.06' },
+            { name: 'P_tryba_1_591', text: '0.06' },
+            { name: 'P_tryba_1_592', text: '0.06' },
+            { name: 'P_tryba_1_593', text: '0.06' },
+            { name: 'P_tryba_2_1', text: '0.07' },
+            { name: 'P_tryba_2_2', text: '0.07' },
+            { name: 'P_tryba_2_3', text: '0.07' },
+            { name: 'P_tryba_2_4', text: '0.07' },
+            { name: 'P_tryba_3_590', text: '0.08' },
+            { name: 'P_tryba_3_591', text: '0.09' },
+            { name: 'P_tryba_4_1', text: '1.89' },
+            { name: 'P_tryba_4_2', text: '1.48' },
+            { name: 'P_tryba_4_3', text: '1.96' },
+            { name: 'P_tryba_4_4', text: '1.20' },
+
+            { name: 'P_tryba_5_1', text: '0.27' },
+            { name: 'P_tryba_5_2', text: '0.72' },
+            { name: 'P_tryba_5_3', text: '1.99' },
+            { name: 'P_tryba_5_4', text: '1.90' },
+            { name: 'V_dyt', text: '81.7' },
+            { name: 'fyrm_v_rab', text: '0' },
+
+            { name: 'ydel_tep_18', text: '27.8' },
+            { name: 'ydel_tep_17', text: '43.8' },
+            { name: 'ydel_tep_16', text: '44.9' },
+            { name: 'ydel_tep_15', text: '35.5' },
+            { name: 'ydel_tep_12_14', text: '73.8' },
+            { name: 'ydel_tep_10_11', text: '24.3' },
+            { name: 'ydel_tep_9', text: '26.2' },
+            { name: 'ydel_tep_8', text: '26.3' },
+            { name: 'ydel_tep_7', text: '35.2' },
+          ]
+        }
+      },
+      startTime: timeDiff + 481.61,
+    },
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0.057',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0.025',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.268',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.215',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '0967.',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.318',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '01.28',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '01.46',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0141.',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0123.',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0142.',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0123.',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '06.89',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '0038',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1190.',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1',
+        color: 'green',
+        number: '10.22',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT2',
+        color: 'green',
+        number: '10.22',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '04.85',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd',
+        color: 'green',
+        number: '04.11',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2.407',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'tReduct',
+        color: 'green',
+        number: '044.9',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '24.74',
+      },
+      startTime: timeDiff + 481.62,
+    },
+    {
+      action: {
+        target3D: 'fPrirodGaz',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 481.62,
     },
 
 
@@ -6819,6 +19351,288 @@ let tempActions = [
       },
       startTime: timeDiff + 516,
     },
+    // ilay     
+    {
+      action: {
+        target3D: 'bzuDavlenie_l',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 516.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_l',
+        color: 'red',
+        number: '093.0',
+      },
+      startTime: timeDiff + 516.02,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_l',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 516.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_l',
+        color: 'red',
+        number: '0085',
+      },
+      startTime: timeDiff + 516.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '259.3',
+      },
+      startTime: timeDiff + 516.02,
+    },
+    {
+      action: {
+        target3D: 'bzuDavlenie_r',
+        color: 'red',
+        number: '00.00',
+      },
+      startTime: timeDiff + 516.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '013.5',
+      },
+      startTime: timeDiff + 516.02,
+    },
+    {
+      action: {
+        target3D: 'bzuPolShihZat_r',
+        color: 'red',
+        number: '001.3',
+      },
+      startTime: timeDiff + 516.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '047.0',
+      },
+      startTime: timeDiff + 516.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVremVigruz_r',
+        color: 'red',
+        number: '0096',
+      },
+      startTime: timeDiff + 516.02,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.36',
+      },
+      startTime: timeDiff + 516.02,
+    },
+
+    {
+      action: {
+        target3D: 'pKolGaz',
+        color: 'green',
+        number: '0.055',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0.024',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.264',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.212',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '0950.',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.312',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '01.37',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '01.74',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'urZasMeh',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT1',
+        color: 'green',
+        number: '0136.',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0120.',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0138.',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0120.',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '06.85',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT6',
+        color: 'green',
+        number: '0038',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1189.',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT1',
+        color: 'green',
+        number: '10.25',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'pTechVodT2',
+        color: 'green',
+        number: '10.25',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'pSjatVozd',
+        color: 'green',
+        number: '04.87',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'pOsyshSjatVozd',
+        color: 'green',
+        number: '04.11',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2.419',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'tReduct',
+        color: 'green',
+        number: '044.7',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '24.75',
+      },
+      startTime: timeDiff + 516.03,
+    },
+    {
+      action: {
+        target3D: 'fPrirodGaz',
+        color: 'green',
+        number: '0000',
+      },
+      startTime: timeDiff + 516.03,
+    },
 
     ////--------------------------------34---------------------------------------- 
     {
@@ -6851,33 +19665,416 @@ let tempActions = [
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 530, // TODO Слишком большой перерыв
+      startTime: timeDiff + 528,
     },
     {
       text: 'Делаем 0,2 кг.',
       sender: 'Мастер печи',
       audio: 'tts-vo45',
-      startTime: timeDiff + 531,
+      startTime: timeDiff + 529,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 531.1,
+      startTime: timeDiff + 529.1,
       human: true,
     },
     {
       text: 'Принял, делаю 0,2.',
       sender: 'Газовщик',
       audio: 'tts-vo46',
-      startTime: timeDiff + 532,
+      startTime: timeDiff + 530,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 536,
+      startTime: timeDiff + 534,
+    },
+    // ilay dp ff bzu FF
+    {
+      action: {
+        window2D: {
+          elements: [
+            // dp
+            // { name: 'radar1_text', text: '1.21' },
+            // { name: 'radar2_text', text: '1.48' },
+            // { name: 'radar3_text', text: '1.11' },
+            // { name: 'zadan_yrov_sin', text: '0.90' },
+
+            // { name: 'EKZ_H1', text: '100' },
+            // { name: 'EKZ_H2', text: '100' },
+            // { name: 'EKZ_H3', text: '100' },
+            // { name: 'AKZ_100', opacity: 1 },
+            // { name: 'AKZ_45-100', opacity: 1 },
+            // { name: 'AKZ_45', opacity: 1 },
+            // { name: 'AKZ_30', opacity: 1 },
+            // { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '53829' },
+            { name: 'EVD1_O', text: '4504' },
+            { name: 'EVS_DP7_F', text: '7223' },
+            { name: 'EVD1_F', text: '313429' },
+            { name: 'EVD_F', text: '311575' },
+            { name: 'P_1', text: '0.31' },
+            { name: 'F_evd', text: '5152' },
+            { name: 'F_hol_dyt', text: '752' },
+            { name: 'T_hol_dyt', text: '54' },
+            { name: 'O_hol_dyt', text: '21.2' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.6' },
+            { name: 'FO2_hol_dyt', text: '1158' },
+
+            { name: 'N2', text: '94.4' },
+            { name: 'CO', text: '2.2' },
+            { name: 'CO2', text: '2.4' },
+            { name: 'H2_tryb', text: '0.7' },
+            { name: 'Nco_tryb', text: '51.9' },
+            { name: 'Q_domG_tryb', text: '715', opacity: '0' },
+            { name: 'P_vozd_tryb', text: '0' },
+            { name: 'P_gaza_tryb', text: '13' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_snotr', text: '89' },
+            { name: 'H_progres_7', opacity: '1' },
+            { name: 'H_progres_19', opacity: '1' },
+            { name: 'H_progres_22', opacity: '1' },
+            { name: 'H_progres_33', opacity: '1' },
+            { name: 'H_progres_49', opacity: '1' },
+            { name: 'H_progres_56', opacity: '1' },
+            { name: 'H_progres_60', opacity: '1' },
+            { name: 'H_progres_89', opacity: '1' },
+            { name: 'H_progres_100', opacity: '0' },
+
+            { name: 'H_step_isp', text: '78.5', opacity: '1' },
+            { name: 'HCO_step_isp', text: '62.8' },
+            { name: 'Tkyp_3', text: '1132' },
+            { name: 'Tkyp_2', text: '1192' },
+            { name: 'Tkyp_1', text: '1183' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '132' },
+            { name: 'Tdym_2', text: '149' },
+            { name: 'Tdym_1', text: '273' },
+            { name: 'P_Os_szat_voz', text: '8.34' },
+            { name: 'T_Os_szat_voz', text: '32' },
+
+            // { name: 'Temp_peref_1',   text: '75' },
+            // { name: 'Temp_peref_2',   text: '69' },
+            // { name: 'Temp_peref_3',   text: '74' },
+            // { name: 'Temp_peref_4',   text: '70' },
+            // { name: 'Temp_peref_5',   text: '71' },
+            // { name: 'Temp_peref_6',   text: '72' },
+            // { name: 'Temp_peref_7',   text: '71' },
+            // { name: 'Temp_peref_8',   text: '68' },
+            // { name: 'Temp_peref_9',   text: '72' },
+            // { name: 'Temp_peref_10',  text: '59' },
+            // { name: 'Temp_peref_11',  text: '63' },
+            // { name: 'Temp_peref_12',  text: '68' },
+            // { name: 'Temp_peref_13',  text: '101' },
+            // { name: 'Temp_peref_14',  text: '76' },
+            // { name: 'Temp_peref_15',  text: '85' },
+            // { name: 'Temp_peref_16',  text: '78' },
+            { name: 'T1', text: '116' },
+            { name: 'T2', text: '97' },
+            { name: 'T3', text: '112' },
+            { name: 'T4', text: '99' },
+            { name: 'P_2', text: '0.30' },
+            { name: 'P_2_rect', color: "#ffff0f" },
+            { name: 't_gor_dut', text: '1188' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '10' },
+            { name: 'P_pg_prir_gaz', text: '8,60' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '0' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.01' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.03' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '0.29' },
+            { name: 'dP_obsh_trybarect', color: '#ffff0f' },
+            { name: 'dP_nish_tryba', text: '0.26' },
+            { name: 'dP_nish_rect', color: '#ffff0f' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2380' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1445', opacity: '1' },
+            { name: 'L2_elem', color: '#ffff0f' },
+            { name: 'L3', text: '1326', opacity: '1' },
+            { name: 'L3_elem', color: '#ffffff' },
+
+            // { name: 'P_tryba_1_590', text: '0.06' },
+            // { name: 'P_tryba_1_591', text: '0.06' },
+            // { name: 'P_tryba_1_592', text: '0.06' },
+            // { name: 'P_tryba_1_593', text: '0.06' },
+            // { name: 'P_tryba_2_1', text: '0.07' },
+            // { name: 'P_tryba_2_2', text: '0.07' },
+            // { name: 'P_tryba_2_3', text: '0.07' },
+            // { name: 'P_tryba_2_4', text: '0.07' },
+            // { name: 'P_tryba_3_590', text: '0.08' },
+            // { name: 'P_tryba_3_591', text: '0.09' },
+            // { name: 'P_tryba_4_1', text: '1.89' },
+            // { name: 'P_tryba_4_2', text: '1.48' },
+            // { name: 'P_tryba_4_3', text: '1.96' },
+            // { name: 'P_tryba_4_4', text: '1.20' },
+
+            // { name: 'P_tryba_5_1', text: '0.27' },
+            // { name: 'P_tryba_5_2', text: '0.72' },
+            // { name: 'P_tryba_5_3', text: '1.99' },
+            // { name: 'P_tryba_5_4', text: '1.90' },
+            { name: 'V_dyt', text: '99.5' },
+            { name: 'fyrm_v_rab', text: '0' },
+
+            // { name: 'ydel_tep_18',    text: '27.8' },
+            // { name: 'ydel_tep_17',    text: '43.8' },
+            // { name: 'ydel_tep_16',    text: '44.9' },
+            // { name: 'ydel_tep_15',    text: '35.5' },
+            // { name: 'ydel_tep_12_14', text: '73.8' },
+            // { name: 'ydel_tep_10_11', text: '24.3' },
+            // { name: 'ydel_tep_9',     text: '26.2' },
+            // { name: 'ydel_tep_8',     text: '26.3' },
+            // { name: 'ydel_tep_7',     text: '35.2' },
+
+
+            // bzu
+            { name: 'ochistka sedel_P', text: '6.23' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '30' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+
+            { name: 'B1_dp Bunker', text: '0.02' },
+            { name: 'B1_P compes', text: '0.00' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP', text: '93.0' },
+            { name: 'B1_vibratciya', text: '2' },
+
+            { name: 'V linii P_B1', text: '202' }, // Б1
+            { name: 'V linii dP_B1', text: '230' },
+            { name: 'V sisteme vzveh_B1', text: '193' },
+
+            { name: 'V linii P_B2', text: '150' }, // Б2
+            { name: 'V linii dP_B2', text: '134' },
+            { name: 'V sisteme vzveh_B2', text: '141' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.01' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.02' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.02' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.02' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '150' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '130' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+
+            { name: 'stanciia', text: '8' },
+            { name: 'ugol naklona_tekushiy', text: '46.7' },
+            { name: 'ugol naklona_zadanyi', text: '46.7' },
+
+            { name: 'gradusow ugol', text: '43.1' },
+
+
+            { name: 'prochent1', text: '0' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#00FF00' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', text: 'Р', opacity: '1' },
+            { name: 'left_ellipse', opacity: '1' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.09' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '93.1' }, // T
+            { name: 'matrix 1 str 1_M', text: '47.7' }, // M3
+            // не хватает схемы ПУСТ
+
+
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.3' }, // ШЗ слева
+            { name: 'left_vugr_rect', color: '#E6E6E6' }, //  Выгр зеленые зеленые рамки
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка слева
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            { name: 'btn_Pause_border', color: '#E6E6E6' }, // пауза по центру
+
+            // { name: 'leviy', color: '#860004' }, // палка от цифр слева
+            { name: 'verx', text: '-0' }, // цифры сверху
+            // { name: 'praviy', color: '#860004' }, // палка от цифр справа
+
+            { name: 'tr_3_str_1_', text: '5' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            { name: 'tekushiy rezym_A', color: '#CEC7B5' }, // текущий режим А задник
+            { name: 'tek rejim_A', color: '#B7B2AE' }, // текущий режим А задник
+
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '0.00' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '13.3' }, // t
+            { name: 'matrix 1 str 14_M', text: '28.7' }, // 
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            { name: 'prochent2', text: '1' }, // % справа
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '31' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+
+            { name: 'B2_Dp bunker', text: '0.02' }, // 
+            { name: 'B2_P compens', text: '0.05' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '82' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.4' }, // 
+            { name: 'B2_vibratciya', text: '47' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '1.28' }, // 
+            { name: 'radar 1', text: '1.41' }, // 
+            { name: 'radar 2', text: '1.74' }, // 
+            { name: 'mexan', text: '1.36' }, // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'bg_vRabote', color: '#2B2A29' }, // в работе
+            { name: 'ismetir_ramki', color: '#00FF00' }, // в работе
+
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '5' }, // 
+            { name: 'T3_nomerstr', text: '5' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+
+            { name: 'B1_Tip', color: '#860004' }, // 
+            { name: 'B2_Tip', color: '#008600' }, // 
+            { name: 'T2_Tip', color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip', color: '#008600' }, // 
+
+            { name: 'B1_ves', text: '93.0' }, // 
+            { name: 'B2_ves', text: '13.5' }, // 
+            { name: 'T3_ves', text: '16.4' }, // 
+            { name: 'T2_ves', text: '16.4' }, // 
+            { name: 'T1_ves', text: '16.4' }, // 
+
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#CEC7B5' }, // str 2 color
+            { name: 'K_str1', color: '#860004' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+            { name: 'na_conveer_s1_bukca', text: 'Р', opacity: '0' }, // str 2 
+            { name: 'str1_down', text: 'Р' }, // str 2 
+            { name: 'str51_down', text: 'К' }, // str 51 
+
+            { name: 'str2_P_1', text: '0' }, // str 2-11 t
+            { name: 'str2_P_2', text: '0' }, // str 2-10 t
+            { name: 'str2_P_3', text: '0' }, // str 2-9 t
+            { name: 'str2_P_4', text: '13' }, // str 2-8 t
+            { name: 'str2_P_5', text: '13' }, // str 2-7 t
+            { name: 'str2_P_6', text: '13' }, // str 2-6 t
+            { name: 'str2_P_7', text: '11' }, // str 2-5 t
+            { name: 'str2_P_8', text: '10' }, // str 2-4 t
+            { name: 'str2_P_9', text: '10' }, // str 2-3 t
+            { name: 'str2_P_10', text: '9' }, // str 2-2 t
+            { name: 'str2_P_11', text: '21' }, // str 2-1 t
+            { name: 'str2_P_12', text: '16.2' }, // str 2-ves t
+
+            { name: 'Str1_8', color: '#C7B295' }, // str 1-8 r  // #008600
+            { name: 'Str1_4', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            { name: 'str1_K_1', text: '0' }, // str 1-11 t
+            { name: 'str1_K_2', text: '0' }, // str 1-10 t
+            { name: 'str1_K_3', text: '0' }, // str 1-9 t
+            { name: 'str1_K_4', text: '22' }, // str 1-8 t
+            { name: 'str1_K_5', text: '21' }, // str 1-7 t
+            { name: 'str1_K_6', text: '19' }, // str 1-6 t
+            { name: 'str1_K_7', text: '15' }, // str 1-5 t
+            { name: 'str1_K_8', text: '13' }, // str 1-4 t
+            { name: 'str1_K_9', text: '10' }, // str 1-3 t
+            { name: 'str1_K_10', text: '0' }, // str 1-2 t
+            { name: 'str1_K_11', text: '0' }, // str 1-1 t
+            { name: 'str1_K_12', text: '93.0' }, // str 1-ves t
+
+            { name: 'str51_SM_1', text: '0' }, // str 51-11 t
+            { name: 'str51_SM_2', text: '0' }, // str 51-10 t
+            { name: 'str51_SM_3', text: '0' }, // str 51-9 t
+            { name: 'str51_SM_4', text: '0' }, // str 51-8 t
+            { name: 'str51_SM_5', text: '0' }, // str 51-7 t
+            { name: 'str51_SM_6', text: '0' }, // str 51-6 t
+            { name: 'str51_SM_7', text: '0  0' }, // str 51-5-4 t
+            { name: 'str51_SM_8', text: '0' }, // str 51-3 t
+            { name: 'str51_SM_9', text: '0' }, // str 51-2 t
+            { name: 'str51_SM_10', text: '100' }, // str 51-1 t
+            { name: 'str51_SM_11', text: '15.0' }, // str 51-ves t
+
+          ]
+        }
+      },
+      startTime: timeDiff + 534.01,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '255.3',
+      },
+      startTime: timeDiff + 534.02,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.42',
+      },
+      startTime: timeDiff + 534.02,
     },
 
     ////--------------------------------35---------------------------------------- 
@@ -6885,7 +20082,7 @@ let tempActions = [
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0,2кг.',
       audio: 'tts-24',
       sender: 'Система',
-      startTime: timeDiff + 537,
+      startTime: timeDiff + 535,
     },
     {
       action: {
@@ -6893,7 +20090,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 539.2,
+      startTime: timeDiff + 537.2,
       human: true,
     },
     {
@@ -6902,7 +20099,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 540,
+      startTime: timeDiff + 538,
       human: true,
     },
     {
@@ -6911,7 +20108,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 540.5,
+      startTime: timeDiff + 538.5,
       human: true,
     },
     {
@@ -6920,7 +20117,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 541,
+      startTime: timeDiff + 539,
       human: true,
     },
     {
@@ -6934,60 +20131,681 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 541.1,
+      startTime: timeDiff + 539.1,
     },
+    // ilay dp ff bzu FF
+    {
+      action: {
+        window2D: {
+          elements: [
+            // dp
+            // { name: 'radar1_text', text: '1.21' },
+            // { name: 'radar2_text', text: '1.48' },
+            // { name: 'radar3_text', text: '1.11' },
+            // { name: 'zadan_yrov_sin', text: '0.90' },
+
+            // { name: 'EKZ_H1', text: '100' },
+            // { name: 'EKZ_H2', text: '100' },
+            // { name: 'EKZ_H3', text: '100' },
+            // { name: 'AKZ_100', opacity: 1 },
+            // { name: 'AKZ_45-100', opacity: 1 },
+            // { name: 'AKZ_45', opacity: 1 },
+            // { name: 'AKZ_30', opacity: 1 },
+            // { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '53829' },
+            { name: 'EVD1_O', text: '4504' },
+            { name: 'EVS_DP7_F', text: '7223' },
+            { name: 'EVD1_F', text: '313429' },
+            { name: 'EVD_F', text: '311575' },
+            { name: 'P_1', text: '0.31' },
+            { name: 'F_evd', text: '5216' },
+            { name: 'F_hol_dyt', text: '627' },
+            { name: 'T_hol_dyt', text: '35' },
+            { name: 'O_hol_dyt', text: '21.2' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.6' },
+            // { name: 'FO2_hol_dyt', text: '1158' },
+
+            { name: 'N2', text: '54.5' },
+            { name: 'CO', text: '2.2' },
+            { name: 'CO2', text: '2.4' },
+            { name: 'H2_tryb', text: '0.7' },
+            { name: 'Nco_tryb', text: '51.9' },
+            { name: 'Q_domG_tryb', text: '715', opacity: '0' },
+            { name: 'P_vozd_tryb', text: '0' },
+            { name: 'P_gaza_tryb', text: '14' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_snotr', text: '94' },
+            { name: 'H_progres_7', opacity: '1' },
+            { name: 'H_progres_19', opacity: '1' },
+            { name: 'H_progres_22', opacity: '1' },
+            { name: 'H_progres_33', opacity: '1' },
+            { name: 'H_progres_49', opacity: '1' },
+            { name: 'H_progres_56', opacity: '1' },
+            { name: 'H_progres_60', opacity: '1' },
+            { name: 'H_progres_89', opacity: '1' },
+            { name: 'H_progres_100', opacity: '0' },
+
+            { name: 'H_step_isp', text: '78.5', opacity: '1' },
+            { name: 'HCO_step_isp', text: '62.8' },
+            { name: 'Tkyp_3', text: '1132' },
+            { name: 'Tkyp_2', text: '1192' },
+            { name: 'Tkyp_1', text: '1183' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '123' },
+            { name: 'Tdym_2', text: '185' },
+            { name: 'Tdym_1', text: '272' },
+            // { name: 'P_Os_szat_voz', text: '8.34' },
+            // { name: 'T_Os_szat_voz', text: '32' },
+
+            // { name: 'Temp_peref_1',   text: '75' },
+            // { name: 'Temp_peref_2',   text: '69' },
+            // { name: 'Temp_peref_3',   text: '74' },
+            // { name: 'Temp_peref_4',   text: '70' },
+            // { name: 'Temp_peref_5',   text: '71' },
+            // { name: 'Temp_peref_6',   text: '72' },
+            // { name: 'Temp_peref_7',   text: '71' },
+            // { name: 'Temp_peref_8',   text: '68' },
+            // { name: 'Temp_peref_9',   text: '72' },
+            // { name: 'Temp_peref_10',  text: '59' },
+            // { name: 'Temp_peref_11',  text: '63' },
+            // { name: 'Temp_peref_12',  text: '68' },
+            // { name: 'Temp_peref_13',  text: '101' },
+            // { name: 'Temp_peref_14',  text: '76' },
+            // { name: 'Temp_peref_15',  text: '85' },
+            // { name: 'Temp_peref_16',  text: '78' },
+            { name: 'T1', text: '106' },
+            { name: 'T2', text: '96' },
+            { name: 'T3', text: '117' },
+            { name: 'T4', text: '97' },
+            { name: 'P_2', text: '0.22' },
+            { name: 'P_2_rect', color: "#ffff0f" },
+            { name: 't_gor_dut', text: '1182' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '10' },
+            { name: 'P_pg_prir_gaz', text: '8,60' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '0' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.01' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.03' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '0.21' },
+            { name: 'dP_obsh_trybarect', color: '#ffff0f' },
+            { name: 'dP_nish_tryba', text: '0.19' },
+            { name: 'dP_nish_rect', color: '#ffff0f' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'TTG_raschet', text: '2385' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1438', opacity: '1' },
+            { name: 'L2_elem', color: '#ffff0f' },
+            { name: 'L3', text: '1119', opacity: '1' },
+            { name: 'L3_elem', color: '#ffffff' },
+
+            // { name: 'P_tryba_1_590', text: '0.06' },
+            // { name: 'P_tryba_1_591', text: '0.06' },
+            // { name: 'P_tryba_1_592', text: '0.06' },
+            // { name: 'P_tryba_1_593', text: '0.06' },
+            // { name: 'P_tryba_2_1', text: '0.07' },
+            // { name: 'P_tryba_2_2', text: '0.07' },
+            // { name: 'P_tryba_2_3', text: '0.07' },
+            // { name: 'P_tryba_2_4', text: '0.07' },
+            // { name: 'P_tryba_3_590', text: '0.08' },
+            // { name: 'P_tryba_3_591', text: '0.09' },
+            // { name: 'P_tryba_4_1', text: '1.89' },
+            // { name: 'P_tryba_4_2', text: '1.48' },
+            // { name: 'P_tryba_4_3', text: '1.96' },
+            // { name: 'P_tryba_4_4', text: '1.20' },
+
+            // { name: 'P_tryba_5_1', text: '0.27' },
+            // { name: 'P_tryba_5_2', text: '0.72' },
+            // { name: 'P_tryba_5_3', text: '1.99' },
+            // { name: 'P_tryba_5_4', text: '1.90' },
+            // { name: 'V_dyt', text: '99.5' },
+            // { name: 'fyrm_v_rab', text: '0' },
+
+            // { name: 'ydel_tep_18',    text: '27.8' },
+            // { name: 'ydel_tep_17',    text: '43.8' },
+            // { name: 'ydel_tep_16',    text: '44.9' },
+            // { name: 'ydel_tep_15',    text: '35.5' },
+            // { name: 'ydel_tep_12_14', text: '73.8' },
+            // { name: 'ydel_tep_10_11', text: '24.3' },
+            // { name: 'ydel_tep_9',     text: '26.2' },
+            // { name: 'ydel_tep_8',     text: '26.3' },
+            // { name: 'ydel_tep_7',     text: '35.2' },
+
+
+            // bzu
+            { name: 'ochistka sedel_P', text: '6.27' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '33' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+
+            { name: 'B1_dp Bunker', text: '0.01' },
+            { name: 'B1_P compes', text: '0.00' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP', text: '93.0' },
+            { name: 'B1_vibratciya', text: '2' },
+
+            { name: 'V linii P_B1', text: '202' }, // Б1
+            { name: 'V linii dP_B1', text: '227' },
+            { name: 'V sisteme vzveh_B1', text: '192' },
+
+            { name: 'V linii P_B2', text: '148' }, // Б2
+            { name: 'V linii dP_B2', text: '279' },
+            { name: 'V sisteme vzveh_B2', text: '147' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.01' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.02' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.01' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.03' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '150' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+
+            { name: 'stanciia', text: '8' },
+            { name: 'ugol naklona_tekushiy', text: '46.7' },
+            { name: 'ugol naklona_zadanyi', text: '46.7' },
+
+            { name: 'gradusow ugol', text: '148.8' },
+
+
+            { name: 'prochent1', text: '0' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#00FF00' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', text: 'Р', opacity: '1' },
+            { name: 'left_ellipse', opacity: '1' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.00' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '93.0' }, // T
+            { name: 'matrix 1 str 1_M', text: '47.7' }, // M3
+            // не хватает схемы ПУСТ
+
+
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.3' }, // ШЗ слева
+            { name: 'left_vugr_rect', color: '#E6E6E6' }, //  Выгр зеленые зеленые рамки
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка слева
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            { name: 'btn_Pause_border', color: '#E6E6E6' }, // пауза по центру
+
+            // { name: 'leviy', color: '' }, // палка от цифр слева
+            { name: 'verx', text: '-0' }, // цифры сверху
+            // { name: 'praviy', color: '' }, // палка от цифр справа
+
+            { name: 'tr_3_str_1_', text: '5' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            { name: 'tekushiy rezym_A', color: '#CEC7B5' }, // текущий режим А задник
+            { name: 'tek rejim_A', color: '#B7B2AE' }, // текущий режим А задник
+
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '1.33' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '13.3' }, // t
+            { name: 'matrix 1 str 14_M', text: '28.7' }, // 
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            { name: 'prochent2', text: '1' }, // % справа
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '31' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+
+            { name: 'B2_Dp bunker', text: '0.01' }, // 
+            { name: 'B2_P compens', text: '0.05' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '82' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.4' }, // 
+            { name: 'B2_vibratciya', text: '47' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '1.24' }, // 
+            { name: 'radar 1', text: '1.48' }, // 
+            { name: 'radar 2', text: '1.74' }, // 
+            { name: 'mexan', text: '1.38' }, // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'bg_vRabote', color: '#2B2A29' }, // в работе
+            { name: 'ismetir_ramki', color: '#00FF00' }, // в работе
+
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '5' }, // 
+            { name: 'T3_nomerstr', text: '5' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+
+            { name: 'B1_Tip', color: '#860004' }, // 
+            { name: 'B2_Tip', color: '#008600' }, // 
+            { name: 'T2_Tip', color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip', color: '#008600' }, // 
+
+            { name: 'B1_ves', text: '93.0' }, // 
+            { name: 'B2_ves', text: '13.5' }, // 
+            { name: 'T3_ves', text: '16.4' }, // 
+            { name: 'T2_ves', text: '16.4' }, // 
+            { name: 'T1_ves', text: '16.4' }, // 
+
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#CEC7B5' }, // str 2 color
+            { name: 'K_str1', color: '#860004' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+            { name: 'na_conveer_s1_bukca', text: 'Р', opacity: '0' }, // str 2 
+            { name: 'str1_down', text: 'Р' }, // str 2 
+            { name: 'str51_down', text: 'К' }, // str 51 
+
+            // { name: 'str2_P_1',   text: '0' }, // str 2-11 t
+            // { name: 'str2_P_2',   text: '0' }, // str 2-10 t
+            // { name: 'str2_P_3',   text: '0' }, // str 2-9 t
+            // { name: 'str2_P_4',   text: '13' }, // str 2-8 t
+            // { name: 'str2_P_5',   text: '13' }, // str 2-7 t
+            // { name: 'str2_P_6',   text: '13' }, // str 2-6 t
+            // { name: 'str2_P_7',   text: '11' }, // str 2-5 t
+            // { name: 'str2_P_8',   text: '10' }, // str 2-4 t
+            // { name: 'str2_P_9',   text: '10' }, // str 2-3 t
+            // { name: 'str2_P_10',  text: '9' }, // str 2-2 t
+            // { name: 'str2_P_11',  text: '21' }, // str 2-1 t
+            // { name: 'str2_P_12',  text: '16.2' }, // str 2-ves t
+
+            { name: 'Str1_8', color: '#008600' }, // str 1-8 r  // #008600
+            // { name: 'Str1_4', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'str1_K_1',   text: '0' }, // str 1-11 t
+            // { name: 'str1_K_2',   text: '0' }, // str 1-10 t
+            // { name: 'str1_K_3',   text: '0' }, // str 1-9 t
+            // { name: 'str1_K_4',   text: '22' }, // str 1-8 t
+            // { name: 'str1_K_5',   text: '21' }, // str 1-7 t
+            // { name: 'str1_K_6',   text: '19' }, // str 1-6 t
+            // { name: 'str1_K_7',   text: '15' }, // str 1-5 t
+            // { name: 'str1_K_8',   text: '13' }, // str 1-4 t
+            // { name: 'str1_K_9',   text: '10' }, // str 1-3 t
+            // { name: 'str1_K_10',  text: '0' }, // str 1-2 t
+            // { name: 'str1_K_11',  text: '0' }, // str 1-1 t
+            // { name: 'str1_K_12',  text: '93.0' }, // str 1-ves t
+
+            // { name: 'str51_SM_1',   text: '0' }, // str 51-11 t
+            // { name: 'str51_SM_2',   text: '0' }, // str 51-10 t
+            // { name: 'str51_SM_3',   text: '0' }, // str 51-9 t
+            // { name: 'str51_SM_4',   text: '0' }, // str 51-8 t
+            // { name: 'str51_SM_5',   text: '0' }, // str 51-7 t
+            // { name: 'str51_SM_6',   text: '0' }, // str 51-6 t
+            // { name: 'str51_SM_7',   text: '0  0' }, // str 51-5-4 t
+            // { name: 'str51_SM_8',   text: '0' }, // str 51-3 t
+            // { name: 'str51_SM_9',   text: '0' }, // str 51-2 t
+            // { name: 'str51_SM_10',  text: '100' }, // str 51-1 t
+            // { name: 'str51_SM_11',  text: '15.0' }, // str 51-ves t
+
+          ]
+        }
+      },
+      startTime: timeDiff + 539.11,
+    },
+
+    {
+      action: {
+        target3D: 'dpVerh',
+        color: 'green',
+        number: '0.020',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.229',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.184',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '1179.',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.232',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '01.47',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '01.72',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT2',
+        color: 'green',
+        number: '0117.',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0134.',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT4',
+        color: 'green',
+        number: '0118.',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '06.76',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'tVGazT7',
+        color: 'green',
+        number: '1187.',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'pAzotkZatv',
+        color: 'green',
+        number: '2.422',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'tReduct',
+        color: 'green',
+        number: '044.4',
+      },
+      startTime: timeDiff + 539.12,
+    },
+    {
+      action: {
+        target3D: 'fVodNaReduct',
+        color: 'green',
+        number: '24.73',
+      },
+      startTime: timeDiff + 539.12,
+    },
+
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '146.8',
+      },
+      startTime: timeDiff + 539.13,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '008.5',
+      },
+      startTime: timeDiff + 539.13,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '046.9',
+      },
+      startTime: timeDiff + 539.13,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.46',
+      },
+      startTime: timeDiff + 539.13,
+    },
+
     ////--------------------------------36---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 542,
+      startTime: timeDiff + 540,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 542.1,
+      startTime: timeDiff + 540.1,
       human: true,
     },
     {
       text: 'На фурмах 0,2.',
       sender: 'Газовщик',
       audio: 'tts-vo47',
-      startTime: timeDiff + 543,
+      startTime: timeDiff + 541,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 547,
+      startTime: timeDiff + 545,
     },
     {
       text: 'Делаем 0.',
       sender: 'Мастер печи',
       audio: 'tts-vo48',
-      startTime: timeDiff + 549,
+      startTime: timeDiff + 547,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 549.1,
+      startTime: timeDiff + 547.1,
       human: true,
     },
     {
       text: 'Понял, делаю 0.',
       sender: 'Газовщик',
       audio: 'tts-vo49',
-      startTime: timeDiff + 550,
+      startTime: timeDiff + 548,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 554,
+      startTime: timeDiff + 552,
+    },
+    // ilay
+
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '133.6',
+      },
+      startTime: timeDiff + 552.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '013.5',
+      },
+      startTime: timeDiff + 552.02,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_r',
+        color: 'red',
+        number: '047.0',
+      },
+      startTime: timeDiff + 552.02,
+    },
+    {
+      action: {
+        target3D: 'bzuUrovZasip',
+        color: 'red',
+        number: '01.50',
+      },
+      startTime: timeDiff + 552.02,
+    },
+
+    {
+      action: {
+        target3D: 'dpObsh',
+        color: 'green',
+        number: '0.135',
+      },
+      startTime: timeDiff + 552.03,
+    },
+    {
+      action: {
+        target3D: 'dpNiz',
+        color: 'green',
+        number: '0.157',
+      },
+      startTime: timeDiff + 552.03,
+    },
+    {
+      action: {
+        target3D: 'fHolodDut',
+        color: 'green',
+        number: '1329.',
+      },
+      startTime: timeDiff + 552.03,
+    },
+    {
+      action: {
+        target3D: 'pGorDut',
+        color: 'green',
+        number: '0.196',
+      },
+      startTime: timeDiff + 552.03,
+    },
+    {
+      action: {
+        target3D: 'urZasDat1',
+        color: 'green',
+        number: '01.50',
+      },
+      startTime: timeDiff + 552.03,
+    },
+    {
+      action: {
+        target3D: 'urZasDat2',
+        color: 'green',
+        number: '01.76',
+      },
+      startTime: timeDiff + 552.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT3',
+        color: 'green',
+        number: '0133.',
+      },
+      startTime: timeDiff + 552.03,
+    },
+    {
+      action: {
+        target3D: 'tVGazT5',
+        color: 'green',
+        number: '06.94',
+      },
+      startTime: timeDiff + 552.03,
     },
 
     ////--------------------------------37---------------------------------------- 
@@ -6995,7 +20813,7 @@ let tempActions = [
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0кг.',
       audio: 'tts-24',
       sender: 'Система',
-      startTime: timeDiff + 554.1,
+      startTime: timeDiff + 552.1,
     },
     {
       action: {
@@ -7003,7 +20821,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 554.2,
+      startTime: timeDiff + 552.2,
       human: true,
     },
     {
@@ -7012,7 +20830,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 555,
+      startTime: timeDiff + 553,
       human: true,
     },
     {
@@ -7021,7 +20839,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 555.5,
+      startTime: timeDiff + 553.5,
       human: true,
     },
     {
@@ -7030,7 +20848,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 556,
+      startTime: timeDiff + 554,
       human: true,
     },
     {
@@ -7038,14 +20856,14 @@ let tempActions = [
         target3D: 'Lamp_Red_020',
         material: 'Unic_Lamp_Red_Off'
       },
-      startTime: timeDiff + 555.6,
+      startTime: timeDiff + 554.6,
     },
     {
       action: {
         target3D: 'Lamp_Green_024',
         material: 'Unic_Lamp_Green_On'
       },
-      startTime: timeDiff + 555.7,
+      startTime: timeDiff + 554.7,
     },
     {
       action: {
@@ -7060,95 +20878,575 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 556.2,
+      startTime: timeDiff + 554.8,
     },
     {
       text: 'Прекращение циркуляции кокса.',
       sender: 'Система',
-      startTime: timeDiff + 557,
+      startTime: timeDiff + 555,
     },
     {
       action: {
         target3D: 'Display_TV002',
         material: 'media/images/monitors/Kamera-nablyudeniya.jpg' //todo 
       },
-      startTime: timeDiff + 557.1,
+      startTime: timeDiff + 555.1,
     },
     {
       action: {
         target3D: 'Display_flat006',
         material: 'media/images/monitors/Kamera-nablyudeniya.jpg' //todo 
       },
-      startTime: timeDiff + 557.2,
+      startTime: timeDiff + 555.2,
     },
 
     {
       text: 'Клапан «СНОРТ» полностью открыт.',
       sender: 'Система',
-      startTime: timeDiff + 558,
+      startTime: timeDiff + 556,
     },
     {
       text: 'Прекращение дутья.',
       sender: 'Система',
-      startTime: timeDiff + 559,
+      startTime: timeDiff + 557,
     },
+
     ////--------------------------------38---------------------------------------- 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 560,
+      startTime: timeDiff + 558,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 560.1,
+      startTime: timeDiff + 558.1,
       human: true,
     },
     {
       text: '«СНОРТ» раскручен полностью. На фурмах 0.',
       sender: 'Газовщик',
       audio: 'tts-vo50',
-      startTime: timeDiff + 561,
+      startTime: timeDiff + 559,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 565,
+      startTime: timeDiff + 563,
     },
     {
       text: 'Закрывайте шибера.',
       sender: 'Мастер печи',
       audio: 'tts-vo51',
-      startTime: timeDiff + 566,
+      startTime: timeDiff + 564,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 566.1,
+      startTime: timeDiff + 564.1,
       human: true,
     },
     {
       text: 'Закрываю шибера.',
       sender: 'Газовщик',
       audio: 'tts-vo52',
-      startTime: timeDiff + 567,
+      startTime: timeDiff + 565,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 570,
+      startTime: timeDiff + 568,
+    },
+    // ilay dp ff bzu ff
+    {
+      action: {
+        window2D: {
+          elements: [
+            // dp
+            // { name: 'radar1_text', text: '1.21' },
+            // { name: 'radar2_text', text: '1.48' },
+            // { name: 'radar3_text', text: '1.11' },
+            // { name: 'zadan_yrov_sin', text: '0.90' },
+
+            // { name: 'EKZ_H1', text: '100' },
+            // { name: 'EKZ_H2', text: '100' },
+            // { name: 'EKZ_H3', text: '100' },
+            // { name: 'AKZ_100', opacity: 1 },
+            // { name: 'AKZ_45-100', opacity: 1 },
+            // { name: 'AKZ_45', opacity: 1 },
+            // { name: 'AKZ_30', opacity: 1 },
+            // { name: 'AKZ_17', opacity: 1 },
+
+            // { name: 'EVS_DP7_O', text: '53829' },
+            // { name: 'EVD1_O', text: '4504' },
+            { name: 'EVS_DP7_F', text: '7189' },
+            // { name: 'EVD1_F', text: '313429' },
+            { name: 'EVD_F', text: '311575' },
+            { name: 'P_1', text: '0.31' },
+            // { name: 'F_evd', text: '5216' },
+            { name: 'F_hol_dyt', text: '6' },
+            { name: 'T_hol_dyt', text: '13' },
+            { name: 'O_hol_dyt', text: '22.2' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.8' },
+            // { name: 'FO2_hol_dyt', text: '1158' },
+
+            { name: 'N2', text: '94.5' },
+            { name: 'CO', text: '2.2' },
+            { name: 'CO2', text: '2.4' },
+            { name: 'H2_tryb', text: '0.7' },
+            { name: 'Nco_tryb', text: '51.8' },
+            { name: 'Q_domG_tryb', text: '715', opacity: '0' },
+            { name: 'P_vozd_tryb', text: '0' },
+            { name: 'P_gaza_tryb', text: '14' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_snotr', text: '100' },
+            { name: 'H_progres_7', opacity: '1' },
+            { name: 'H_progres_19', opacity: '1' },
+            { name: 'H_progres_22', opacity: '1' },
+            { name: 'H_progres_33', opacity: '1' },
+            { name: 'H_progres_49', opacity: '1' },
+            { name: 'H_progres_56', opacity: '1' },
+            { name: 'H_progres_60', opacity: '1' },
+            { name: 'H_progres_89', opacity: '1' },
+            { name: 'H_progres_100', opacity: '1' },
+
+            { name: 'H_step_isp', text: '-1.$', opacity: '1' },
+            { name: 'HCO_step_isp', text: '-1.$' },
+            { name: 'Tkyp_3', text: '1132' },
+            { name: 'Tkyp_2', text: '1192' },
+            { name: 'Tkyp_1', text: '1183' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK2_status_1_fon', color: '#BD0102' },
+            { name: 'VNK1_status_1_fon', color: '#BD0102' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '132' },
+            { name: 'Tdym_2', text: '185' },
+            { name: 'Tdym_1', text: '272' },
+            { name: 'P_Os_szat_voz', text: '8.35' },
+            { name: 'T_Os_szat_voz', text: '32' },
+
+            { name: 'Temp_peref_1', text: '74' },
+            { name: 'Temp_peref_2', text: '68' },
+            { name: 'Temp_peref_3', text: '73' },
+            { name: 'Temp_peref_4', text: '69' },
+            { name: 'Temp_peref_5', text: '70' },
+            { name: 'Temp_peref_6', text: '71' },
+            { name: 'Temp_peref_7', text: '70' },
+            { name: 'Temp_peref_8', text: '67' },
+            { name: 'Temp_peref_9', text: '71' },
+            { name: 'Temp_peref_10', text: '59' },
+            { name: 'Temp_peref_11', text: '62' },
+            { name: 'Temp_peref_12', text: '68' },
+            { name: 'Temp_peref_13', text: '101' },
+            { name: 'Temp_peref_14', text: '74' },
+            { name: 'Temp_peref_15', text: '83' },
+            { name: 'Temp_peref_16', text: '76' },
+            { name: 'T1', text: '107' },
+            { name: 'T2', text: '95' },
+            { name: 'T3', text: '109' },
+            { name: 'T4', text: '96' },
+            { name: 'P_2', text: '0.14' },
+            { name: 'P_2_rect', color: "#d22b24" },
+            { name: 't_gor_dut', text: '1185' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '10' },
+            { name: 'P_pg_prir_gaz', text: '8,60' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '0' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.00' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.01' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '0.14' },
+            { name: 'dP_obsh_trybarect', color: '#ffff0f' },
+            { name: 'dP_nish_tryba', text: '0.12' },
+            { name: 'dP_nish_rect', color: '#ffff0f' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'zadanie_rect', color: '#ffff0f' },
+            { name: 'TTG_raschet', text: '2385', opacity: '0' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', opacity: '0' },
+            { name: 'L4', opacity: '0' },
+            { name: 'L2', text: '1428', opacity: '1' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L3', text: '978', opacity: '0' },
+            { name: 'L3_elem', color: '#ffffff' },
+
+            { name: 'P_tryba_1_590', text: '0.01' },
+            { name: 'P_tryba_1_591', text: '0.01' },
+            { name: 'P_tryba_1_592', text: '0.01' },
+            { name: 'P_tryba_1_593', text: '0.01' },
+            { name: 'P_tryba_2_1', text: '0.01' },
+            { name: 'P_tryba_2_2', text: '0.01' },
+            { name: 'P_tryba_2_3', text: '0.02' },
+            { name: 'P_tryba_2_4', text: '0.02' },
+            { name: 'P_tryba_3_590', text: '0.02' },
+            { name: 'P_tryba_3_591', text: '0.02' },
+            { name: 'P_tryba_4_1', text: '2.45' },
+            { name: 'P_tryba_4_2', text: '1.82' },
+            { name: 'P_tryba_4_3', text: '2.55' },
+            { name: 'P_tryba_4_4', text: '1.82' },
+
+            { name: 'P_tryba_5_1', text: '0.45' },
+            { name: 'P_tryba_5_2', text: '1.14' },
+            { name: 'P_tryba_5_3', text: '1.47' },
+            { name: 'P_tryba_5_4', text: '2.40' },
+            { name: 'V_dyt', text: '0.0' },
+            { name: 'fyrm_v_rab', text: '0' },
+
+            { name: 'ydel_tep_18', text: '27.5' },
+            { name: 'ydel_tep_17', text: '46.7' },
+            { name: 'ydel_tep_16', text: '42.8' },
+            { name: 'ydel_tep_15', text: '37.1' },
+            { name: 'ydel_tep_12_14', text: '73.4' },
+            { name: 'ydel_tep_10_11', text: '21.9' },
+            { name: 'ydel_tep_9', text: '23.2' },
+            { name: 'ydel_tep_8', text: '24.1' },
+            { name: 'ydel_tep_7', text: '31.1' },
+
+
+            // bzu
+            { name: 'ochistka sedel_P', text: '6.24' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '30' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+
+            { name: 'B1_dp Bunker', text: '0.01' },
+            { name: 'B1_P compes', text: '0.00' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP', text: '93.0' },
+            { name: 'B1_vibratciya', text: '2' },
+
+            { name: 'V linii P_B1', text: '202' }, // Б1
+            { name: 'V linii dP_B1', text: '228' },
+            { name: 'V sisteme vzveh_B1', text: '193' },
+
+            { name: 'V linii P_B2', text: '149' }, // Б2
+            { name: 'V linii dP_B2', text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '167' },
+
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.00' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.01' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.01' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.01' },
+
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '130' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+
+            { name: 'stanciia', text: '8' },
+            { name: 'ugol naklona_tekushiy', text: '46.7' },
+            { name: 'ugol naklona_zadanyi', text: '46.7' },
+
+            { name: 'gradusow ugol', text: '212.0' },
+
+
+            { name: 'prochent1', text: '0' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#00FF00' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', text: 'Р', opacity: '1' },
+            { name: 'left_ellipse', opacity: '1' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.00' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '93.0' }, // T
+            { name: 'matrix 1 str 1_M', text: '47.7' }, // M3
+            // не хватает схемы ПУСТ
+
+
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.4' }, // ШЗ слева
+            { name: 'left_vugr_rect', color: '#00FF00' }, //  Выгр зеленые зеленые рамки
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка слева
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            { name: 'btn_Pause_border', color: '#00FF00' }, // пауза по центру
+
+            { name: 'leviy', color: '#860004' }, // палка от цифр слева
+            { name: 'verx', text: '-0' }, // цифры сверху
+            { name: 'praviy', color: '#860004' }, // палка от цифр справа
+
+            { name: 'tr_3_str_1_', text: '5' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            { name: 'tekushiy rezym_A', color: '#CEC7B5' }, // текущий режим А задник
+            { name: 'tek rejim_A', color: '#B7B2AE' }, // текущий режим А задник
+
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '0.00' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '13.6' }, // t
+            { name: 'matrix 1 str 14_M', text: '28.8' }, // 
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            { name: 'prochent2', text: '1' }, // % справа
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '30' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+
+            { name: 'B2_Dp bunker', text: '0.01' }, // 
+            { name: 'B2_P compens', text: '0.05' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '83' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.4' }, // 
+            { name: 'B2_vibratciya', text: '47' }, // 
+
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '1.39' }, // 
+            { name: 'radar 1', text: '1.51' }, // 
+            { name: 'radar 2', text: '1.79' }, // 
+            { name: 'mexan', text: '1.40' }, // 
+            { name: 'bzu_mex.zond na huxte', color: '#00FF00' }, //  зеленый квадрат Мех.зонд на шихт
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'bg_vRabote', color: '#2B2A29' }, // в работе
+            { name: 'ismetir_ramki', color: '#00FF00' }, // в работе
+
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '5' }, // 
+            { name: 'T3_nomerstr', text: '5' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+
+            { name: 'B1_Tip', color: '#860004' }, // 
+            { name: 'B2_Tip', color: '#008600' }, // 
+            { name: 'T2_Tip', color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip', color: '#008600' }, // 
+
+            { name: 'B1_ves', text: '93.0' }, // 
+            { name: 'B2_ves', text: '13.6' }, // 
+            { name: 'T3_ves', text: '16.4' }, // 
+            { name: 'T2_ves', text: '16.4' }, // 
+            { name: 'T1_ves', text: '16.4' }, // 
+
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#CEC7B5' }, // str 2 color
+            { name: 'K_str1', color: '#860004' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+            { name: 'na_conveer_s1_bukca', text: 'Р', opacity: '0' }, // str 2 
+            { name: 'str1_down', text: 'Р' }, // str 2 
+            { name: 'str51_down', text: 'К' }, // str 51 
+
+            // { name: 'str2_P_1',   text: '0' }, // str 2-11 t
+            // { name: 'str2_P_2',   text: '0' }, // str 2-10 t
+            // { name: 'str2_P_3',   text: '0' }, // str 2-9 t
+            // { name: 'str2_P_4',   text: '13' }, // str 2-8 t
+            // { name: 'str2_P_5',   text: '13' }, // str 2-7 t
+            // { name: 'str2_P_6',   text: '13' }, // str 2-6 t
+            // { name: 'str2_P_7',   text: '11' }, // str 2-5 t
+            // { name: 'str2_P_8',   text: '10' }, // str 2-4 t
+            // { name: 'str2_P_9',   text: '10' }, // str 2-3 t
+            // { name: 'str2_P_10',  text: '9' }, // str 2-2 t
+            // { name: 'str2_P_11',  text: '21' }, // str 2-1 t
+            // { name: 'str2_P_12',  text: '16.2' }, // str 2-ves t
+
+            { name: 'Str1_8', color: '#00FF00' }, // str 1-8 r  // #008600
+            { name: 'Str1_4', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            { name: 'Str1_1', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'str1_K_1',   text: '0' }, // str 1-11 t
+            // { name: 'str1_K_2',   text: '0' }, // str 1-10 t
+            // { name: 'str1_K_3',   text: '0' }, // str 1-9 t
+            // { name: 'str1_K_4',   text: '22' }, // str 1-8 t
+            // { name: 'str1_K_5',   text: '21' }, // str 1-7 t
+            // { name: 'str1_K_6',   text: '19' }, // str 1-6 t
+            // { name: 'str1_K_7',   text: '15' }, // str 1-5 t
+            // { name: 'str1_K_8',   text: '13' }, // str 1-4 t
+            // { name: 'str1_K_9',   text: '10' }, // str 1-3 t
+            // { name: 'str1_K_10',  text: '0' }, // str 1-2 t
+            // { name: 'str1_K_11',  text: '0' }, // str 1-1 t
+            // { name: 'str1_K_12',  text: '93.0' }, // str 1-ves t
+
+            // { name: 'str51_SM_1',   text: '0' }, // str 51-11 t
+            // { name: 'str51_SM_2',   text: '0' }, // str 51-10 t
+            // { name: 'str51_SM_3',   text: '0' }, // str 51-9 t
+            // { name: 'str51_SM_4',   text: '0' }, // str 51-8 t
+            // { name: 'str51_SM_5',   text: '0' }, // str 51-7 t
+            // { name: 'str51_SM_6',   text: '0' }, // str 51-6 t
+            // { name: 'str51_SM_7',   text: '0  0' }, // str 51-5-4 t
+            // { name: 'str51_SM_8',   text: '0' }, // str 51-3 t
+            // { name: 'str51_SM_9',   text: '0' }, // str 51-2 t
+            // { name: 'str51_SM_10',  text: '100' }, // str 51-1 t
+            // { name: 'str51_SM_11',  text: '15.0' }, // str 51-ves t
+          ]
+        }
+      },
+      startTime: timeDiff + 568.01,
+    },
+    {
+      action: {
+        target3D: 'bzuFactUgol_l',
+        color: 'red',
+        number: '332.9',
+      },
+      startTime: timeDiff + 568.02,
+    },
+    {
+      action: {
+        target3D: 'bzuVesNetto_r',
+        color: 'red',
+        number: '013.6',
+      },
+      startTime: timeDiff + 568.02,
     },
 
     ////--------------------------------39---------------------------------------- 
     // scenarioText: 'Делаем 310 318 и 319 поочерёдно.',
     ////--------------------------------клапан 310----------------------------------------Закрыт. Автоматический в ручной-------------------------------
+    // ilay vnk3 vnk3 ff 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '13.35' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: '3FI_03', text: '0' },
+            { name: '3FI_01', text: '0' },
+            { name: 'kl_327', color: '#00FF00' },
+            { name: 'kl_332', color: '#ff0000' },
+            { name: 'rect_332_1', color: '#000' },
+            { name: 'rect_332_2', color: '#000' },
+            { name: 'kl_316', color: '#ff0000' },
+            { name: 'rect_316_1', color: '#000' },
+            { name: 'rect_316_2', color: '#000' },
+
+            // { name: '115_SPW',  text: '433.0' },
+            // { name: '115_SPT',  text: '108.0' },
+            // { name: '115_KP_2', text: '500.0' },
+            // { name: '115_GAZ',  text: '112221' },
+            // { name: 'V1_t1_5', text: 'Работа', color: '#00FF00' },
+
+            // { name: '123_PV_2', text: '1221.1' },
+            // { name: '123_SP_2', text: '1200.0' },
+            // { name: '123_KP_2', text: '28.54' },
+            // { name: '123_GAZ',  text: '0.00' },
+            // { name: 'V1_t2_4',  text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl_334', color: '#ff0000' },
+            { name: '3FI_02', text: '0' },
+
+            // { name: '115_PV',   text: '109961' },
+            // { name: '115_SP',   text: '113391' },
+            // { name: '115_KP_1', text: '41.34' },
+            // { name: 'V1_t3_4',  text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_1', text: '1.000' },
+            // { name: '123_SP_1', text: '1.000' },
+            // { name: '123_KP_1', text: '16.83' },
+            // { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '3PI_02', text: '0.00' },
+            { name: '3PS_03', color: '#ff0000' },
+            { name: 'kl_321', color: '#00FF00' },
+            { name: 'kl315_proc', text: '22' },
+            { name: '3PI_04', text: '0.03' },
+            { name: '3PS_05', color: '#ff0000' },
+            { name: 'kl323_proc', text: '21' },
+            { name: 'kl_311', color: '#ff0000' },
+            { name: 'kl_312', color: '#ff0000' },
+            { name: '3QI_01', text: '18.71' },
+
+            { name: '3TI_43', text: '76' },
+            { name: 'kl_313', color: '#ff0000' },
+            { name: '3TI_29', text: '24' },
+            { name: 'kl_317', color: '#ff0000' },
+            { name: 'dym_vybor_signala', text: '128' },
+            { name: '3TI_28_1', text: '126' },
+            { name: '3TI_28_2', text: '133' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#050FE5' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Дутье' },
+            { name: 'vnk3_stripes', color: '#050FE5' },
+            { name: 'Vremya_nagreva', text: '106' },
+            { name: 'Vremya_dutya', text: '105' },
+            { name: 'Vremya_otdelen', text: '0' },
+            { name: 'rect_R_VN-GD', color: '#04FF00' },
+
+            { name: '3PI_01', text: '2' },
+
+            { name: '3TI_02', text: '1226' },
+            { name: '3TI_03', text: '1220' },
+            { name: '3TI_04', text: '-999' },
+            { name: '3TI_05', text: '1065' },
+            { name: 'vybor_signala', text: '1225' },
+            { name: 'kl_319', color: '#00FF00' },
+
+            { name: 'circle_dutyo', color: '#00FF00' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#000' },
+            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'kl_336a', color: '#ff0000' },
+            { name: 'kl_318a', color: '#ff0000' },
+            { name: 'kl_318', color: '#00ff00' },
+            { name: 'kl_310', color: '#ff0000' },
+          ]
+        }
+      },
+      startTime: timeDiff + 568.03,
+    },
     {
       action: {
         window2D: {
@@ -7158,13 +21456,13 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 570.1,
+      startTime: timeDiff + 568.1,
     },
     {
       scenarioText: 'Перевести ВНК №3 на ручной режим.',
       audio: 'tts-38',
       sender: 'Система',
-      startTime: timeDiff + 571,
+      startTime: timeDiff + 569,
     },
     {
       text: 'Перевести клапан 310 на ручной режим.',
@@ -7209,7 +21507,7 @@ let tempActions = [
           { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 574,
+      startTime: timeDiff + 572,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -7228,7 +21526,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 574.2,
+      startTime: timeDiff + 572.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -7257,7 +21555,7 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 574.4,
+      startTime: timeDiff + 572.4,
       human: true,
     },
     // окно ВН  //  клик байпас
@@ -7276,7 +21574,7 @@ let tempActions = [
           { x: 88.20, y: 93, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 574.6,
+      startTime: timeDiff + 572.6,
       human: true,
     },
     // маленькое окошко ОК
@@ -7294,7 +21592,7 @@ let tempActions = [
           { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 574.8,
+      startTime: timeDiff + 572.8,
       human: true,
     },
     {
@@ -7303,8 +21601,98 @@ let tempActions = [
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 575,
+      startTime: timeDiff + 573,
       human: true,
+    },
+    // ilay vnk3
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '13.30' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: '3FI_03', text: '0' },
+            { name: '3FI_01', text: '0' },
+            { name: 'kl_327', color: '#00FF00' },
+            { name: 'kl_332', color: '#ff0000' },
+            { name: 'rect_332_1', color: '#000' },
+            { name: 'rect_332_2', color: '#000' },
+            { name: 'kl_316', color: '#ff0000' },
+            { name: 'rect_316_1', color: '#000' },
+            { name: 'rect_316_2', color: '#000' },
+
+            // { name: '115_SPW',  text: '433.0' },
+            // { name: '115_SPT',  text: '108.0' },
+            // { name: '115_KP_2', text: '500.0' },
+            // { name: '115_GAZ',  text: '112221' },
+            // { name: 'V1_t1_5', text: 'Работа', color: '#00FF00' },
+
+            // { name: '123_PV_2', text: '1221.1' },
+            // { name: '123_SP_2', text: '1200.0' },
+            // { name: '123_KP_2', text: '28.54' },
+            // { name: '123_GAZ',  text: '0.00' },
+            // { name: 'V1_t2_4',  text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl_334', color: '#ff0000' },
+            { name: '3FI_02', text: '0' },
+
+            // { name: '115_PV',   text: '109961' },
+            // { name: '115_SP',   text: '113391' },
+            // { name: '115_KP_1', text: '41.34' },
+            // { name: 'V1_t3_4',  text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_1', text: '1.000' },
+            // { name: '123_SP_1', text: '1.000' },
+            // { name: '123_KP_1', text: '16.83' },
+            // { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '3PI_02', text: '0.00' },
+            { name: '3PS_03', color: '#ff0000' },
+            { name: 'kl_321', color: '#00FF00' },
+            { name: 'kl315_proc', text: '22' },
+            { name: '3PI_04', text: '0.02' },
+            { name: '3PS_05', color: '#ff0000' },
+            { name: 'kl323_proc', text: '21' },
+            { name: 'kl_311', color: '#ff0000' },
+            { name: 'kl_312', color: '#ff0000' },
+            { name: '3QI_01', text: '18.59' },
+
+            { name: '3TI_43', text: '76' },
+            { name: 'kl_313', color: '#ff0000' },
+            { name: '3TI_29', text: '24' },
+            { name: 'kl_317', color: '#ff0000' },
+            { name: 'dym_vybor_signala', text: '129' },
+            { name: '3TI_28_1', text: '128' },
+            { name: '3TI_28_2', text: '133' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#050FE5' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Дутье' },
+            { name: 'vnk3_stripes', color: '#050FE5' },
+            { name: 'Vremya_nagreva', text: '106' },
+            { name: 'Vremya_dutya', text: '105' },
+            { name: 'Vremya_otdelen', text: '0' },
+            { name: 'rect_R_VN-GD', color: '#04FF00' },
+
+            { name: '3PI_01', text: '2' },
+
+            { name: '3TI_02', text: '1225' },
+            { name: '3TI_03', text: '1220' },
+            { name: '3TI_04', text: '-999' },
+            { name: '3TI_05', text: '1073' },
+            { name: 'vybor_signala', text: '1225' },
+            { name: 'kl_319', color: '#00FF00' },
+
+            { name: 'circle_dutyo', color: '#00FF00' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#000' },
+            { name: 'circle_otdeleniye_2', color: '#000' },
+          ]
+        }
+      },
+      startTime: timeDiff + 573.02,
     },
     ////
     ////--------------------------------клапан 318----------------------------------------Открыт. Автоматический в ручной-------------------------------
@@ -7350,7 +21738,7 @@ let tempActions = [
           { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 575.1,
+      startTime: timeDiff + 573.1,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -7369,7 +21757,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 575.2,
+      startTime: timeDiff + 573.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -7400,7 +21788,7 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 575.4,
+      startTime: timeDiff + 573.4,
       human: true,
     },
     // окно ВН  //  клик байпас
@@ -7419,7 +21807,7 @@ let tempActions = [
           { x: 88.20, y: 93, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 575.6,
+      startTime: timeDiff + 573.6,
       human: true,
     },
     // маленькое окошко ОК
@@ -7436,7 +21824,7 @@ let tempActions = [
           { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 575.8,
+      startTime: timeDiff + 573.8,
       human: true,
     },
     {
@@ -7445,10 +21833,94 @@ let tempActions = [
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 576,
+      startTime: timeDiff + 574,
       human: true,
     },
+    // ilay vnk3
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '13.28' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: '3FI_03', text: '0' },
+            { name: '3FI_01', text: '0' },
+            { name: 'kl_327', color: '#00FF00' },
+            { name: 'kl_332', color: '#ff0000' },
+            { name: 'rect_332_1', color: '#000' },
+            { name: 'rect_332_2', color: '#000' },
+            { name: 'kl_316', color: '#ff0000' },
+            { name: 'rect_316_1', color: '#000' },
+            { name: 'rect_316_2', color: '#000' },
 
+            // { name: '115_SPW',  text: '433.0' },
+            // { name: '115_SPT',  text: '108.0' },
+            // { name: '115_KP_2', text: '500.0' },
+            // { name: '115_GAZ',  text: '112221' },
+            // { name: 'V1_t1_5', text: 'Работа', color: '#00FF00' },
+
+            // { name: '123_PV_2', text: '1221.1' },
+            // { name: '123_SP_2', text: '1200.0' },
+            // { name: '123_KP_2', text: '28.54' },
+            // { name: '123_GAZ',  text: '0.00' },
+            // { name: 'V1_t2_4',  text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl_334', color: '#ff0000' },
+            { name: '3FI_02', text: '0' },
+
+            // { name: '115_PV',   text: '109961' },
+            // { name: '115_SP',   text: '113391' },
+            // { name: '115_KP_1', text: '41.34' },
+            // { name: 'V1_t3_4',  text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_1', text: '1.000' },
+            // { name: '123_SP_1', text: '1.000' },
+            // { name: '123_KP_1', text: '16.83' },
+            // { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '3PI_02', text: '0.00' },
+            { name: '3PS_03', color: '#ff0000' },
+            { name: 'kl_321', color: '#00FF00' },
+            { name: 'kl315_proc', text: '22' },
+            { name: '3PI_04', text: '0.03' },
+            { name: '3PS_05', color: '#ff0000' },
+            { name: 'kl323_proc', text: '21' },
+            { name: 'kl_311', color: '#ff0000' },
+            { name: 'kl_312', color: '#ff0000' },
+            { name: '3QI_01', text: '18.72' },
+
+            { name: '3TI_43', text: '76' },
+            { name: 'kl_313', color: '#ff0000' },
+            { name: '3TI_29', text: '24' },
+            { name: 'kl_317', color: '#ff0000' },
+            { name: 'dym_vybor_signala', text: '128' },
+            { name: '3TI_28_1', text: '126' },
+            { name: '3TI_28_2', text: '133' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#050FE5' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Дутье' },
+            { name: 'vnk3_stripes', color: '#050FE5' },
+            { name: 'Vremya_nagreva', text: '106' },
+            { name: 'Vremya_dutya', text: '105' },
+            { name: 'Vremya_otdelen', text: '0' },
+            { name: 'rect_R_VN-GD', color: '#04FF00' },
+
+            { name: '3PI_01', text: '2' },
+
+            { name: '3TI_02', text: '1225' },
+            { name: '3TI_03', text: '1220' },
+            { name: '3TI_04', text: '-999' },
+            { name: '3TI_05', text: '1076' },
+
+
+          ]
+        }
+      },
+      startTime: timeDiff + 574.03,
+    },
     ////--------------------------------клапан 319----------------------------------------Открыт. Автоматический в ручной-------------------------------
     {
       // text: 'Перевести клапан 319 на ручной режим.',
@@ -7492,7 +21964,7 @@ let tempActions = [
           { x: 79.8, y: 53.2, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 576.1,
+      startTime: timeDiff + 574.1,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -7511,7 +21983,7 @@ let tempActions = [
           { x: 84.4, y: 60.5, w: 3.2, h: 2.5, id: 'close_vn' },
         ]
       },
-      startTime: timeDiff + 576.2,
+      startTime: timeDiff + 574.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -7540,7 +22012,7 @@ let tempActions = [
           { x: 75.4, y: 70.4, w: 8.6, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 576.4,
+      startTime: timeDiff + 574.4,
       human: true,
     },
     // окно ВН  //  клик байпас
@@ -7559,7 +22031,7 @@ let tempActions = [
           { x: 80.7, y: 70.7, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 576.6,
+      startTime: timeDiff + 574.6,
       human: true,
     },
     // маленькое окошко ОК
@@ -7577,21 +22049,105 @@ let tempActions = [
           { x: 79.8, y: 53.2, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 576.8,
+      startTime: timeDiff + 574.8,
       human: true,
+    },
+    // ilay vnk3 vnk3 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '13.26' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: '3FI_03', text: '0' },
+            { name: '3FI_01', text: '0' },
+            { name: 'kl_327', color: '#00FF00' },
+            { name: 'kl_332', color: '#ff0000' },
+            { name: 'rect_332_1', color: '#000' },
+            { name: 'rect_332_2', color: '#000' },
+            { name: 'kl_316', color: '#ff0000' },
+            { name: 'rect_316_1', color: '#000' },
+            { name: 'rect_316_2', color: '#000' },
+
+            // { name: '115_SPW',  text: '433.0' },
+            // { name: '115_SPT',  text: '108.0' },
+            // { name: '115_KP_2', text: '500.0' },
+            // { name: '115_GAZ',  text: '112221' },
+            // { name: 'V1_t1_5', text: 'Работа', color: '#00FF00' },
+
+            // { name: '123_PV_2', text: '1221.1' },
+            // { name: '123_SP_2', text: '1200.0' },
+            // { name: '123_KP_2', text: '28.54' },
+            // { name: '123_GAZ',  text: '0.00' },
+            // { name: 'V1_t2_4',  text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl_334', color: '#ff0000' },
+            { name: '3FI_02', text: '0' },
+
+            // { name: '115_PV',   text: '109961' },
+            // { name: '115_SP',   text: '113391' },
+            // { name: '115_KP_1', text: '41.34' },
+            // { name: 'V1_t3_4',  text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_1', text: '1.000' },
+            // { name: '123_SP_1', text: '1.000' },
+            // { name: '123_KP_1', text: '16.83' },
+            // { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '3PI_02', text: '0.00' },
+            { name: '3PS_03', color: '#ff0000' },
+            { name: 'kl_321', color: '#00FF00' },
+            { name: 'kl315_proc', text: '22' },
+            { name: '3PI_04', text: '0.03' },
+            { name: '3PS_05', color: '#ff0000' },
+            { name: 'kl323_proc', text: '21' },
+            { name: 'kl_311', color: '#ff0000' },
+            { name: 'kl_312', color: '#ff0000' },
+            { name: '3QI_01', text: '18.70' },
+
+            { name: '3TI_43', text: '76' },
+            { name: 'kl_313', color: '#ff0000' },
+            { name: '3TI_29', text: '24' },
+            { name: 'kl_317', color: '#ff0000' },
+            { name: 'dym_vybor_signala', text: '129' },
+            { name: '3TI_28_1', text: '125' },
+            { name: '3TI_28_2', text: '133' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#050FE5' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Дутье' },
+            { name: 'vnk3_stripes', color: '#050FE5' },
+            { name: 'Vremya_nagreva', text: '106' },
+            { name: 'Vremya_dutya', text: '105' },
+            { name: 'Vremya_otdelen', text: '0' },
+            { name: 'rect_R_VN-GD', color: '#04FF00' },
+
+            { name: '3PI_01', text: '2' },
+
+            { name: '3TI_02', text: '1225' },
+            { name: '3TI_03', text: '1220' },
+            { name: '3TI_04', text: '-999' },
+            { name: '3TI_05', text: '1068' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 574.82,
     },
     ////--------------------------------40---------------------------------------- 
     {
       scenarioText: 'Открыть клапан 310 для сброса давления.',
       sender: 'Система',
       audio: 'tts-39',
-      startTime: timeDiff + 577,
+      startTime: timeDiff + 575,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 577.1,
+      startTime: timeDiff + 575.1,
       human: true,
     },
 
@@ -7639,7 +22195,7 @@ let tempActions = [
           { x: 83.80, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  «Открыть»
         ]
       },
-      startTime: timeDiff + 580,
+      startTime: timeDiff + 578,
       human: true,
     },
 
@@ -7661,7 +22217,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 581,
+      startTime: timeDiff + 579,
       human: true,
     },
     //  маленькое окошко ОК
@@ -7692,11 +22248,41 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1
         ]
       },
-      startTime: timeDiff + 581.2,
+      startTime: timeDiff + 579.2,
       human: true,
     },
     //  мигание
     {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'left_vn', color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+
+            { name: 'kl_310_1', color: '#00FF00' },
+            { name: 'kl_310_2', color: '#00FF00' },
+          ]
+        }
+      },
+      startTime: timeDiff + 580,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+
+            { name: 'kl_310_1', color: '#8F8F8F' },
+            { name: 'kl_310_2', color: '#8F8F8F' },
+          ]
+        }
+      },
+      startTime: timeDiff + 581,
+    }, {
       action: {
         window2D: {
           elements: [
@@ -7730,36 +22316,6 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'left_vn', color: '#00FF00' },
-            { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_n_winVN', stroke: '#00FF00' },
-            { name: 'circle_n_winVN', stroke: '#00FF00' },
-
-            { name: 'kl_310_1', color: '#00FF00' },
-            { name: 'kl_310_2', color: '#00FF00' },
-          ]
-        }
-      },
-      startTime: timeDiff + 584,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'left_vn', color: '#8F8F8F' },
-            { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
-            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
-
-            { name: 'kl_310_1', color: '#8F8F8F' },
-            { name: 'kl_310_2', color: '#8F8F8F' },
-          ]
-        }
-      },
-      startTime: timeDiff + 585,
-    }, {
-      action: {
-        window2D: {
-          elements: [
             { name: 'status_window_text', text: 'Открыт' },
             { name: 'left_vn', color: '#00FF00' },
             { name: 'right_vn', color: '#00FF00' },
@@ -7770,16 +22326,106 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 586,
+      startTime: timeDiff + 584,
     },
+    // ilay vnk3 vnk3 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '13.24' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: '3FI_03', text: '0' },
+            { name: '3FI_01', text: '0' },
+            { name: 'kl_327', color: '#00FF00' },
+            { name: 'kl_332', color: '#ff0000' },
+            { name: 'rect_332_1', color: '#000' },
+            { name: 'rect_332_2', color: '#000' },
+            { name: 'kl_316', color: '#ff0000' },
+            { name: 'rect_316_1', color: '#000' },
+            { name: 'rect_316_2', color: '#000' },
 
+            // { name: '115_SPW',  text: '433.0' },
+            // { name: '115_SPT',  text: '108.0' },
+            // { name: '115_KP_2', text: '500.0' },
+            // { name: '115_GAZ',  text: '112221' },
+            // { name: 'V1_t1_5', text: 'Работа', color: '#00FF00' },
+
+            // { name: '123_PV_2', text: '1221.1' },
+            // { name: '123_SP_2', text: '1200.0' },
+            // { name: '123_KP_2', text: '28.54' },
+            // { name: '123_GAZ',  text: '0.00' },
+            // { name: 'V1_t2_4',  text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl_334', color: '#ff0000' },
+            { name: '3FI_02', text: '0' },
+
+            // { name: '115_PV',   text: '109961' },
+            // { name: '115_SP',   text: '113391' },
+            // { name: '115_KP_1', text: '41.34' },
+            // { name: 'V1_t3_4',  text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_1', text: '1.000' },
+            // { name: '123_SP_1', text: '1.000' },
+            // { name: '123_KP_1', text: '16.83' },
+            // { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '3PI_02', text: '0.00' },
+            { name: '3PS_03', color: '#ff0000' },
+            { name: 'kl_321', color: '#00FF00' },
+            { name: 'kl315_proc', text: '22' },
+            { name: '3PI_04', text: '0.02' },
+            { name: '3PS_05', color: '#ff0000' },
+            { name: 'kl323_proc', text: '21' },
+            { name: 'kl_311', color: '#ff0000' },
+            { name: 'kl_312', color: '#ff0000' },
+            { name: '3QI_01', text: '18.68' },
+
+            { name: '3TI_43', text: '75' },
+            { name: 'kl_313', color: '#ff0000' },
+            { name: '3TI_29', text: '24' },
+            { name: 'kl_317', color: '#ff0000' },
+            { name: 'dym_vybor_signala', text: '129' },
+            { name: '3TI_28_1', text: '126' },
+            { name: '3TI_28_2', text: '133' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#ffffff' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Индивидуал.' },
+            { name: 'VNK3_status_2', text: '' },
+            { name: 'vnk3_stripes', color: '#ffffff' },
+            { name: 'Vremya_nagreva', text: '106' },
+            { name: 'Vremya_dutya', text: '105' },
+            { name: 'Vremya_otdelen', text: '0' },
+            { name: 'rect_R_VN-GD', color: '#04FF00' },
+
+            { name: '3PI_01', text: '1' },
+
+            { name: '3TI_02', text: '1224' },
+            { name: '3TI_03', text: '1219' },
+            { name: '3TI_04', text: '-999' },
+            { name: '3TI_05', text: '1068' },
+            { name: 'vybor_signala', text: '1224' },
+
+
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#000' },
+            { name: 'circle_otdeleniye_2', color: '#000' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 584.02,
+    },
 
     ////--------------------------------41---------------------------------------- 318
     {
       scenarioText: 'Закрыть клапан 318.',
       sender: 'Система',
       audio: 'tts-40',
-      startTime: timeDiff + 586.2,
+      startTime: timeDiff + 584.2,
     },
     {
       action: {
@@ -7789,9 +22435,10 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1
         ]
       },
-      startTime: timeDiff + 586.3,
+      startTime: timeDiff + 584.3,
       human: true,
     },
+
 
     {
       action: {
@@ -7835,7 +22482,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 589.4,
+      startTime: timeDiff + 587.4,
       human: true,
     },
     // окно ВН  // закрыть
@@ -7857,7 +22504,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 589.6,
+      startTime: timeDiff + 587.6,
       human: true,
     },
     //  маленькое окошко ОК //  ВН Закрывается
@@ -7888,7 +22535,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 589.8,
+      startTime: timeDiff + 587.8,
       human: true,
     },
     //мигание пару секунд
@@ -7904,7 +22551,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 590.3,
+      startTime: timeDiff + 588.3,
     }, {
       action: {
         window2D: {
@@ -7917,7 +22564,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 591,
+      startTime: timeDiff + 589,
     }, {
       action: {
         window2D: {
@@ -7930,7 +22577,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 592,
+      startTime: timeDiff + 590,
     }, {
       action: {
         window2D: {
@@ -7944,7 +22591,7 @@ let tempActions = [
         },
 
       },
-      startTime: timeDiff + 593,
+      startTime: timeDiff + 591,
     },
     // ОКНО ВН  // КЛИК СТОП
     {
@@ -7964,7 +22611,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 593.2,
+      startTime: timeDiff + 591.2,
       human: true
     },
 
@@ -7989,7 +22636,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 593.4,
+      startTime: timeDiff + 591.4,
       human: true,
     },
     //  маленькое окошко ОК //  ВН Закрывается
@@ -8020,7 +22667,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 593.6,
+      startTime: timeDiff + 591.6,
       human: true,
     },
     //мигание пару секунд
@@ -8036,7 +22683,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 594.3,
+      startTime: timeDiff + 592.3,
     }, {
       action: {
         window2D: {
@@ -8049,7 +22696,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 595,
+      startTime: timeDiff + 593,
     }, {
       action: {
         window2D: {
@@ -8062,7 +22709,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 596,
+      startTime: timeDiff + 594,
     }, {
       action: {
         window2D: {
@@ -8076,7 +22723,7 @@ let tempActions = [
         },
 
       },
-      startTime: timeDiff + 597,
+      startTime: timeDiff + 595,
     },
     // ОКНО ВН  // КЛИК СТОП
     {
@@ -8100,7 +22747,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 597.2,
+      startTime: timeDiff + 595.2,
       human: true
     },
     ///////
@@ -8123,7 +22770,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 597.4,
+      startTime: timeDiff + 595.4,
       human: true,
     },
     //  маленькое окошко ОК //  ВН Закрывается
@@ -8154,7 +22801,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 597.6,
+      startTime: timeDiff + 595.6,
       human: true,
     },
     //мигание пару секунд
@@ -8170,7 +22817,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 598.3,
+      startTime: timeDiff + 596.3,
     }, {
       action: {
         window2D: {
@@ -8183,7 +22830,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 599,
+      startTime: timeDiff + 597,
     }, {
       action: {
         window2D: {
@@ -8197,7 +22844,102 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 600,
+      startTime: timeDiff + 598,
+    },
+
+    // ilay
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '13.24' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: '3FI_03', text: '0' },
+            { name: '3FI_01', text: '0' },
+            { name: 'kl_327', color: '#00FF00' },
+            { name: 'kl_332', color: '#ff0000' },
+            { name: 'rect_332_1', color: '#000' },
+            { name: 'rect_332_2', color: '#000' },
+            { name: 'kl_316', color: '#ff0000' },
+            { name: 'rect_316_1', color: '#000' },
+            { name: 'rect_316_2', color: '#000' },
+
+            // { name: '115_SPW',  text: '433.0' },
+            // { name: '115_SPT',  text: '108.0' },
+            // { name: '115_KP_2', text: '500.0' },
+            // { name: '115_GAZ',  text: '112221' },
+            // { name: 'V1_t1_5', text: 'Работа', color: '#00FF00' },
+
+            // { name: '123_PV_2', text: '1221.1' },
+            // { name: '123_SP_2', text: '1200.0' },
+            // { name: '123_KP_2', text: '28.54' },
+            // { name: '123_GAZ',  text: '0.00' },
+            // { name: 'V1_t2_4',  text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl_334', color: '#ff0000' },
+            { name: '3FI_02', text: '0' },
+
+            // { name: '115_PV',   text: '109961' },
+            // { name: '115_SP',   text: '113391' },
+            // { name: '115_KP_1', text: '41.34' },
+            // { name: 'V1_t3_4',  text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_1', text: '1.000' },
+            // { name: '123_SP_1', text: '1.000' },
+            // { name: '123_KP_1', text: '16.83' },
+            // { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '3PI_02', text: '0.00' },
+            { name: '3PS_03', color: '#ff0000' },
+            { name: 'kl_321', color: '#00FF00' },
+            { name: 'kl315_proc', text: '22' },
+            { name: '3PI_04', text: '0.03' },
+            { name: '3PS_05', color: '#ff0000' },
+            { name: 'kl323_proc', text: '21' },
+            { name: 'kl_311', color: '#ff0000' },
+            { name: 'kl_312', color: '#ff0000' },
+            { name: '3QI_01', text: '18.71' },
+
+            { name: '3TI_43', text: '76' },
+            { name: 'kl_313', color: '#ff0000' },
+            { name: '3TI_29', text: '24' },
+            { name: 'kl_317', color: '#ff0000' },
+            { name: 'dym_vybor_signala', text: '128' },
+            { name: '3TI_28_1', text: '126' },
+            { name: '3TI_28_2', text: '133' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#050FE5' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Дутье' },
+            { name: 'vnk3_stripes', color: '#050FE5' },
+            { name: 'Vremya_nagreva', text: '106' },
+            { name: 'Vremya_dutya', text: '105' },
+            { name: 'Vremya_otdelen', text: '0' },
+            { name: 'rect_R_VN-GD', color: '#04FF00' },
+
+            { name: '3PI_01', text: '2' },
+
+            { name: '3TI_02', text: '1226' },
+            { name: '3TI_03', text: '1218' },
+            { name: '3TI_04', text: '-999' },
+            { name: '3TI_05', text: '1063' },
+            // { name: 'vybor_signala',   text: '1225' },
+            // { name: 'kl_319',   color: '#00FF00' },
+
+            // { name: 'circle_dutyo',           color: '#00FF00' },
+            // { name: 'circle_nagrev',          color: '#000' },
+            // { name: 'circle_otdeleniye_1',    color: '#000' },
+            // { name: 'circle_otdeleniye_2',    color: '#000' },
+            // { name: 'kl_336a',   color: '#ff0000' },
+            // { name: 'kl_318a',   color: '#ff0000' },
+            // { name: 'kl_318',   color: '#00ff00' },
+            // { name: 'kl_310',   color: '#ff0000' },
+          ]
+        }
+      },
+      startTime: timeDiff + 598.02,
     },
     ////--------------------------------клапан 318----------------------------------------Закрыт. Закрыт в закрыт-------------------------------    //  2
 
@@ -8206,15 +22948,110 @@ let tempActions = [
       scenarioText: 'Закрыть клапан 319.',
       sender: 'Система',
       audio: 'tts-41',
-      startTime: timeDiff + 601,
+      startTime: timeDiff + 599,
     },
 
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 601.1,
+      startTime: timeDiff + 599.1,
       human: true,
+    },
+    // Sergey (VNK3 после закрытия клапана 318)
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '12,64' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: '3FI_03', text: '0' },
+            { name: '3FI_01', text: '0' },
+            { name: 'kl_327', color: '#00FF00' },
+            { name: 'kl_332', color: '#ff0000' },
+            { name: 'rect_332_1', color: '#000' },
+            { name: 'rect_332_2', color: '#000' },
+            { name: 'kl_316', color: '#ff0000' },
+            { name: 'rect_316_1', color: '#000' },
+            { name: 'rect_316_2', color: '#000' },
+
+            // { name: '115_SPW',  text: '433,0' },
+            // { name: '115_SPT',  text: '108,0' },
+            // { name: '115_KP_2', text: '500,0' },
+            // { name: '115_GAZ',  text: '112221' },
+            // { name: 'V1_t1_5', text: 'Работа', color: '#00FF00' },
+
+            // { name: '123_PV_2', text: '1221,1' },
+            // { name: '123_SP_2', text: '1200,0' },
+            // { name: '123_KP_2', text: '28,54' },
+            // { name: '123_GAZ',  text: '0,00' },
+            // { name: 'V1_t2_4',  text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl_334', color: '#ff0000' },
+            { name: '3FI_02', text: '0' },
+
+            // { name: '115_PV',   text: '109961' },
+            // { name: '115_SP',   text: '113391' },
+            // { name: '115_KP_1', text: '41,34' },
+            // { name: 'V1_t3_4',  text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_1', text: '1,000' },
+            // { name: '123_SP_1', text: '1,000' },
+            // { name: '123_KP_1', text: '16,83' },
+            // { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '3PI_02', text: '0,00' },
+            { name: '3PS_03', color: '#ff0000' },
+            { name: 'kl_321', color: '#00FF00' },
+            { name: 'kl315_proc', text: '22' },
+            { name: '3PI_04', text: '0,31' },
+            { name: '3PS_05', color: '#ff0000' },
+            { name: 'kl323_proc', text: '21' },
+            { name: 'kl_311', color: '#ff0000' },
+            { name: 'kl_312', color: '#ff0000' },
+            { name: '3QI_01', text: '18,96' },
+
+            { name: '3TI_43', text: '75' },
+            { name: 'kl_313', color: '#ff0000' },
+            { name: '3TI_29', text: '24' },
+            { name: 'kl_317', color: '#ff0000' },
+            { name: 'dym_vybor_signala', text: '127' },
+            { name: '3TI_28_1', text: '127' },
+            { name: '3TI_28_2', text: '133' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#F6EDE8' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Индивидуал.' },
+            { name: 'VNK3_status_2', text: '' },
+            { name: 'vnk3_stripes', color: '#F6EDE8' },
+            { name: 'Vremya_nagreva', text: '105' },
+            { name: 'Vremya_dutya', text: '105' },
+            { name: 'Vremya_otdelen', text: '0' },
+            { name: 'rect_R_VN-GD', color: '#04FF00' },
+
+            { name: '3PI_01', text: '0' },
+
+            { name: '3TI_02', text: '1222' },
+            { name: '3TI_03', text: '1218' },
+            { name: '3TI_04', text: '-999' },
+            { name: '3TI_05', text: '1073' },
+            { name: 'vybor_signala', text: '1222' },
+            { name: 'kl_319', color: '#00FF00' },
+
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#000' },
+            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'kl_336a', color: '#ff0000' },
+            { name: 'kl_318a', color: '#ff0000' },
+            { name: 'kl_318', color: '#ff0000' },
+            { name: 'kl_310_1', color: '#00FF00' },
+            { name: 'kl_310_2', color: '#00FF00' },
+          ],
+        },
+      },
+      startTime: timeDiff + 599.11,
     },
     {
       action: {
@@ -8259,7 +23096,7 @@ let tempActions = [
           { x: 79.80, y: 57.2, w: 4.0, h: 2.6, id: 'open_vn' },   //  клапан 319 //  win 1  //  "Закрыть"
         ]
       },
-      startTime: timeDiff + 604.4,
+      startTime: timeDiff + 602.4,
       human: true,
     },
     {
@@ -8279,7 +23116,7 @@ let tempActions = [
           { x: 82.15, y: 60.8, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 604.6,
+      startTime: timeDiff + 602.6,
       human: true,
     },
     {
@@ -8308,7 +23145,7 @@ let tempActions = [
           { x: 82.90, y: 45.2, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 604.8,
+      startTime: timeDiff + 602.8,
       human: true,
     },
     //мигание пару секунд
@@ -8324,7 +23161,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 605.8,
+      startTime: timeDiff + 603.8,
     },
     {
       action: {
@@ -8338,7 +23175,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 606.8,
+      startTime: timeDiff + 604.8,
     },
     {
       action: {
@@ -8354,21 +23191,116 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 607.8,
+      startTime: timeDiff + 605.8,
     },
     ////--------------------------------43---------------------------------------- 310
     {
       scenarioText: 'Закрыть клапан 310.',
       sender: 'Система',
       audio: 'tts-42',
-      startTime: timeDiff + 608,
+      startTime: timeDiff + 606,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 608.1,
+      startTime: timeDiff + 606.1,
       human: true,
+    },
+    // Sergey (VNK3 после закрытия клапана 319)
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '12,62' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: '3FI_03', text: '0' },
+            { name: '3FI_01', text: '0' },
+            { name: 'kl_327', color: '#00FF00' },
+            { name: 'kl_332', color: '#ff0000' },
+            { name: 'rect_332_1', color: '#000' },
+            { name: 'rect_332_2', color: '#000' },
+            { name: 'kl_316', color: '#ff0000' },
+            { name: 'rect_316_1', color: '#000' },
+            { name: 'rect_316_2', color: '#000' },
+
+            // { name: '115_SPW',  text: '433,0' },
+            // { name: '115_SPT',  text: '108,0' },
+            // { name: '115_KP_2', text: '500,0' },
+            // { name: '115_GAZ',  text: '112221' },
+            // { name: 'V1_t1_5', text: 'Работа', color: '#00FF00' },
+
+            // { name: '123_PV_2', text: '1221,1' },
+            // { name: '123_SP_2', text: '1200,0' },
+            // { name: '123_KP_2', text: '28,54' },
+            // { name: '123_GAZ',  text: '0,00' },
+            // { name: 'V1_t2_4',  text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl_334', color: '#ff0000' },
+            { name: '3FI_02', text: '0' },
+
+            // { name: '115_PV',   text: '109961' },
+            // { name: '115_SP',   text: '113391' },
+            // { name: '115_KP_1', text: '41,34' },
+            // { name: 'V1_t3_4',  text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_1', text: '1,000' },
+            // { name: '123_SP_1', text: '1,000' },
+            // { name: '123_KP_1', text: '16,83' },
+            // { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '3PI_02', text: '0,00' },
+            { name: '3PS_03', color: '#ff0000' },
+            { name: 'kl_321', color: '#00FF00' },
+            { name: 'kl315_proc', text: '22' },
+            { name: '3PI_04', text: '0,01' },
+            { name: '3PS_05', color: '#ff0000' },
+            { name: 'kl323_proc', text: '21' },
+            { name: 'kl_311', color: '#ff0000' },
+            { name: 'kl_312', color: '#ff0000' },
+            { name: '3QI_01', text: '14,85' },
+
+            { name: '3TI_43', text: '75' },
+            { name: 'kl_313', color: '#ff0000' },
+            { name: '3TI_29', text: '24' },
+            { name: 'kl_317', color: '#ff0000' },
+            { name: 'dym_vybor_signala', text: '127' },
+            { name: '3TI_28_1', text: '127' },
+            { name: '3TI_28_2', text: '133' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#F6EDE8' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Индивидуал.' },
+            { name: 'VNK3_status_2', text: '' },
+            { name: 'vnk3_stripes', color: '#F6EDE8' },
+            { name: 'Vremya_nagreva', text: '106' },
+            { name: 'Vremya_dutya', text: '105' },
+            { name: 'Vremya_otdelen', text: '0' },
+            { name: 'rect_R_VN-GD', color: '#04FF00' },
+
+            { name: '3PI_01', text: '0' },
+
+            { name: '3TI_02', text: '1221' },
+            { name: '3TI_03', text: '1218' },
+            { name: '3TI_04', text: '-999' },
+            { name: '3TI_05', text: '1057' },
+            { name: 'vybor_signala', text: '1221' },
+            { name: 'kl_319', color: '#ff0000' },
+
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#000' },
+            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'kl_336a', color: '#ff0000' },
+            { name: 'kl_318a', color: '#ff0000' },
+            { name: 'kl_318', color: '#ff0000' },
+            { name: 'kl_310_1', color: '#00FF00' },
+            { name: 'kl_310_2', color: '#00FF00' },
+          ],
+        },
+      },
+      startTime: timeDiff + 606.11,
     },
 
     {
@@ -8414,7 +23346,7 @@ let tempActions = [
           { x: 88.15, y: 75.7, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 609.5,
+      startTime: timeDiff + 607.5,
       human: true,
     },
     {
@@ -8432,7 +23364,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 609.6,
+      startTime: timeDiff + 607.6,
       human: true,
     },
     {
@@ -8460,7 +23392,7 @@ let tempActions = [
           { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 609.8,
+      startTime: timeDiff + 607.8,
       human: true,
     },
     //мигание пару секунд
@@ -8476,7 +23408,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 610.8,
+      startTime: timeDiff + 608.8,
     },
     {
       action: {
@@ -8490,7 +23422,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 611.8,
+      startTime: timeDiff + 609.8,
     },
     {
       action: {
@@ -8506,7 +23438,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 612.8,
+      startTime: timeDiff + 610.8,
     },
 
     ////--------------------------------44---------------------------------------- 
@@ -8514,83 +23446,178 @@ let tempActions = [
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 613,
+      startTime: timeDiff + 611,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 613.1,
+      startTime: timeDiff + 611.1,
       human: true,
     },
+    // Sergey (VNK3 после закрытия клапана 310)
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '12,32' },
+            { name: 'PS_10', color: '#00FF00' },
+            { name: '3FI_03', text: '0' },
+            { name: '3FI_01', text: '0' },
+            { name: 'kl_327', color: '#00FF00' },
+            { name: 'kl_332', color: '#ff0000' },
+            { name: 'rect_332_1', color: '#000' },
+            { name: 'rect_332_2', color: '#000' },
+            { name: 'kl_316', color: '#ff0000' },
+            { name: 'rect_316_1', color: '#000' },
+            { name: 'rect_316_2', color: '#000' },
+
+            // { name: '115_SPW',  text: '433,0' },
+            // { name: '115_SPT',  text: '108,0' },
+            // { name: '115_KP_2', text: '500,0' },
+            // { name: '115_GAZ',  text: '112221' },
+            // { name: 'V1_t1_5', text: 'Работа', color: '#00FF00' },
+
+            // { name: '123_PV_2', text: '1221,1' },
+            // { name: '123_SP_2', text: '1200,0' },
+            // { name: '123_KP_2', text: '28,54' },
+            // { name: '123_GAZ',  text: '0,00' },
+            // { name: 'V1_t2_4',  text: 'Работа', color: '#00FF00' },
+
+            { name: 'kl_334', color: '#ff0000' },
+            { name: '3FI_02', text: '0' },
+
+            // { name: '115_PV',   text: '109961' },
+            // { name: '115_SP',   text: '113391' },
+            // { name: '115_KP_1', text: '41,34' },
+            // { name: 'V1_t3_4',  text: 'Соглас', color: '#000' },
+
+            // { name: '123_PV_1', text: '1,000' },
+            // { name: '123_SP_1', text: '1,000' },
+            // { name: '123_KP_1', text: '16,83' },
+            // { name: 'V1_t4_4', text: 'Соглас', color: '#000' },
+
+            { name: '3PI_02', text: '0,00' },
+            { name: '3PS_03', color: '#ff0000' },
+            { name: 'kl_321', color: '#00FF00' },
+            { name: 'kl315_proc', text: '22' },
+            { name: '3PI_04', text: '0,01' },
+            { name: '3PS_05', color: '#ff0000' },
+            { name: 'kl323_proc', text: '21' },
+            { name: 'kl_311', color: '#ff0000' },
+            { name: 'kl_312', color: '#ff0000' },
+            { name: '3QI_01', text: '18,64' },
+
+            { name: '3TI_43', text: '75' },
+            { name: 'kl_313', color: '#ff0000' },
+            { name: '3TI_29', text: '24' },
+            { name: 'kl_317', color: '#ff0000' },
+            { name: 'dym_vybor_signala', text: '127' },
+            { name: '3TI_28_1', text: '127' },
+            { name: '3TI_28_2', text: '134' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Индивидуал.' },
+            { name: 'VNK3_status_2', text: 'ОТДЕЛЕНИЕ' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'Vremya_nagreva', text: '106' },
+            { name: 'Vremya_dutya', text: '105' },
+            { name: 'Vremya_otdelen', text: '0' },
+            { name: 'rect_R_VN-GD', color: '#04FF00' },
+
+            { name: '3PI_01', text: '0' },
+
+            { name: '3TI_02', text: '1221' },
+            { name: '3TI_03', text: '1217' },
+            { name: '3TI_04', text: '-999' },
+            { name: '3TI_05', text: '1058' },
+            { name: 'vybor_signala', text: '1221' },
+            { name: 'kl_319', color: '#ff0000' },
+
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#00FF00' },
+            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'kl_336a', color: '#ff0000' },
+            { name: 'kl_318a', color: '#ff0000' },
+            { name: 'kl_318', color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+          ],
+        },
+      },
+      startTime: timeDiff + 611.11,
+    },
+
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 615,
+      startTime: timeDiff + 613,
       human: true,
     },
     {
       text: 'Шибера закрыты.',
       sender: 'Газовщик',
       audio: 'tts-vo53',
-      startTime: timeDiff + 616,
+      startTime: timeDiff + 614,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 619,
+      startTime: timeDiff + 617,
     },
     {
       text: 'Берём печь на тягу.',
       sender: 'Мастер печи',
       audio: 'tts-vo54',
-      startTime: timeDiff + 621,
+      startTime: timeDiff + 619,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 621.1,
+      startTime: timeDiff + 619.1,
       human: true,
     },
     {
       text: 'Выполняю, берём печь на тягу.',
       sender: 'Газовщик',
       audio: 'tts-vo55',
-      startTime: timeDiff + 622,
+      startTime: timeDiff + 620,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 624,
+      startTime: timeDiff + 622,
     },
-
     ////--------------------------------45---------------------------------------- 
     {
       scenarioText: 'Перевести на дистанцию клапан тяги 022.',
       sender: 'Система',
       audio: 'tts-43',
-      startTime: timeDiff + 625,
+      startTime: timeDiff + 623,
     },
     {
       action: {
         target3D: 'kl022',
-        rotation: { y: 6.283185307179586 },
+        rotation: { y: 0.785398 },
       },
       duration: 0.3,
-      startTime: timeDiff + 626,
+      startTime: timeDiff + 624,
       human: true,
     },
     ////--------------------------------46---------------------------------------- 
     {
       scenarioText: 'Открыть клапан тяги 022 на «Общей схеме ВНК».',
       sender: 'Система',
-      startTime: timeDiff + 627,
+      startTime: timeDiff + 625,
     },
     {
       action: {
@@ -8635,7 +23662,7 @@ let tempActions = [
           { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 627.1,
+      startTime: timeDiff + 625.1,
       human: true
     },
     {
@@ -8652,7 +23679,7 @@ let tempActions = [
           { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 627.2,
+      startTime: timeDiff + 625.2,
       human: true,
     },
     {
@@ -8682,10 +23709,40 @@ let tempActions = [
           { x: 87.2, y: 40.8, w: 8.6, h: 2.6, id: 'win_posle_1_stop_btn' },
         ]
       },
-      startTime: timeDiff + 627.3,
+      startTime: timeDiff + 625.3,
       human: true,
     },
     {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'left_vn', color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'kl_022', color: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
+            { name: 'circle_kl022', stroke: '#00FF00' },
+          ]
+        }
+      },
+      startTime: timeDiff + 626,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'kl_022', color: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
+            { name: 'circle_kl022', stroke: '#8F8F8F' },
+          ]
+        }
+      },
+      startTime: timeDiff + 627,
+    }, {
       action: {
         window2D: {
           elements: [
@@ -8715,7 +23772,66 @@ let tempActions = [
         }
       },
       startTime: timeDiff + 629,
-    }, {
+    },
+    ////--------------------------------46-2---------------------------------------- 
+    {
+      action: {
+        target2D: 'win_posle_1_stop_btn',
+        window2D: {
+          elements: [
+            { name: 'status_window_text', text: 'Нет данных' },
+            { name: 'btn_open_1', color: '#ffffff' },
+            { name: 'btn_open_2', color: '#ffffff', stroke: '#000000' },
+            { name: 'btn_close_1', color: '#ffffff' },
+            { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
+            { name: 'btn_close_text', color: '#000000' },
+            { name: 'btn_open_text', color: '#000000' },
+          ]
+        },
+      },
+      startTime: timeDiff + 629.1,
+      human: true
+    },
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          newPositionWindow: { x: 1765, y: 350 },
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+        helper2D: [
+          { x: 92, y: 37.3, w: 3.2, h: 2.5, id: 'close_vn' },
+          { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
+        ]
+      },
+      startTime: timeDiff + 629.2,
+      human: true,
+    },
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'btn_close_text', color: '#000000' },
+            { name: 'btn_close_1', color: '#ffffff' },
+            { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
+            { name: 'btn_open_text', color: '#6E6E6E' },
+            { name: 'btn_open_1', color: '#E6E6E6' },
+            { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+          ]
+        },
+        helper2D: [
+          { x: 94.7, y: 26, w: 1.7, h: 2.2, id: 'close_w1' },
+          { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },
+        ]
+      },
+      startTime: timeDiff + 629.3,
+      human: true,
+    },
+    {
       action: {
         window2D: {
           elements: [
@@ -8745,66 +23861,7 @@ let tempActions = [
         }
       },
       startTime: timeDiff + 631,
-    },
-    ////--------------------------------46-2---------------------------------------- 
-    {
-      action: {
-        target2D: 'win_posle_1_stop_btn',
-        window2D: {
-          elements: [
-            { name: 'status_window_text', text: 'Нет данных' },
-            { name: 'btn_open_1', color: '#ffffff' },
-            { name: 'btn_open_2', color: '#ffffff', stroke: '#000000' },
-            { name: 'btn_close_1', color: '#ffffff' },
-            { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
-            { name: 'btn_close_text', color: '#000000' },
-            { name: 'btn_open_text', color: '#000000' },
-          ]
-        },
-      },
-      startTime: timeDiff + 631.1,
-      human: true
-    },
-    {
-      action: {
-        target2D: 'open_vn',
-        window2D: {
-          newPositionWindow: { x: 1765, y: 350 },
-          elements: [
-            { name: 'title_open_vn', text: 'Открыть' },
-          ],
-        },
-        helper2D: [
-          { x: 92, y: 37.3, w: 3.2, h: 2.5, id: 'close_vn' },
-          { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
-        ]
-      },
-      startTime: timeDiff + 631.2,
-      human: true,
-    },
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          elements: [
-            { name: 'status_window_text', text: 'Открывается' },
-            { name: 'btn_close_text', color: '#000000' },
-            { name: 'btn_close_1', color: '#ffffff' },
-            { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
-            { name: 'btn_open_text', color: '#6E6E6E' },
-            { name: 'btn_open_1', color: '#E6E6E6' },
-            { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
-          ]
-        },
-        helper2D: [
-          { x: 94.7, y: 26, w: 1.7, h: 2.2, id: 'close_w1' },
-          { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },
-        ]
-      },
-      startTime: timeDiff + 631.3,
-      human: true,
-    },
-    {
+    }, {
       action: {
         window2D: {
           elements: [
@@ -8834,7 +23891,66 @@ let tempActions = [
         }
       },
       startTime: timeDiff + 633,
-    }, {
+    },
+    ////--------------------------------46-3---------------------------------------- 
+    {
+      action: {
+        target2D: 'win_posle_1_stop_btn',
+        window2D: {
+          elements: [
+            { name: 'status_window_text', text: 'Нет данных' },
+            { name: 'btn_open_1', color: '#ffffff' },
+            { name: 'btn_open_2', color: '#ffffff', stroke: '#000000' },
+            { name: 'btn_close_1', color: '#ffffff' },
+            { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
+            { name: 'btn_close_text', color: '#000000' },
+            { name: 'btn_open_text', color: '#000000' },
+          ]
+        },
+      },
+      startTime: timeDiff + 633.1,
+      human: true
+    },
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          newPositionWindow: { x: 1765, y: 350 },
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+        helper2D: [
+          { x: 92, y: 37.3, w: 3.2, h: 2.5, id: 'close_vn' },
+          { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
+        ]
+      },
+      startTime: timeDiff + 633.2,
+      human: true,
+    },
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'btn_close_text', color: '#000000' },
+            { name: 'btn_close_1', color: '#ffffff' },
+            { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
+            { name: 'btn_open_text', color: '#6E6E6E' },
+            { name: 'btn_open_1', color: '#E6E6E6' },
+            { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+          ]
+        },
+        helper2D: [
+          { x: 94.7, y: 26, w: 1.7, h: 2.2, id: 'close_w1' },
+          { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },
+        ]
+      },
+      startTime: timeDiff + 633.3,
+      human: true,
+    },
+    {
       action: {
         window2D: {
           elements: [
@@ -8864,66 +23980,7 @@ let tempActions = [
         }
       },
       startTime: timeDiff + 635,
-    },
-    ////--------------------------------46-3---------------------------------------- 
-    {
-      action: {
-        target2D: 'win_posle_1_stop_btn',
-        window2D: {
-          elements: [
-            { name: 'status_window_text', text: 'Нет данных' },
-            { name: 'btn_open_1', color: '#ffffff' },
-            { name: 'btn_open_2', color: '#ffffff', stroke: '#000000' },
-            { name: 'btn_close_1', color: '#ffffff' },
-            { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
-            { name: 'btn_close_text', color: '#000000' },
-            { name: 'btn_open_text', color: '#000000' },
-          ]
-        },
-      },
-      startTime: timeDiff + 635.1,
-      human: true
-    },
-    {
-      action: {
-        target2D: 'open_vn',
-        window2D: {
-          newPositionWindow: { x: 1765, y: 350 },
-          elements: [
-            { name: 'title_open_vn', text: 'Открыть' },
-          ],
-        },
-        helper2D: [
-          { x: 92, y: 37.3, w: 3.2, h: 2.5, id: 'close_vn' },
-          { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
-        ]
-      },
-      startTime: timeDiff + 635.2,
-      human: true,
-    },
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          elements: [
-            { name: 'status_window_text', text: 'Открывается' },
-            { name: 'btn_close_text', color: '#000000' },
-            { name: 'btn_close_1', color: '#ffffff' },
-            { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
-            { name: 'btn_open_text', color: '#6E6E6E' },
-            { name: 'btn_open_1', color: '#E6E6E6' },
-            { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
-          ]
-        },
-        helper2D: [
-          { x: 94.7, y: 26, w: 1.7, h: 2.2, id: 'close_w1' },
-          { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },
-        ]
-      },
-      startTime: timeDiff + 635.3,
-      human: true,
-    },
-    {
+    }, {
       action: {
         window2D: {
           elements: [
@@ -8938,112 +23995,361 @@ let tempActions = [
         }
       },
       startTime: timeDiff + 636,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'left_vn', color: '#8F8F8F' },
-            { name: 'right_vn', color: '#8F8F8F' },
-            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
-            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
-            { name: 'kl_022', color: '#8F8F8F' },
-            { name: 'circle_kl022', stroke: '#8F8F8F' },
-            { name: 'circle_kl022', stroke: '#8F8F8F' },
-          ]
-        }
-      },
-      startTime: timeDiff + 637,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'left_vn', color: '#00FF00' },
-            { name: 'right_vn', color: '#00FF00' },
-            { name: 'circle_n_winVN', stroke: '#00FF00' },
-            { name: 'circle_n_winVN', stroke: '#00FF00' },
-            { name: 'kl_022', color: '#00FF00' },
-            { name: 'circle_kl022', stroke: '#00FF00' },
-            { name: 'circle_kl022', stroke: '#00FF00' },
-          ]
-        }
-      },
-      startTime: timeDiff + 638,
     },
     {
       text: 'Клапан тяги открыт',
       sender: 'Система',
       audio: 'tts-44',
-      startTime: timeDiff + 639,
-    },
-    {
-      action: {
-        target2D: 'close_w1',
-      },
-      startTime: timeDiff + 639.1,
-      human: true,
+      startTime: timeDiff + 637,
     },
 
-    ////--------------------------------47---------------------------------------- 
+    /// 47 sound
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 641.4,
+      startTime: timeDiff + 640,
     },
+
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 640.1,
+      human: true,
+    },
+    // Sergey (vnk_main После закрытия 022) 
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7TI_41', text: '28' },
+            { name: '7PI_12', text: '17,89' },
+            { name: 'ramka_7PI_12', color: '#BEBEBE' },
+            { name: '7FI_05', text: '0' },
+            { name: '7TI_40', text: '11' },
+            { name: '7PI_11', text: '0,00' },
+            { name: '7FI_04', text: '0' },
+
+            { name: '5QI_01_01', text: '7' },
+            { name: '5QI_01_02', text: '63' },
+
+            { name: 'PV2', text: '11,84' },
+            { name: 'SP2', text: '9,00' },
+            { name: 'PV2_1', text: '15,97' },
+            { name: 'M_t1_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'PV3', text: '5,00' },
+            { name: 'SP3', text: '0,00' },
+            { name: 'PV3_1', text: '0,00' },
+            { name: 'M_t2_4', text: 'Соглас', color: '#000' },
+
+            { name: 'PV4', text: '0,00' },
+            { name: 'SP4', text: '10,00' },
+            { name: 'PV4_1', text: '5,00' },
+            { name: 'M_t3_4', text: 'Работа', color: '#000' },
+
+            { name: 'kl053_proc', text: '35' },
+            { name: 'kl051_proc', text: '0' },
+            { name: 'kl052_proc', text: '0' },
+            { name: 'kl035_proc', text: '62' },
+            { name: 'circle_035', stroke: '#BEBEBE' },
+            { name: '035_stripe_1', opacity: '1' },
+            { name: '035_stripe_2', opacity: '0' },
+            { name: '035_stripe_3', opacity: '0' },
+
+            { name: 'kl0333_proc', text: '0' },
+            { name: 'kl_0333', color: '#ff0000' },
+            { name: 'circle_kl0333', stroke: '#ff0000' },
+            { name: 'B3_3', color: '#BFBFBF', stroke: '#6B6B6B' }, // Насос
+            { name: 'B3_2', color: '#BFBFBF', stroke: '#6B6B6B' },
+            { name: 'B3_1', color: '#9E9E9E', stroke: '#6B6B6B' },
+            { name: 'klOF3_proc', text: '0' },
+            { name: '0F3_stripe_1', opacity: '1' },
+            { name: '0F3_stripe_2', opacity: '0' },
+            { name: '0F3_stripe_3', opacity: '0' },
+            { name: 'circle_0F3', opacity: '0' },
+            { name: 'kl0313_proc', text: '100' },
+
+            { name: 'kl0332_proc', text: '0' },
+            { name: 'kl_0332', color: '#ff0000' },
+            { name: 'circle_kl0332', stroke: '#ff0000' },
+            { name: 'B2_3', color: '#BFBFBF', stroke: '#6B6B6B' }, // Насос
+            { name: 'B2_2', color: '#BFBFBF', stroke: '#6B6B6B' },
+            { name: 'B2_1', color: '#9E9E9E', stroke: '#6B6B6B' },
+            { name: 'klOF2_proc', text: '0' },
+            { name: '0F2_stripe_0', opacity: '0' },
+            { name: '0F2_stripe_1', opacity: '0' },
+            { name: '0F2_stripe_2', opacity: '0' },
+            { name: '0F2_stripe_3', opacity: '1' },
+            { name: 'circle_0F2', opacity: '0' },
+            { name: 'kl0312_proc', text: '100' },
+
+            { name: 'kl0331_proc', text: '0' },
+            { name: 'kl_0331', color: '#ff0000' },
+            { name: 'circle_kl0331', stroke: '#ff0000' },
+            { name: 'B1_3', color: '#BFBFBF', stroke: '#6B6B6B' },
+            { name: 'B1_2', color: '#BFBFBF', stroke: '#6B6B6B' },
+            { name: 'B1_1', color: '#9E9E9E', stroke: '#6B6B6B' },
+            { name: 'klOF1_proc', text: '0' },
+            { name: '0F1_stripe_1', opacity: '0' },
+            { name: '0F1_stripe_2', opacity: '1' },
+            { name: '0F1_stripe', opacity: '0' },
+            { name: 'circle_0F1', opacity: '0' },
+            { name: 'kl0311_proc', text: '100' },
+
+            { name: '7QI_01', text: '-999,00' },
+
+            { name: 'kl_038', color: '#ff0000' },
+            { name: 'circle_kl038', stroke: '#ff0000' },
+            { name: 'kl038_proc', text: '0' },
+            { name: 'kl028', color: '#ff0000' },
+            { name: 'circle_kl028', stroke: '#ff0000' },
+            { name: 'kl028_proc', text: '0' },
+            // { name: 'kl020_proc',   text: '100' },
+            // { name: 'kl036v_proc',  text: '0' },
+            // { name: 'kl036b_proc',  text: '0' },
+
+            // { name: 'kl048_proc', text: '0' },
+            { name: 'kl029_proc', text: '100' },
+            // { name: 'kl004_proc', text: '100' },
+
+            { name: 'PI_16_proc', text: '0,00' },
+            { name: '9TI_44_proc', text: '27' },
+
+            { name: 'kl_037', color: '#ff0000' },
+            { name: 'circle_kl037', stroke: '#ff0000' },
+            { name: 'kl037_proc', text: '0' },
+            { name: 'kl007_proc', text: '100' },
+            // { name: 'kl025_proc', text: '100' },
+
+            { name: '8QI_05_01', text: '0,00' },
+            { name: '8QI_05_02', text: '0,00' },
+            { name: '8QI_05_04', text: '-999,00' },
+            { name: '7PI_13', text: '11,93' },
+            { name: '7PI_42', text: '53' },
+
+            { name: 'PV1', text: '1209,70' },
+            { name: 'SP1', text: '1210,00' },
+            { name: 'PV1_1', text: '31,12' },
+            { name: 'M_t4_4', text: 'Работа', color: '#00FF00' },
+
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'Tkyp_3', text: '1216' },
+            { name: 'VNK3_status_1', text: 'Индивидуальн.' },
+            { name: 'VNK3_status_2', text: 'Отделение' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'VNK3_Fr', text: '0' },
+            { name: 'VNK3_Fb', text: '0' },
+            { name: 'Tdym_3', text: '134' },
+
+            { name: 'kl001_proc', text: '0' },
+            { name: 'kl001a_proc', text: '0' },
+            { name: 'circle_001a', stroke: '#BEBEBE' },
+            { name: '001a_stripe_2', opacity: '1' },
+            { name: '001a_stripe_1', opacity: '0' },
+            { name: '001a_stripe_3', opacity: '0' },
+
+            { name: 'vnk2_fire', opacity: '0' }, // стрелка
+            { name: 'vnk_2', color: '#9CA4AD' }, // задник стрелки
+            { name: 'Tkyp_2', text: '1153' },
+            { name: 'VNK2_status_1', text: 'цикличекий' },
+            { name: 'VNK2_status_2', text: 'Отделение' },
+            { name: 'vnk2_stripes', color: '#9CA4AD' },
+            { name: 'VNK2_Fr', text: '0' },
+            { name: 'VNK2_Fb', text: '0' },
+            { name: 'Tdym_2', text: '154' },
+
+            { name: '5PI_08', text: '0' },
+            { name: 'TI_36', text: '16' },
+            { name: 'FI_03', text: '1154' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk_1', color: '#9CA4AD' }, // задник стрелки
+            { name: 'Tkyp_1', text: '1333' },
+            { name: 'VNK1_status_1', text: 'Циклический' },
+            { name: 'VNK1_status_2', text: 'Отделение' },
+            { name: 'vnk1_stripes', color: '#9CA4AD' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'Tdym_1', text: '270' },
+
+            { name: 'vybor_signala', text: '1182' },
+            { name: '5TI_21', text: '1178' },
+            { name: '5TI_22', text: '1182' },
+            { name: 'PI_09', text: '572,54' },
+          ],
+        },
+      },
+      startTime: timeDiff + 640.11,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_1', // Tkyp_1
+        color: 'green',
+        number: '1333',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'vozNagr1_2', // Tdym_1
+        color: 'green',
+        number: '270.0',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'vozNagr2_1', // Tkyp_2
+        color: 'green',
+        number: '1153',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'vozNagr2_2', // Tdym_2
+        color: 'green',
+        number: '154.0',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'vozNagr3_1', // Tkyp_3
+        color: 'green',
+        number: '1216',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'vozNagr3_2', // Tdym_3
+        color: 'green',
+        number: '134.0',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'rashodSmeshGaza_1', // VNK1_Fr /10^4
+        color: 'green',
+        number: '000.0',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'rashodSmeshGaza_2', // VNK2_Fr /10^4
+        color: 'green',
+        number: '000.0',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'rashodSmeshGaza_3', // VNK3_Fr /10^4
+        color: 'green',
+        number: '000.0',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'rashodVozdyhGor_1', // VNK1_Fb /10^4
+        color: 'green',
+        number: '000.0',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'rashodVozdyhGor_2', // VNK2_Fb /10^4
+        color: 'green',
+        number: '000.0',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'rashodVozdyhGor_3', // VNK3_Fb /10^4
+        color: 'green',
+        number: '000.0',
+      },
+      startTime: timeDiff + 640.12,
+    },
+    {
+      action: {
+        target3D: 'davVozGorBVN', // PI_16_proc
+        color: 'green',
+        number: '00.00',
+      },
+      startTime: timeDiff + 640.12,
+    },
+
+    ////--------------------------------47 orig---------------------------------------- 
+
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 643,
+      startTime: timeDiff + 641,
       human: true,
     },
     {
       text: 'Печь на тяге.',
       sender: 'Газовщик',
       audio: 'tts-vo56',
-      startTime: timeDiff + 644,
+      startTime: timeDiff + 642,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 647,
+      startTime: timeDiff + 645,
     },
     {
       text: 'Хорошо.',
       sender: 'Мастер печи',
       audio: 'tts-vo57',
-      startTime: timeDiff + 648,
+      startTime: timeDiff + 646,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 648.1,
+      startTime: timeDiff + 646.1,
       human: true,
     },
     {
       text: 'Доменная печь №6 остановлена.',
       sender: 'Газовщик',
       audio: 'tts-vo58',
-      startTime: timeDiff + 649,
+      startTime: timeDiff + 647,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 652,
+      startTime: timeDiff + 650,
     },
     {
       text: 'Доменная печь №6 остановлена.',
       sender: 'Система',
-      startTime: timeDiff + 653,
+      startTime: timeDiff + 651,
     },
 
 
+    /***/
   ],
+
+
+
+
   // 2 scenario
   [
     /*
@@ -9052,7 +24358,7 @@ let tempActions = [
       sender: 'Система',
       audio: 'tts-45',
       lifeTime: '11:50:00',
-      startTime: timeDiff + 2,
+          startTime: timeDiff + 2,
     },
     ////--------------------------------0----------------------------------------
     {
@@ -9092,7 +24398,7 @@ let tempActions = [
           audio: 'tts-vo59',
         }
       ],
-      startTime: timeDiff + 6,
+          startTime: timeDiff + 6,
       human: true,
     },
     ////--------------------------------1----------------------------------------
@@ -9101,7 +24407,7 @@ let tempActions = [
       sender: 'Система',
       audio: 'tts-46',
       lifeTime: '12:00:00',
-      startTime: timeDiff + 10,
+          startTime: timeDiff + 10,
     },
     ////--------------------------------1.1----------------------------------------
     {
@@ -9110,7 +24416,7 @@ let tempActions = [
       action: {
         target3D: 'ButtonHightlight_046', // Литейный фурменный поддоменник
       },
-      startTime: timeDiff + 13,
+          startTime: timeDiff + 13,
       human: true,
     },
     {
@@ -9118,27 +24424,27 @@ let tempActions = [
         target3D: 'Lamp_034',
         material: 'DonorLamp_on',
       },
-      startTime: timeDiff + 14,
+          startTime: timeDiff + 14,
     },
     {
       text: 'Печь с тяги снята.',
       sender: 'Газовщик',
       audio: 'tts-vo60',
-      startTime: timeDiff + 15,
+          startTime: timeDiff + 15,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 17,
+          startTime: timeDiff + 17,
     },
     ////--------------------------------1.2----------------------------------------
     {
       text: 'Открывайте шибера и делайте 0,3.',
       audio: 'tts-vo61',
       sender: 'Мастер печи',
-      startTime: timeDiff + 18,
+          startTime: timeDiff + 18,
     },
     {
       scenarioText: 'Ответить мастеру по рации.',
@@ -9146,7 +24452,7 @@ let tempActions = [
       action: {
         target3D: 'ButtonHightlight_046', // Литейный фурменный поддоменник
       },
-      startTime: timeDiff + 23,
+          startTime: timeDiff + 23,
       human: true,
     },
     {
@@ -9154,26 +24460,26 @@ let tempActions = [
         target3D: 'Lamp_034',
         material: 'DonorLamp_on',
       },
-      startTime: timeDiff + 24,
+          startTime: timeDiff + 24,
     },
     {
       text: 'Открываю шибера и делаю 0,3 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo62',
-      startTime: timeDiff + 25,
+          startTime: timeDiff + 25,
     },
     ////--------------------------------1.3----------------------------------------
     {
       text: 'Установить ВНК №1 в положение «Индивидуальное дутье».',
       sender: 'Система',
       audio: 'tts-vo60',
-      startTime: timeDiff + 30,
+          startTime: timeDiff + 30,
     },
     
     {
       scenarioText: 'Перевести клапан 110 в ручной режим.',
       sender: 'Система',
-      startTime: timeDiff + 35,
+          startTime: timeDiff + 35,
     },
     //  Клапан 110
     {
@@ -9198,7 +24504,7 @@ let tempActions = [
           { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 110 -> окно ВН ( ручной )
         ]
       },
-      startTime: timeDiff + 36,
+          startTime: timeDiff + 36,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -9219,7 +24525,7 @@ let tempActions = [
           { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
         ]
       },
-      startTime: timeDiff + 36.2,
+          startTime: timeDiff + 36.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -9237,14 +24543,14 @@ let tempActions = [
           { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 110 -> окно ВН ( Байпас всех блокировок )
         ]
       },
-      startTime: timeDiff + 36.4,
+          startTime: timeDiff + 36.4,
       human: true,
     },
     ////////  -------
     {
       scenarioText: 'Нажать на «Байпас всех блокировок»',
       sender: 'Система',
-      startTime: timeDiff + 36.8,
+          startTime: timeDiff + 36.8,
     },
     // окно ВН // Байпас всех блокировок
     {
@@ -9264,7 +24570,7 @@ let tempActions = [
           { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
         ]
       },
-      startTime: timeDiff + 37,
+          startTime: timeDiff + 37,
       human: true,
     },
     // маленькое окошко ОК
@@ -9283,7 +24589,7 @@ let tempActions = [
           { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
         ]
       },
-      startTime: timeDiff + 37.2,
+          startTime: timeDiff + 37.2,
       human: true,
     },
     ////////  -------
@@ -9296,7 +24602,7 @@ let tempActions = [
           { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
         ]
       },
-      startTime: timeDiff + 37.3,
+          startTime: timeDiff + 37.3,
     },
     // окно ВН  // Открыть
     {
@@ -9316,7 +24622,7 @@ let tempActions = [
           { x: 84.9, y: 83.9, w: 3.2, h: 2.6, id: 'open_vn1' },       // da
         ]
       },
-      startTime: timeDiff + 37.4,
+          startTime: timeDiff + 37.4,
       human: true,
     },
     // маленькое окошко ОК
@@ -9333,36 +24639,36 @@ let tempActions = [
           { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
         ]
       },
-      startTime: timeDiff + 37.6,
+          startTime: timeDiff + 37.6,
       human: true,
     },
     {
-      startTime: timeDiff + 39, //  1
+          startTime: timeDiff + 39, //  1
     },{ 
-      startTime: timeDiff + 40, //  2
+          startTime: timeDiff + 40, //  2
     },{
-      startTime: timeDiff + 41, //  3
+          startTime: timeDiff + 41, //  3
     },{
-      startTime: timeDiff + 42, //  4
+          startTime: timeDiff + 42, //  4
     },{
-      startTime: timeDiff + 43, //  5
+          startTime: timeDiff + 43, //  5
     },{
-      startTime: timeDiff + 44, //  6
+          startTime: timeDiff + 44, //  6
     },{
-      startTime: timeDiff + 45, //  7
+          startTime: timeDiff + 45, //  7
     },{
-      startTime: timeDiff + 46, //  8
+          startTime: timeDiff + 46, //  8
     },{
-      startTime: timeDiff + 47, //  9
+          startTime: timeDiff + 47, //  9
     },{
-      startTime: timeDiff + 48, //  10  // Клапан мигает приблизительно 10 раз и после фиксируется.
+          startTime: timeDiff + 48, //  10  // Клапан мигает приблизительно 10 раз и после фиксируется.
     },
     ////////  -------
     ////--------------------------------1.4----------------------------------------
     {
       scenarioText: 'Нажать на «Байпас всех блокировок» на клапане 118а.',
       sender: 'Система',
-      startTime: timeDiff + 50,
+          startTime: timeDiff + 50,
     },
     {
       action: {
@@ -9372,7 +24678,7 @@ let tempActions = [
           { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // ОТКРЫТЬ
         ]
       },
-      startTime: timeDiff + 50.2,
+          startTime: timeDiff + 50.2,
       human: true,
     },
     
@@ -9399,7 +24705,7 @@ let tempActions = [
           { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( Байпас всех блокировок )
         ]
       },
-      startTime: timeDiff + 51,
+          startTime: timeDiff + 51,
       human: true,
     },
     // окно ВН // Байпас всех блокировок
@@ -9420,7 +24726,7 @@ let tempActions = [
           { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
         ]
       },
-      startTime: timeDiff + 51.2,
+          startTime: timeDiff + 51.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -9439,7 +24745,7 @@ let tempActions = [
           { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( ручной )
         ]
       },
-      startTime: timeDiff + 51.4,
+          startTime: timeDiff + 51.4,
       human: true,
     },
     ////////  -------
@@ -9452,7 +24758,7 @@ let tempActions = [
           { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( ручной )
         ]
       },
-      startTime: timeDiff + 52,
+          startTime: timeDiff + 52,
     },
     // окно ВН  // клик ручной
     {
@@ -9472,7 +24778,7 @@ let tempActions = [
           { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
         ]
       },
-      startTime: timeDiff + 52.2,
+          startTime: timeDiff + 52.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -9490,7 +24796,7 @@ let tempActions = [
           { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( Байпас всех блокировок )
         ]
       },
-      startTime: timeDiff + 54.4,
+          startTime: timeDiff + 54.4,
       human: true,
     },
     ////--------------------------------1.5---------------------------------------- 118
@@ -9503,13 +24809,13 @@ let tempActions = [
           { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( Байпас всех блокировок )
         ]
       },
-      startTime: timeDiff + 55,
+          startTime: timeDiff + 55,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 55.2,
+          startTime: timeDiff + 55.2,
       human: true,
     },
  
@@ -9540,7 +24846,7 @@ let tempActions = [
           { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 118 -> окно ВН ( ручной )
         ]
       },
-      startTime: timeDiff + 55.4,
+          startTime: timeDiff + 55.4,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -9561,7 +24867,7 @@ let tempActions = [
           { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
         ]
       },
-      startTime: timeDiff + 55.6,
+          startTime: timeDiff + 55.6,
       human: true,
     },
     // маленькое окошко ОК
@@ -9579,7 +24885,7 @@ let tempActions = [
           { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118 -> окно ВН ( Байпас всех блокировок )
         ]
       },
-      startTime: timeDiff + 55.8,
+          startTime: timeDiff + 55.8,
       human: true,
     },
     ////////  -------
@@ -9601,7 +24907,7 @@ let tempActions = [
           { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
         ]
       },
-      startTime: timeDiff + 56.0,
+          startTime: timeDiff + 56.0,
       human: true,
     },
     // маленькое окошко ОК
@@ -9620,7 +24926,7 @@ let tempActions = [
           { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 118 -> окно ВН ( ОТКРЫТЬ )
         ]
       },
-      startTime: timeDiff + 56.2,
+          startTime: timeDiff + 56.2,
       human: true,
     },
     ////////  -------
@@ -9641,7 +24947,7 @@ let tempActions = [
           { x: 84.9, y: 83.9, w: 3.2, h: 2.6, id: 'open_vn1' },   // da
         ]
       },
-      startTime: timeDiff + 56.6,
+          startTime: timeDiff + 56.6,
       human: true,
     },
     // маленькое окошко ОК
@@ -9658,7 +24964,7 @@ let tempActions = [
           { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
         ]
       },
-      startTime: timeDiff + 56.8,
+          startTime: timeDiff + 56.8,
       human: true,
     },
     ////////  -------
@@ -9673,13 +24979,13 @@ let tempActions = [
           { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
         ]
       },
-      startTime: timeDiff + 57,
+          startTime: timeDiff + 57,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 57.2,
+          startTime: timeDiff + 57.2,
       human: true,
     },
     ////////  -------
@@ -9826,10 +25132,15 @@ let startState2D = [
     { name: 'klOF2_proc', text: '63' },
     { name: 'klOF1_proc', text: '0' },
     { name: 'Tdym_1', text: '299' },
+    { name: 'VNK3_status_1_fon', color: '#0033FF' },
+    { name: 'VNK2_status_1_fon', color: '#0033FF' },
+    { name: 'VNK1_status_1_fon', color: '#0033FF' },
     { name: 'vnk_3', color: '#0033FF' },
     { name: 'vnk_1', color: '#B50000' },
     { name: 'kl_0332', color: '#00FF00' },
+    { name: 'kl0332_proc', text: '100' },
     { name: 'kl_0331', color: '#FF1E00' },
+    { name: 'kl0331_proc', text: '0' },
     { name: 'vnk1_stripes', color: '#B50000' },
     { name: 'vnk3_stripes', color: '#0033FF' },
     { name: 'circle_kl0332', stroke: '#00FF00' },
@@ -10047,8 +25358,9 @@ let startState2D = [
     { name: 'radar3_text', text: '-1,67' },
     { name: 'T_hol_dyt', text: '79' },
     { name: 'VNK1_status_2', text: 'Нагрев' },
-    { name: 'VNK3_status_1_fon', color: '#43A3EF' },
-    { name: 'VNK1_status_1_fon', color: '#BD0102' },
+    { name: 'VNK3_status_1_fon', color: '#0033FF' },
+    { name: 'VNK2_status_1_fon', color: '#0033FF' },
+    { name: 'VNK1_status_1_fon', color: '#0033FF' },
     { name: 'Fvozdyh_3', text: '0' },
     { name: 'Fgaz_3', text: '0' },
     { name: 'Fvozdyh_2', text: '115641' },
