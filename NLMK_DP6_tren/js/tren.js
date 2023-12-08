@@ -2117,7 +2117,6 @@ function clickCloseHelp(e) {
   }
 }
 document.getElementById('b_reference').addEventListener("click", (e) => {
-  // document.querySelector('.section-copy').style.opacity = e.currentTarget.classList.contains('button-tren-active') ? 1 : 0;
   document.querySelector('.section-copy').classList.toggle('opacity-1-Always', e.currentTarget.classList.contains('button-tren-active'));
 
   document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.toggle('opacity-1-Temp', false);
