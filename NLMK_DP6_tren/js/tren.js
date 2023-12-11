@@ -116,7 +116,7 @@ function startTren(Restart = false) {
   })
   devHelper.endVals.currentChapter = 0;
   if (Restart === false)
-    window.requestAnimationFrame(trenTimeTick);
+    requestAnimationFrame(trenTimeTick);
 }
 
 function convertMilliseconds(milliseconds) {
@@ -154,102 +154,106 @@ function changeTimerText(Start = false) {
   document.querySelector(".time-second").textContent = tempTextTime.seconds;
 }
 
-
+let  lastTimestamp = 0;
 function trenTimeTick(timeStamp) {
-  if (devHelper.trenVals.scenario !== undefined) {
-    devHelper.model3DVals.scene.render();
-    if (devHelper.trenVals.ended === false) {
-      if (devHelper.trenVals.timers.allTimeHelper === 0) devHelper.trenVals.timers.allTimeHelper = timeStamp;
-      devHelper.trenVals.timers.allTime = Number(timeStamp - devHelper.trenVals.timers.allTimeHelper).toFixed(2);
-      changeTimerText();
-      if (devHelper.trenVals.waitingInput === false) {
-        if (devHelper.trenVals.timers.actionTimeHelper === 0) {
-          devHelper.trenVals.timers.scenarioTimeHelper = devHelper.trenVals.timers.scenarioTime;
-          devHelper.trenVals.timers.actionTimeHelper = timeStamp;
+  let deltaTime = timeStamp - lastTimestamp;
+  if (deltaTime > 16) {
+    if (devHelper.trenVals.scenario !== undefined) {
+      devHelper.model3DVals.scene.render();
+      if (devHelper.trenVals.ended === false) {
+        if (devHelper.trenVals.timers.allTimeHelper === 0) devHelper.trenVals.timers.allTimeHelper = timeStamp;
+        devHelper.trenVals.timers.allTime = Number(timeStamp - devHelper.trenVals.timers.allTimeHelper).toFixed(2);
+        changeTimerText();
+        if (devHelper.trenVals.waitingInput === false) {
+          if (devHelper.trenVals.timers.actionTimeHelper === 0) {
+            devHelper.trenVals.timers.scenarioTimeHelper = devHelper.trenVals.timers.scenarioTime;
+            devHelper.trenVals.timers.actionTimeHelper = timeStamp;
+          }
+          devHelper.trenVals.timers.actionTime = Number((timeStamp - devHelper.trenVals.timers.actionTimeHelper).toFixed(2));
+          devHelper.trenVals.timers.scenarioTime = Number((devHelper.trenVals.timers.scenarioTimeHelper + devHelper.trenVals.timers.actionTime).toFixed(2));
         }
-        devHelper.trenVals.timers.actionTime = Number((timeStamp - devHelper.trenVals.timers.actionTimeHelper).toFixed(2));
-        devHelper.trenVals.timers.scenarioTime = Number((devHelper.trenVals.timers.scenarioTimeHelper + devHelper.trenVals.timers.actionTime).toFixed(2));
-      }
-      if (devHelper.dev.enable && document.querySelector('.info-tren')) {
-        document.querySelector('.info-tren').innerHTML = `<p>Время действия ${devHelper.trenVals.currentAction} = ${devHelper.trenVals.timers.actionTime / 1000};</p>`
-        document.querySelector('.info-tren').innerHTML += `<p>Время сценария = ${devHelper.trenVals.timers.scenarioTime / 1000};</p>`
-        document.querySelector('.info-tren').innerHTML += `<p>Общее время в сценарии = ${devHelper.trenVals.timers.allTime / 1000};</p>`
-        let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-        if (currentActonObject && currentActonObject.action && currentActonObject.action.target2D) document.querySelector('.info-tren').innerHTML += `<p>нужно кликнуть на ${currentActonObject.action.target2D};</p>`;
-      }
-      let nextAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
-      if (nextAction) {
-        if (nextAction.human && nextAction.human === true) {
-          if (devHelper.trenVals.waitingInput === false) {
+        if (devHelper.dev.enable && document.querySelector('.info-tren')) {
+          document.querySelector('.info-tren').innerHTML = `<p>Время действия ${devHelper.trenVals.currentAction} = ${devHelper.trenVals.timers.actionTime / 1000};</p>`
+          document.querySelector('.info-tren').innerHTML += `<p>Время сценария = ${devHelper.trenVals.timers.scenarioTime / 1000};</p>`
+          document.querySelector('.info-tren').innerHTML += `<p>Общее время в сценарии = ${devHelper.trenVals.timers.allTime / 1000};</p>`
+          let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+          if (currentActonObject && currentActonObject.action && currentActonObject.action.target2D) document.querySelector('.info-tren').innerHTML += `<p>нужно кликнуть на ${currentActonObject.action.target2D};</p>`;
+        }
+        let nextAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
+        if (nextAction) {
+          if (nextAction.human && nextAction.human === true) {
+            if (devHelper.trenVals.waitingInput === false) {
+              if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+              if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
+              devHelper.trenVals.waitingInput = true;
+              if (nextAction.multi) devHelper.trenVals.multiAction = [...nextAction.multi];
+            }
+          } else {
+            if (nextAction.lifeTime) {
+              if (nextAction.startTime === 0) {
+                setLifeTime(nextAction.lifeTime);
+                change3DTime(devHelper.trenVals.timers.lifeTime);
+                changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime, });
+                updateSvgTextures();
+              } else startTimerToStep(nextAction.lifeTime, false);
+            }
+            if (nextAction.action && nextAction.action.window2D) {
+              if (nextAction.action.window2D.elements) {
+                for (let key in nextAction.action.window2D.elements) {
+                  if (nextAction.action.window2D.elements.hasOwnProperty(key))
+                    changeSvgElem(nextAction.action.window2D.elements[key]);
+                }
+              }
+              if (nextAction.action.window2D.newWindow) {
+                nextAction.action.window2D.newWindow.forEach(element => {
+                  if (element.elements) {
+                    element.elements.forEach(svgElem => changeSvgElem(svgElem))
+                  }
+                  addSvgToTextrue(findMesh(element.display), { window: element.svg, x: element.x, y: element.y });
+                  // TODO Не знаю нужен ли этот код или нет стрчока
+                  // Это доп код для появления схемы на мониторе, когда ты кликнул на 3Д
+                  // createSvghelper(devHelper.model3DVals.currentPosition, Vals.value.window);
+                })
+              }
+              if (nextAction.action.window2D.removeWindow) {
+                nextAction.action.window2D.removeWindow.forEach(element => {
+                  RemoveSvgFromTextrue(findMesh(element.display), element.svg);
+                })
+              }
+              updateSvgTextures();
+            }
+            if (nextAction.action && nextAction.action.target3D) {
+              let mesh = findMesh(nextAction.action.target3D);
+              if (mesh) {
+                handleRotation(nextAction, mesh);
+                handlePosition(nextAction, mesh);
+                if (nextAction.action.material) {
+                  const tempMaterial = findMaterial(nextAction.action.material);
+                  mesh.material = tempMaterial || mesh.material;
+                }
+                if (nextAction.action.imgTexture) {
+                  setImageOnMonitor(nextAction.action.imgTexture, devHelper.model3DVals.scene, mesh);
+                }
+              } else {
+                if (nextAction.action.number)
+                  changeScreenVals(nextAction.action.target3D, nextAction.action.number, nextAction.action.color ? nextAction.action.color : 'green');
+              }
+            }
+            if (nextAction.action && nextAction.action.helper2D) {
+              createSvghelper(devHelper.model3DVals.currentPosition)
+            }
+            newActionStartHelper(nextAction);
             if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
             if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
-            devHelper.trenVals.waitingInput = true;
-            if (nextAction.multi) devHelper.trenVals.multiAction = [...nextAction.multi];
+            if (nextAction.audio) playAudio(nextAction.audio);
           }
-        } else {
-          if (nextAction.lifeTime) {
-            if (nextAction.startTime === 0) {
-              setLifeTime(nextAction.lifeTime);
-              change3DTime(devHelper.trenVals.timers.lifeTime);
-              changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime, });
-              updateSvgTextures();
-            } else startTimerToStep(nextAction.lifeTime, false);
-          }
-          if (nextAction.action && nextAction.action.window2D) {
-            if (nextAction.action.window2D.elements) {
-              for (let key in nextAction.action.window2D.elements) {
-                if (nextAction.action.window2D.elements.hasOwnProperty(key))
-                  changeSvgElem(nextAction.action.window2D.elements[key]);
-              }
-            }
-            if (nextAction.action.window2D.newWindow) {
-              nextAction.action.window2D.newWindow.forEach(element => {
-                if (element.elements) {
-                  element.elements.forEach(svgElem => changeSvgElem(svgElem))
-                }
-                addSvgToTextrue(findMesh(element.display), { window: element.svg, x: element.x, y: element.y });
-                // TODO Не знаю нужен ли этот код или нет стрчока
-                // Это доп код для появления схемы на мониторе, когда ты кликнул на 3Д
-                // createSvghelper(devHelper.model3DVals.currentPosition, Vals.value.window);
-              })
-            }
-            if (nextAction.action.window2D.removeWindow) {
-              nextAction.action.window2D.removeWindow.forEach(element => {
-                RemoveSvgFromTextrue(findMesh(element.display), element.svg);
-              })
-            }
-            updateSvgTextures();
-          }
-          if (nextAction.action && nextAction.action.target3D) {
-            let mesh = findMesh(nextAction.action.target3D);
-            if (mesh) {
-              handleRotation(nextAction, mesh);
-              handlePosition(nextAction, mesh);
-              if (nextAction.action.material) {
-                const tempMaterial = findMaterial(nextAction.action.material);
-                mesh.material = tempMaterial || mesh.material;
-              }
-              if (nextAction.action.imgTexture) {
-                setImageOnMonitor(nextAction.action.imgTexture, devHelper.model3DVals.scene, mesh);
-              }
-            } else {
-              if (nextAction.action.number)
-                changeScreenVals(nextAction.action.target3D, nextAction.action.number, nextAction.action.color ? nextAction.action.color : 'green');
-            }
-          }
-          if (nextAction.action && nextAction.action.helper2D) {
-            createSvghelper(devHelper.model3DVals.currentPosition)
-          }
-          newActionStartHelper(nextAction);
-          if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
-          if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
-          if (nextAction.audio) playAudio(nextAction.audio);
         }
+        let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
+        if (lastAction === undefined) trenFinish();
+        requestAnimationFrame(trenTimeTick);
       }
-      let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
-      if (lastAction === undefined) trenFinish();
     }
-    window.requestAnimationFrame(trenTimeTick);
+    lastTimestamp = timeStamp;
   }
 }
 
@@ -394,9 +398,7 @@ function handleError(Mesh) {
       Mesh.classList.toggle('error-helper', false);
     }, 300);
   }
-  // let currentName = (Mesh.name && Mesh.uniqueId) ? ((devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)) ?
-  //   (devHelper.model3DVals.activeMeshsToArr.find(elem => Mesh.name === elem.name || Mesh.id === elem.name)).realName : '') : findRealName(Mesh.id).name;
-  let currentName = findRealName(Mesh.name || Mesh.id).name;
+  let currentName = findRealName(Mesh.id || Mesh.name).name;
   let curAction = findCurrentAction();
   let rightAnswerLocation;
   if (curAction.action && (curAction.action.target2D || curAction.action.target3D)) {
@@ -421,10 +423,15 @@ function handleError(Mesh) {
       }, 300)
     }, 300);
   }
-  // TODO ошитбка в rightAnswerName
   sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName ? currentName : 'неверный элемент'}. Нужно кликнуть по ${rightAnswerName ? rightAnswerName : 'элементу'} на ${rightAnswerLocation}.`);
   devHelper.endVals.errors[devHelper.endVals.currentChapter]++;
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name || Mesh.id} в действии ${devHelper.trenVals.currentAction} неверный.`);
+
+  if (devHelper.trenVals.type !== 'learn') {
+    if (devHelper.endVals.errors.reduce((acc, num) => acc + num, 0) > devHelper.trenVals.maximumErrors) {
+      trenFinish();
+    }
+  }
 }
 
 function trenClickOnSvgElem(SvgElemHelper = undefined) {
@@ -840,7 +847,6 @@ function saveStart2DIF() {
 }
 
 function newActionStartHelper(Action) {
-
   devHelper.trenVals.timers.actionTimeHelper = 0;
   Action.passed = true;
   devHelper.trenVals.waitingInput = false;
@@ -856,7 +862,7 @@ function newActionStartHelper(Action) {
   } else {
   }
 
-  if (devHelper.endVals.currentActionCount <= devHelper.endVals.actionChapter[devHelper.endVals.currentChapter]) {
+  if (devHelper.endVals.currentActionCount >= devHelper.endVals.actionChapter[devHelper.endVals.currentChapter]) {
     devHelper.endVals.currentActionCount = 1;
     devHelper.endVals.currentChapter++;
     devHelper.endVals.errors.push(0);
@@ -2196,7 +2202,6 @@ function helperHighlightOn(Actions) {
       if (devHelper.model3DVals.currentPosition > 100) {
         tempMeshPosition2 = devHelper.model3DVals.cameraPositions.find(obj => obj.fromPos && obj.position === devHelper.model3DVals.currentPosition).fromPos;
       }
-      console.log(teamMeshName, tempLocationName, tempMeshPosition, tempMeshPosition2);
       if (tempMeshPosition !== devHelper.model3DVals.currentPosition && ((tempMeshPosition2 !== undefined && tempMeshPosition2 !== tempMeshPosition) || tempMeshPosition2 === undefined)) {
         if (devHelper.model3DVals.currentPosition === undefined) {
           document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту "${tempLocationName}".`;
@@ -2205,7 +2210,7 @@ function helperHighlightOn(Actions) {
           helpBackToMain();
         }
       } else {
-        document.querySelector('.box-help').innerHTML = `Нажать курсором на 3Д объект "${teamMeshName}".`;
+        document.querySelector('.box-help').innerHTML = `Нажать курсором на 3Д объект${teamMeshName ? ` "${teamMeshName}"` : ''}.`;
         changeColorTexture(tempMesh, true, true);
       }
     }
@@ -2238,14 +2243,19 @@ function findRealName(TargetName) {
   }
   let currentAction = findCurrentAction();
   let real3Dmesh = findMesh(TargetName);
-  let temp3D = devHelper.model3DVals.activeMeshsToArr.find(elem => elem.name === real3Dmesh.name || elem.id === real3Dmesh.id ||
-    elem.name === real3Dmesh.id || real3Dmesh.name.indexOf(elem.name) !== -1);
-  if (!temp3D && real3Dmesh) {
-    temp3D = devHelper.model3DVals.activeMeshs.find(mesh => mesh === real3Dmesh);
-  }
-  if (temp3D) {
-    returnObj.name = temp3D.realName ? temp3D.realName : temp3D.name;
-    let location = devHelper.model3DVals.cameraPositions.find(elem => elem.position === (temp3D.currentPosition ? temp3D.currentPosition : temp3D.position));
+  if (real3Dmesh) {
+    let temp3D = undefined;
+    if (real3Dmesh.realName) {
+      temp3D = real3Dmesh;
+    } else {
+      devHelper.model3DVals.activeMeshsToArr.forEach(obj => {
+        if (obj.name === real3Dmesh.name || obj.id === real3Dmesh.id || obj.name === real3Dmesh.id || real3Dmesh.name.indexOf(obj.name) !== -1) {
+          temp3D = obj;
+        }
+      })
+    }
+    returnObj.name = temp3D ? temp3D.realName ? temp3D.realName : '' : '';
+    let location = devHelper.model3DVals.cameraPositions.find(elem => elem.position === (temp3D ? (temp3D.position ? temp3D.position : (real3Dmesh.currentPosition ? real3Dmesh.currentPosition : undefined)) : (real3Dmesh.currentPosition ? real3Dmesh.currentPosition : undefined)));
     returnObj.location = location ? location.name : '';
   } else {
     let tempRealHelper;

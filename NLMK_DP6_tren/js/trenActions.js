@@ -1,5 +1,10 @@
 
 /*                 TODO
+---------------------------------------------------------------
+делаю режим контроль
+devHelper.trenVals.maximumErrors 50
+
+---------------------------------------------------------------
 */
 const devHelper = {
   trenVals: {
@@ -23,8 +28,7 @@ const devHelper = {
     ended: false,
     multiAction: [],
     windowIntersec: [],
-    maximumErrors: 50, // TODO делаю режим контроль
-
+    maximumErrors: 50, 
   },
   model3DVals: {
     activeControlCamera: true,
@@ -883,12 +887,10 @@ const devHelper = {
 };
 
 
-const timeDiff = -191;
+const timeDiff = -0;
 let tempActions = [
   // Первый сценарий  
   [
-    /*
-
     {
       lifeTime: '07:30:00',
       startTime: timeDiff + 0,
@@ -7707,7 +7709,6 @@ let tempActions = [
       startTime: timeDiff + 191.1,
     },
     ////--------------------------------4---------------------------------------- 
-    */
     {
       text: 'Уменьшить значение параметра на регуляторе природного газа.',
       audio: 'tts-21',
