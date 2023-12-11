@@ -34,7 +34,7 @@ window.addEventListener('load', function () {
                                       ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                         ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'vnk_main1') {
+    if (ObjectSvg.name === 'BVNK_VNK31') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -531,8 +531,8 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '22') { addSvgElem(Index, Element, 'Vremya_nagreva'); }
         if (Element.innerHTML === '60') { addSvgElem(Index, Element, 'Vremya_dutya'); }
         if (Element.innerHTML === '0' && TextIndex === 153) { addSvgElem(Index, Element, 'Vremya_otdelen'); }
-        if (Element.getAttribute('x') === '1017.42') { addSvgElem(Index, Element, 'VNK1_status_1', 'start'); }
-        if (Element.getAttribute('x') === '1096.84') { addSvgElem(Index, Element, 'VNK1_status_2'); }
+        if (Element.getAttribute('x') === '1017.42') { addSvgElem(Index, Element, 'VNK1_status_1', 'center'); }
+        if (Element.getAttribute('x') === '1096.84') { addSvgElem(Index, Element, 'VNK1_status_2', 'center'); }
         if (Element.getAttribute('x') === '331.03') { Element.innerHTML = '1'; }
         if (Element.getAttribute('x') === '674.78') { Element.innerHTML = '1'; }
         if (Element.getAttribute('x') === '901.37') { Element.innerHTML = '1'; }
@@ -559,6 +559,7 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === 'Соглас' && Element.getAttribute('x') === '470.44' && Element.getAttribute('y') === '512.77') { addSvgElem(Index, Element, 'V1_t4_4'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
+        if (Element.getAttribute('d') === 'M1004.17 466.75h277.11v45.68h-277.11z') { addSvgElem(Index, Element, 'VNK1_status_1_fon'); }
         if (Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') { addSvgElem(Index, Element, '313'); }
         if (Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_1'); }
         if (Element.getAttribute('d') === 'M132.29 187.58h93.75v28.13h-93.75v-28.13zm91.75 2h-89.75v24.13h89.75v-24.13z') { addSvgElem(Index, Element, 'ramka_7PI_13'); }
@@ -668,8 +669,8 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '107') { addSvgElem(Index, Element, 'Vremya_nagreva'); }
         if (Element.innerHTML === '27') { addSvgElem(Index, Element, 'Vremya_dutya'); }
         if (Element.innerHTML === '0' && TextIndex === 138) { addSvgElem(Index, Element, 'Vremya_otdelen'); }
-        if (Element.getAttribute('x') === '1017.42') { addSvgElem(Index, Element, 'VNK2_status_1', 'start'); }
-        if (Element.getAttribute('x') === '1096.84') { addSvgElem(Index, Element, 'VNK2_status_2'); }
+        if (Element.getAttribute('x') === '1017.42') { addSvgElem(Index, Element, 'VNK2_status_1', 'center'); }
+        if (Element.getAttribute('x') === '1096.84') { addSvgElem(Index, Element, 'VNK2_status_2', 'center'); }
         // Ilay
         if (Element.innerHTML === 'Соглас' && Element.getAttribute('x') === '409.68' && Element.getAttribute('y') === '374.11') { addSvgElem(Index, Element, 'V2_t1_5'); }
         if (Element.innerHTML === 'Соглас' && Element.getAttribute('x') === '339.14' && Element.getAttribute('y') === '514.49') { addSvgElem(Index, Element, 'V2_t2_4'); }
@@ -677,6 +678,7 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === 'Соглас' && Element.getAttribute('x') === '470.44' && Element.getAttribute('y') === '512.77') { addSvgElem(Index, Element, 'V2_t4_4'); }
       });
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, TextIndex) => {
+        if (Element.getAttribute('d') === 'M1004.17 466.75h277.11v45.68h-277.11z') { addSvgElem(Index, Element, 'VNK2_status_1_fon'); }
         if (Element.getAttribute('d') === 'M132.29 187.58h93.75v28.13h-93.75v-28.13zm91.75 2h-89.75v24.13h89.75v-24.13z') { addSvgElem(Index, Element, 'ramka_7PI_13'); }
         if (Element.getAttribute('d') === 'M297.92 186.54h93.75v28.13h-93.75v-28.13zm91.75 2h-89.75v24.13h89.75v-24.13z') { addSvgElem(Index, Element, 'ramka_2FI_01'); }
         if (Element.getAttribute('d') === 'M641.67 185.5h93.75v29.17h-93.75V185.5zm91.75 2h-89.75v25.17h89.75V187.5z') { addSvgElem(Index, Element, 'ramka_2PI_02'); }
@@ -745,6 +747,7 @@ window.addEventListener('load', function () {
     }
     else if (ObjectSvg.name === 'BVNK_VNK3') {
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
+        if (Element.getAttribute('d') === 'M1004.17 466.75h277.11v45.68h-277.11z') { addSvgElem(Index, Element, 'VNK3_status_1_fon'); }
         if (Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'fire_vnk_3'); }
         if (Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_3'); }
         if (Element.getAttribute('d') === 'M132.29 187.58h93.75v28.13h-93.75v-28.13zm91.75 2h-89.75v24.13h89.75v-24.13z') { addSvgElem(Index, Element, 'ramka_7PI_13'); }
@@ -850,8 +853,8 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '22') { addSvgElem(Index, Element, 'Vremya_nagreva'); }
         if (Element.innerHTML === '60') { addSvgElem(Index, Element, 'Vremya_dutya'); }
         if (Element.innerHTML === '0' && TextIndex === 154) { addSvgElem(Index, Element, 'Vremya_otdelen'); }
-        if (Element.getAttribute('x') === '1017.42') { addSvgElem(Index, Element, 'VNK3_status_1', 'start'); }
-        if (Element.getAttribute('x') === '1096.84') { addSvgElem(Index, Element, 'VNK3_status_2'); }
+        if (Element.getAttribute('x') === '1017.42') { addSvgElem(Index, Element, 'VNK3_status_1', 'center'); }
+        if (Element.getAttribute('x') === '1096.84') { addSvgElem(Index, Element, 'VNK3_status_2', 'center'); }
       });
     }
     else if (ObjectSvg.name === 'vnk_main') {
@@ -1029,12 +1032,12 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '51') { addSvgElem(Index, Element, 'kl029_proc', 'start'); }
         if (Element.innerHTML === '0' && Element.getAttribute('x') === '746.9' && Element.getAttribute('y') === '592.85') { addSvgElem(Index, Element, 'kl028_proc', 'center'); }
         if (Element.innerHTML === '0' && Element.getAttribute('x') === '998.47' && Element.getAttribute('y') === '592.85') { addSvgElem(Index, Element, 'kl007_proc', 'center'); }
-        if (Element.getAttribute('x') === '1246.49' && Element.getAttribute('y') === '638.72') { addSvgElem(Index, Element, 'VNK3_status_1', 'start'); }
-        if (Element.getAttribute('x') === '1279.2' && Element.getAttribute('y') === '664.05') { addSvgElem(Index, Element, 'VNK3_status_2', 'start'); }
-        if (Element.getAttribute('x') === '1451.16' && Element.getAttribute('y') === '638.72') { addSvgElem(Index, Element, 'VNK2_status_1', 'start'); }
-        if (Element.getAttribute('x') === '1483.87' && Element.getAttribute('y') === '664.05') { addSvgElem(Index, Element, 'VNK2_status_2', 'start'); }
-        if (Element.getAttribute('x') === '1658.84' && Element.getAttribute('y') === '638.72') { addSvgElem(Index, Element, 'VNK1_status_1', 'start'); }
-        if (Element.getAttribute('x') === '1691.55' && Element.getAttribute('y') === '664.05') { addSvgElem(Index, Element, 'VNK1_status_2', 'start'); }
+        if (Element.getAttribute('x') === '1246.49' && Element.getAttribute('y') === '638.72') { addSvgElem(Index, Element, 'VNK3_status_1', 'center'); }
+        if (Element.getAttribute('x') === '1279.2' && Element.getAttribute('y') === '664.05') { addSvgElem(Index, Element, 'VNK3_status_2', 'center'); }
+        if (Element.getAttribute('x') === '1451.16' && Element.getAttribute('y') === '638.72') { addSvgElem(Index, Element, 'VNK2_status_1', 'center'); }
+        if (Element.getAttribute('x') === '1483.87' && Element.getAttribute('y') === '664.05') { addSvgElem(Index, Element, 'VNK2_status_2', 'center'); }
+        if (Element.getAttribute('x') === '1658.84' && Element.getAttribute('y') === '638.72') { addSvgElem(Index, Element, 'VNK1_status_1', 'center'); }
+        if (Element.getAttribute('x') === '1691.55' && Element.getAttribute('y') === '664.05') { addSvgElem(Index, Element, 'VNK1_status_2', 'center'); }
         if (Element.innerHTML === '-999,00' && TextIndex === 168) { addSvgElem(Index, Element, '7QI_01'); }
         if (Element.innerHTML === '11' && TextIndex === 166) { addSvgElem(Index, Element, '5QI_01_01'); }
         if (Element.innerHTML === '81' && TextIndex === 167) { addSvgElem(Index, Element, '5QI_01_02'); }

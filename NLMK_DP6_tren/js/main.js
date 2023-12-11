@@ -11,7 +11,7 @@ function domLoaded() {
     .then(response => response.text())
     .then(data => {
       const modifiedData = data.replace(/startTime: timeDiff \+ (\d+)/g, (match, startTime) => {
-        const modifiedStartTime = parseInt(startTime) + 2;
+        const modifiedStartTime = parseInt(startTime) - 6;
         return `startTime: timeDiff + ${modifiedStartTime}`;
       });
       console.log(modifiedData);

@@ -309,7 +309,7 @@ window.addEventListener('load', function () {
         box.position = new BABYLON.Vector3(2.993, 1.184, 0.353);
         box.scaling = new BABYLON.Vector3(0.015, 0.015, 0.02);
         box.material = lightMat;
-        makeActiveMesh(box, { name: 'downBtnFPrirGaza_highlight' });
+        makeActiveMesh(box, { name: 'downBtnFPrirGaza_highlight', posIndex: 9, realName: 'Регулятор природного газа' });
       } else if (Name === 'Console_BVNK') {
         const lightMat = new BABYLON.StandardMaterial("lightMatBVNK");
         lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
@@ -518,6 +518,8 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
       mesh.name = Vals.name;
       mesh.currentPosition = Vals.posIndex;
       devHelper.model3DVals.activeMeshs.push(mesh);
+      if (Vals.realName)
+        mesh.realName = Vals.realName;
       
     } else if (typeof Vals === 'number') {
       mesh.isPickable = true;
@@ -711,7 +713,7 @@ function changeColorTexture(Mesh = undefined, State = undefined, Help = false) {
     // devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
     let newAlpha = State === true ? 0.5 : 0;
     let newColor = State === true ? true : false;
-    if (Mesh.overlayColor !== BABYLON.Color3.Yellow()) Mesh.overlayColor = BABYLON.Color3.Yellow();
+    if (!Mesh.overlayColor || Mesh.overlayColor !== BABYLON.Color3.Yellow()) Mesh.overlayColor = BABYLON.Color3.Yellow();
     devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
     if (Mesh.material.alpha !== 1) {
       Mesh.renderOverlay = newColor;
