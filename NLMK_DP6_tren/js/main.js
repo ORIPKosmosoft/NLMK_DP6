@@ -65,13 +65,13 @@ function domLoaded() {
       startTren();
       stopChangeFon();
     } else {
-      let popupDiv = document.createElement('div');
-      popupDiv.classList.add('popup-alert');
-      popupDiv.innerHTML = `Вы не можете воспроизвести этот сценарий сейчас.`;
-      document.body.append(popupDiv);
-      document.body.addEventListener('mousedown', () => {
-        if (document.querySelector('.popup-alert')) document.querySelector('.popup-alert').remove()
-      });
+      // let popupDiv = document.createElement('div');
+      // popupDiv.classList.add('popup-alert');
+      // popupDiv.innerHTML = `Вы не можете воспроизвести этот сценарий сейчас.`;
+      // document.body.append(popupDiv);
+      // document.body.addEventListener('mousedown', () => {
+      //   if (document.querySelector('.popup-alert')) document.querySelector('.popup-alert').remove()
+      // });
     }
   }
 
@@ -98,6 +98,11 @@ function domLoaded() {
         btnCon.style.position = 'relative';
         btnCon.style.marginTop = -btnCon.getBoundingClientRect().height + 'px';
         btnCon.style.transform = `translateY(${(e.currentTarget.getBoundingClientRect().height + window.innerHeight * 0.02) * Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget) - window.innerHeight * 0.02}px`;
+        if (!tempActions[Array.from(document.querySelectorAll('.drop-item')).indexOf(document.querySelector('.drop-item-active'))] || tempActions[Array.from(document.querySelectorAll('.drop-item')).indexOf(document.querySelector('.drop-item-active'))].length === 0) {
+          btnCon.setAttribute('disabled', '');
+        } else {
+          if (btnCon.hasAttribute('disabled')) btnCon.removeAttribute('disabled');
+        }
       } else {
         e.currentTarget.classList.toggle('drop-item-active', false);
         e.currentTarget.querySelector('span').classList.toggle('drop-span-active', false);
