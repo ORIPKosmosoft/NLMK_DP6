@@ -360,7 +360,7 @@ window.addEventListener('load', function () {
         ));
         meshNamesToSearch.forEach(mesh => {
           if (!activeMeshs.includes(mesh)) {
-            makeActiveMesh(mesh, { name: elem.id ? elem.name : mesh.name });
+            makeActiveMesh(mesh, { name: elem.id ? elem.name : mesh.name , posIndex: typeof elem.position == 'number' ? elem.position : undefined});
           }
         });
       });
@@ -516,7 +516,7 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
     meshOptimization(mesh);
     if (Vals.name) {
       mesh.name = Vals.name;
-      mesh.currentPosition = Vals.posIndex;
+      mesh.currentPosition = Vals.posIndex ? Vals.posIndex : typeof Vals.position === 'number' ? Vals.position : undefined;
       devHelper.model3DVals.activeMeshs.push(mesh);
       if (Vals.realName)
         mesh.realName = Vals.realName;
@@ -1633,9 +1633,9 @@ function findMaterial(Name) {
     (devHelper.model3DVals.scene.materials && devHelper.model3DVals.scene.materials.find(material => (material.name === Name || material.id === Name)));
   return tempMaterial || console.warn(`Material ${Name} not found`);
 }
-function findMesh(Name) {
+function findMesh(Name, Log = true) {
   const mesh = devHelper.model3DVals.scene.meshes && devHelper.model3DVals.scene.meshes.find(mesh => (mesh.uniqueId === Name || mesh.name === Name || mesh.id === Name));
-  return mesh || (devHelper.dev.enable === true && console.warn(`Mesh ${Name} not found`));
+  return mesh || (devHelper.dev.enable === true && Log === true && console.warn(`Mesh ${Name} not found`));
 }
 
 function getClientRectFromMesh(Mesh) {

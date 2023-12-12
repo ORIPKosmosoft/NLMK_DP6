@@ -34,7 +34,7 @@ window.addEventListener('load', function () {
                                       ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                         ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'BVNK_VNK31') {
+    if (ObjectSvg.name === 'dp1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -1133,32 +1133,32 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('cx') === '1282.67' && Element.getAttribute('cy') === '547.98') { addSvgElem(Index, Element, 'circle_kl028'); }
         if (Element.getAttribute('cx') === '1573.3' && Element.getAttribute('cy') === '548.77') { addSvgElem(Index, Element, 'circle_kl007'); }
         if (Element.getAttribute('cx') === '1573.3' && Element.getAttribute('cy') === '548.61') { addSvgElem(Index, Element, 'circle_kl007'); }
-        if (Element.getAttribute('cx') === '602.84' && Element.getAttribute('cy') === '608.14') { addSvgElem(Index, Element, 'circle_035')}
-        if (Element.getAttribute('cx') === '602.84' && Element.getAttribute('cy') === '607.91') { addSvgElem(Index, Element, 'circle_035')}
-        if (Element.getAttribute('cx') === '789.25' && Element.getAttribute('cy') === '646.58') { addSvgElem(Index, Element, 'circle_kl0333')}
-        if (Element.getAttribute('cx') === '789.25' && Element.getAttribute('cy') === '646.42') { addSvgElem(Index, Element, 'circle_kl0333')}
-        if (Element.getAttribute('cx') === '1148.99' && Element.getAttribute('cy') === '795.1') { addSvgElem(Index, Element, 'circle_kl036b')}
-        if (Element.getAttribute('cx') === '1148.99' && Element.getAttribute('cy') === '794.94') { addSvgElem(Index, Element, 'circle_kl036b')}
-        if (Element.getAttribute('cx') === '1210.4' && Element.getAttribute('cy') === '725.88') { addSvgElem(Index, Element, 'circle_kl036v')}
-        if (Element.getAttribute('cx') === '1210.4' && Element.getAttribute('cy') === '725.72') { addSvgElem(Index, Element, 'circle_kl036v')}
-        if (Element.getAttribute('cx') === '1398.53' && Element.getAttribute('cy') === '257.36') { addSvgElem(Index, Element, 'circle_kl029')}
-        if (Element.getAttribute('cx') === '1398.53' && Element.getAttribute('cy') === '257.2') { addSvgElem(Index, Element, 'circle_kl029')}
-        if (Element.getAttribute('cx') === '1404.93' && Element.getAttribute('cy') === '318.61') { addSvgElem(Index, Element, 'circle_kl048')}
-        if (Element.getAttribute('cx') === '1404.93' && Element.getAttribute('cy') === '318.45') { addSvgElem(Index, Element, 'circle_kl048')}
-        if (Element.getAttribute('cx') === '1274.93' && Element.getAttribute('cy') === '363.21') { addSvgElem(Index, Element, 'circle_kl039')}
-        if (Element.getAttribute('cx') === '1274.93' && Element.getAttribute('cy') === '363.06') { addSvgElem(Index, Element, 'circle_kl039')}
-        if (Element.getAttribute('cx') === '1561.96' && Element.getAttribute('cy') === '363.37') { addSvgElem(Index, Element, 'circle_kl030')}
-        if (Element.getAttribute('cx') === '1561.96' && Element.getAttribute('cy') === '363.21') { addSvgElem(Index, Element, 'circle_kl030')}
-        if (Element.getAttribute('cx') === '1276.64' && Element.getAttribute('cy') === '421.49') { addSvgElem(Index, Element, 'circle_kl038')}
-        if (Element.getAttribute('cx') === '1276.64' && Element.getAttribute('cy') === '421.34') { addSvgElem(Index, Element, 'circle_kl038')}
-        if (Element.getAttribute('cx') === '1565.09' && Element.getAttribute('cy') === '421.42') { addSvgElem(Index, Element, 'circle_kl037')}
-        if (Element.getAttribute('cx') === '1565.09' && Element.getAttribute('cy') === '421.26') { addSvgElem(Index, Element, 'circle_kl037')}
-        if (Element.getAttribute('cx') === '1286.76' && Element.getAttribute('cy') === '607.75') { addSvgElem(Index, Element, 'circle_kl020')}
-        if (Element.getAttribute('cx') === '1286.76' && Element.getAttribute('cy') === '607.59') { addSvgElem(Index, Element, 'circle_kl020')}
-        if (Element.getAttribute('cx') === '1573.76' && Element.getAttribute('cy') === '607.67') { addSvgElem(Index, Element, 'circle_kl025')}
-        if (Element.getAttribute('cx') === '1573.76' && Element.getAttribute('cy') === '607.52') { addSvgElem(Index, Element, 'circle_kl025')}
-        if (Element.getAttribute('cx') === '1446.41' && Element.getAttribute('cy') === '679.23') { addSvgElem(Index, Element, 'circle_kl004')}
-        if (Element.getAttribute('cx') === '1446.41' && Element.getAttribute('cy') === '679.08') { addSvgElem(Index, Element, 'circle_kl004')}
+        if (Element.getAttribute('cx') === '602.84' && Element.getAttribute('cy') === '608.14') { addSvgElem(Index, Element, 'circle_035') }
+        if (Element.getAttribute('cx') === '602.84' && Element.getAttribute('cy') === '607.91') { addSvgElem(Index, Element, 'circle_035') }
+        if (Element.getAttribute('cx') === '789.25' && Element.getAttribute('cy') === '646.58') { addSvgElem(Index, Element, 'circle_kl0333') }
+        if (Element.getAttribute('cx') === '789.25' && Element.getAttribute('cy') === '646.42') { addSvgElem(Index, Element, 'circle_kl0333') }
+        if (Element.getAttribute('cx') === '1148.99' && Element.getAttribute('cy') === '795.1') { addSvgElem(Index, Element, 'circle_kl036b') }
+        if (Element.getAttribute('cx') === '1148.99' && Element.getAttribute('cy') === '794.94') { addSvgElem(Index, Element, 'circle_kl036b') }
+        if (Element.getAttribute('cx') === '1210.4' && Element.getAttribute('cy') === '725.88') { addSvgElem(Index, Element, 'circle_kl036v') }
+        if (Element.getAttribute('cx') === '1210.4' && Element.getAttribute('cy') === '725.72') { addSvgElem(Index, Element, 'circle_kl036v') }
+        if (Element.getAttribute('cx') === '1398.53' && Element.getAttribute('cy') === '257.36') { addSvgElem(Index, Element, 'circle_kl029') }
+        if (Element.getAttribute('cx') === '1398.53' && Element.getAttribute('cy') === '257.2') { addSvgElem(Index, Element, 'circle_kl029') }
+        if (Element.getAttribute('cx') === '1404.93' && Element.getAttribute('cy') === '318.61') { addSvgElem(Index, Element, 'circle_kl048') }
+        if (Element.getAttribute('cx') === '1404.93' && Element.getAttribute('cy') === '318.45') { addSvgElem(Index, Element, 'circle_kl048') }
+        if (Element.getAttribute('cx') === '1274.93' && Element.getAttribute('cy') === '363.21') { addSvgElem(Index, Element, 'circle_kl039') }
+        if (Element.getAttribute('cx') === '1274.93' && Element.getAttribute('cy') === '363.06') { addSvgElem(Index, Element, 'circle_kl039') }
+        if (Element.getAttribute('cx') === '1561.96' && Element.getAttribute('cy') === '363.37') { addSvgElem(Index, Element, 'circle_kl030') }
+        if (Element.getAttribute('cx') === '1561.96' && Element.getAttribute('cy') === '363.21') { addSvgElem(Index, Element, 'circle_kl030') }
+        if (Element.getAttribute('cx') === '1276.64' && Element.getAttribute('cy') === '421.49') { addSvgElem(Index, Element, 'circle_kl038') }
+        if (Element.getAttribute('cx') === '1276.64' && Element.getAttribute('cy') === '421.34') { addSvgElem(Index, Element, 'circle_kl038') }
+        if (Element.getAttribute('cx') === '1565.09' && Element.getAttribute('cy') === '421.42') { addSvgElem(Index, Element, 'circle_kl037') }
+        if (Element.getAttribute('cx') === '1565.09' && Element.getAttribute('cy') === '421.26') { addSvgElem(Index, Element, 'circle_kl037') }
+        if (Element.getAttribute('cx') === '1286.76' && Element.getAttribute('cy') === '607.75') { addSvgElem(Index, Element, 'circle_kl020') }
+        if (Element.getAttribute('cx') === '1286.76' && Element.getAttribute('cy') === '607.59') { addSvgElem(Index, Element, 'circle_kl020') }
+        if (Element.getAttribute('cx') === '1573.76' && Element.getAttribute('cy') === '607.67') { addSvgElem(Index, Element, 'circle_kl025') }
+        if (Element.getAttribute('cx') === '1573.76' && Element.getAttribute('cy') === '607.52') { addSvgElem(Index, Element, 'circle_kl025') }
+        if (Element.getAttribute('cx') === '1446.41' && Element.getAttribute('cy') === '679.23') { addSvgElem(Index, Element, 'circle_kl004') }
+        if (Element.getAttribute('cx') === '1446.41' && Element.getAttribute('cy') === '679.08') { addSvgElem(Index, Element, 'circle_kl004') }
       });
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
@@ -1755,7 +1755,7 @@ window.addEventListener('load', function () {
         if (Element.innerHTML == '134') { addSvgElem(Index, Element, 'text_Nagrev_134_down'); }
         if (Element.innerHTML == '117') { addSvgElem(Index, Element, 'text_Nagrev_117_down'); }
         if (Element.innerHTML == '111' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 245.015 -244.012)') { addSvgElem(Index, Element, 'text_Nagrev_111_down'); }
-        if (Element.innerHTML == '112' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 307.346 -244.012)') { addSvgElem(Index, Element, 'text_Nagrev_112_down'); } 
+        if (Element.innerHTML == '112' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 307.346 -244.012)') { addSvgElem(Index, Element, 'text_Nagrev_112_down'); }
 
       });
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, TextIndex) => {
@@ -2083,11 +2083,11 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('transform') === 'matrix(1.10719 0 0 1 -550.241 -220.669)') { addSvgElem(Index, Element, 'left_matrix_text'); }
         if (Element.getAttribute('transform') === 'matrix(1.10719 0 0 1 -337.526 -221.799)') { addSvgElem(Index, Element, 'right_matrix_text'); }
         // Ilay
-        if (Element.getAttribute('transform') === 'matrix(1.10402 0 0 1 -342.755 -366.684)' && Element.innerHTML === '1')  { addSvgElem(Index, Element, 'tr_3_str_1_'); }
-        if (Element.getAttribute('transform') === 'matrix(1.10402 0 0 1 -5.843 -309.553)' && Element.innerHTML === '2')  { addSvgElem(Index, Element, 'tr_2_str_2_'); }
-        if (Element.getAttribute('transform') === 'matrix(1.24252 0 0 1 -560.095 -104.792)' && Element.innerHTML === 'Пуст')  { addSvgElem(Index, Element, 'r_pust'); }
-        if (Element.getAttribute('transform') === 'matrix(1.05071 0 0 1 500.85 365.119)' && Element.innerHTML === '1')  { addSvgElem(Index, Element, 'v_pech_str3_str'); }
-        if (Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 371.317 283.192)' && Element.innerHTML === 'Р')  { addSvgElem(Index, Element, 'na_conveer_s1_bukca'); }
+        if (Element.getAttribute('transform') === 'matrix(1.10402 0 0 1 -342.755 -366.684)' && Element.innerHTML === '1') { addSvgElem(Index, Element, 'tr_3_str_1_'); }
+        if (Element.getAttribute('transform') === 'matrix(1.10402 0 0 1 -5.843 -309.553)' && Element.innerHTML === '2') { addSvgElem(Index, Element, 'tr_2_str_2_'); }
+        if (Element.getAttribute('transform') === 'matrix(1.24252 0 0 1 -560.095 -104.792)' && Element.innerHTML === 'Пуст') { addSvgElem(Index, Element, 'r_pust'); }
+        if (Element.getAttribute('transform') === 'matrix(1.05071 0 0 1 500.85 365.119)' && Element.innerHTML === '1') { addSvgElem(Index, Element, 'v_pech_str3_str'); }
+        if (Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 371.317 283.192)' && Element.innerHTML === 'Р') { addSvgElem(Index, Element, 'na_conveer_s1_bukca'); }
         if (Element.innerHTML === 'К' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 371.317 361.589)') { addSvgElem(Index, Element, 'str1_down'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
@@ -2387,8 +2387,33 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
                       createSvghelper(CurrentPosition, Vals.name);
                     }
                   } else handleError(invisElem);
-                } else if (currentActonObject && ((currentActonObject.action && currentActonObject.action.target3D) || currentActonObject.multi))
+                } else if (currentActonObject && ((currentActonObject.action && currentActonObject.action.target3D))) {
                   handleError(invisElem);
+                } else if (currentActonObject.multi) {
+                  if (currentActonObject.multi[0].action && currentActonObject.multi[0].action.target3D) {
+                    handleError(invisElem);
+                  } else if (currentActonObject.multi[0].action && currentActonObject.multi[0].action.target2D) {
+                    const multiAction = devHelper.trenVals.multiAction.find(multiAction2 => (invisElem.id === multiAction2.action.target2D));
+                    if (multiAction) {
+                      trenClickOnSvgElem(invisElem);
+                      if (multiAction.action.window2D && multiAction.action.window2D.newPositionWindow) {
+                        if (Vals.value && Vals.value.window) {
+                          if (multiAction.action.window2D.newPositionWindow.x) Vals.value.x = multiAction.action.window2D.newPositionWindow.x;
+                          if (multiAction.action.window2D.newPositionWindow.y) Vals.value.y = multiAction.action.window2D.newPositionWindow.y;
+                        }
+                      }
+                      if (Vals.removeWindow) {
+                        RemoveSvgFromTextrue(DisplayMesh, Vals.removeWindow);
+                      } else if (Vals.value && Vals.value.window) {
+                        addSvgToTextrue(DisplayMesh, Vals.value);
+                        createSvghelper(CurrentPosition, Vals.value.window);
+                      } else if (Vals.name) {
+                        changeSvgtexture(DisplayMesh, Vals.name, true);
+                        createSvghelper(CurrentPosition, Vals.name);
+                      }
+                    } else handleError(invisElem);
+                  } else handleError(invisElem);
+                }
               } else {
                 // if (Vals.id !== undefined) trenClickOnSvgElem(invisElem);
                 if (Vals.removeWindow) {
@@ -2409,7 +2434,7 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
 
             }
           });
-          invisElem.addEventListener('transitionstart', (e) => { 
+          invisElem.addEventListener('transitionstart', (e) => {
             if (e.propertyName === 'opacity') {
               invisElem.style.backgroundColor = getComputedStyle(invisElem).backgroundColor;
             }

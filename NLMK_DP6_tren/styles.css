@@ -3025,6 +3025,7 @@ ul {
   opacity: 0.5;
   cursor: default;
   border: 0.15vw solid white !important;
+  pointer-events: none !important;
 }
 
 .backArea-white-100 {

@@ -28,7 +28,7 @@ const devHelper = {
     ended: false,
     multiAction: [],
     windowIntersec: [],
-    maximumErrors: 50, 
+    maximumErrors: 50,
   },
   model3DVals: {
     activeControlCamera: true,
@@ -359,9 +359,9 @@ const devHelper = {
         { x: 94.4, y: 18.7, w: 4, h: 3, forAction: true, id: 'DP obh', },
         { x: 94.4, y: 14.9, w: 4, h: 3.4, forAction: true, id: 'P cop gaza', },
         { x: 94.4, y: 36, w: 4, h: 3.4, forAction: true, id: 'Vlajnosti', },
-        { x: 81, y: 15, w: 1.5, h: 3.4, forAction: true, id: 'kl1', },
-        { x: 76.6, y: 15, w: 1.5, h: 3.4, forAction: true, id: 'kl2', },
-        { x: 74.3, y: 15, w: 1.5, h: 3.4, forAction: true, id: 'kl3', },
+        { x: 81, y: 15, w: 1.5, h: 3.4, forAction: true, id: 'kl1', realName: 'Клапан 1' },
+        { x: 76.6, y: 15, w: 1.5, h: 3.4, forAction: true, id: 'kl2', realName: 'Клапан 2' },
+        { x: 74.3, y: 15, w: 1.5, h: 3.4, forAction: true, id: 'kl3', realName: 'Клапан 3' },
         { x: 76.5, y: 19.6, w: 1.5, h: 3.4, forAction: true, id: 'Drosel zel.', },
         { x: 48.5, y: 29.6, w: 1.5, h: 4.4, forAction: true, id: 'kl83', },
         { x: 37.5, y: 29.6, w: 1.5, h: 4.4, forAction: true, id: 'kl84', },
@@ -889,6 +889,116 @@ const devHelper = {
 
 const timeDiff = -0;
 let tempActions = [
+  [
+    {
+      scenarioText: 'Тест мульти2Д',
+      sender: 'Система',
+      audio: 'telephone_say',
+      multi: [
+        {
+          text: '3',
+          sender: 'Газовщик',
+          action: {
+            target2D: 'kl3',
+          },
+          audio: 'Zvuk_knopok_na_telefone',
+        },
+        {
+          text: '2',
+          sender: 'Газовщик',
+          action: {
+            target2D: 'kl2',
+          },
+          audio: 'Zvuk_knopok_na_telefone',
+        },
+        {
+          text: '1',
+          sender: 'Газовщик',
+          action: {
+            target2D: 'kl1',
+          },
+          audio: 'Zvuk_knopok_na_telefone',
+        },
+      ],
+      startTime: timeDiff + 1,
+      human: true,
+    },
+    {
+      action: {
+        target2D: 'kl029',
+        window2D: {
+          elements: [
+            { name: 'title_work_vn', text: 'Управление клапаном 029' },
+
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_kl029', stroke: '#8F8F8F' },
+            { name: 'left_vn', color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'status_window_text', text: 'Нет данных' },
+
+            // { name: 'skhema_sobrana', color: '#00FF00' },
+            // { name: 'block_open',     color: '#00FF00' },
+            // { name: 'block_close',    color: '#00FF00' },
+
+
+            { name: 'btn_auto_text', color: '#000' },
+            { name: 'btn_auto_2', color: '#fff' },
+
+
+            { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
+            { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+            { name: 'btn_open_text', color: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+
+
+            { name: 'polozenie_text', text: '51' },
+            { name: 'polozenie_button_text', color: '#000000' },
+
+
+          ],
+        },
+      },
+      startTime: timeDiff + 2,
+      human: true,
+    },
+    {
+      scenarioText: 'Взять в руку трубку и нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС».',
+      sender: 'Система',
+      audio: 'telephone_say',
+      multi: [
+        {
+          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton001',
+          },
+        },
+        {
+          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton006',
+          },
+        },
+        
+      ],
+      startTime: timeDiff + 3,
+      human: true,
+    },
+    {
+      scenarioText: 'Сообщить по рации дежурному водопроводчику.',
+      sender: 'Система',
+      audio: 'radio_say',
+      action: {
+        target3D: 'ButtonHightlight_046',
+      },
+      startTime: timeDiff + 0,
+      human: true,
+    },
+  ],
   // Первый сценарий  
   [
     {
@@ -2544,7 +2654,7 @@ let tempActions = [
       startTime: timeDiff + 68,
       human: true,
     },
-     {
+    {
       action: {
         target2D: 'vz_3',
         window2D: {
@@ -6765,7 +6875,7 @@ let tempActions = [
       startTime: timeDiff + 177.53,
     }, {
       action: {
-        target3D: 'Rectangle074', 
+        target3D: 'Rectangle074',
         material: 'ButtonLightOn',
       },
       startTime: timeDiff + 177.53,
@@ -23480,7 +23590,7 @@ let tempActions = [
             { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
             { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
             { name: 'VNK3_status_1', text: 'Индивидуал.' },
-            { name: 'VNK3_status_2', text: 'ОТДЕЛЕНИЕ' }, 
+            { name: 'VNK3_status_2', text: 'ОТДЕЛЕНИЕ' },
             { name: 'vnk3_stripes', color: '#9CA4AD' },
             { name: 'Vremya_nagreva', text: '106' },
             { name: 'Vremya_dutya', text: '105' },

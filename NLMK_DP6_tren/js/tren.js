@@ -1,6 +1,7 @@
 /*                TODO
 ----------------------------------------------------
-на рестарт выход блок всего
+В ошибку добавить мульти2Д имена
+
 ----------------------------------------------------
 */
 function loadTrenActions() {
@@ -36,9 +37,14 @@ function loadTrenActions() {
           if (devHelper.audio.find(element => element.name === state.audio) === undefined)
             devHelper.audio.push({ name: state.audio, element: new Audio(`/media/audio/${state.audio}.mp3`) });
       })
-
     }
   })
+  devHelper.trenVals.scenarioArr.forEach(scenarioObj => {
+    if (scenarioObj.actions && scenarioObj.actions) {
+      scenarioObj.actions = scenarioObj.actions.sort((a, b) => a.startTime - b.startTime);
+    }
+  })
+
   devHelper.audio.forEach(element => {
     element.element.addEventListener('ended', function () {
       const activeAudio = devHelper.audio.some(audioFile => !audioFile.element.paused);
@@ -51,8 +57,17 @@ function loadTrenActions() {
 function startTren(Restart = false) {
   clearChat();
   if (devHelper.trenVals.type === 'learn') {
+    document.querySelector('#b_reference').removeAttribute('disabled');
+    document.querySelector('#b_help').removeAttribute('disabled');
   } else {
-
+    let btnDisabledArr = ['b_reference', 'b_help'];
+    btnDisabledArr.forEach(id => {
+      let hasBorder = window.getComputedStyle(document.querySelector('#' + id)).getPropertyValue('border') !== 'none';
+      document.querySelector('#' + id).setAttribute('disabled', '');
+      if (!hasBorder) {
+        document.querySelector('#' + id).style.border = 'none';
+      }
+    })
   }
   setTextScenario(devHelper.trenVals.scenario);
   takeStartingState(Restart);
@@ -154,7 +169,7 @@ function changeTimerText(Start = false) {
   document.querySelector(".time-second").textContent = tempTextTime.seconds;
 }
 
-let  lastTimestamp = 0;
+let lastTimestamp = 0;
 function trenTimeTick(timeStamp) {
   let deltaTime = timeStamp - lastTimestamp;
   if (deltaTime > 16) {
@@ -400,15 +415,18 @@ function handleError(Mesh) {
   }
   let currentName = findRealName(Mesh.id || Mesh.name).name;
   let curAction = findCurrentAction();
-  let rightAnswerLocation;
+  let rightAnswerName = '', rightAnswerLocation;
   if (curAction.action && (curAction.action.target2D || curAction.action.target3D)) {
     rightAnswerName = findRealName(curAction.action.target2D || curAction.action.target3D).name;
-    rightAnswerLocation = findRealName(curAction.action.target2D || curAction.action.target3D).location;
+    rightAnswerLocation = curAction.action.target2D ? 'схеме "' : 'позиции "';
+    rightAnswerLocation += findRealName(curAction.action.target2D || curAction.action.target3D).location + '"';
   } else if (curAction.multi && devHelper.trenVals.multiAction.length > 0) {
-    rightAnswerName = '';
     devHelper.trenVals.multiAction.forEach((element, index) => {
-      if (index === 0) rightAnswerLocation = findRealName(element.action.target3D).location;
-      rightAnswerName += (index === 0 ? '' : ', ') + findRealName(element.action.target3D).name
+      if (index === 0) {
+        rightAnswerLocation = element.action.target2D ? 'схеме "' : 'позиции "';
+        rightAnswerLocation += findRealName(element.action.target2D || element.action.target3D).location + '"';
+      }
+      rightAnswerName += (index === 0 ? '' : ', ') + findRealName(element.action.target2D || element.action.target3D).name
     })
   }
   playAudio('tren_error');
@@ -423,7 +441,7 @@ function handleError(Mesh) {
       }, 300)
     }, 300);
   }
-  sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName ? currentName : 'неверный элемент'}. Нужно кликнуть по ${rightAnswerName ? rightAnswerName : 'элементу'} на ${rightAnswerLocation}.`);
+  sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName ? `"${currentName}"` : 'неверный элемент'}. Нужно кликнуть по ${rightAnswerName ? `"${rightAnswerName}"` : 'элементу'} на ${rightAnswerLocation}.`);
   devHelper.endVals.errors[devHelper.endVals.currentChapter]++;
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name || Mesh.id} в действии ${devHelper.trenVals.currentAction} неверный.`);
 
@@ -434,23 +452,37 @@ function handleError(Mesh) {
   }
 }
 
+function afterClickOn2DHelper(SvgElemHelper, CurrentAction) {
+  if (CurrentAction.action.window2D && CurrentAction.action.window2D.elements) {
+    for (let key in CurrentAction.action.window2D.elements) {
+      if (CurrentAction.action.window2D.elements.hasOwnProperty(key))
+        changeSvgElem(CurrentAction.action.window2D.elements[key]);
+    }
+    updateSvgTextures();
+  }
+  if (CurrentAction.audio)
+    playAudio(CurrentAction.audio);
+  if (CurrentAction.action && CurrentAction.action.helper2D)
+    createSvghelper(devHelper.model3DVals.currentPosition)
+  playAudio('tren_click');
+}
+
 function trenClickOnSvgElem(SvgElemHelper = undefined) {
   if (devHelper.trenVals.waitingInput === true) {
     let currentActonObject = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
     if (currentActonObject.lifeTime) startTimerToStep(currentActonObject.lifeTime);
-    if (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id) {
-      if (currentActonObject.action.window2D && currentActonObject.action.window2D.elements) {
-        for (let key in currentActonObject.action.window2D.elements) {
-          if (currentActonObject.action.window2D.elements.hasOwnProperty(key))
-            changeSvgElem(currentActonObject.action.window2D.elements[key]);
-        }
-        updateSvgTextures();
+    if (currentActonObject.multi && currentActonObject.multi.length > 0) {
+      const multiAction = devHelper.trenVals.multiAction.find(multiAction2 => multiAction2.action.target2D === SvgElemHelper.id);
+      if (multiAction) {
+        afterClickOn2DHelper(SvgElemHelper, multiAction);
+        devHelper.trenVals.multiAction = devHelper.trenVals.multiAction.filter(function (item) {
+          return item !== multiAction;
+        });
+        if (devHelper.trenVals.multiAction.length === 0)
+          newActionStartHelper(currentActonObject);
       }
-      if (currentActonObject.audio) playAudio(currentActonObject.audio);
-      if (currentActonObject.action && currentActonObject.action.helper2D) {
-        createSvghelper(devHelper.model3DVals.currentPosition)
-      }
-      playAudio('tren_click');
+    } else if (currentActonObject.action && currentActonObject.action.target2D && currentActonObject.action.target2D === SvgElemHelper.id) {
+      afterClickOn2DHelper(SvgElemHelper, currentActonObject);
       newActionStartHelper(currentActonObject);
     }
   }
@@ -1890,96 +1922,126 @@ function reavialTextHelp() {
   let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   if (currentAction && currentAction.concentration) createConcentrationEffectCondition(currentAction.concentration);
   else if (devHelper.trenVals.multiAction && devHelper.trenVals.multiAction.length > 0) {
-    helperHighlightOn(devHelper.trenVals.multiAction)
+    if (devHelper.trenVals.multiAction[0].action.target3D) {
+      helperHighlightOn(devHelper.trenVals.multiAction)
+    } else {
+      helperHighlight2DOn(devHelper.trenVals.multiAction)
+    }
   } else if (currentAction && currentAction.action && currentAction.action.target3D && currentAction.human) {
-    helperHighlightOn(currentAction.action);
+    helperHighlightOn(currentAction);
   } else if (currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
-    let tempRealHelperName = findRealName(currentAction.action.target2D).name;
-    let tempRealShemeName = findRealName(currentAction.action.target2D).location;
-    let requiredPosition = undefined;
-    let svgName;
-    let displayNameArr = [];
-    let displayMesh;
-    devHelper.model3DVals.svgDisplays.meshs.forEach(displayMesh => {
-      displayMesh.svgArr.forEach(svg => {
-        if (devHelper.svgVals.find(svg2 => svg2.name === svg.name).realName === tempRealShemeName) {
-          requiredPosition = displayMesh.positionIndex;
-        }
-      })
-    })
-    devHelper.svgHelpers.find(obj => {
-      if (obj.helpers.find(objHelper => objHelper.id === currentAction.action.target2D)) {
-        svgName = obj.name;
-        return obj.name;
-      }
-    });
-    devHelper.model3DVals.svgDisplaysArr.find(obj => {
-      if (obj.possibleSchemes && obj.possibleSchemes.includes(svgName)) {
-        displayNameArr.push(obj.name);
-      }
-    })
-
-    if (devHelper.model3DVals.currentPosition === undefined) {
-      let tempMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.name === displayNameArr[0]);
-      if (tempMesh && !requiredPosition) {
-        requiredPosition = tempMesh.positionIndex;
-      }
-    } else {
-      if (document.querySelector('#svg-helper')) {
-        let currentPosMeshName = devHelper.model3DVals.movePointMeshToArr.find(obj => obj.point === devHelper.model3DVals.currentPosition).name;
-        if (displayNameArr.find(name => name === currentPosMeshName)) {
-          let tempMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.name === displayNameArr.find(name => name === currentPosMeshName));
-          if (tempMesh) {
-            requiredPosition = tempMesh.positionIndex;
-          }
-        } else {
-          if (devHelper.dev.enable) console.log('Не найдено 1');
-        }
-      } else {
-        document.querySelector('.box-help').innerHTML = `Вернуться на "Главный вид".`;
-        helpBackToMain();
-      }
-    }
-
-    if (devHelper.model3DVals.currentPosition !== undefined) {
-      if (requiredPosition !== devHelper.model3DVals.currentPosition) {
-        document.querySelector('.box-help').innerHTML = `Вернуться на "Главный вид".`;
-        helpBackToMain();
-      } else {
-        displayMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.positionIndex === requiredPosition);
-        if (displayMesh) {
-          if (displayMesh.svgArr && displayMesh.svgArr.find(obj => obj.name === svgName)) {
-            document.querySelector('.box-help').innerHTML = `Нажать курсором по элементу${tempRealHelperName ? ' "' + tempRealHelperName + '"' : ''}.`;
-            let temp2D = document.querySelector(`#${currentAction.action.target2D}`);
-            if (temp2D) temp2D.classList.toggle('hightlight-helper', true);
-          } else {
-            document.querySelector('.box-help').innerHTML = `Включить схему${tempRealShemeName ? ' "' + tempRealShemeName + '"' : ''}.`;
-          }
-        } else {
-          if (devHelper.dev.enable) console.log('Не найдено 2');
-        }
-      }
-    } else {
-      document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту "${devHelper.model3DVals.cameraPositions[requiredPosition].name}".`;
-    }
+    helperHighlight2DOn(currentAction)
   } else {
     document.querySelector('.box-help').innerHTML = '';
     document.querySelector('.box-help').classList.toggle('opacity-1-Temp', false);
   }
 }
 
+function helperHighlight2DOn(Actions) {
+  let tempArr = Array.isArray(Actions) ? Actions : [Actions];
+  let teamHelperNames = '';
+  tempArr.forEach((actionObject, Index) => {
+    if (actionObject.action && actionObject.action.target2D) {
+      let tempHelper = findRealName(actionObject.action.target2D);
+      if (tempHelper) {
+        let tempRealHelperName = tempHelper.name;
+        let tempRealShemeName = tempHelper.location;
+
+        let requiredPosition = undefined;
+        let svgName;
+        let displayNameArr = [];
+        let displayMesh;
+
+
+        devHelper.model3DVals.svgDisplays.meshs.forEach(displayMesh => {
+          displayMesh.svgArr.forEach(svg => {
+            if (devHelper.svgVals.find(svg2 => svg2.name === svg.name).realName === tempRealShemeName) {
+              requiredPosition = displayMesh.positionIndex;
+            }
+          })
+        })
+        devHelper.svgHelpers.find(obj => {
+          if (obj.helpers.find(objHelper => objHelper.id === actionObject.action.target2D)) {
+            svgName = obj.name;
+            return obj.name;
+          }
+        });
+        devHelper.model3DVals.svgDisplaysArr.find(obj => {
+          if (obj.possibleSchemes && obj.possibleSchemes.includes(svgName)) {
+            displayNameArr.push(obj.name);
+          }
+        })
+        if (devHelper.model3DVals.currentPosition === undefined) {
+          let tempMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.name === displayNameArr[0]);
+          if (tempMesh && !requiredPosition) {
+            requiredPosition = tempMesh.positionIndex;
+          }
+        } else {
+          if (document.querySelector('#svg-helper')) {
+            let currentPosMeshName = devHelper.model3DVals.movePointMeshToArr.find(obj => obj.point === devHelper.model3DVals.currentPosition).name;
+            if (displayNameArr.find(name => name === currentPosMeshName)) {
+              let tempMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.name === displayNameArr.find(name => name === currentPosMeshName));
+              if (tempMesh) {
+                requiredPosition = tempMesh.positionIndex;
+              }
+            } else {
+              if (devHelper.dev.enable) console.log('Не найдено 1');
+            }
+          } else {
+            document.querySelector('.box-help').innerHTML = `Вернуться на "Главный вид".`;
+            helpBackToMain();
+          }
+        }
+
+        if (devHelper.model3DVals.currentPosition !== undefined) {
+          if (requiredPosition !== devHelper.model3DVals.currentPosition) {
+            document.querySelector('.box-help').innerHTML = `Вернуться на "Главный вид".`;
+            helpBackToMain();
+          } else {
+            displayMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.positionIndex === requiredPosition);
+            if (displayMesh) {
+              if (displayMesh.svgArr && displayMesh.svgArr.find(obj => obj.name === svgName)) {
+                let temp2D = document.querySelector(`#${actionObject.action.target2D}`);
+                if (temp2D) temp2D.classList.toggle('hightlight-helper', true);
+                teamHelperNames += (tempRealHelperName ? tempRealHelperName : actionObject.action.target2D) + ', ';
+                if (Index === tempArr.length - 1) {
+                  teamHelperNames = teamHelperNames.slice(0, -2);
+                  document.querySelector('.box-help').innerHTML = `Нажать курсором по элемент${tempArr.length > 1 ? 'ам' : 'у'} "${teamHelperNames}".`;
+                }
+              } else {
+                document.querySelector('.box-help').innerHTML = `Включить схему${tempRealShemeName ? ' "' + tempRealShemeName + '"' : ''}.`;
+              }
+            } else {
+              if (devHelper.dev.enable) console.log('Не найдено 2');
+            }
+          }
+        } else {
+          changeColorTexture(devHelper.model3DVals.movePointMesh.find(m => m.positionIndex === requiredPosition), true, true);
+          document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту "${devHelper.model3DVals.cameraPositions[requiredPosition].name}".`;
+        }
+      }
+    }
+  })
+}
+
 function hideTextHelp() {
-  // document.getElementById('b_help').addEventListener("mouseout", (e) => {
   let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   if (currentAction && currentAction.action && currentAction.action.target3D && currentAction.human) {
     helperHighlightOff(currentAction.action.target3D);
   } else if (devHelper.trenVals.multiAction && devHelper.trenVals.multiAction.length > 0) {
-    devHelper.trenVals.multiAction.forEach(obj => {
-      if (obj.action && obj.action.target3D) {
-        helperHighlightOff(obj.action.target3D);
-      }
-    });
+    if (devHelper.trenVals.multiAction[0].action.target3D) {
+      devHelper.trenVals.multiAction.forEach(obj => {
+        if (obj.action && obj.action.target3D) {
+          helperHighlightOff(obj.action.target3D);
+        }
+      });
+    } else {
+      helperHighlightOff();
+      if (document.querySelector('.hightlight-helper'))
+        Array.from(document.querySelectorAll('.hightlight-helper')).forEach(elem => elem.classList.toggle('hightlight-helper', false))
+    }
   } else if (currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
+    helperHighlightOff();
     if (document.querySelector('.hightlight-helper')) document.querySelector('.hightlight-helper').classList.toggle('hightlight-helper', false);
   }
   if (document.querySelector('.concentration')) document.querySelector('.concentration').style.opacity = 0;
@@ -1991,7 +2053,6 @@ function hideTextHelp() {
     clearInterval(document.getElementById('b_help').interval);
   document.getElementById('b_GeneralView').style.border = '';
   document.querySelector('.pointer-helper-container').style.display = 'none';
-  // })
 }
 
 Array.from(document.querySelectorAll('.help-buttons-no')).forEach((item) => {
@@ -2174,51 +2235,46 @@ function areObjectsEqual(obj1, obj2) {
 }
 
 function helperHighlightOn(Actions) {
-  if (Array.isArray(Actions)) {
-    let teamMeshNames = '', placeName = '';
-    Actions.forEach(obj => {
-      if (obj.action && obj.action.target3D) {
-        let tempMesh = findMesh(obj.action.target3D);
-        if (tempMesh) {
-          let tempName = (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)) ?
-            (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)).realName : tempMesh.name;
-          teamMeshNames += tempName + ', ';
-          changeColorTexture(tempMesh, true, true);
-          let tempMeshPosition = (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)) ?
-            (devHelper.model3DVals.activeMeshsToArr.find(elem => tempMesh.name === elem.name || tempMesh.id === elem.name)).position : undefined;
-          placeName = devHelper.model3DVals.cameraPositions.find(elem => elem.position === tempMeshPosition).name;
+  let tempArr = Array.isArray(Actions) ? Actions : [Actions];
+  let teamMeshNames = ' "', placeName = '';
+  tempArr.forEach((actionObject, Index) => {
+    if (actionObject.action && actionObject.action.target3D) {
+      let tempMesh = findMesh(actionObject.action.target3D);
+      if (tempMesh) {
+        let teamMeshName = findRealName(actionObject.action.target3D).name;
+        let tempName = teamMeshName ? teamMeshName : devHelper.dev.enable === true ? actionObject.action.target3D : undefined;
+        teamMeshNames += tempName ? (tempName + ', ') : '';
+        placeName = findRealName(actionObject.action.target3D).location;
+        let tempMeshPosition = tempMesh.currentPosition ? tempMesh.currentPosition : devHelper.model3DVals.cameraPositions.find(obj => obj.name === placeName).position;
+        devHelper.model3DVals.cameraPositions.find(obj => obj.name === placeName).position;
+        let tempMeshPosition2 = undefined
+        if (devHelper.model3DVals.currentPosition > 100) {
+          tempMeshPosition2 = devHelper.model3DVals.cameraPositions.find(obj => obj.fromPos && obj.position === devHelper.model3DVals.currentPosition).fromPos;
         }
-      }
-    });
-    teamMeshNames = teamMeshNames.slice(0, -2);
-    document.querySelector('.box-help').innerHTML = `Нажать курсором на 3Д объект${Actions.length > 1 ? 'ы' : ''} ${teamMeshNames}, расположенны${Actions.length > 1 ? 'е' : 'й'} на позиции "${placeName}".`;
-  } else {
-    let tempMesh = findMesh(Actions.target3D);
-    if (tempMesh) {
-      let teamMeshName = findRealName(Actions.target3D).name;
-      let tempLocationName = findRealName(Actions.target3D).location;
-      let tempMeshPosition = tempMesh.currentPosition ? tempMesh.currentPosition : devHelper.model3DVals.cameraPositions.find(obj => obj.name === tempLocationName).position;
-      let tempMeshPosition2 = undefined
-      if (devHelper.model3DVals.currentPosition > 100) {
-        tempMeshPosition2 = devHelper.model3DVals.cameraPositions.find(obj => obj.fromPos && obj.position === devHelper.model3DVals.currentPosition).fromPos;
-      }
-      if (tempMeshPosition !== devHelper.model3DVals.currentPosition && ((tempMeshPosition2 !== undefined && tempMeshPosition2 !== tempMeshPosition) || tempMeshPosition2 === undefined)) {
-        if (devHelper.model3DVals.currentPosition === undefined) {
-          document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту "${tempLocationName}".`;
-          changeColorTexture(devHelper.model3DVals.movePointMesh.find(m => m.positionIndex === tempMeshPosition), true, true);
+        if (tempMeshPosition !== devHelper.model3DVals.currentPosition && ((tempMeshPosition2 !== undefined && tempMeshPosition2 !== tempMeshPosition) || tempMeshPosition2 === undefined)) {
+          if (devHelper.model3DVals.currentPosition === undefined) {
+            document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту "${placeName}".`;
+            changeColorTexture(devHelper.model3DVals.movePointMesh.find(m => m.positionIndex === tempMeshPosition), true, true);
+            return;
+          } else {
+            helpBackToMain();
+            return;
+          }
         } else {
-          helpBackToMain();
+          changeColorTexture(tempMesh, true, true);
         }
-      } else {
-        document.querySelector('.box-help').innerHTML = `Нажать курсором на 3Д объект${teamMeshName ? ` "${teamMeshName}"` : ''}.`;
-        changeColorTexture(tempMesh, true, true);
+      }
+      if (Index === tempArr.length - 1) {
+        teamMeshNames = teamMeshNames.slice(0, -2);
+        if (teamMeshNames.length > 3) teamMeshNames += '"'; else teamMeshNames = '';
+        document.querySelector('.box-help').innerHTML = `Нажать курсором на 3Д объект${tempArr.length > 1 ? 'ы' : ''}${teamMeshNames}.`;
       }
     }
-  }
+  })
 }
 
 function helperHighlightOff(Target) {
-  let tempMesh = findMesh(Target);
+  let tempMesh = findMesh(Target, false);
   if (tempMesh && tempMesh.renderOverlay !== false) changeColorTexture(tempMesh, false, true);
   devHelper.model3DVals.movePointMesh.forEach(element => {
     if (element.renderOverlay !== false) changeColorTexture(element, false, true);
@@ -2242,7 +2298,7 @@ function findRealName(TargetName) {
     location: undefined,
   }
   let currentAction = findCurrentAction();
-  let real3Dmesh = findMesh(TargetName);
+  let real3Dmesh = findMesh(TargetName, false);
   if (real3Dmesh) {
     let temp3D = undefined;
     if (real3Dmesh.realName) {
@@ -2250,12 +2306,16 @@ function findRealName(TargetName) {
     } else {
       devHelper.model3DVals.activeMeshsToArr.forEach(obj => {
         if (obj.name === real3Dmesh.name || obj.id === real3Dmesh.id || obj.name === real3Dmesh.id || real3Dmesh.name.indexOf(obj.name) !== -1) {
-          temp3D = obj;
+          if (obj.realName && !temp3D) temp3D = obj;
         }
       })
+      if (!temp3D) temp3D = real3Dmesh;
     }
-    returnObj.name = temp3D ? temp3D.realName ? temp3D.realName : '' : '';
-    let location = devHelper.model3DVals.cameraPositions.find(elem => elem.position === (temp3D ? (temp3D.position ? temp3D.position : (real3Dmesh.currentPosition ? real3Dmesh.currentPosition : undefined)) : (real3Dmesh.currentPosition ? real3Dmesh.currentPosition : undefined)));
+    if (devHelper.dev.enable === false)
+      returnObj.name = temp3D ? temp3D.realName ? temp3D.realName : undefined : undefined;
+    else
+      returnObj.name = temp3D ? temp3D.realName ? temp3D.realName : real3Dmesh.name : real3Dmesh.name;
+    let location = devHelper.model3DVals.cameraPositions.find(elem => elem.position === (real3Dmesh.currentPosition ? real3Dmesh.currentPosition : typeof temp3D.position === 'number' ? temp3D.position : undefined));
     returnObj.location = location ? location.name : '';
   } else {
     let tempRealHelper;
