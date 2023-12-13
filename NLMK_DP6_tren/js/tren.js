@@ -69,6 +69,41 @@ function startTren(Restart = false) {
       }
     })
   }
+  let reverseTimer = document.querySelector('.reverse-timer');
+  if (reverseTimer) {
+    if (devHelper.trenVals.type === 'learn') {
+      if (reverseTimer.timerChart) {
+        reverseTimer.timerChart.destroy();
+        reverseTimer.timerChart = undefined;
+      }
+    } else {
+      if (!reverseTimer.timerChart) {
+        reverseTimer.querySelector('#reverse-timer-chart').setAttribute('width', window.innerWidth * 0.04);
+        reverseTimer.querySelector('#reverse-timer-chart').setAttribute('height', window.innerWidth * 0.04);
+        const ctx = reverseTimer.querySelector('#reverse-timer-chart').getContext('2d');
+        reverseTimer.timerChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Прошло', 'Осталось'],
+            datasets: [{
+              data: [0, 100],
+              backgroundColor: ['#FFFFFF', '#2c5289'],
+              borderColor: 'rgba(0, 0, 0, 0)',
+            }]
+          },
+          options: {
+            responsive: false,
+            cutout: '35%',
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+        });
+      }
+    }
+  }
   setTextScenario(devHelper.trenVals.scenario);
   takeStartingState(Restart);
   changeTimerText(true);
@@ -186,13 +221,25 @@ function trenTimeTick(timeStamp) {
         devHelper.trenVals.timers.scenarioTime = Number((devHelper.trenVals.timers.scenarioTimeHelper + devHelper.trenVals.timers.actionTime).toFixed(2));
       } else {
         if (devHelper.trenVals.type !== 'learn') {
-          console.log(Number((timeStamp - devHelper.trenVals.timers.deadTimerHelper).toFixed(2)), devHelper.trenVals.timers.deadTimerBool);
           if (devHelper.trenVals.timers.deadTimerHelper === 0) {
             devHelper.trenVals.timers.deadTimerHelper = timeStamp;
             devHelper.trenVals.timers.deadTimerBool = true;
           } else if (devHelper.trenVals.timers.deadTimer < Number((timeStamp - devHelper.trenVals.timers.deadTimerHelper).toFixed(2)) && devHelper.trenVals.timers.deadTimerBool === true) {
             devHelper.trenVals.timers.deadTimerBool = false;
             handleError('Время вышло', true)
+          }
+          // TODO 
+          let reverseTimer = document.querySelector('.reverse-timer');
+          if (reverseTimer) {
+            let dataset = reverseTimer.timerChart.data.datasets[0];
+            if (devHelper.trenVals.timers.deadTimerBool = true) {
+              let timeLeft = ((devHelper.trenVals.timers.deadTimer - Number((timeStamp - devHelper.trenVals.timers.deadTimerHelper).toFixed(2))) / devHelper.trenVals.timers.deadTimer) * 100;
+              let timePassed = (Number((timeStamp - devHelper.trenVals.timers.deadTimerHelper).toFixed(2)) / devHelper.trenVals.timers.deadTimer) * 100;
+              dataset.data = [timePassed, timeLeft];
+            } else {
+              dataset.data = [0, 100];
+            }
+            reverseTimer.timerChart.update();
           }
         }
       }

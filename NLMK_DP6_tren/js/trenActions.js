@@ -22,7 +22,7 @@ const devHelper = {
       scenarioTime: 0,
       scenarioTimeHelper: 0,
       deadTimerHelper: 0,
-      deadTimer: 5000,
+      deadTimer: 15000,
       deadTimerBool: true,
     },
     scenarioArr: [],
