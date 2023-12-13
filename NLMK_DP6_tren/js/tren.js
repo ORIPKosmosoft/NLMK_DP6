@@ -1,7 +1,5 @@
 /*                TODO
 ----------------------------------------------------
-В ошибку добавить мульти2Д имена
-
 ----------------------------------------------------
 */
 function loadTrenActions() {
@@ -58,8 +56,10 @@ function startTren(Restart = false) {
   clearChat();
   if (devHelper.trenVals.type === 'learn') {
     document.querySelector('#b_reference').removeAttribute('disabled');
+    document.querySelector('#b_reference').style.opacity = 1;
     document.querySelector('#b_help').removeAttribute('disabled');
   } else {
+    document.querySelector('#b_reference').style.opacity = 0;
     let btnDisabledArr = ['b_reference', 'b_help'];
     btnDisabledArr.forEach(id => {
       let hasBorder = window.getComputedStyle(document.querySelector('#' + id)).getPropertyValue('border') !== 'none';
@@ -171,6 +171,8 @@ function changeTimerText(Start = false) {
 
 let lastTimestamp = 0;
 function trenTimeTick(timeStamp) {
+  console.log('deadTimerHelper', devHelper.trenVals.timers.deadTimerHelper);
+  console.log('deadTimer', devHelper.trenVals.timers.deadTimer);
   let deltaTime = timeStamp - lastTimestamp;
   if (deltaTime > 16) {
     if (devHelper.trenVals.scenario !== undefined) {
@@ -186,6 +188,12 @@ function trenTimeTick(timeStamp) {
           }
           devHelper.trenVals.timers.actionTime = Number((timeStamp - devHelper.trenVals.timers.actionTimeHelper).toFixed(2));
           devHelper.trenVals.timers.scenarioTime = Number((devHelper.trenVals.timers.scenarioTimeHelper + devHelper.trenVals.timers.actionTime).toFixed(2));
+        } else {
+          if (devHelper.trenVals.timers.deadTimerHelper === 0) {
+            devHelper.trenVals.timers.deadTimerHelper = timeStamp;
+            devHelper.trenVals.timers.deadTimer = 120000;
+          }
+          devHelper.trenVals.timers.deadTimer -= Number((timeStamp - devHelper.trenVals.timers.deadTimerHelper).toFixed(2));
         }
         if (devHelper.dev.enable && document.querySelector('.info-tren')) {
           document.querySelector('.info-tren').innerHTML = `<p>Время действия ${devHelper.trenVals.currentAction} = ${devHelper.trenVals.timers.actionTime / 1000};</p>`
@@ -441,10 +449,12 @@ function handleError(Mesh) {
       }, 300)
     }, 300);
   }
-  sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName ? `"${currentName}"` : 'неверный элемент'}. Нужно кликнуть по ${rightAnswerName ? `"${rightAnswerName}"` : 'элементу'} на ${rightAnswerLocation}.`);
+  if (devHelper.trenVals.type === 'learn')
+    sendMessage("Ошибка", `Вы совершили неверное действие, выбрав ${currentName ? `"${currentName}"` : 'неверный элемент'}. Нужно кликнуть по ${rightAnswerName ? `"${rightAnswerName}"` : 'элементу'} на ${rightAnswerLocation}.`);
+  else
+    sendMessage("Ошибка", `Вы совершили неверное действие.`);
   devHelper.endVals.errors[devHelper.endVals.currentChapter]++;
   devHelper.dev.enable && console.warn(`Клик на ${Mesh.name || Mesh.id} в действии ${devHelper.trenVals.currentAction} неверный.`);
-
   if (devHelper.trenVals.type !== 'learn') {
     if (devHelper.endVals.errors.reduce((acc, num) => acc + num, 0) > devHelper.trenVals.maximumErrors) {
       trenFinish();
@@ -734,7 +744,8 @@ function trenFinish() {
 
 function takeStartingState(Restart = false) {
   devHelper.trenVals.timers.allTime = devHelper.trenVals.timers.allTimeHelper = devHelper.trenVals.timers.scenarioTimeHelper =
-    devHelper.trenVals.timers.scenarioTime = devHelper.trenVals.timers.actionTime = devHelper.trenVals.timers.actionTimeHelper = 0;
+    devHelper.trenVals.timers.scenarioTime = devHelper.trenVals.timers.actionTime = devHelper.trenVals.timers.actionTimeHelper =
+    devHelper.trenVals.timers.deadTimerHelper = devHelper.trenVals.timers.deadTimer = 0;
   Array.from(document.querySelectorAll('.box-scenario-text')).forEach(element => {
     element.classList.toggle('current', false);
     element.classList.toggle('passed', false);
@@ -879,7 +890,8 @@ function saveStart2DIF() {
 }
 
 function newActionStartHelper(Action) {
-  devHelper.trenVals.timers.actionTimeHelper = 0;
+  devHelper.trenVals.timers.actionTimeHelper = devHelper.trenVals.timers.deadTimerHelper = 0;
+  devHelper.trenVals.timers.deadTimer = 120000;
   Action.passed = true;
   devHelper.trenVals.waitingInput = false;
   const currentElement = document.querySelector('.box-scenario-text.current');
