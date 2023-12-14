@@ -872,6 +872,7 @@ const devHelper = {
     enable: true,
     perfomance: undefined,
     intervalFon: undefined,
+    maxCountSvgElems : 0,
   },
   endVals: {
     passPerc: 100, // TODO изменить в режиме контроля

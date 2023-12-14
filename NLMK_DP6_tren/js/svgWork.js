@@ -22,18 +22,18 @@ window.addEventListener('load', function () {
               ObjectSvg.name === 'vnk_main' ? 'Общая схема ВНК' :
                 ObjectSvg.name === 'vnk_spvg' ? 'СПВГ' :
                   ObjectSvg.name === 'O_n_k_na_VNK' ? 'Управление клапаном' :
-                  ObjectSvg.name === 'okno_klap_vid3' ? 'Управление клапаном' : // ilay
-                    ObjectSvg.name === 'O_n_k_na_VNK_posle_1' ? 'Управление клапаном' :
-                      ObjectSvg.name === 'O_n_k_na_VNK_posle_2' ? 'Управление клапаном' :
-                        ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK' ? 'Перекидка из Нагрева в Отделение' :
-                          ObjectSvg.name === 'O_p_n_na_k_p_na_VNK' ? 'Перекидка' :
-                            ObjectSvg.name === 'vvod_znachenij' ? 'Ввод значений' :
-                              ObjectSvg.name === 'Osnovnye_parametry_DP' ? 'Основные параметры доменной печи' :
-                                ObjectSvg.name === 'win_sym_302' ? 'Дополнительное окно' :
-                                  ObjectSvg.name === 'priczvuksinal' ? 'Дополнительное окно' :
-                                    ObjectSvg.name === 'win_otdel2_na_vnk' ? 'Дополнительное окно' :
-                                      ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
-                                        ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
+                    ObjectSvg.name === 'okno_klap_vid3' ? 'Управление клапаном' : // ilay
+                      ObjectSvg.name === 'O_n_k_na_VNK_posle_1' ? 'Управление клапаном' :
+                        ObjectSvg.name === 'O_n_k_na_VNK_posle_2' ? 'Управление клапаном' :
+                          ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK' ? 'Перекидка из Нагрева в Отделение' :
+                            ObjectSvg.name === 'O_p_n_na_k_p_na_VNK' ? 'Перекидка' :
+                              ObjectSvg.name === 'vvod_znachenij' ? 'Ввод значений' :
+                                ObjectSvg.name === 'Osnovnye_parametry_DP' ? 'Основные параметры доменной печи' :
+                                  ObjectSvg.name === 'win_sym_302' ? 'Дополнительное окно' :
+                                    ObjectSvg.name === 'priczvuksinal' ? 'Дополнительное окно' :
+                                      ObjectSvg.name === 'win_otdel2_na_vnk' ? 'Дополнительное окно' :
+                                        ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
+                                          ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
     if (ObjectSvg.name === 'dp1') {
       ObjectSvg.object.style.left = '0';
@@ -2286,10 +2286,10 @@ window.addEventListener('load', function () {
       })
     }
     // Ilay
-    else if(ObjectSvg.name === 'okno_klap_vid3'){
+    else if (ObjectSvg.name === 'okno_klap_vid3') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
         if (Element.innerHTML === 'Управление клапаном 116') { addSvgElem(Index, Element, 'title_work_vn',); }
-        
+
         if (Element.innerHTML === 'Автоматический') { addSvgElem(Index, Element, 'status_window_text', 'start'); }
         if (Element.innerHTML === '22') { addSvgElem(Index, Element, 'time_full_vnk_text'); }
         if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 18.462 -152.297)') { addSvgElem(Index, Element, 'btn_auto_text'); }
@@ -2316,15 +2316,15 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_n_winVN'); }
       })
       ObjectSvg.svg.querySelectorAll('rect').forEach((Element) => {
-        if (Element.getAttribute('x')  === '169.84' && Element.getAttribute('y') === '83.47')  { addSvgElem(Index, Element, 'btn_auto_2'); }
-        if (Element.getAttribute('x')  === '257.34' && Element.getAttribute('y') === '83.47')  { addSvgElem(Index, Element, 'btn_ruchnoy_2'); }
-        if (Element.getAttribute('x')  === '169.84' && Element.getAttribute('y') === '121.85') { addSvgElem(Index, Element, 'btn_open_2'); }
-        if (Element.getAttribute('x')  === '257.34' && Element.getAttribute('y') === '121.85')  { addSvgElem(Index, Element,'btn_close_2'); }
-        if (Element.getAttribute('x')  === '170.17' && Element.getAttribute('y') === '151.33') { addSvgElem(Index, Element, 'btn_stop_2'); }
-        if (Element.getAttribute('x')  === '169.92' && Element.getAttribute('y') === '204.19') { addSvgElem(Index, Element, 'btn_reset_2'); }
-        if (Element.getAttribute('x')  === '169.92' && Element.getAttribute('y') === '257.28') { addSvgElem(Index, Element, 'btn_baypas_vsekh_blokirovok_2'); }
-        if (Element.getAttribute('x')  === '14.72'  && Element.getAttribute('y') === '256.05') { addSvgElem(Index, Element, 'block_open'); }
-        if (Element.getAttribute('x')  === '87.79'  && Element.getAttribute('y') === '256.05') { addSvgElem(Index, Element, 'block_close'); }
+        if (Element.getAttribute('x') === '169.84' && Element.getAttribute('y') === '83.47') { addSvgElem(Index, Element, 'btn_auto_2'); }
+        if (Element.getAttribute('x') === '257.34' && Element.getAttribute('y') === '83.47') { addSvgElem(Index, Element, 'btn_ruchnoy_2'); }
+        if (Element.getAttribute('x') === '169.84' && Element.getAttribute('y') === '121.85') { addSvgElem(Index, Element, 'btn_open_2'); }
+        if (Element.getAttribute('x') === '257.34' && Element.getAttribute('y') === '121.85') { addSvgElem(Index, Element, 'btn_close_2'); }
+        if (Element.getAttribute('x') === '170.17' && Element.getAttribute('y') === '151.33') { addSvgElem(Index, Element, 'btn_stop_2'); }
+        if (Element.getAttribute('x') === '169.92' && Element.getAttribute('y') === '204.19') { addSvgElem(Index, Element, 'btn_reset_2'); }
+        if (Element.getAttribute('x') === '169.92' && Element.getAttribute('y') === '257.28') { addSvgElem(Index, Element, 'btn_baypas_vsekh_blokirovok_2'); }
+        if (Element.getAttribute('x') === '14.72' && Element.getAttribute('y') === '256.05') { addSvgElem(Index, Element, 'block_open'); }
+        if (Element.getAttribute('x') === '87.79' && Element.getAttribute('y') === '256.05') { addSvgElem(Index, Element, 'block_close'); }
       })
     }
   })
@@ -2351,10 +2351,8 @@ window.addEventListener('load', function () {
 });
 
 
-if (devHelper.dev.enable === true) {
-  let maxCountElems = 0;
-}
 function addSvgElem(SvgIndex, Element, Name, Move = 'middle') {//start middle end
+  devHelper.dev.maxCountSvgElems++;
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,
     name: Name,
