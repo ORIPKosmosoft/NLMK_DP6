@@ -47,16 +47,10 @@ window.addEventListener('load', function () {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
         if (Element.innerHTML === '4,32') { addSvgElem(Index, Element, 'P_1'); }
         if (Element.innerHTML === '4,22') { addSvgElem(Index, Element, 'P_2', 'start'); }
-        // if (Element.innerHTML === '30') {
-        //   if (TextIndex < 307)
-        //     addSvgElem(Index, Element, 'EKZ_H' + (TextIndex - 233)); else
-        //     addSvgElem(Index, Element, 'kol_furm');
-        // }
         if (Element.innerHTML === '30' && Element.getAttribute('y') == 779.37) { addSvgElem(Index, Element, 'kol_furm'); }
         if (Element.innerHTML === '30' && Element.getAttribute('y') == 598.79) { addSvgElem(Index, Element, 'EKZ_H1'); }
         if (Element.innerHTML === '30' && Element.getAttribute('y') == 631.95) { addSvgElem(Index, Element, 'EKZ_H2'); }
         if (Element.innerHTML === '30' && Element.getAttribute('y') == 666.32) { addSvgElem(Index, Element, 'EKZ_H3'); }
-
         if (Element.innerHTML === '0,70') { addSvgElem(Index, Element, 'radar1_text'); }
         if (Element.innerHTML === '0,97') { addSvgElem(Index, Element, 'radar2_text'); }
         if (Element.innerHTML === '-1,67') { addSvgElem(Index, Element, 'radar3_text', 'start'); }
@@ -2357,8 +2351,9 @@ window.addEventListener('load', function () {
 });
 
 
-// Это главная функция, которая возвращает размеры меша в видимой области как гетбаундингклиентрект
-
+if (devHelper.dev.enable === true) {
+  let maxCountElems = 0;
+}
 function addSvgElem(SvgIndex, Element, Name, Move = 'middle') {//start middle end
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,
