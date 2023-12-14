@@ -2698,6 +2698,9 @@ ul {
   height: 2.6vw;
   overflow: hidden;
   border-radius: 0.52vw;
+  pointer-events: none;
+  box-sizing: border-box;
+  border: 0.15vw solid #fff;
 }
 
 #reverse-timer-chart {

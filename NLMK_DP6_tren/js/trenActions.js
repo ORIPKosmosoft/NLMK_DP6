@@ -2,8 +2,6 @@
 /*                 TODO
 ---------------------------------------------------------------
 делаю режим контроль
-devHelper.trenVals.maximumErrors 50
-
 ---------------------------------------------------------------
 */
 const devHelper = {
@@ -22,7 +20,7 @@ const devHelper = {
       scenarioTime: 0,
       scenarioTimeHelper: 0,
       deadTimerHelper: 0,
-      deadTimer: 15000,
+      deadTimer: 120000,
       deadTimerBool: true,
     },
     scenarioArr: [],

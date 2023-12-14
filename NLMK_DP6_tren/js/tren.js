@@ -225,21 +225,26 @@ function trenTimeTick(timeStamp) {
             devHelper.trenVals.timers.deadTimerHelper = timeStamp;
             devHelper.trenVals.timers.deadTimerBool = true;
           } else if (devHelper.trenVals.timers.deadTimer < Number((timeStamp - devHelper.trenVals.timers.deadTimerHelper).toFixed(2)) && devHelper.trenVals.timers.deadTimerBool === true) {
+            handleError('Время вышло', true);
             devHelper.trenVals.timers.deadTimerBool = false;
-            handleError('Время вышло', true)
           }
           // TODO 
           let reverseTimer = document.querySelector('.reverse-timer');
           if (reverseTimer) {
             let dataset = reverseTimer.timerChart.data.datasets[0];
-            if (devHelper.trenVals.timers.deadTimerBool = true) {
+            let lastData = Array.from(dataset.data);
+            if (devHelper.trenVals.timers.deadTimerBool === true) {
               let timeLeft = ((devHelper.trenVals.timers.deadTimer - Number((timeStamp - devHelper.trenVals.timers.deadTimerHelper).toFixed(2))) / devHelper.trenVals.timers.deadTimer) * 100;
               let timePassed = (Number((timeStamp - devHelper.trenVals.timers.deadTimerHelper).toFixed(2)) / devHelper.trenVals.timers.deadTimer) * 100;
               dataset.data = [timePassed, timeLeft];
             } else {
-              dataset.data = [0, 100];
+              if (dataset.data[0] != 100 && dataset.data[1] != 0) {
+                dataset.data = [100, 0];
+              }
             }
-            reverseTimer.timerChart.update();
+            if (lastData[0] !== dataset.data[0] || lastData[1] !== dataset.data[1]) {
+              reverseTimer.timerChart.update();
+            }
           }
         }
       }
@@ -1805,6 +1810,10 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
   b_action.addEventListener('mouseover', (e) => {
     if (b_action.closest('button').hasAttribute('disabled')) return;
     else {
+      if (b_action.closest('#b_oclock')) {
+        if (document.querySelector('.reverse-timer'))
+          document.querySelector('.reverse-timer').style.border = '0.15vw solid #2c5289';
+      }
       if (b_action.closest('.button-tren-active') === null) {
         if (document.querySelectorAll('.opacity-1-Always').length > 0) {
           Array.from(document.querySelectorAll('.opacity-1-Always')).forEach((item2) => {
@@ -1841,6 +1850,10 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
     }
   });
   b_action.addEventListener('mouseout', (e) => {
+    if (b_action.closest('#b_oclock')) {
+      if (document.querySelector('.reverse-timer'))
+        document.querySelector('.reverse-timer').style.border = '';
+    }
     raiseDownBox(_item);
     _item.classList.remove('opacity-1-Temp');
     _item.style.opacity = '';
