@@ -80,6 +80,7 @@ const devHelper = {
       { name: 'PhoneButton012', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', realName: 'Кнопка "Дипс. комб..."', position: 6, },
       { name: 'PhoneButton017', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', realName: 'Кнопка "Кислородный цех"', position: 6, },
       { name: 'PhoneButton020', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', realName: 'Кнопка "ЭВС"', position: 6, },
+      { name: 'PhoneButton016', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', realName: 'Кнопка "Угольная"', position: 6, },
       { name: 'PhoneButton', startY: 0.015, endY: 0.0144, duration: 0.15, audio: 'Zvuk_knopok_na_telefone', position: 6, },
       { name: 'kl022', id: '25408591-8ddd-4b64-a7ad-499aaa995ae6', audio: 'Zvuk_klapana_022_na_BVNK', position: 3, },
       { name: 'kl021', id: '8d7497bf-6a8b-4906-8a35-1dc986e6e655', audio: 'Zvuk_klapana_022_na_BVNK', position: 3, },
@@ -891,114 +892,140 @@ const devHelper = {
 const timeDiff = -0;
 let tempActions = [
   [
-    {
-      scenarioText: 'Тест мульти2Д',
+     ////--------------------------------//15//-new
+     {
+      scenarioText: 'Взять в руку трубку и нажать на кнопку с надписью: «Угольная».',
       sender: 'Система',
       audio: 'telephone_say',
-      multi: [
-        {
-          text: '3',
-          sender: 'Газовщик',
-          action: {
-            target2D: 'kl3',
-          },
-          audio: 'Zvuk_knopok_na_telefone',
-        },
-        {
-          text: '2',
-          sender: 'Газовщик',
-          action: {
-            target2D: 'kl2',
-          },
-          audio: 'Zvuk_knopok_na_telefone',
-        },
-        {
-          text: '1',
-          sender: 'Газовщик',
-          action: {
-            target2D: 'kl1',
-          },
-          audio: 'Zvuk_knopok_na_telefone',
-        },
-      ],
+      startTime: timeDiff + 0,
+    },
+    {
+      action: {
+        target3D: 'PhoneButton016',
+      },
       startTime: timeDiff + 1,
       human: true,
     },
     {
-      action: {
-        target2D: 'kl029',
-        window2D: {
-          elements: [
-            { name: 'title_work_vn', text: 'Управление клапаном 029' },
-
-            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
-            { name: 'circle_kl029', stroke: '#8F8F8F' },
-            { name: 'left_vn', color: '#8F8F8F' },
-            { name: 'right_vn', color: '#8F8F8F' },
-
-            { name: 'status_control_vnk_text', text: 'Ручной' },
-            { name: 'status_window_text', text: 'Нет данных' },
-
-            // { name: 'skhema_sobrana', color: '#00FF00' },
-            // { name: 'block_open',     color: '#00FF00' },
-            // { name: 'block_close',    color: '#00FF00' },
-
-
-            { name: 'btn_auto_text', color: '#000' },
-            { name: 'btn_auto_2', color: '#fff' },
-
-
-            { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
-            { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
-
-            { name: 'btn_open_text', color: '#000' },
-            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
-
-
-            { name: 'polozenie_text', text: '51' },
-            { name: 'polozenie_button_text', color: '#000000' },
-
-
-          ],
-        },
-      },
-      startTime: timeDiff + 2,
-      human: true,
+      text: 'Остановить вдувания пылеугольного топлива.',
+      sender: 'Газовщик',
+      audio: 'vo_new_15_1',
+      startTime: timeDiff + 1.5,
     },
     {
-      scenarioText: 'Взять в руку трубку и нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС».',
-      sender: 'Система',
-      audio: 'telephone_say',
-      multi: [
-        {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-          sender: 'Газовщик',
-          action: {
-            target3D: 'PhoneButton001',
-          },
-        },
-        {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-          sender: 'Газовщик',
-          action: {
-            target3D: 'PhoneButton006',
-          },
-        },
+      text: 'Понял. Выполняю.',
+      sender: 'Оператор',
+      audio: 'vo_new_15_2',
+      startTime: timeDiff + 6,
+    },
+    // {
+    //   scenarioText: 'Тест мульти2Д',
+    //   sender: 'Система',
+    //   audio: 'telephone_say',
+    //   multi: [
+    //     {
+    //       text: '3',
+    //       sender: 'Газовщик',
+    //       action: {
+    //         target2D: 'kl3',
+    //       },
+    //       audio: 'Zvuk_knopok_na_telefone',
+    //     },
+    //     {
+    //       text: '2',
+    //       sender: 'Газовщик',
+    //       action: {
+    //         target2D: 'kl2',
+    //       },
+    //       audio: 'Zvuk_knopok_na_telefone',
+    //     },
+    //     {
+    //       text: '1',
+    //       sender: 'Газовщик',
+    //       action: {
+    //         target2D: 'kl1',
+    //       },
+    //       audio: 'Zvuk_knopok_na_telefone',
+    //     },
+    //   ],
+    //   startTime: timeDiff + 1,
+    //   human: true,
+    // },
+    // {
+    //   action: {
+    //     target2D: 'kl029',
+    //     window2D: {
+    //       elements: [
+    //         { name: 'title_work_vn', text: 'Управление клапаном 029' },
+
+    //         { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+    //         { name: 'circle_kl029', stroke: '#8F8F8F' },
+    //         { name: 'left_vn', color: '#8F8F8F' },
+    //         { name: 'right_vn', color: '#8F8F8F' },
+
+    //         { name: 'status_control_vnk_text', text: 'Ручной' },
+    //         { name: 'status_window_text', text: 'Нет данных' },
+
+    //         // { name: 'skhema_sobrana', color: '#00FF00' },
+    //         // { name: 'block_open',     color: '#00FF00' },
+    //         // { name: 'block_close',    color: '#00FF00' },
+
+
+    //         { name: 'btn_auto_text', color: '#000' },
+    //         { name: 'btn_auto_2', color: '#fff' },
+
+
+    //         { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
+    //         { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+
+    //         { name: 'btn_open_text', color: '#000' },
+    //         { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+
+
+    //         { name: 'polozenie_text', text: '51' },
+    //         { name: 'polozenie_button_text', color: '#000000' },
+
+
+    //       ],
+    //     },
+    //   },
+    //   startTime: timeDiff + 2,
+    //   human: true,
+    // },
+    // {
+    //   scenarioText: 'Взять в руку трубку и нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС».',
+    //   sender: 'Система',
+    //   audio: 'telephone_say',
+    //   multi: [
+    //     {
+    //       text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+    //       sender: 'Газовщик',
+    //       action: {
+    //         target3D: 'PhoneButton001',
+    //       },
+    //     },
+    //     {
+    //       text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+    //       sender: 'Газовщик',
+    //       action: {
+    //         target3D: 'PhoneButton006',
+    //       },
+    //     },
         
-      ],
-      startTime: timeDiff + 3,
-      human: true,
-    },
-    {
-      scenarioText: 'Сообщить по рации дежурному водопроводчику.',
-      sender: 'Система',
-      audio: 'radio_say',
-      action: {
-        target3D: 'ButtonHightlight_046',
-      },
-      startTime: timeDiff + 0,
-      human: true,
-    },
+    //   ],
+    //   startTime: timeDiff + 3,
+    //   human: true,
+    // },
+    // {
+    //   scenarioText: 'Сообщить по рации дежурному водопроводчику.',
+    //   sender: 'Система',
+    //   audio: 'radio_say',
+    //   action: {
+    //     target3D: 'ButtonHightlight_046',
+    //   },
+    //   startTime: timeDiff + 0,
+    //   human: true,
+    // },
   ],
   // Первый сценарий  
   [

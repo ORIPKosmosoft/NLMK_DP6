@@ -1154,6 +1154,8 @@ const Roles = {
   "Система": "messageSystem",
   "Газовщик": "messageMy",
   "Мастер печи": "message",
+  "Сменный мастер печи": "message",
+  "Оператор": "message",
   "Дежурный водопроводчик": "message",
   "Работник": "message",
   "Ошибка": "messageError"
@@ -2252,9 +2254,9 @@ function clickCloseHelp(e) {
 }
 document.getElementById('b_reference').addEventListener("click", (e) => {
   document.querySelector('.section-copy').classList.toggle('opacity-1-Always', e.currentTarget.classList.contains('button-tren-active'));
-
-  document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.toggle('opacity-1-Temp', false);
-  document.querySelector(`.${e.currentTarget.getAttribute('window-interface')}`).classList.toggle('transition-0', true);
+  document.querySelector('.section-copy').classList.toggle('opacity-1-Temp', false);
+  document.querySelector('.section-copy').classList.toggle('transition-0', true);
+  document.querySelector('.section-copy').style.opacity = '';
 })
 document.getElementById('b_reference').addEventListener("mouseover", (e) => {
   if (document.querySelector('.tren-ui-long')) {

@@ -22,6 +22,7 @@ window.addEventListener('load', function () {
               ObjectSvg.name === 'vnk_main' ? 'Общая схема ВНК' :
                 ObjectSvg.name === 'vnk_spvg' ? 'СПВГ' :
                   ObjectSvg.name === 'O_n_k_na_VNK' ? 'Управление клапаном' :
+                  ObjectSvg.name === 'okno_klap_vid3' ? 'Управление клапаном' : // ilay
                     ObjectSvg.name === 'O_n_k_na_VNK_posle_1' ? 'Управление клапаном' :
                       ObjectSvg.name === 'O_n_k_na_VNK_posle_2' ? 'Управление клапаном' :
                         ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK' ? 'Перекидка из Нагрева в Отделение' :
@@ -557,6 +558,7 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === 'Соглас' && Element.getAttribute('x') === '548.43' && Element.getAttribute('y') === '374.11') { addSvgElem(Index, Element, 'V1_t2_4'); }
         if (Element.innerHTML === 'Соглас' && Element.getAttribute('x') === '339.14' && Element.getAttribute('y') === '514.49') { addSvgElem(Index, Element, 'V1_t3_4'); }
         if (Element.innerHTML === 'Соглас' && Element.getAttribute('x') === '470.44' && Element.getAttribute('y') === '512.77') { addSvgElem(Index, Element, 'V1_t4_4'); }
+        if (Element.innerHTML === '0' && Element.getAttribute('x') === '1486.31' && Element.getAttribute('y') === '735.25') { addSvgElem(Index, Element, 'kl_118a_proc'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.getAttribute('d') === 'M1004.17 466.75h277.11v45.68h-277.11z') { addSvgElem(Index, Element, 'VNK1_status_1_fon'); }
@@ -596,6 +598,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'm1505.4 725.07-32.88-19.7v19.7l32.88-19.7z') { addSvgElem(Index, Element, 'kl_118a'); }
         if (Element.getAttribute('d') === 'm1507.22 788.11-32.88-19.7v19.7l32.88-19.7z') { addSvgElem(Index, Element, 'kl_118'); }
         if (Element.getAttribute('d') === 'M1482.15 833.43c-2.56-1.57-5.11-3.13-7.67-4.7v19.79l9.3-5.7 2.85-1.75 4-2.44c-1.94-1.19-3.87-2.38-5.81-3.56-.89-.55-1.78-1.1-2.67-1.64z') { addSvgElem(Index, Element, 'kl_110'); }
+        if (Element.getAttribute('d') === 'm1506.77 828.73-10.18 6.24-2.85 1.75-3.11 1.91c.71.43 1.42.87 2.13 1.31.9.54 1.79 1.09 2.68 1.64 3.78 2.31 7.55 4.63 11.33 6.94v-19.79z') { addSvgElem(Index, Element, 'kl_110'); } //Nilay
         if (Element.getAttribute('d') === 'M120.83 359.46h16.67v17.71h-16.67z') { addSvgElem(Index, Element, 'PS_10'); }
         if (Element.getAttribute('d') === 'M754.17 233.42h16.67v16.67h-16.67z') { addSvgElem(Index, Element, '1PS_03'); }
         if (Element.getAttribute('d') === 'M689.58 539.67h15.63v15.63h-15.63z') { addSvgElem(Index, Element, '1PS_05'); }
@@ -2286,6 +2289,48 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M327.2 291.87h67.75v60.96H327.2z') { addSvgElem(Index, Element, 'rect_ish_c4'); }
         if (Element.getAttribute('d') === 'M395.95 291.87h68.79v60.96h-68.79z') { addSvgElem(Index, Element, 'rect_ish_c5'); }
         if (Element.getAttribute('d') === 'M466.76 291.87h62.94v60.96h-62.94z') { addSvgElem(Index, Element, 'rect_ish_c6'); }
+      })
+    }
+    // Ilay
+    else if(ObjectSvg.name === 'okno_klap_vid3'){
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
+        if (Element.innerHTML === 'Управление клапаном 116') { addSvgElem(Index, Element, 'title_work_vn',); }
+        
+        if (Element.innerHTML === 'Автоматический') { addSvgElem(Index, Element, 'status_window_text', 'start'); }
+        if (Element.innerHTML === '22') { addSvgElem(Index, Element, 'time_full_vnk_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 18.462 -152.297)') { addSvgElem(Index, Element, 'btn_auto_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 98.702 -153.373)') { addSvgElem(Index, Element, 'btn_ruchnoy_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 6.957 -114.082)') { addSvgElem(Index, Element, 'btn_open_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 95.213 -114.082)') { addSvgElem(Index, Element, 'btn_close_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 60.33 -83.457)') { addSvgElem(Index, Element, 'btn_stop_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 34.648 -33.474)') { addSvgElem(Index, Element, 'btn_sbros_oshibki_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 4.096 20.186)') { addSvgElem(Index, Element, 'btn_baypas_vsekh_blokirovok_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 -161.356 -85.38)') { addSvgElem(Index, Element, 'status_control_vnk_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 -161.17 -43.745)') { addSvgElem(Index, Element, 'skhema_sobrana_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 -155.99 20.64)') { addSvgElem(Index, Element, 'block_open_text'); }
+        if (Element.getAttribute('transform') === 'matrix(1.00617 0 0 1 -82.331 20.64)') { addSvgElem(Index, Element, 'block_close_text'); }
+      })
+      ObjectSvg.svg.querySelectorAll('path').forEach((Element) => {
+        if (Element.getAttribute('d') === 'm58.69 75.43-14.08-7.8-14.08-7.8v31.2l14.08-7.8z') { addSvgElem(Index, Element, 'left_vn'); }
+        if (Element.getAttribute('d') === 'm58.35 75.43 14.08-7.8 14.07-7.8v31.2l-14.07-7.8z') { addSvgElem(Index, Element, 'right_vn'); }
+        if (Element.getAttribute('d') === 'M9.78 108.74h141.98v21.19H9.78z') { addSvgElem(Index, Element, 'ruchnoy'); }
+        if (Element.getAttribute('d') === 'M9.78 149.93h141.98v21.19H9.78z') { addSvgElem(Index, Element, 'open'); }
+        if (Element.getAttribute('d') === 'M9.78 191.13h141.98v21.19H9.78z') { addSvgElem(Index, Element, 'skhema_sobrana'); }
+      })
+      ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element) => {
+        if (Element.getAttribute('rx') === '7.8') { addSvgElem(Index, Element, 'circle_n_winVN'); }
+        if (Element.getAttribute('rx') === '16.12') { addSvgElem(Index, Element, 'circle_n_winVN'); }
+      })
+      ObjectSvg.svg.querySelectorAll('rect').forEach((Element) => {
+        if (Element.getAttribute('x')  === '169.84' && Element.getAttribute('y') === '83.47')  { addSvgElem(Index, Element, 'btn_auto_2'); }
+        if (Element.getAttribute('x')  === '257.34' && Element.getAttribute('y') === '83.47')  { addSvgElem(Index, Element, 'btn_ruchnoy_2'); }
+        if (Element.getAttribute('x')  === '169.84' && Element.getAttribute('y') === '121.85') { addSvgElem(Index, Element, 'btn_open_2'); }
+        if (Element.getAttribute('x')  === '257.34' && Element.getAttribute('y') === '121.85')  { addSvgElem(Index, Element,'btn_close_2'); }
+        if (Element.getAttribute('x')  === '170.17' && Element.getAttribute('y') === '151.33') { addSvgElem(Index, Element, 'btn_stop_2'); }
+        if (Element.getAttribute('x')  === '169.92' && Element.getAttribute('y') === '204.19') { addSvgElem(Index, Element, 'btn_reset_2'); }
+        if (Element.getAttribute('x')  === '169.92' && Element.getAttribute('y') === '257.28') { addSvgElem(Index, Element, 'btn_baypas_vsekh_blokirovok_2'); }
+        if (Element.getAttribute('x')  === '14.72'  && Element.getAttribute('y') === '256.05') { addSvgElem(Index, Element, 'block_open'); }
+        if (Element.getAttribute('x')  === '87.79'  && Element.getAttribute('y') === '256.05') { addSvgElem(Index, Element, 'block_close'); }
       })
     }
   })
