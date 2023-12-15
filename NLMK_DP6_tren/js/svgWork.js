@@ -35,7 +35,7 @@ window.addEventListener('load', function () {
                                         ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                           ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'dp1') {
+    if (ObjectSvg.name === 'win_sym_3021') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -2258,7 +2258,7 @@ window.addEventListener('load', function () {
     }
     else if (ObjectSvg.name === 'win_sym_302') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
-        if (Element.innerHTML === 'ТТГ') { addSvgElem(Index, Element, 'ws3_ttg', 'start'); }
+        if (Element.innerHTML === 'расход ПГ') { addSvgElem(Index, Element, 'ws3_ttg', 'center'); }
       })
     }
     else if (ObjectSvg.name === 'priczvuksinal') {
