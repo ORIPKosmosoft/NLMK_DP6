@@ -35,7 +35,7 @@ window.addEventListener('load', function () {
                                         ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                           ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'dp1') {
+    if (ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -1709,6 +1709,13 @@ window.addEventListener('load', function () {
     }
     else if (ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML === 'клапан на возд.гор. 24') { Element.innerHTML ='клапан на возд.гор. 34'; }
+        if (Element.innerHTML === 'клапан из смеш. газе 22 ') { Element.innerHTML ='клапан на смеш. газе 32 '; }
+        if (Element.innerHTML === 'пересадки') { Element.innerHTML ='перекидок'; }
+        if (Element.innerHTML === 'клапан из смеш. газе 16') { Element.innerHTML ='клапан на смеш. газе 16'; }
+        if (Element.innerHTML === 'клапан газа 13') { Element.innerHTML ='клапан на газе 13'; }
+        if (Element.innerHTML === 'Закрыть отсечной' && Element.getAttribute('transform') === 'matrix(.9988 0 0 1 -319.261 283.161)') { Element.innerHTML ='Закрыть отделительный'; Element.setAttribute('x', '403'); }
+        
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
         if (Element.innerHTML === '180' && TextIndex === 48) { addSvgElem(Index, Element, 'Ustanovit_klapany_15_i_23_na_ugol_zazhig'); }
         if (Element.innerHTML === '65' && TextIndex === 49) { addSvgElem(Index, Element, 'Zakryt_otsechnoy_klapan_iz_smesh_gaze_22'); }
