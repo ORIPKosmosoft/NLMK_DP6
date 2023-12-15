@@ -687,10 +687,10 @@ const devHelper = {
         { x: 18.0, y: 0.0, w: 4.5, h: 3.3, id: 'Protechki', },
         { x: 45.5, y: 0.0, w: 3.5, h: 2.8, name: 'bzu', },
         // ilay
-        { x: 75.85, y: 51.5, w: 3.3, h: 3.0, id: 'F_Obsh', name: 'F-Obsh', realName: 'F общ.' },
-        { x: 75.85, y: 56.5, w: 3.3, h: 3.0, id: 'F_Tek', name: 'F-Tek', realName: 'F тек.' },
-        { x: 29.20, y: 77.7, w: 2.6, h: 2.6, id: 'R_Snort', name: 'R_Snort', }, // TODO realName
-        { x: 56.20, y: 68.5, w: 3.3, h: 3.3, id: 'R_Furm', name: 'R_Furm', }, // TODO realName
+        { x: 75.85, y: 51.5, w: 3.3, h: 3.0, forAction: true, id: 'F_Obsh', realName: 'F общ.' },
+        { x: 75.85, y: 56.5, w: 3.3, h: 3.0, forAction: true, id: 'F_Tek', realName: 'F тек.' },
+        { x: 29.20, y: 77.7, w: 2.6, h: 2.6, forAction: true, id: 'R_Snort', }, // TODO realName
+        { x: 56.20, y: 68.5, w: 3.3, h: 3.3, forAction: true, id: 'R_Furm',}, // TODO realName
 
       ]
     },
@@ -1180,7 +1180,7 @@ const devHelper = {
     restarts: 0,
   }
 };
-const timeDiff = -49;
+const timeDiff = -83;
 let tempActions = [
   // [
   //   ////--------------------------------//15//-new
@@ -2748,13 +2748,17 @@ let tempActions = [
       },
       startTime: timeDiff + 49.02,
     },
-    */
+    {
+      scenarioText: 'Сообщение о запланированной остановке',// TODO сделать текст этапа
+      sender: 'Система',
+      startTime: timeDiff + 49.1,
+    },
     {
       scenarioText: 'В случае запланированной остановки доменной печи газовщик сообщает об этом по телефону.',
       audio: 'tts-7',
       sender: 'Система',
       lifeTime: '07:45:00',
-      startTime: timeDiff + 49.1,
+      startTime: timeDiff + 49.2,
     },
     ////--------------------------------1----------------------------------------//8-12//-new
     {
@@ -2813,45 +2817,45 @@ let tempActions = [
     {
       scenarioText: 'Прекращение подачи ПУТ в ДП', // TODO сделать текст этапа
       sender: 'Система',
-      startTime: timeDiff + 56.9,
+      startTime: timeDiff + 58,
     },
     {
       scenarioText: 'Остановка вдувания пылеугольного топлива ПУТ',
       sender: 'Система',
       lifeTime: '08:00:00',
-      startTime: timeDiff + 57,
+      startTime: timeDiff + 59,
     },
     {
       text: 'По указанию сменного мастера печи газовщик прекращает подачу ПУТ в доменную печь',
       sender: 'Система',
       audio: 'tts-8 (1)',
-      startTime: timeDiff + 58,
+      startTime: timeDiff + 60,
     },
     ////--------------------------------1----------------------------------------//14//-new
     {
       text: 'Принять телефонный звонок, подняв трубку телефона.',
       sender: 'Система',
       audio: 'Zvuk_gudka_telefona',
-      startTime: timeDiff + 64,
+      startTime: timeDiff + 68,
     },
     {
       action: {
         target3D: 'Telephone_highlight2',
       },
-      startTime: timeDiff + 64.1,
+      startTime: timeDiff + 68.1,
       human: true,
     },
     {
       text: 'Прекратить подачу ПУТ в доменную печь.',
       sender: 'Сменный мастер печи',
       audio: 'vo_new_14_1',
-      startTime: timeDiff + 65,
+      startTime: timeDiff + 69,
     },
     {
       text: 'Приступаю к выполнению.',
       sender: 'Газовщик',
       audio: 'vo_new_14_2',
-      startTime: timeDiff + 68,
+      startTime: timeDiff + 72,
     },
 
     ////--------------------------------//15//-new
@@ -2859,33 +2863,34 @@ let tempActions = [
       text: 'Нажать на кнопку с надписью: «Угольная».',
       sender: 'Система',
       audio: 'telephone_say',
-      startTime: timeDiff + 70,
+      startTime: timeDiff + 75,
     },
     {
       action: {
         target3D: 'PhoneButton016',
       },
-      startTime: timeDiff + 72.5,
+      startTime: timeDiff + 75.5,
       human: true,
     },
     {
       text: 'Остановить вдувания пылеугольного топлива.',
       sender: 'Газовщик',
       audio: 'vo_new_15_1',
-      startTime: timeDiff + 74,
+      startTime: timeDiff + 77,
     },
     {
       text: 'Понял. Выполняю.',
       sender: 'Оператор',
       audio: 'vo_new_15_2',
-      startTime: timeDiff + 78,
+      startTime: timeDiff + 81,
     },
+    */
     ////--------------------------------//16//-new
     {
       text: 'В 08:00 остановили вдувания пылеугольного топлива.',
       sender: 'Система',
       audio: 'tts-9-1',
-      startTime: timeDiff + 81,
+      startTime: timeDiff + 84,
     },
     {
       action: {
@@ -2896,7 +2901,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 81.1,
+      startTime: timeDiff + 84.1,
     },
     {
       text: 'Проверить давление Fобщ и Fтек.',
@@ -2904,42 +2909,42 @@ let tempActions = [
       multi: [
         {
           action: {
-            target2D: 'F-Obsh',
+            target2D: 'F_Obsh',
           },
         },
         {
           action: {
-            target2D: 'F-Tek',
+            target2D: 'F_Tek',
           },
         },
       ],
-      startTime: timeDiff + 85.1,
+      startTime: timeDiff + 88.1,
       human: true,
     },
     ////--------------------------------//17//-new
     {
       scenarioText: 'Подготовительные работы перед остановкой ДП №6.',
       sender: 'Система',
-      startTime: timeDiff + 85.9,
+      startTime: timeDiff + 88.9,
     },
     {
       text: 'Проверка значений ПГ, ТТГ и температуры чугуна в лётках. В случае необходимости, внести корректировки.',
       sender: 'Система',
       audio: 'tts_new_17',
-      startTime: timeDiff + 86,
+      startTime: timeDiff + 89,
     },
     ////--------------------------------2----------------------------------------//18//-new
     {
       text: 'Увеличить расход природного газа для поддержания ТТГ. Установить на 37000.',
       sender: 'Система',
       audio: 'tts_new_18',
-      startTime: timeDiff + 94,
+      startTime: timeDiff + 97,
     },
     {
       action: {
         target2D: 't_r_4',
       },
-      startTime: timeDiff + 98.5,
+      startTime: timeDiff + 101.5,
       human: true,
     }, {
       action: {
@@ -2950,7 +2955,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 98.6,
+      startTime: timeDiff + 101.6,
       human: true,
     }, {
       action: {
@@ -2961,7 +2966,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 98.7,
+      startTime: timeDiff + 101.7,
       human: true,
     }, {
       action: {
@@ -2972,7 +2977,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 98.8,
+      startTime: timeDiff + 101.8,
       human: true,
     }, {
       action: {
@@ -2983,7 +2988,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 98.9,
+      startTime: timeDiff + 101.9,
       human: true,
     }, {
       action: {
@@ -2994,7 +2999,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 99,
+      startTime: timeDiff + 102,
       human: true,
     }, {
       action: {
@@ -3005,7 +3010,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 99.1,
+      startTime: timeDiff + 102.1,
       human: true,
     },
     // Sergey (Изменение Dp)
@@ -3126,7 +3131,7 @@ let tempActions = [
           ],
         },
       },
-      startTime: timeDiff + 99.61,
+      startTime: timeDiff + 102.61,
     },
     {
       action: {
@@ -3134,7 +3139,7 @@ let tempActions = [
         color: 'green',
         number: '00.23',
       },
-      startTime: timeDiff + 99.62,
+      startTime: timeDiff + 102.62,
     },
     {
       action: {
@@ -3142,7 +3147,7 @@ let tempActions = [
         color: 'green',
         number: '01.68',
       },
-      startTime: timeDiff + 99.62,
+      startTime: timeDiff + 102.62,
     },
     {
       action: {
@@ -3150,7 +3155,7 @@ let tempActions = [
         color: 'green',
         number: '01.45',
       },
-      startTime: timeDiff + 99.62,
+      startTime: timeDiff + 102.62,
     },
     {
       action: {
@@ -3158,7 +3163,7 @@ let tempActions = [
         color: 'green',
         number: '03.99',
       },
-      startTime: timeDiff + 99.62,
+      startTime: timeDiff + 102.62,
     },
     {
       action: {
@@ -3166,7 +3171,7 @@ let tempActions = [
         color: 'green',
         number: '1211',
       },
-      startTime: timeDiff + 99.62,
+      startTime: timeDiff + 102.62,
     },
     {
       action: {
@@ -3174,7 +3179,7 @@ let tempActions = [
         color: 'green',
         number: '1211',
       },
-      startTime: timeDiff + 99.62,
+      startTime: timeDiff + 102.62,
     },
     {
       action: {
@@ -3182,14 +3187,14 @@ let tempActions = [
         color: 'green',
         number: '00.00',
       },
-      startTime: timeDiff + 99.62,
+      startTime: timeDiff + 102.62,
     },
     ////--------------------------------3----------------------------------------//19//-new
     {
       text: 'Настройка значения теоретической температуры горения.',
       sender: 'Система',
       audio: 'tts-11',
-      startTime: timeDiff + 100,
+      startTime: timeDiff + 103,
     },
     {
       action: {
@@ -3200,7 +3205,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 104,
+      startTime: timeDiff + 107,
       human: true,
     },
     {
@@ -3218,7 +3223,7 @@ let tempActions = [
           { x: 18.65, y: 73, w: 8, h: 5.5, id: 'ws3_ttg2_text_btn' },
         ]
       },
-      startTime: timeDiff + 104.1,
+      startTime: timeDiff + 107.1,
       human: true,
     },
     {
@@ -3236,21 +3241,21 @@ let tempActions = [
           { x: 18.65, y: 73, w: 0, h: 0, id: 'ws3_ttg2_text_btn' },
         ]
       },
-      startTime: timeDiff + 104.2,
+      startTime: timeDiff + 107.2,
       human: true,
     },
     {
       action: {
         target2D: 'pzs_close_btn',
       },
-      startTime: timeDiff + 104.3,
+      startTime: timeDiff + 107.3,
       human: true,
     },
     {
       action: {
         target2D: 'ws3_close_btn',
       },
-      startTime: timeDiff + 104.4,
+      startTime: timeDiff + 107.4,
       human: true,
     },
     // Sergey (DP после закрытия онка символа 302)
@@ -3368,7 +3373,7 @@ let tempActions = [
           ],
         },
       },
-      startTime: timeDiff + 104.41,
+      startTime: timeDiff + 107.41,
     },
     {
       action: {
@@ -3376,7 +3381,7 @@ let tempActions = [
         color: 'green',
         number: '00.22',
       },
-      startTime: timeDiff + 104.42,
+      startTime: timeDiff + 107.42,
     },
     {
       action: {
@@ -3384,7 +3389,7 @@ let tempActions = [
         color: 'green',
         number: '01.74',
       },
-      startTime: timeDiff + 104.42,
+      startTime: timeDiff + 107.42,
     },
     {
       action: {
@@ -3392,7 +3397,7 @@ let tempActions = [
         color: 'green',
         number: '01.53',
       },
-      startTime: timeDiff + 104.42,
+      startTime: timeDiff + 107.42,
     },
     {
       action: {
@@ -3400,7 +3405,7 @@ let tempActions = [
         color: 'green',
         number: '04.07',
       },
-      startTime: timeDiff + 104.42,
+      startTime: timeDiff + 107.42,
     },
     {
       action: {
@@ -3408,7 +3413,7 @@ let tempActions = [
         color: 'green',
         number: '1209',
       },
-      startTime: timeDiff + 104.42,
+      startTime: timeDiff + 107.42,
     },
     {
       action: {
@@ -3416,7 +3421,7 @@ let tempActions = [
         color: 'green',
         number: '08.42',
       },
-      startTime: timeDiff + 104.42,
+      startTime: timeDiff + 107.42,
     },
     {
       action: {
@@ -3424,7 +3429,7 @@ let tempActions = [
         color: 'green',
         number: '00.00',
       },
-      startTime: timeDiff + 104.42,
+      startTime: timeDiff + 107.42,
     },
     ////--------------------------------3.1
     {
@@ -3438,7 +3443,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 104.5,
+      startTime: timeDiff + 107.5,
       human: true,
     },
     {
@@ -3450,7 +3455,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 104.6,
+      startTime: timeDiff + 107.6,
       human: true,
     }, {
       action: {
@@ -3461,7 +3466,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 104.7,
+      startTime: timeDiff + 107.7,
       human: true,
     }, {
       action: {
@@ -3472,7 +3477,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 104.8,
+      startTime: timeDiff + 107.8,
       human: true,
     }, {
       action: {
@@ -3483,7 +3488,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 104.9,
+      startTime: timeDiff + 107.9,
       human: true,
     },
     {
@@ -3495,7 +3500,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 105,
+      startTime: timeDiff + 108,
       human: true,
     },
     // Sergey (DP ТТГ 2200)
@@ -3617,7 +3622,7 @@ let tempActions = [
           ],
         },
       },
-      startTime: timeDiff + 105.01,
+      startTime: timeDiff + 108.01,
     },
     {
       action: {
@@ -3625,7 +3630,7 @@ let tempActions = [
         color: 'green',
         number: '00.22',
       },
-      startTime: timeDiff + 105.02,
+      startTime: timeDiff + 108.02,
     },
     {
       action: {
@@ -3633,7 +3638,7 @@ let tempActions = [
         color: 'green',
         number: '01.74',
       },
-      startTime: timeDiff + 105.02,
+      startTime: timeDiff + 108.02,
     },
     {
       action: {
@@ -3641,7 +3646,7 @@ let tempActions = [
         color: 'green',
         number: '01.53',
       },
-      startTime: timeDiff + 105.02,
+      startTime: timeDiff + 108.02,
     },
     {
       action: {
@@ -3649,7 +3654,7 @@ let tempActions = [
         color: 'green',
         number: '04.07',
       },
-      startTime: timeDiff + 105.02,
+      startTime: timeDiff + 108.02,
     },
     {
       action: {
@@ -3657,7 +3662,7 @@ let tempActions = [
         color: 'green',
         number: '1209',
       },
-      startTime: timeDiff + 105.02,
+      startTime: timeDiff + 108.02,
     },
     {
       action: {
@@ -3665,7 +3670,7 @@ let tempActions = [
         color: 'green',
         number: '08.43',
       },
-      startTime: timeDiff + 105.02,
+      startTime: timeDiff + 108.02,
     },
     {
       action: {
@@ -3673,7 +3678,7 @@ let tempActions = [
         color: 'green',
         number: '00.34',
       },
-      startTime: timeDiff + 105.02,
+      startTime: timeDiff + 108.02,
     },
     ////--------------------------------3.2
     {
@@ -3689,7 +3694,7 @@ let tempActions = [
           { x: 18.65, y: 73, w: 0, h: 0, id: 'ws3_ttg2_text_btn' },
         ]
       },
-      startTime: timeDiff + 105.1,
+      startTime: timeDiff + 108.1,
       human: true,
     },
     {
@@ -3703,14 +3708,14 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 105.2,
+      startTime: timeDiff + 108.2,
       human: true,
     },
     {
       action: {
         target2D: 'ws3_close_btn',
       },
-      startTime: timeDiff + 105.3,
+      startTime: timeDiff + 108.3,
       human: true,
     },
     // Sergey (DP Повторно 302)
@@ -3832,7 +3837,7 @@ let tempActions = [
           ],
         },
       },
-      startTime: timeDiff + 105.31,
+      startTime: timeDiff + 108.31,
     },
     {
       action: {
@@ -3840,7 +3845,7 @@ let tempActions = [
         color: 'green',
         number: '00.22',
       },
-      startTime: timeDiff + 105.32,
+      startTime: timeDiff + 108.32,
     },
     {
       action: {
@@ -3848,7 +3853,7 @@ let tempActions = [
         color: 'green',
         number: '01.74',
       },
-      startTime: timeDiff + 105.32,
+      startTime: timeDiff + 108.32,
     },
     {
       action: {
@@ -3856,7 +3861,7 @@ let tempActions = [
         color: 'green',
         number: '01.53',
       },
-      startTime: timeDiff + 105.32,
+      startTime: timeDiff + 108.32,
     },
     {
       action: {
@@ -3864,7 +3869,7 @@ let tempActions = [
         color: 'green',
         number: '04.11',
       },
-      startTime: timeDiff + 105.32,
+      startTime: timeDiff + 108.32,
     },
     {
       action: {
@@ -3872,7 +3877,7 @@ let tempActions = [
         color: 'green',
         number: '1209',
       },
-      startTime: timeDiff + 105.32,
+      startTime: timeDiff + 108.32,
     },
     {
       action: {
@@ -3880,7 +3885,7 @@ let tempActions = [
         color: 'green',
         number: '08.38',
       },
-      startTime: timeDiff + 105.32,
+      startTime: timeDiff + 108.32,
     },
     {
       action: {
@@ -3888,7 +3893,7 @@ let tempActions = [
         color: 'green',
         number: '00.34',
       },
-      startTime: timeDiff + 105.32,
+      startTime: timeDiff + 108.32,
     },
     ////--------------------------------4       //20//-new
     {
@@ -3896,7 +3901,7 @@ let tempActions = [
       sender: 'Система',
       audio: 'tts-12',
       lifeTime: '08:15:00',
-      startTime: timeDiff + 106,
+      startTime: timeDiff + 109,
     },
     {
       action: {
@@ -3924,7 +3929,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 107,
+      startTime: timeDiff + 110,
     }, {
       action: {
         window2D: {
@@ -3933,7 +3938,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 108,
+      startTime: timeDiff + 111,
     }, {
       action: {
         window2D: {
@@ -3942,7 +3947,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 109,
+      startTime: timeDiff + 112,
     }, {
       action: {
         window2D: {
@@ -3951,7 +3956,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 110,
+      startTime: timeDiff + 113,
     },
     // 1.3 
     ////--------------------------------1----------------------------------------//21//-new
@@ -3959,37 +3964,37 @@ let tempActions = [
       scenarioText: 'Закрытие кислорода на обогащение дутья и природного газа на печь.', // TODO Сделать новый текст - этап 
       sender: 'Система',
       lifeTime: '08:30:00',
-      startTime: timeDiff + 110.5,
+      startTime: timeDiff + 113.5,
     },
     {
       scenarioText: 'По команде мастера печи, до окончания выпуска чугуна, закрыть кислород на обогащение дутья.',
       sender: 'Система',
       audio: 'tts-13',
-      startTime: timeDiff + 111,
+      startTime: timeDiff + 114,
     },
     ////--------------------------------//22//-new
     {
       text: 'По рации мастер печи сообщил команду газовщикам.',
       sender: 'Система',
-      startTime: timeDiff + 118,
+      startTime: timeDiff + 121,
     },
     {
       text: 'Закрыть кислород на обогащения дутья и оставить 20000.',
       sender: 'Мастер печи',
       audio: 'tts-vo2',
-      startTime: timeDiff + 119,
+      startTime: timeDiff + 122,
     },
     {
       text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 123,
+      startTime: timeDiff + 126,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046'
       },
-      startTime: timeDiff + 124,
+      startTime: timeDiff + 127,
       human: true,
     },
     // Ilay F main + vnk_spvg
@@ -4164,27 +4169,27 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 124.1,
+      startTime: timeDiff + 127.1,
     },
     {
       text: 'Хорошо. Выполняю.',
       sender: 'Газовщик',
       audio: 'tts-vo3',
-      startTime: timeDiff + 125,
+      startTime: timeDiff + 128,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 127,
+      startTime: timeDiff + 130,
     },
     ////--------------------------------2//23//-new
     {
       scenarioText: 'Перекидка клапанов в автоматическом режиме.',
       sender: 'Система',
       audio: 'tts-14',
-      startTime: timeDiff + 128,
+      startTime: timeDiff + 131,
     },
     // Ilay vnk1 + main
     {
@@ -4330,7 +4335,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 128.01,
+      startTime: timeDiff + 131.01,
     },
     {
       action: {
@@ -4349,14 +4354,14 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 131,
+      startTime: timeDiff + 134,
       human: true,
     },
     {
       action: {
         target2D: 'nagrev_otd2_btn',
       },
-      startTime: timeDiff + 131.1,
+      startTime: timeDiff + 134.1,
       human: true,
     }, {
       action: {
@@ -4371,7 +4376,7 @@ let tempActions = [
           { x: 34.3, y: 94.9, w: 3.2, h: 2.4, id: 'open_vn1' },  //  wind 2
         ]
       },
-      startTime: timeDiff + 131.2,
+      startTime: timeDiff + 134.2,
       human: true,
     },
     {  // wind 2  ok
@@ -4399,7 +4404,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 131.3,
+      startTime: timeDiff + 134.3,
       human: true,
     },
     //1
@@ -4437,7 +4442,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 132,
+      startTime: timeDiff + 135,
     },
     //2
     {
@@ -4472,7 +4477,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 133,
+      startTime: timeDiff + 136,
     },
     //3
     {
@@ -4506,7 +4511,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 134,
+      startTime: timeDiff + 137,
     },
     //4
     {
@@ -4539,7 +4544,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 135,
+      startTime: timeDiff + 138,
     },
     //5
     {
@@ -4574,7 +4579,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 136,
+      startTime: timeDiff + 139,
     },
     //6
     {
@@ -4605,7 +4610,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 137,
+      startTime: timeDiff + 140,
     },
     //7
     {
@@ -4635,7 +4640,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 138,
+      startTime: timeDiff + 141,
     },
     //8
     {
@@ -4666,7 +4671,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 139,
+      startTime: timeDiff + 142,
     },
     //9
     {
@@ -4697,7 +4702,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 140,
+      startTime: timeDiff + 143,
     },
     //10
     {
@@ -4728,7 +4733,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 141,
+      startTime: timeDiff + 144,
     },
     //11
     {
@@ -4757,7 +4762,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 142,
+      startTime: timeDiff + 145,
     },
     //12
     {
@@ -4787,7 +4792,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 143,
+      startTime: timeDiff + 146,
     },
     //13
     {
@@ -4824,7 +4829,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 144,
+      startTime: timeDiff + 147,
     },
     //14
     {
@@ -4855,7 +4860,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 145,
+      startTime: timeDiff + 148,
     },
     //15          
     {
@@ -4913,7 +4918,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 146,
+      startTime: timeDiff + 149,
     },
     //16
     {
@@ -4942,13 +4947,13 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 147,
+      startTime: timeDiff + 150,
     },
     {  // O_p_n_na_k_na-o_2_na_VNK close
       action: {
         target2D: 'pericNagrev_close_btn',
       },
-      startTime: timeDiff + 147.1,
+      startTime: timeDiff + 150.1,
       human: true,
     },
     // Ilay F vnk1 + main
@@ -5032,13 +5037,13 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 147.11,
+      startTime: timeDiff + 150.11,
     },
     // {  // O_p_n_na_k_p_na_VNK close   
     //   action: {
     //     target2D: 'perekidta_exit_btn',
     //   },
-    // startTime: timeDiff + 147.2,
+    // startTime: timeDiff + 150.2,
     //   human: true,
     // },
     ////--------------------------------3-------------------------------------//24//-new
@@ -5046,7 +5051,7 @@ let tempActions = [
       scenarioText: 'Отделить воздухонагреватель ВНК №1.',
       sender: 'Система',
       audio: 'tts-15',
-      startTime: timeDiff + 148,
+      startTime: timeDiff + 151,
     },
     // {
     //   action: {
@@ -5083,14 +5088,14 @@ let tempActions = [
     //       ]
     //     }
     //   },
-    // startTime: timeDiff + 152,
+    // startTime: timeDiff + 155,
     //   human: true,
     // },
     { // win_otdel2_na_vnk OPEN
       action: {
         target2D: 'otdel2_otdel_btn',
       },
-      startTime: timeDiff + 152.1,
+      startTime: timeDiff + 155.1,
       human: true,
     },
     // Ilay vnk1 + main
@@ -5119,7 +5124,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 152.11,
+      startTime: timeDiff + 155.11,
     },
     {
       action: {
@@ -5134,7 +5139,7 @@ let tempActions = [
           { x: 35.8, y: 94, w: 3.2, h: 2.4, id: 'open_vn1' },  //  wind 2
         ]
       },
-      startTime: timeDiff + 152.2,
+      startTime: timeDiff + 155.2,
       human: true,
     },
     {  // wind 2  ok
@@ -5152,21 +5157,21 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 152.3,
+      startTime: timeDiff + 155.3,
       human: true,
     },
     {  // win_otdel2_na_vnk CLOSE
       action: {
         target2D: 'otdel2_close_btn',
       },
-      startTime: timeDiff + 152.4,
+      startTime: timeDiff + 155.4,
       human: true,
     },
     {  // O_p_n_na_k_p_na_VNK CLOSE
       action: {
         target2D: 'perekidta_exit_btn',
       },
-      startTime: timeDiff + 152.5,
+      startTime: timeDiff + 155.5,
       human: true,
     },
     // O_p_n_na_k_na-BVNK_VNK1 схема обновляется
@@ -5199,7 +5204,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 153,
+      startTime: timeDiff + 156,
     }, {
       action: {
         window2D: {
@@ -5214,7 +5219,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 154,
+      startTime: timeDiff + 157,
     }, {
       action: {
         window2D: {
@@ -5223,7 +5228,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 155,
+      startTime: timeDiff + 158,
     }, {
       action: {
         window2D: {
@@ -5232,7 +5237,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 156,
+      startTime: timeDiff + 159,
     }, {
       action: {
         window2D: {
@@ -5241,7 +5246,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 157,
+      startTime: timeDiff + 160,
     }, {
       action: {
         window2D: {
@@ -5252,7 +5257,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 158,
+      startTime: timeDiff + 161,
     },
     {
       action: {
@@ -5269,7 +5274,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 159,
+      startTime: timeDiff + 162,
     },
     // Ilay vnk1 + main
     {
@@ -5362,14 +5367,14 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 159.1,
+      startTime: timeDiff + 162.1,
     },
     ////--------------------------------4-------------------------------------//25//-new //
     {
       scenarioText: 'Отделить воздухонагреватель ВНК №2.',
       sender: 'Система',
       audio: 'tts-16',
-      startTime: timeDiff + 160,
+      startTime: timeDiff + 163,
     },
     {
       action: {
@@ -5402,7 +5407,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 164,
+      startTime: timeDiff + 167,
       human: true,
     },
     { // O_p_n_na_k_na-o_2_na_VNK OPEN
@@ -5442,7 +5447,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 164.1,
+      startTime: timeDiff + 167.1,
       human: true,
     }, {
       action: {
@@ -5457,7 +5462,7 @@ let tempActions = [
           { x: 34.3, y: 94.9, w: 3.2, h: 2.4, id: 'open_vn1' },  //  wind 2
         ]
       },
-      startTime: timeDiff + 164.2,
+      startTime: timeDiff + 167.2,
       human: true,
     },
     {  // wind 2  ok
@@ -5485,7 +5490,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 164.3,
+      startTime: timeDiff + 167.3,
       human: true,
     },
     //1
@@ -5554,7 +5559,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 165,
+      startTime: timeDiff + 168,
     },
     //2
     {
@@ -5589,7 +5594,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 166,
+      startTime: timeDiff + 169,
     },
     //3
     {
@@ -5617,7 +5622,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 167,
+      startTime: timeDiff + 170,
     },
     //4
     {
@@ -5647,7 +5652,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 168,
+      startTime: timeDiff + 171,
     },
     //5
     {
@@ -5684,7 +5689,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 169,
+      startTime: timeDiff + 172,
     },
     //6
     {
@@ -5722,7 +5727,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 170,
+      startTime: timeDiff + 173,
     },
     //7
     {
@@ -5752,7 +5757,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 171,
+      startTime: timeDiff + 174,
     },
     //8
     {
@@ -5787,7 +5792,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 172,
+      startTime: timeDiff + 175,
     },
     //9
     {
@@ -5817,7 +5822,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 173,
+      startTime: timeDiff + 176,
     },
     //10
     {
@@ -5852,7 +5857,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 174,
+      startTime: timeDiff + 177,
     },
     //11
     {
@@ -5884,7 +5889,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 175,
+      startTime: timeDiff + 178,
     },
     //12
     {
@@ -5914,7 +5919,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 176,
+      startTime: timeDiff + 179,
     },
     //13
     {
@@ -5952,7 +5957,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 177,
+      startTime: timeDiff + 180,
     },
     //14
     {
@@ -5983,7 +5988,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 178,
+      startTime: timeDiff + 181,
     },
     //15          
     {
@@ -6032,7 +6037,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 179,
+      startTime: timeDiff + 182,
     },
     //16
     {
@@ -6061,7 +6066,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 180,
+      startTime: timeDiff + 183,
     },
     // Ilay F vnk2 + main
     {
@@ -6208,20 +6213,20 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 180.01,
+      startTime: timeDiff + 183.01,
     },
     {  // O_p_n_na_k_na-o_2_na_VNK close
       action: {
         target2D: 'pericNagrev_close_btn',
       },
-      startTime: timeDiff + 180.1,
+      startTime: timeDiff + 183.1,
       human: true,
     },
     // {  // O_p_n_na_k_p_na_VNK CLOSE
     //   action: {
     //     target2D: 'perekidta_exit_btn',
     //   },
-    // startTime: timeDiff + 180.2,
+    // startTime: timeDiff + 183.2,
     //   human: true,
     // },
     // {
@@ -6239,7 +6244,7 @@ let tempActions = [
     //       ]
     //     }
     //   },
-    // startTime: timeDiff + 180.3,
+    // startTime: timeDiff + 183.3,
     //   human: true,
     // },
     {
@@ -6260,7 +6265,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 180.4,
+      startTime: timeDiff + 183.4,
       human: true,
     }, {
       action: {
@@ -6275,7 +6280,7 @@ let tempActions = [
           { x: 35.8, y: 94, w: 3.2, h: 2.4, id: 'open_vn1' },  //  wind 2
         ]
       },
-      startTime: timeDiff + 180.5,
+      startTime: timeDiff + 183.5,
       human: true,
     },
     {  // wind 2  ok
@@ -6293,7 +6298,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 180.6,
+      startTime: timeDiff + 183.6,
       human: true,
     },
     {
@@ -6303,7 +6308,7 @@ let tempActions = [
           elements: []
         }
       },
-      startTime: timeDiff + 180.7,
+      startTime: timeDiff + 183.7,
       human: true,
     },
     {
@@ -6315,7 +6320,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 181,
+      startTime: timeDiff + 184,
     }, {
       action: {
         window2D: {
@@ -6324,7 +6329,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 182,
+      startTime: timeDiff + 185,
     }, {
       action: {
         window2D: {
@@ -6333,7 +6338,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 183,
+      startTime: timeDiff + 186,
     },
     {
       action: {
@@ -6344,7 +6349,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 183.1,
+      startTime: timeDiff + 186.1,
     },
     // TODO time esli cho
     {
@@ -6361,7 +6366,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 183.2,
+      startTime: timeDiff + 186.2,
     }, {
       action: {
         window2D: {
@@ -6371,7 +6376,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 183.3,
+      startTime: timeDiff + 186.3,
     }, {
       action: {
         window2D: {
@@ -6380,7 +6385,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 183.4,
+      startTime: timeDiff + 186.4,
     }, {
       action: {
         window2D: {
@@ -6394,7 +6399,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 183.6,
+      startTime: timeDiff + 186.6,
     },
     // Ilay F vnk2 + main + svpg
     {
@@ -6611,7 +6616,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 184.5,
+      startTime: timeDiff + 187.5,
     },
     ///--------------------------------//26//-new//todo?
     ///5. Вернуться на общую схему ВНК. Нажать на вкладку «Общая схема». Показать измененные значения, как на видео.
@@ -6619,11 +6624,11 @@ let tempActions = [
       text: 'ВНК №1, ВНК №2 отделены, а ВНК №3 на дутье.',
       sender: 'Система',
       audio: 'tts-17',
-      startTime: timeDiff + 185,
+      startTime: timeDiff + 188,
     },
     {
       lifeTime: '08:45:00',
-      startTime: timeDiff + 188,
+      startTime: timeDiff + 191,
     },
     ///--------------------------------//27//-new
     // 1.4 сценарий
@@ -6631,40 +6636,40 @@ let tempActions = [
       scenarioText: 'Дать команду дежурному водопроводчику на закрытие природного газа на печь задвижками на подводе газа к фурмам.',
       sender: 'Система',
       audio: 'tts-18',
-      startTime: timeDiff + 192,
+      startTime: timeDiff + 195,
     },
     ////--------------------------------1---------------------------------------- РАЦИЯ //28//-new
     {
       scenarioText: 'Сообщить по рации дежурному водопроводчику.',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 200,
+      startTime: timeDiff + 203,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 200.1,
+      startTime: timeDiff + 203.1,
       human: true,
     },
     {
       text: 'Закрыть природный газ на фурмах.',
       sender: 'Газовщик',
       audio: 'tts-vo4',
-      startTime: timeDiff + 201,
+      startTime: timeDiff + 204,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 204.1,
+      startTime: timeDiff + 207.1,
     },
     {
       text: 'Понял, приступаю.',
       sender: 'Дежурный водопроводчик',
       audio: 'tts-vo5',
-      startTime: timeDiff + 205,
+      startTime: timeDiff + 208,
     },
     // ilay 3d - s
     {
@@ -6672,189 +6677,189 @@ let tempActions = [
         target3D: 'Rectangle111',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     },
     {
       action: {
         target3D: 'Rectangle113',
         material: 'off',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     },
     {
       action: {
         target3D: 'Rectangle112',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     },
     {
       action: {
         target3D: 'Rectangle069',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     },
     {
       action: {
         target3D: 'Rectangle071',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     },
     {
       action: {
         target3D: 'Rectangle066',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle067',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle060',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle057',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle074',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle097',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     },
     // {
     //   action: {
     //     target3D: 'Rectangle080', 
     //     material: 'ButtonLightOn',
     //   },
-    // startTime: timeDiff + 207.53,
+    // startTime: timeDiff + 210.53,
     // },
     {
       action: {
         target3D: 'Rectangle079',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle084',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle055',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle063',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle114',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle046',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle044',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     },
     {
       action: {
         target3D: 'Rectangle039',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle041',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle029',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle031',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle049',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle051',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle034',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle036',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     }, {
       action: {
         target3D: 'Rectangle096',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.53,
+      startTime: timeDiff + 210.53,
     },
     {
       action: {
@@ -6862,90 +6867,90 @@ let tempActions = [
         color: 'red',
         number: '01.94'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     }, {
       action: {
         target3D: 'bzuVesNetto_l',
         color: 'red',
         number: '002.5'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     }, {
       action: {
         target3D: 'bzuPolShihZat_l',
         color: 'red',
         number: '037.8'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     }, {
       action: {
         target3D: 'bzuVremVigruz_l',
         color: 'red',
         number: '0080'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     }, {
       action: {
         target3D: 'bzuFactUgol_l',
         color: 'red',
         number: '009.9'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     }, {
       action: {
         target3D: 'bzuDavlenie_r',
         color: 'red',
         number: '00.00'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     }, {
       action: {
         target3D: 'bzuVesNetto_r',
         color: 'red',
         number: '023.1'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     }, {
       action: {
         target3D: 'bzuFactUgol_r',
         color: 'red',
         number: '015.0'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     }, {
       action: {
         target3D: 'bzuPolShihZat_r',
         color: 'red',
         number: '001.3'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     }, {
       action: {
         target3D: 'bzuVremVigruz_r',
         color: 'red',
         number: '0104'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     }, {
       action: {
         target3D: 'bzuUrovZasip',
         color: 'red',
         number: '01.05'
       },
-      startTime: timeDiff + 207.54,
+      startTime: timeDiff + 210.54,
     },
     {
       action: {
         target3D: 'Handle_013',
         rotation: { y: 0.785398 }
       },
-      startTime: timeDiff + 207.55,
+      startTime: timeDiff + 210.55,
     }, {
       action: {
         target3D: 'Handle_014',
         rotation: { y: 0.785398 }
       },
-      startTime: timeDiff + 207.55,
+      startTime: timeDiff + 210.55,
     },
     ///------ ep2
     {
@@ -6954,63 +6959,63 @@ let tempActions = [
         color: 'green',
         number: '1.904'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'dpVerh', //2
         color: 'green',
         number: '0.182'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'dpObsh', //3
         color: 'green',
         number: '1.541'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'dpNiz', //4
         color: 'green',
         number: '1.200'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'fHolodDut', //5
         color: 'green',
         number: '5711.'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'pGorDut', //6
         color: 'green',
         number: '3.516'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'urZasDat1', //7
         color: 'green',
         number: '01.10'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'urZasDat2', //8
         color: 'green',
         number: '01.10'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'urZasMeh', //9
         color: 'green',
         number: '0000'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     },
     {
       action: {
@@ -7018,49 +7023,49 @@ let tempActions = [
         color: 'green',
         number: '0154.'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'tVGazT2', //2
         color: 'green',
         number: '0168.'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'tVGazT3', //3
         color: 'green',
         number: '0163.'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'tVGazT4', //4
         color: 'green',
         number: '0150.'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'tVGazT5', //5
         color: 'green',
         number: '07.94'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'tVGazT6', //6
         color: 'green',
         number: '00.40'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'tVGazT7', //7
         color: 'green',
         number: '1109.'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     },
     {
       action: {
@@ -7068,56 +7073,56 @@ let tempActions = [
         color: 'green',
         number: '10.13'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'pTechVodT2', //2
         color: 'green',
         number: '10.14'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'pSjatVozd', //3
         color: 'green',
         number: '04.60'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'pOsyshSjatVozd', //4
         color: 'green',
         number: '04.15'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'pAzotkZatv', //5
         color: 'green',
         number: '2.281'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'tReduct', //6
         color: 'green',
         number: '052.3'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'fVodNaReduct', //7
         color: 'green',
         number: '25.17'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     }, {
       action: {
         target3D: 'fPrirodGaz', //8
         color: 'green',
         number: '2.303'
       },
-      startTime: timeDiff + 207.56,
+      startTime: timeDiff + 210.56,
     },
     {
       action: {
@@ -7125,14 +7130,14 @@ let tempActions = [
         color: 'red',
         number: '028.5'
       },
-      startTime: timeDiff + 207.57,
+      startTime: timeDiff + 210.57,
     }, {
       action: {
         target3D: 'fParaUvlajDutReg', // r
         color: 'red',
         number: '000.8'
       },
-      startTime: timeDiff + 207.57,
+      startTime: timeDiff + 210.57,
     },
     ///----
     {
@@ -7140,161 +7145,161 @@ let tempActions = [
         target3D: 'Lamp_Red_007',
         material: 'Red_Lamp_On',
       },
-      startTime: timeDiff + 207.58,
+      startTime: timeDiff + 210.58,
     }, {
       action: {
         target3D: 'Lamp_Red_006',
         material: 'Red_Lamp_On',
       },
-      startTime: timeDiff + 207.58,
+      startTime: timeDiff + 210.58,
     }, {
       action: {
         target3D: 'Lamp_Red_005',
         material: 'Red_Lamp_On',
       },
-      startTime: timeDiff + 207.58,
+      startTime: timeDiff + 210.58,
     }, {
       action: {
         target3D: 'Lamp_Red_019',
         material: 'Red_Lamp_Off',
       },
-      startTime: timeDiff + 207.58,
+      startTime: timeDiff + 210.58,
     }, {
       action: {
         target3D: 'Lamp_Green_023',
         material: 'Green_Lamp_On',
       },
-      startTime: timeDiff + 207.58,
+      startTime: timeDiff + 210.58,
     },
     {
       action: {
         target3D: 'Lamp_Red_008',
         material: 'Red_Lamp_On',
       },
-      startTime: timeDiff + 207.58,
+      startTime: timeDiff + 210.58,
     }, {
       action: {
         target3D: 'Lamp_Red_003',
         material: 'Red_Lamp_On',
       },
-      startTime: timeDiff + 207.58,
+      startTime: timeDiff + 210.58,
     }, {
       action: {
         target3D: 'Lamp_Red_002',
         material: 'Red_Lamp_On',
       },
-      startTime: timeDiff + 207.58,
+      startTime: timeDiff + 210.58,
     }, {
       action: {
         target3D: 'Lamp_Red_009',
         material: 'Red_Lamp_On',
       },
-      startTime: timeDiff + 207.58,
+      startTime: timeDiff + 210.58,
     },
     {
       action: {
         target3D: 'Rectangle066',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle067',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle047',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle045',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle046',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle044',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle076',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle075',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle074',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle073',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle082',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle081',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle080',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     {
       action: {
         target3D: 'Rectangle079',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 207.59,
+      startTime: timeDiff + 210.59,
     },
     ////--------------------------------2----------------------------------------//29//-new
     {
       scenarioText: 'Перевести клапан 721 в режим управления «Дист.»',
       sender: 'Система',
       audio: 'tts-19',
-      startTime: timeDiff + 211,
+      startTime: timeDiff + 214,
     },
     {
       action: {
@@ -7302,7 +7307,7 @@ let tempActions = [
         rotation: { y: 1.571 },
       },
       duration: 0.15,
-      startTime: timeDiff + 212,
+      startTime: timeDiff + 215,
       human: true,
     },
     // ilay
@@ -7312,63 +7317,63 @@ let tempActions = [
         color: 'green',
         number: '1.805'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'dpVerh', //2
         color: 'green',
         number: '0.202'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'dpObsh', //3
         color: 'green',
         number: '1.601'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'dpNiz', //4
         color: 'green',
         number: '1.243'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'fHolodDut', //5
         color: 'green',
         number: '5748.'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'pGorDut', //6
         color: 'green',
         number: '3.451'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'urZasDat1', //7
         color: 'green',
         number: '01.17'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'urZasDat2', //8
         color: 'green',
         number: '01.27'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'urZasMeh', //9
         color: 'green',
         number: '0000'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     },
     {
       action: {
@@ -7376,49 +7381,49 @@ let tempActions = [
         color: 'green',
         number: '0155.'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'tVGazT2', //2
         color: 'green',
         number: '0163.'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'tVGazT3', //3
         color: 'green',
         number: '0164.'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'tVGazT4', //4
         color: 'green',
         number: '0150.'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'tVGazT5', //5
         color: 'green',
         number: '06.90'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'tVGazT6', //6
         color: 'green',
         number: '00.40'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'tVGazT7', //7
         color: 'green',
         number: '1209.'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     },
     {
       action: {
@@ -7426,63 +7431,63 @@ let tempActions = [
         color: 'green',
         number: '10.14'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'pTechVodT2', //2
         color: 'green',
         number: '10.14'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'pSjatVozd', //3
         color: 'green',
         number: '04.60'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'pOsyshSjatVozd', //4
         color: 'green',
         number: '04.15'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'pAzotkZatv', //5
         color: 'green',
         number: '2.293'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'tReduct', //6
         color: 'green',
         number: '052.2'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'fVodNaReduct', //7
         color: 'green',
         number: '25.17'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     }, {
       action: {
         target3D: 'fPrirodGaz', //8
         color: 'green',
         number: '2.285'
       },
-      startTime: timeDiff + 212.1,
+      startTime: timeDiff + 215.1,
     },
     ////--------------------------------3----------------------------------------//30//-new
     {
       audio: 'tts-20',
       scenarioText: 'Перевести тумблер из положения «Авт.4» в положение «Дист.3» на маркировке «Атмосферные клапана» «Клапан 1», «Клапан 2» и «Клапан 3» поочерёдно.',
       sender: 'Система',
-      startTime: timeDiff + 213,
+      startTime: timeDiff + 216,
     },
     {
       multi: [
@@ -7504,7 +7509,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 221,
+      startTime: timeDiff + 224,
       human: true,
     },
     // ilay
@@ -7514,63 +7519,63 @@ let tempActions = [
         color: 'green',
         number: '1.823'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'dpVerh', //2
         color: 'green',
         number: '0.203'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'dpObsh', //3
         color: 'green',
         number: '1.565'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'dpNiz', //4
         color: 'green',
         number: '1.209'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'fHolodDut', //5
         color: 'green',
         number: '5677.'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'pGorDut', //6
         color: 'green',
         number: '3.432'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'urZasDat1', //7
         color: 'green',
         number: '01.20'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'urZasDat2', //8
         color: 'green',
         number: '01.29'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'urZasMeh', //9
         color: 'green',
         number: '0000'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     },
     {
       action: {
@@ -7578,49 +7583,49 @@ let tempActions = [
         color: 'green',
         number: '0156.'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'tVGazT2', //2
         color: 'green',
         number: '0163.'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'tVGazT3', //3
         color: 'green',
         number: '0165.'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'tVGazT4', //4
         color: 'green',
         number: '0150.'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'tVGazT5', //5
         color: 'green',
         number: '06.94'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'tVGazT6', //6
         color: 'green',
         number: '00.40'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'tVGazT7', //7
         color: 'green',
         number: '1210.'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     },
     {
       action: {
@@ -7628,68 +7633,68 @@ let tempActions = [
         color: 'green',
         number: '10.14'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'pTechVodT2', //2
         color: 'green',
         number: '10.14'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'pSjatVozd', //3
         color: 'green',
         number: '04.60'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'pOsyshSjatVozd', //4
         color: 'green',
         number: '04.15'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'pAzotkZatv', //5
         color: 'green',
         number: '2.294'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'tReduct', //6
         color: 'green',
         number: '052.2'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'fVodNaReduct', //7
         color: 'green',
         number: '25.16'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     }, {
       action: {
         target3D: 'fPrirodGaz', //8
         color: 'green',
         number: '2.280'
       },
-      startTime: timeDiff + 221.1,
+      startTime: timeDiff + 224.1,
     },
     ////--------------------------------4----------------------------------------//31//-new
     {
       text: 'Уменьшить значение параметра на регуляторе природного газа.',
       audio: 'tts-21',
-      startTime: timeDiff + 222,
+      startTime: timeDiff + 225,
     },
     {
       action: {
         target3D: 'downBtnFPrirGaza_highlight',
       },
-      startTime: timeDiff + 225.1,
+      startTime: timeDiff + 228.1,
       human: true,
     },
     {
@@ -7698,20 +7703,20 @@ let tempActions = [
         color: 'red',
         number: '024.5'
       },
-      startTime: timeDiff + 225.11,
+      startTime: timeDiff + 228.11,
     },
     {
       action: {
         target3D: 'Clone_4_progress bar142',
         material: 'Unic_progress bar_off'
       },
-      startTime: timeDiff + 225.12,
+      startTime: timeDiff + 228.12,
     },
     {
       action: {
         target3D: 'downBtnFPrirGaza_highlight',
       },
-      startTime: timeDiff + 225.5,
+      startTime: timeDiff + 228.5,
       human: true,
     },
     {
@@ -7720,14 +7725,14 @@ let tempActions = [
         color: 'red',
         number: '020.0'
       },
-      startTime: timeDiff + 225.51,
+      startTime: timeDiff + 228.51,
     },
     {
       action: {
         target3D: 'Clone_3_progress bar142',
         material: 'Unic_progress bar_off'
       },
-      startTime: timeDiff + 225.52,
+      startTime: timeDiff + 228.52,
     },
     // ilay
     {
@@ -7736,63 +7741,63 @@ let tempActions = [
         color: 'green',
         number: '1.788'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'dpVerh', //2
         color: 'green',
         number: '0.192'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'dpObsh', //3
         color: 'green',
         number: '1.570'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'dpNiz', //4
         color: 'green',
         number: '1.226'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'fHolodDut', //5
         color: 'green',
         number: '5715.'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'pGorDut', //6
         color: 'green',
         number: '3.425'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'urZasDat1', //7
         color: 'green',
         number: '01.20'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'urZasDat2', //8
         color: 'green',
         number: '01.29'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'urZasMeh', //9
         color: 'green',
         number: '0000'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     },
     {
       action: {
@@ -7800,49 +7805,49 @@ let tempActions = [
         color: 'green',
         number: '0156.'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'tVGazT2', //2
         color: 'green',
         number: '0162.'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'tVGazT3', //3
         color: 'green',
         number: '0165.'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'tVGazT4', //4
         color: 'green',
         number: '0150.'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'tVGazT5', //5
         color: 'green',
         number: '07.91'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'tVGazT6', //6
         color: 'green',
         number: '00.40'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'tVGazT7', //7
         color: 'green',
         number: '1209.'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     },
     {
       action: {
@@ -7850,62 +7855,62 @@ let tempActions = [
         color: 'green',
         number: '10.15'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'pTechVodT2', //2
         color: 'green',
         number: '10.15'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'pSjatVozd', //3
         color: 'green',
         number: '04.68'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'pOsyshSjatVozd', //4
         color: 'green',
         number: '04.15'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'pAzotkZatv', //5
         color: 'green',
         number: '2.293'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'tReduct', //6
         color: 'green',
         number: '052.2'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'fVodNaReduct', //7
         color: 'green',
         number: '25.16'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     }, {
       action: {
         target3D: 'fPrirodGaz', //8
         color: 'green',
         number: '2.278'
       },
-      startTime: timeDiff + 225.53,
+      startTime: timeDiff + 228.53,
     },
     {
       action: {
         target3D: 'downBtnFPrirGaza_highlight',
       },
-      startTime: timeDiff + 226,
+      startTime: timeDiff + 229,
       human: true,
     },
     {
@@ -7914,14 +7919,14 @@ let tempActions = [
         color: 'red',
         number: '017.0'
       },
-      startTime: timeDiff + 226.1,
+      startTime: timeDiff + 229.1,
     },
     {
       action: {
         target3D: 'Clone_2_progress bar142',
         material: 'Unic_progress bar_off'
       },
-      startTime: timeDiff + 226.2,
+      startTime: timeDiff + 229.2,
     },
     // ilay
     {
@@ -7930,63 +7935,63 @@ let tempActions = [
         color: 'green',
         number: '1.727'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'dpVerh', //2
         color: 'green',
         number: '0.193'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'dpObsh', //3
         color: 'green',
         number: '1.1614'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'dpNiz', //4
         color: 'green',
         number: '1.262'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'fHolodDut', //5
         color: 'green',
         number: '2800.'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'pGorDut', //6
         color: 'green',
         number: '3.404'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'urZasDat1', //7
         color: 'green',
         number: '01.20'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'urZasDat2', //8
         color: 'green',
         number: '01.31'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'urZasMeh', //9
         color: 'green',
         number: '0000'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     },
     {
       action: {
@@ -7994,49 +7999,49 @@ let tempActions = [
         color: 'green',
         number: '0157.'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'tVGazT2', //2
         color: 'green',
         number: '0161.'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'tVGazT3', //3
         color: 'green',
         number: '0165.'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'tVGazT4', //4
         color: 'green',
         number: '0150.'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'tVGazT5', //5
         color: 'green',
         number: '06.83'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'tVGazT6', //6
         color: 'green',
         number: '00.40'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'tVGazT7', //7
         color: 'green',
         number: '1210.'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     },
     {
       action: {
@@ -8044,77 +8049,77 @@ let tempActions = [
         color: 'green',
         number: '10.13'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'pTechVodT2', //2
         color: 'green',
         number: '10.13'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'pSjatVozd', //3
         color: 'green',
         number: '04.68'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'pOsyshSjatVozd', //4
         color: 'green',
         number: '04.15'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'pAzotkZatv', //5
         color: 'green',
         number: '2.301'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'tReduct', //6
         color: 'green',
         number: '052.2'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'fVodNaReduct', //7
         color: 'green',
         number: '25.16'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     }, {
       action: {
         target3D: 'fPrirodGaz', //8
         color: 'green',
         number: '1.170'
       },
-      startTime: timeDiff + 226.21,
+      startTime: timeDiff + 229.21,
     },
     {
       action: {
         target3D: 'Rectangle111',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle109',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8122,7 +8127,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8130,7 +8135,7 @@ let tempActions = [
         color: 'red',
         number: '000.1',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8138,7 +8143,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8146,7 +8151,7 @@ let tempActions = [
         color: 'red',
         number: '0098',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8154,7 +8159,7 @@ let tempActions = [
         color: 'red',
         number: '157.8',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8162,7 +8167,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8170,7 +8175,7 @@ let tempActions = [
         color: 'red',
         number: '09.12',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8178,7 +8183,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8186,7 +8191,7 @@ let tempActions = [
         color: 'red',
         number: '014.4',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8194,7 +8199,7 @@ let tempActions = [
         color: 'red',
         number: '01.04',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
@@ -8202,157 +8207,157 @@ let tempActions = [
         color: 'red',
         number: '01.16',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle066',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle067',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle047',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle045',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle046',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle044',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle097',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle076',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle075',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle074',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle073',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle082',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle081',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle080',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     {
       action: {
         target3D: 'Rectangle079',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 226.22,
+      startTime: timeDiff + 229.22,
     },
     ////--------------------------------5----------------------------------------//32//-new
     {
       text: 'Водопроводчик по рации сообщает о выполненных своих операциях.',
       sender: 'Система',
-      startTime: timeDiff + 227,
+      startTime: timeDiff + 230,
     },
     {
       audio: 'tts-vo6',
       text: 'Газ по фурмам закрыт',
       sender: 'Дежурный водопроводчик',
-      startTime: timeDiff + 227.1,
+      startTime: timeDiff + 230.1,
     },
     ////--------------------------------6----------------------------------------//33//-new
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 229.5,
+      startTime: timeDiff + 232.5,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 232,
+      startTime: timeDiff + 235,
       human: true,
     },
     {
       text: 'Природный газ закрыт. На фурмах 3 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo7',
-      startTime: timeDiff + 233,
+      startTime: timeDiff + 236,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 236,
+      startTime: timeDiff + 239,
     },
     {
       audio: 'tts-vo8',
       text: 'Понял, принял.',
       sender: 'Дежурный водопроводчик',
-      startTime: timeDiff + 237,
+      startTime: timeDiff + 240,
     },
     // ilay dp 
     {
@@ -8482,14 +8487,14 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 237.01,
+      startTime: timeDiff + 240.01,
     },
     ////--------------------------------7----------------------------------------//34//-new 
     {
       scenarioText: 'Закрыть задвижку 721.',
       sender: 'Система',
       audio: 'tts-22',
-      startTime: timeDiff + 240,
+      startTime: timeDiff + 243,
     },
     {
       action: { // TODO изменить имена 3Д на индексы
@@ -8497,7 +8502,7 @@ let tempActions = [
         rotation: { y: 0.7854 }, // 45
       },
       duration: 0.3,
-      startTime: timeDiff + 241,
+      startTime: timeDiff + 244,
       human: true,
     },
     {
@@ -8505,14 +8510,14 @@ let tempActions = [
         target3D: 'Lamp_Red_019',
         material: 'Red_Lamp_On'
       },
-      startTime: timeDiff + 241.1,
+      startTime: timeDiff + 244.1,
     },
     {
       action: {
         target3D: 'Lamp_Green_023',
         material: 'Green_Lamp_Off'
       },
-      startTime: timeDiff + 241.2,
+      startTime: timeDiff + 244.2,
     },
     {
       action: {
@@ -8520,7 +8525,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.3,
-      startTime: timeDiff + 243,
+      startTime: timeDiff + 246,
       human: true,
     },
     {
@@ -8528,7 +8533,7 @@ let tempActions = [
         target3D: 'Lamp_Red_019',
         material: 'Unic_Lamp_Red_Off'
       },
-      startTime: timeDiff + 243.1,
+      startTime: timeDiff + 246.1,
     },
     // ilay
     {
@@ -8537,7 +8542,7 @@ let tempActions = [
         color: 'red',
         number: '01.94',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8545,7 +8550,7 @@ let tempActions = [
         color: 'red',
         number: '016.4',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8553,7 +8558,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8561,7 +8566,7 @@ let tempActions = [
         color: 'red',
         number: '0098',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8569,7 +8574,7 @@ let tempActions = [
         color: 'red',
         number: '200.2',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8577,7 +8582,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8585,7 +8590,7 @@ let tempActions = [
         color: 'red',
         number: '09.12',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8593,7 +8598,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8601,7 +8606,7 @@ let tempActions = [
         color: 'red',
         number: '045.5',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8609,7 +8614,7 @@ let tempActions = [
         color: 'red',
         number: '0101',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8617,7 +8622,7 @@ let tempActions = [
         color: 'red',
         number: '00.76',
       },
-      startTime: timeDiff + 243.11,
+      startTime: timeDiff + 246.11,
     },
     {
       action: {
@@ -8625,63 +8630,63 @@ let tempActions = [
         color: 'green',
         number: '1.350'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'dpVerh', //2
         color: 'green',
         number: '0.0240'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'dpObsh', //3
         color: 'green',
         number: '1.525'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'dpNiz', //4
         color: 'green',
         number: '1.233'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'fHolodDut', //5
         color: 'green',
         number: '5000.'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'pGorDut', //6
         color: 'green',
         number: '3.325'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'urZasDat1', //7
         color: 'green',
         number: '00.75'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'urZasDat2', //8
         color: 'green',
         number: '01.95'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'urZasMeh', //9
         color: 'green',
         number: '0000'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     },
     {
       action: {
@@ -8689,49 +8694,49 @@ let tempActions = [
         color: 'green',
         number: '0157.'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'tVGazT2', //2
         color: 'green',
         number: '0161.'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'tVGazT3', //3
         color: 'green',
         number: '0162.'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'tVGazT4', //4
         color: 'green',
         number: '0141.'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'tVGazT5', //5
         color: 'green',
         number: '06.50'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'tVGazT6', //6
         color: 'green',
         number: '00.60'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     }, {
       action: {
         target3D: 'tVGazT7', //7
         color: 'green',
         number: '1210.'
       },
-      startTime: timeDiff + 243.12,
+      startTime: timeDiff + 246.12,
     },
     // ilay dp F 
     {
@@ -8879,7 +8884,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 243.13,
+      startTime: timeDiff + 246.13,
     },
     // 1.5 сценарий ------------------------------------------------------------------//35//-new 
     {
@@ -8887,40 +8892,40 @@ let tempActions = [
       sender: 'Система',
       audio: 'tts-23',
       lifeTime: '09:00:00',
-      startTime: timeDiff + 245,
+      startTime: timeDiff + 248,
     },
     ////--------------------------------1----------------------------------------//36//-new 
     {
       text: 'Делаем 2,5 кг.',
       sender: 'Мастер печи',
       audio: 'tts-vo9',
-      startTime: timeDiff + 252,
+      startTime: timeDiff + 255,
     },
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 255.5,
+      startTime: timeDiff + 258.5,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 257.5,
+      startTime: timeDiff + 260.5,
       human: true,
     },
     {
       text: 'Делаю 2,5 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo10',
-      startTime: timeDiff + 258,
+      startTime: timeDiff + 261,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 261,
+      startTime: timeDiff + 264,
     },
     // ilay dp 
     {
@@ -8931,14 +8936,14 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 261.01,
+      startTime: timeDiff + 264.01,
     },
     ////--------------------------------2----------------------------------------//37//-new 
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 2,5кг.',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 263,
+      startTime: timeDiff + 266,
     },
     {
       action: {
@@ -8946,7 +8951,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 264,
+      startTime: timeDiff + 267,
       human: true,
     },
     {
@@ -8954,7 +8959,7 @@ let tempActions = [
         target3D: 'Lamp_Red_020',
         material: 'Unic_Lamp_Red_Off',
       },
-      startTime: timeDiff + 264.1,
+      startTime: timeDiff + 267.1,
     },
     {
       action: {
@@ -8962,7 +8967,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 265,
+      startTime: timeDiff + 268,
       human: true,
     },
     {
@@ -8971,7 +8976,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 266,
+      startTime: timeDiff + 269,
       human: true,
     },
     {
@@ -8980,7 +8985,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 267,
+      startTime: timeDiff + 270,
       human: true,
     },
     {
@@ -9061,7 +9066,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 267.1,
+      startTime: timeDiff + 270.1,
     },
     // ilay bzu F
     {
@@ -9179,7 +9184,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 267.101,
+      startTime: timeDiff + 270.101,
     },
     {
       action: {
@@ -9187,63 +9192,63 @@ let tempActions = [
         color: 'green',
         number: '1.928'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'dpVerh', //2
         color: 'green',
         number: '0.211'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'dpObsh', //3
         color: 'green',
         number: '1.601'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'dpNiz', //4
         color: 'green',
         number: '1.225'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'fHolodDut', //5
         color: 'green',
         number: '5464.'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'pGorDut', //6
         color: 'green',
         number: '2.561'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'urZasDat1', //7
         color: 'green',
         number: '00.89'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'urZasDat2', //8
         color: 'green',
         number: '01.04'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'urZasMeh', //9
         color: 'green',
         number: '0000'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     },
     {
       action: {
@@ -9251,49 +9256,49 @@ let tempActions = [
         color: 'green',
         number: '0167.'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'tVGazT2', //2
         color: 'green',
         number: '0171.'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'tVGazT3', //3
         color: 'green',
         number: '0171.'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'tVGazT4', //4
         color: 'green',
         number: '0156.'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'tVGazT5', //5
         color: 'green',
         number: '06.85'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'tVGazT6', //6
         color: 'green',
         number: '00.39'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     }, {
       action: {
         target3D: 'tVGazT7', //7
         color: 'green',
         number: '1208.'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     },
     {
       action: {
@@ -9301,7 +9306,7 @@ let tempActions = [
         color: 'green',
         number: '25.12'
       },
-      startTime: timeDiff + 267.11,
+      startTime: timeDiff + 270.11,
     },
     {
       action: {
@@ -9309,7 +9314,7 @@ let tempActions = [
         color: 'red',
         number: '00.64',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     {
       action: {
@@ -9317,7 +9322,7 @@ let tempActions = [
         color: 'red',
         number: '009.5',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     {
       action: {
@@ -9325,7 +9330,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     {
       action: {
@@ -9333,7 +9338,7 @@ let tempActions = [
         color: 'red',
         number: '0098',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     {
       action: {
@@ -9341,7 +9346,7 @@ let tempActions = [
         color: 'red',
         number: '160.1',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     {
       action: {
@@ -9349,7 +9354,7 @@ let tempActions = [
         color: 'red',
         number: '01.06',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     {
       action: {
@@ -9357,7 +9362,7 @@ let tempActions = [
         color: 'red',
         number: '093.0',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     {
       action: {
@@ -9365,7 +9370,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     {
       action: {
@@ -9373,7 +9378,7 @@ let tempActions = [
         color: 'red',
         number: '018.3',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     {
       action: {
@@ -9381,7 +9386,7 @@ let tempActions = [
         color: 'red',
         number: '0101',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     {
       action: {
@@ -9389,7 +9394,7 @@ let tempActions = [
         color: 'red',
         number: '00.87',
       },
-      startTime: timeDiff + 267.12,
+      startTime: timeDiff + 270.12,
     },
     ////--------------------------------3----------------------------------------//38//-new      ////    2   //
     {
@@ -9397,7 +9402,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 268,
+      startTime: timeDiff + 271,
     },
     {
       multi: [
@@ -9412,7 +9417,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 269,
+      startTime: timeDiff + 272,
       human: true,
     },
     ////--------------------------------4----------------------------------------//39//-new
@@ -9420,53 +9425,53 @@ let tempActions = [
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 273,
+      startTime: timeDiff + 276,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 275,
+      startTime: timeDiff + 278,
       human: true,
     },
     {
       text: 'На фурмах 2,5 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo11',
-      startTime: timeDiff + 276,
+      startTime: timeDiff + 279,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 280,
+      startTime: timeDiff + 283,
     },
     {
       text: 'Делаем 2 кг.',
       sender: 'Мастер печи',
       audio: 'tts-vo12',
-      startTime: timeDiff + 281,
+      startTime: timeDiff + 284,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 281.1,
+      startTime: timeDiff + 284.1,
       human: true,
     },
     {
       text: 'Делаю 2 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo13',
-      startTime: timeDiff + 282,
+      startTime: timeDiff + 285,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 284.9,
+      startTime: timeDiff + 287.9,
     },
     // ilay bzu
     {
@@ -9523,7 +9528,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 284.90999999999997,
+      startTime: timeDiff + 287.90999999999997,
     },
     {
       action: {
@@ -9531,63 +9536,63 @@ let tempActions = [
         color: 'green',
         number: '0.071'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     }, {
       action: {
         target3D: 'dpVerh', //2
         color: 'green',
         number: '0.226'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     }, {
       action: {
         target3D: 'dpObsh', //3
         color: 'green',
         number: '1.599'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     }, {
       action: {
         target3D: 'dpNiz', //4
         color: 'green',
         number: '1.220'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     }, {
       action: {
         target3D: 'fHolodDut', //5
         color: 'green',
         number: '5405.'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     }, {
       action: {
         target3D: 'pGorDut', //6
         color: 'green',
         number: '2.495'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     }, {
       action: {
         target3D: 'urZasDat1', //7
         color: 'green',
         number: '00.92'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     }, {
       action: {
         target3D: 'urZasDat2', //8
         color: 'green',
         number: '01.14'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     }, {
       action: {
         target3D: 'urZasMeh', //9
         color: 'green',
         number: '0000'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     },
     {
       action: {
@@ -9595,21 +9600,21 @@ let tempActions = [
         color: 'green',
         number: '0158.'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     }, {
       action: {
         target3D: 'tVGazT2', //2
         color: 'green',
         number: '0167.'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     }, {
       action: {
         target3D: 'tVGazT3', //3
         color: 'green',
         number: '0158.'
       },
-      startTime: timeDiff + 284.91999999999996,
+      startTime: timeDiff + 287.91999999999996,
     },
     {
       action: {
@@ -9617,7 +9622,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     {
       action: {
@@ -9625,7 +9630,7 @@ let tempActions = [
         color: 'red',
         number: '000.1',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     {
       action: {
@@ -9633,7 +9638,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     {
       action: {
@@ -9641,7 +9646,7 @@ let tempActions = [
         color: 'red',
         number: '0098',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     {
       action: {
@@ -9649,7 +9654,7 @@ let tempActions = [
         color: 'red',
         number: '052.8',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     {
       action: {
@@ -9657,7 +9662,7 @@ let tempActions = [
         color: 'red',
         number: '01.04',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     {
       action: {
@@ -9665,7 +9670,7 @@ let tempActions = [
         color: 'red',
         number: '093.0',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     {
       action: {
@@ -9673,7 +9678,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     {
       action: {
@@ -9681,7 +9686,7 @@ let tempActions = [
         color: 'red',
         number: '047.0',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     {
       action: {
@@ -9689,7 +9694,7 @@ let tempActions = [
         color: 'red',
         number: '0101',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     {
       action: {
@@ -9697,49 +9702,49 @@ let tempActions = [
         color: 'red',
         number: '00.89',
       },
-      startTime: timeDiff + 284.93,
+      startTime: timeDiff + 287.93,
     },
     ////--------------------------------5----------------------------------------//40//-new /////   2   ////      4 раза из сценария
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 2кг.',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 285,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: -0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 286,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 287,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: -0.785 },
-      },
-      duration: 0.15,
       startTime: timeDiff + 288,
-      human: true,
     },
     {
       action: {
         target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
+        rotation: { y: -0.785 },
       },
       duration: 0.15,
       startTime: timeDiff + 289,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: 0 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 290,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: -0.785 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 291,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: 0 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 292,
       human: true,
     },
     {
@@ -9756,7 +9761,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 290,
+      startTime: timeDiff + 293,
     },
     {
       action: {
@@ -9767,7 +9772,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 291,
+      startTime: timeDiff + 294,
     },
     // ilay
     {
@@ -9776,7 +9781,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9784,7 +9789,7 @@ let tempActions = [
         color: 'red',
         number: '018.2',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9792,7 +9797,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9800,7 +9805,7 @@ let tempActions = [
         color: 'red',
         number: '0098',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9808,7 +9813,7 @@ let tempActions = [
         color: 'red',
         number: '261.4',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9816,7 +9821,7 @@ let tempActions = [
         color: 'red',
         number: '00.66',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9824,7 +9829,7 @@ let tempActions = [
         color: 'red',
         number: '094.2',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9832,7 +9837,7 @@ let tempActions = [
         color: 'red',
         number: '012.1',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9840,7 +9845,7 @@ let tempActions = [
         color: 'red',
         number: '045.2',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9848,7 +9853,7 @@ let tempActions = [
         color: 'red',
         number: '0002',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9856,7 +9861,7 @@ let tempActions = [
         color: 'red',
         number: '01.10',
       },
-      startTime: timeDiff + 291.01,
+      startTime: timeDiff + 294.01,
     },
     {
       action: {
@@ -9864,63 +9869,63 @@ let tempActions = [
         color: 'green',
         number: '0.476'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'dpVerh', //2
         color: 'green',
         number: '0.232'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'dpObsh', //3
         color: 'green',
         number: '1.507'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'dpNiz', //4
         color: 'green',
         number: '1.203'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'fHolodDut', //5
         color: 'green',
         number: '5008.'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'pGorDut', //6
         color: 'green',
         number: '2.086'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'urZasDat1', //7
         color: 'green',
         number: '01.27'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'urZasDat2', //8
         color: 'green',
         number: '01.53'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'urZasMeh', //9
         color: 'green',
         number: '0000'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     },
     {
       action: {
@@ -9928,21 +9933,21 @@ let tempActions = [
         color: 'green',
         number: '0166.'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'tVGazT2', //2
         color: 'green',
         number: '0160.'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'tVGazT3', //3
         color: 'green',
         number: '0170.'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     },
     {
       action: {
@@ -9950,28 +9955,28 @@ let tempActions = [
         color: 'green',
         number: '0147.'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'tVGazT5', //5
         color: 'green',
         number: '00.26'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'tVGazT6', //6
         color: 'green',
         number: '00.39'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'tVGazT7', //7
         color: 'green',
         number: '1205.'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     },
     {
       action: {
@@ -9979,42 +9984,42 @@ let tempActions = [
         color: 'green',
         number: '10.15'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'pTechVodT2', //2
         color: 'green',
         number: '10.15'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'pSjatVozd', //3
         color: 'green',
         number: '04.74'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'pOsyshSjatVozd', //4
         color: 'green',
         number: '04.70'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'pAzotkZatv', //5
         color: 'green',
         number: '2.330'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     }, {
       action: {
         target3D: 'tReduct', //6
         color: 'green',
         number: '047.4'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     },
     {
       action: {
@@ -10022,7 +10027,7 @@ let tempActions = [
         color: 'green',
         number: '24.19'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     },
     {
       action: {
@@ -10030,7 +10035,7 @@ let tempActions = [
         color: 'green',
         number: '2.285'
       },
-      startTime: timeDiff + 291.02,
+      startTime: timeDiff + 294.02,
     },
     // bzu F
     {
@@ -10151,7 +10156,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 291.03,
+      startTime: timeDiff + 294.03,
     },//  dp F 
     {
       action: {
@@ -10297,7 +10302,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 291.04,
+      startTime: timeDiff + 294.04,
     },
     ////-----------------------------------41//-new//
     {
@@ -10305,7 +10310,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 292,
+      startTime: timeDiff + 295,
     },
     {
       multi: [
@@ -10320,7 +10325,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 296.1,
+      startTime: timeDiff + 299.1,
       human: true,
     },
     ////--------------------------------6----------------------------------------//42//-new ////   4   ////
@@ -10328,79 +10333,79 @@ let tempActions = [
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 297,
+      startTime: timeDiff + 300,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 299,
+      startTime: timeDiff + 302,
       human: true,
     },
     {
       text: 'На фурмах 2 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo14',
-      startTime: timeDiff + 300,
+      startTime: timeDiff + 303,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 303,
+      startTime: timeDiff + 306,
     },
     {
       text: 'Делаем 1,5 кг.',
       sender: 'Мастер печи',
       audio: 'tts-vo15',
-      startTime: timeDiff + 304,
+      startTime: timeDiff + 307,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 304.1,
+      startTime: timeDiff + 307.1,
       human: true,
     },
     {
       text: 'Выполняю.',
       sender: 'Газовщик',
       audio: 'tts-vo16',
-      startTime: timeDiff + 305,
+      startTime: timeDiff + 308,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 308,
+      startTime: timeDiff + 311,
     },
     ////--------------------------------7----------------------------------------//43//-new
     {
       scenarioText: 'Сообщить по телефону в «ЭВС».',
       sender: 'Система',
       audio: 'telephone_say',
-      startTime: timeDiff + 310,
+      startTime: timeDiff + 313,
     },
     {
       action: {
         target3D: 'PhoneButton020',
       },
-      startTime: timeDiff + 312,
+      startTime: timeDiff + 315,
       human: true,
     },
     {
       text: 'Разгрузка на 20000.',
       sender: 'Газовщик',
-      startTime: timeDiff + 314,
+      startTime: timeDiff + 317,
       audio: 'tts-vo17',
     },
     {
       text: 'Принял',
       sender: 'Дежурный водопроводчик',
       audio: 'tts-vo18',
-      startTime: timeDiff + 318.5,
+      startTime: timeDiff + 321.5,
     },
     // ilay dp  bzu F old
     {
@@ -10660,402 +10665,402 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 318.51,
+      startTime: timeDiff + 321.51,
     },
     {
       action: {
         target3D: 'Rectangle111',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle109',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle113',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle112',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle071',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle072',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle069',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle068',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle066',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle067',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle086',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle087',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle088',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle089',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle090',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle091',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle097',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle098',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle099',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle100',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle101',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle102',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle103',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle104',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle105',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle106',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle107',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle092',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle093',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle094',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle095',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle096',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle085',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle058',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle057',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle059',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle060',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle076',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle075',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle074',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle073',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
         target3D: 'Rectangle079',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     // {
     //   action: {
     //     target3D: 'Rectangle080', 
     //     material: 'ButtonLightOn',
     //   },
-    // startTime: timeDiff + 318.52,
+    // startTime: timeDiff + 321.52,
     // },
     {
       action: {
         target3D: 'Rectangle064',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle114',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle046',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle046',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle041',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle039',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle029',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle031',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle034',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle036',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle048',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     }, {
       action: {
         target3D: 'Rectangle050',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11063,7 +11068,7 @@ let tempActions = [
         color: 'red',
         number: '0.00',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11071,7 +11076,7 @@ let tempActions = [
         color: 'red',
         number: '000.1',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11079,7 +11084,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11087,7 +11092,7 @@ let tempActions = [
         color: 'red',
         number: '0028',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11095,7 +11100,7 @@ let tempActions = [
         color: 'red',
         number: '085.7',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11103,7 +11108,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11111,7 +11116,7 @@ let tempActions = [
         color: 'red',
         number: '015.5',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11119,7 +11124,7 @@ let tempActions = [
         color: 'red',
         number: '00.13',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11127,7 +11132,7 @@ let tempActions = [
         color: 'red',
         number: '044.4',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11135,7 +11140,7 @@ let tempActions = [
         color: 'red',
         number: '0104',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11143,7 +11148,7 @@ let tempActions = [
         color: 'red',
         number: '00.75',
       },
-      startTime: timeDiff + 318.52,
+      startTime: timeDiff + 321.52,
     },
     {
       action: {
@@ -11151,7 +11156,7 @@ let tempActions = [
         color: 'green',
         number: '0314',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11159,7 +11164,7 @@ let tempActions = [
         color: 'green',
         number: '0181',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11167,7 +11172,7 @@ let tempActions = [
         color: 'green',
         number: '1278',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11175,7 +11180,7 @@ let tempActions = [
         color: 'green',
         number: '0967',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11183,7 +11188,7 @@ let tempActions = [
         color: 'green',
         number: '4248',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11191,7 +11196,7 @@ let tempActions = [
         color: 'green',
         number: '1591',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11199,7 +11204,7 @@ let tempActions = [
         color: 'green',
         number: '0074',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11207,7 +11212,7 @@ let tempActions = [
         color: 'green',
         number: '0124',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11215,7 +11220,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11223,7 +11228,7 @@ let tempActions = [
         color: 'green',
         number: '0165',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11231,7 +11236,7 @@ let tempActions = [
         color: 'green',
         number: '0177',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11239,7 +11244,7 @@ let tempActions = [
         color: 'green',
         number: '0171',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11247,7 +11252,7 @@ let tempActions = [
         color: 'green',
         number: '0156',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11255,7 +11260,7 @@ let tempActions = [
         color: 'green',
         number: '0738',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11263,7 +11268,7 @@ let tempActions = [
         color: 'green',
         number: '1282',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     {
       action: {
@@ -11271,49 +11276,49 @@ let tempActions = [
         color: 'green',
         number: '1710',
       },
-      startTime: timeDiff + 318.53,
+      startTime: timeDiff + 321.53,
     },
     ////--------------------------------8----------------------------------------//44//-new
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 1,5кг.',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 320,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: -0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 321,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 322,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: -0.785 },
-      },
-      duration: 0.15,
       startTime: timeDiff + 323,
-      human: true,
     },
     {
       action: {
         target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
+        rotation: { y: -0.785 },
       },
       duration: 0.15,
       startTime: timeDiff + 324,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: 0 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 325,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: -0.785 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 326,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: 0 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 327,
       human: true,
     },
     {
@@ -11341,7 +11346,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 324.5,
+      startTime: timeDiff + 327.5,
     },
     // ilay
     {
@@ -11355,7 +11360,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11363,7 +11368,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11371,7 +11376,7 @@ let tempActions = [
         color: 'red',
         number: '000.1',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11379,7 +11384,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11387,7 +11392,7 @@ let tempActions = [
         color: 'red',
         number: '0028',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11395,7 +11400,7 @@ let tempActions = [
         color: 'red',
         number: '189.1',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11403,7 +11408,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11411,7 +11416,7 @@ let tempActions = [
         color: 'red',
         number: '016.4',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11419,7 +11424,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11427,7 +11432,7 @@ let tempActions = [
         color: 'red',
         number: '044.4',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11435,7 +11440,7 @@ let tempActions = [
         color: 'red',
         number: '0104',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11443,7 +11448,7 @@ let tempActions = [
         color: 'red',
         number: '00.76',
       },
-      startTime: timeDiff + 324.51,
+      startTime: timeDiff + 327.51,
     },
     {
       action: {
@@ -11451,7 +11456,7 @@ let tempActions = [
         color: 'green',
         number: '0312',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11459,7 +11464,7 @@ let tempActions = [
         color: 'green',
         number: '0178',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11467,7 +11472,7 @@ let tempActions = [
         color: 'green',
         number: '1244',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11475,7 +11480,7 @@ let tempActions = [
         color: 'green',
         number: '0946',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11483,7 +11488,7 @@ let tempActions = [
         color: 'green',
         number: '4257',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11491,7 +11496,7 @@ let tempActions = [
         color: 'green',
         number: '1590',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11499,7 +11504,7 @@ let tempActions = [
         color: 'green',
         number: '0075',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11507,7 +11512,7 @@ let tempActions = [
         color: 'green',
         number: '0129',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11515,7 +11520,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11523,7 +11528,7 @@ let tempActions = [
         color: 'green',
         number: '0161',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11531,7 +11536,7 @@ let tempActions = [
         color: 'green',
         number: '0179',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11539,7 +11544,7 @@ let tempActions = [
         color: 'green',
         number: '0171',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11547,7 +11552,7 @@ let tempActions = [
         color: 'green',
         number: '0156',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     {
       action: {
@@ -11555,7 +11560,7 @@ let tempActions = [
         color: 'green',
         number: '1282',
       },
-      startTime: timeDiff + 324.52,
+      startTime: timeDiff + 327.52,
     },
     ////-----------------------------------45//-new//
     {
@@ -11563,7 +11568,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 325,
+      startTime: timeDiff + 328,
     }, {
       multi: [
         {
@@ -11577,7 +11582,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 329.1,
+      startTime: timeDiff + 332.1,
       human: true,
     },
     ////--------------------------------9----------------------------------------//46//-new
@@ -11585,55 +11590,55 @@ let tempActions = [
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 330,
+      startTime: timeDiff + 333,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
       duration: 0.15,
-      startTime: timeDiff + 332,
+      startTime: timeDiff + 335,
       human: true,
     },
     {
       text: 'На фурмах 1,5 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo19',
-      startTime: timeDiff + 333,
+      startTime: timeDiff + 336,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 335,
+      startTime: timeDiff + 338,
     },
     {
       text: 'Делаем 1 кг.',
       sender: 'Мастер печи',
       audio: 'tts-vo20',
-      startTime: timeDiff + 338,
+      startTime: timeDiff + 341,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
       duration: 0.15,
-      startTime: timeDiff + 338.1,
+      startTime: timeDiff + 341.1,
       human: true,
     },
     {
       text: 'Делаю 1.',
       sender: 'Газовщик',
       audio: 'tts-vo21',
-      startTime: timeDiff + 339,
+      startTime: timeDiff + 342,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 342,
+      startTime: timeDiff + 345,
     },
     // ilay
     {
@@ -11642,7 +11647,7 @@ let tempActions = [
         color: 'green',
         number: '0302',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11650,7 +11655,7 @@ let tempActions = [
         color: 'green',
         number: '0153',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11658,7 +11663,7 @@ let tempActions = [
         color: 'green',
         number: '1106',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11666,7 +11671,7 @@ let tempActions = [
         color: 'green',
         number: '0846',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11674,7 +11679,7 @@ let tempActions = [
         color: 'green',
         number: '3989',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11682,7 +11687,7 @@ let tempActions = [
         color: 'green',
         number: '1411',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11690,7 +11695,7 @@ let tempActions = [
         color: 'green',
         number: '0095',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11698,7 +11703,7 @@ let tempActions = [
         color: 'green',
         number: '0144',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11706,7 +11711,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11714,7 +11719,7 @@ let tempActions = [
         color: 'green',
         number: '0172',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11722,7 +11727,7 @@ let tempActions = [
         color: 'green',
         number: '0174',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11730,7 +11735,7 @@ let tempActions = [
         color: 'green',
         number: '0152',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11738,7 +11743,7 @@ let tempActions = [
         color: 'green',
         number: '0704',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11746,7 +11751,7 @@ let tempActions = [
         color: 'green',
         number: '0239',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11754,7 +11759,7 @@ let tempActions = [
         color: 'green',
         number: '1281',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11762,7 +11767,7 @@ let tempActions = [
         color: 'green',
         number: '1469',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11770,7 +11775,7 @@ let tempActions = [
         color: 'green',
         number: '0461',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
@@ -11778,27 +11783,27 @@ let tempActions = [
         color: 'green',
         number: '2438',
       },
-      startTime: timeDiff + 342.01,
+      startTime: timeDiff + 345.01,
     },
     {
       action: {
         target3D: 'Rectangle111',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     }, {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
         target3D: 'Rectangle109',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11806,7 +11811,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11814,7 +11819,7 @@ let tempActions = [
         color: 'red',
         number: '000.4',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11822,7 +11827,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11830,7 +11835,7 @@ let tempActions = [
         color: 'red',
         number: '0028',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11838,7 +11843,7 @@ let tempActions = [
         color: 'red',
         number: '303.3',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11846,7 +11851,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11854,7 +11859,7 @@ let tempActions = [
         color: 'red',
         number: '016.4',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11862,7 +11867,7 @@ let tempActions = [
         color: 'red',
         number: '001.4',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11870,7 +11875,7 @@ let tempActions = [
         color: 'red',
         number: '047.0',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11878,7 +11883,7 @@ let tempActions = [
         color: 'red',
         number: '0104',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     {
       action: {
@@ -11886,49 +11891,49 @@ let tempActions = [
         color: 'red',
         number: '00.93',
       },
-      startTime: timeDiff + 342.02,
+      startTime: timeDiff + 345.02,
     },
     ////--------------------------------10----------------------------------------//47//-new
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 1кг.',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 345,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: -0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 346,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 347,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: -0.785 },
-      },
-      duration: 0.15,
       startTime: timeDiff + 348,
-      human: true,
     },
     {
       action: {
         target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
+        rotation: { y: -0.785 },
       },
       duration: 0.15,
       startTime: timeDiff + 349,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: 0 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 350,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: -0.785 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 351,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: 0 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 352,
       human: true,
     },
     {
@@ -11941,7 +11946,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 350,
+      startTime: timeDiff + 353,
     },
     // ilay dp f new
     {
@@ -12092,7 +12097,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 350.01,
+      startTime: timeDiff + 353.01,
     },
     {
       action: {
@@ -12100,7 +12105,7 @@ let tempActions = [
         color: 'green',
         number: '0259',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12108,7 +12113,7 @@ let tempActions = [
         color: 'green',
         number: '0107',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12116,7 +12121,7 @@ let tempActions = [
         color: 'green',
         number: '0836',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12124,7 +12129,7 @@ let tempActions = [
         color: 'green',
         number: '0647',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12132,7 +12137,7 @@ let tempActions = [
         color: 'green',
         number: '3328',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12140,7 +12145,7 @@ let tempActions = [
         color: 'green',
         number: '1.094',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12148,7 +12153,7 @@ let tempActions = [
         color: 'green',
         number: '01.13',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12156,7 +12161,7 @@ let tempActions = [
         color: 'green',
         number: '0144',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12164,7 +12169,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12172,7 +12177,7 @@ let tempActions = [
         color: 'green',
         number: '0181',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12180,7 +12185,7 @@ let tempActions = [
         color: 'green',
         number: '0098',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12188,7 +12193,7 @@ let tempActions = [
         color: 'green',
         number: '0182',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12196,7 +12201,7 @@ let tempActions = [
         color: 'green',
         number: '0166',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12204,7 +12209,7 @@ let tempActions = [
         color: 'green',
         number: '0782',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12212,7 +12217,7 @@ let tempActions = [
         color: 'green',
         number: '0039',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12220,7 +12225,7 @@ let tempActions = [
         color: 'green',
         number: '1198',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12228,7 +12233,7 @@ let tempActions = [
         color: 'green',
         number: '1112',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12236,7 +12241,7 @@ let tempActions = [
         color: 'green',
         number: '1113',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12244,7 +12249,7 @@ let tempActions = [
         color: 'green',
         number: '1467',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12252,7 +12257,7 @@ let tempActions = [
         color: 'green',
         number: '0112',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12260,7 +12265,7 @@ let tempActions = [
         color: 'green',
         number: '2344',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12268,21 +12273,21 @@ let tempActions = [
         color: 'green',
         number: '2473',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
         target3D: 'Rectangle111',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12290,7 +12295,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12298,7 +12303,7 @@ let tempActions = [
         color: 'red',
         number: '093.5',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12306,7 +12311,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12314,7 +12319,7 @@ let tempActions = [
         color: 'red',
         number: '0028',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12322,7 +12327,7 @@ let tempActions = [
         color: 'red',
         number: '124.3',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12330,7 +12335,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12338,7 +12343,7 @@ let tempActions = [
         color: 'red',
         number: '000.2',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12346,7 +12351,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12354,7 +12359,7 @@ let tempActions = [
         color: 'red',
         number: '015.2',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12362,7 +12367,7 @@ let tempActions = [
         color: 'red',
         number: '0099',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     {
       action: {
@@ -12370,7 +12375,7 @@ let tempActions = [
         color: 'red',
         number: '00.93',
       },
-      startTime: timeDiff + 350.02,
+      startTime: timeDiff + 353.02,
     },
     ////-----------------------------------48//-new//
     {
@@ -12378,7 +12383,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 351,
+      startTime: timeDiff + 354,
     }, {
       multi: [
         {
@@ -12392,7 +12397,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 355.1,
+      startTime: timeDiff + 358.1,
       human: true,
     },
     ////--------------------------------11----------------------------------------//49//-new   
@@ -12400,53 +12405,53 @@ let tempActions = [
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 356,
+      startTime: timeDiff + 359,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 358,
+      startTime: timeDiff + 361,
       human: true,
     },
     {
       text: 'На фурмах 1 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo22',
-      startTime: timeDiff + 359,
+      startTime: timeDiff + 362,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 364,
+      startTime: timeDiff + 367,
     },
     {
       text: 'Делаем 0,8 кг. Открываем свечу.',
       sender: 'Мастер печи',
       audio: 'tts-vo23',
-      startTime: timeDiff + 365,
+      startTime: timeDiff + 368,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 368,
+      startTime: timeDiff + 371,
       human: true,
     },
     {
       text: 'Приступаю к выполнению.',
       sender: 'Газовщик',
       audio: 'tts-vo24',
-      startTime: timeDiff + 369,
+      startTime: timeDiff + 372,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 372,
+      startTime: timeDiff + 375,
     },
     // ilay ne vido
     {
@@ -12456,7 +12461,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 372.1,
+      startTime: timeDiff + 375.1,
     },
     {
       action: {
@@ -12464,7 +12469,7 @@ let tempActions = [
         color: 'red',
         number: '00.26',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     {
       action: {
@@ -12472,7 +12477,7 @@ let tempActions = [
         color: 'red',
         number: '093.8',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     {
       action: {
@@ -12480,7 +12485,7 @@ let tempActions = [
         color: 'red',
         number: '023.5',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     {
       action: {
@@ -12488,7 +12493,7 @@ let tempActions = [
         color: 'red',
         number: '0003',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     {
       action: {
@@ -12496,7 +12501,7 @@ let tempActions = [
         color: 'red',
         number: '112.0',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     {
       action: {
@@ -12504,7 +12509,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     {
       action: {
@@ -12512,7 +12517,7 @@ let tempActions = [
         color: 'red',
         number: '000.2',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     {
       action: {
@@ -12520,7 +12525,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     {
       action: {
@@ -12528,7 +12533,7 @@ let tempActions = [
         color: 'red',
         number: '045.4',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     {
       action: {
@@ -12536,7 +12541,7 @@ let tempActions = [
         color: 'red',
         number: '0099',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     {
       action: {
@@ -12544,14 +12549,14 @@ let tempActions = [
         color: 'red',
         number: '01.21',
       },
-      startTime: timeDiff + 372.12,
+      startTime: timeDiff + 375.12,
     },
     ////--------------------------------12----------------------------------------//50//-new
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ»',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 375,
+      startTime: timeDiff + 378,
     },
     {
       action: {
@@ -12559,7 +12564,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 376,
+      startTime: timeDiff + 379,
       human: true,
     },
     {
@@ -12568,7 +12573,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 377,
+      startTime: timeDiff + 380,
       human: true,
     },
     {
@@ -12581,7 +12586,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 377.1,
+      startTime: timeDiff + 380.1,
     },
     // ilay   tables-NO
     {
@@ -12591,7 +12596,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 377.11,
+      startTime: timeDiff + 380.11,
     },
     {
       action: {
@@ -12599,7 +12604,7 @@ let tempActions = [
         color: 'green',
         number: '0252',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12607,7 +12612,7 @@ let tempActions = [
         color: 'green',
         number: '0096',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12615,7 +12620,7 @@ let tempActions = [
         color: 'green',
         number: '0756',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12623,7 +12628,7 @@ let tempActions = [
         color: 'green',
         number: '0592',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12631,7 +12636,7 @@ let tempActions = [
         color: 'green',
         number: '3211',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12639,7 +12644,7 @@ let tempActions = [
         color: 'green',
         number: '1012',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12647,7 +12652,7 @@ let tempActions = [
         color: 'green',
         number: '01.28',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12655,7 +12660,7 @@ let tempActions = [
         color: 'green',
         number: '0166',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12663,7 +12668,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12671,7 +12676,7 @@ let tempActions = [
         color: 'green',
         number: '0189',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12679,7 +12684,7 @@ let tempActions = [
         color: 'green',
         number: '0192',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12687,7 +12692,7 @@ let tempActions = [
         color: 'green',
         number: '0154',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12695,7 +12700,7 @@ let tempActions = [
         color: 'green',
         number: '0154',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12703,7 +12708,7 @@ let tempActions = [
         color: 'green',
         number: '0650',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12711,7 +12716,7 @@ let tempActions = [
         color: 'green',
         number: '0039',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12719,7 +12724,7 @@ let tempActions = [
         color: 'green',
         number: '1159',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
@@ -12727,21 +12732,21 @@ let tempActions = [
         color: 'green',
         number: '1463',
       },
-      startTime: timeDiff + 377.12,
+      startTime: timeDiff + 380.12,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
         target3D: 'Rectangle057',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12749,7 +12754,7 @@ let tempActions = [
         color: 'red',
         number: '00.25',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12757,7 +12762,7 @@ let tempActions = [
         color: 'red',
         number: '084.0',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12765,7 +12770,7 @@ let tempActions = [
         color: 'red',
         number: '037.5',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12773,7 +12778,7 @@ let tempActions = [
         color: 'red',
         number: '0016',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12781,7 +12786,7 @@ let tempActions = [
         color: 'red',
         number: '313.4 ',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12789,7 +12794,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12797,7 +12802,7 @@ let tempActions = [
         color: 'red',
         number: '000.2',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12805,7 +12810,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12813,7 +12818,7 @@ let tempActions = [
         color: 'red',
         number: '045.4',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12821,7 +12826,7 @@ let tempActions = [
         color: 'red',
         number: '0099',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
@@ -12829,35 +12834,35 @@ let tempActions = [
         color: 'red',
         number: '01.21',
       },
-      startTime: timeDiff + 377.13,
+      startTime: timeDiff + 380.13,
     },
     {
       action: {
         target3D: 'Rectangle076',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 377.14,
+      startTime: timeDiff + 380.14,
     },
     {
       action: {
         target3D: 'Rectangle075',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 377.14,
+      startTime: timeDiff + 380.14,
     },
     {
       action: {
         target3D: 'Rectangle074',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 377.14,
+      startTime: timeDiff + 380.14,
     },
     {
       action: {
         target3D: 'Rectangle073',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 377.14,
+      startTime: timeDiff + 380.14,
     },
     ////-----------------------------------51//-new//
     {
@@ -12865,7 +12870,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 378,
+      startTime: timeDiff + 381,
     }, {
       multi: [
         {
@@ -12879,7 +12884,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 382.1,
+      startTime: timeDiff + 385.1,
       human: true,
     },
     ////--------------------------------13----------------------------------------//52
@@ -12888,7 +12893,7 @@ let tempActions = [
       text: 'Нажать на пульте управления БЗУ кнопку «Открыт» маркировки «Нижний шихтовый затвор».',
       sender: 'Система',
       audio: 'tts-25',
-      startTime: timeDiff + 383,
+      startTime: timeDiff + 386,
     },
     {
       action: {
@@ -12902,53 +12907,16 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 384.5,
+      startTime: timeDiff + 387.5,
     },
     {
       action: {
         target3D: 'Rectangle076',
       },
-      startTime: timeDiff + 386,
+      startTime: timeDiff + 389,
       human: true,
     },
     {
-      action: {
-        target3D: 'Rectangle076',
-        material: 'Unic_Botton_On',
-      },
-      startTime: timeDiff + 387,
-    }, {
-      action: {
-        target3D: 'Rectangle076',
-        material: 'Unic_Botton_Off',
-      },
-      startTime: timeDiff + 387.5,
-    }, {
-      action: {
-        target3D: 'Rectangle076',
-        material: 'Unic_Botton_On',
-      },
-      startTime: timeDiff + 388,
-    }, {
-      action: {
-        target3D: 'Rectangle076',
-        material: 'Unic_Botton_Off',
-      },
-      startTime: timeDiff + 388.5,
-    },
-    {
-      action: {
-        target3D: 'Rectangle076',
-        material: 'Unic_Botton_On',
-      },
-      startTime: timeDiff + 389,
-    }, {
-      action: {
-        target3D: 'Rectangle076',
-        material: 'Unic_Botton_Off',
-      },
-      startTime: timeDiff + 389.5,
-    }, {
       action: {
         target3D: 'Rectangle076',
         material: 'Unic_Botton_On',
@@ -12960,6 +12928,43 @@ let tempActions = [
         material: 'Unic_Botton_Off',
       },
       startTime: timeDiff + 390.5,
+    }, {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'Unic_Botton_On',
+      },
+      startTime: timeDiff + 391,
+    }, {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'Unic_Botton_Off',
+      },
+      startTime: timeDiff + 391.5,
+    },
+    {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'Unic_Botton_On',
+      },
+      startTime: timeDiff + 392,
+    }, {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'Unic_Botton_Off',
+      },
+      startTime: timeDiff + 392.5,
+    }, {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'Unic_Botton_On',
+      },
+      startTime: timeDiff + 393,
+    }, {
+      action: {
+        target3D: 'Rectangle076',
+        material: 'Unic_Botton_Off',
+      },
+      startTime: timeDiff + 393.5,
     },
     // ilay
     {
@@ -12967,21 +12972,21 @@ let tempActions = [
         target3D: 'Rectangle111',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
         target3D: 'Rectangle109',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -12989,7 +12994,7 @@ let tempActions = [
         color: 'red',
         number: '00.28',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -12997,7 +13002,7 @@ let tempActions = [
         color: 'red',
         number: '067.3',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -13005,7 +13010,7 @@ let tempActions = [
         color: 'red',
         number: '042.6',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -13013,7 +13018,7 @@ let tempActions = [
         color: 'red',
         number: '0028',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -13021,7 +13026,7 @@ let tempActions = [
         color: 'red',
         number: '094.1',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -13029,7 +13034,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -13037,7 +13042,7 @@ let tempActions = [
         color: 'red',
         number: '000.2',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -13045,7 +13050,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -13053,7 +13058,7 @@ let tempActions = [
         color: 'red',
         number: '044.2',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -13061,7 +13066,7 @@ let tempActions = [
         color: 'red',
         number: '0099',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       action: {
@@ -13069,18 +13074,18 @@ let tempActions = [
         color: 'red',
         number: '01.16',
       },
-      startTime: timeDiff + 390.51,
+      startTime: timeDiff + 393.51,
     },
     {
       text: 'Нажать на кнопку "Сброс сигнала тревоги" на ПУ БЗУ. ',
       sender: 'Система',
-      startTime: timeDiff + 390.9,
+      startTime: timeDiff + 393.9,
     },
     {
       action: {
         target3D: 'Rectangle053',
       },
-      startTime: timeDiff + 391,
+      startTime: timeDiff + 394,
       human: true,
     },
     {
@@ -13095,7 +13100,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 391.5,
+      startTime: timeDiff + 394.5,
     },
     // ilay
     {
@@ -13104,7 +13109,7 @@ let tempActions = [
         color: 'red',
         number: '00.28',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13112,7 +13117,7 @@ let tempActions = [
         color: 'red',
         number: '070.9',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13120,7 +13125,7 @@ let tempActions = [
         color: 'red',
         number: '042.6',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13128,7 +13133,7 @@ let tempActions = [
         color: 'red',
         number: '0026',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13136,7 +13141,7 @@ let tempActions = [
         color: 'red',
         number: '058.4',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13144,7 +13149,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13152,7 +13157,7 @@ let tempActions = [
         color: 'red',
         number: '000.2',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13160,7 +13165,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13168,7 +13173,7 @@ let tempActions = [
         color: 'red',
         number: '044.5',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13176,7 +13181,7 @@ let tempActions = [
         color: 'red',
         number: '0099',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13184,7 +13189,7 @@ let tempActions = [
         color: 'red',
         number: '01.16',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13192,7 +13197,7 @@ let tempActions = [
         color: 'green',
         number: '0732',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13200,7 +13205,7 @@ let tempActions = [
         color: 'green',
         number: '3233',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13208,7 +13213,7 @@ let tempActions = [
         color: 'green',
         number: '0986',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13216,7 +13221,7 @@ let tempActions = [
         color: 'green',
         number: '01.18',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13224,7 +13229,7 @@ let tempActions = [
         color: 'green',
         number: '0170',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13232,7 +13237,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13240,7 +13245,7 @@ let tempActions = [
         color: 'green',
         number: '0154',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13248,7 +13253,7 @@ let tempActions = [
         color: 'green',
         number: '0180',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13256,7 +13261,7 @@ let tempActions = [
         color: 'green',
         number: '0164',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13264,7 +13269,7 @@ let tempActions = [
         color: 'green',
         number: '0678',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13272,7 +13277,7 @@ let tempActions = [
         color: 'green',
         number: '0039',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     {
       action: {
@@ -13280,13 +13285,13 @@ let tempActions = [
         color: 'green',
         number: '1157',
       },
-      startTime: timeDiff + 391.51,
+      startTime: timeDiff + 394.51,
     },
     ////--------------------------------14----------------------------------------//53//-new
     {
       scenarioText: 'Продолжить приоткрывать клапан «СНОРТ».',
       sender: 'Система',
-      startTime: timeDiff + 395,
+      startTime: timeDiff + 398,
     },
     {
       action: {
@@ -13294,7 +13299,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 396,
+      startTime: timeDiff + 399,
       human: true,
     },
     {
@@ -13303,7 +13308,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 397,
+      startTime: timeDiff + 400,
       human: true,
     },
     {
@@ -13325,7 +13330,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 397.5,
+      startTime: timeDiff + 400.5,
     },
     // ilay bzu dp-ne-vidno
     {
@@ -13360,28 +13365,28 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 397.51,
+      startTime: timeDiff + 400.51,
     },
     {
       action: {
         target3D: 'Rectangle111',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
         target3D: 'Rectangle109',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13389,7 +13394,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13397,7 +13402,7 @@ let tempActions = [
         color: 'red',
         number: '000.0',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13405,7 +13410,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13413,7 +13418,7 @@ let tempActions = [
         color: 'red',
         number: '0085',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13421,7 +13426,7 @@ let tempActions = [
         color: 'red',
         number: '314.8',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13429,7 +13434,7 @@ let tempActions = [
         color: 'red',
         number: '00.21',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13437,7 +13442,7 @@ let tempActions = [
         color: 'red',
         number: '016.2',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13445,7 +13450,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13453,7 +13458,7 @@ let tempActions = [
         color: 'red',
         number: '045.5',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13461,7 +13466,7 @@ let tempActions = [
         color: 'red',
         number: '0099',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     {
       action: {
@@ -13469,7 +13474,7 @@ let tempActions = [
         color: 'red',
         number: '00.70',
       },
-      startTime: timeDiff + 397.52,
+      startTime: timeDiff + 400.52,
     },
     ////-----------------------------------54//-new//
     {
@@ -13477,7 +13482,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 398,
+      startTime: timeDiff + 401,
     }, {
       multi: [
         {
@@ -13491,7 +13496,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 402.1,
+      startTime: timeDiff + 405.1,
       human: true,
     },
     ////--------------------------------15----------------------------------------//55//-new
@@ -13499,7 +13504,7 @@ let tempActions = [
       scenarioText: 'Выгрузить кокс и остановить загрузку.',
       sender: 'Система',
       audio: 'tts-27',
-      startTime: timeDiff + 403,
+      startTime: timeDiff + 406,
     },
     {
       action: {
@@ -13513,7 +13518,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 406,
+      startTime: timeDiff + 409,
       human: true
     },
     {
@@ -13524,7 +13529,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 406.3,
+      startTime: timeDiff + 409.3,
     },
     {
       action: {
@@ -13534,7 +13539,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 406.6,
+      startTime: timeDiff + 409.6,
     },
     {
       action: {
@@ -13544,7 +13549,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 407,
+      startTime: timeDiff + 410,
     },
     {
       action: {
@@ -13554,7 +13559,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 407.3,
+      startTime: timeDiff + 410.3,
     },
     {
       action: {
@@ -13564,7 +13569,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 407.6,
+      startTime: timeDiff + 410.6,
     },
     {
       action: {
@@ -13574,7 +13579,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 408,
+      startTime: timeDiff + 411,
     },
     {
       action: {
@@ -13589,7 +13594,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 408.1,
+      startTime: timeDiff + 411.1,
       human: true
     },
     {
@@ -13601,7 +13606,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 409,
+      startTime: timeDiff + 412,
     },
     {
       action: {
@@ -13611,7 +13616,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 409.5,
+      startTime: timeDiff + 412.5,
     },
     {
       action: {
@@ -13622,7 +13627,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 409.6,
+      startTime: timeDiff + 412.6,
       human: true
     },
     {
@@ -13634,7 +13639,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 410,
+      startTime: timeDiff + 413,
     },
     {
       action: {
@@ -13647,18 +13652,18 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 411,
+      startTime: timeDiff + 414,
     },
     { //3D
       text: 'На ПУ БЗУ нажать "Приостановить подачу материала".',
       sender: 'Система',
-      startTime: timeDiff + 411.1,
+      startTime: timeDiff + 414.1,
     },
     { //3D
       action: {
         target3D: 'Rectangle056',
       },
-      startTime: timeDiff + 411.2,
+      startTime: timeDiff + 414.2,
       human: true,
     },
     {
@@ -13666,7 +13671,7 @@ let tempActions = [
         target3D: 'Rectangle056',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 411.3,
+      startTime: timeDiff + 414.3,
     },
     // ilay dp 
     {
@@ -13817,7 +13822,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 411.31,
+      startTime: timeDiff + 414.31,
     },
     {
       action: {
@@ -13825,7 +13830,7 @@ let tempActions = [
         color: 'green',
         number: '0236',
       },
-      startTime: timeDiff + 411.31,
+      startTime: timeDiff + 414.31,
     },
     {
       action: {
@@ -13833,7 +13838,7 @@ let tempActions = [
         color: 'green',
         number: '0072',
       },
-      startTime: timeDiff + 411.31,
+      startTime: timeDiff + 414.31,
     },
     {
       action: {
@@ -13841,7 +13846,7 @@ let tempActions = [
         color: 'green',
         number: '0536',
       },
-      startTime: timeDiff + 411.31,
+      startTime: timeDiff + 414.31,
     },
     {
       action: {
@@ -13849,7 +13854,7 @@ let tempActions = [
         color: 'green',
         number: '0165',
       },
-      startTime: timeDiff + 411.31,
+      startTime: timeDiff + 414.31,
     },
     {
       action: {
@@ -13857,7 +13862,7 @@ let tempActions = [
         color: 'green',
         number: '2538',
       },
-      startTime: timeDiff + 411.31,
+      startTime: timeDiff + 414.31,
     },
     {
       action: {
@@ -13865,7 +13870,7 @@ let tempActions = [
         color: 'green',
         number: '0032',
       },
-      startTime: timeDiff + 411.31,
+      startTime: timeDiff + 414.31,
     },
     {
       action: {
@@ -13873,7 +13878,7 @@ let tempActions = [
         color: 'green',
         number: '0007',
       },
-      startTime: timeDiff + 411.31,
+      startTime: timeDiff + 414.31,
     },
     {
       action: {
@@ -13881,315 +13886,315 @@ let tempActions = [
         color: 'green',
         number: '2128',
       },
-      startTime: timeDiff + 411.31,
+      startTime: timeDiff + 414.31,
     },
     {
       action: {
         target3D: 'Rectangle111',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle109',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle113',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle112',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle071',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle072',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle069',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle068',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle066',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle067',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle086',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle087',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle088',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle089',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle090',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle091',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle097',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle098',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle099',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle100',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle101',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle102',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle103',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle104',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle105',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle106',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle107',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle092',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle093',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle094',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle095',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle096',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle085',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle058',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle057',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle059',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle060',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle076',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle075',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle074',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
         target3D: 'Rectangle073',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14197,7 +14202,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14205,7 +14210,7 @@ let tempActions = [
         color: 'red',
         number: '000.1',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14213,7 +14218,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14221,7 +14226,7 @@ let tempActions = [
         color: 'red',
         number: '0085',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14229,7 +14234,7 @@ let tempActions = [
         color: 'red',
         number: '152.5',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14237,7 +14242,7 @@ let tempActions = [
         color: 'red',
         number: '00.20',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14245,7 +14250,7 @@ let tempActions = [
         color: 'red',
         number: '011.4',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14253,7 +14258,7 @@ let tempActions = [
         color: 'red',
         number: '038.3',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14261,7 +14266,7 @@ let tempActions = [
         color: 'red',
         number: '042.6',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14269,7 +14274,7 @@ let tempActions = [
         color: 'red',
         number: '0028',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     {
       action: {
@@ -14277,13 +14282,13 @@ let tempActions = [
         color: 'red',
         number: '00.76',
       },
-      startTime: timeDiff + 411.32,
+      startTime: timeDiff + 414.32,
     },
     ////--------------------------------16----------------------------------------//56//-new
     {
       text: 'Продолжить приоткрывать клапан «СНОРТ».',
       sender: 'Система',
-      startTime: timeDiff + 412,
+      startTime: timeDiff + 415,
     },
     {
       action: {
@@ -14291,7 +14296,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 412,
+      startTime: timeDiff + 415,
       human: true,
     },
     {
@@ -14300,7 +14305,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 413,
+      startTime: timeDiff + 416,
       human: true,
     },
     {
@@ -14317,7 +14322,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 413.1,
+      startTime: timeDiff + 416.1,
     },
     // ilay dp - bzu f NEW
     {
@@ -14502,7 +14507,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 413.11,
+      startTime: timeDiff + 416.11,
     },
     {
       action: {
@@ -14510,7 +14515,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     {
       action: {
@@ -14518,7 +14523,7 @@ let tempActions = [
         color: 'red',
         number: '013.8',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     {
       action: {
@@ -14526,7 +14531,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     {
       action: {
@@ -14534,7 +14539,7 @@ let tempActions = [
         color: 'red',
         number: '0085',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     {
       action: {
@@ -14542,7 +14547,7 @@ let tempActions = [
         color: 'red',
         number: '192.4',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     {
       action: {
@@ -14550,7 +14555,7 @@ let tempActions = [
         color: 'red',
         number: '00.20',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     {
       action: {
@@ -14558,7 +14563,7 @@ let tempActions = [
         color: 'red',
         number: '000.0',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     {
       action: {
@@ -14566,7 +14571,7 @@ let tempActions = [
         color: 'red',
         number: '038.1',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     {
       action: {
@@ -14574,7 +14579,7 @@ let tempActions = [
         color: 'red',
         number: '032.2',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     {
       action: {
@@ -14582,7 +14587,7 @@ let tempActions = [
         color: 'red',
         number: '0082',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     {
       action: {
@@ -14590,7 +14595,7 @@ let tempActions = [
         color: 'red',
         number: '00.59',
       },
-      startTime: timeDiff + 413.12,
+      startTime: timeDiff + 416.12,
     },
     ////-----------------------------------57//-new//
     {
@@ -14598,7 +14603,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 414,
+      startTime: timeDiff + 417,
     }, {
       multi: [
         {
@@ -14612,7 +14617,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 418.1,
+      startTime: timeDiff + 421.1,
       human: true,
     },
     ////--------------------------------17----------------------------------------//58//-new
@@ -14622,7 +14627,7 @@ let tempActions = [
       scenarioText: 'На схеме БЗУ нажать на кнопка «Пауза».',
       sender: 'Система',
       audio: 'tts-28',
-      startTime: timeDiff + 419,
+      startTime: timeDiff + 422,
     },
     {
       action: {
@@ -14634,7 +14639,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 419.1,
+      startTime: timeDiff + 422.1,
       human: true
     },
     // ilay bzu f
@@ -14761,7 +14766,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 419.11,
+      startTime: timeDiff + 422.11,
     },
     ////--------------------------------18----------------------------------------//59//-new 
     {
@@ -14769,7 +14774,7 @@ let tempActions = [
       text: 'На ПУ ДП-6 перевести тумблеры клапанов 1, 2, 3 до щелчка в положение «2».',
       sender: 'Система',
       audio: 'tts-29',
-      startTime: timeDiff + 420,
+      startTime: timeDiff + 423,
     },
     {
       multi: [
@@ -14795,7 +14800,7 @@ let tempActions = [
           duration: 0.3,
         },
       ],
-      startTime: timeDiff + 422,
+      startTime: timeDiff + 425,
       human: true,
     },
     // ilay
@@ -14804,38 +14809,38 @@ let tempActions = [
         target3D: 'Lamp_Red_007',
         material: 'Red_Lamp_Off',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     }, {
       action: {
         target3D: 'Lamp_Red_006',
         material: 'Red_Lamp_Off',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     }, {
       action: {
         target3D: 'Lamp_Red_005',
         material: 'Red_Lamp_Off',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
         target3D: 'Lamp_Green_007',
         material: 'Green_Lamp_On',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     }, {
       action: {
         target3D: 'Lamp_Green_006',
         material: 'Green_Lamp_On',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     }, {
       action: {
         target3D: 'Lamp_Green_005',
         material: 'Green_Lamp_On',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14843,7 +14848,7 @@ let tempActions = [
         color: 'green',
         number: '0.133',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14851,7 +14856,7 @@ let tempActions = [
         color: 'green',
         number: '0.037',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14859,7 +14864,7 @@ let tempActions = [
         color: 'green',
         number: '0.564',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14867,7 +14872,7 @@ let tempActions = [
         color: 'green',
         number: '0.468',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14875,7 +14880,7 @@ let tempActions = [
         color: 'green',
         number: '2779.',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14883,7 +14888,7 @@ let tempActions = [
         color: 'green',
         number: '0.738',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14891,7 +14896,7 @@ let tempActions = [
         color: 'green',
         number: '00.67',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14899,7 +14904,7 @@ let tempActions = [
         color: 'green',
         number: '01.14',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14907,7 +14912,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14915,7 +14920,7 @@ let tempActions = [
         color: 'green',
         number: '0114.',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14923,7 +14928,7 @@ let tempActions = [
         color: 'green',
         number: '0156.',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14931,7 +14936,7 @@ let tempActions = [
         color: 'green',
         number: '0174.',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14939,7 +14944,7 @@ let tempActions = [
         color: 'green',
         number: '0148.',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14947,7 +14952,7 @@ let tempActions = [
         color: 'green',
         number: '0696',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14955,7 +14960,7 @@ let tempActions = [
         color: 'green',
         number: '0039',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14963,7 +14968,7 @@ let tempActions = [
         color: 'green',
         number: '1194',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14971,7 +14976,7 @@ let tempActions = [
         color: 'green',
         number: '1020',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14979,7 +14984,7 @@ let tempActions = [
         color: 'green',
         number: '1020',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14987,7 +14992,7 @@ let tempActions = [
         color: 'green',
         number: '0484',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -14995,7 +15000,7 @@ let tempActions = [
         color: 'green',
         number: '0409',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -15003,7 +15008,7 @@ let tempActions = [
         color: 'green',
         number: '2310',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -15011,7 +15016,7 @@ let tempActions = [
         color: 'green',
         number: '0455',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -15019,7 +15024,7 @@ let tempActions = [
         color: 'green',
         number: '2435',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     {
       action: {
@@ -15027,13 +15032,13 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 422.01,
+      startTime: timeDiff + 425.01,
     },
     ////--------------------------------19----------------------------------------//60//-new 
     {
       text: 'На ПУ ДП-6 перевести тумблеры клапанов 1, 2, 3 до щелчка в положение «0».',
       sender: 'Система',
-      startTime: timeDiff + 428,
+      startTime: timeDiff + 431,
     },
     {
       multi: [
@@ -15059,14 +15064,14 @@ let tempActions = [
           duration: 0.3,
         },
       ],
-      startTime: timeDiff + 428.1,
+      startTime: timeDiff + 431.1,
       human: true,
     },
     {
       text: 'Атмосферные клапаны открыты.',
       sender: 'Система',
       audio: 'tts-30',
-      startTime: timeDiff + 428.2,
+      startTime: timeDiff + 431.2,
     },
     // ilay  
     {
@@ -15075,35 +15080,35 @@ let tempActions = [
         color: 'green',
         number: '0481',
       },
-      startTime: timeDiff + 428.21,
+      startTime: timeDiff + 431.21,
     },
     {
       action: {
         target3D: 'Rectangle111',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     {
       action: {
         target3D: 'Rectangle097',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     {
       action: {
         target3D: 'Rectangle102',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     {
       action: {
@@ -15111,7 +15116,7 @@ let tempActions = [
         color: 'red',
         number: '083.2',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     {
       action: {
@@ -15119,7 +15124,7 @@ let tempActions = [
         color: 'red',
         number: '168.7',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     {
       action: {
@@ -15127,7 +15132,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     {
       action: {
@@ -15135,7 +15140,7 @@ let tempActions = [
         color: 'red',
         number: '00.13',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     {
       action: {
@@ -15143,7 +15148,7 @@ let tempActions = [
         color: 'red',
         number: '014.4',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     {
       action: {
@@ -15151,7 +15156,7 @@ let tempActions = [
         color: 'red',
         number: '0096',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     {
       action: {
@@ -15159,34 +15164,34 @@ let tempActions = [
         color: 'red',
         number: '00.69',
       },
-      startTime: timeDiff + 428.22,
+      startTime: timeDiff + 431.22,
     },
     ////--------------------------------20----------------------------------------//61//-new 
     { // 3D
       scenarioText: 'По рации сообщить мастеру печи о выполненной операции.',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 432,
+      startTime: timeDiff + 435,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 433,
+      startTime: timeDiff + 436,
       human: true,
     },
     {
       text: 'Атмосферные клапана открыты. На фурмах 0,75 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo25',
-      startTime: timeDiff + 434,
+      startTime: timeDiff + 437,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 440,
+      startTime: timeDiff + 443,
     },
     // ilay
     {
@@ -15387,21 +15392,21 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 440.01,
+      startTime: timeDiff + 443.01,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 440.02,
+      startTime: timeDiff + 443.02,
     },
     {
       action: {
         target3D: 'Rectangle109',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 440.02,
+      startTime: timeDiff + 443.02,
     },
     {
       action: {
@@ -15409,7 +15414,7 @@ let tempActions = [
         color: 'red',
         number: '092.2',
       },
-      startTime: timeDiff + 440.02,
+      startTime: timeDiff + 443.02,
     },
     {
       action: {
@@ -15417,7 +15422,7 @@ let tempActions = [
         color: 'red',
         number: '325.7',
       },
-      startTime: timeDiff + 440.02,
+      startTime: timeDiff + 443.02,
     },
     {
       action: {
@@ -15425,7 +15430,7 @@ let tempActions = [
         color: 'red',
         number: '000.1',
       },
-      startTime: timeDiff + 440.02,
+      startTime: timeDiff + 443.02,
     },
     {
       action: {
@@ -15433,39 +15438,39 @@ let tempActions = [
         color: 'red',
         number: '00.71',
       },
-      startTime: timeDiff + 440.02,
+      startTime: timeDiff + 443.02,
     },
     ////--------------------------------21----------------------------------------//62//-new 
     { // 3D
       scenarioText: 'Мастер печи по рации сообщает действия.',
       sender: 'Система',
-      startTime: timeDiff + 442,
+      startTime: timeDiff + 445,
     },
     {
       text: 'Закрывайте кислород и делайте 0,5 кг на фурмах.',
       sender: 'Мастер печи',
       audio: 'tts-vo26',
-      startTime: timeDiff + 443,
+      startTime: timeDiff + 446,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 448.5,
+      startTime: timeDiff + 451.5,
       human: true,
     },
     {
       text: 'Закрываю кислород полностью и делаю 0,5.',
       sender: 'Газовщик',
       audio: 'tts-vo27',
-      startTime: timeDiff + 449.5,
+      startTime: timeDiff + 452.5,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 454.15,
+      startTime: timeDiff + 457.15,
     },
     // ilay bzu f new
     {
@@ -15588,14 +15593,14 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 454.16,
+      startTime: timeDiff + 457.16,
     },
     {
       action: {
         target3D: 'Rectangle085',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 454.17,
+      startTime: timeDiff + 457.17,
     },
     {
       action: {
@@ -15603,7 +15608,7 @@ let tempActions = [
         color: 'red',
         number: '093.0',
       },
-      startTime: timeDiff + 454.17,
+      startTime: timeDiff + 457.17,
     },
     {
       action: {
@@ -15611,7 +15616,7 @@ let tempActions = [
         color: 'red',
         number: '045.8',
       },
-      startTime: timeDiff + 454.17,
+      startTime: timeDiff + 457.17,
     },
     {
       action: {
@@ -15619,7 +15624,7 @@ let tempActions = [
         color: 'red',
         number: '000.2',
       },
-      startTime: timeDiff + 454.17,
+      startTime: timeDiff + 457.17,
     },
     {
       action: {
@@ -15627,33 +15632,33 @@ let tempActions = [
         color: 'red',
         number: '00.76',
       },
-      startTime: timeDiff + 454.17,
+      startTime: timeDiff + 457.17,
     },
     ////--------------------------------22----------------------------------------//63//-new 
     {
       scenarioText: 'Сообщить по телефону в "Кислородный цех".',
       sender: 'Система',
       audio: 'telephone_say',
-      startTime: timeDiff + 455,
+      startTime: timeDiff + 458,
     },
     {
       action: {
         target3D: 'PhoneButton017',
       },
-      startTime: timeDiff + 456,
+      startTime: timeDiff + 459,
       human: true,
     },
     {
       text: 'Закрывайте кислород на выходе.',
       sender: 'Газовщик',
       audio: 'tts-vo28',
-      startTime: timeDiff + 457,
+      startTime: timeDiff + 460,
     },
     {
       text: 'Выполняю',
       sender: 'Дежурный водопроводчик',
       audio: 'tts-vo29',
-      startTime: timeDiff + 461,
+      startTime: timeDiff + 464,
     },
     // ilay
     {
@@ -15662,7 +15667,7 @@ let tempActions = [
         color: 'green',
         number: '0.090',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15670,7 +15675,7 @@ let tempActions = [
         color: 'green',
         number: '0.072',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15678,7 +15683,7 @@ let tempActions = [
         color: 'green',
         number: '0.604',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15686,7 +15691,7 @@ let tempActions = [
         color: 'green',
         number: '0.472',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15694,7 +15699,7 @@ let tempActions = [
         color: 'green',
         number: '2877.',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15702,7 +15707,7 @@ let tempActions = [
         color: 'green',
         number: '0.697',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15710,7 +15715,7 @@ let tempActions = [
         color: 'green',
         number: '00.70',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15718,7 +15723,7 @@ let tempActions = [
         color: 'green',
         number: '01.12',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15726,7 +15731,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15734,7 +15739,7 @@ let tempActions = [
         color: 'green',
         number: '0170.',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15742,7 +15747,7 @@ let tempActions = [
         color: 'green',
         number: '0147.',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15750,7 +15755,7 @@ let tempActions = [
         color: 'green',
         number: '0169.',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15758,7 +15763,7 @@ let tempActions = [
         color: 'green',
         number: '0143.',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15766,7 +15771,7 @@ let tempActions = [
         color: 'green',
         number: '0684',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15774,7 +15779,7 @@ let tempActions = [
         color: 'green',
         number: '0039',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15782,7 +15787,7 @@ let tempActions = [
         color: 'green',
         number: '1194',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15790,7 +15795,7 @@ let tempActions = [
         color: 'green',
         number: '1022',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15798,7 +15803,7 @@ let tempActions = [
         color: 'green',
         number: '1022',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15806,7 +15811,7 @@ let tempActions = [
         color: 'green',
         number: '0481',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15814,7 +15819,7 @@ let tempActions = [
         color: 'green',
         number: '0410',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15822,7 +15827,7 @@ let tempActions = [
         color: 'green',
         number: '2373',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15830,7 +15835,7 @@ let tempActions = [
         color: 'green',
         number: '0453',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15838,7 +15843,7 @@ let tempActions = [
         color: 'green',
         number: '24.74',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
@@ -15846,340 +15851,340 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 461.01,
+      startTime: timeDiff + 464.01,
     },
     {
       action: {
         target3D: 'Rectangle111',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle109',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle113',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle112',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle071',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle072',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle069',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle068',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle066',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle067',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle086',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle087',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle088',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle089',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle090',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle091',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle097',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle098',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle099',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle100',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle101',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle102',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle103',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle104',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle105',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle106',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle107',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle092',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle093',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle094',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle095',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle096',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle085',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle058',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle057',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle059',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle060',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle076',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle075',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle074',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle073',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
         target3D: 'Rectangle049',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     }, {
       action: {
         target3D: 'Rectangle051',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     }, {
       action: {
         target3D: 'Rectangle048',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     }, {
       action: {
         target3D: 'Rectangle050',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16187,7 +16192,7 @@ let tempActions = [
         color: 'red',
         number: '00.11',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16195,7 +16200,7 @@ let tempActions = [
         color: 'red',
         number: '093.0',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16203,7 +16208,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16211,7 +16216,7 @@ let tempActions = [
         color: 'red',
         number: '0085',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16219,7 +16224,7 @@ let tempActions = [
         color: 'red',
         number: '276.4',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16227,7 +16232,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16235,7 +16240,7 @@ let tempActions = [
         color: 'red',
         number: '000.2',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16243,7 +16248,7 @@ let tempActions = [
         color: 'red',
         number: '00.13',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16251,7 +16256,7 @@ let tempActions = [
         color: 'red',
         number: '037.0',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16259,7 +16264,7 @@ let tempActions = [
         color: 'red',
         number: '0096',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     {
       action: {
@@ -16267,40 +16272,22 @@ let tempActions = [
         color: 'red',
         number: '00.76',
       },
-      startTime: timeDiff + 461.02,
+      startTime: timeDiff + 464.02,
     },
     ////--------------------------------23----------------------------------------//64//-new
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0,5кг.',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 463,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: -0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 465.1,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 465.5,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: -0.785 },
-      },
-      duration: 0.15,
       startTime: timeDiff + 466,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: -0.785 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 468.1,
       human: true,
     },
     {
@@ -16309,7 +16296,25 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 466.5,
+      startTime: timeDiff + 468.5,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: -0.785 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 469,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: 0 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 469.5,
       human: true,
     },
     {
@@ -16322,7 +16327,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 466.6,
+      startTime: timeDiff + 469.6,
     },
     // ilay
     {
@@ -16331,7 +16336,7 @@ let tempActions = [
         color: 'green',
         number: '0.071',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16339,7 +16344,7 @@ let tempActions = [
         color: 'green',
         number: '0.052',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16347,7 +16352,7 @@ let tempActions = [
         color: 'green',
         number: '0.460',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16355,7 +16360,7 @@ let tempActions = [
         color: 'green',
         number: '0.362',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16363,7 +16368,7 @@ let tempActions = [
         color: 'green',
         number: '1736.',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16371,7 +16376,7 @@ let tempActions = [
         color: 'green',
         number: '0.526',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16379,7 +16384,7 @@ let tempActions = [
         color: 'green',
         number: '00.95',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16387,7 +16392,7 @@ let tempActions = [
         color: 'green',
         number: '01.40',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16395,7 +16400,7 @@ let tempActions = [
         color: 'green',
         number: '0160.',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16403,7 +16408,7 @@ let tempActions = [
         color: 'green',
         number: '0136.',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16411,7 +16416,7 @@ let tempActions = [
         color: 'green',
         number: '0159.',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16419,7 +16424,7 @@ let tempActions = [
         color: 'green',
         number: '0134.',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16427,7 +16432,7 @@ let tempActions = [
         color: 'green',
         number: '07.11',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16435,7 +16440,7 @@ let tempActions = [
         color: 'green',
         number: '00.39',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16443,7 +16448,7 @@ let tempActions = [
         color: 'green',
         number: '1191.',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16451,7 +16456,7 @@ let tempActions = [
         color: 'green',
         number: '10.12',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16459,7 +16464,7 @@ let tempActions = [
         color: 'green',
         number: '10.12',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16467,7 +16472,7 @@ let tempActions = [
         color: 'green',
         number: '04.83',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16475,7 +16480,7 @@ let tempActions = [
         color: 'green',
         number: '04.11',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16483,7 +16488,7 @@ let tempActions = [
         color: 'green',
         number: '2.380',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16491,7 +16496,7 @@ let tempActions = [
         color: 'green',
         number: '045.1',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
@@ -16499,21 +16504,21 @@ let tempActions = [
         color: 'green',
         number: '24.73',
       },
-      startTime: timeDiff + 466.61,
+      startTime: timeDiff + 469.61,
     },
     {
       action: {
         target3D: 'Rectangle110',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 466.62,
+      startTime: timeDiff + 469.62,
     },
     {
       action: {
         target3D: 'Rectangle104',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 466.62,
+      startTime: timeDiff + 469.62,
     },
     {
       action: {
@@ -16521,7 +16526,7 @@ let tempActions = [
         color: 'red',
         number: '00.08',
       },
-      startTime: timeDiff + 466.62,
+      startTime: timeDiff + 469.62,
     },
     {
       action: {
@@ -16529,7 +16534,7 @@ let tempActions = [
         color: 'red',
         number: '238.9',
       },
-      startTime: timeDiff + 466.62,
+      startTime: timeDiff + 469.62,
     },
     {
       action: {
@@ -16537,7 +16542,7 @@ let tempActions = [
         color: 'red',
         number: '00.07',
       },
-      startTime: timeDiff + 466.62,
+      startTime: timeDiff + 469.62,
     },
     {
       action: {
@@ -16545,7 +16550,7 @@ let tempActions = [
         color: 'red',
         number: '016.2',
       },
-      startTime: timeDiff + 466.62,
+      startTime: timeDiff + 469.62,
     },
     {
       action: {
@@ -16553,7 +16558,7 @@ let tempActions = [
         color: 'red',
         number: '047.0',
       },
-      startTime: timeDiff + 466.62,
+      startTime: timeDiff + 469.62,
     },
     {
       action: {
@@ -16561,7 +16566,7 @@ let tempActions = [
         color: 'red',
         number: '00.93',
       },
-      startTime: timeDiff + 466.62,
+      startTime: timeDiff + 469.62,
     },
     {
       action: {
@@ -16584,7 +16589,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 466.63,
+      startTime: timeDiff + 469.63,
     },
     ////-----------------------------------65//-new//
     {
@@ -16592,7 +16597,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 467,
+      startTime: timeDiff + 470,
     },
     {
       multi: [
@@ -16607,7 +16612,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 471.1,
+      startTime: timeDiff + 474.1,
       human: true,
     },
     ////--------------------------------24----------------------------------------//66//-new 
@@ -16615,27 +16620,27 @@ let tempActions = [
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 472,
+      startTime: timeDiff + 475,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 472.1,
+      startTime: timeDiff + 475.1,
       human: true,
     },
     {
       text: 'На фурмах 0,5 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo30',
-      startTime: timeDiff + 473,
+      startTime: timeDiff + 476,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 476,
+      startTime: timeDiff + 479,
     },
     // ilay
     {
@@ -16644,7 +16649,7 @@ let tempActions = [
         color: 'red',
         number: '068.5',
       },
-      startTime: timeDiff + 476.02,
+      startTime: timeDiff + 479.02,
     },
     {
       action: {
@@ -16652,7 +16657,7 @@ let tempActions = [
         color: 'red',
         number: '00.08',
       },
-      startTime: timeDiff + 476.02,
+      startTime: timeDiff + 479.02,
     },
     {
       action: {
@@ -16660,7 +16665,7 @@ let tempActions = [
         color: 'green',
         number: '0.070',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16668,7 +16673,7 @@ let tempActions = [
         color: 'green',
         number: '0.049',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16676,7 +16681,7 @@ let tempActions = [
         color: 'green',
         number: '0.445',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16684,7 +16689,7 @@ let tempActions = [
         color: 'green',
         number: '0.350',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16692,7 +16697,7 @@ let tempActions = [
         color: 'green',
         number: '1800.',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16700,7 +16705,7 @@ let tempActions = [
         color: 'green',
         number: '0.510',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16708,7 +16713,7 @@ let tempActions = [
         color: 'green',
         number: '0159.',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16716,7 +16721,7 @@ let tempActions = [
         color: 'green',
         number: '0135.',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16724,7 +16729,7 @@ let tempActions = [
         color: 'green',
         number: '0158.',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16732,7 +16737,7 @@ let tempActions = [
         color: 'green',
         number: '00.38',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16740,7 +16745,7 @@ let tempActions = [
         color: 'green',
         number: '10.13',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
@@ -16748,147 +16753,147 @@ let tempActions = [
         color: 'green',
         number: '2.383',
       },
-      startTime: timeDiff + 476.03,
+      startTime: timeDiff + 479.03,
     },
     {
       action: {
         target3D: 'Rectangle071',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle068',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle066',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle067',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle047',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle045',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle046',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle044',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle097',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle104',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle076',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle075',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle074',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle073',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle082',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle081',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle080',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     {
       action: {
         target3D: 'Rectangle079',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 476.04,
+      startTime: timeDiff + 479.04,
     },
     ////--------------------------------25----------------------------------------//67//-new 
     { // 3D
       scenarioText: 'БЗУ снять с автоматического режима.',
       audio: 'tts-31',
       sender: 'Система',
-      startTime: timeDiff + 478,
+      startTime: timeDiff + 481,
     },
     {
       text: 'На ПУ БЗУ нажать на кнопку «Автоматич. СТОП»',
@@ -16896,7 +16901,7 @@ let tempActions = [
       action: {
         target3D: 'Rectangle072',
       },
-      startTime: timeDiff + 479,
+      startTime: timeDiff + 482,
       human: true,
     },
     {
@@ -16904,7 +16909,7 @@ let tempActions = [
         target3D: 'Rectangle072',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 480,
+      startTime: timeDiff + 483,
     },
     // ilay
     {
@@ -16912,7 +16917,7 @@ let tempActions = [
         target3D: 'Rectangle071',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 480.01,
+      startTime: timeDiff + 483.01,
     },
     {
       text: 'На ПУ БЗУ нажать на кнопку «ЗАКРЫТ» «Клапан вторичного выравнивания» слева',
@@ -16920,7 +16925,7 @@ let tempActions = [
       action: {
         target3D: 'Rectangle065',
       },
-      startTime: timeDiff + 480.1,
+      startTime: timeDiff + 483.1,
       human: true,
     },
     {
@@ -16928,56 +16933,56 @@ let tempActions = [
         target3D: 'Rectangle066',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 480.3,
+      startTime: timeDiff + 483.3,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 480.4,
+      startTime: timeDiff + 483.4,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 481,
+      startTime: timeDiff + 484,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 481.5,
+      startTime: timeDiff + 484.5,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 482,
+      startTime: timeDiff + 485,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 482.5,
+      startTime: timeDiff + 485.5,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 483,
+      startTime: timeDiff + 486,
     },
     {
       action: {
         target3D: 'Rectangle065',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 483.5,
+      startTime: timeDiff + 486.5,
     },
     {
       sender: 'Система',
@@ -16985,7 +16990,7 @@ let tempActions = [
       action: {
         target3D: 'Rectangle046',
       },
-      startTime: timeDiff + 483.6,
+      startTime: timeDiff + 486.6,
       human: true,
     },
     {
@@ -16993,49 +16998,7 @@ let tempActions = [
         target3D: 'Rectangle047',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 483.7,
-    },
-    {
-      action: {
-        target3D: 'Rectangle046',
-        material: 'Unic_Botton_On',
-      },
-      startTime: timeDiff + 484,
-    },
-    {
-      action: {
-        target3D: 'Rectangle046',
-        material: 'Unic_Botton_Off',
-      },
-      startTime: timeDiff + 484.5,
-    },
-    {
-      action: {
-        target3D: 'Rectangle046',
-        material: 'Unic_Botton_On',
-      },
-      startTime: timeDiff + 485,
-    },
-    {
-      action: {
-        target3D: 'Rectangle046',
-        material: 'Unic_Botton_Off',
-      },
-      startTime: timeDiff + 485.5,
-    },
-    {
-      action: {
-        target3D: 'Rectangle046',
-        material: 'Unic_Botton_On',
-      },
-      startTime: timeDiff + 486,
-    },
-    {
-      action: {
-        target3D: 'Rectangle046',
-        material: 'Unic_Botton_Off',
-      },
-      startTime: timeDiff + 486.5,
+      startTime: timeDiff + 486.7,
     },
     {
       action: {
@@ -17045,12 +17008,54 @@ let tempActions = [
       startTime: timeDiff + 487,
     },
     {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'Unic_Botton_Off',
+      },
+      startTime: timeDiff + 487.5,
+    },
+    {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'Unic_Botton_On',
+      },
+      startTime: timeDiff + 488,
+    },
+    {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'Unic_Botton_Off',
+      },
+      startTime: timeDiff + 488.5,
+    },
+    {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'Unic_Botton_On',
+      },
+      startTime: timeDiff + 489,
+    },
+    {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'Unic_Botton_Off',
+      },
+      startTime: timeDiff + 489.5,
+    },
+    {
+      action: {
+        target3D: 'Rectangle046',
+        material: 'Unic_Botton_On',
+      },
+      startTime: timeDiff + 490,
+    },
+    {
       sender: 'Система',
       text: 'На ПУ БЗУ нажать на кнопку «ОТКРЫТ» «Клапан сброса» слева',
       action: {
         target3D: 'Rectangle070',
       },
-      startTime: timeDiff + 487.1,
+      startTime: timeDiff + 490.1,
       human: true,
     },
     {
@@ -17058,56 +17063,56 @@ let tempActions = [
         target3D: 'Rectangle069',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 487.2,
+      startTime: timeDiff + 490.2,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 487.4,
+      startTime: timeDiff + 490.4,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 488,
+      startTime: timeDiff + 491,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 488.5,
+      startTime: timeDiff + 491.5,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 489,
+      startTime: timeDiff + 492,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 489.5,
+      startTime: timeDiff + 492.5,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 490,
+      startTime: timeDiff + 493,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'Unic_Botton_On',
       },
-      startTime: timeDiff + 490.5,
+      startTime: timeDiff + 493.5,
     },
     {
       sender: 'Система',
@@ -17115,7 +17120,7 @@ let tempActions = [
       action: {
         target3D: 'Rectangle115',
       },
-      startTime: timeDiff + 490.6,
+      startTime: timeDiff + 493.6,
       human: true,
     },
     {
@@ -17123,49 +17128,7 @@ let tempActions = [
         target3D: 'Rectangle114',
         material: 'Unic_Botton_Off',
       },
-      startTime: timeDiff + 490.7,
-    },
-    {
-      action: {
-        target3D: 'Rectangle115',
-        material: 'Unic_Botton_On',
-      },
-      startTime: timeDiff + 491,
-    },
-    {
-      action: {
-        target3D: 'Rectangle115',
-        material: 'Unic_Botton_Off',
-      },
-      startTime: timeDiff + 491.5,
-    },
-    {
-      action: {
-        target3D: 'Rectangle115',
-        material: 'Unic_Botton_On',
-      },
-      startTime: timeDiff + 492,
-    },
-    {
-      action: {
-        target3D: 'Rectangle115',
-        material: 'Unic_Botton_Off',
-      },
-      startTime: timeDiff + 492.5,
-    },
-    {
-      action: {
-        target3D: 'Rectangle115',
-        material: 'Unic_Botton_On',
-      },
-      startTime: timeDiff + 493,
-    },
-    {
-      action: {
-        target3D: 'Rectangle115',
-        material: 'Unic_Botton_Off',
-      },
-      startTime: timeDiff + 493.5,
+      startTime: timeDiff + 493.7,
     },
     {
       action: {
@@ -17173,41 +17136,83 @@ let tempActions = [
         material: 'Unic_Botton_On',
       },
       startTime: timeDiff + 494,
+    },
+    {
+      action: {
+        target3D: 'Rectangle115',
+        material: 'Unic_Botton_Off',
+      },
+      startTime: timeDiff + 494.5,
+    },
+    {
+      action: {
+        target3D: 'Rectangle115',
+        material: 'Unic_Botton_On',
+      },
+      startTime: timeDiff + 495,
+    },
+    {
+      action: {
+        target3D: 'Rectangle115',
+        material: 'Unic_Botton_Off',
+      },
+      startTime: timeDiff + 495.5,
+    },
+    {
+      action: {
+        target3D: 'Rectangle115',
+        material: 'Unic_Botton_On',
+      },
+      startTime: timeDiff + 496,
+    },
+    {
+      action: {
+        target3D: 'Rectangle115',
+        material: 'Unic_Botton_Off',
+      },
+      startTime: timeDiff + 496.5,
+    },
+    {
+      action: {
+        target3D: 'Rectangle115',
+        material: 'Unic_Botton_On',
+      },
+      startTime: timeDiff + 497,
     },// ilay
     {
       action: {
         target3D: 'Rectangle071',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     {
       action: {
         target3D: 'Rectangle072',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     {
       action: {
         target3D: 'Rectangle070',
         material: 'ButtonLightOn',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     {
       action: {
         target3D: 'Rectangle069',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     {
       action: {
         target3D: 'Rectangle066',
         material: 'ButtonLightOff',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     {
       action: {
@@ -17215,7 +17220,7 @@ let tempActions = [
         color: 'red',
         number: '00.03',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     {
       action: {
@@ -17223,7 +17228,7 @@ let tempActions = [
         color: 'red',
         number: '093.1',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     {
       action: {
@@ -17231,7 +17236,7 @@ let tempActions = [
         color: 'red',
         number: '170.4',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     {
       action: {
@@ -17239,7 +17244,7 @@ let tempActions = [
         color: 'red',
         number: '00.16',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     {
       action: {
@@ -17247,7 +17252,7 @@ let tempActions = [
         color: 'red',
         number: '016.6',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     {
       action: {
@@ -17255,38 +17260,38 @@ let tempActions = [
         color: 'red',
         number: '00.98',
       },
-      startTime: timeDiff + 494.02,
+      startTime: timeDiff + 497.02,
     },
     ////--------------------------------26----------------------------------------//68//-new 
     {
       scenarioText: 'Мастер печи по рации сообщает о следующих операциях',
-      startTime: timeDiff + 495,
+      startTime: timeDiff + 498,
     },
     {
       text: 'Делаем 0,3кг',
       sender: 'Мастер печи',
       audio: 'tts-vo31',
-      startTime: timeDiff + 495.1,
+      startTime: timeDiff + 498.1,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 498,
+      startTime: timeDiff + 501,
       human: true,
     },
     {
       text: 'Принимаю, делаю 0,3.',
       sender: 'Газовщик',
       audio: 'tts-vo32',
-      startTime: timeDiff + 499,
+      startTime: timeDiff + 502,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 503,
+      startTime: timeDiff + 506,
     },
     // ilay
     {
@@ -17295,7 +17300,7 @@ let tempActions = [
         color: 'green',
         number: '0.068',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17303,7 +17308,7 @@ let tempActions = [
         color: 'green',
         number: '0.046',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17311,7 +17316,7 @@ let tempActions = [
         color: 'green',
         number: '0.419',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17319,7 +17324,7 @@ let tempActions = [
         color: 'green',
         number: '0.331',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17327,7 +17332,7 @@ let tempActions = [
         color: 'green',
         number: '1893.',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17335,7 +17340,7 @@ let tempActions = [
         color: 'green',
         number: '0.482',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17343,7 +17348,7 @@ let tempActions = [
         color: 'green',
         number: '01.00',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17351,7 +17356,7 @@ let tempActions = [
         color: 'green',
         number: '01.42',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17359,7 +17364,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17367,7 +17372,7 @@ let tempActions = [
         color: 'green',
         number: '0156.',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17375,7 +17380,7 @@ let tempActions = [
         color: 'green',
         number: '0133.',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17383,7 +17388,7 @@ let tempActions = [
         color: 'green',
         number: '0156.',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17391,7 +17396,7 @@ let tempActions = [
         color: 'green',
         number: '0132.',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17399,7 +17404,7 @@ let tempActions = [
         color: 'green',
         number: '06.92',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17407,7 +17412,7 @@ let tempActions = [
         color: 'green',
         number: '00.39',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17415,7 +17420,7 @@ let tempActions = [
         color: 'green',
         number: '1191.',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17423,7 +17428,7 @@ let tempActions = [
         color: 'green',
         number: '10.12',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17431,7 +17436,7 @@ let tempActions = [
         color: 'green',
         number: '10.12',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17439,7 +17444,7 @@ let tempActions = [
         color: 'green',
         number: '04.83',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17447,7 +17452,7 @@ let tempActions = [
         color: 'green',
         number: '04.11',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17455,7 +17460,7 @@ let tempActions = [
         color: 'green',
         number: '2.387',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17463,7 +17468,7 @@ let tempActions = [
         color: 'green',
         number: '045.1',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17471,7 +17476,7 @@ let tempActions = [
         color: 'green',
         number: '24.74',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     {
       action: {
@@ -17479,14 +17484,14 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 503.02,
+      startTime: timeDiff + 506.02,
     },
     //--------------------------------27----------------------------------------//69//-new  // Газовщик проворачивал клапан 6 раз с интервалом.
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0,3кг.',
       sender: 'Система',
       audio: 'tts-24',
-      startTime: timeDiff + 503.1,
+      startTime: timeDiff + 506.1,
     },
     {
       action: {
@@ -17494,7 +17499,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 505.2,
+      startTime: timeDiff + 508.2,
       human: true,
     },
     {
@@ -17503,7 +17508,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 506,
+      startTime: timeDiff + 509,
       human: true,
     },
     {
@@ -17512,7 +17517,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 507,
+      startTime: timeDiff + 510,
       human: true,
     },
     {
@@ -17521,7 +17526,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 508,
+      startTime: timeDiff + 511,
       human: true,
     },
     {
@@ -17596,7 +17601,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 508.1,
+      startTime: timeDiff + 511.1,
     },
     // ilay
     {
@@ -17605,7 +17610,7 @@ let tempActions = [
         color: 'green',
         number: '0.058',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17613,7 +17618,7 @@ let tempActions = [
         color: 'green',
         number: '0.028',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17621,7 +17626,7 @@ let tempActions = [
         color: 'green',
         number: '0.287',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17629,7 +17634,7 @@ let tempActions = [
         color: 'green',
         number: '0.229',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17637,7 +17642,7 @@ let tempActions = [
         color: 'green',
         number: '0857.',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17645,7 +17650,7 @@ let tempActions = [
         color: 'green',
         number: '0.339',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17653,7 +17658,7 @@ let tempActions = [
         color: 'green',
         number: '01.17',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17661,7 +17666,7 @@ let tempActions = [
         color: 'green',
         number: '01.47',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17669,7 +17674,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17677,7 +17682,7 @@ let tempActions = [
         color: 'green',
         number: '0146.',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17685,7 +17690,7 @@ let tempActions = [
         color: 'green',
         number: '0126.',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17693,7 +17698,7 @@ let tempActions = [
         color: 'green',
         number: '0146.',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17701,7 +17706,7 @@ let tempActions = [
         color: 'green',
         number: '0125.',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17709,7 +17714,7 @@ let tempActions = [
         color: 'green',
         number: '06.89',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17717,7 +17722,7 @@ let tempActions = [
         color: 'green',
         number: '00.38',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17725,7 +17730,7 @@ let tempActions = [
         color: 'green',
         number: '1190.',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17733,7 +17738,7 @@ let tempActions = [
         color: 'green',
         number: '10.11',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17741,7 +17746,7 @@ let tempActions = [
         color: 'green',
         number: '10.11',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17749,7 +17754,7 @@ let tempActions = [
         color: 'green',
         number: '04.83',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17757,7 +17762,7 @@ let tempActions = [
         color: 'green',
         number: '04.11',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17765,7 +17770,7 @@ let tempActions = [
         color: 'green',
         number: '2.410',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17773,7 +17778,7 @@ let tempActions = [
         color: 'green',
         number: '045.0',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17781,7 +17786,7 @@ let tempActions = [
         color: 'green',
         number: '24.74',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       action: {
@@ -17789,7 +17794,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 508.12,
+      startTime: timeDiff + 511.12,
     },
     {
       text: 'Смесительный клапан 002 закрывается.',
@@ -17802,45 +17807,45 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 509,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'vn_002', color: '#8F8F8F' },
-          ]
-        }
-      },
-      startTime: timeDiff + 510,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'vn_002', color: '#ff381b' },
-          ]
-        }
-      },
-      startTime: timeDiff + 511,
-    }, {
-      action: {
-        window2D: {
-          elements: [
-            { name: 'vn_002', color: '#8F8F8F' },
-          ]
-        }
-      },
       startTime: timeDiff + 512,
     }, {
       action: {
         window2D: {
           elements: [
+            { name: 'vn_002', color: '#8F8F8F' },
+          ]
+        }
+      },
+      startTime: timeDiff + 513,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'vn_002', color: '#ff381b' },
+          ]
+        }
+      },
+      startTime: timeDiff + 514,
+    }, {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'vn_002', color: '#8F8F8F' },
+          ]
+        }
+      },
+      startTime: timeDiff + 515,
+    }, {
+      action: {
+        window2D: {
+          elements: [
             { name: 'vn_002', color: '#ff381b' },
             { name: 'circle_kl002', stroke: '#ff381b' },
             { name: 'circle_kl002', stroke: '#ff381b' },
           ]
         }
       },
-      startTime: timeDiff + 513,
+      startTime: timeDiff + 516,
     },// ilay bzu FF
     {
       action: {
@@ -18010,7 +18015,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 513.01,
+      startTime: timeDiff + 516.01,
     },
     {
       action: {
@@ -18018,7 +18023,7 @@ let tempActions = [
         color: 'green',
         number: '0.058',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18026,7 +18031,7 @@ let tempActions = [
         color: 'green',
         number: '0.028',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18034,7 +18039,7 @@ let tempActions = [
         color: 'green',
         number: '0.287',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18042,7 +18047,7 @@ let tempActions = [
         color: 'green',
         number: '0.229',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18050,7 +18055,7 @@ let tempActions = [
         color: 'green',
         number: '0848.',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18058,7 +18063,7 @@ let tempActions = [
         color: 'green',
         number: '0.339',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18066,7 +18071,7 @@ let tempActions = [
         color: 'green',
         number: '01.17',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18074,7 +18079,7 @@ let tempActions = [
         color: 'green',
         number: '01.47',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18082,7 +18087,7 @@ let tempActions = [
         color: 'green',
         number: '0146.',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18090,7 +18095,7 @@ let tempActions = [
         color: 'green',
         number: '0126.',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18098,7 +18103,7 @@ let tempActions = [
         color: 'green',
         number: '0146.',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18106,7 +18111,7 @@ let tempActions = [
         color: 'green',
         number: '0125.',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18114,7 +18119,7 @@ let tempActions = [
         color: 'green',
         number: '06.88',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18122,7 +18127,7 @@ let tempActions = [
         color: 'green',
         number: '00.38',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18130,7 +18135,7 @@ let tempActions = [
         color: 'green',
         number: '1190.',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18138,7 +18143,7 @@ let tempActions = [
         color: 'green',
         number: '10.11',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18146,7 +18151,7 @@ let tempActions = [
         color: 'green',
         number: '10.11',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18154,7 +18159,7 @@ let tempActions = [
         color: 'green',
         number: '04.83',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18162,7 +18167,7 @@ let tempActions = [
         color: 'green',
         number: '04.11',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18170,7 +18175,7 @@ let tempActions = [
         color: 'green',
         number: '2.410',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18178,7 +18183,7 @@ let tempActions = [
         color: 'green',
         number: '045.0',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18186,7 +18191,7 @@ let tempActions = [
         color: 'green',
         number: '24.74',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18194,7 +18199,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18202,7 +18207,7 @@ let tempActions = [
         color: 'red',
         number: '093.0',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18210,7 +18215,7 @@ let tempActions = [
         color: 'red',
         number: '008.7',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18218,7 +18223,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18226,7 +18231,7 @@ let tempActions = [
         color: 'red',
         number: '013.3',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18234,7 +18239,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18242,7 +18247,7 @@ let tempActions = [
         color: 'red',
         number: '046.9',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     {
       action: {
@@ -18250,7 +18255,7 @@ let tempActions = [
         color: 'red',
         number: '01.16',
       },
-      startTime: timeDiff + 513.02,
+      startTime: timeDiff + 516.02,
     },
     ////-----------------------------------70//-new//
     {
@@ -18258,7 +18263,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 514,
+      startTime: timeDiff + 517,
     }, {
       multi: [
         {
@@ -18272,7 +18277,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 518.1,
+      startTime: timeDiff + 521.1,
       human: true,
     },
     ////--------------------------------28----------------------------------------//71//-new
@@ -18280,66 +18285,66 @@ let tempActions = [
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 519,
+      startTime: timeDiff + 522,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 519.1,
+      startTime: timeDiff + 522.1,
       human: true,
     },
     {
       text: 'На фурмах 0,3 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo33',
-      startTime: timeDiff + 520,
+      startTime: timeDiff + 523,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 524,
+      startTime: timeDiff + 527,
     },
     {
       text: 'Закрывайте отсечной.',
       sender: 'Мастер печи',
       audio: 'tts-vo34',
-      startTime: timeDiff + 526,
+      startTime: timeDiff + 529,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 526.1,
+      startTime: timeDiff + 529.1,
       human: true,
     },
     {
       text: 'Понятно, Артём Викторович – закрывай отсечной.',
       sender: 'Газовщик',
       audio: 'tts-vo35',
-      startTime: timeDiff + 527.5,
+      startTime: timeDiff + 530.5,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 532,
+      startTime: timeDiff + 535,
     },
     {
       text: 'Понял, закрываю отсечной клапан.',
       sender: 'Дежурный водопроводчик',
       audio: 'tts-vo36',
-      startTime: timeDiff + 533,
+      startTime: timeDiff + 536,
     },
     // ilay ничего 
     ////--------------------------------29----------------------------------------//72//-new 
     {
       text: 'Отсечной клапан закрывыается.',
       sender: 'Система',
-      startTime: timeDiff + 544,
+      startTime: timeDiff + 547,
     },
     {
       action: {
@@ -18349,7 +18354,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 546.5,
+      startTime: timeDiff + 549.5,
     }, {
       action: {
         window2D: {
@@ -18358,7 +18363,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 547,
+      startTime: timeDiff + 550,
     }, {
       action: {
         window2D: {
@@ -18367,7 +18372,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 547.5,
+      startTime: timeDiff + 550.5,
     }, {
       action: {
         window2D: {
@@ -18376,7 +18381,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 548,
+      startTime: timeDiff + 551,
     }, {
       action: {
         window2D: {
@@ -18385,13 +18390,13 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 548.5,
+      startTime: timeDiff + 551.5,
     },
     {
       text: 'Отсечной клапан закрыт.',
       sender: 'Система',
       audio: 'tts-33',
-      startTime: timeDiff + 549,
+      startTime: timeDiff + 552,
     },
     // ilay dp fF
     {
@@ -18553,14 +18558,14 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 549.1,
+      startTime: timeDiff + 552.1,
     },
     ////--------------------------------30----------------------------------------//73//-new \
     {
       scenarioText: 'Открыть сбросной клапан 723',
       sender: 'Система',
       audio: 'tts-34',
-      startTime: timeDiff + 552,
+      startTime: timeDiff + 555,
     },
     {
       action: {
@@ -18568,7 +18573,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.3,
-      startTime: timeDiff + 555,
+      startTime: timeDiff + 558,
       human: true,
     },
     {
@@ -18576,14 +18581,14 @@ let tempActions = [
         target3D: 'Lamp_Red_017',
         material: 'Unic_Lamp_Red_Off'
       },
-      startTime: timeDiff + 555.5,
+      startTime: timeDiff + 558.5,
     },
     {
       action: {
         target3D: 'Lamp_Green_021',
         material: 'Unic_Lamp_Green_On'
       },
-      startTime: timeDiff + 556,
+      startTime: timeDiff + 559,
     },
     {
       action: {
@@ -18591,7 +18596,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.3,
-      startTime: timeDiff + 556.5,
+      startTime: timeDiff + 559.5,
       human: true,
     },
     {
@@ -18602,7 +18607,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 556.6,
+      startTime: timeDiff + 559.6,
     },
     // ilay dp ff
     {
@@ -18763,7 +18768,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 556.61,
+      startTime: timeDiff + 559.61,
     },
     {
       action: {
@@ -18771,7 +18776,7 @@ let tempActions = [
         color: 'green',
         number: '0.057',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18779,7 +18784,7 @@ let tempActions = [
         color: 'green',
         number: '0.025',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18787,7 +18792,7 @@ let tempActions = [
         color: 'green',
         number: '0.268',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18795,7 +18800,7 @@ let tempActions = [
         color: 'green',
         number: '0.215',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18803,7 +18808,7 @@ let tempActions = [
         color: 'green',
         number: '0967.',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18811,7 +18816,7 @@ let tempActions = [
         color: 'green',
         number: '0.318',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18819,7 +18824,7 @@ let tempActions = [
         color: 'green',
         number: '01.28',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18827,7 +18832,7 @@ let tempActions = [
         color: 'green',
         number: '01.46',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18835,7 +18840,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18843,7 +18848,7 @@ let tempActions = [
         color: 'green',
         number: '0141.',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18851,7 +18856,7 @@ let tempActions = [
         color: 'green',
         number: '0123.',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18859,7 +18864,7 @@ let tempActions = [
         color: 'green',
         number: '0142.',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18867,7 +18872,7 @@ let tempActions = [
         color: 'green',
         number: '0123.',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18875,7 +18880,7 @@ let tempActions = [
         color: 'green',
         number: '06.89',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18883,7 +18888,7 @@ let tempActions = [
         color: 'green',
         number: '0038',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18891,7 +18896,7 @@ let tempActions = [
         color: 'green',
         number: '1190.',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18899,7 +18904,7 @@ let tempActions = [
         color: 'green',
         number: '10.22',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18907,7 +18912,7 @@ let tempActions = [
         color: 'green',
         number: '10.22',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18915,7 +18920,7 @@ let tempActions = [
         color: 'green',
         number: '04.85',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18923,7 +18928,7 @@ let tempActions = [
         color: 'green',
         number: '04.11',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18931,7 +18936,7 @@ let tempActions = [
         color: 'green',
         number: '2.407',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18939,7 +18944,7 @@ let tempActions = [
         color: 'green',
         number: '044.9',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18947,7 +18952,7 @@ let tempActions = [
         color: 'green',
         number: '24.74',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     {
       action: {
@@ -18955,99 +18960,99 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 556.62,
+      startTime: timeDiff + 559.62,
     },
     ////--------------------------------31----------------------------------------//74//-new 
     {
       text: 'Третью закрыли 1.1 по второму толкателю.',
       sender: 'Мастер печи',
       audio: 'tts-vo37',
-      startTime: timeDiff + 558,
+      startTime: timeDiff + 561,
     },
     {
       scenarioText: 'Сообщить по рации в «Лётки №3».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 563,
+      startTime: timeDiff + 566,
     },
     {
       action: {
         target3D: 'ButtonHightlight_006',
       },
-      startTime: timeDiff + 565.5,
+      startTime: timeDiff + 568.5,
       human: true,
     },
     {
       text: '1.1 второй толкатель.',
       sender: 'Газовщик',
       audio: 'tts-vo38',
-      startTime: timeDiff + 566.5,
+      startTime: timeDiff + 569.5,
     },
     {
       action: {
         target3D: 'Lamp_006',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 570,
+      startTime: timeDiff + 573,
     },
     ////--------------------------------32----------------------------------------//75//-new 
     {
       scenarioText: 'Сообщить по телефону в "Дисп.комб".',
       sender: 'Система',
       audio: 'telephone_say',
-      startTime: timeDiff + 571,
+      startTime: timeDiff + 574,
     },
     {
       action: {
         target3D: 'PhoneButton012',
       },
-      startTime: timeDiff + 572,
+      startTime: timeDiff + 575,
       human: true,
     },
     {
       text: 'Слева 1.1 по второму от толкателя.',
       sender: 'Газовщик',
       audio: 'tts-vo39',
-      startTime: timeDiff + 573,
+      startTime: timeDiff + 576,
     },
     {
       text: 'Хорошо, принял.',
       sender: 'Дежурный водопроводчик',
       audio: 'tts-vo40',
-      startTime: timeDiff + 578,
+      startTime: timeDiff + 581,
     },
     {
       text: 'Справа пока не сдавай.',
       sender: 'Газовщик',
       audio: 'tts-vo41',
-      startTime: timeDiff + 581,
+      startTime: timeDiff + 584,
     },
     ////--------------------------------33----------------------------------------//76//-new 
     {
       scenarioText: 'Сообщить по рации в «Лётки №3».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 585,
+      startTime: timeDiff + 588,
     },
     {
       action: {
         target3D: 'ButtonHightlight_006',
       },
-      startTime: timeDiff + 585.5,
+      startTime: timeDiff + 588.5,
       human: true,
     },
     {
       text: 'Третья лётка, отдавайте ковши.',
       sender: 'Газовщик',
       audio: 'tts-vo42',
-      startTime: timeDiff + 586.5,
+      startTime: timeDiff + 589.5,
     },
     {
       action: {
         target3D: 'Lamp_006',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 591,
+      startTime: timeDiff + 594,
     },
     // ilay     
     {
@@ -19056,7 +19061,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19064,7 +19069,7 @@ let tempActions = [
         color: 'red',
         number: '093.0',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19072,7 +19077,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19080,7 +19085,7 @@ let tempActions = [
         color: 'red',
         number: '0085',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19088,7 +19093,7 @@ let tempActions = [
         color: 'red',
         number: '259.3',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19096,7 +19101,7 @@ let tempActions = [
         color: 'red',
         number: '00.00',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19104,7 +19109,7 @@ let tempActions = [
         color: 'red',
         number: '013.5',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19112,7 +19117,7 @@ let tempActions = [
         color: 'red',
         number: '001.3',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19120,7 +19125,7 @@ let tempActions = [
         color: 'red',
         number: '047.0',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19128,7 +19133,7 @@ let tempActions = [
         color: 'red',
         number: '0096',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19136,7 +19141,7 @@ let tempActions = [
         color: 'red',
         number: '01.36',
       },
-      startTime: timeDiff + 591.02,
+      startTime: timeDiff + 594.02,
     },
     {
       action: {
@@ -19144,7 +19149,7 @@ let tempActions = [
         color: 'green',
         number: '0.055',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19152,7 +19157,7 @@ let tempActions = [
         color: 'green',
         number: '0.024',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19160,7 +19165,7 @@ let tempActions = [
         color: 'green',
         number: '0.264',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19168,7 +19173,7 @@ let tempActions = [
         color: 'green',
         number: '0.212',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19176,7 +19181,7 @@ let tempActions = [
         color: 'green',
         number: '0950.',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19184,7 +19189,7 @@ let tempActions = [
         color: 'green',
         number: '0.312',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19192,7 +19197,7 @@ let tempActions = [
         color: 'green',
         number: '01.37',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19200,7 +19205,7 @@ let tempActions = [
         color: 'green',
         number: '01.74',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19208,7 +19213,7 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19216,7 +19221,7 @@ let tempActions = [
         color: 'green',
         number: '0136.',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19224,7 +19229,7 @@ let tempActions = [
         color: 'green',
         number: '0120.',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19232,7 +19237,7 @@ let tempActions = [
         color: 'green',
         number: '0138.',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19240,7 +19245,7 @@ let tempActions = [
         color: 'green',
         number: '0120.',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19248,7 +19253,7 @@ let tempActions = [
         color: 'green',
         number: '06.85',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19256,7 +19261,7 @@ let tempActions = [
         color: 'green',
         number: '0038',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19264,7 +19269,7 @@ let tempActions = [
         color: 'green',
         number: '1189.',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19272,7 +19277,7 @@ let tempActions = [
         color: 'green',
         number: '10.25',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19280,7 +19285,7 @@ let tempActions = [
         color: 'green',
         number: '10.25',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19288,7 +19293,7 @@ let tempActions = [
         color: 'green',
         number: '04.87',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19296,7 +19301,7 @@ let tempActions = [
         color: 'green',
         number: '04.11',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19304,7 +19309,7 @@ let tempActions = [
         color: 'green',
         number: '2.419',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19312,7 +19317,7 @@ let tempActions = [
         color: 'green',
         number: '044.7',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19320,7 +19325,7 @@ let tempActions = [
         color: 'green',
         number: '24.75',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     {
       action: {
@@ -19328,66 +19333,66 @@ let tempActions = [
         color: 'green',
         number: '0000',
       },
-      startTime: timeDiff + 591.03,
+      startTime: timeDiff + 594.03,
     },
     ////--------------------------------34----------------------------------------//77//-new 
     {
       text: 'Отсечной закрыт.',
       sender: 'Мастер печи',
       audio: 'tts-vo43',
-      startTime: timeDiff + 593,
+      startTime: timeDiff + 596,
     },
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 595,
+      startTime: timeDiff + 598,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 597.1,
+      startTime: timeDiff + 600.1,
       human: true,
     },
     {
       text: 'Отсечной закрыт, на фурмах 0,3.',
       sender: 'Газовщик',
       audio: 'tts-vo44',
-      startTime: timeDiff + 598,
+      startTime: timeDiff + 601,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 603,
+      startTime: timeDiff + 606,
     },
     {
       text: 'Делаем 0,2 кг.',
       sender: 'Мастер печи',
       audio: 'tts-vo45',
-      startTime: timeDiff + 604,
+      startTime: timeDiff + 607,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 604.1,
+      startTime: timeDiff + 607.1,
       human: true,
     },
     {
       text: 'Принял, делаю 0,2.',
       sender: 'Газовщик',
       audio: 'tts-vo46',
-      startTime: timeDiff + 605,
+      startTime: timeDiff + 608,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 609,
+      startTime: timeDiff + 612,
     },
     // ilay dp ff bzu FF
     {
@@ -19710,7 +19715,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 609.01,
+      startTime: timeDiff + 612.01,
     },
     {
       action: {
@@ -19718,7 +19723,7 @@ let tempActions = [
         color: 'red',
         number: '255.3',
       },
-      startTime: timeDiff + 609.02,
+      startTime: timeDiff + 612.02,
     },
     {
       action: {
@@ -19726,32 +19731,14 @@ let tempActions = [
         color: 'red',
         number: '01.42',
       },
-      startTime: timeDiff + 609.02,
+      startTime: timeDiff + 612.02,
     },
     ////--------------------------------35----------------------------------------//78//-new 
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0,2кг.',
       audio: 'tts-24',
       sender: 'Система',
-      startTime: timeDiff + 610,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: -0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 612.2,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
       startTime: timeDiff + 613,
-      human: true,
     },
     {
       action: {
@@ -19759,7 +19746,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 613.5,
+      startTime: timeDiff + 615.2,
       human: true,
     },
     {
@@ -19768,7 +19755,25 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 614,
+      startTime: timeDiff + 616,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: -0.785 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 616.5,
+      human: true,
+    },
+    {
+      action: {
+        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+        rotation: { y: 0 },
+      },
+      duration: 0.15,
+      startTime: timeDiff + 617,
       human: true,
     },
     {
@@ -19780,7 +19785,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 614.1,
+      startTime: timeDiff + 617.1,
     },
     // ilay dp ff bzu FF
     {
@@ -20103,7 +20108,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 614.11,
+      startTime: timeDiff + 617.11,
     },
     {
       action: {
@@ -20111,7 +20116,7 @@ let tempActions = [
         color: 'green',
         number: '0.020',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20119,7 +20124,7 @@ let tempActions = [
         color: 'green',
         number: '0.229',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20127,7 +20132,7 @@ let tempActions = [
         color: 'green',
         number: '0.184',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20135,7 +20140,7 @@ let tempActions = [
         color: 'green',
         number: '1179.',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20143,7 +20148,7 @@ let tempActions = [
         color: 'green',
         number: '0.232',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20151,7 +20156,7 @@ let tempActions = [
         color: 'green',
         number: '01.47',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20159,7 +20164,7 @@ let tempActions = [
         color: 'green',
         number: '01.72',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20167,7 +20172,7 @@ let tempActions = [
         color: 'green',
         number: '0117.',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20175,7 +20180,7 @@ let tempActions = [
         color: 'green',
         number: '0134.',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20183,7 +20188,7 @@ let tempActions = [
         color: 'green',
         number: '0118.',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20191,7 +20196,7 @@ let tempActions = [
         color: 'green',
         number: '06.76',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20199,7 +20204,7 @@ let tempActions = [
         color: 'green',
         number: '1187.',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20207,7 +20212,7 @@ let tempActions = [
         color: 'green',
         number: '2.422',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20215,7 +20220,7 @@ let tempActions = [
         color: 'green',
         number: '044.4',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20223,7 +20228,7 @@ let tempActions = [
         color: 'green',
         number: '24.73',
       },
-      startTime: timeDiff + 614.12,
+      startTime: timeDiff + 617.12,
     },
     {
       action: {
@@ -20231,7 +20236,7 @@ let tempActions = [
         color: 'red',
         number: '146.8',
       },
-      startTime: timeDiff + 614.13,
+      startTime: timeDiff + 617.13,
     },
     {
       action: {
@@ -20239,7 +20244,7 @@ let tempActions = [
         color: 'red',
         number: '008.5',
       },
-      startTime: timeDiff + 614.13,
+      startTime: timeDiff + 617.13,
     },
     {
       action: {
@@ -20247,7 +20252,7 @@ let tempActions = [
         color: 'red',
         number: '046.9',
       },
-      startTime: timeDiff + 614.13,
+      startTime: timeDiff + 617.13,
     },
     {
       action: {
@@ -20255,7 +20260,7 @@ let tempActions = [
         color: 'red',
         number: '01.46',
       },
-      startTime: timeDiff + 614.13,
+      startTime: timeDiff + 617.13,
     },
     ////-----------------------------------79//-new//
     {
@@ -20263,7 +20268,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 615,
+      startTime: timeDiff + 618,
     }, {
       multi: [
         {
@@ -20277,7 +20282,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 619.1,
+      startTime: timeDiff + 622.1,
       human: true,
     },
     ////--------------------------------36----------------------------------------//80//-new
@@ -20285,53 +20290,53 @@ let tempActions = [
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 620,
+      startTime: timeDiff + 623,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 620.1,
+      startTime: timeDiff + 623.1,
       human: true,
     },
     {
       text: 'На фурмах 0,2.',
       sender: 'Газовщик',
       audio: 'tts-vo47',
-      startTime: timeDiff + 621,
+      startTime: timeDiff + 624,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 625,
+      startTime: timeDiff + 628,
     },
     {
       text: 'Делаем 0.',
       sender: 'Мастер печи',
       audio: 'tts-vo48',
-      startTime: timeDiff + 627,
+      startTime: timeDiff + 630,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 627.1,
+      startTime: timeDiff + 630.1,
       human: true,
     },
     {
       text: 'Понял, делаю 0.',
       sender: 'Газовщик',
       audio: 'tts-vo49',
-      startTime: timeDiff + 628,
+      startTime: timeDiff + 631,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 632,
+      startTime: timeDiff + 635,
     },
     // ilay
     {
@@ -20340,7 +20345,7 @@ let tempActions = [
         color: 'red',
         number: '133.6',
       },
-      startTime: timeDiff + 632.02,
+      startTime: timeDiff + 635.02,
     },
     {
       action: {
@@ -20348,7 +20353,7 @@ let tempActions = [
         color: 'red',
         number: '013.5',
       },
-      startTime: timeDiff + 632.02,
+      startTime: timeDiff + 635.02,
     },
     {
       action: {
@@ -20356,7 +20361,7 @@ let tempActions = [
         color: 'red',
         number: '047.0',
       },
-      startTime: timeDiff + 632.02,
+      startTime: timeDiff + 635.02,
     },
     {
       action: {
@@ -20364,7 +20369,7 @@ let tempActions = [
         color: 'red',
         number: '01.50',
       },
-      startTime: timeDiff + 632.02,
+      startTime: timeDiff + 635.02,
     },
     {
       action: {
@@ -20372,7 +20377,7 @@ let tempActions = [
         color: 'green',
         number: '0.135',
       },
-      startTime: timeDiff + 632.03,
+      startTime: timeDiff + 635.03,
     },
     {
       action: {
@@ -20380,7 +20385,7 @@ let tempActions = [
         color: 'green',
         number: '0.157',
       },
-      startTime: timeDiff + 632.03,
+      startTime: timeDiff + 635.03,
     },
     {
       action: {
@@ -20388,7 +20393,7 @@ let tempActions = [
         color: 'green',
         number: '1329.',
       },
-      startTime: timeDiff + 632.03,
+      startTime: timeDiff + 635.03,
     },
     {
       action: {
@@ -20396,7 +20401,7 @@ let tempActions = [
         color: 'green',
         number: '0.196',
       },
-      startTime: timeDiff + 632.03,
+      startTime: timeDiff + 635.03,
     },
     {
       action: {
@@ -20404,7 +20409,7 @@ let tempActions = [
         color: 'green',
         number: '01.50',
       },
-      startTime: timeDiff + 632.03,
+      startTime: timeDiff + 635.03,
     },
     {
       action: {
@@ -20412,7 +20417,7 @@ let tempActions = [
         color: 'green',
         number: '01.76',
       },
-      startTime: timeDiff + 632.03,
+      startTime: timeDiff + 635.03,
     },
     {
       action: {
@@ -20420,7 +20425,7 @@ let tempActions = [
         color: 'green',
         number: '0133.',
       },
-      startTime: timeDiff + 632.03,
+      startTime: timeDiff + 635.03,
     },
     {
       action: {
@@ -20428,14 +20433,14 @@ let tempActions = [
         color: 'green',
         number: '06.94',
       },
-      startTime: timeDiff + 632.03,
+      startTime: timeDiff + 635.03,
     },
     ////--------------------------------37----------------------------------------//81//-new 
     {
       scenarioText: 'Приоткрыть клапан «СНОРТ» до давления на фурмах 0кг.',
       audio: 'tts-24',
       sender: 'Система',
-      startTime: timeDiff + 632.1,
+      startTime: timeDiff + 635.1,
     },
     {
       action: {
@@ -20443,7 +20448,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 632.2,
+      startTime: timeDiff + 635.2,
       human: true,
     },
     {
@@ -20452,7 +20457,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 633,
+      startTime: timeDiff + 636,
       human: true,
     },
     {
@@ -20461,7 +20466,7 @@ let tempActions = [
         rotation: { y: -0.785 },
       },
       duration: 0.15,
-      startTime: timeDiff + 633.5,
+      startTime: timeDiff + 636.5,
       human: true,
     },
     {
@@ -20470,7 +20475,7 @@ let tempActions = [
         rotation: { y: 0 },
       },
       duration: 0.15,
-      startTime: timeDiff + 634,
+      startTime: timeDiff + 637,
       human: true,
     },
     {
@@ -20478,14 +20483,14 @@ let tempActions = [
         target3D: 'Lamp_Red_020',
         material: 'Unic_Lamp_Red_Off'
       },
-      startTime: timeDiff + 634.6,
+      startTime: timeDiff + 637.6,
     },
     {
       action: {
         target3D: 'Lamp_Green_024',
         material: 'Unic_Lamp_Green_On'
       },
-      startTime: timeDiff + 634.7,
+      startTime: timeDiff + 637.7,
     },
     {
       action: {
@@ -20498,36 +20503,36 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 634.8,
+      startTime: timeDiff + 637.8,
     },
     {
       text: 'Прекращение циркуляции кокса.',
       sender: 'Система',
-      startTime: timeDiff + 635,
+      startTime: timeDiff + 638,
     },
     {
       action: {
         target3D: 'Display_TV002',
         material: 'media/images/monitors/Kamera-nablyudeniya.jpg'
       },
-      startTime: timeDiff + 635.1,
+      startTime: timeDiff + 638.1,
     },
     {
       action: {
         target3D: 'Display_flat006',
         material: 'media/images/monitors/Kamera-nablyudeniya.jpg'
       },
-      startTime: timeDiff + 635.2,
+      startTime: timeDiff + 638.2,
     },
     {
       text: 'Клапан «СНОРТ» полностью открыт.',
       sender: 'Система',
-      startTime: timeDiff + 636,
+      startTime: timeDiff + 639,
     },
     {
       text: 'Прекращение дутья.',
       sender: 'Система',
-      startTime: timeDiff + 637,
+      startTime: timeDiff + 640,
     },
     ////-----------------------------------82//-new//
     {
@@ -20535,7 +20540,7 @@ let tempActions = [
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 638,
+      startTime: timeDiff + 641,
     }, {
       multi: [
         {
@@ -20549,7 +20554,7 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 642.1,
+      startTime: timeDiff + 645.1,
       human: true,
     },
     ////--------------------------------38----------------------------------------//83//-new 
@@ -20557,53 +20562,53 @@ let tempActions = [
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 643,
+      startTime: timeDiff + 646,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 643.1,
+      startTime: timeDiff + 646.1,
       human: true,
     },
     {
       text: '«СНОРТ» раскручен полностью. На фурмах 0.',
       sender: 'Газовщик',
       audio: 'tts-vo50',
-      startTime: timeDiff + 644,
+      startTime: timeDiff + 647,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 648,
+      startTime: timeDiff + 651,
     },
     {
       text: 'Закрывайте шибера.',
       sender: 'Мастер печи',
       audio: 'tts-vo51',
-      startTime: timeDiff + 649,
+      startTime: timeDiff + 652,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 649.1,
+      startTime: timeDiff + 652.1,
       human: true,
     },
     {
       text: 'Закрываю шибера.',
       sender: 'Газовщик',
       audio: 'tts-vo52',
-      startTime: timeDiff + 650,
+      startTime: timeDiff + 653,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 653,
+      startTime: timeDiff + 656,
     },
     // ilay dp ff bzu ff
     {
@@ -20930,7 +20935,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 653.01,
+      startTime: timeDiff + 656.01,
     },
     {
       action: {
@@ -20938,7 +20943,7 @@ let tempActions = [
         color: 'red',
         number: '332.9',
       },
-      startTime: timeDiff + 653.02,
+      startTime: timeDiff + 656.02,
     },
     {
       action: {
@@ -20946,7 +20951,7 @@ let tempActions = [
         color: 'red',
         number: '013.6',
       },
-      startTime: timeDiff + 653.02,
+      startTime: timeDiff + 656.02,
     },
     ////--------------------------------39----------------------------------------//84//-new 
     // scenarioText: 'Делаем 310 318 и 319 поочерёдно.',
@@ -21032,7 +21037,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 653.03,
+      startTime: timeDiff + 656.03,
     },
     {
       action: {
@@ -21043,13 +21048,13 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 653.1,
+      startTime: timeDiff + 656.1,
     },
     {
       scenarioText: 'Перевести ВНК №3 на ручной режим.',
       audio: 'tts-38',
       sender: 'Система',
-      startTime: timeDiff + 654,
+      startTime: timeDiff + 657,
     },
     {
       text: 'Перевести клапан 310 на ручной режим.',
@@ -21094,7 +21099,7 @@ let tempActions = [
           { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 657,
+      startTime: timeDiff + 660,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -21113,7 +21118,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 657.2,
+      startTime: timeDiff + 660.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -21142,7 +21147,7 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 657.4,
+      startTime: timeDiff + 660.4,
       human: true,
     },
     // окно ВН  //  клик байпас
@@ -21161,7 +21166,7 @@ let tempActions = [
           { x: 88.20, y: 93, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 657.6,
+      startTime: timeDiff + 660.6,
       human: true,
     },
     // маленькое окошко ОК
@@ -21178,7 +21183,7 @@ let tempActions = [
           { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 657.8,
+      startTime: timeDiff + 660.8,
       human: true,
     },
     {
@@ -21187,7 +21192,7 @@ let tempActions = [
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 658,
+      startTime: timeDiff + 661,
       human: true,
     },
     // ilay vnk3
@@ -21267,7 +21272,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 658.02,
+      startTime: timeDiff + 661.02,
     },
     ////
     ////--------------------------------клапан 318----------------------------------------Открыт. Автоматический в ручной-------------------------------
@@ -21313,7 +21318,7 @@ let tempActions = [
           { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 658.1,
+      startTime: timeDiff + 661.1,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -21332,7 +21337,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 658.2,
+      startTime: timeDiff + 661.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -21363,7 +21368,7 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 658.4,
+      startTime: timeDiff + 661.4,
       human: true,
     },
     // окно ВН  //  клик байпас
@@ -21382,7 +21387,7 @@ let tempActions = [
           { x: 88.20, y: 93, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 658.6,
+      startTime: timeDiff + 661.6,
       human: true,
     },
     // маленькое окошко ОК
@@ -21399,7 +21404,7 @@ let tempActions = [
           { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 658.8,
+      startTime: timeDiff + 661.8,
       human: true,
     },
     {
@@ -21408,7 +21413,7 @@ let tempActions = [
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 659,
+      startTime: timeDiff + 662,
       human: true,
     },
     // ilay vnk3
@@ -21482,7 +21487,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 659.03,
+      startTime: timeDiff + 662.03,
     },
     ////--------------------------------клапан 319----------------------------------------Открыт. Автоматический в ручной-------------------------------
     {
@@ -21527,7 +21532,7 @@ let tempActions = [
           { x: 79.8, y: 53.2, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 659.1,
+      startTime: timeDiff + 662.1,
       human: true,
     },
     // окно ВН  // клик ручной
@@ -21546,7 +21551,7 @@ let tempActions = [
           { x: 84.4, y: 60.5, w: 3.2, h: 2.5, id: 'close_vn' },
         ]
       },
-      startTime: timeDiff + 659.2,
+      startTime: timeDiff + 662.2,
       human: true,
     },
     // маленькое окошко ОК
@@ -21575,7 +21580,7 @@ let tempActions = [
           { x: 75.4, y: 70.4, w: 8.6, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 659.4,
+      startTime: timeDiff + 662.4,
       human: true,
     },
     // окно ВН  //  клик байпас
@@ -21594,7 +21599,7 @@ let tempActions = [
           { x: 80.7, y: 70.7, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 659.6,
+      startTime: timeDiff + 662.6,
       human: true,
     },
     // маленькое окошко ОК
@@ -21612,7 +21617,7 @@ let tempActions = [
           { x: 79.8, y: 53.2, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 659.8,
+      startTime: timeDiff + 662.8,
       human: true,
     },
     // ilay vnk3 vnk3 
@@ -21686,20 +21691,20 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 659.82,
+      startTime: timeDiff + 662.82,
     },
     ////--------------------------------40----------------------------------------//85//-new 
     {
       scenarioText: 'Открыть клапан 310 для сброса давления.',
       sender: 'Система',
       audio: 'tts-39',
-      startTime: timeDiff + 660,
+      startTime: timeDiff + 663,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 660.1,
+      startTime: timeDiff + 663.1,
       human: true,
     },
     {
@@ -21745,7 +21750,7 @@ let tempActions = [
           { x: 83.80, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  «Открыть»
         ]
       },
-      startTime: timeDiff + 663,
+      startTime: timeDiff + 666,
       human: true,
     },
     // окно ВН
@@ -21766,7 +21771,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 664,
+      startTime: timeDiff + 667,
       human: true,
     },
     //  маленькое окошко ОК
@@ -21797,7 +21802,7 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1
         ]
       },
-      startTime: timeDiff + 664.2,
+      startTime: timeDiff + 667.2,
       human: true,
     },
     //  мигание
@@ -21814,7 +21819,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 665,
+      startTime: timeDiff + 668,
     }, {
       action: {
         window2D: {
@@ -21828,7 +21833,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 666,
+      startTime: timeDiff + 669,
     }, {
       action: {
         window2D: {
@@ -21842,7 +21847,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 667,
+      startTime: timeDiff + 670,
     }, {
       action: {
         window2D: {
@@ -21856,7 +21861,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 668,
+      startTime: timeDiff + 671,
     }, {
       action: {
         window2D: {
@@ -21871,7 +21876,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 669,
+      startTime: timeDiff + 672,
     },
     // ilay vnk3 vnk3 
     {
@@ -21949,14 +21954,14 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 669.02,
+      startTime: timeDiff + 672.02,
     },
     ////--------------------------------41----------------------------------------//86//-new 318
     {
       scenarioText: 'Закрыть клапан 318.',
       sender: 'Система',
       audio: 'tts-40',
-      startTime: timeDiff + 669.2,
+      startTime: timeDiff + 672.2,
     },
     {
       action: {
@@ -21966,7 +21971,7 @@ let tempActions = [
           { x: 83.80, y: 89.4, w: 8.6, h: 2.6, id: 'open_vn' },   //  win 1
         ]
       },
-      startTime: timeDiff + 672.3,
+      startTime: timeDiff + 675.3,
       human: true,
     },
     {
@@ -22011,7 +22016,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 672.4,
+      startTime: timeDiff + 675.4,
       human: true,
     },
     // окно ВН  // закрыть
@@ -22033,7 +22038,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 672.6,
+      startTime: timeDiff + 675.6,
       human: true,
     },
     //  маленькое окошко ОК //  ВН Закрывается
@@ -22064,7 +22069,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 672.8,
+      startTime: timeDiff + 675.8,
       human: true,
     },
     //мигание пару секунд
@@ -22080,7 +22085,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 673.3,
+      startTime: timeDiff + 676.3,
     }, {
       action: {
         window2D: {
@@ -22093,7 +22098,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 674,
+      startTime: timeDiff + 677,
     }, {
       action: {
         window2D: {
@@ -22106,7 +22111,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 675,
+      startTime: timeDiff + 678,
     }, {
       action: {
         window2D: {
@@ -22119,7 +22124,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 676,
+      startTime: timeDiff + 679,
     },
     // ОКНО ВН  // КЛИК СТОП
     {
@@ -22139,7 +22144,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 676.2,
+      startTime: timeDiff + 679.2,
       human: true
     },
     ////--------------------------------клапан 318----------------------------------------Закрыт. Закрыт в закрыт-------------------------------    //  1
@@ -22163,7 +22168,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 676.4,
+      startTime: timeDiff + 679.4,
       human: true,
     },
     //  маленькое окошко ОК //  ВН Закрывается
@@ -22194,7 +22199,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 676.6,
+      startTime: timeDiff + 679.6,
       human: true,
     },
     //мигание пару секунд
@@ -22210,7 +22215,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 677.3,
+      startTime: timeDiff + 680.3,
     }, {
       action: {
         window2D: {
@@ -22223,7 +22228,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 678,
+      startTime: timeDiff + 681,
     }, {
       action: {
         window2D: {
@@ -22236,7 +22241,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 679,
+      startTime: timeDiff + 682,
     }, {
       action: {
         window2D: {
@@ -22249,7 +22254,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 680,
+      startTime: timeDiff + 683,
     },
     // ОКНО ВН  // КЛИК СТОП
     {
@@ -22273,7 +22278,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 680.2,
+      startTime: timeDiff + 683.2,
       human: true
     },
     ///////
@@ -22296,7 +22301,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 680.4,
+      startTime: timeDiff + 683.4,
       human: true,
     },
     //  маленькое окошко ОК //  ВН Закрывается
@@ -22327,7 +22332,7 @@ let tempActions = [
           { x: 88.2, y: 75.8, w: 4.0, h: 2.6, id: 'open_vn' },   //  win 1  Закрыть
         ]
       },
-      startTime: timeDiff + 680.6,
+      startTime: timeDiff + 683.6,
       human: true,
     },
     //мигание пару секунд
@@ -22343,7 +22348,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 681.3,
+      startTime: timeDiff + 684.3,
     }, {
       action: {
         window2D: {
@@ -22356,7 +22361,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 682,
+      startTime: timeDiff + 685,
     }, {
       action: {
         window2D: {
@@ -22370,7 +22375,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 683,
+      startTime: timeDiff + 686,
     },
     // ilay
     {
@@ -22453,7 +22458,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 683.02,
+      startTime: timeDiff + 686.02,
     },
     ////--------------------------------клапан 318----------------------------------------Закрыт. Закрыт в закрыт-------------------------------    //  2
     ////--------------------------------42----------------------------------------//87//-new 319
@@ -22461,13 +22466,13 @@ let tempActions = [
       scenarioText: 'Закрыть клапан 319.',
       sender: 'Система',
       audio: 'tts-41',
-      startTime: timeDiff + 684,
+      startTime: timeDiff + 687,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 684.1,
+      startTime: timeDiff + 687.1,
       human: true,
     },
     // Sergey (VNK3 после закрытия клапана 318)
@@ -22552,7 +22557,7 @@ let tempActions = [
           ],
         },
       },
-      startTime: timeDiff + 684.11,
+      startTime: timeDiff + 687.11,
     },
     {
       action: {
@@ -22597,7 +22602,7 @@ let tempActions = [
           { x: 79.80, y: 57.2, w: 4.0, h: 2.6, id: 'open_vn' },   //  клапан 319 //  win 1  //  "Закрыть"
         ]
       },
-      startTime: timeDiff + 687.4,
+      startTime: timeDiff + 690.4,
       human: true,
     },
     {
@@ -22617,7 +22622,7 @@ let tempActions = [
           { x: 82.15, y: 60.8, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 687.6,
+      startTime: timeDiff + 690.6,
       human: true,
     },
     {
@@ -22646,7 +22651,7 @@ let tempActions = [
           { x: 82.90, y: 45.2, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 687.8,
+      startTime: timeDiff + 690.8,
       human: true,
     },
     //мигание пару секунд
@@ -22662,7 +22667,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 688.8,
+      startTime: timeDiff + 691.8,
     },
     {
       action: {
@@ -22676,7 +22681,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 689.8,
+      startTime: timeDiff + 692.8,
     },
     {
       action: {
@@ -22692,20 +22697,20 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 690.8,
+      startTime: timeDiff + 693.8,
     },
     ////--------------------------------43----------------------------------------//88//-new 310
     {
       scenarioText: 'Закрыть клапан 310.',
       sender: 'Система',
       audio: 'tts-42',
-      startTime: timeDiff + 691,
+      startTime: timeDiff + 694,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 691.1,
+      startTime: timeDiff + 694.1,
       human: true,
     },
     // Sergey (VNK3 после закрытия клапана 319)
@@ -22790,7 +22795,7 @@ let tempActions = [
           ],
         },
       },
-      startTime: timeDiff + 691.11,
+      startTime: timeDiff + 694.11,
     },
     {
       action: {
@@ -22835,7 +22840,7 @@ let tempActions = [
           { x: 88.15, y: 75.7, w: 4.0, h: 2.6, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 692.5,
+      startTime: timeDiff + 695.5,
       human: true,
     },
     {
@@ -22853,7 +22858,7 @@ let tempActions = [
           { x: 88.40, y: 76, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 692.6,
+      startTime: timeDiff + 695.6,
       human: true,
     },
     {
@@ -22881,7 +22886,7 @@ let tempActions = [
           { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
         ]
       },
-      startTime: timeDiff + 692.8,
+      startTime: timeDiff + 695.8,
       human: true,
     },
     //мигание пару секунд
@@ -22897,7 +22902,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 693.8,
+      startTime: timeDiff + 696.8,
     },
     {
       action: {
@@ -22911,7 +22916,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 694.8,
+      startTime: timeDiff + 697.8,
     },
     {
       action: {
@@ -22927,7 +22932,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 695.8,
+      startTime: timeDiff + 698.8,
     },
     // ilay
     {
@@ -22942,20 +22947,20 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 695.9,
+      startTime: timeDiff + 698.9,
     },
     ////--------------------------------44----------------------------------------//89//-new 
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 696,
+      startTime: timeDiff + 699,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 696.1,
+      startTime: timeDiff + 699.1,
       human: true,
     },
     // Sergey (VNK3 после закрытия клапана 310)
@@ -23040,53 +23045,53 @@ let tempActions = [
           ],
         },
       },
-      startTime: timeDiff + 696.11,
+      startTime: timeDiff + 699.11,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 698,
+      startTime: timeDiff + 701,
       human: true,
     },
     {
       text: 'Шибера закрыты.',
       sender: 'Газовщик',
       audio: 'tts-vo53',
-      startTime: timeDiff + 699,
+      startTime: timeDiff + 702,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 702,
+      startTime: timeDiff + 705,
     },
     {
       text: 'Берём печь на тягу.',
       sender: 'Мастер печи',
       audio: 'tts-vo54',
-      startTime: timeDiff + 704,
+      startTime: timeDiff + 707,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 704.1,
+      startTime: timeDiff + 707.1,
       human: true,
     },
     {
       text: 'Выполняю, берём печь на тягу.',
       sender: 'Газовщик',
       audio: 'tts-vo55',
-      startTime: timeDiff + 705,
+      startTime: timeDiff + 708,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 707,
+      startTime: timeDiff + 710,
     },
     ////----------------------------------//90-pass//-new
     ////--------------------------------45----------------------------------------//91//-new 
@@ -23094,7 +23099,7 @@ let tempActions = [
       scenarioText: 'Перевести на дистанцию клапан тяги 022.',
       sender: 'Система',
       audio: 'tts-43',
-      startTime: timeDiff + 708,
+      startTime: timeDiff + 711,
     },
     {
       action: {
@@ -23102,14 +23107,14 @@ let tempActions = [
         rotation: { y: 0.785398 },
       },
       duration: 0.3,
-      startTime: timeDiff + 709,
+      startTime: timeDiff + 712,
       human: true,
     },
     ////--------------------------------46----------------------------------------//92//-new 
     {
       scenarioText: 'Открыть клапан тяги 022 на «Общей схеме ВНК».',
       sender: 'Система',
-      startTime: timeDiff + 710,
+      startTime: timeDiff + 713,
     },
     {
       action: {
@@ -23154,7 +23159,7 @@ let tempActions = [
           { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },     //  win 1
         ]
       },
-      startTime: timeDiff + 710.1,
+      startTime: timeDiff + 713.1,
       human: true
     },
     {
@@ -23171,7 +23176,7 @@ let tempActions = [
           { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 710.2,
+      startTime: timeDiff + 713.2,
       human: true,
     },
     {
@@ -23201,7 +23206,7 @@ let tempActions = [
           { x: 87.2, y: 40.8, w: 8.6, h: 2.6, id: 'stop' },
         ]
       },
-      startTime: timeDiff + 710.3,
+      startTime: timeDiff + 713.3,
       human: true,
     },
     {
@@ -23218,7 +23223,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 711,
+      startTime: timeDiff + 714,
     }, {
       action: {
         window2D: {
@@ -23233,7 +23238,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 712,
+      startTime: timeDiff + 715,
     }, {
       action: {
         window2D: {
@@ -23248,7 +23253,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 713,
+      startTime: timeDiff + 716,
     }, {
       action: {
         window2D: {
@@ -23263,7 +23268,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 714,
+      startTime: timeDiff + 717,
     },
     ////--------------------------------46-2---------------------------------------- 
     {
@@ -23281,7 +23286,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 714.1,
+      startTime: timeDiff + 717.1,
       human: true
     },
     {
@@ -23298,7 +23303,7 @@ let tempActions = [
           { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 714.2,
+      startTime: timeDiff + 717.2,
       human: true,
     },
     {
@@ -23320,7 +23325,7 @@ let tempActions = [
           { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 714.3,
+      startTime: timeDiff + 717.3,
       human: true,
     },
     {
@@ -23337,7 +23342,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 715,
+      startTime: timeDiff + 718,
     }, {
       action: {
         window2D: {
@@ -23352,7 +23357,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 716,
+      startTime: timeDiff + 719,
     }, {
       action: {
         window2D: {
@@ -23367,7 +23372,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 717,
+      startTime: timeDiff + 720,
     }, {
       action: {
         window2D: {
@@ -23382,7 +23387,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 718,
+      startTime: timeDiff + 721,
     },
     ////--------------------------------46-3---------------------------------------- 
     {
@@ -23400,7 +23405,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 718.1,
+      startTime: timeDiff + 721.1,
       human: true
     },
     {
@@ -23417,7 +23422,7 @@ let tempActions = [
           { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 718.2,
+      startTime: timeDiff + 721.2,
       human: true,
     },
     {
@@ -23439,7 +23444,7 @@ let tempActions = [
           { x: 87.4, y: 37.8, w: 4, h: 2.5, id: 'open_vn' },
         ]
       },
-      startTime: timeDiff + 718.3,
+      startTime: timeDiff + 721.3,
       human: true,
     },
     {
@@ -23456,7 +23461,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 719,
+      startTime: timeDiff + 722,
     }, {
       action: {
         window2D: {
@@ -23471,7 +23476,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 720,
+      startTime: timeDiff + 723,
     }, {
       action: {
         window2D: {
@@ -23486,26 +23491,26 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 721,
+      startTime: timeDiff + 724,
     },
     {
       text: 'Клапан тяги открыт',
       sender: 'Система',
       audio: 'tts-44',
-      startTime: timeDiff + 722,
+      startTime: timeDiff + 725,
     },
     /// 47 sound
     {
       scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
       sender: 'Система',
       audio: 'radio_say',
-      startTime: timeDiff + 725,
+      startTime: timeDiff + 728,
     },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 725.1,
+      startTime: timeDiff + 728.1,
       human: true,
     },
     // Sergey (vnk_main После закрытия 022) 
@@ -23651,7 +23656,7 @@ let tempActions = [
           ],
         },
       },
-      startTime: timeDiff + 725.11,
+      startTime: timeDiff + 728.11,
     },
     {
       action: {
@@ -23659,7 +23664,7 @@ let tempActions = [
         color: 'green',
         number: '1333',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23667,7 +23672,7 @@ let tempActions = [
         color: 'green',
         number: '270.0',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23675,7 +23680,7 @@ let tempActions = [
         color: 'green',
         number: '1153',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23683,7 +23688,7 @@ let tempActions = [
         color: 'green',
         number: '154.0',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23691,7 +23696,7 @@ let tempActions = [
         color: 'green',
         number: '1216',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23699,7 +23704,7 @@ let tempActions = [
         color: 'green',
         number: '134.0',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23707,7 +23712,7 @@ let tempActions = [
         color: 'green',
         number: '000.0',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23715,7 +23720,7 @@ let tempActions = [
         color: 'green',
         number: '000.0',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23723,7 +23728,7 @@ let tempActions = [
         color: 'green',
         number: '000.0',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23731,7 +23736,7 @@ let tempActions = [
         color: 'green',
         number: '000.0',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23739,7 +23744,7 @@ let tempActions = [
         color: 'green',
         number: '000.0',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23747,7 +23752,7 @@ let tempActions = [
         color: 'green',
         number: '000.0',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     {
       action: {
@@ -23755,59 +23760,59 @@ let tempActions = [
         color: 'green',
         number: '00.00',
       },
-      startTime: timeDiff + 725.12,
+      startTime: timeDiff + 728.12,
     },
     ////--------------------------------47 orig----------------------------------------//93//-new 
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 726,
+      startTime: timeDiff + 729,
       human: true,
     },
     {
       text: 'Печь на тяге.',
       sender: 'Газовщик',
       audio: 'tts-vo56',
-      startTime: timeDiff + 727,
+      startTime: timeDiff + 730,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 730,
+      startTime: timeDiff + 733,
     },
     {
       text: 'Хорошо.',
       sender: 'Мастер печи',
       audio: 'tts-vo57',
-      startTime: timeDiff + 731,
+      startTime: timeDiff + 734,
     },
     {
       action: {
         target3D: 'ButtonHightlight_046',
       },
-      startTime: timeDiff + 731.1,
+      startTime: timeDiff + 734.1,
       human: true,
     },
     {
       text: 'Доменная печь №6 остановлена.',
       sender: 'Газовщик',
       audio: 'tts-vo58',
-      startTime: timeDiff + 732,
+      startTime: timeDiff + 735,
     },
     {
       action: {
         target3D: 'Lamp_034',
         material: 'DonorLamp_off',
       },
-      startTime: timeDiff + 735,
+      startTime: timeDiff + 738,
     },
     {
       text: 'Доменная печь №6 остановлена.',
       sender: 'Система',
-      startTime: timeDiff + 736,
+      startTime: timeDiff + 739,
     },
     /**/
   ],
