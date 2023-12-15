@@ -35,7 +35,7 @@ window.addEventListener('load', function () {
                                         ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                           ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'win_sym_3021') {
+    if (ObjectSvg.name === 'dp1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -45,6 +45,11 @@ window.addEventListener('load', function () {
 
     if (ObjectSvg.name === 'dp') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML === 'F' && Element.getAttribute('x') === '1802.74') { addSvgElem(Index, Element, 'FprirGaz_text', 'start'); Element.innerHTML += 'прир. газа' }
+        if (Element.innerHTML === ' прир. газа') { Element.innerHTML = ''; }
+        if (Element.innerHTML === 'ТТГ' && Element.getAttribute('x') === '1796.61') { addSvgElem(Index, Element, 'TTG_text'); }
+
+
         if (Element.innerHTML === '4,32') { addSvgElem(Index, Element, 'P_1'); }
         if (Element.innerHTML === '4,22') { addSvgElem(Index, Element, 'P_2', 'start'); }
         if (Element.innerHTML === '30' && Element.getAttribute('y') == 779.37) { addSvgElem(Index, Element, 'kol_furm'); }
