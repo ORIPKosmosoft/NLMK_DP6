@@ -261,6 +261,7 @@ function trenTimeTick(timeStamp) {
           if (devHelper.trenVals.waitingInput === false) {
             if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
             if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
+            if (nextAction.chapterText) sendMessage(nextAction.sender, nextAction.chapterText);
             devHelper.trenVals.waitingInput = true;
             if (nextAction.multi) devHelper.trenVals.multiAction = [...nextAction.multi];
           }
@@ -1659,13 +1660,14 @@ function setLifeTime(time) {
     let currentDateTime = getLifeTime_Date().getTime();
     let finishDateTime = getCounterTime_Date(finishTime).getTime();
     let counterStep = (finishDateTime - currentDateTime) / _step;
+    setLifeTime(finishTime);    // время системы
     timerInterval = setInterval(() => {
       if (_timeInteval === timePassed) {
         onTimesUp();
         return;
       }
       currentDateTime += counterStep;
-      setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
+      // setLifeTime(String(getMyTime(new Date(msToTime(currentDateTime)))));    // время системы
       change3DTime(String(getMyTime(new Date(msToTime(currentDateTime)))));   // время 3D системы
       timePassed += _stepInteval;
     }, _stepInteval);
