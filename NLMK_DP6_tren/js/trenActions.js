@@ -2,10 +2,9 @@
 /*                 TODO
 ---------------------------------------------------------------
 Окно чата не маштабируемое - изменить
+---------------------------------------------------------------
 Ограничить текст в чате - сообщения в режиме "Контроль"
 Ограничить звук в режиме "Контроль"
----------------------------------------------------------------
-Исходное состояние БЗУ щита
 ---------------------------------------------------------------
 Опять невреные значения в кончаторе
 ---------------------------------------------------------------
@@ -697,14 +696,14 @@ const devHelper = {
         // ilay
         { x: 75.85, y: 51.5, w: 3.3, h: 3.0, forAction: true, id: 'F_Obsh', realName: 'F общ.' },
         { x: 75.85, y: 56.5, w: 3.3, h: 3.0, forAction: true, id: 'F_Tek', realName: 'F тек.' },
-        { x: 29.20, y: 77.7, w: 2.6, h: 2.6, forAction: true, id: 'R_Snort', }, // TODO realName
-        { x: 56.20, y: 68.5, w: 3.3, h: 3.3, forAction: true, id: 'R_Furm', }, // TODO realName
+        { x: 29.20, y: 77.7, w: 2.6, h: 2.6, forAction: true, id: 'R_Snort', realName: 'R СНОРТ'  }, 
+        { x: 56.20, y: 68.5, w: 3.3, h: 3.3, forAction: true, id: 'R_Furm', realName: 'R Фурм'  },
 
       ]
     },
     {
       name: 'win_sym_302', helpers: [
-        { x: 45.80,  y: 5, w: 1.6, h: 3.3, removeWindow: 'win_sym_302', forAction: true, id: 'ws3_close_btn', realName: 'Закрыть' }, // close            
+        { x: 45.80,  y: 5, w: 1.6, h: 3.3, removeWindow: 'win_sym_302', forAction: true, id: 'ws3_close_btn', realName: 'Закрыть' },     
         { x: 18.40, y: 73, w: 8.0, h: 5.5, forAction: true, id: 'ws3_ttg_text_btn', realName: 'Расход ПГ' },
         { x: 18.40, y: 73, w: 0.0, h: 0.0, forAction: true, id: 'ws3_ttg2_text_btn', value: { window: 'priczvuksinal', x: 956, y: 112, }, realName: 'ТТГ' },
 
@@ -1189,7 +1188,7 @@ const devHelper = {
     restarts: 0,
   }
 };
-const timeDiff = -0; //495
+const timeDiff = -0;
 let tempActions = [
   // [
   //   {
@@ -1209,7 +1208,6 @@ let tempActions = [
   // ],
   // Первый сценарий  
   [
-    // /*
       {
         lifeTime: '07:30:00',
         chapterText: 'Отделение подогревателей воздуха и газа.', 
@@ -2650,7 +2648,7 @@ let tempActions = [
       },
       ////--------------------------------0----------------------------------------//13//-new
       {
-        chapterText: 'Прекращение подачи ПУТ в ДП', // TODO сделать текст этапа
+        chapterText: 'Прекращение подачи ПУТ в ДП',
         sender: 'Система',
         startTime: timeDiff + 58,
       },
@@ -4926,8 +4924,8 @@ let tempActions = [
     // startTime: timeDiff + 155,
     //   human: true,
     // },
-    { // win_otdel2_na_vnk OPEN
-      action: { // TODO Тут ошибка, куда то подевался текст
+    {
+      action: { 
         target2D: 'otdel2_otdel_btn',
         window2D: {
           elements: [
@@ -5219,27 +5217,27 @@ let tempActions = [
       audio: 'tts-16',
       startTime: timeDiff + 159,
     },
-    { // TODO првоерить как перекрашиваются квадраты, кажись ошибка
+    { 
       action: {
-        target2D: 'perekidta2_btn', // perekidta_btn
+        target2D: 'perekidta2_btn', 
         window2D: {
           elements: [
-            { name: 'text_132', y: 475 },
-            { name: 'text_116', y: 475 },
-            { name: 'text_124', y: 475 },
-            { name: 'text_113', y: 475 },
-            { name: 'text_134', y: 475 },
-            { name: 'text_117', y: 475 },
-            { name: 'text_111', y: 475 },
-            { name: 'text_112', y: 475 },
-            { name: 'rect_132', position: { y: 0 } },
-            { name: 'rect_116', position: { y: 0 } },
-            { name: 'rect_124', position: { y: 0 } },
-            { name: 'rect_113', position: { y: 0 } },
-            { name: 'rect_134', position: { y: 0 } },
-            { name: 'rect_117', position: { y: 0 } },
-            { name: 'rect_111', position: { y: 0 } },
-            { name: 'rect_112', position: { y: 0 } },
+            { name: 'text_132', y: 475, text: 'Открыт' },
+            { name: 'text_116', y: 475, text: 'Открыт' },
+            { name: 'text_124', y: 475, text: 'Закрыт' },
+            { name: 'text_113', y: 475, text: 'Открыт' },
+            { name: 'text_134', y: 475, text: 'Открыт' },
+            { name: 'text_117', y: 475, text: 'Открыт' },
+            { name: 'text_111', y: 475, text: 'Открыт' },
+            { name: 'text_112', y: 475, text: 'Открыт' },
+            { name: 'rect_132', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_116', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_124', position: { y: 0 }, color: '#FF1E06' },
+            { name: 'rect_113', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_134', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_117', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_111', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_112', position: { y: 0 }, color: '#06f322' },
             { name: 'avarin_otd_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
             { name: 'otdel_nagrev', color: '#e6e6e6', stroke: '#808080' },
             { name: 'nagrev_otd_2_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
@@ -6060,7 +6058,7 @@ let tempActions = [
       },
       startTime: timeDiff + 179.01,
     },
-    {  // O_p_n_na_k_na-o_2_na_VNK close
+    {  
       action: {
         target2D: 'pericNagrev_close_btn',
       },
@@ -6093,7 +6091,7 @@ let tempActions = [
     //   human: true,
     // },
     {
-      action: { // TODO неверно стоят красные квадраты и опять потерядся текст
+      action: { 
         target2D: 'otdel2_otdel_btn',
         window2D: {
           elements: [
@@ -6101,12 +6099,12 @@ let tempActions = [
             { name: 'text_otdel2_110', text: '210' },
             { name: 'text_otdel2_111', text: '211' },
             { name: 'text_otdel2_112', text: '212' },
-            // { name: 'text_ish_c4', y: 237.5 },
-            { name: 'rect_ish_c5', color: '#FF1E06' },
-            // { name: 'text_ish_c6', y: 237.5 },
-            // { name: 'rect_ish_c4', position: { y: 0 } },
-            // { name: 'rect_ish_c5', position: { y: 0 } },
-            // { name: 'rect_ish_c6', position: { y: 0 } },
+            { name: 'text_ish_c4', y: 237.5 },
+            { name: 'text_ish_c5', y: 237.5 },
+            { name: 'text_ish_c6', y: 237.5 },
+            { name: 'rect_ish_c4', color: '#FF1E06', position: { y: 0 } },
+            { name: 'rect_ish_c5', color: '#FF1E06', position: { y: 0 } },
+            { name: 'rect_ish_c6', color: '#FF1E06', position: { y: 0 } },
           ]
         }
       },
@@ -6196,7 +6194,13 @@ let tempActions = [
       },
       startTime: timeDiff + 182.1,
     },
-    // TODO time esli cho
+    { 
+      action: {
+        target2D: 'perekidta_exit_btn',
+      },
+      startTime: timeDiff + 182,
+      human: true,
+    },
     {
       action: {
         window2D: {
@@ -6462,13 +6466,6 @@ let tempActions = [
         },
       },
       startTime: timeDiff + 183.5,
-    },
-    { // TODO ВНК №2 всё ещё в нагрев-отдел состоянии?
-      action: {
-        target2D: 'perekidta_exit_btn',
-      },
-      startTime: timeDiff + 183.6,
-      human: true,
     },
     ///--------------------------------//26//
     {
@@ -8344,7 +8341,7 @@ let tempActions = [
       startTime: timeDiff + 236,
     },
     {
-      action: { // TODO изменить имена 3Д на индексы
+      action: { 
         target3D: 'b6cc151c-004a-4e3f-bb7b-921c4300993c',
         rotation: { y: 0.7854 }, // 45
       },
@@ -12290,7 +12287,7 @@ let tempActions = [
       startTime: timeDiff + 352,
     },
     {
-      chapterText: 'Снижение давления ГД 0,8-0,6 кгс/см².', // TODO Этап
+      chapterText: 'Снижение давления ГД 0,8-0,6 кгс/см².', 
       sender: 'Система',
       startTime: timeDiff + 352.9,
     },
@@ -13378,8 +13375,8 @@ let tempActions = [
       audio: 'tts-27',
       startTime: timeDiff + 389.1,
     },
-    { // TODO Исходное состояние БЗУ схемы не верное
-      action: { // TODO помощь ссылкаетс яна первый монитор, хотя на нём ДП, а не на второй, проверить
+    {
+      action: {
         target2D: 'bzu_gruzit_btn',
         window2D: {
           elements: [
@@ -14927,7 +14924,7 @@ let tempActions = [
       startTime: timeDiff + 409.1,
       human: true,
     },
-    { // TODO Проверить
+    {
       action: {
         window2D: {
           elements: [
@@ -17684,7 +17681,6 @@ let tempActions = [
       },
       startTime: timeDiff + 484.12,
     },
-    // TODO Тут сделать проверку
     ////-----------------------------------72//-new//
     {
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
@@ -18195,7 +18191,6 @@ let tempActions = [
       },
       startTime: timeDiff + 496,
     },
-    // */
     {
       chapterText: 'Снижение давления ГД до 0 кгс/см².',
       sender: 'Система',
@@ -22523,7 +22518,7 @@ let tempActions = [
       human: true,
     },
     {
-      action: { // TODO проверить хелпер с именем активатора
+      action: {
         target2D: 'open_vn1',
         window2D: {
           elements: [
@@ -23016,7 +23011,7 @@ let tempActions = [
       startTime: timeDiff + 669,
     },
     {
-      action: { // TODO Неверно ищет название схемы, путает с 3Д щитом
+      action: {
         target2D: 'kl022',
         window2D: {
           elements: [
@@ -24432,11 +24427,13 @@ let startState2D = [
     // BZU
     { name: 'v rabote', color: '#2B2A29' },
     { name: 'bg_vRabote', color: '#06FF06' },
-    { name: 'arrow_right', opacity: '0' },
+    { name: 'arrow_right', opacity: '1' },
     { name: 'arrow_left', opacity: '0' },
-    { name: 'left_rect_down_arrow', color: '#D90001' },
+    { name: 'left_rect_down_arrow', opacity: '1' },
+    { name: 'right_rect_down_arrow', opacity: '0' },
     { name: 'right_rect_yellow_arrow', opacity: '0' },
     { name: 'left_rect_yellow_arrow', opacity: '0' },
+    { name: 'Krasniy nijniy Poloska', color: '#06FF06' },
     // ----------------------------------------------
     //Sergey
     // vnk_main

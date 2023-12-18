@@ -2050,26 +2050,23 @@ function helperHighlight2DOn(Actions) {
       if (tempHelper) {
         let tempRealHelperName = tempHelper.name;
         let tempRealShemeName = tempHelper.location;
-
         let requiredPosition = undefined;
         let svgName;
         let displayNameArr = [];
         let displayMesh;
-
-
-        devHelper.model3DVals.svgDisplays.meshs.forEach(displayMesh => {
-          displayMesh.svgArr.forEach(svg => {
-            if (devHelper.svgVals.find(svg2 => svg2.name === svg.name).realName === tempRealShemeName) {
-              requiredPosition = displayMesh.positionIndex;
-            }
-          })
-        })
         devHelper.svgHelpers.find(obj => {
           if (obj.helpers.find(objHelper => objHelper.id === actionObject.action.target2D)) {
             svgName = obj.name;
             return obj.name;
           }
         });
+        devHelper.model3DVals.svgDisplays.meshs.forEach(displayMesh => {
+          displayMesh.svgArr.forEach(svg => {
+            if (devHelper.svgVals.find(svg2 => svg2.name === svg.name).realName === tempRealShemeName) {
+              if (displayMesh.positionIndex) requiredPosition = displayMesh.positionIndex;
+            }
+          })
+        })
         devHelper.model3DVals.svgDisplaysArr.find(obj => {
           if (obj.possibleSchemes && obj.possibleSchemes.includes(svgName)) {
             displayNameArr.push(obj.name);
@@ -2078,16 +2075,14 @@ function helperHighlight2DOn(Actions) {
         if (devHelper.model3DVals.currentPosition === undefined) {
           let tempMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.name === displayNameArr[0]);
           if (tempMesh && !requiredPosition) {
-            requiredPosition = tempMesh.positionIndex;
+            if (tempMesh.positionIndex) requiredPosition = tempMesh.positionIndex;
           }
         } else {
           if (document.querySelector('#svg-helper')) {
             let currentPosMeshName = devHelper.model3DVals.movePointMeshToArr.find(obj => obj.point === devHelper.model3DVals.currentPosition).name;
             if (displayNameArr.find(name => name === currentPosMeshName)) {
               let tempMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.name === displayNameArr.find(name => name === currentPosMeshName));
-              if (tempMesh) {
-                requiredPosition = tempMesh.positionIndex;
-              }
+              if (tempMesh && tempMesh.positionIndex) requiredPosition = tempMesh.positionIndex;
             } else {
               if (devHelper.dev.enable) console.log('Не найдено 1');
             }
@@ -2102,7 +2097,7 @@ function helperHighlight2DOn(Actions) {
             document.querySelector('.box-help').innerHTML = `Вернуться на "Главный вид".`;
             helpBackToMain();
           } else {
-            displayMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.positionIndex === requiredPosition);
+            displayMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.positionIndex && displayMesh1.positionIndex === requiredPosition);
             if (displayMesh) {
               if (displayMesh.svgArr && displayMesh.svgArr.find(obj => obj.name === svgName)) {
                 let temp2D = document.querySelector(`#${actionObject.action.target2D}`);
@@ -2120,7 +2115,7 @@ function helperHighlight2DOn(Actions) {
             }
           }
         } else {
-          changeColorTexture(devHelper.model3DVals.movePointMesh.find(m => m.positionIndex === requiredPosition), true, true);
+          changeColorTexture(devHelper.model3DVals.movePointMesh.find(m => m.positionIndex && m.positionIndex === requiredPosition), true, true);
           document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту "${devHelper.model3DVals.cameraPositions[requiredPosition].name}".`;
         }
       }

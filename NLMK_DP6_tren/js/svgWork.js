@@ -35,7 +35,7 @@ window.addEventListener('load', function () {
                                         ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                           ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'dp1') {
+    if (ObjectSvg.name === 'bzu1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -2100,22 +2100,19 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === 'К' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 371.317 361.589)') { addSvgElem(Index, Element, 'str1_down'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
+        if (Element.getAttribute('d') === 'm580.77 489.13-17.86.71 31.34 19.03 2.13-36.55-9.63 13.55-7.83-29.26-15.95 8.55z') { addSvgElem(Index, Element, 'arrow_left'); }
+        if (Element.getAttribute('d') === 'm674.81 491.6 18.84.75-33.05 20.06-2.25-38.54 10.16 14.29 8.25-30.85 16.82 9.01z') { addSvgElem(Index, Element, 'arrow_right'); }
+        if (Element.getAttribute('d') === 'm592.97 494.11-7.25 5.93-15.86-23.26 7.24-5.93z') { addSvgElem(Index, Element, 'right_rect_yellow_arrow'); }
+        if (Element.getAttribute('d') === 'm585.21 465.26 6.76 6.48-21.22 18.52-6.76-6.49z') { addSvgElem(Index, Element, 'left_rect_down_arrow'); }
+        if (Element.getAttribute('d') === 'm660.2 494.63 7.24 5.93 15.87-23.26-7.24-5.93z') { addSvgElem(Index, Element, 'right_rect_yellow_arrow'); }
+        if (Element.getAttribute('d') === 'm669.98 466-6.41 6.15 20.12 17.56 6.41-6.15z') { addSvgElem(Index, Element, 'right_rect_down_arrow'); }
         if (Element.getAttribute('d') === 'M1438.84 676.74h82.67c1.33 0 2.42 1.09 2.42 2.42v24.62c0 1.34-1.09 2.42-2.42 2.42h-82.67c-1.33 0-2.42-1.08-2.42-2.42v-24.62c0-1.33 1.09-2.42 2.42-2.42z') { addSvgElem(Index, Element, 'btn_Gryzit_1'); }
         if (Element.getAttribute('d') === 'M1442.22 679.35h75.75c1.61 0 2.92 1.52 2.92 3.38v16.84c0 1.87-1.31 3.39-2.92 3.39h-75.75c-1.61 0-2.92-1.52-2.92-3.39v-16.84c0-1.86 1.31-3.38 2.92-3.38z') { addSvgElem(Index, Element, 'btn_Gryzit_2'); }
         if (Element.getAttribute('d') === 'M1141.16 944.7h180.03v35.59h-180.03z') { addSvgElem(Index, Element, 'bg_dosZadYrov'); }
         if (Element.getAttribute('d') === 'M1411.31 719.45h71.07v14.65h-71.07z') { addSvgElem(Index, Element, 'bg_vRabote'); }
-        if (Element.getAttribute('d') === 'm669.98 466-6.41 6.15 20.12 17.56 6.41-6.15z') { addSvgElem(Index, Element, 'right_rect_under_arrow'); }
-        if (Element.getAttribute('d') === 'm675.01 489.13 17.86.71-31.34 19.03-2.13-36.55 9.63 13.55 7.83-29.26 15.95 8.55z') { addSvgElem(Index, Element, 'arrow_right'); }
-        if (Element.getAttribute('d') === 'm580.77 489.13-17.86.71 31.34 19.03 2.13-36.55-9.63 13.55-7.83-29.26-15.95 8.55z') { addSvgElem(Index, Element, 'arrow_left'); }
-        if (Element.getAttribute('d') === 'm586.45 466 6.41 6.15-20.12 17.56-6.41-6.15z') { addSvgElem(Index, Element, 'left_rect_under_arrow'); }
-        if (Element.getAttribute('d') === 'M548.13 515.11h68.36v10.04h-68.36z') { addSvgElem(Index, Element, 'left_rect_down_arrow'); }
         if (Element.getAttribute('d') === 'M1174.1 351.97h180.02c3.82 0 6.94 2.12 6.94 4.71v23.47c0 2.6-3.12 4.71-6.94 4.71H1174.1c-3.83 0-6.95-2.11-6.95-4.71v-23.47c0-2.59 3.12-4.71 6.95-4.71z') { addSvgElem(Index, Element, 'btn_ZapSledPorc_border'); }
         if (Element.getAttribute('d') === 'M1174.1 388.4h180.02c3.82 0 6.94 2.11 6.94 4.71v23.47c0 2.59-3.12 4.71-6.94 4.71H1174.1c-3.83 0-6.95-2.12-6.95-4.71v-23.47c0-2.6 3.12-4.71 6.95-4.71z') { addSvgElem(Index, Element, 'btn_SledPorc_border'); }
-        if (Element.getAttribute('d') === 'm660.04 493.36 6.87 5.63 15.05-22.06-6.87-5.63z') { addSvgElem(Index, Element, 'right_rect_yellow_arrow'); }
-        if (Element.getAttribute('d') === 'm593.81 493.36-6.87 5.63-15.05-22.06 6.87-5.63z') { addSvgElem(Index, Element, 'left_rect_yellow_arrow'); }
         if (Element.getAttribute('d') === 'M595 531.65h67.8c1.63 0 2.96 1.16 2.96 2.58v27.37c0 1.42-1.33 2.58-2.96 2.58H595c-1.63 0-2.97-1.16-2.97-2.58v-27.37c0-1.42 1.34-2.58 2.97-2.58z') { addSvgElem(Index, Element, 'btn_Pause_border'); }
-
-
         if (Element.getAttribute('d') === 'M1442.99 225.13h42.91v30.77h-42.91z') { addSvgElem(Index, Element, 'tekushiy rezym_A'); }
         if (Element.getAttribute('d') === 'M1426.19 292.7h10.87v10.87h-10.87z') { addSvgElem(Index, Element, 'scorosti_1'); }
         if (Element.getAttribute('d') === 'M1526.41 225.13h41.87v30.77h-41.87z') { addSvgElem(Index, Element, 'tekushiy rezym_D'); }
@@ -2201,7 +2198,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M37.55 206.11c-3.12-2.18-7.44-1.39-9.65 1.77-2.22 3.16-1.48 7.49 1.64 9.68 3.12 2.18 7.45 1.39 9.66-1.77s1.47-7.49-1.65-9.68z') { addSvgElem(Index, Element, 'B1_Pod.Izbutkom'); }
         if (Element.getAttribute('d') === 'M70.96 206.11c-3.12-2.18-7.44-1.39-9.65 1.77-2.22 3.16-1.48 7.49 1.64 9.68 3.12 2.18 7.45 1.39 9.66-1.77s1.47-7.49-1.65-9.68z') { addSvgElem(Index, Element, 'B2_Pod.Izbutkom'); }
         if (Element.getAttribute('d') === 'M616.49 515.11h-68.36v1.86h-2.99l-7.91-5.83c-.29-.22-1.34-.87-1.23-1.21.11-.34 1.35-.26 1.71-.26h78.78v5.44z') { addSvgElem(Index, Element, 'Zelinay nijniy Poloska'); }
-        if (Element.getAttribute('d') === 'M639.55 515.11h68.36v9.72h-68.36z') { addSvgElem(Index, Element, 'Krasniy nijniy Poloska'); }
+        
         if (Element.getAttribute('d') === 'M1330.92 719.45h75.05v18.84h-75.05z') { addSvgElem(Index, Element, 'Mexan_1'); }
         if (Element.getAttribute('d') === 'M1611.56 742.28h24.91v16.75h-24.91z') { addSvgElem(Index, Element, 'Str2_11'); }
         if (Element.getAttribute('d') === 'M1271.12 747.75h10.55v38.45h-10.55z') { addSvgElem(Index, Element, 'radar2_1'); }
@@ -2251,6 +2248,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1547.16 159.4h61.85c1.31 0 2.38 1.62 2.38 3.61v17.96c0 1.98-1.07 3.6-2.38 3.6h-61.85c-1.32 0-2.39-1.62-2.39-3.6v-17.96c0-1.99 1.07-3.61 2.39-3.61z') { addSvgElem(Index, Element, 'Stop'); }
         // Sergey
         if (Element.getAttribute('d') === 'M548.13 515.11h68.36v10.04h-68.36z') { addSvgElem(Index, Element, 'pech_left_down_zaglushka'); }
+        if (Element.getAttribute('d') === 'M639.55 515.11h68.36v9.72h-68.36z') { addSvgElem(Index, Element, 'Krasniy nijniy Poloska'); }
         // Ilay
         if (Element.getAttribute('d') === 'M498.31 136.82h59.67c1.44 0 2.61 1.11 2.61 2.47v26.15c0 1.36-1.17 2.47-2.61 2.47h-59.67c-1.44 0-2.62-1.11-2.62-2.47v-26.15c0-1.36 1.18-2.47 2.62-2.47z') { addSvgElem(Index, Element, 'jelob_ramka'); }
         if (Element.getAttribute('d') === 'M460.38 220.71h55.32c1.33 0 2.42 1.06 2.42 2.35v24.86c0 1.29-1.09 2.34-2.42 2.34h-55.32c-1.33 0-2.42-1.05-2.42-2.34v-24.86c0-1.29 1.09-2.35 2.42-2.35z') { addSvgElem(Index, Element, 'zagr_ramka_l'); }
