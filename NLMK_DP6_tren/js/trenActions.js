@@ -6,8 +6,6 @@
 Ограничить текст в чате - сообщения в режиме "Контроль"
 Ограничить звук в режиме "Контроль"
 ---------------------------------------------------------------
-Опять невреные значения в кончаторе
----------------------------------------------------------------
 Проверить правильность смены стилей текста в сценариоБоксе
 ---------------------------------------------------------------
 */
@@ -1190,22 +1188,92 @@ const devHelper = {
 };
 const timeDiff = -0;
 let tempActions = [
-  // [
-  //   {
-  //     action: {
-  //       target3D: 'Display_TV002',
-  //       imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
-  //     },
-  //     startTime: timeDiff + 5,
-  //   },
-  //   {
-  //     action: {
-  //       target3D: 'Display_TV002',
-  //       imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
-  //     },
-  //     startTime: timeDiff + 20,
-  //   },
-  // ],
+  [
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 1.01,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 2,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 3,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 4,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 5,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 6,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 7,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 8,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 9,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 10,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 11,
+    },
+    {
+      action: {
+        target3D: 'Display_TV002',
+        imgTexture: 'media/images/monitors/Kamera-nablyudeniya.jpg' 
+      },
+      startTime: timeDiff + 12,
+    },
+  ],
   // Первый сценарий  
   [
       {
@@ -10258,7 +10326,7 @@ let tempActions = [
     },
     {
       text: 'Принял',
-      sender: 'Дежурный водопроводчик',
+      sender: 'Инженер-энергетик',
       audio: 'tts-vo18',
       startTime: timeDiff + 311.5,
     },

@@ -653,7 +653,7 @@ function trenFinish() {
         }
       },
       data: {
-        labels: Array.from({ length: devHelper.endVals.errors.length }, (_, index) => index),
+        labels: Array.from({ length: devHelper.endVals.errors.length }, (_, index) => index + 1),
         datasets: [{
           label: 'Количество ошибок',
           data: devHelper.endVals.errors,
@@ -984,7 +984,6 @@ function newActionStartHelper(Action) {
     }
   }
 
-
   if (devHelper.endVals.currentActionCount >= devHelper.endVals.actionChapter[devHelper.endVals.currentChapter]) {
     devHelper.endVals.currentActionCount = 1;
     devHelper.endVals.currentChapter++;
@@ -995,6 +994,11 @@ function newActionStartHelper(Action) {
     } else devHelper.endVals.humanTime.push(Math.ceil(document.querySelector('.box-time').milisecs / 1000));
   } else {
     devHelper.endVals.currentActionCount++;
+  }
+  let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
+  if (!lastAction) {
+    let newVal = document.querySelector('.box-time').milisecs / 1000 - devHelper.endVals.humanTime.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    devHelper.endVals.humanTime.push(Math.ceil(newVal))
   }
 }
 
