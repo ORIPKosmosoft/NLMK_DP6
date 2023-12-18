@@ -319,6 +319,7 @@ function trenTimeTick(timeStamp) {
             createSvghelper(devHelper.model3DVals.currentPosition)
           }
           newActionStartHelper(nextAction);
+          if (nextAction.chapterText) sendMessage(nextAction.sender, nextAction.chapterText);
           if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
           if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
           if (nextAction.audio) playAudio(nextAction.audio);
@@ -955,17 +956,34 @@ function newActionStartHelper(Action) {
   }
   Action.passed = true;
   devHelper.trenVals.waitingInput = false;
-  const currentElement = document.querySelector('.box-scenario-text.current');
-  if (currentElement) {
-    if (Action.scenarioText && Action.scenarioText !== currentElement.innerHTML) {
-      currentElement.classList.replace('current', 'passed');
-      const nextElement = currentElement.nextElementSibling;
-      if (nextElement && nextElement.classList.contains('box-scenario-text')) {
-        nextElement.classList.toggle('current', true);
+  const currentScenarioText = document.querySelector('.box-scenario-text.current');
+  if (currentScenarioText) {
+    if (Action.scenarioText && currentScenarioText.innerHTML.indexOf(Action.scenarioText) === -1) {
+      currentScenarioText.classList.replace('current', 'passed');
+      let nextElement = currentScenarioText.nextElementSibling;
+      while (nextElement) {
+        if (nextElement.classList.contains('box-scenario-text')) {
+          nextElement.classList.add('current');
+          break;
+        }
+        nextElement = nextElement.nextElementSibling;
+      }
+    } else if (Action.chapterText && Action.chapterText !== '') {
+      let nextElement = currentScenarioText.nextElementSibling;
+      if (nextElement.classList.contains('box-chapter-text') && nextElement.innerHTML.indexOf(Action.chapterText) !== -1) {
+        currentScenarioText.classList.replace('current', 'passed');
+        let nextElement = currentScenarioText.nextElementSibling;
+        while (nextElement) {
+          if (nextElement.classList.contains('box-scenario-text')) {
+            nextElement.classList.add('current');
+            break;
+          }
+          nextElement = nextElement.nextElementSibling;
+        }
       }
     }
-  } else {
   }
+
 
   if (devHelper.endVals.currentActionCount >= devHelper.endVals.actionChapter[devHelper.endVals.currentChapter]) {
     devHelper.endVals.currentActionCount = 1;
@@ -2301,7 +2319,9 @@ function setTextScenario(numberScenario) {
   }
   tempActions[numberScenario].forEach(element => {
     if (element.scenarioText !== undefined) {
-      createCustomElement("div", element.scenarioText, { "class": "box-scenario-text" }, listItem);
+      createCustomElement("div", `- ${element.scenarioText}`, { "class": "box-scenario-text" }, listItem);
+    } else if (element.chapterText !== undefined) {
+      createCustomElement("div", element.chapterText, { "class": "box-chapter-text" }, listItem);
     }
   });
 }

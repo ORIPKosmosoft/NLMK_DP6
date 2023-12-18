@@ -360,7 +360,7 @@ window.addEventListener('load', function () {
         ));
         meshNamesToSearch.forEach(mesh => {
           if (!activeMeshs.includes(mesh)) {
-            makeActiveMesh(mesh, { name: elem.id ? elem.name : mesh.name , posIndex: typeof elem.position == 'number' ? elem.position : undefined});
+            makeActiveMesh(mesh, { name: elem.id ? elem.name : mesh.name, posIndex: typeof elem.position == 'number' ? elem.position : undefined });
           }
         });
       });
@@ -426,7 +426,28 @@ function setImageOnMonitor(url, scene, mesh) {
       mesh.material = new BABYLON.StandardMaterial('material_' + mesh.name, scene);
       mesh.material.diffuseTexture = new BABYLON.Texture(url, scene);
     } else {
-      mesh.material.diffuseTexture.updateURL(url);
+      function updateTexture(mesh, newTextureURL) {
+        return new Promise((resolve, reject) => {
+          mesh.material.diffuseTexture.updateURL(newTextureURL, () => {
+            if (mesh.material.diffuseTexture.isReady()) {
+              resolve();
+            }
+          });
+          const intervalId = setInterval(() => {
+            if (mesh.material.diffuseTexture.isReady()) {
+              clearInterval(intervalId);
+              resolve();
+            }
+          }, 100); 
+        });
+      }
+      updateTexture(mesh, url)
+        .then(() => {
+          // console.log("Texture updated successfully.");
+        })
+        .catch((error) => {
+          // console.error("Error updating texture:", error);
+        });
     }
   }
   if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
@@ -463,7 +484,7 @@ function createCloneInstancedMesh(mesh, url = undefined, scene = undefined, dupl
   mesh = newMesh;
   mesh.doNotSyncBoundingInfo = false;
   if (devHelper.model3DVals.octree.dynamicContent.indexOf(mesh) === -1)
-  devHelper.model3DVals.octree.dynamicContent.push(mesh);
+    devHelper.model3DVals.octree.dynamicContent.push(mesh);
   return mesh;
 }
 
@@ -520,7 +541,7 @@ function makeActiveMesh(Mesh = undefined, Vals = undefined) {
       devHelper.model3DVals.activeMeshs.push(mesh);
       if (Vals.realName)
         mesh.realName = Vals.realName;
-      
+
     } else if (typeof Vals === 'number') {
       mesh.isPickable = true;
       devHelper.model3DVals.movePointMesh.push(mesh);
@@ -747,7 +768,7 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
     if (Axis === undefined) console.warn(`В функцию rotateMesh не передали Angle.`);
   }
   if (Mesh !== undefined || Axis !== undefined) {
-    if (typeof Mesh === 'string') 
+    if (typeof Mesh === 'string')
       Mesh = findMesh(Mesh);
     Mesh.unfreezeWorldMatrix();
     if (!Mesh.startState) {

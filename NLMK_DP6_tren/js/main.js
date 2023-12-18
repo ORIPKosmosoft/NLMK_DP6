@@ -7,19 +7,19 @@
 document.addEventListener("DOMContentLoaded", domLoaded);
 function domLoaded() {
   /* Изменение времени таймера в файле txt
+  fetch('ss.txt')
+    .then(response => response.text())
+    .then(data => {
+      const modifiedData = data.replace(/startTime: timeDiff \+ (\d+)/g, (match, startTime) => {
+        const modifiedStartTime = parseInt(startTime) - 5;
+        return `startTime: timeDiff + ${modifiedStartTime}`;
+      });
+      console.log(modifiedData);
+    })
+    .catch(error => {
+      console.error(error);
+    });
   */
- fetch('ss.txt')
-   .then(response => response.text())
-   .then(data => {
-     const modifiedData = data.replace(/startTime: timeDiff \+ (\d+)/g, (match, startTime) => {
-       const modifiedStartTime = parseInt(startTime) - 5;
-       return `startTime: timeDiff + ${modifiedStartTime}`;
-     });
-     console.log(modifiedData);
-   })
-   .catch(error => {
-     console.error(error);
-   });
   let sectionCopy = document.querySelector('.section').cloneNode(true);
   sectionCopy.classList.toggle('section-copy', true);
   sectionCopy.querySelector('.nav-bar').style.width = '6vw';

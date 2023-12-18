@@ -2574,6 +2574,8 @@ ul {
 /* BebasNeue Bold Circe-Bold Circe-ExtraBold Circe-Regular Roboto-Medium*/
 
 .box-scenario-text {
+  padding-left: 4%;
+  width: 96%;
   padding-bottom: 2%;
   font-family: 'Circe-Bold', sans-serif;
 }
@@ -2585,6 +2587,12 @@ ul {
 .box-scenario-text.passed {
   color: #7C7C7C;
   text-decoration: line-through;
+}
+
+.box-chapter-text {
+  font-size: large;
+  padding-bottom: 2%;
+  font-family: 'Circe-Bold', sans-serif;
 }
 
 .box-scenario-scroll {

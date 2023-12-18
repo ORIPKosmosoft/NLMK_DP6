@@ -35,7 +35,7 @@ window.addEventListener('load', function () {
                                         ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                           ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'win_otdel2_na_vnk1') {
+    if (ObjectSvg.name === 'dp1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -1961,7 +1961,7 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '2' && TextIndex === 448) { addSvgElem(Index, Element, 'Kol-vo porchiy na konveere'); }
         if (Element.innerHTML === '3,89' && TextIndex === 114) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_P_B2'); }
         if (Element.innerHTML === '34' && TextIndex === 115) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_T_B2'); }
-        if (Element.innerHTML === '0' && TextIndex === 116) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_F_B2'); }
+        if (Element.innerHTML === '0' && TextIndex === 116) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_F_B2', 'end');}
         if (Element.innerHTML === '5106' && TextIndex === 126) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_F_B1'); }
         if (Element.innerHTML === '34' && TextIndex === 125) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_T_B1'); }
         if (Element.innerHTML === '3,88' && TextIndex === 124) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_P_B1'); }
