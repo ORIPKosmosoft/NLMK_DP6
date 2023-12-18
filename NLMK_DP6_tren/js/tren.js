@@ -165,8 +165,7 @@ function startTren(Restart = false) {
     }
   })
   devHelper.endVals.currentChapter = 0;
-  if (Restart === false)
-    requestAnimationFrame(trenTimeTick);
+  requestAnimationFrame(trenTimeTick);
 }
 
 function convertMilliseconds(milliseconds) {
