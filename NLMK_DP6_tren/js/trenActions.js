@@ -8879,7 +8879,7 @@ let tempActions = [
             { name: 'W_sinij_hol_dyt', text: '8.2' },
             { name: 'FO2_hol_dyt', text: '1300' },
             { name: 'H_snotr', text: '13' },
-            { name: 'dp_kl_red', color: '#75788E' },
+            { name: 'kl_red', color: '#75788E' },
             { name: 'H_progres_7', opacity: '1' },
             { name: 'H_progres_19', opacity: '0' },
             { name: 'H_progres_22', opacity: '0' },
@@ -11500,7 +11500,7 @@ let tempActions = [
       human: true,
     },
     {
-      text: 'Делаю 1.',
+      text: 'Делаю единицу.',
       sender: 'Газовщик',
       audio: 'tts-vo21',
       startTime: timeDiff + 333,
@@ -20579,7 +20579,7 @@ let tempActions = [
             { name: 'P_gaza_tryb', text: '14' },
             { name: 'CO_bor_tryb', text: '0.00' },
             { name: 'H_snotr', text: '100' },
-            { name: 'dp_kl_red', color: '#00DA01' },
+            { name: 'kl_red', color: '#00DA01' },
             { name: 'H_progres_7', opacity: '1' },
             { name: 'H_progres_19', opacity: '1' },
             { name: 'H_progres_22', opacity: '1' },
@@ -21448,14 +21448,14 @@ let tempActions = [
           ]
         },
         helper2D: [
-          { x: 91.30, y: 63.90, w: 1.5, h: 2.0, id: 'close_w1', },
-          { x: 83.80, y: 71.80, w: 4.0, h: 2.6, id: 'auto', },
-          { x: 88.15, y: 71.80, w: 4.0, h: 2.6, id: 'ruchnoi', },
-          { x: 83.80, y: 75.80, w: 4.0, h: 2.6, id: 'open_vn', },
-          { x: 88.15, y: 75.80, w: 4.0, h: 2.6, id: 'close_ventil', },
-          { x: 83.80, y: 78.60, w: 8.5, h: 2.9, id: 'stop', },
-          { x: 83.80, y: 83.95, w: 8.5, h: 2.6, id: 'sbros_oshibki', },
-          { x: 83.80, y: 89.35, w: 8.5, h: 2.6, id: 'baypas_blokirovok', }
+          { x: 82.90, y: 45.15, w: 1.5, h: 2.0, id: 'close_w1', },
+          { x: 75.45, y: 53.10, w: 4.0, h: 2.6, id: 'auto', },
+          { x: 79.80, y: 53.10, w: 4.0, h: 2.6, id: 'ruchnoi', },
+          { x: 75.45, y: 57.00, w: 4.0, h: 2.6, id: 'open_vn', },
+          { x: 79.80, y: 57.00, w: 4.0, h: 2.6, id: 'close_ventil', },
+          { x: 75.45, y: 60.00, w: 8.5, h: 2.9, id: 'stop', },
+          { x: 75.45, y: 65.20, w: 8.5, h: 2.6, id: 'sbros_oshibki', },
+          { x: 75.45, y: 70.55, w: 8.5, h: 2.6, id: 'baypas_blokirovok' }
         ]
       },
       startTime: timeDiff + 618.1,
@@ -21661,6 +21661,8 @@ let tempActions = [
             { name: 'btn_baypas_vsekh_blokirovok_1', color: '#6DE90C' },
             { name: 'btn_baypas_vsekh_blokirovok_2', color: '#6DE90C' },
             { name: 'VNK3_vnk_3', color: '#ffffff' },
+            { name: 'btn_open_text', color: '#6E6E6E' },
+            { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
           ]
         },
         helper2D: [
@@ -24740,7 +24742,7 @@ let startState2D = [
     { name: 'H_progres_67', opacity: '0' },
     { name: 'H_progres_89', opacity: '0' },
     { name: 'H_progres_100', opacity: '0' },
-    { name: 'dp_kl_red', color: '#ff1e00' },
+    { name: 'kl_red', color: '#ff1e00' },
     // { name: 'kol_furm', text: '30' },
     { name: 'fyrm_v_rab', text: '29' },
     { name: 'F_tryba', text: '657115' },
