@@ -6,10 +6,6 @@
 Ограничить текст в чате - сообщения в режиме "Контроль"
 Ограничить звук в режиме "Контроль"
 ---------------------------------------------------------------
-Проверить правильность смены стилей текста в сценариоБоксе
----------------------------------------------------------------
-Рестарт не работает?
----------------------------------------------------------------
 */
 const devHelper = {
   trenVals: {
@@ -1190,40 +1186,6 @@ const devHelper = {
 };
 const timeDiff = -0;
 let tempActions = [
-  [
-    {
-      chapterText: 'Глава 1',
-      startTime: timeDiff + 0,
-    },
-    {
-      scenarioText: 'Под глава 1.1',
-      startTime: timeDiff + 5,
-    },
-    {
-      chapterText: 'Глава 2',
-      startTime: timeDiff + 6,
-    },
-    {
-      scenarioText: 'Под глава 2.1',
-      startTime: timeDiff + 7,
-    },
-    {
-      text: 'Текст 2.2.1',
-      startTime: timeDiff + 8,
-    },
-    {
-      scenarioText: 'Под глава 2.2',
-      startTime: timeDiff + 9,
-    },
-    {
-      chapterText: 'Глава 3',
-      startTime: timeDiff + 10,
-    },
-    {
-      scenarioText: 'Под глава 3.1',
-      startTime: timeDiff + 11,
-    },
-  ],
   // Первый сценарий  
   [
     {
