@@ -36,7 +36,7 @@ window.addEventListener('load', function () {
                                         ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                           ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'vnk_main1') {
+    if (ObjectSvg.name === 'dp1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';

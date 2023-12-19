@@ -38,10 +38,25 @@ function loadTrenActions() {
     }
   })
   devHelper.trenVals.scenarioArr.forEach(scenarioObj => {
-    if (scenarioObj.actions && scenarioObj.actions) {
+    if (scenarioObj.actions) {
       scenarioObj.actions = scenarioObj.actions.sort((a, b) => a.startTime - b.startTime);
     }
   })
+  devHelper.trenVals.scenarioArr.forEach(scenarioObj => {
+    if (scenarioObj.actions) {
+      scenarioObj.actions.forEach((action, index) => {
+        if (index > 0) {
+          if (action.human) {
+            if (action.startTime > scenarioObj.actions[index - 1].startTime + 1) {
+              action.startTime = scenarioObj.actions[index - 1].startTime + 1;
+            }
+          }
+          if (!action.humanStartTime) action.humanStartTime = action.startTime;
+        }
+      })
+    }
+  })
+
 
   devHelper.audio.forEach(element => {
     element.element.addEventListener('ended', function () {
@@ -66,6 +81,25 @@ function loadTrenActions() {
 }
 
 function startTren(Restart = false) {
+
+  devHelper.trenVals.scenarioArr.forEach(scenarioObj => {
+    if (scenarioObj.actions) {
+      scenarioObj.actions.forEach((action, index) => {
+        if (index > 0) {
+          action.startTime = action.humanStartTime;
+          if (devHelper.trenVals.type !== 'learn') {
+            if (action.startTime > scenarioObj.actions[index - 1].startTime + 0.5) {
+              if (Math.abs(action.humanStartTime - scenarioObj.actions[index - 1].humanStartTime) < 1 ) {
+                action.startTime = scenarioObj.actions[index - 1].startTime + Math.abs(action.humanStartTime - scenarioObj.actions[index - 1].humanStartTime);
+              } else action.startTime = scenarioObj.actions[index - 1].startTime + 0.5;
+            }
+          }
+        }
+      })
+    }
+  })
+  
+
   clearChat();
   if (devHelper.trenVals.type === 'learn') {
     document.querySelector('#b_reference').removeAttribute('disabled');
@@ -540,7 +574,7 @@ function afterClickOn2DHelper(SvgElemHelper, CurrentAction) {
     }
     updateSvgTextures();
   }
-  
+
   if (CurrentAction.audio && (devHelper.trenVals.type === 'learn' || CurrentAction.scenarioText || CurrentAction.chapterText))
     playAudio(CurrentAction.audio);
   if (CurrentAction.action && CurrentAction.action.helper2D)
@@ -847,7 +881,7 @@ function takeStartingState(Restart = false) {
   makeStart3DVisual();
   makeStart2DHelpers();
   animMoveCamera(devHelper.model3DVals.cameraPositions[0], 1);
-  
+
   function makeStart2DVisual(firstTime = false) {
     let reloadImg = [];
     devHelper.model3DVals.svgDisplays.meshs.forEach((mesh) => {
@@ -1259,7 +1293,6 @@ function createCustomElement(tag, content, attributes, parrent = null) {
 
 function setNewFillButtonSVG(objectSVG, color) {
   Array.from(objectSVG.contentDocument.querySelectorAll('[fill]')).forEach(element => {
-    console.log(element, color);
     if (element.getAttribute('d') === '   M 490.59 256.01   A 234.61 234.61 0.0 0 1 255.98 490.62   A 234.61 234.61 0.0 0 1 21.37 256.01   A 234.61 234.61 0.0 0 1 255.98 21.40   A 234.61 234.61 0.0 0 1 490.59 256.01   Z   M 277.37 246.53   Q 277.29 191.32 277.39 136.09   Q 277.40 125.00 275.87 120.57   C 269.34 101.70 242.68 102.37 235.93 120.94   Q 234.66 124.42 234.66 130.22   Q 234.64 193.23 234.65 256.25   C 234.65 263.31 237.79 267.95 243.07 273.23   Q 271.94 302.07 300.76 330.97   Q 306.97 337.21 310.92 339.15   C 328.84 347.98 348.05 328.69 339.14 310.80   Q 337.14 306.80 330.30 300.05   Q 303.82 273.92 277.73 247.42   Q 277.37 247.05 277.37 246.53   Z') {
       if (devHelper.trenVals.type !== 'learn') {
         if (color === '#ffffff') {

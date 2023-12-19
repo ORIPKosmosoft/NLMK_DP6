@@ -1162,7 +1162,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
     intervalFon: undefined,
     maxCountSvgElems: 0,
