@@ -602,7 +602,7 @@ function trenFinish() {
       if (action.passed === true) passedActionCount++;
     })
     devHelper.endVals.passPerc = Math.round(passedActionCount / devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length * 100);
-  }
+  } else devHelper.endVals.passPerc = 100;
   circleGraph.querySelector('span').innerHTML = `${devHelper.endVals.passPerc}%`;
   Array.from(endContainer.querySelectorAll('.left-text')).forEach((element) => {
     const text = element.innerHTML;
