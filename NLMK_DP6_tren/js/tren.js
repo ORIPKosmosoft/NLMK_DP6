@@ -227,7 +227,6 @@ function trenTimeTick(timeStamp) {
             handleError('Время вышло', true);
             devHelper.trenVals.timers.deadTimerBool = false;
           }
-          // TODO 
           let reverseTimer = document.querySelector('.reverse-timer');
           if (reverseTimer) {
             let dataset = reverseTimer.timerChart.data.datasets[0];
