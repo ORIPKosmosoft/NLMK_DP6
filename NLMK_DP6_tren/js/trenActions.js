@@ -1439,11 +1439,11 @@ let tempActions = [
             { name: 'kl001_proc', text: '0' },
             { name: 'kl001a_proc', text: '31' },
             { name: 'vnk2_fire', opacity: '1' }, // стрелка
-            { name: 'vnk_2', color: '#FF1E06' }, // задник стрелки
+            { name: 'vnk_2', color: '#ff1e00' }, // задник стрелки
             { name: 'Tkyp_2', text: '1329' },
             { name: 'VNK2_status_1', text: 'Автоматический' },
             { name: 'VNK2_status_2', text: 'Нагрев' },
-            { name: 'vnk2_stripes', color: '#FF1E06' },
+            { name: 'vnk2_stripes', color: '#ff1e00' },
             { name: 'VNK2_Fr', text: '81782' },
             { name: 'VNK2_Fb', text: '104004' },
             { name: 'Tdym_2', text: '140' },
@@ -1451,11 +1451,11 @@ let tempActions = [
             { name: 'TI_36', text: '15' },
             { name: 'FI_03', text: '947' },
             { name: 'vnk1_fire', opacity: '1' }, // стрелка
-            { name: 'vnk_1', color: '#FF1E06' }, // задник стрелки
+            { name: 'vnk_1', color: '#ff1e00' }, // задник стрелки
             { name: 'Tkyp_1', text: '1333' },
             { name: 'VNK1_status_1', text: 'Автоматический' },
             { name: 'VNK1_status_2', text: 'Нагрев' },
-            { name: 'vnk1_stripes', color: '#FF1E06' },
+            { name: 'vnk1_stripes', color: '#ff1e00' },
             { name: 'VNK1_Fr', text: '88754' },
             { name: 'VNK1_Fb', text: '110435' },
             { name: 'Tdym_1', text: '300' },
@@ -3890,11 +3890,11 @@ let tempActions = [
             { name: 'kl001_proc', text: '0' },
             { name: 'kl001a_proc', text: '22' },
             { name: 'vnk2_fire', opacity: '1' }, // стрелка
-            { name: 'vnk_2', color: '#FF1E06' }, // задник стрелки
+            { name: 'vnk_2', color: '#ff1e00' }, // задник стрелки
             { name: 'Tkyp_2', text: '1326' },
             { name: 'VNK2_status_1', text: 'Циклический' },
             { name: 'VNK2_status_2', text: 'Нагрев' },
-            { name: 'vnk2_stripes', color: '#FF1E06' },
+            { name: 'vnk2_stripes', color: '#ff1e00' },
             { name: 'VNK2_Fr', text: '111915' },
             { name: 'VNK2_Fb', text: '104399' },
             { name: 'Tdym_2', text: '233' },
@@ -3902,11 +3902,11 @@ let tempActions = [
             { name: '5PI_08', text: '16' },
             { name: 'FI_03', text: '934' },
             { name: 'vnk1_fire', opacity: '1' }, // стрелка
-            { name: 'vnk_1', color: '#FF1E06' }, // задник стрелки
+            { name: 'vnk_1', color: '#ff1e00' }, // задник стрелки
             { name: 'Tkyp_1', text: '1322' },
             { name: 'VNK1_status_1', text: 'Циклический' },
             { name: 'VNK1_status_2', text: 'Нагрев' },
-            { name: 'vnk1_stripes', color: '#FF1E06' },
+            { name: 'vnk1_stripes', color: '#ff1e00' },
             { name: 'VNK1_Fr', text: '110014' },
             { name: 'VNK1_Fb', text: '100130' },
             { name: 'Tdym_1', text: '423' },
@@ -4050,10 +4050,10 @@ let tempActions = [
             { name: '1TI_28_2', text: '425' },
             { name: 'vnk1_fire', opacity: '1' }, // стрелка
             { name: 'vnk1_fire_border', opacity: '1' }, // обводка стрелка
-            { name: 'vnk_1', color: '#FF1E06' }, // задник стрелки
+            { name: 'vnk_1', color: '#ff1e00' }, // задник стрелки
             { name: 'VNK1_status_1', text: 'Циклический' },
             { name: 'VNK1_status_2', text: 'Нагрев' },
-            { name: 'vnk1_stripes', color: '#FF1E06' },
+            { name: 'vnk1_stripes', color: '#ff1e00' },
             { name: 'Vremya_nagreva', text: '108' },
             { name: 'Vremya_dutya', text: '60' },
             { name: 'Vremya_otdelen', text: '0' },
@@ -4126,11 +4126,11 @@ let tempActions = [
             { name: 'kl001_proc', text: '0' },
             { name: 'kl001a_proc', text: '22' },
             { name: 'vnk2_fire', opacity: '1' }, // стрелка
-            { name: 'vnk_2', color: '#FF1E06' }, // задник стрелки
+            { name: 'vnk_2', color: '#ff1e00' }, // задник стрелки
             { name: 'Tkyp_2', text: '1326' },
             { name: 'VNK2_status_1', text: 'Циклический' },
             { name: 'VNK2_status_2', text: 'Нагрев' },
-            { name: 'vnk2_stripes', color: '#FF1E06' },
+            { name: 'vnk2_stripes', color: '#ff1e00' },
             { name: 'VNK2_Fr', text: '111915' },
             { name: 'VNK2_Fb', text: '104399' },
             { name: 'Tdym_2', text: '233' },
@@ -4138,11 +4138,11 @@ let tempActions = [
             { name: '5PI_08', text: '16' },
             { name: 'FI_03', text: '934' },
             { name: 'vnk1_fire', opacity: '1' }, // стрелка
-            { name: 'vnk_1', color: '#FF1E06' }, // задник стрелки
+            { name: 'vnk_1', color: '#ff1e00' }, // задник стрелки
             { name: 'Tkyp_1', text: '1322' },
             { name: 'VNK1_status_1', text: 'Циклический' },
             { name: 'VNK1_status_2', text: 'Нагрев' },
-            { name: 'vnk1_stripes', color: '#FF1E06' },
+            { name: 'vnk1_stripes', color: '#ff1e00' },
             { name: 'VNK1_Fr', text: '110014' },
             { name: 'VNK1_Fb', text: '100130' },
             { name: 'Tdym_1', text: '423' },
@@ -4230,7 +4230,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: '1PS_03_square', color: '#FF1E06' },
+            { name: '1PS_03_square', color: '#ff1e00' },
             { name: '7PI_13', text: '10,94' },
             { name: '1FI_01', text: '56311' },
             { name: '1PI_02', text: '0,47' },
@@ -4271,7 +4271,7 @@ let tempActions = [
             { name: '1FI_01', text: '45074' },
             { name: '1PI_02', text: '0,33' },
             { name: '1PI_04', text: '0,44' },
-            { name: 'kl_132', color: '#FF1E06' },
+            { name: 'kl_132', color: '#ff1e00' },
             { name: 'rect_132_2', color: '#000' },
             { name: 'rect_132_2', position: { x: -3 } },
             // Table
@@ -4283,7 +4283,7 @@ let tempActions = [
             { name: 'text_117', y: 565 },
             { name: 'text_111', y: 565 },
             { name: 'text_112', y: 565 },
-            { name: 'rect_132', position: { y: 81 }, color: '#FF1E06' },
+            { name: 'rect_132', position: { y: 81 }, color: '#ff1e00' },
             { name: 'rect_116', position: { y: 81 } },
             { name: 'rect_124', position: { y: 81 } },
             { name: 'rect_113', position: { y: 81 } },
@@ -4304,8 +4304,8 @@ let tempActions = [
           elements: [
             { name: 'vnk1_red_Arrow', opacity: '0' },
             { name: 'vnk1_red_Arrow_border', opacity: '0' },
-            { name: 'kl_132', color: '#FF1E06' },
-            { name: 'kl_132_l', color: '#FF1E06' },
+            { name: 'kl_132', color: '#ff1e00' },
+            { name: 'kl_132_l', color: '#ff1e00' },
             { name: 'kl_127', color: '#b5b3b6' },
             { name: '7PI_13', text: '9,80' },
             // Table
@@ -4318,7 +4318,7 @@ let tempActions = [
             { name: 'text_111', y: 605 },
             { name: 'text_112', y: 605 },
             { name: 'rect_132', position: { y: 123 } },
-            { name: 'rect_116', position: { y: 123 }, color: '#FF1E06' },
+            { name: 'rect_116', position: { y: 123 }, color: '#ff1e00' },
             { name: 'rect_124', position: { y: 123 } },
             { name: 'rect_113', position: { y: 123 } },
             { name: 'rect_134', position: { y: 123 } },
@@ -4339,7 +4339,7 @@ let tempActions = [
             { name: 'vnk1_red_Arrow', opacity: 1 },
             { name: 'vnk1_red_Arrow_border', opacity: 1 },
             { name: 'vnk1_red_Arrow', color: '#ffffff' },
-            { name: '1PS_05_square', color: '#FF1E06' },
+            { name: '1PS_05_square', color: '#ff1e00' },
             { name: '7PI_13', text: '11,20' },
             // Table
             { name: 'text_132', y: 645 },
@@ -4372,8 +4372,8 @@ let tempActions = [
             { name: '1PI_02', text: '0,17' },
             { name: 'vnk1_red_Arrow', opacity: '0' },
             { name: 'vnk1_red_Arrow_border', opacity: '0' },
-            { name: 'vn_116', color: '#FF1E06' },
-            { name: 'vn_116_l', color: '#FF1E06' },
+            { name: 'vn_116', color: '#ff1e00' },
+            { name: 'vn_116_l', color: '#ff1e00' },
             { name: 'vnk_1', color: '#ffffff' },
             { name: '7PI_13', text: '10,78' },
             // Table
@@ -4448,7 +4448,7 @@ let tempActions = [
             { name: 'text_112', y: 765 },
             { name: 'rect_132', position: { y: 286 } },
             { name: 'rect_116', position: { y: 286 } },
-            { name: 'rect_124', position: { y: 286 }, color: '#FF1E06' },
+            { name: 'rect_124', position: { y: 286 }, color: '#ff1e00' },
             { name: 'rect_113', position: { y: 286 } },
             { name: 'rect_134', position: { y: 286 } },
             { name: 'rect_117', position: { y: 286 } },
@@ -4466,7 +4466,7 @@ let tempActions = [
         window2D: {
           elements: [
             { name: '1PI_02', text: '0' },
-            { name: 'vn_134', color: '#FF1E06' },
+            { name: 'vn_134', color: '#ff1e00' },
             { name: '7PI_13', text: '10,41' },
             // Table
             { name: 'text_132', y: 805 },
@@ -4511,7 +4511,7 @@ let tempActions = [
             { name: 'rect_132', position: { y: 368 } },
             { name: 'rect_116', position: { y: 368 } },
             { name: 'rect_124', position: { y: 368 } },
-            { name: 'rect_113', position: { y: 368 }, color: '#FF1E06' },
+            { name: 'rect_113', position: { y: 368 }, color: '#ff1e00' },
             { name: 'rect_134', position: { y: 368 } },
             { name: 'rect_117', position: { y: 368 } },
             { name: 'rect_111', position: { y: 368 } },
@@ -4527,7 +4527,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'vn_117', color: '#FF1E06' },
+            { name: 'vn_117', color: '#ff1e00' },
             { name: '1FI_02', text: '0' },
             { name: '7PI_13', text: '9,81' },
             // Table
@@ -4558,7 +4558,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_134', color: '#FF1E06' },
+            { name: 'kl_134', color: '#ff1e00' },
             // Table
             { name: 'text_132', y: 925 },
             { name: 'text_116', y: 925 },
@@ -4572,7 +4572,7 @@ let tempActions = [
             { name: 'rect_116', position: { y: 450 } },
             { name: 'rect_124', position: { y: 450 } },
             { name: 'rect_113', position: { y: 450 } },
-            { name: 'rect_134', position: { y: 450 }, color: '#FF1E06' },
+            { name: 'rect_134', position: { y: 450 }, color: '#ff1e00' },
             { name: 'rect_117', position: { y: 450 } },
             { name: 'rect_111', position: { y: 450 } },
             { name: 'rect_112', position: { y: 450 } },
@@ -4603,7 +4603,7 @@ let tempActions = [
             { name: 'rect_124', position: { y: 491 } },
             { name: 'rect_113', position: { y: 491 } },
             { name: 'rect_134', position: { y: 491 } },
-            { name: 'rect_117', position: { y: 491 }, color: '#FF1E06' },
+            { name: 'rect_117', position: { y: 491 }, color: '#ff1e00' },
             { name: 'rect_111', position: { y: 491 } },
             { name: 'rect_112', position: { y: 491 } },
             // End Table
@@ -4640,7 +4640,7 @@ let tempActions = [
             { name: 'rect_113', position: { y: 531 } },
             { name: 'rect_134', position: { y: 531 } },
             { name: 'rect_117', position: { y: 531 } },
-            { name: 'rect_111', position: { y: 531 }, color: '#FF1E06' },
+            { name: 'rect_111', position: { y: 531 }, color: '#ff1e00' },
             { name: 'rect_112', position: { y: 531 } },
             // End Table
           ]
@@ -4656,7 +4656,7 @@ let tempActions = [
             { name: 'kl_140', color: '#06FF06' },
             { name: 'kl_112', color: '#7b828c' },
             { name: '1QI_01', text: '15,61' },
-            { name: 'kl_112', color: '#FF1E06' },
+            { name: 'kl_112', color: '#ff1e00' },
             // Table
             { name: 'text_132', y: 1048 },
             { name: 'text_116', y: 1048 },
@@ -4673,7 +4673,7 @@ let tempActions = [
             { name: 'rect_134', position: { y: 572 } },
             { name: 'rect_117', position: { y: 572 } },
             { name: 'rect_111', position: { y: 572 } },
-            { name: 'rect_112', position: { y: 572 }, color: '#FF1E06' },
+            { name: 'rect_112', position: { y: 572 }, color: '#ff1e00' },
             // End Table
           ]
         }
@@ -4687,12 +4687,12 @@ let tempActions = [
           elements: [
             { name: 'VNK1_status_1', text: 'Циклический' },
             { name: 'VNK1_status_2', text: 'Отделение 2' },
-            { name: 'kl_132', color: '#FF1E06' },
-            { name: 'kl_116', color: '#FF1E06' },
-            { name: 'kl_113', color: '#FF1E06' },
-            { name: 'kl_124', color: '#FF1E06' },
-            { name: 'kl_134', color: '#FF1E06' },
-            { name: 'kl_117', color: '#FF1E06' },
+            { name: 'kl_132', color: '#ff1e00' },
+            { name: 'kl_116', color: '#ff1e00' },
+            { name: 'kl_113', color: '#ff1e00' },
+            { name: 'kl_124', color: '#ff1e00' },
+            { name: 'kl_134', color: '#ff1e00' },
+            { name: 'kl_117', color: '#ff1e00' },
             { name: 'kl_127', color: '#06FF06' },
             { name: 'kl_121', color: '#06FF06' },
             { name: 'kl_140', color: '#06FF06' },
@@ -4808,7 +4808,7 @@ let tempActions = [
             { name: 'vnk_1', color: '#808080' }, // задник стрелки
             { name: 'VNK1_status_1', text: 'Циклический' },
             { name: 'VNK1_status_2', text: 'Отделение 2' },
-            { name: 'vnk1_stripes', color: '#FF1E06' },
+            { name: 'vnk1_stripes', color: '#ff1e00' },
             { name: 'Vremya_nagreva', text: '109' },
             { name: 'Vremya_dutya', text: '60' },
             { name: 'Vremya_otdelen', text: '0' },
@@ -4824,26 +4824,26 @@ let tempActions = [
             { name: 'circle_otdeleniye_2', color: '#06FF06' },
             //VN
             { name: 'rect_132_2', position: { x: -3 }, color: '#000' },
-            { name: 'kl_132', color: '#FF1E06' },
+            { name: 'kl_132', color: '#ff1e00' },
             { name: 'kl_127', color: '#06FF06' },
             { name: 'rect_116_2', position: { x: -3 }, color: '#000' },
-            { name: 'kl_116', color: '#FF1E06' },
+            { name: 'kl_116', color: '#ff1e00' },
             { name: '1PS_03', color: '#06FF06' },
-            { name: 'kl_121', color: '#FF1E06' },
-            { name: 'kl_113', color: '#FF1E06' },
+            { name: 'kl_121', color: '#ff1e00' },
+            { name: 'kl_113', color: '#ff1e00' },
             { name: 'PS_10', color: '#06FF06' },
-            { name: 'kl_124', color: '#FF1E06' },
-            { name: 'kl_134', color: '#FF1E06' },
-            { name: '1PS_05', color: '#FF1E06' },
+            { name: 'kl_124', color: '#ff1e00' },
+            { name: 'kl_134', color: '#ff1e00' },
+            { name: '1PS_05', color: '#ff1e00' },
             { name: 'kl_140', color: '#06FF06' },
-            { name: 'kl_117', color: '#FF1E06' },
-            { name: 'kl_119', color: '#FF1E06' },
-            { name: 'kl_111', color: '#FF1E06' },
+            { name: 'kl_117', color: '#ff1e00' },
+            { name: 'kl_119', color: '#ff1e00' },
+            { name: 'kl_111', color: '#ff1e00' },
             { name: 'kl_112', color: '#06FF06' },
-            { name: 'kl_112', color: '#FF1E06' },
-            { name: 'kl_136a', color: '#FF1E06' },
-            { name: 'kl_118a', color: '#FF1E06' },
-            { name: 'kl_118', color: '#FF1E06' },
+            { name: 'kl_112', color: '#ff1e00' },
+            { name: 'kl_136a', color: '#ff1e00' },
+            { name: 'kl_118a', color: '#ff1e00' },
+            { name: 'kl_118', color: '#ff1e00' },
           ]
         }
       },
@@ -4915,7 +4915,7 @@ let tempActions = [
         target2D: 'otdel2_otdel_btn',
         window2D: {
           elements: [
-            { name: 'rect_ish_c5', color: '#FF1E06' },
+            { name: 'rect_ish_c5', color: '#ff1e00' },
           ]
         },
       },
@@ -4956,7 +4956,7 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'title_open_vn', text: 'Пуск' },
-            { name: 'rect_ish_c5', color: '#FF1E06' },
+            { name: 'rect_ish_c5', color: '#ff1e00' },
           ]
         },
         helper2D: [
@@ -5038,7 +5038,7 @@ let tempActions = [
             { name: '1FI_01', text: '0' },
             { name: '1PI_02', text: '0,00' },
             { name: '1TI_43', text: '47' },
-            { name: 'kl_111', color: '#FF1E06' },
+            { name: 'kl_111', color: '#ff1e00' },
             { name: '1TI_28_1', text: '380' },
             { name: '1TI_28_2', text: '384' },
           ]
@@ -5059,7 +5059,7 @@ let tempActions = [
     //   action: {
     //     window2D: {
     //       elements: [
-    //         { name: 'kl_111', color: '#FF1E06' },
+    //         { name: 'kl_111', color: '#ff1e00' },
     //       ]
     //     }
     //   },
@@ -5078,7 +5078,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            // { name: 'kl_111', color: '#FF1E06' },
+            // { name: 'kl_111', color: '#ff1e00' },
             { name: 'vnk_1', color: '#A0AAB9' },
             { name: 'vnk1_red_Arrow', opacity: '0' },
           ]
@@ -5161,26 +5161,26 @@ let tempActions = [
             { name: 'circle_otdeleniye_2', color: '#000' },
             //VN
             { name: 'rect_132_2', position: { x: -3 }, color: '#000' },
-            { name: 'kl_132', color: '#FF1E06' },
+            { name: 'kl_132', color: '#ff1e00' },
             { name: 'kl_127', color: '#06FF06' },
             { name: 'rect_116_2', position: { x: -3 }, color: '#000' },
-            { name: 'kl_116', color: '#FF1E06' },
-            { name: '1PS_03', color: '#FF1E06' },
+            { name: 'kl_116', color: '#ff1e00' },
+            { name: '1PS_03', color: '#ff1e00' },
             { name: 'kl_121', color: '#06FF06' },
-            { name: 'kl_113', color: '#FF1E06' },
+            { name: 'kl_113', color: '#ff1e00' },
             { name: 'PS_10', color: '#06FF06' },
-            { name: 'kl_124', color: '#FF1E06' },
-            { name: 'kl_134', color: '#FF1E06' },
-            { name: '1PS_05', color: '#FF1E06' },
+            { name: 'kl_124', color: '#ff1e00' },
+            { name: 'kl_134', color: '#ff1e00' },
+            { name: '1PS_05', color: '#ff1e00' },
             { name: 'kl_140', color: '#06FF06' },
-            { name: 'kl_117', color: '#FF1E06' },
-            { name: 'kl_119', color: '#FF1E06' },
-            { name: 'kl_111', color: '#FF1E06' },
-            { name: 'kl_112', color: '#FF1E06' },
-            { name: 'kl_112', color: '#FF1E06' },
-            { name: 'kl_136a', color: '#FF1E06' },
-            { name: 'kl_118a', color: '#FF1E06' },
-            { name: 'kl_118', color: '#FF1E06' },
+            { name: 'kl_117', color: '#ff1e00' },
+            { name: 'kl_119', color: '#ff1e00' },
+            { name: 'kl_111', color: '#ff1e00' },
+            { name: 'kl_112', color: '#ff1e00' },
+            { name: 'kl_112', color: '#ff1e00' },
+            { name: 'kl_136a', color: '#ff1e00' },
+            { name: 'kl_118a', color: '#ff1e00' },
+            { name: 'kl_118', color: '#ff1e00' },
             // main
             { name: '7TI_41', text: '40' },
             { name: '7PI_12', text: '19,05' },
@@ -5218,7 +5218,7 @@ let tempActions = [
             { name: 'text_112', y: 475, text: 'Открыт' },
             { name: 'rect_132', position: { y: 0 }, color: '#06f322' },
             { name: 'rect_116', position: { y: 0 }, color: '#06f322' },
-            { name: 'rect_124', position: { y: 0 }, color: '#FF1E06' },
+            { name: 'rect_124', position: { y: 0 }, color: '#ff1e00' },
             { name: 'rect_113', position: { y: 0 }, color: '#06f322' },
             { name: 'rect_134', position: { y: 0 }, color: '#06f322' },
             { name: 'rect_117', position: { y: 0 }, color: '#06f322' },
@@ -5325,8 +5325,8 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: '2PS_03', color: '#FF1E06' },
-            { name: '2PS_05', color: '#FF1E06' },
+            { name: '2PS_03', color: '#ff1e00' },
+            { name: '2PS_05', color: '#ff1e00' },
             { name: 'kl215_proc', text: '28' },
             { name: '7PI_13', text: '10,52' },
             { name: '2FI_01', text: '81142' },
@@ -5410,7 +5410,7 @@ let tempActions = [
             { name: 'text_117', y: 565 },
             { name: 'text_111', y: 565 },
             { name: 'text_112', y: 565 },
-            { name: 'rect_132', position: { y: 81 }, color: '#FF1E06' },
+            { name: 'rect_132', position: { y: 81 }, color: '#ff1e00' },
             { name: 'rect_116', position: { y: 81 } },
             { name: 'rect_124', position: { y: 81 } },
             { name: 'rect_113', position: { y: 81 } },
@@ -5439,7 +5439,7 @@ let tempActions = [
             { name: 'text_111', y: 605 },
             { name: 'text_112', y: 605 },
             { name: 'rect_132', position: { y: 123 } },
-            { name: 'rect_116', position: { y: 123 }, color: '#FF1E06' },
+            { name: 'rect_116', position: { y: 123 }, color: '#ff1e00' },
             { name: 'rect_124', position: { y: 123 } },
             { name: 'rect_113', position: { y: 123 } },
             { name: 'rect_134', position: { y: 123 } },
@@ -5457,7 +5457,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_216', color: '#FF1E06' },
+            { name: 'kl_216', color: '#ff1e00' },
             { name: 'kl_227', color: '#7b828c' },
             // Table
             { name: 'text_132', y: 645 },
@@ -5575,7 +5575,7 @@ let tempActions = [
             { name: 'text_112', y: 765 },
             { name: 'rect_132', position: { y: 286 } },
             { name: 'rect_116', position: { y: 286 } },
-            { name: 'rect_124', position: { y: 286 }, color: '#FF1E06' },
+            { name: 'rect_124', position: { y: 286 }, color: '#ff1e00' },
             { name: 'rect_113', position: { y: 286 } },
             { name: 'rect_134', position: { y: 286 } },
             { name: 'rect_117', position: { y: 286 } },
@@ -5641,7 +5641,7 @@ let tempActions = [
             { name: 'rect_132', position: { y: 368 } },
             { name: 'rect_116', position: { y: 368 } },
             { name: 'rect_124', position: { y: 368 } },
-            { name: 'rect_113', position: { y: 368 }, color: '#FF1E06' },
+            { name: 'rect_113', position: { y: 368 }, color: '#ff1e00' },
             { name: 'rect_134', position: { y: 368 } },
             { name: 'rect_117', position: { y: 368 } },
             { name: 'rect_111', position: { y: 368 } },
@@ -5657,7 +5657,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_224', color: '#FF1E06' },
+            { name: 'kl_224', color: '#ff1e00' },
             { name: '2FI_03', text: '0' },
             { name: '2PI_02', text: '0,10' },
             { name: '2TI_43', text: '47' },
@@ -5709,7 +5709,7 @@ let tempActions = [
             { name: 'rect_116', position: { y: 450 } },
             { name: 'rect_124', position: { y: 450 } },
             { name: 'rect_113', position: { y: 450 } },
-            { name: 'rect_134', position: { y: 450 }, color: '#FF1E06' },
+            { name: 'rect_134', position: { y: 450 }, color: '#ff1e00' },
             { name: 'rect_117', position: { y: 450 } },
             { name: 'rect_111', position: { y: 450 } },
             { name: 'rect_112', position: { y: 450 } },
@@ -5740,7 +5740,7 @@ let tempActions = [
             { name: 'rect_124', position: { y: 491 } },
             { name: 'rect_113', position: { y: 491 } },
             { name: 'rect_134', position: { y: 491 } },
-            { name: 'rect_117', position: { y: 491 }, color: '#FF1E06' },
+            { name: 'rect_117', position: { y: 491 }, color: '#ff1e00' },
             { name: 'rect_111', position: { y: 491 } },
             { name: 'rect_112', position: { y: 491 } },
             // End Table
@@ -5754,7 +5754,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_234', color: '#FF1E06' },
+            { name: 'kl_234', color: '#ff1e00' },
             { name: 'kl_240', color: '#7b828c' },
             { name: '7PI_13', text: '19,65' },
             { name: '7PI_13', text: '19,65' },
@@ -5779,7 +5779,7 @@ let tempActions = [
             { name: 'rect_113', position: { y: 531 } },
             { name: 'rect_134', position: { y: 531 } },
             { name: 'rect_117', position: { y: 531 } },
-            { name: 'rect_111', position: { y: 531 }, color: '#FF1E06' },
+            { name: 'rect_111', position: { y: 531 }, color: '#ff1e00' },
             { name: 'rect_112', position: { y: 531 } },
             // End Table
           ]
@@ -5811,7 +5811,7 @@ let tempActions = [
             { name: 'rect_134', position: { y: 572 } },
             { name: 'rect_117', position: { y: 572 } },
             { name: 'rect_111', position: { y: 572 } },
-            { name: 'rect_112', position: { y: 572 }, color: '#FF1E06' },
+            { name: 'rect_112', position: { y: 572 }, color: '#ff1e00' },
             // End Table
           ]
         }
@@ -5823,7 +5823,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_212', color: '#FF1E06' },
+            { name: 'kl_212', color: '#ff1e00' },
             { name: '2QI_01', text: '15,65' },
             { name: '115_SPW', text: '430,0' },
             { name: '115_SPT', text: '108,0' },
@@ -5955,26 +5955,26 @@ let tempActions = [
             { name: 'circle_otdeleniye_2', color: '#000' },
             //VN
             { name: 'rect_232_2', position: { x: -3 }, color: '#000' },
-            { name: 'kl_232', color: '#FF1E06' },
+            { name: 'kl_232', color: '#ff1e00' },
             { name: 'kl_227', color: '#06FF06' },
             { name: 'rect_216_2', position: { x: -3 }, color: '#000' },
-            { name: 'kl_216', color: '#FF1E06' },
-            { name: '2PS_03', color: '#FF1E06' },
-            { name: 'kl_221', color: '#FF1E06' },
-            { name: 'kl_213', color: '#FF1E06' },
+            { name: 'kl_216', color: '#ff1e00' },
+            { name: '2PS_03', color: '#ff1e00' },
+            { name: 'kl_221', color: '#ff1e00' },
+            { name: 'kl_213', color: '#ff1e00' },
             { name: 'PS_10', color: '#06FF06' },
-            { name: 'kl_224', color: '#FF1E06' },
-            { name: 'kl_234', color: '#FF1E06' },
-            { name: '2PS_05', color: '#FF1E06' },
+            { name: 'kl_224', color: '#ff1e00' },
+            { name: 'kl_234', color: '#ff1e00' },
+            { name: '2PS_05', color: '#ff1e00' },
             { name: 'kl_240', color: '#06FF06' },
-            { name: 'kl_217', color: '#FF1E06' },
-            { name: 'kl_219', color: '#FF1E06' },
-            { name: 'kl_211', color: '#FF1E06' },
+            { name: 'kl_217', color: '#ff1e00' },
+            { name: 'kl_219', color: '#ff1e00' },
+            { name: 'kl_211', color: '#ff1e00' },
             { name: 'kl_212', color: '#06FF06' },
-            { name: 'kl_212', color: '#FF1E06' },
-            { name: 'kl_236a', color: '#FF1E06' },
-            { name: 'kl_218a', color: '#FF1E06' },
-            { name: 'kl_218', color: '#FF1E06' },
+            { name: 'kl_212', color: '#ff1e00' },
+            { name: 'kl_236a', color: '#ff1e00' },
+            { name: 'kl_218a', color: '#ff1e00' },
+            { name: 'kl_218', color: '#ff1e00' },
             // main
             { name: '7TI_41', text: '39' },
             { name: '7PI_12', text: '20,06' },
@@ -6088,9 +6088,9 @@ let tempActions = [
             { name: 'text_ish_c4', y: 237.5 },
             { name: 'text_ish_c5', y: 237.5 },
             { name: 'text_ish_c6', y: 237.5 },
-            { name: 'rect_ish_c4', color: '#FF1E06', position: { y: 0 } },
-            { name: 'rect_ish_c5', color: '#FF1E06', position: { y: 0 } },
-            { name: 'rect_ish_c6', color: '#FF1E06', position: { y: 0 } },
+            { name: 'rect_ish_c4', color: '#ff1e00', position: { y: 0 } },
+            { name: 'rect_ish_c5', color: '#ff1e00', position: { y: 0 } },
+            { name: 'rect_ish_c6', color: '#ff1e00', position: { y: 0 } },
           ]
         }
       },
@@ -6191,7 +6191,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_211', color: '#FF1E06' },
+            { name: 'kl_211', color: '#ff1e00' },
             { name: '2QI_01', text: '15,40' },
             { name: '7PI_13', text: '20,19' },
             { name: '2TI_43', text: '48' },
@@ -6216,7 +6216,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_211', color: '#FF1E06' },
+            { name: 'kl_211', color: '#ff1e00' },
           ]
         }
       },
@@ -6295,26 +6295,26 @@ let tempActions = [
             { name: 'circle_otdeleniye_2', color: '#000' },
             //VN
             { name: 'rect_232_2', position: { x: -3 }, color: '#000' },
-            { name: 'kl_232', color: '#FF1E06' },
+            { name: 'kl_232', color: '#ff1e00' },
             { name: 'kl_227', color: '#06FF06' },
             { name: 'rect_216_2', position: { x: -3 }, color: '#000' },
-            { name: 'kl_216', color: '#FF1E06' },
-            { name: '2PS_03', color: '#FF1E06' },
-            { name: 'kl_221', color: '#FF1E06' },
-            { name: 'kl_213', color: '#FF1E06' },
+            { name: 'kl_216', color: '#ff1e00' },
+            { name: '2PS_03', color: '#ff1e00' },
+            { name: 'kl_221', color: '#ff1e00' },
+            { name: 'kl_213', color: '#ff1e00' },
             { name: 'PS_10', color: '#06FF06' },
-            { name: 'kl_224', color: '#FF1E06' },
-            { name: 'kl_234', color: '#FF1E06' },
-            { name: '2PS_05', color: '#FF1E06' },
+            { name: 'kl_224', color: '#ff1e00' },
+            { name: 'kl_234', color: '#ff1e00' },
+            { name: '2PS_05', color: '#ff1e00' },
             { name: 'kl_240', color: '#06FF06' },
-            { name: 'kl_217', color: '#FF1E06' },
-            { name: 'kl_219', color: '#FF1E06' },
-            { name: 'kl_211', color: '#FF1E06' },
+            { name: 'kl_217', color: '#ff1e00' },
+            { name: 'kl_219', color: '#ff1e00' },
+            { name: 'kl_211', color: '#ff1e00' },
             { name: 'kl_212', color: '#06FF06' },
-            { name: 'kl_212', color: '#FF1E06' },
-            { name: 'kl_236a', color: '#FF1E06' },
-            { name: 'kl_218a', color: '#FF1E06' },
-            { name: 'kl_218', color: '#FF1E06' },
+            { name: 'kl_212', color: '#ff1e00' },
+            { name: 'kl_236a', color: '#ff1e00' },
+            { name: 'kl_218a', color: '#ff1e00' },
+            { name: 'kl_218', color: '#ff1e00' },
             // main
             { name: '7TI_41', text: '39' },
             { name: '7PI_12', text: '20,06' },
@@ -23533,10 +23533,10 @@ let tempActions = [
             { name: 'B2_2', color: '#BFBFBF', stroke: '#6B6B6B' },
             { name: 'B2_1', color: '#9E9E9E', stroke: '#6B6B6B' },
             { name: 'klOF2_proc', text: '0' },
-            { name: '0F2_stripe_0', opacity: '0' },
+            { name: '0F2_stripe_0', opacity: '1' },
             { name: '0F2_stripe_1', opacity: '0' },
             { name: '0F2_stripe_2', opacity: '0' },
-            { name: '0F2_stripe_3', opacity: '1' },
+            { name: '0F2_stripe_3', opacity: '0' },
             { name: 'circle_0F2', opacity: '0' },
             { name: 'kl0312_proc', text: '100' },
             { name: 'kl0331_proc', text: '0' },
@@ -24394,7 +24394,7 @@ let startState2D = [
     { name: 'kl007_proc', text: '100' },
     { name: 'circle_1_kl025', stroke: '#06FF06' },
     ///// КУЧА старых 2д исчезла. НАЙТИ!!!!
-    // { name: 'vnk_1', color: '#FF1E06' },
+    // { name: 'vnk_1', color: '#ff1e00' },
     // { name: 'vn_132', color: '#06FF06' },
     // { name: 'vn_117', color: '#06FF06' },
     // { name: 'vn_132_l', color: '#06FF06' },
@@ -24491,6 +24491,7 @@ let startState2D = [
     { name: '0F2_stripe_1', opacity: 0 },
     { name: '0F2_stripe_2', opacity: 0 },
     { name: '0F2_stripe', opacity: 0 },
+    { name: '0F2_stripe_3', opacity: 0 },
     { name: '0F1_stripe', opacity: 0 },
     { name: '0F1_stripe_1', opacity: 0 },
     { name: 'circle_0F3', opacity: 0 },

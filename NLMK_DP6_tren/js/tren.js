@@ -50,6 +50,19 @@ function loadTrenActions() {
         Array.from(document.querySelectorAll('.block-interaction')).forEach(element => element.remove());
     });
   });
+
+  devHelper.svgHelpers.forEach(element => {
+    element.helpers.forEach(helper => {
+      if (!helper.startVals) {
+        helper.startVals = {
+          x: helper.x,
+          y: helper.y,
+          w: helper.w,
+          h: helper.h
+        }
+      }
+    })
+  })
 }
 
 function startTren(Restart = false) {
@@ -257,7 +270,7 @@ function trenTimeTick(timeStamp) {
       if (nextAction) {
         if (nextAction.human && nextAction.human === true) {
           if (devHelper.trenVals.waitingInput === false) {
-            if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+            if (nextAction.text && (devHelper.trenVals.type === 'learn' || (nextAction.audio && nextAction.audio.indexOf('vo') !== -1))) sendMessage(nextAction.sender, nextAction.text);
             if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
             if (nextAction.chapterText) sendMessage(nextAction.sender, nextAction.chapterText);
             devHelper.trenVals.waitingInput = true;
@@ -319,9 +332,9 @@ function trenTimeTick(timeStamp) {
           }
           newActionStartHelper(nextAction);
           if (nextAction.chapterText) sendMessage(nextAction.sender, nextAction.chapterText);
-          if (nextAction.text) sendMessage(nextAction.sender, nextAction.text);
+          if (nextAction.text && (devHelper.trenVals.type === 'learn' || (nextAction.audio && nextAction.audio.indexOf('vo') !== -1))) sendMessage(nextAction.sender, nextAction.text);
           if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
-          if (nextAction.audio) playAudio(nextAction.audio);
+          if (nextAction.audio && (devHelper.trenVals.type === 'learn' || nextAction.scenarioText || nextAction.chapterText)) playAudio(nextAction.audio);
         }
       }
       let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
@@ -527,7 +540,8 @@ function afterClickOn2DHelper(SvgElemHelper, CurrentAction) {
     }
     updateSvgTextures();
   }
-  if (CurrentAction.audio)
+  
+  if (CurrentAction.audio && (devHelper.trenVals.type === 'learn' || CurrentAction.scenarioText || CurrentAction.chapterText))
     playAudio(CurrentAction.audio);
   if (CurrentAction.action && CurrentAction.action.helper2D)
     createSvghelper(devHelper.model3DVals.currentPosition)
@@ -560,6 +574,9 @@ function trenFinish() {
   playAudio('right');
   //------------------------------------------------------------------------------------------------------------------------------------------
   devHelper.endVals.restarts++;
+  if (devHelper.endVals.humanTime.length === 0) {
+    devHelper.endVals.humanTime.push(Math.ceil(document.querySelector('.box-time').milisecs / 1000));
+  }
   if (devHelper.endVals.humanTime.length > 0 && devHelper.endVals.averageTime.length > 0) {
     const comparedArray = devHelper.endVals.humanTime.map((value, index) => Math.round(Math.max(value, devHelper.endVals.averageTime[index]) * 1.1));
     const maxElement = Math.max(...comparedArray);
@@ -579,6 +596,13 @@ function trenFinish() {
   endContainer.style.opacity = 1;
   endContainer.style.display = 'unset';
   const circleGraph = endContainer.querySelector('.circle-graph');
+  if (devHelper.trenVals.type !== 'learn') {
+    let passedActionCount = 0;
+    devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.forEach((action) => {
+      if (action.passed === true) passedActionCount++;
+    })
+    devHelper.endVals.passPerc = Math.round(passedActionCount / devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.length * 100);
+  }
   circleGraph.querySelector('span').innerHTML = `${devHelper.endVals.passPerc}%`;
   Array.from(endContainer.querySelectorAll('.left-text')).forEach((element) => {
     const text = element.innerHTML;
@@ -605,7 +629,7 @@ function trenFinish() {
         }
       },
       data: {
-        labels: ['Верно', 'Ошибки'],
+        labels: ['', ''],
         datasets: [{
           data: [parseInt(circleGraph.querySelector('span').innerHTML), 100 - parseInt(circleGraph.querySelector('span').innerHTML)],
           backgroundColor: ['#2c5289', '#EAEAEA'],
@@ -813,60 +837,51 @@ function takeStartingState(Restart = false) {
   devHelper.trenVals.ended = false;
   devHelper.trenVals.waitingInput = true;
   setLifeTime(devHelper.trenVals.timers.startLifeTime);
-  tempActions.forEach(scenarioActions => {
-    scenarioActions.forEach(action => {
-      action.passed = false;
-    })
+  devHelper.trenVals.scenarioArr.forEach(scenarioActions => {
+    if (scenarioActions.actions)
+      scenarioActions.actions.forEach(action => {
+        action.passed = false;
+      })
   })
-  if (devHelper.startPos.IF2D.length === 0) {
-    saveStart2DIF();
-    makeStart2DVisual(true);
-  }
-  else makeStart2DVisual();
-  if (devHelper.startPos.IF3D.length === 0) {
-    makeStart3DVisual();
-  } else makeStart3DVisual();
-
+  makeStart2DVisual();
+  makeStart3DVisual();
+  makeStart2DHelpers();
   animMoveCamera(devHelper.model3DVals.cameraPositions[0], 1);
-
+  
   function makeStart2DVisual(firstTime = false) {
     let reloadImg = [];
-    if (firstTime === false) {
-      devHelper.model3DVals.svgDisplays.meshs.forEach((mesh) => {
-        mesh.svgArr.length = 0;
-        mesh.svgArr.push(mesh.startSvg);
-        if (!reloadImg.includes(mesh.startSvg.name))
-          reloadImg.push(mesh.startSvg.name);
+    devHelper.model3DVals.svgDisplays.meshs.forEach((mesh) => {
+      mesh.svgArr.length = 0;
+      mesh.svgArr.push(mesh.startSvg);
+      if (!reloadImg.includes(mesh.startSvg.name))
+        reloadImg.push(mesh.startSvg.name);
+    })
+    reloadImg.forEach(name => {
+      devHelper.svgVals.forEach((element, index) => {
+        if (element.name === name) {
+          element.object.nextElementSibling.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(element.svg))));
+        }
       })
-      devHelper.startPos.IF2D.forEach(activeElement => {
-        devHelper.svgVals.forEach((element) => {
-          element.activeElements.forEach((oldActiveElement) => {
-            if (oldActiveElement.element.id === activeElement.id) {
-              let cloneNode = activeElement.cloneNode(true);
-              oldActiveElement.element = cloneNode;
-              element.svg.getElementById(activeElement.id).replaceWith(cloneNode);
+    })
+    devHelper.svgVals.forEach(Element => {
+      Element.svg.innerHTML = Element.startSvgState;
+      Element.activeElements.forEach(svgActiveElement => {
+        if (Element.svg.querySelectorAll(`[id="${Element.name}_${svgActiveElement.name}"]`).length > 0) {
+          let tempArr = Array.from(Element.svg.querySelectorAll(`[id="${Element.name}_${svgActiveElement.name}"]`));
+          tempArr.forEach(arrElem => {
+            if (compareElements(svgActiveElement.element, arrElem)) {
+              svgActiveElement.element = arrElem;
             }
           })
-        })
+        }
       })
-    }
+    })
     if (startState2D[devHelper.trenVals.scenario] && startState2D[devHelper.trenVals.scenario].length > 0) {
       startState2D[devHelper.trenVals.scenario].forEach(element => {
-        if (element.name) {
-          changeSvgElem(element);
-        }
+        if (element.name) changeSvgElem(element);
       });
-      updateSvgTextures();
     }
-    if (firstTime === false) {
-      reloadImg.forEach(name => {
-        devHelper.svgVals.forEach((element, index) => {
-          if (element.name === name) {
-            element.object.nextElementSibling.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(element.svg))));
-          }
-        })
-      })
-    }
+    updateSvgTextures();
   }
   function makeStart3DVisual() {
     devHelper.model3DVals.scene.meshes.forEach(mesh => {
@@ -931,6 +946,17 @@ function takeStartingState(Restart = false) {
         }
       });
     }
+  }
+
+  function makeStart2DHelpers() {
+    devHelper.svgHelpers.forEach(element => {
+      element.helpers.forEach(helper => {
+        helper.x = helper.startVals.x;
+        helper.y = helper.startVals.y;
+        helper.w = helper.startVals.w;
+        helper.h = helper.startVals.h;
+      })
+    })
   }
 }
 
@@ -1233,6 +1259,14 @@ function createCustomElement(tag, content, attributes, parrent = null) {
 
 function setNewFillButtonSVG(objectSVG, color) {
   Array.from(objectSVG.contentDocument.querySelectorAll('[fill]')).forEach(element => {
+    console.log(element, color);
+    if (element.getAttribute('d') === '   M 490.59 256.01   A 234.61 234.61 0.0 0 1 255.98 490.62   A 234.61 234.61 0.0 0 1 21.37 256.01   A 234.61 234.61 0.0 0 1 255.98 21.40   A 234.61 234.61 0.0 0 1 490.59 256.01   Z   M 277.37 246.53   Q 277.29 191.32 277.39 136.09   Q 277.40 125.00 275.87 120.57   C 269.34 101.70 242.68 102.37 235.93 120.94   Q 234.66 124.42 234.66 130.22   Q 234.64 193.23 234.65 256.25   C 234.65 263.31 237.79 267.95 243.07 273.23   Q 271.94 302.07 300.76 330.97   Q 306.97 337.21 310.92 339.15   C 328.84 347.98 348.05 328.69 339.14 310.80   Q 337.14 306.80 330.30 300.05   Q 303.82 273.92 277.73 247.42   Q 277.37 247.05 277.37 246.53   Z') {
+      if (devHelper.trenVals.type !== 'learn') {
+        if (color === '#ffffff') {
+          color = '#939393'
+        }
+      }
+    }
     element.setAttribute('fill', color)
   });
 }
@@ -2456,4 +2490,21 @@ function findRealName(TargetName) {
   }
   if (currentAction.action && currentAction.action.realName) returnObj.name = currentAction.action.realName;
   return returnObj;
+}
+
+function compareElements(element1, element2) {
+  const attributes1 = Array.from(element1.attributes);
+  for (const attribute of attributes1) {
+    const attributeName = attribute.name;
+    if (attributeName === 'x' || attributeName === 'y' || attributeName === 'd' || attributeName === 'transform'
+      || attributeName === 'cx' || attributeName === 'cy' || attributeName === 'rx' || attributeName === 'ry'
+      || attributeName === 'r') {
+      const attributeValue1 = element1.getAttribute(attributeName);
+      const attributeValue2 = element2.getAttribute(attributeName);
+      if (attributeValue1 !== attributeValue2) {
+        return false;
+      }
+    }
+  }
+  return true;
 }

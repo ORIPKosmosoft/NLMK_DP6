@@ -10,6 +10,7 @@ window.addEventListener('load', function () {
       svg: ObjSvg.contentDocument.querySelector('svg'),
       activeElements: [],
       realName: '',
+      startSvgState: undefined,
     })
   })
 
@@ -35,11 +36,11 @@ window.addEventListener('load', function () {
                                         ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
                                           ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'bzu1') {
+    if (ObjectSvg.name === 'vnk_main1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
-      ObjectSvg.object.style.zIndex = 999;
+      // ObjectSvg.object.style.zIndex = 999;
       ObjectSvg.object.style.width = '95%';
     }
 
@@ -1030,6 +1031,12 @@ window.addEventListener('load', function () {
 
       })
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML === '3FL_01') { Element.innerHTML = ''; }
+        if (Element.innerHTML === '3FL_02') { Element.innerHTML = ''; }
+        if (Element.innerHTML === '2FL_01') { Element.innerHTML = ''; }
+        if (Element.innerHTML === '2FL_02') { Element.innerHTML = ''; }
+        if (Element.innerHTML === '1FL_01') { Element.innerHTML = ''; }
+        if (Element.innerHTML === '1FL_02') { Element.innerHTML = ''; }
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
         if (Element.innerHTML === '51') { addSvgElem(Index, Element, 'kl029_proc', 'start'); }
         if (Element.innerHTML === '0' && Element.getAttribute('x') === '746.9' && Element.getAttribute('y') === '592.85') { addSvgElem(Index, Element, 'kl028_proc', 'center'); }
@@ -1709,13 +1716,13 @@ window.addEventListener('load', function () {
     }
     else if (ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
-        if (Element.innerHTML === 'клапан на возд.гор. 24') { Element.innerHTML ='клапан на возд.гор. 34'; }
-        if (Element.innerHTML === 'клапан из смеш. газе 22 ') { Element.innerHTML ='клапан на смеш. газе 32 '; }
-        if (Element.innerHTML === 'пересадки') { Element.innerHTML ='перекидок'; }
-        if (Element.innerHTML === 'клапан из смеш. газе 16') { Element.innerHTML ='клапан на смеш. газе 16'; }
-        if (Element.innerHTML === 'клапан газа 13') { Element.innerHTML ='клапан на газе 13'; }
-        if (Element.innerHTML === 'Закрыть отсечной' && Element.getAttribute('transform') === 'matrix(.9988 0 0 1 -319.261 283.161)') { Element.innerHTML ='Закрыть отделительный'; Element.setAttribute('x', '403'); }
-        
+        if (Element.innerHTML === 'клапан на возд.гор. 24') { Element.innerHTML = 'клапан на возд.гор. 34'; }
+        if (Element.innerHTML === 'клапан из смеш. газе 22 ') { Element.innerHTML = 'клапан на смеш. газе 32 '; }
+        if (Element.innerHTML === 'пересадки') { Element.innerHTML = 'перекидок'; }
+        if (Element.innerHTML === 'клапан из смеш. газе 16') { Element.innerHTML = 'клапан на смеш. газе 16'; }
+        if (Element.innerHTML === 'клапан газа 13') { Element.innerHTML = 'клапан на газе 13'; }
+        if (Element.innerHTML === 'Закрыть отсечной' && Element.getAttribute('transform') === 'matrix(.9988 0 0 1 -319.261 283.161)') { Element.innerHTML = 'Закрыть отделительный'; Element.setAttribute('x', '403'); }
+
         if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
         if (Element.innerHTML === '180' && TextIndex === 48) { addSvgElem(Index, Element, 'Ustanovit_klapany_15_i_23_na_ugol_zazhig'); }
         if (Element.innerHTML === '65' && TextIndex === 49) { addSvgElem(Index, Element, 'Zakryt_otsechnoy_klapan_iz_smesh_gaze_22'); }
@@ -1961,7 +1968,7 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '2' && TextIndex === 448) { addSvgElem(Index, Element, 'Kol-vo porchiy na konveere'); }
         if (Element.innerHTML === '3,89' && TextIndex === 114) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_P_B2'); }
         if (Element.innerHTML === '34' && TextIndex === 115) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_T_B2'); }
-        if (Element.innerHTML === '0' && TextIndex === 116) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_F_B2', 'end');}
+        if (Element.innerHTML === '0' && TextIndex === 116) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_F_B2', 'end'); }
         if (Element.innerHTML === '5106' && TextIndex === 126) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_F_B1'); }
         if (Element.innerHTML === '34' && TextIndex === 125) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_T_B1'); }
         if (Element.innerHTML === '3,88' && TextIndex === 124) { addSvgElem(Index, Element, 'Vtorichnye vyskazyvaniia_P_B1'); }
@@ -2102,7 +2109,7 @@ window.addEventListener('load', function () {
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.getAttribute('d') === 'm580.77 489.13-17.86.71 31.34 19.03 2.13-36.55-9.63 13.55-7.83-29.26-15.95 8.55z') { addSvgElem(Index, Element, 'arrow_left'); }
         if (Element.getAttribute('d') === 'm674.81 491.6 18.84.75-33.05 20.06-2.25-38.54 10.16 14.29 8.25-30.85 16.82 9.01z') { addSvgElem(Index, Element, 'arrow_right'); }
-        if (Element.getAttribute('d') === 'm592.97 494.11-7.25 5.93-15.86-23.26 7.24-5.93z') { addSvgElem(Index, Element, 'right_rect_yellow_arrow'); }
+        if (Element.getAttribute('d') === 'm592.97 494.11-7.25 5.93-15.86-23.26 7.24-5.93z') { addSvgElem(Index, Element, 'left_rect_yellow_arrow'); }
         if (Element.getAttribute('d') === 'm585.21 465.26 6.76 6.48-21.22 18.52-6.76-6.49z') { addSvgElem(Index, Element, 'left_rect_down_arrow'); }
         if (Element.getAttribute('d') === 'm660.2 494.63 7.24 5.93 15.87-23.26-7.24-5.93z') { addSvgElem(Index, Element, 'right_rect_yellow_arrow'); }
         if (Element.getAttribute('d') === 'm669.98 466-6.41 6.15 20.12 17.56 6.41-6.15z') { addSvgElem(Index, Element, 'right_rect_down_arrow'); }
@@ -2198,7 +2205,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M37.55 206.11c-3.12-2.18-7.44-1.39-9.65 1.77-2.22 3.16-1.48 7.49 1.64 9.68 3.12 2.18 7.45 1.39 9.66-1.77s1.47-7.49-1.65-9.68z') { addSvgElem(Index, Element, 'B1_Pod.Izbutkom'); }
         if (Element.getAttribute('d') === 'M70.96 206.11c-3.12-2.18-7.44-1.39-9.65 1.77-2.22 3.16-1.48 7.49 1.64 9.68 3.12 2.18 7.45 1.39 9.66-1.77s1.47-7.49-1.65-9.68z') { addSvgElem(Index, Element, 'B2_Pod.Izbutkom'); }
         if (Element.getAttribute('d') === 'M616.49 515.11h-68.36v1.86h-2.99l-7.91-5.83c-.29-.22-1.34-.87-1.23-1.21.11-.34 1.35-.26 1.71-.26h78.78v5.44z') { addSvgElem(Index, Element, 'Zelinay nijniy Poloska'); }
-        
+
         if (Element.getAttribute('d') === 'M1330.92 719.45h75.05v18.84h-75.05z') { addSvgElem(Index, Element, 'Mexan_1'); }
         if (Element.getAttribute('d') === 'M1611.56 742.28h24.91v16.75h-24.91z') { addSvgElem(Index, Element, 'Str2_11'); }
         if (Element.getAttribute('d') === 'M1271.12 747.75h10.55v38.45h-10.55z') { addSvgElem(Index, Element, 'radar2_1'); }
@@ -2279,7 +2286,7 @@ window.addEventListener('load', function () {
     else if (ObjectSvg.name === 'win_otdel2_na_vnk') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
         if (Element.innerHTML === 'Закрыт' && Element.getAttribute('transform') == 'matrix(.99692 0 0 1 62.29 90.383)') { addSvgElem(Index, Element, 'text_ish_c4'); }
-        if (Element.innerHTML === 'Открыт' && Element.getAttribute('transform') == 'matrix(.99692 0 0 1 130.01 90.383)') { addSvgElem(Index, Element, 'text_ish_c5'); Element.innerHTML = 'Закрыт';}
+        if (Element.innerHTML === 'Открыт' && Element.getAttribute('transform') == 'matrix(.99692 0 0 1 130.01 90.383)') { addSvgElem(Index, Element, 'text_ish_c5'); Element.innerHTML = 'Закрыт'; }
         if (Element.innerHTML === 'Закрыт' && Element.getAttribute('transform') == 'matrix(.99692 0 0 1 198.933 90.383)') { addSvgElem(Index, Element, 'text_ish_c6'); }
         if (Element.innerHTML === 'ВН1 Перекидка из Отделения2 в Отделение') { addSvgElem(Index, Element, 'Title_window_otdel2_otdel'); }
         if (Element.innerHTML === '110' && Element.getAttribute('transform') == 'matrix(.99692 0 0 1 71.913 -101.793)') { addSvgElem(Index, Element, 'text_otdel2_110'); }
@@ -2291,7 +2298,7 @@ window.addEventListener('load', function () {
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element) => {
         if (Element.getAttribute('d') === 'M327.2 291.87h67.75v60.96H327.2z') { addSvgElem(Index, Element, 'rect_ish_c4'); }
-        if (Element.getAttribute('d') === 'M395.95 291.87h68.79v60.96h-68.79z') { addSvgElem(Index, Element, 'rect_ish_c5');  }
+        if (Element.getAttribute('d') === 'M395.95 291.87h68.79v60.96h-68.79z') { addSvgElem(Index, Element, 'rect_ish_c5'); }
         if (Element.getAttribute('d') === 'M466.76 291.87h62.94v60.96h-62.94z') { addSvgElem(Index, Element, 'rect_ish_c6'); }
       })
     }
@@ -2339,7 +2346,7 @@ window.addEventListener('load', function () {
     }
   })
 
-  devHelper.svgVals.forEach((Element) => {
+  devHelper.svgVals.forEach(Element => {
     pushSvgDisplaysArr(Element);
     let tempUnicArr = [];
     Element.activeElements.forEach((Element2) => {
@@ -2357,7 +2364,12 @@ window.addEventListener('load', function () {
     })
   })
 
+  devHelper.svgVals.forEach(Element => {
+    Element.startSvgState = Element.svg.innerHTML;
+  })
+
   changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
+
 });
 
 
@@ -2366,6 +2378,7 @@ function addSvgElem(SvgIndex, Element, Name, Move = 'middle') {//start middle en
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,
     name: Name,
+    // name: Name.replace(/\s/g, "_").replace(/\./g, "_").replace(/\,/g, "_"),
   })
 
   if (Move !== false) {
@@ -2404,7 +2417,6 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
           invisElem.classList.add('invisible-element-svg');
           if (devHelper.dev.enable === true) {
             invisElem.classList.add('invisible-element-svg-helper');
-            // invisElem.innerHTML = Vals.id === undefined ? 'test' : Vals.id;
           }
           invisElem.style.left = Vals.x + '%';
           invisElem.style.top = Vals.y + '%';
