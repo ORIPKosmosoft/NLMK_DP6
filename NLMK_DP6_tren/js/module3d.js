@@ -74,7 +74,6 @@ window.addEventListener('load', function () {
     };
     /* Блок кнопопк для камеры
     ----------------------------------------------------------------------------------------------------------
-     */
     if (devHelper.dev.enable === true) {
       document.getElementById('movePositionX1').addEventListener('click', () => {
       })
@@ -135,6 +134,7 @@ window.addEventListener('load', function () {
     } else {
       document.querySelector('.help-btn-block').remove();
     }
+     */
     //----------------------------------------------------------------------------------------------------------
 
     let options = new BABYLON.SceneOptimizerOptions(60, 250);

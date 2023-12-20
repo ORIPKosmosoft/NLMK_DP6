@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +10,11 @@
   <script src="js/tren.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/svgWork.js" defer></script>
-
   <script src="js/babylon.js"></script>
   <script src="js/babylon.gui.min.js"></script>
   <script src="js/babylon.loaders.js"></script>
   <script src="js/module3d.js"></script>
 </head>
-
 <body>
   <div class="fon">
     <img class="photo" src="media/images/UI/photo_4.jpg" style="opacity: 1; width: 116%; bottom: 0px;" />
@@ -31,7 +28,6 @@
     <img class="logoK" src="media/images/UI/logo_kosmosft.png">
     <img class="logoN" src="media/images/UI/logo_NLMK.png">
   </div>
-
   <div class="start-container">
     <div class="header">
       <span class="bebas">ТРЕНАЖЕР ОБУЧЕНИЯ ГАЗОВЩИКА ДОМЕННОЙ ПЕЧИ </span>
@@ -61,7 +57,6 @@
           <span>Тесты</span>
         </div>
       </div>
-
       <div class="info-container">
         <div class="text-container">
           <span class="info-header">Сценарии</span>
@@ -101,9 +96,7 @@
               </div>
             </div>
           </div>
-
         </div>
-
         <div class="text-container">
           <span class="info-header">Документы</span>
           <div class="scroll-container">
@@ -235,7 +228,6 @@
             </div>
           </div>
         </div>
-
         <div class="text-container">
           <span class="info-header">Оборудование</span>
           <div class="scroll-container">
@@ -289,9 +281,7 @@
               </div>
             </div>
           </div>
-
         </div>
-
         <div class="text-container">
           <span class="info-header">Персонал</span>
           <div class="scroll-container">
@@ -331,24 +321,17 @@
             </div>
           </div>
         </div>
-
         <div class="text-container">
-
           <div class="tests-container-elem">
             <span class="info-header">Самопроверка</span>
             <div class="scroll-container">
-
               <div class="selfcheck-container-main">
-
-
               </div>
-
             </div>
             <div class="tests-container-bottom">
               <div class="container-bottom-left">
                 <div class="selfcheck-confirm-button disabled-button"><span>Подтвердить</span></div>
               </div>
-
               <div class="container-bottom-right">
                 <div class="helper-answer">
                   <object data="media/images/UI/icons/question.svg" fill="" type="image/svg+xml"></object>
@@ -360,12 +343,9 @@
                   <span>Заменить</span>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   </div>
@@ -380,7 +360,6 @@
       <span>Контроль</span>
     </div>
   </div>
-
   <div class="tren-container">
     <div class="tren-ui">
       <div class="box-tren-ui">
@@ -456,7 +435,103 @@
         <object class="notification-icon" data="media/images/UI/icons/exclamation-mark.svg"
           type="image/svg+xml"></object>
       </div>
-
+      <div class="windows-ui">
+        <!-- РАЗВЕРНУТЬ -->
+        <div class="box-collapse" sx="4.3vw" sy="4vh" style=" top: 4vh;  left: 4.3vw; ">
+          РАЗВЕРНУТЬ
+        </div>
+        <!-- НАЗАД -->
+        <div class="box-back" sx="4.3vw" sy="4vh" sx2="9.3vw" style=" top: 4vh;  left: 4.3vw; ">
+          Вернуться на "Главный вид"
+        </div>
+        <!-- SCENARIO -->
+        <div class="box-scenario" sx="4.3vw" sy="0" sx2="9.3vw" style="left: 4.3vw; top: 0;">
+          <div class="box-scenario-top">Сценарий</div>
+          <div class="box-scenario-scroll">
+            <div class="box-scenario-list">
+            </div>
+          </div>
+        </div>
+        <!-- TIME -->
+        <div class="box-time" sx="4.3vw" sy="24vh" sx2="9.3vw" style="left: 4.3vw; top: 24vh;">
+          <div class="backArea"></div>
+          <div class="time-header">
+            <div class="time-header-title">Часы</div>
+            <div class="horizontal-line-box"></div>
+            <p class="time-header-button">×</p>
+          </div>
+          <div class="block-button"></div>
+          <div class="time">
+            <div class="time-hour">10</div>
+            <div class="time-colon">:</div>
+            <div class="time-minute">20</div>
+            <div class="time-colon">:</div>
+            <div class="time-second">02</div>
+            <button class="time-oclock" id="time-oclock"></button>
+          </div>
+        </div>
+        <!-- CHAT -->
+        <div class="box-chat-window box-chat-window-mini" maxHeight="48vh" maxWidth="20vw" sx="4.3vw" sy="14.5vh"
+          sx2="9.3vw" style=" top: 14.5vh;  left: 4.3vw; ">
+          <div class="backArea"></div>
+          <div class="box-chat-header">
+            <div class="chat-header-title">Чат</div>
+            <div class="horizontal-line-box"></div>
+            <p class="chat-header-button">×</p>
+          </div>
+          <div class="block-button"></div>
+          <div class="chat-window">
+            <div class="chat-scroll">
+              <div class="chat chat-mini">
+                <div class="box-spring-button-chat">"ПРУЖИНА"</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- HELP -->
+        <div class="box-help" sx="4.3vw" sy="55vh" sx2="9.3vw" style="left: 4.3vw; top: 55vh;">
+        </div>
+        <!-- Справка -->
+        <div class="box-info" sx="4.3vw" sx2="-10vw" sy="4vh" style=" top: 4vh;  left: 4.3vw; ">
+          Справка
+        </div>
+        <!-- restart window -->
+        <div class="box-restart" sx="4.3vw" sy="55vh" sx2="9.3vw" style="left: 4.3vw; top: 55vh;">
+          <div class="backArea" style="position: absolute;    top: -5px;    left: -3px;"></div>
+          <div class="time-header">
+            <div class="time-header-title" style="visibility: hidden;"></div>
+            <p class="time-header-button">×</p>
+          </div>
+          <div class="block-button"></div>
+          <div class="help-text-block">
+            <div class="help-text-attention">Внимание!</div>
+            <div class="help-text">Вы точно хотите <b>перезапустить</b> сценарий тренажёра?</div>
+            <div class="help-buttons">
+              <button class="help-buttons-no">Отмена</button>
+              <button class="help-buttons-yes">Да</button>
+            </div>
+          </div>
+        </div>
+        <!-- exit window -->
+        <div class="box-exit" sx="4.3vw" sy="55vh" sx2="9.3vw" style="left: 4.3vw; top: 55vh;">
+          <div class="backArea" style="position: absolute;    top: -5px;    left: -3px;"></div>
+          <div class="time-header">
+            <div class="time-header-title" style="visibility: hidden;"></div>
+            <p class="time-header-button">×</p>
+          </div>
+          <div class="block-button"></div>
+          <div class="help-text-block">
+            <div class="help-text-attention">Внимание!</div>
+            <div class="help-text">Вы точно хотите <b>выйти</b> из тренажёра? Все ваши действия <b>не</b> будут
+              сохранены.
+            </div>
+            <div class="help-buttons">
+              <button class="help-buttons-no">Отмена</button>
+              <button class="help-buttons-yes">Да</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="game-view">
       <canvas id="renderCanvas"></canvas>
@@ -506,298 +581,6 @@
     <img src="">
     <object data="media/images/schemes/okno_klap_vid3.svg" type="image/svg+xml"></object>
     <img src="">
-  </div>
-
-
-
-
-
-  <!-- РАЗВЕРНУТЬ -->
-  <div class="box-collapse" sx="4.3vw" sy="4vh" style=" top: 4vh;  left: 4.3vw; ">
-    РАЗВЕРНУТЬ
-  </div>
-  <!-- НАЗАД -->
-  <div class="box-back" sx="4.3vw" sy="4vh" style=" top: 4vh;  left: 4.3vw; ">
-    Вернуться на "Главный вид"
-  </div>
-  <!-- SCENARIO -->
-  <div class="box-scenario" sx="4.3vw" sy="0" sx2="9.3vw" style="left: 4.3vw; top: 0;">
-    <div class="box-scenario-top">Сценарий</div>
-    <div class="box-scenario-scroll">
-      <div class="box-scenario-list">
-        <div class="box-scenario-item box-scenario-item-past">Открfgыть че крfgыть че крfgыть че крfgыть че крfgыть че
-          крfgыть че то там</div>
-        <div class="box-scenario-item box-scenario-item-past">Открыть 2e3341м</div>
-        <div class="box-scenario-item box-scenario-item-past">Открыть ч44234е то там</div>
-        <div class="box-scenario-item box-scenario-item-past">Открытьttet то там</div>
-        <div class="box-scenario-item box-scenario-item-past">Открытьttet то там</div>
-        <div class="box-scenario-item box-scenario-item-past">Открытьttet то там</div>
-        <div class="box-scenario-item box-scenario-item-active">Настройка значения теоритической температуры горения
-        </div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Открытьttet то там</div>
-        <div class="box-scenario-item">Отdfgкрытьffgdfg че то там</div>
-      </div>
-    </div>
-  </div>
-  <!-- TIME -->
-  <div class="box-time" sx="4.3vw" sy="24vh" sx2="9.3vw" style="left: 4.3vw; top: 24vh;">
-    <div class="backArea"></div>
-    <div class="time-header">
-      <div class="time-header-title">Часы</div>
-      <div class="horizontal-line-box"></div>
-      <p class="time-header-button">×</p>
-    </div>
-    <div class="block-button"></div>
-    <div class="time">
-      <div class="time-hour">10</div>
-      <div class="time-colon">:</div>
-      <div class="time-minute">20</div>
-      <div class="time-colon">:</div>
-      <div class="time-second">02</div>
-      <button class="time-oclock" id="time-oclock"></button>
-    </div>
-  </div>
-  <!-- TIMER  -->
-  <div class="dialogMessageWatch" sx="22vw" sy="24vh" style="left: 22vw; top: 24vh; display: none;">
-    <div class="backArea backArea-white-100"></div>
-    <div class="dialogHeader">
-      <div class="time-header-title">Установить таймер</div>
-      <p class="time-header-button" id="timer-close">×</p>
-
-    </div>
-    <div class="dialogTimers-line">
-      <!-- ЧАСЫ -->
-      <div class="dialogTimers-hours-box">
-        <p class="dialogTimers-title">часы</p>
-        <div class="dialogTimers-hours" dropDown="1">
-          <p>00</p>
-          <img src="media/images/watch/dropDown.png" width="20px">
-        </div>
-        <div class="section-dropDown" dropDown="1">
-          <div class="section-scroll">
-            <div class="section-menu">
-              <div class="option" value="00">00</div>
-              <div class="option" value="01">01</div>
-              <div class="option" value="02">02</div>
-              <div class="option" value="03">03</div>
-              <div class="option" value="04">04</div>
-              <div class="option" value="05">05</div>
-              <div class="option" value="06">06</div>
-              <div class="option" value="07">07</div>
-              <div class="option" value="08">08</div>
-              <div class="option" value="09">09</div>
-              <div class="option" value="10">10</div>
-              <div class="option" value="11">11</div>
-              <div class="option" value="12">12</div>
-              <div class="option" value="13">13</div>
-              <div class="option" value="14">14</div>
-              <div class="option" value="15">15</div>
-              <div class="option" value="16">16</div>
-              <div class="option" value="17">17</div>
-              <div class="option" value="18">18</div>
-              <div class="option" value="19">19</div>
-              <div class="option" value="20">20</div>
-              <div class="option" value="21">21</div>
-              <div class="option" value="22">22</div>
-              <div class="option" value="23">23</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- МИНУТЫ -->
-      <div class="dialogTimers-hours-box">
-        <p class="dialogTimers-title">минуты</p>
-        <div class="dialogTimers-hours" dropDown="2">
-          <p>00</p>
-          <img src="media/images/watch/dropDown.png" width="20px">
-        </div>
-        <div class="section-dropDown" dropDown="2">
-          <div class="section-scroll">
-            <div class="section-menu">
-              <div class="option" value="00">00</div>
-              <div class="option" value="01">01</div>
-              <div class="option" value="02">02</div>
-              <div class="option" value="03">03</div>
-              <div class="option" value="04">04</div>
-              <div class="option" value="05">05</div>
-              <div class="option" value="06">06</div>
-              <div class="option" value="07">07</div>
-              <div class="option" value="08">08</div>
-              <div class="option" value="09">09</div>
-              <div class="option" value="10">10</div>
-              <div class="option" value="11">11</div>
-              <div class="option" value="12">12</div>
-              <div class="option" value="13">13</div>
-              <div class="option" value="14">14</div>
-              <div class="option" value="15">15</div>
-              <div class="option" value="16">16</div>
-              <div class="option" value="17">17</div>
-              <div class="option" value="18">18</div>
-              <div class="option" value="19">19</div>
-              <div class="option" value="20">20</div>
-              <div class="option" value="21">21</div>
-              <div class="option" value="22">22</div>
-              <div class="option" value="23">23</div>
-              <div class="option" value="24">24</div>
-              <div class="option" value="25">25</div>
-              <div class="option" value="26">26</div>
-              <div class="option" value="27">27</div>
-              <div class="option" value="28">28</div>
-              <div class="option" value="29">29</div>
-              <div class="option" value="30">30</div>
-              <div class="option" value="31">31</div>
-              <div class="option" value="32">32</div>
-              <div class="option" value="33">33</div>
-              <div class="option" value="34">34</div>
-              <div class="option" value="35">35</div>
-              <div class="option" value="36">36</div>
-              <div class="option" value="37">37</div>
-              <div class="option" value="38">38</div>
-              <div class="option" value="39">39</div>
-              <div class="option" value="40">40</div>
-              <div class="option" value="41">41</div>
-              <div class="option" value="42">42</div>
-              <div class="option" value="43">43</div>
-              <div class="option" value="44">44</div>
-              <div class="option" value="45">45</div>
-              <div class="option" value="46">46</div>
-              <div class="option" value="47">47</div>
-              <div class="option" value="48">48</div>
-              <div class="option" value="49">49</div>
-              <div class="option" value="50">50</div>
-              <div class="option" value="51">51</div>
-              <div class="option" value="52">52</div>
-              <div class="option" value="53">53</div>
-              <div class="option" value="54">54</div>
-              <div class="option" value="55">55</div>
-              <div class="option" value="56">56</div>
-              <div class="option" value="57">57</div>
-              <div class="option" value="58">58</div>
-              <div class="option" value="59">59</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="dialogTimers-play"></button>
-    </div>
-    <div class="dialogTimers-line">
-      <div class="time">
-        <div class="time-hour noneContent textColorGray" dropDown="1">00</div>
-        <div class="time-colon">:</div>
-        <div class="time-minute noneContent textColorGray" dropDown="2">00</div>
-      </div>
-    </div>
-  </div>
-  <!-- CHAT -->
-  <div class="box-chat-window box-chat-window-mini" maxHeight="48vh" maxWidth="20vw" sx="4.3vw" sy="14.5vh" sx2="9.3vw"
-    style=" top: 14.5vh;  left: 4.3vw; ">
-    <div class="backArea"></div>
-    <div class="box-chat-header">
-      <div class="chat-header-title">Чат</div>
-      <div class="horizontal-line-box"></div>
-      <p class="chat-header-button">×</p>
-    </div>
-    <div class="block-button"></div>
-    <div class="chat-window">
-      <div class="chat-scroll">
-        <div class="chat chat-mini">
-          <div class="box-spring-button-chat">"ПРУЖИНА"</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- HELP -->
-  <div class="box-help" sx="4.3vw" sy="55vh" sx2="9.3vw" style="left: 4.3vw; top: 55vh;">
-  </div>
-  <!-- Справка -->
-  <div class="box-info" sx="4.3vw" sx2="-10vw" sy="4vh" style=" top: 4vh;  left: 4.3vw; ">
-    Справка
-  </div>
-  <!-- restart window -->
-  <div class="box-restart" sx="4.3vw" sy="55vh" sx2="9.3vw" style="left: 4.3vw; top: 55vh;">
-    <div class="backArea" style="position: absolute;    top: -5px;    left: -3px;"></div>
-    <div class="time-header">
-      <div class="time-header-title" style="visibility: hidden;"></div>
-      <p class="time-header-button">×</p>
-    </div>
-    <div class="block-button"></div>
-    <div class="help-text-block">
-      <div class="help-text-attention">Внимание!</div>
-      <div class="help-text">Вы точно хотите <b>перезапустить</b> сценарий тренажёра?</div>
-      <div class="help-buttons">
-        <button class="help-buttons-no">Отмена</button>
-        <button class="help-buttons-yes">Да</button>
-      </div>
-    </div>
-  </div>
-  <!-- exit window -->
-  <div class="box-exit" sx="4.3vw" sy="55vh" sx2="9.3vw" style="left: 4.3vw; top: 55vh;">
-    <div class="backArea" style="position: absolute;    top: -5px;    left: -3px;"></div>
-    <div class="time-header">
-      <div class="time-header-title" style="visibility: hidden;"></div>
-      <p class="time-header-button">×</p>
-    </div>
-    <div class="block-button"></div>
-    <div class="help-text-block">
-      <div class="help-text-attention">Внимание!</div>
-      <div class="help-text">Вы точно хотите <b>выйти</b> из тренажёра? Все ваши действия <b>не</b> будут сохранены.
-      </div>
-      <div class="help-buttons">
-        <button class="help-buttons-no">Отмена</button>
-        <button class="help-buttons-yes">Да</button>
-      </div>
-    </div>
-  </div>
-  <div class="pointer-helper-container">
-    <div class="arrow"></div>
-    <div class="body">
-      <img src="media/images/UI/icons/flag.svg">
-    </div>
-    <div class="body-border"></div>
   </div>
   <div class="help-btn-block" style="display: none;">
     <div>
@@ -870,13 +653,7 @@
     </div>
     <div class="block-interaction-end"></div>
   </div>
-
-
-
-
 </body>
-
 <object data="media/images/UI/icons/menu.svg" id="svg_menu_1" width="30" height="30" type="image/svg+xml"></object>
 <object data="media/images/UI/icons/menu_2.svg" id="svg_menu_2" width="30" height="30" type="image/svg+xml"></object>
-
 </html>

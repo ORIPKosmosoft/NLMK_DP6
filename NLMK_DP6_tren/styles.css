@@ -1048,33 +1048,9 @@ ul {
   outline: none;
 }
 
-.help-btn-block {
-  position: absolute;
-  top: 0.52vw;
-  left: 100px;
-  width: 150px;
-  height: 500px;
-}
-
 .value-input {
   width: 40px;
 }
-
-.help-btn-block .info-tren {
-  width: 250px;
-  height: 150px;
-  /* margin-left: 70px; */
-  margin-top: 600px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border: 1px solid black;
-  border-radius: 0.52vw;
-  color: #f4f4f4;
-  line-height: 0.52vw;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-
 /* babylon 
 -----------------------------------------------------
 */
@@ -1813,6 +1789,7 @@ ul {
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
   /* border: solid 0.15vw rgba(255, 255, 255, 0.8); */
 }
 
@@ -2203,6 +2180,7 @@ ul {
   display: flex;
   flex-direction: column;
   /* border: solid 0.15vw rgba(255, 255, 255, 0.8); */
+  pointer-events: none;
 }
 
 .box-chat-window-mini {
@@ -2458,6 +2436,7 @@ ul {
   padding-bottom: 7px;
   text-align: center;
   line-height: 110%;
+  pointer-events: none;
 }
 
 .box-restart {
@@ -2476,6 +2455,7 @@ ul {
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
   /* border: solid 2px rgba(255, 255, 255, 0.8); */
 }
 
@@ -2495,6 +2475,7 @@ ul {
   padding-top: 7px;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
   /* border: solid 2px rgba(255, 255, 255, 0.8); */
 }
 
@@ -2561,6 +2542,7 @@ ul {
   transition: all 0.3s ease;
   z-index: -1;
   border: solid 0.15vw rgba(255, 255, 255, 0.2);
+  pointer-events: none;
 }
 
 .box-scenario-top {
@@ -2776,6 +2758,7 @@ ul {
   transition: all 0.3s ease;
   opacity: 0;
   padding-bottom: 7px;
+  pointer-events: none;
 }
 
 .box-back {
@@ -2791,6 +2774,7 @@ ul {
   transition: all 0.3s ease;
   opacity: 0;
   padding-bottom: 7px;
+  pointer-events: none;
 }
 
 .box-info {
@@ -2806,6 +2790,7 @@ ul {
   transition: all 0.3s ease;
   opacity: 0;
   padding-bottom: 7px;
+  pointer-events: none;
 }
 
 .notification-icon {

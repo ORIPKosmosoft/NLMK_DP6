@@ -1,6 +1,5 @@
 /*                 TODO
 ----------------------------------------------------
-Жду исправлений от Сергей по поводу верного описания сути вопроса
 ----------------------------------------------------
 */
 
@@ -64,14 +63,6 @@ function domLoaded() {
       devHelper.trenVals.scenario = Index;
       startTren();
       stopChangeFon();
-    } else {
-      // let popupDiv = document.createElement('div');
-      // popupDiv.classList.add('popup-alert');
-      // popupDiv.innerHTML = `Вы не можете воспроизвести этот сценарий сейчас.`;
-      // document.body.append(popupDiv);
-      // document.body.addEventListener('mousedown', () => {
-      //   if (document.querySelector('.popup-alert')) document.querySelector('.popup-alert').remove()
-      // });
     }
   }
 
