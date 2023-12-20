@@ -688,8 +688,8 @@ const devHelper = {
         // ilay
         { x: 75.85, y: 51.5, w: 3.3, h: 3.0, forAction: true, id: 'F_Obsh', realName: 'F общ.' },
         { x: 75.85, y: 56.5, w: 3.3, h: 3.0, forAction: true, id: 'F_Tek', realName: 'F тек.' },
-        { x: 29.20, y: 77.7, w: 2.6, h: 2.6, forAction: true, id: 'R_Snort', realName: 'R СНОРТ' },
-        { x: 56.20, y: 68.5, w: 3.3, h: 3.3, forAction: true, id: 'R_Furm', realName: 'R Фурм' },
+        { x: 29.20, y: 77.7, w: 2.6, h: 2.6, forAction: true, id: 'R_Snort', realName: 'H «СНОРТ»' },
+        { x: 56.20, y: 68.5, w: 3.3, h: 3.3, forAction: true, id: 'R_Furm', realName: 'Pкгс/см² на фурмах' },
         { x: 84.70, y: 91.6, w: 3.7, h: 3.1, forAction: true, id: 'F_L2', realName: 'Л.2' },
         { x: 84.70, y: 94.7, w: 3.7, h: 3.1, forAction: true, id: 'F_L3', realName: 'Л.3' },
       ]
@@ -21844,19 +21844,19 @@ let tempActions = [
       },
       startTime: timeDiff + 628.02,
     },
-    ////--------------------------------41----------------------------------------//86//-new 318
-    {
-      text: 'Закрыть клапан 318.',
-      sender: 'Система',
-      audio: 'tts-40',
-      startTime: timeDiff + 628.2,
-    },
     {
       action: {
         target2D: 'close_w1',
       },
-      startTime: timeDiff + 631.3,
+      startTime: timeDiff + 629,
       human: true,
+    },
+    ////--------------------------------91----------------------------------------
+    {
+      text: 'Закрыть клапан 318.',
+      sender: 'Система',
+      audio: 'tts-40',
+      startTime: timeDiff + 630,
     },
     {
       action: {
@@ -21906,7 +21906,7 @@ let tempActions = [
           { x: 83.80, y: 89.35, w: 8.5, h: 2.6, id: 'baypas_blokirovok', }
         ]
       },
-      startTime: timeDiff + 631.4,
+      startTime: timeDiff + 630.4,
       human: true,
     },
     // окно ВН  // закрыть
@@ -22969,7 +22969,7 @@ let tempActions = [
       },
       startTime: timeDiff + 666,
     },
-    ////--------------------------------91----------------------------------------
+    ////--------------------------------97----------------------------------------
     {
       text: 'Перевести на дистанцию клапан тяги 022.',
       sender: 'Система',
