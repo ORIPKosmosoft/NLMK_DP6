@@ -21,6 +21,14 @@
 
   Но у меня не настроены чаптеры и этапы в работе...
 ----------------------------------------------------
+Добавить в хелпер названия всех мониторов
+Добавить подсветку на все мониторы
+----------------------------------------------------
+Старая подсветка
+concentration: [
+  { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
+]
+----------------------------------------------------
 */
 function loadTrenActions() {
   let effectsArr = ['error', 'right', 'tren_click', 'tren_error', 'ui_click'];
@@ -642,7 +650,7 @@ function trenFinish() {
       devHelper.endVals.maxTimeArr.fill(maxElement2);
     }
   } else {
-    if (devHelper.dev.enable) console.error('Один или оба массива пусты');
+    devHelper.dev.enable && console.error('Один или оба массива пусты');
   }
   const endContainer = document.querySelector('.end-cointainer');
   endContainer.style.opacity = '1';
@@ -1843,7 +1851,7 @@ Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
         _item.style.left = !document.querySelector('.tren-ui-long') ? _item.getAttribute('sx') : _item.getAttribute('sx2');
       }
       if (b_action.closest('#b_help')) {
-        reavialTextHelp();
+        revialTextHelp();
       }
       if (!_item.classList.contains('opacity-1-Always')) {
         setCenterWindow(item);
@@ -1992,17 +2000,17 @@ document.getElementById('b_GeneralView').addEventListener("click", (e) => {
 })
 document.getElementById('b_chat').addEventListener("mouseover", (e) => { setMiniChat(); })
 
-function reavialTextHelp() {
+function revialTextHelp() {
   let currentAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false && action.startTime <= devHelper.trenVals.timers.scenarioTime / 1000));
   if (currentAction && currentAction.concentration) createConcentrationEffectCondition(currentAction.concentration);
   else if (devHelper.trenVals.multiAction && devHelper.trenVals.multiAction.length > 0) {
     if (devHelper.trenVals.multiAction[0].action.target3D) {
-      helperHighlightOn(devHelper.trenVals.multiAction)
+      helperHighlight3DOn(devHelper.trenVals.multiAction)
     } else {
       helperHighlight2DOn(devHelper.trenVals.multiAction)
     }
   } else if (currentAction && currentAction.action && currentAction.action.target3D && currentAction.human) {
-    helperHighlightOn(currentAction);
+    helperHighlight3DOn(currentAction);
   } else if (currentAction && currentAction.action && currentAction.action.target2D && currentAction.human) {
     helperHighlight2DOn(currentAction)
   } else {
@@ -2054,7 +2062,7 @@ function helperHighlight2DOn(Actions) {
               let tempMesh = devHelper.model3DVals.svgDisplays.meshs.find(displayMesh1 => displayMesh1.name === displayNameArr.find(name => name === currentPosMeshName));
               if (tempMesh && tempMesh.positionIndex) requiredPosition = tempMesh.positionIndex;
             } else {
-              if (devHelper.dev.enable) console.log('Не найдено 1');
+              devHelper.dev.enable && console.log('Не найдено 1');
             }
           } else {
             document.querySelector('.box-help').innerHTML = `Вернуться на "Главный вид".`;
@@ -2081,12 +2089,36 @@ function helperHighlight2DOn(Actions) {
                 document.querySelector('.box-help').innerHTML = `Включить схему${tempRealShemeName ? ' "' + tempRealShemeName + '"' : ''}.`;
               }
             } else {
-              if (devHelper.dev.enable) console.log('Не найдено 2');
+              devHelper.dev.enable && console.log('Не найдено 2');
             }
           }
         } else {
+          const schemeNameCode = devHelper.svgVals.find(svg => svg.realName === tempRealShemeName).name;
+          const displayNames = [];
+          const displayPositions = [];
+          if (schemeNameCode) {
+            devHelper.model3DVals.svgDisplaysArr.find(obj => {
+              if ((obj.possibleSchemes?.includes(schemeNameCode) || obj.svgName.includes(schemeNameCode)) && (tempDisplay = devHelper.model3DVals.movePointMeshToArr.find(obj2 => obj2.name === obj.name))) {
+                const tempPosIndex = tempDisplay.point;
+                if (tempPosIndex) {
+                  displayPositions.push(tempPosIndex);
+                  displayNames.push(devHelper.model3DVals.cameraPositions.find(obj3 => obj3.position === tempPosIndex).name);
+                } else {
+                  devHelper.dev.enable && console.warn('Не найдено место.');
+                }
+              }
+            })
+          } else {
+            devHelper.dev.enable && console.warn('Не найдено реальное имя схемы.');
+          }
+          document.querySelector('.box-help').innerHTML = `Подойти к рабочем${displayNames.length > 1 ? 'им' : 'у'} мест${displayNames.length > 1 ? 'ам' : 'у'} "${displayNames.join(', ')}".`;
+          displayPositions.forEach(position => {
+            changeColorTexture(devHelper.model3DVals.movePointMesh.find(m => m.positionIndex && m.positionIndex === position), true, true);
+          })
+          /* Старое выделение только одного места
           changeColorTexture(devHelper.model3DVals.movePointMesh.find(m => m.positionIndex && m.positionIndex === requiredPosition), true, true);
           document.querySelector('.box-help').innerHTML = `Подойти к рабочему месту "${devHelper.model3DVals.cameraPositions[requiredPosition].name}".`;
+          */
         }
       }
     }
@@ -2304,7 +2336,7 @@ function areObjectsEqual(obj1, obj2) {
   return true;
 }
 
-function helperHighlightOn(Actions) {
+function helperHighlight3DOn(Actions) {
   let tempArr = Array.isArray(Actions) ? Actions : [Actions];
   let teamMeshNames = ' "', placeName = '';
   tempArr.forEach((actionObject, Index) => {

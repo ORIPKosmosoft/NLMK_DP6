@@ -1162,13 +1162,13 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: true,
+    enable: false,
     perfomance: undefined,
     intervalFon: undefined,
     maxCountSvgElems: 0,
   },
   endVals: {
-    passPerc: 100, // TODO изменить в режиме контроля
+    passPerc: 100,
     errors: [0],
     averageTime: [],
     humanTime: [],
@@ -1237,9 +1237,6 @@ let tempActions = [
       },
       startTime: timeDiff + 10.1,
       human: true,
-      // concentration: [
-      //   { text: 'Клапан 029', x: 41, y: 48, w: 3, h: 6.5, position: [1], scheme: 'vnk_main' },
-      // ]
     },
     // открыть
     {

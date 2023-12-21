@@ -1,8 +1,3 @@
-/*                 TODO
-----------------------------------------------------
-----------------------------------------------------
-*/
-
 document.addEventListener("DOMContentLoaded", domLoaded);
 function domLoaded() {
   /* Изменение времени таймера в файле txt
