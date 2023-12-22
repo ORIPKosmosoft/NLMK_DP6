@@ -1677,7 +1677,6 @@ function setMiniChat() {
     mes[i].classList.add('display-none');
   }
   mes[0].classList.remove('display-none');
-  // miniChat.style.width = ConvertPxToVw(miniChat.querySelector('.chat').children[0].getBoundingClientRect().width + 15 + 26) + 'vw';
   miniChat.style.height = ConvertPxToVh(miniChat.querySelector('.chat').children[0].getBoundingClientRect().height + 35 + 18) + 'vh';
 }
 
@@ -1984,10 +1983,6 @@ function disableGeneralView(state = true) {
 document.getElementById('b_GeneralView').addEventListener("click", (e) => {
   document.querySelector('.box-back').classList.toggle('opacity-1-Temp', false);
   e.currentTarget.classList.remove('button-tren-active');
-  devHelper.model3DVals.movePointMesh.forEach(mesh => {
-    mesh.isPickable = false;
-    if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(false);
-  })
   if (devHelper.model3DVals.currentPosition > 100) {
     if (devHelper.model3DVals.currentPosition === 101 || devHelper.model3DVals.currentPosition === 102) {
       animMoveCamera(devHelper.model3DVals.cameraPositions.find(obj => obj.position === 3), 1);
@@ -2153,8 +2148,6 @@ function hideTextHelp() {
   if (document.getElementById('b_help').interval)
     clearInterval(document.getElementById('b_help').interval);
   document.getElementById('b_GeneralView').style.border = '';
-  // document.querySelector('#b_GeneralView').style.border = '';
-  // document.querySelector('.pointer-helper-container').style.display = 'none';
 }
 
 Array.from(document.querySelectorAll('.help-buttons-no')).forEach((item) => {

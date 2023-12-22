@@ -683,7 +683,7 @@ const devHelper = {
         { x: 4.6, y: 16.8, w: 3.0, h: 2.9, forAction: true, id: 'Iskl_Radar2', realName: 'Кнопка искл/вкл радара 2' },
         { x: 8.5, y: 16.8, w: 3.0, h: 2.9, forAction: true, id: 'Vkl_Radar3', realName: 'Кнопка искл/вкл радара 3' },
         { x: 13.6, y: 0.0, w: 3.4, h: 2.8, name: 'dp', },
-        { x: 18.0, y: 0.0, w: 4.5, h: 3.3, id: 'Protechki', },
+        { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
         { x: 45.5, y: 0.0, w: 3.5, h: 2.8, name: 'bzu', },
         // ilay
         { x: 75.85, y: 51.5, w: 3.3, h: 3.0, forAction: true, id: 'F_Obsh', realName: 'F общ.' },
@@ -812,10 +812,17 @@ const devHelper = {
         { x: 85.85, y: 71.5, w: 5.2, h: 2.2, forAction: true, id: 'Na konveer', realName: 'Кнопка На конвейер' },
         { x: 85.8, y: 79.8, w: 5.4, h: 2.2, forAction: true, id: 'V peh', realName: 'Кнопка В печь' },
         { x: 13.7, y: 0.0, w: 3.4, h: 3.3, name: 'dp', },
-        { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Protechki', },
+        { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
         { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
       ]
     },
+    {
+      name: 'Kontrol_progara', helpers: [
+        { x: 13.7, y: 0.0, w: 3.4, h: 3.3, name: 'dp', },
+        { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
+        { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
+      ]
+    }
   ],
   startPos: {
     IF2D: [],
@@ -1183,6 +1190,36 @@ const devHelper = {
 };
 const timeDiff = -0;
 let tempActions = [
+  [    {
+    action: {
+      target2D: 'kl029',
+      window2D: {
+        elements: [
+          { name: 'title_work_vn', text: 'Управление клапаном 029' },
+          { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+          { name: 'circle_kl029', stroke: '#8F8F8F' },
+          { name: 'left_vn', color: '#8F8F8F' },
+          { name: 'right_vn', color: '#8F8F8F' },
+          { name: 'status_control_vnk_text', text: 'Ручной' },
+          { name: 'status_window_text', text: 'Нет данных' },
+          // { name: 'skhema_sobrana', color: '#06FF06' },
+          // { name: 'block_open',     color: '#06FF06' },
+          // { name: 'block_close',    color: '#06FF06' },
+          { name: 'btn_auto_text', color: '#000' },
+          { name: 'btn_auto_2', color: '#fff' },
+          { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
+          { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
+          { name: 'btn_open_text', color: '#000' },
+          { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+          { name: 'polozenie_text', text: '51' },
+          { name: 'polozenie_button_text', color: '#000000' },
+        ],
+      },
+    },
+    startTime: timeDiff + 0.1,
+    human: true,
+  },
+],
   // Первый сценарий  
   [
     {

@@ -25,15 +25,15 @@ window.addEventListener('load', function () {
     var shadowGenerator = new BABYLON.ShadowGenerator(1024, light2);
     shadowGenerator.useContactHardeningShadow = true;
     shadowGenerator.usePercentageCloserFiltering = true;
-
-    // shadowGenerator.useBlurCloseExponentialShadowMap = true;
-    // shadowGenerator.forceBackFacesOnly = true;
-    // shadowGenerator.blurKernel = 32;
-    // shadowGenerator.useKernelBlur = true;
-    // shadowGenerator.filteringQuality = BABYLON.ShadowGenerator.QUALITY_LOW;
-    // shadowGenerator.usePoissonSampling = true;
-    // shadowGenerator.useBlurExponentialShadowMap = true;
-
+    /*
+        shadowGenerator.useBlurCloseExponentialShadowMap = true;
+        shadowGenerator.forceBackFacesOnly = true;
+        shadowGenerator.blurKernel = 32;
+        shadowGenerator.useKernelBlur = true;
+        shadowGenerator.filteringQuality = BABYLON.ShadowGenerator.QUALITY_LOW;
+        shadowGenerator.usePoissonSampling = true;
+        shadowGenerator.useBlurExponentialShadowMap = true;
+    */
     loadModel(devHelper.model3DVals.loadModels[0], scene, shadowGenerator);
     scene.actionManager = new BABYLON.ActionManager(scene);
     scene.actionManager.registerAction(
@@ -134,8 +134,8 @@ window.addEventListener('load', function () {
     } else {
       document.querySelector('.help-btn-block').remove();
     }
-     */
     //----------------------------------------------------------------------------------------------------------
+     */
 
     let options = new BABYLON.SceneOptimizerOptions(60, 250);
     let optimizer = new BABYLON.SceneOptimizer(scene, options);
@@ -192,12 +192,6 @@ window.addEventListener('load', function () {
               makeActiveMesh(box, 7);
             }
           }
-          // else if (Mesh.name && Mesh.name.indexOf('ButtonHightlight_') !== -1 && Mesh.name != 'ButtonHightlight_049') {
-          //   meshOptimization(Mesh);
-          //   makeActiveMesh(Mesh, { name: Mesh.name });
-          //   Mesh.material.alpha = 0;
-          //   Mesh.material.transparencyMode = null;
-          // }
           else if (Mesh.name && Mesh.name === 'Display_flat004') {  // 3
             setImageOnMonitor("media/images/monitors/Raschet_profilya_temperatury.jpg", Scene, Mesh);
           }
@@ -438,7 +432,7 @@ function setImageOnMonitor(url, scene, mesh) {
               clearInterval(intervalId);
               resolve();
             }
-          }, 100); 
+          }, 100);
         });
       }
       updateTexture(mesh, url)
@@ -606,13 +600,13 @@ function clickOnPointMesh(Mesh = undefined, Vals = undefined) {
     if (devHelper.dev.enable === true) console.warn('Не переданы значения для создания активного меша в функции clickOnPointMesh.');
     return;
   } else {
-    devHelper.model3DVals.movePointMesh.forEach(mesh => {
-      mesh.isPickable = false;
-      if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(false);
-    })
-    devHelper.model3DVals.movePointMesh.forEach(mesh => {
-      changeColorTexture(mesh, false);
-    })
+    // devHelper.model3DVals.movePointMesh.forEach(mesh => {
+    //   mesh.isPickable = false;
+    //   if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(false);
+    // })
+    // devHelper.model3DVals.movePointMesh.forEach(mesh => {
+    //   changeColorTexture(mesh, false);
+    // })
     animMoveCamera(Vals, Vals.position > 100 ? 1 : 2);
   }
 }
@@ -700,47 +694,41 @@ function changeColorTexture(Mesh = undefined, State = undefined, Help = false) {
       tempBool = true;
   }
   if (Help) tempBool = true;
-  // else if (devHelper.model3DVals.activeMeshs.indexOf(Mesh) !== -1) {
-  //   if (devHelper.model3DVals.currentPosition === Mesh.currentPosition)
-  //     tempBool = true;
-  // }
+
 
   if (tempBool === true) {
-    // if (State === true) {
-    // //   Mesh.enableEdgesRendering();
-    // //   Mesh.edgesColor = new BABYLON.Color4(1, 1, 0, 0.5);
-    // //   Mesh.edgesWidth = 2;
-    // //   devHelper.model3DVals.glowLayer = new BABYLON.GlowLayer("glow", devHelper.model3DVals.scene);
-    // //   devHelper.model3DVals.glowLayer.addIncludedOnlyMesh(Mesh);
-    // //   devHelper.model3DVals.glowLayer.intensity = 0.3;
-    // //   Mesh.material.oldEmissiveColor = Mesh.material.emissiveColor;
-    // //   Mesh.material.emissiveColor = BABYLON.Color3.Yellow();
-    // } else {
-    // //   Mesh.edgesWidth = 0;
-    // //   if (devHelper.model3DVals.glowLayer) {
-    // //     devHelper.model3DVals.glowLayer.dispose();
-    // //     Mesh.material.emissiveColor = Mesh.material.oldEmissiveColor;
-    // //   }
-    // }
-    // if (State === false && Mesh.highlightLayer) {
-    //   Mesh.highlightLayer.removeMesh(Mesh);
-    //   Mesh.highlightLayer.dispose();
-    //   Mesh.highlightLayer = undefined;
-    // } else {
-    //   const hl = new BABYLON.HighlightLayer("hl1", devHelper.model3DVals.scene);
-    //   hl.addMesh(Mesh, BABYLON.Color3.Yellow());
-    //   Mesh.highlightLayer = hl;
-    // }
-    // devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
-    let newAlpha = State === true ? 0.5 : 0;
-    let newColor = State === true ? true : false;
+    /*
+    if (State === true) {
+      Mesh.enableEdgesRendering();
+      Mesh.edgesColor = new BABYLON.Color4(1, 1, 0, 0.5);
+      Mesh.edgesWidth = 2;
+      devHelper.model3DVals.glowLayer = new BABYLON.GlowLayer("glow", devHelper.model3DVals.scene);
+      devHelper.model3DVals.glowLayer.addIncludedOnlyMesh(Mesh);
+      devHelper.model3DVals.glowLayer.intensity = 0.3;
+      Mesh.material.oldEmissiveColor = Mesh.material.emissiveColor;
+      Mesh.material.emissiveColor = BABYLON.Color3.Yellow();
+    } else {
+      Mesh.edgesWidth = 0;
+      if (devHelper.model3DVals.glowLayer) {
+        devHelper.model3DVals.glowLayer.dispose();
+        Mesh.material.emissiveColor = Mesh.material.oldEmissiveColor;
+      }
+    }
+    if (State === false && Mesh.highlightLayer) {
+      Mesh.highlightLayer.removeMesh(Mesh);
+      Mesh.highlightLayer.dispose();
+      Mesh.highlightLayer = undefined;
+    } else {
+      const hl = new BABYLON.HighlightLayer("hl1", devHelper.model3DVals.scene);
+      hl.addMesh(Mesh, BABYLON.Color3.Yellow());
+      Mesh.highlightLayer = hl;
+    }
+    devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
+    */
+    let newState = State;
     if (!Mesh.overlayColor || Mesh.overlayColor !== BABYLON.Color3.Yellow()) Mesh.overlayColor = BABYLON.Color3.Yellow();
     devHelper.model3DVals.highlightMesh = State === true ? Mesh : undefined;
-    if (Mesh.material.alpha !== 1) {
-      Mesh.renderOverlay = newColor;
-      // Mesh.material.alpha = newAlpha;
-    }
-    else Mesh.renderOverlay = newColor;
+    Mesh.renderOverlay = newState;
   }
 }
 
@@ -865,15 +853,16 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
 }
 
 function animMoveCamera(Vals, Speed = 2) {
+  if (!document.querySelector('.block-interaction'))
+    document.body.append(createCustomElement('div', '', { 'class': 'block-interaction' }));
   if (document.querySelector('#b_help'))
     document.querySelector('#b_help').style.pointerEvents = 'none';
   let speed = Speed * 60;
   if (Vals.position === undefined) {
     if (document.getElementById('svg-helper')) document.getElementById('svg-helper').remove();
-  }
-  else {
-    devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
-    devHelper.model3DVals.activeMeshs.forEach(mesh => mesh.isPickable = true);
+  } else {
+    // devHelper.model3DVals.movePointMesh.forEach(mesh => mesh.isPickable = false);
+    // devHelper.model3DVals.activeMeshs.forEach(mesh => mesh.isPickable = true);
   }
 
   let positionAnimation = new BABYLON.Animation(
@@ -936,7 +925,17 @@ function animMoveCamera(Vals, Speed = 2) {
         }
       })
     }
+    Array.from(document.querySelectorAll('.block-interaction')).forEach(element => element.remove());
   });
+
+
+  devHelper.model3DVals.movePointMesh.forEach(mesh => {
+    mesh.isPickable = false;
+    if (mesh.name.indexOf('highlight') !== -1) mesh.setEnabled(false);
+  })
+  devHelper.model3DVals.movePointMesh.forEach(mesh => {
+    changeColorTexture(mesh, false);
+  })
 }
 
 function clickOnMesh(Mesh = undefined) {
