@@ -1554,10 +1554,6 @@ function setLifeTime(time) {
   function ConvertPxToVh(px) {
     return px / (window.innerHeight / 100);
   }
-  function newStateTimer() {
-
-    document.querySelector(".dialogTimers-play").classList.toggle("disabled-play");
-  }
 
   document.querySelector(".time-oclock").addEventListener('click', (e) => {
 
@@ -1616,7 +1612,6 @@ function setLifeTime(time) {
   let timerInterval = null;
   function onTimesUp() {
     clearInterval(timerInterval);
-    newStateTimer();
   }
   function startTimerToFinish() {
     timePassed = 0;

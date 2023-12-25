@@ -198,6 +198,7 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '1487' && Element.getAttribute('x') === '1703.94' && Element.getAttribute('y') === '933.1') { addSvgElem(Index, Element, 'L2'); } // Sergey
         if (Element.innerHTML === '1487' && Element.getAttribute('x') === '1703.94' && Element.getAttribute('y') === '963.83') { addSvgElem(Index, Element, 'L3'); } // Sergey
         if (Element.innerHTML === '1487' && Element.getAttribute('x') === '1599.25' && Element.getAttribute('y') === '961.75') { addSvgElem(Index, Element, 'L4'); } // Sergey
+        if (Element.innerHTML === '1487' && Element.getAttribute('x') === '1602.49' && Element.getAttribute('y') === '961.75') { addSvgElem(Index, Element, 'L4'); } // Sergey
         if (Element.innerHTML === '49,4') { addSvgElem(Index, Element, 'H_step_isp'); }
         if (Element.innerHTML === '46,0') { addSvgElem(Index, Element, 'HCO_step_isp'); }
         if (Element.innerHTML === '216,1') { addSvgElem(Index, Element, 'V_dyt', 'start'); }
@@ -242,6 +243,14 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '2,78' && Element.getAttribute('x') === '1859.05' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_2'); }
         if (Element.innerHTML === '3,78' && Element.getAttribute('x') === '1906.28' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_3'); }
         if (Element.innerHTML === '2,98' && Element.getAttribute('x') === '1953.68' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_4'); }
+        if (Element.innerHTML === '0' && Element.getAttribute('x') === '1024.06' && Element.getAttribute('y') === '807.2') { addSvgElem(Index, Element, 'VNK1_Fr'); }
+        if (Element.innerHTML === '0' && Element.getAttribute('x') === '1024.06' && Element.getAttribute('y') === '773.85') { addSvgElem(Index, Element, 'VNK1_Fb'); }
+        if (Element.innerHTML === 'ДУТЬЕ' && Element.getAttribute('x') === '999.53' && Element.getAttribute('y') === '703.28') { addSvgElem(Index, Element, 'VNK1_status_2'); }
+        if (Element.innerHTML === 'НАГРЕВ' && Element.getAttribute('x') === '905.3' && Element.getAttribute('y') === '703.51') { addSvgElem(Index, Element, 'VNK2_status_2'); }
+        if (Element.innerHTML === 'НАГРЕВ' && Element.getAttribute('x') === '808.23' && Element.getAttribute('y') === '702.01') { addSvgElem(Index, Element, 'VNK3_status_2'); }
+        if (Element.innerHTML === 'Авт' && Element.getAttribute('x') === '826.67' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK3_status_1_DP'); } // 3
+        if (Element.innerHTML === 'Авт' && Element.getAttribute('x') === '919.38' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK2_status_1_DP'); } // 2
+        if (Element.innerHTML === 'Авт' && Element.getAttribute('x') === '1012.09' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK1_status_1_DP'); } // 1
         // Ilay
         if (Element.innerHTML === 'Работа' && Element.getAttribute('x') === '443.53' && Element.getAttribute('y') === '340.11') { addSvgElem(Index, Element, 'M_t1_4'); }
         if (Element.innerHTML === 'Соглас' && Element.getAttribute('x') === '234.62' && Element.getAttribute('y') === '463.58') { addSvgElem(Index, Element, 'M_t2_4'); }
@@ -287,9 +296,9 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'm776.56 338.41-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'kl_84'); }
         if (Element.getAttribute('d') === 'm998.44 338.41-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'kl_83'); }
         if (Element.getAttribute('d') === 'm957.81 359.24-36.45 21.88v-21.88l36.45 21.88z') { addSvgElem(Index, Element, 'kl_81'); }
-        if (Element.getAttribute('d') === 'M792.71 684.77h90.62v28.12h-90.62z') { addSvgElem(Index, Element, 'VNK3_status_1_fon'); } // Sergey
-        if (Element.getAttribute('d') === 'M886.46 684.77h90.62v28.12h-90.62z') { addSvgElem(Index, Element, 'VNK2_status_1_fon'); } // Sergey
-        if (Element.getAttribute('d') === 'M981.25 684.77h90.63v28.12h-90.63z') { addSvgElem(Index, Element, 'VNK1_status_1_fon'); } // Sergey
+        if (Element.getAttribute('d') === 'M792.71 684.77h90.62v28.12h-90.62z') { addSvgElem(Index, Element, 'VNK3_status_1_fon_DP'); } // Sergey
+        if (Element.getAttribute('d') === 'M886.46 684.77h90.62v28.12h-90.62z') { addSvgElem(Index, Element, 'VNK2_status_1_fon_DP'); } // Sergey
+        if (Element.getAttribute('d') === 'M981.25 684.77h90.63v28.12h-90.63z') { addSvgElem(Index, Element, 'VNK1_status_1_fon_DP'); } // Sergey
         if (Element.getAttribute('d') === 'M804.17 714.97h71.87v25h-71.87z') { addSvgElem(Index, Element, 'VNK3_status_2'); }
         if (Element.getAttribute('d') === 'M896.88 714.97h71.87v25h-71.87z') { addSvgElem(Index, Element, 'VNK2_status_2'); }
         if (Element.getAttribute('d') === 'M989.58 714.97h71.88v25h-71.88z') { addSvgElem(Index, Element, 'VNK1_status_2'); }
@@ -331,7 +340,8 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1263.02 242h9.9v55.26h-9.9z') { addSvgElem(Index, Element, 'poloska_1_20'); }
         if (Element.getAttribute('d') === 'M1275 237.53h11.46v60.77H1275z') { addSvgElem(Index, Element, 'poloska_1_21'); }
         if (Element.getAttribute('d') === 'M1288.02 235.73h10.94v62.58h-10.94z') { addSvgElem(Index, Element, 'poloska_1_22'); }
-        if (Element.getAttribute('d') === 'M1350.52 232.97h10.94v64.11h-10.94z') { addSvgElem(Index, Element, 'poloska_1_23'); }
+        if (Element.getAttribute('d') === 'M1350.52 232.97h10.94v64.11h-10.94z') { addSvgElem(Index, Element, 'poloska_1_23_1'); }
+        if (Element.getAttribute('d') === 'M1300 232.78h11.46v65.53H1300z') { addSvgElem(Index, Element, 'poloska_1_23'); }
         if (Element.getAttribute('d') === 'M1312.5 235.15h10.42v62.11h-10.42z') { addSvgElem(Index, Element, 'poloska_1_24'); }
         if (Element.getAttribute('d') === 'M1325 232.97h10.42v64.3H1325z') { addSvgElem(Index, Element, 'poloska_1_25'); }
         if (Element.getAttribute('d') === 'M1348.96 298.31h-11.46V180.6h11.46v117.71zm-10.46-1h9.46V181.6h-9.46v115.71z') { addSvgElem(Index, Element, 'poloska_1_26'); }
@@ -463,6 +473,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M161.49 641.86h10.41v16h-10.41z') { addSvgElem(Index, Element, 'AKZ_17'); }
         // Sergey
         if (Element.getAttribute('d') === 'M1695.84 909.77h72.91v29.16h-72.91z') { addSvgElem(Index, Element, 'L2_elem'); }
+        if (Element.getAttribute('d') === 'M23.96 771.22h87.5v32.3h-87.5z') { addSvgElem(Index, Element, 'EVD1_O_fon'); }
         // Ilay
         if (Element.getAttribute('d') === 'm1512.14 554.97-5.12 1.96 12.51-22.86 10.1 22.86-4.55-3.22 7.96 25.58-5.24-5.37-7.7 16.8-8.59-16.74-5.75 3.35z') { addSvgElem(Index, Element, 'vnk2_fire'); }
         if (Element.getAttribute('d') === 'M1505.8 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.38-12.26l-20.55-25.18v-12.46h2.35l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.53 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_2'); }
@@ -799,10 +810,10 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1553.12 284.46h23.96v19.79h-23.96z') { addSvgElem(Index, Element, 'rect_Vblb_sig_2'); }
         if (Element.getAttribute('d') === 'M1184.37 646.96h16.67v15.62h-16.67z') { addSvgElem(Index, Element, 'rect_R_VN-ATM'); }
         if (Element.getAttribute('d') === 'M1184.37 674.04h16.67v15.63h-16.67z') { addSvgElem(Index, Element, 'rect_R_VN-GD'); }
-        if (Element.getAttribute('d') === 'M1402.6 490.71c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_dutyo'); }
-        if (Element.getAttribute('d') === 'M1402.6 518.84c8.06 0 14.59 5.82 14.59 13.02 0 7.19-6.53 13.01-14.59 13.01-8.05 0-14.58-5.82-14.58-13.01 0-7.2 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_nagrev'); }
-        if (Element.getAttribute('d') === 'M1402.6 548c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_1'); }
-        if (Element.getAttribute('d') === 'M1402.6 576.13c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_2'); }
+        if (Element.getAttribute('d') === 'M1402.6 490.71c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_dutyo_VNK3'); }
+        if (Element.getAttribute('d') === 'M1402.6 518.84c8.06 0 14.59 5.82 14.59 13.02 0 7.19-6.53 13.01-14.59 13.01-8.05 0-14.58-5.82-14.58-13.01 0-7.2 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_nagrev_VNK3'); }
+        if (Element.getAttribute('d') === 'M1402.6 548c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_1_VNK3'); }
+        if (Element.getAttribute('d') === 'M1402.6 576.13c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_2_VNK3'); }
         // Sergey 
         if (Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'vnk3_fire'); }
         if (Element.getAttribute('d') === 'm1118.01 355.49-9.92 32.3 11.81-4.38c.44-.16.92 0 1.17.38l25.18 37.43 22.86-37.2c.29-.47.9-.61 1.37-.33.07.05.14.1.19.16l8.76 7.67-17.95-55.7a.999.999 0 0 1 1.38-1.21l7.03 3.34-25.32-49.07-31.65 49.14 9.46-3.12c.52-.17 1.09.12 1.26.64.07.22.06.45-.01.66l-5.61 19.26c-.01.01-.01.02-.01.03zm-.95-.31-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4-5.63 19.33z') { addSvgElem(Index, Element, 'vnk3_fire'); }
@@ -898,6 +909,15 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('cx') === '1427.41' && Element.getAttribute('cy') === '300.17') { addSvgElem(Index, Element, 'circle_001a'); }
         if (Element.getAttribute('cx') === '398.19' && Element.getAttribute('cy') === '389.87') { addSvgElem(Index, Element, 'circle_053'); }
         if (Element.getAttribute('cx') === '238.59' && Element.getAttribute('cy') === '606.51') { addSvgElem(Index, Element, 'circle_035'); }
+        if (Element.getAttribute('cx') === '237.57' && Element.getAttribute('cy') === '558.03') { addSvgElem(Index, Element, 'circle_kl_0502'); }
+        if (Element.getAttribute('cx') === '344.09' && Element.getAttribute('cy') === '485.61') { addSvgElem(Index, Element, 'circle_051'); }
+        if (Element.getAttribute('cx') === '345.76' && Element.getAttribute('cy') === '558.26') { addSvgElem(Index, Element, 'circle_052'); }
+        if (Element.getAttribute('cx') === '519.93' && Element.getAttribute('cy') === '557.69') { addSvgElem(Index, Element, 'circle_0501'); }
+        if (Element.getAttribute('cx') === '732.6' && Element.getAttribute('cy') === '810.95') { addSvgElem(Index, Element, 'circle_kl036b'); }
+        if (Element.getAttribute('cx') === '878.86' && Element.getAttribute('cy') === '702.28') { addSvgElem(Index, Element, 'circle_kl004'); }
+        if (Element.getAttribute('cx') === '1000.03' && Element.getAttribute('cy') === '394.03') { addSvgElem(Index, Element, 'circle_kl030'); }
+        if (Element.getAttribute('cx') === '864.68' && Element.getAttribute('cy') === '329.95') { addSvgElem(Index, Element, 'circle_kl048'); }
+        if (Element.getAttribute('cx') === '1423.48' && Element.getAttribute('cy') === '215.14') { addSvgElem(Index, Element, 'circle_001'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
         if (Element.getAttribute('d') === 'M1712.25 544.97V557l-22.15 28.77c-2.52 3.27-3.73 6.81-3.73 10.94v11.21H1763.72v-12.74c0-4.66-1.42-8.66-4.37-12.26l-20.56-25.18v-12.46h2.36l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.54 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_1'); }
@@ -1160,6 +1180,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('cx') === '1561.96' && Element.getAttribute('cy') === '363.21') { addSvgElem(Index, Element, 'circle_kl030') }
         if (Element.getAttribute('cx') === '1276.64' && Element.getAttribute('cy') === '421.49') { addSvgElem(Index, Element, 'circle_kl038') }
         if (Element.getAttribute('cx') === '1276.64' && Element.getAttribute('cy') === '421.34') { addSvgElem(Index, Element, 'circle_kl038') }
+        if (Element.getAttribute('cx') === '1276.65' && Element.getAttribute('cy') === '421.34') { addSvgElem(Index, Element, 'circle_kl038') }
         if (Element.getAttribute('cx') === '1565.09' && Element.getAttribute('cy') === '421.42') { addSvgElem(Index, Element, 'circle_kl037') }
         if (Element.getAttribute('cx') === '1565.09' && Element.getAttribute('cy') === '421.26') { addSvgElem(Index, Element, 'circle_kl037') }
         if (Element.getAttribute('cx') === '1286.76' && Element.getAttribute('cy') === '607.75') { addSvgElem(Index, Element, 'circle_kl020') }
@@ -1824,7 +1845,9 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M627.05 249.63h64.32v42.23h-64.32z') { addSvgElem(Index, Element, 'rect_117'); }
         if (Element.getAttribute('d') === 'M690.96 249.63h70.92v42.23h-70.92z') { addSvgElem(Index, Element, 'rect_111'); }
         if (Element.getAttribute('d') === 'M761.88 249.63h56.08v42.23h-56.08z') { addSvgElem(Index, Element, 'rect_112'); }
-
+        if (Element.getAttribute('d') === 'M447.62 909.53h159.95v27.27H447.62z') { addSvgElem(Index, Element, 'rashod_azota_fon'); }
+        if (Element.getAttribute('d') === 'M617.62 909.53h131.41v27.27H617.62z') { addSvgElem(Index, Element, 'na_Ugle_115'); }
+        if (Element.getAttribute('d') === 'M759.08 909.53h131.41v27.27H759.08z') { addSvgElem(Index, Element, 'na_Ugle_123'); }
       })
     }
     else if (ObjectSvg.name === 'O_p_n_na_k_p_na_VNK') {
@@ -2276,6 +2299,7 @@ window.addEventListener('load', function () {
     else if (ObjectSvg.name === 'win_sym_302') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
         if (Element.innerHTML === 'расход ПГ') { addSvgElem(Index, Element, 'ws3_ttg', 'center'); }
+        if (Element.innerHTML === '2110') { addSvgElem(Index, Element, 'ws3_ttg_number', 'center'); }
       })
     }
     else if (ObjectSvg.name === 'priczvuksinal') {
@@ -2342,6 +2366,10 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('x') === '169.92' && Element.getAttribute('y') === '257.28') { addSvgElem(Index, Element, 'btn_baypas_vsekh_blokirovok_2'); }
         if (Element.getAttribute('x') === '14.72' && Element.getAttribute('y') === '256.05') { addSvgElem(Index, Element, 'block_open'); }
         if (Element.getAttribute('x') === '87.79' && Element.getAttribute('y') === '256.05') { addSvgElem(Index, Element, 'block_close'); }
+      })
+    } else if (ObjectSvg.name === 'Shagi_upraleniya') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
+        if (Element.getAttribute('transform') === 'matrix(1.00143 0 0 1 -81.835 309.247)') { addSvgElem(Index, Element, 'shagUprav_bunkerNum'); }
       })
     }
   })

@@ -1,4 +1,3 @@
-
 /*                 TODO
 ---------------------------------------------------------------
 ---------------------------------------------------------------
@@ -416,7 +415,7 @@ const devHelper = {
         { x: 69.9, y: 19, w: 2.2, h: 4.8, forAction: true, id: 'kl001', realName: 'Дроссель 001' },
         // { x: 86.3, y: 1, w: 2, h: 2.5, forAction: true, id: 'kl022', },
         { x: 22.5, y: 46.5, w: 1.4, h: 4.2, forAction: true, id: 'kl054', realName: 'Клапан природного газа 054' },
-        { x: 76.3, y: 24.5, w: 2, h: 2.9, forAction: true, id: 'kl002', realName: 'Клапан холодного дутья 002' },
+        { x: 76.3, y: 24.5, w: 2, h: 2.9, forAction: true, id: 'kl002_vnk_main', realName: 'Клапан холодного дутья 002', value: { window: 'O_n_k_na_VNK_posle_1', x: 1582, y: 260, } },
         { x: 21.3, y: 10.5, w: 7, h: 3.5, forAction: true, id: 'trendy', realName: 'Кнопка Тренды' },
         { x: 12.5, y: 10.5, w: 8.8, h: 3.5, forAction: true, id: 'rejimy BVNK', realName: 'Кнопка Режимы БВНК' },
         { x: 3.7, y: 10.5, w: 8.8, h: 3.5, forAction: true, id: 'Sostoynie BVNK', realName: 'Кнопка Состояние БВНК' },
@@ -789,8 +788,8 @@ const devHelper = {
         { x: 44.9, y: 36.1, w: 1.5, h: 4.5, forAction: true, id: 'klNKP-2', realName: 'Кнопка НКП-2' },
         { x: 40.5, y: 32.8, w: 1.9, h: 3.3, forAction: true, id: 'Droseli2', realName: 'Дроссель регулятор НКВ-2' },
         { x: 20.75, y: 32.9, w: 1.5, h: 3.2, forAction: true, id: 'Droseli1', realName: 'Дроссель регулятор НКВ-1' },
-        { x: 12.6, y: 28.8, w: 6.45, h: 2.4, forAction: true, id: 'hagi upravleniy1', realName: 'Кнопка Шаги управления' },
-        { x: 43.6, y: 28.85, w: 6.4, h: 2.4, forAction: true, id: 'hagi upravleniy2', realName: 'Кнопка Шаги управления' },
+        { x: 12.6, y: 28.8, w: 6.45, h: 2.4, forAction: true, id: 'hagi upravleniy1', realName: 'Кнопка Шаги управления', value: { window: 'Shagi_upraleniya', x: 68, y: 274 } },
+        { x: 43.6, y: 28.85, w: 6.4, h: 2.4, forAction: true, id: 'hagi upravleniy2', realName: 'Кнопка Шаги управления', value: { window: 'Shagi_upraleniya', x: 941, y: 274 } },
         { x: 60.9, y: 42.3, w: 6.3, h: 2.4, forAction: true, id: 'ekstraporcii', realName: 'Кнопка Экстрапорция' },
         { x: 73.3, y: 42.6, w: 3.2, h: 2.1, forAction: true, id: 'vidati', realName: 'Кнопка Выдать' },
         { x: 33.4, y: 39.4, w: 4.1, h: 2.6, forAction: true, id: 'vibraciy', realName: 'Кнопка Вибрация' },
@@ -822,7 +821,13 @@ const devHelper = {
         { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
         { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
       ]
-    }
+    },
+    {
+      name: 'Shagi_upraleniya', helpers: [
+        { x: 14.7, y: 27.4, w: 1.7, h: 3.1, removeWindow: 'Shagi_upraleniya', forAction: true, id: 'shagi_uprav_close_btn', realName: 'Закрыть' },
+        { x: 10.1, y: 92.4, w: 4.9, h: 2.2, forAction: true, id: 'shagi_uprav_zakryt', realName: 'Закрыть', },
+      ]
+    },
   ],
   startPos: {
     IF2D: [],
@@ -1190,7 +1195,8 @@ const devHelper = {
 };
 const timeDiff = -0;
 let tempActions = [
-  [    {
+  /*
+  [{
     action: {
       target2D: 'kl029',
       window2D: {
@@ -1219,7 +1225,8 @@ let tempActions = [
     startTime: timeDiff + 0.1,
     human: true,
   },
-],
+  ],
+  */
   // Первый сценарий  
   [
     {
@@ -2614,7 +2621,7 @@ let tempActions = [
       audio: 'telephone_say',
       multi: [
         {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          text: 'Газовый цех: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
           sender: 'Газовщик',
           action: {
             target3D: 'PhoneButton001',
@@ -2622,7 +2629,7 @@ let tempActions = [
           audio: 'tts-vo1',
         },
         {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          text: 'Насосный цех: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
           sender: 'Газовщик',
           action: {
             target3D: 'PhoneButton006',
@@ -2630,7 +2637,7 @@ let tempActions = [
           audio: 'tts-vo1',
         },
         {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          text: 'Кислородный цех: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
           sender: 'Газовщик',
           action: {
             target3D: 'PhoneButton017',
@@ -2638,7 +2645,7 @@ let tempActions = [
           audio: 'tts-vo1',
         },
         {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          text: 'ЭВС: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
           sender: 'Газовщик',
           action: {
             target3D: 'PhoneButton020',
@@ -2646,7 +2653,7 @@ let tempActions = [
           audio: 'tts-vo1',
         },
         {
-          text: 'Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          text: 'Угольная: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
           sender: 'Газовщик',
           action: {
             target3D: 'PhoneButton016',
@@ -2747,7 +2754,11 @@ let tempActions = [
       startTime: timeDiff + 84.1,
     },
     {
-      text: 'Проверить давление Fобщ и Fтек.',
+      audio: 'tts-9-2',
+      startTime: timeDiff + 88,
+    },
+    {
+      text: 'Проверить значение пылеугольного топлива.',
       sender: 'Система',
       multi: [
         {
@@ -3340,6 +3351,7 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'TTG_zadanie', text: '2200' },
+            { name: 'ws3_ttg_number', text: '2200' },
           ]
         }
       },
@@ -4016,6 +4028,9 @@ let tempActions = [
             { name: '9TI_42', text: '44' },
             // { name: '9TI_33', text: '' },
             // { name: '9TI_16', text: '' },
+            { name: 'VNK3_status_1_DP', text: 'Цикл' },
+            { name: 'VNK2_status_1_DP', text: 'Цикл' },
+            { name: 'VNK1_status_1_DP', text: 'Цикл' },
           ]
         }
       },
@@ -4876,6 +4891,9 @@ let tempActions = [
             { name: 'kl_136a', color: '#ff1e00' },
             { name: 'kl_118a', color: '#ff1e00' },
             { name: 'kl_118', color: '#ff1e00' },
+            { name: 'rashod_azota_fon', color: '#1CCC3D' },
+            { name: 'na_Ugle_115', color: '#CF25FB' },
+            { name: 'na_Ugle_123', color: '#CF25FB' },
           ]
         }
       },
@@ -5058,6 +5076,9 @@ let tempActions = [
             { name: 'rect_ish_c4', position: { y: 20 } },
             { name: 'rect_ish_c5', position: { y: 20 } },
             { name: 'rect_ish_c6', position: { y: 20 } },
+            { name: 'rashod_azota_fon', color: '#808080' },
+            { name: 'na_Ugle_115', color: '#808080' },
+            { name: 'na_Ugle_123', color: '#808080' },
           ]
         }
       },
@@ -6071,6 +6092,9 @@ let tempActions = [
             // { name: '5TI_21',         text: '1201' },
             // { name: '5TI_22',         text: '1210' },
             // { name: 'PI_09',          text: '536б65' },
+            { name: 'rashod_azota_fon', color: '#1CCC3D' },
+            { name: 'na_Ugle_115', color: '#CF25FB' },
+            { name: 'na_Ugle_123', color: '#CF25FB' },
           ]
         }
       },
@@ -8203,6 +8227,48 @@ let tempActions = [
       human: true,
     },
     {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'poloska_1_1', opacity: '0' },
+            { name: 'poloska_1_2', opacity: '0' },
+            { name: 'poloska_1_3', opacity: '0' },
+            { name: 'poloska_1_4', opacity: '0' },
+            { name: 'poloska_1_5', opacity: '0' },
+            { name: 'poloska_1_6', opacity: '0' },
+            { name: 'poloska_1_7', opacity: '0' },
+            { name: 'poloska_1_8', opacity: '0' },
+            { name: 'poloska_1_9', opacity: '0' },
+            { name: 'poloska_1_10', opacity: '0' },
+            { name: 'poloska_1_11', opacity: '0' },
+            { name: 'poloska_1_12', opacity: '0' },
+            { name: 'poloska_1_13', opacity: '0' },
+            { name: 'poloska_1_14', opacity: '0' },
+            { name: 'poloska_1_15', opacity: '0' },
+            { name: 'poloska_1_16', opacity: '0' },
+            { name: 'poloska_1_17', opacity: '0' },
+            { name: 'poloska_1_18', opacity: '0' },
+            { name: 'poloska_1_19', opacity: '0' },
+            { name: 'poloska_1_20', opacity: '0' },
+            { name: 'poloska_1_21', opacity: '0' },
+            { name: 'poloska_1_22', opacity: '0' },
+            { name: 'poloska_1_23', opacity: '0' },
+            { name: 'poloska_1_23_1', opacity: '0' },
+            { name: 'poloska_1_24', opacity: '0' },
+            { name: 'poloska_1_25', opacity: '0' },
+            { name: 'poloska_1_26', opacity: '0' },
+            { name: 'poloska_1_27', opacity: '0' },
+            { name: 'poloska_1_28', opacity: '0' },
+            { name: 'poloska_1_29', opacity: '0' },
+            { name: 'poloska_1_30', opacity: '0' },
+            { name: 'polosca_1_31', opacity: '0' },
+            { name: 'polosca_1_32', opacity: '0' },
+          ]
+        }
+      },
+      startTime: timeDiff + 228.1,
+    },
+    {
       text: 'Природный газ закрыт. На фурмах 3 кг.',
       sender: 'Газовщик',
       audio: 'tts-vo7',
@@ -8366,6 +8432,16 @@ let tempActions = [
       duration: 0.3,
       startTime: timeDiff + 237,
       human: true,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_722', color: '#ff1e00' },
+          ]
+        }
+      },
+      startTime: timeDiff + 237.3,
     },
     {
       action: {
@@ -8645,7 +8721,7 @@ let tempActions = [
             { name: 'VNK2_Fb', text: '0' },
             { name: 'VNK2_Fr', text: '0' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -8909,7 +8985,7 @@ let tempActions = [
             { name: 'VNK3_status_1', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_1', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_1', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#ada3b0' },
             { name: 'VNK1_status_1_fon', color: '#ada3b0' },
             { name: 'VNK3_status_2', text: 'Цикл' },
@@ -10071,7 +10147,7 @@ let tempActions = [
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -10438,7 +10514,7 @@ let tempActions = [
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -11872,7 +11948,7 @@ let tempActions = [
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -13601,7 +13677,7 @@ let tempActions = [
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -15126,7 +15202,7 @@ let tempActions = [
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -17477,7 +17553,7 @@ let tempActions = [
             { name: 'VNK3_status_1', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_1', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_1', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#ada3b0' },
             { name: 'VNK1_status_1_fon', color: '#ada3b0' },
             { name: 'VNK3_status_2', text: 'Цикл' },
@@ -18256,7 +18332,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_81', color: '#BD0606' },
+            { name: 'kl_81', color: '#ff1e00' },
           ]
         }
       },
@@ -18274,7 +18350,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_81', color: '#BD0606' },
+            { name: 'kl_81', color: '#ff1e00' },
           ]
         }
       },
@@ -18292,7 +18368,7 @@ let tempActions = [
       action: {
         window2D: {
           elements: [
-            { name: 'kl_81', color: '#BD0606' },
+            { name: 'kl_81', color: '#ff1e00' },
           ]
         }
       },
@@ -18366,7 +18442,7 @@ let tempActions = [
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -18466,7 +18542,7 @@ let tempActions = [
       },
       startTime: timeDiff + 513.1,
     },
-    ////--------------------------------76----------------------------------------//73//-new \
+    ////--------------------------------76----------------------------------------/
     {
       text: 'Открыть сбросной клапан 723',
       sender: 'Система',
@@ -18576,7 +18652,7 @@ let tempActions = [
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -19367,7 +19443,7 @@ let tempActions = [
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -19761,7 +19837,7 @@ let tempActions = [
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -20600,7 +20676,7 @@ let tempActions = [
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
-            { name: 'VNK3_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#BD0102' },
             { name: 'VNK1_status_1_fon', color: '#BD0102' },
             { name: 'VNK3_status_1_3', text: 'Цикл' },
@@ -20790,7 +20866,7 @@ let tempActions = [
             { name: 'radar 1', text: '1.51' }, // 
             { name: 'radar 2', text: '1.79' }, // 
             { name: 'mexan', text: '1.40' }, // 
-            { name: 'bzu_mex.zond na huxte', color: '#06FF06' }, //  зеленый квадрат Мех.зонд на шихт
+            { name: 'mex.zond na huxte', color: '#06FF06' }, //  зеленый квадрат Мех.зонд на шихт
             { name: 'do zapuska mexan min', text: '0' }, // 
             { name: 'do zapuska mexan max', text: '0' }, // 
             { name: 'bg_vRabote', color: '#2B2A29' }, // в работе
@@ -23565,10 +23641,10 @@ let tempActions = [
             { name: 'B2_2', color: '#BFBFBF', stroke: '#6B6B6B' },
             { name: 'B2_1', color: '#9E9E9E', stroke: '#6B6B6B' },
             { name: 'klOF2_proc', text: '0' },
-            { name: '0F2_stripe_0', opacity: '1' },
+            { name: '0F2_stripe_0', opacity: '0' },
             { name: '0F2_stripe_1', opacity: '0' },
             { name: '0F2_stripe_2', opacity: '0' },
-            { name: '0F2_stripe_3', opacity: '0' },
+            { name: '0F2_stripe_3', opacity: '1' },
             { name: 'circle_0F2', opacity: '0' },
             { name: 'kl0312_proc', text: '100' },
             { name: 'kl0331_proc', text: '0' },
@@ -23717,701 +23793,1035 @@ let tempActions = [
     },
     /**/
   ],
-  // 2 scenario
-  [
-    /*
-    {
-      text: 'Сообщить о намеченном пуске доменной печи.',
-      sender: 'Система',
-      audio: 'tts-45',
-      lifeTime: '11:50:00',
-          startTime: timeDiff + 2,
-    },
-    ////--------------------------------0----------------------------------------
-    {
-      scenarioText: 'Нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС».',
-      sender: 'Система',
-      multi: [  //  activeMeshsToArr
-        {
-          text: 'Сейчас будем раздувать доменную печь №6.',
-          sender: 'Газовщик',
-          action: {
-            target3D: 'PhoneButton001',
-          },
-          audio: 'tts-vo59',
+    // 2 scenario
+    [
+      // #region qs/qsa
+      /*
+      ////-----------------------------------27
+      {
+        chapterText: 'Повышение давления ГД до 0,6-0,8 кгс/см²',
+        text: 'Делаем 0,7.',
+        sender: 'Мастер печи',
+        audio: 'tts-vo69',
+        startTime: timeDiff + 3,
+      },
+      {
+        action: {
+          target3D: 'ButtonHightlight_046',
         },
-        {
-          text: 'Сейчас будем раздувать доменную печь №6.',
-          sender: 'Газовщик',
-          action: {
-            target3D: 'PhoneButton006',
-          },
-          audio: 'tts-vo59',
+        startTime: timeDiff + 6,
+        human: true,
+      },
+      {
+        text: 'Делаю 0,7.',
+        sender: 'Газовщик',
+        audio: 'tts-vo70',
+        startTime: timeDiff + 7,
+      },
+      {
+        action: {
+          target3D: 'Lamp_034',
+          material: 'DonorLamp_off',
         },
-        {
-          text: 'Сейчас будем раздувать доменную печь №6.',
-          sender: 'Газовщик',
-          action: {
-            target3D: 'PhoneButton017',
-          },
-          audio: 'tts-vo59',
+        startTime: timeDiff + 10,
+      },
+      ////-----------------------------------28
+      {
+        // scenarioText: 'Повысить давление.', // TODO какой то баг
+        text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 0,4 кгс/см².',
+        sender: 'Система',
+        audio: 'tts-53',
+        startTime: timeDiff + 11,
+      },     
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0.785 },
         },
-        {
-          text: 'Сейчас будем раздувать доменную печь №6.',
-          sender: 'Газовщик',
-          action: {
-            target3D: 'PhoneButton020',
+        duration: 0.15,
+        startTime: timeDiff + 12,
+        human: true,
+      },
+      {
+        action: {
+          target3D: 'Lamp_Red_020',
+          material: 'Unic_Lamp_Red_Off',
+        },
+        startTime: timeDiff + 12.1,
+      },
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0 },
+        },
+        duration: 0.15,
+        startTime: timeDiff + 13,
+        human: true,
+      },
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0.785 },
+        },
+        duration: 0.15,
+        startTime: timeDiff + 14,
+        human: true,
+      },
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0 },
+        },
+        duration: 0.15,
+        startTime: timeDiff + 15,
+        human: true,
+      },
+      // DP
+      {
+        action: {
+          window2D: {
+            elements: [
+              { name: 'H_snotr', text: '70' },
+              { name: 'H_progres_7', opacity: '1' },
+              { name: 'H_progres_19', opacity: '1' },
+              { name: 'H_progres_22', opacity: '1' },
+              { name: 'H_progres_33', opacity: '1' },
+              { name: 'H_progres_49', opacity: '1' },
+              { name: 'H_progres_56', opacity: '1' },
+              { name: 'H_progres_60', opacity: '1' },
+              { name: 'H_progres_67', opacity: '1' },
+              { name: 'H_progres_89', opacity: '0' },
+              { name: 'H_progres_100', opacity: '0' },
+              { name: 'P_2', text: '0.40' },
+            ]
+          }
+        },
+        startTime: timeDiff + 15.1,
+      },
+      {
+        action: {
+          target3D: 'tGorDut', 
+          color: 'green',
+          number: '1165.'
+        },
+        startTime: timeDiff + 15.101,
+      },
+      ////-----------------------------------29
+      {
+        text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
+        sender: 'Система',
+        audio: 'SoundSnortFurma',
+        startTime: timeDiff + 16,
+      },
+      {
+        multi: [
+          {
+            action: {
+              target2D: 'R_Snort',
+            },
           },
-          audio: 'tts-vo59',
-        }
-      ],
-          startTime: timeDiff + 6,
-      human: true,
-    },
-    ////--------------------------------1----------------------------------------
-    {
-      text: 'Снять печь с тяги.',
-      sender: 'Система',
-      audio: 'tts-46',
-      lifeTime: '12:00:00',
-          startTime: timeDiff + 10,
-    },
-    ////--------------------------------1.1----------------------------------------
-    {
-      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
-      sender: 'Система',
-      audio: 'radio_say',
-      action: {
-        target3D: 'ButtonHightlight_046', // Литейный фурменный поддоменник
+          {
+            action: {
+              target2D: 'R_Furm',
+            },
+          },
+        ],
+        startTime: timeDiff + 17,
+        human: true,
       },
-          startTime: timeDiff + 13,
-      human: true,
-    },
-    {
-      action: {
-        target3D: 'Lamp_034',
-        material: 'DonorLamp_on',
+      ////-----------------------------------30
+      {
+        // scenarioText: 'Установить БЗУ на автоматический режим.', // TODO какой то баг
+        text: 'Установить БЗУ на автоматический режим.',
+        sender: 'Система',
+        audio: 'tts--30',
+        startTime: timeDiff + 18,
       },
-          startTime: timeDiff + 14,
-    },
-    {
-      text: 'Печь с тяги снята.',
-      sender: 'Газовщик',
-      audio: 'tts-vo60',
-          startTime: timeDiff + 15,
-    },
-    {
-      action: {
-        target3D: 'Lamp_034',
-        material: 'DonorLamp_off',
+      {
+        action: { target3D: 'Rectangle071' },
+        startTime: timeDiff + 18.1,
+        human: true,
       },
-          startTime: timeDiff + 17,
-    },
-    ////--------------------------------1.2----------------------------------------
-    {
-      text: 'Открывайте шибера и делайте 0,3.',
-      audio: 'tts-vo61',
-      sender: 'Мастер печи',
-          startTime: timeDiff + 18,
-    },
-    {
-      scenarioText: 'Ответить мастеру по рации.',
-      sender: 'Система',
-      action: {
-        target3D: 'ButtonHightlight_046', // Литейный фурменный поддоменник
+      { action: { target3D: 'Rectangle071', material: 'ButtonLightOn' }, startTime: timeDiff + 18.5,},
+      { action: { target3D: 'Rectangle072', material: 'ButtonLightOff' }, startTime: timeDiff + 19,},
+      { action: { target3D: 'Rectangle070', material: 'ButtonLightOff' }, startTime: timeDiff + 19,},
+      { action: { target3D: 'Rectangle084', material: 'ButtonLightOff' }, startTime: timeDiff + 19,},
+  
+      { action: { target3D: 'Rectangle069', material: 'ButtonLightOn' }, startTime: timeDiff + 19,},
+      { action: { target3D: 'Rectangle114', material: 'ButtonLightOn' }, startTime: timeDiff + 19,},
+      { action: { target3D: 'Rectangle083', material: 'ButtonLightOn' }, startTime: timeDiff + 19,},
+      { action: { target3D: 'Rectangle104', material: 'ButtonLightOn' }, startTime: timeDiff + 19,},
+      { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '242.5' }, startTime: timeDiff + 19,},
+      { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '047.0' }, startTime: timeDiff + 19,},
+  
+      { action: { target3D: 'Rectangle069', material: 'ButtonLightOff' }, startTime: timeDiff + 20,},
+      { action: { target3D: 'Rectangle114', material: 'ButtonLightOff' }, startTime: timeDiff + 20,},
+      { action: { target3D: 'Rectangle083', material: 'ButtonLightOff' }, startTime: timeDiff + 20,},
+      { action: { target3D: 'Rectangle104', material: 'ButtonLightOff' }, startTime: timeDiff + 20,},
+  
+      { action: { target3D: 'Rectangle069', material: 'ButtonLightOn' }, startTime: timeDiff + 21,},
+      { action: { target3D: 'Rectangle114', material: 'ButtonLightOn' }, startTime: timeDiff + 21,},
+      { action: { target3D: 'Rectangle083', material: 'ButtonLightOn' }, startTime: timeDiff + 21,},
+      { action: { target3D: 'Rectangle104', material: 'ButtonLightOn' }, startTime: timeDiff + 21,},
+  
+      { action: { target3D: 'Rectangle069', material: 'ButtonLightOff' }, startTime: timeDiff + 22,},
+      { action: { target3D: 'Rectangle114', material: 'ButtonLightOff' }, startTime: timeDiff + 22,},
+      { action: { target3D: 'Rectangle083', material: 'ButtonLightOff' }, startTime: timeDiff + 22,},
+      { action: { target3D: 'Rectangle104', material: 'ButtonLightOff' }, startTime: timeDiff + 22,},
+      { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '277.5' }, startTime: timeDiff + 22,},
+      { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '046.6' }, startTime: timeDiff + 22,},
+  
+      { action: { target3D: 'Rectangle069', material: 'ButtonLightOn' }, startTime: timeDiff + 23,},
+      { action: { target3D: 'Rectangle114', material: 'ButtonLightOn' }, startTime: timeDiff + 23,},
+      { action: { target3D: 'Rectangle083', material: 'ButtonLightOn' }, startTime: timeDiff + 23,},
+      { action: { target3D: 'Rectangle104', material: 'ButtonLightOn' }, startTime: timeDiff + 23,},
+  
+      {
+        text: 'Сбросить сигнал тревоги.',
+        sender: 'Система',
+        audio: 'tts--30(1)',
+        startTime: timeDiff + 24,
       },
-          startTime: timeDiff + 23,
-      human: true,
-    },
-    {
-      action: {
-        target3D: 'Lamp_034',
-        material: 'DonorLamp_on',
+      {
+        action: { target3D: 'Rectangle053' },
+        startTime: timeDiff + 25,
+        human: true,
       },
-          startTime: timeDiff + 24,
-    },
-    {
-      text: 'Открываю шибера и делаю 0,3 кг.',
-      sender: 'Газовщик',
-      audio: 'tts-vo62',
-          startTime: timeDiff + 25,
-    },
-    ////--------------------------------1.3----------------------------------------
-    {
-      text: 'Установить ВНК №1 в положение «Индивидуальное дутье».',
-      sender: 'Система',
-      audio: 'tts-vo60',
-          startTime: timeDiff + 30,
-    },
-    {
-      scenarioText: 'Перевести клапан 110 в ручной режим.',
-      sender: 'Система',
-          startTime: timeDiff + 35,
-    },
-    //  Клапан 110
-    {
-      action: {
-        target2D: 'kl110',  
-        window2D: {
-          elements: [ 
-            { name: 'title_work_vn', text: 'Управление клапаном 110' },
-            { name: 'left_vn', color: '#ff1e00' },
-            { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_n_winVN', stroke: '#ff1e00' },
-            { name: 'circle_n_winVN', stroke: '#ff1e00' },
-            { name: 'status_control_vnk_text', text: 'Автоматический' },
-            { name: 'status_window_text', text: 'Закрыт' },
-            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+      { action: { target3D: 'Rectangle053', material: 'ButtonLightOn' }, startTime: timeDiff + 25.5, },
+      { action: { target3D: 'Rectangle055', material: 'ButtonLightOff' }, startTime: timeDiff + 26, },
+  
+      { action: { target3D: 'Rectangle066', material: 'ButtonLightOn' }, startTime: timeDiff + 26,},
+      { action: { target3D: 'Rectangle054', material: 'ButtonLightOn' }, startTime: timeDiff + 26,},
+      { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '178.6' }, startTime: timeDiff + 26,},
+      { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '046.6' }, startTime: timeDiff + 26,},
+  
+      { action: { target3D: 'Rectangle066', material: 'ButtonLightOff' }, startTime: timeDiff + 27,},
+      { action: { target3D: 'Rectangle054', material: 'ButtonLightOff' }, startTime: timeDiff + 27,},
+  
+      { action: { target3D: 'Rectangle066', material: 'ButtonLightOn' }, startTime: timeDiff + 28,},
+      { action: { target3D: 'Rectangle054', material: 'ButtonLightOn' }, startTime: timeDiff + 28,},
+  
+      { action: { target3D: 'Rectangle066', material: 'ButtonLightOff' }, startTime: timeDiff + 29,},
+      { action: { target3D: 'Rectangle054', material: 'ButtonLightOff' }, startTime: timeDiff + 29,},
+  
+      { action: { target3D: 'Rectangle066', material: 'ButtonLightOn' }, startTime: timeDiff + 30,},
+      { action: { target3D: 'Rectangle054', material: 'ButtonLightOn' }, startTime: timeDiff + 30,},
+      {
+        action: {
+          window2D: {
+            elements: [
+              // bzu
+              { name: 'ochistka sedel_P', text: '4.93' },
+              { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+              { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '31' },
+              { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+  
+              { name: 'B1_dp Bunker', text: '0.05' },
+              { name: 'B1_P compes', text: '0.00' },
+              { name: 'B1_vremy vygruski', text: '83' },
+              { name: 'B1_vremy vygruski raschoytnoe ', text: '105' },
+              { name: 'B1_vremy sbrosa P ', text: '4' },
+              { name: 'B1_vremy nabora P ', text: '2' },
+              { name: 'B1_ves s SHP', text: '93.0' },
+              { name: 'B1_vibratciya', text: '2' },
+  
+              { name: 'V linii P_B1', text: '202' }, // Б1
+              { name: 'V linii dP_B1', text: '225' },
+              { name: 'V sisteme vzveh_B1', text: '153' },
+              { name: 'V linii P_B2', text: '150' }, // Б2
+              { name: 'V linii dP_B2', text: '276' },
+              { name: 'V sisteme vzveh_B2', text: '165' },
+  
+              { name: 'rashody u davlenia v gazoprovode_P1', text: '0.04' },
+              { name: 'rashody u davlenia v gazoprovode_P2', text: '0.05' },
+              { name: 'rashody u davlenia v gazoprovode_P3', text: '0.05' },
+              { name: 'rashody u davlenia v gazoprovode_P4', text: '0.05' },
+              { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+              { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+              { name: 'rashody u davlenia v gazoprovode_F3', text: '130' },
+              { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+  
+              { name: 'stanciia', text: '8' },
+  
+              { name: 'ugol naklona_tekushiy', text: '34.5' },
+              { name: 'ugol naklona_zadanyi', text: '33.4' },
+  
+              { name: 'gradusow ugol', text: '251.5' },
+  
+              { name: 'prochent1', text: '4' }, // %
+              { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+              { name: 'zagr_ramka_l',  color: '#06FF06' }, // загр слева
+              // не хватает схемы 
+              { name: 'left_ellipse', color: '#644121' }, // K
+              { name: 'left_ellipse_text', text: 'Р' }, // K
+              { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+              { name: 'matrix 1 str 1_kgc', text: '0.01' }, // кгс/см
+              { name: 'matrix 1 str 1_T', text: '53.0' }, // T
+              { name: 'matrix 1 str 1_M', text: '47.7' }, // M3
+              // не хватает схемы ПУСТ
+              // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+              // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+              { name: 'HZ1', text: '1.4' }, // ШЗ
+              { name: 'left_vugr_rect', color: '#06FF06' },
+              { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+              { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+              { name: 'arrow_left', opacity: '0' }, // стрелка
+              { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+              { name: 'verx', text: '-0' }, // цифры сверху
+              { name: 'tr_3_str_1_', text: '5' }, // 
+              { name: 'tr_2_str_2_', text: '5' }, // 
+              { name: 'cir_t_2', color: '#5E5E5E' },
+              { name: 'dlina_porcii', text: '125' }, // длина порции
+              { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+              { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+              { name: 'matrix 1 str 14_kgc', text: '0.00' }, // kгс/см
+              { name: 'matrix 1 str 14_T', text: '14.5' }, // t
+              { name: 'matrix 1 str 14_M', text: '30.9' }, // м3
+              { name: 'pust_ramka_r', opacity: '0' }, // 
+              { name: 'r_pust', opacity: '0' }, // 
+              { name: 'HZ2', text: '1.4' }, // 
+              { name: 'prochent2', text: '0' }, // 
+              { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+              { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+              { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+              { name: 'leviy', color: '#ff1e00' }, 
+              { name: 'praviy', color: '#ff1e00' }, 
+              { name: 'pech_left_down_zaglushka', color: '#ff1e00' }, 
+              { name: 'Krasniy nijniy Poloska', color: '#ff1e00' }, 
+  
+              { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+              { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '31' }, // 
+              { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+  
+              { name: 'B2_Dp bunker', text: '0.04' }, // 
+              { name: 'B2_P compens', text: '0.06' }, // 
+              { name: 'B2_time vygruski', text: '96' }, // 
+              { name: 'B2_time vygruski raschyotnoe', text: '88' }, // 
+              { name: 'B2_time sbrosa P', text: '4' }, // 
+              { name: 'B2_time nabora P', text: '2' }, // 
+              { name: 'B2_ves s HP', text: '16.4' }, // 
+              { name: 'B2_vibratciya', text: '53' }, // 
+  
+              { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+              { name: 'counder podachi_za past smenu', text: '78' }, // 
+  
+              { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+  
+              { name: 'given_level', text: '0.90' }, // 
+              { name: 'tekushy_level', text: '2.84' }, // 
+  
+              { name: 'radar 1', text: '2.83' }, // 
+              { name: 'radar 2', text: '2.86' }, // 
+              { name: 'mexan', text: '2.86' }, // 
+              { name: 'do zapuska mexan min', text: '0' }, // 
+              { name: 'do zapuska mexan max', text: '0' }, // 
+  
+              { name: 'bg_vRabote', color: '#00FF00' }, // в работе
+              { name: 'v rabote', color: '#000' }, // в работе
+              { name: 'ismetir_ramki', color: '#EADCC2' }, // измерить
+  
+              { name: 'B1_nomerstr', text: '4' }, // 
+              { name: 'B2_nomerstr', text: '5' }, // 
+              { name: 'T3_nomerstr', text: '5' }, // 
+              { name: 'T2_nomerstr', text: '5' }, // 
+              { name: 'T1_nomerstr', text: '5' }, // 
+              { name: 'B1_Tip_text', text: 'Р' }, // 
+              { name: 'B2_Tip_text', text: 'К' }, // 
+              { name: 'T3_Tip_text', text: 'К' }, // 
+              { name: 'T2_Tip_text', text: 'К' }, // 
+              { name: 'T1_Tip_text', text: 'К' }, // 
+              { name: 'B1_Tip', color: '#860004' }, // 
+              { name: 'B2_Tip', color: '#008600' }, // 
+              { name: 'T2_Tip', color: '#008600' }, // 
+              { name: 'bzu_T2_color', color: '#008600' }, // 
+              { name: 'T1_Tip', color: '#008600' }, // 
+              { name: 'B1_ves', text: '93.0' }, // 
+              { name: 'B2_ves', text: '14.5' }, // 
+              { name: 'T3_ves', text: '16.4' }, // 
+              { name: 'T2_ves', text: '16.4' }, // 
+              { name: 'T1_ves', text: '16.4' }, // 
+  
+              { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+              { name: 'P_str2', opacity: '0' }, //
+              { name: 'na_conveer_s1_bukca', opacity: '0' }, //
+              { name: 'K_str1', color: '#860004' }, // 
+              { name: 'str1_down', text: 'Р' }, // 
+              { name: 'Str1_4', color: '#C7B295' }, // 
+              { name: 'Str1_8', color: '#00FF00' }, // 
+              { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+              { name: 'str51_down', text: 'К' }, // str 51 color
+            ]
+          }
+        },
+        startTime: timeDiff + 30,
+      },
+      ////-----------------------------------31
+      {
+        text: 'Проверка шагов управления.',
+        sender: 'Система',
+        audio: 'tts--31',
+        startTime: timeDiff + 31,
+      },
+      {
+        action: {
+          target2D: 'hagi upravleniy1',
+          window2D: {
+            elements: [ { name: 'shagUprav_bunkerNum', text: 'Бункер 1' }, ]
+          },
+        },
+        startTime: timeDiff + 32,
+        human: true,
+      },
+      {
+        action: { target2D: 'shagi_uprav_close_btn',},
+        startTime: timeDiff + 32.5,
+        human: true,
+      },
+      {
+        action: {
+          target2D: 'hagi upravleniy2',
+          window2D: {
+            elements: [ { name: 'shagUprav_bunkerNum', text: 'Бункер 2' }, ]
+          }, 
+          helper2D: [
+            { x: 57.9, y: 27.4, w: 1.7, h: 3.1, id: 'shagi_uprav_close_btn', },
+            { x: 53.65, y: 92.5, w: 4.9, h: 2.2, id: 'shagi_uprav_zakryt', },
           ]
         },
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 110 -> окно ВН ( ручной )
-        ]
+        startTime: timeDiff + 33,
+        human: true,
       },
-          startTime: timeDiff + 36,
-      human: true,
-    },
-    // окно ВН  // клик ручной
-    {
-      action: {
-        target2D: 'open_vn',
-        window2D: {
-          newPositionWindow: {  //  wind 2
-            x: 1756,
-            y: 770
-          },
-          elements: [
-            { name: 'title_open_vn', text: 'Ручной' },
-          ],
+      {
+        action: { target2D: 'shagi_uprav_close_btn',},
+        startTime: timeDiff + 33.5,
+        human: true,
+      },
+      ////-----------------------------------32
+      {
+        // scenarioText: 'Повысить давление.', // TODO какой то баг
+        text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 0,55 кгс/см².',
+        sender: 'Система',
+        audio: 'tts--32',
+        startTime: timeDiff + 34,
+      },
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0.785 },
         },
-        helper2D: [
-          { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
-          { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
-        ]
+        duration: 0.15,
+        startTime: timeDiff + 35,
+        human: true,
       },
-          startTime: timeDiff + 36.2,
-      human: true,
-    },
-    // маленькое окошко ОК
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          elements: [
-            { name: 'status_control_vnk_text', text: 'Ручной' },
-            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0 },
+        },
+        duration: 0.15,
+        startTime: timeDiff + 36,
+        human: true,
+      },
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0.785 },
+        },
+        duration: 0.15,
+        startTime: timeDiff + 37,
+        human: true,
+      },
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0 },
+        },
+        duration: 0.15,
+        startTime: timeDiff + 38,
+        human: true,
+      },
+      // DP
+      {
+        action: {
+          window2D: {
+            elements: [
+              { name: 'H_snotr', text: '56' },
+              { name: 'H_progres_7', opacity: '1' },
+              { name: 'H_progres_19', opacity: '1' },
+              { name: 'H_progres_22', opacity: '1' },
+              { name: 'H_progres_33', opacity: '1' },
+              { name: 'H_progres_49', opacity: '1' },
+              { name: 'H_progres_56', opacity: '1' },
+              { name: 'H_progres_60', opacity: '0' },
+              { name: 'H_progres_67', opacity: '0' },
+              { name: 'H_progres_89', opacity: '0' },
+              { name: 'H_progres_100', opacity: '0' },
+              { name: 'P_2', text: '0.55' },
+            ]
+          }
+        },
+        startTime: timeDiff + 38.1,
+      },
+      ////-----------------------------------33
+      {
+        text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
+        sender: 'Система',
+        audio: 'SoundSnortFurma',
+        startTime: timeDiff + 39,
+      },
+      {
+        multi: [
+          {
+            action: {
+              target2D: 'R_Snort',
+            },
+          },
+          {
+            action: {
+              target2D: 'R_Furm',
+            },
+          },
+        ],
+        startTime: timeDiff + 40,
+        human: true,
+      },
+      ////-----------------------------------34
+      {
+        // scenarioText: 'При необходимости открыть смесительно-предохранительный клапан (для поддержания заданной температуры горячего дутья).', // TODO какой то баг
+        text: 'Отрегулировать температуру дутья.',
+        sender: 'Система',
+        audio: 'tts-53',
+        startTime: timeDiff + 41,
+      },
+      */
+      // #endregion
+      ////-----------------------------------35
+      {
+        // scenarioText: 'При необходимости открыть смесительно-предохранительный клапан (для поддержания заданной температуры горячего дутья).', // TODO какой то баг
+        text: 'Открыть смесительно-предохранительный клапан 002.',
+        sender: 'Система',
+        audio: 'tts--35',
+        startTime: timeDiff + 44,
+      },
+      {
+        action: {
+          target2D: 'kl002_vnk_main',
+          window2D: {
+            elements: [
+              { name: 'title_work_vn', text: 'Управление клапаном 002' },
+              { name: 'status_control_vnk_text', text: 'Автоматический' },
+              { name: 'status_window_text', text: 'Закрыт' },
+              { name: 'skhema_sobrana', color: '#6DE90B' },
+              { name: 'block_open', color: '#6DE90B' },
+              { name: 'block_close', color: '#6DE90B' },
+              { name: 'left_vn', color: '#ff1e00' },
+              { name: 'right_vn', color: '#ff1e00' },
+              { name: 'circle_n_winVN', stroke: '#ff1e00' },
+              { name: 'circle_n_winVN', stroke: '#ff1e00' },
+  
+              { name: 'btn_auto_text', color: '#6E6E6E' },
+              { name: 'btn_auto_1', color: '#E6E6E6' },
+              { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              // { name: 'btn_auto_text', color: '#6E6E6E' },
+              // { name: 'btn_auto_1', color: '#E6E6E6' },
+              // { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_ruchnoy_text', color: '#000000' },
+              { name: 'btn_ruchnoy_1', color: '#ffffff', },
+              { name: 'btn_ruchnoy_2', color: '#ffffff', stroke: '#000000' },
+  
+              { name: 'btn_open_text', color: '#6E6E6E' },
+              { name: 'btn_open_1', color: '#E6E6E6' },
+              { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_close_text', color: '#6E6E6E' },
+              { name: 'btn_close_1', color: '#E6E6E6' },
+              { name: 'btn_close_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_stop_text', color: '#6E6E6E' },
+              { name: 'btn_stop_1', color: '#E6E6E6', stroke: '#6E6E6E' },
+              { name: 'btn_stop_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+              { name: 'btn_reset_1', color: '#E6E6E6' },
+              { name: 'btn_reset_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_baypas_vsekh_blokirovok_1', color: '#ffffff' },
+              { name: 'btn_baypas_vsekh_blokirovok_2', color: '#ffffff' },
+              { name: 'time_full_vnk_text', text: '25' },
+            ]
+          },
+          helper2D: [
+            { x: 94.6, y: 26.0, w: 1.5, h: 2.4, id: 'close_w1', },
+            { x: 87.2, y: 34.0, w: 4.0, h: 2.6, id: 'auto', },
+            { x: 91.5, y: 34.0, w: 4.0, h: 2.6, id: 'ruchnoi', },
+            { x: 87.2, y: 38.0, w: 4.0, h: 2.6, id: 'open_vn', },
+            { x: 91.5, y: 38.0, w: 4.0, h: 2.6, id: 'close_ventil', },
+            { x: 87.2, y: 41.0, w: 8.5, h: 2.9, id: 'stop', },
+            { x: 87.2, y: 46.2, w: 8.5, h: 2.6, id: 'sbros_oshibki', },
+            { x: 87.2, y: 51.45, w: 8.5, h: 2.6, id: 'baypas_blokirovok', }
           ]
         },
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-          { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 110 -> окно ВН ( Байпас всех блокировок )
-        ]
+        startTime: timeDiff + 45,
+        human: true,
       },
-          startTime: timeDiff + 36.4,
-      human: true,
-    },
-    ////////  -------
-    {
-      scenarioText: 'Нажать на «Байпас всех блокировок»',
-      sender: 'Система',
-          startTime: timeDiff + 36.8,
-    },
-    // окно ВН // Байпас всех блокировок
-    {
-      action: {
-        target2D: 'open_vn', 
-        window2D: {
-          newPositionWindow: {  //  wind 2 
-            x: 1728,
-            y: 930
+      {
+        action: {
+          target2D: 'ruchnoi',
+          window2D: {
+            newPositionWindow: { x: 1765, y: 350 },
+            elements: [
+              { name: 'title_open_vn', text: 'Ручной' },
+            ],
           },
-          elements: [
-            { name: 'title_open_vn', text: 'Байпас всех БЛОК' },
-          ]
-        }, 
-        helper2D: [
-          { x: 90.3, y: 96, w: 3.2, h: 2.5, id: 'close_vn' },  // нет
-          { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
-        ]
-      },
-          startTime: timeDiff + 37,
-      human: true,
-    },
-    // маленькое окошко ОК
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          newPositionWindow: {  //  wind 2 
-            x: 1741,
-            y: 930
-          },
-          elements: [],
-        },
-        helper2D: [ //// NE RABATOET TUT.
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
-          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
-        ]
-      },
-          startTime: timeDiff + 37.2,
-      human: true,
-    },
-    ////////  -------
-    {
-      scenarioText: 'Перевести клапан 110 в открытый режим.',
-      sender: 'Система',
-      action:{
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
-          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
-        ]
-      },
-          startTime: timeDiff + 37.3,
-    },
-    // окно ВН  // Открыть
-    {
-      action: {
-        target2D: 'open_vn',
-        window2D: {
-          newPositionWindow: {  //  wind 2 
-            x: 1692,
-            y: 810
-          },
-          elements: [
-            { name: 'title_open_vn', text: 'Открыть' },
-          ],
-        },
-        helper2D: [
-          { x: 88.5, y: 83.9, w: 3.2, h: 2.6, id: 'close_vn' },   // net
-          { x: 84.9, y: 83.9, w: 3.2, h: 2.6, id: 'open_vn1' },       // da
-        ]
-      },
-          startTime: timeDiff + 37.4,
-      human: true,
-    },
-    // маленькое окошко ОК
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          elements: [
-            { name: 'title_open_vn', text: 'Открыть' },
-          ],
-        },
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
-          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
-        ]
-      },
-          startTime: timeDiff + 37.6,
-      human: true,
-    },
-    {
-          startTime: timeDiff + 39, //  1
-    },{ 
-          startTime: timeDiff + 40, //  2
-    },{
-          startTime: timeDiff + 41, //  3
-    },{
-          startTime: timeDiff + 42, //  4
-    },{
-          startTime: timeDiff + 43, //  5
-    },{
-          startTime: timeDiff + 44, //  6
-    },{
-          startTime: timeDiff + 45, //  7
-    },{
-          startTime: timeDiff + 46, //  8
-    },{
-          startTime: timeDiff + 47, //  9
-    },{
-          startTime: timeDiff + 48, //  10  // Клапан мигает приблизительно 10 раз и после фиксируется.
-    },
-    ////////  -------
-    ////--------------------------------1.4----------------------------------------
-    {
-      scenarioText: 'Нажать на «Байпас всех блокировок» на клапане 118а.',
-      sender: 'Система',
-          startTime: timeDiff + 50,
-    },
-    {
-      action: {
-        target2D: 'close_w1',
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
-          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // ОТКРЫТЬ
-        ]
-      },
-          startTime: timeDiff + 50.2,
-      human: true,
-    },
-    //  Клапан 118a
-    {
-      action: {
-        target2D: 'kl118a',  
-        window2D: {
-          elements: [ 
-            { name: 'title_work_vn', text: 'Управление клапаном 118а' },
-            { name: 'left_vn', color: '#ff1e00' },
-            { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_n_winVN', stroke: '#ff1e00' },
-            { name: 'circle_n_winVN', stroke: '#ff1e00' },
-            { name: 'status_control_vnk_text', text: 'Автоматический' },
-            { name: 'status_window_text', text: 'Закрыт' },
-            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+          helper2D: [
+            { x: 92, y: 37.3, w: 3.2, h: 2.5, id: 'close_vn' },
+            { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
           ]
         },
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-          { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( Байпас всех блокировок )
-        ]
+        startTime: timeDiff + 45.1,
+        human: true,
       },
-          startTime: timeDiff + 51,
-      human: true,
-    },
-    // окно ВН // Байпас всех блокировок
-    {
-      action: {
-        target2D: 'open_vn', 
-        window2D: {
-          newPositionWindow: {  //  wind 2 
-            x: 1728,
-            y: 930
+      {
+        action: {
+          target2D: 'open_vn1',
+          window2D: {
+            elements: [
+              // { name: 'status_window_text', text: 'Открывается' },
+              { name: 'status_control_vnk_text', text: 'Ручной' },
+  
+              { name: 'btn_auto_text', color: '#000000' },
+              { name: 'btn_auto_1', color: '#ffffff' },
+              { name: 'btn_auto_2', color: '#ffffff', stroke: '#000000' },
+  
+              // { name: 'btn_auto_text', color: '#6E6E6E' },
+              // { name: 'btn_auto_1', color: '#E6E6E6' },
+              // { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_ruchnoy_text', color: '#6E6E6E' },
+              { name: 'btn_ruchnoy_1', color: '#E6E6E6', },
+              { name: 'btn_ruchnoy_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_open_text', color: '#000000' },
+              { name: 'btn_open_1', color: '#ffffff' },
+              { name: 'btn_open_2', color: '#ffffff', stroke: '#000000' },
+  
+              { name: 'btn_close_text', color: '#6E6E6E' },
+              { name: 'btn_close_1', color: '#E6E6E6' },
+              { name: 'btn_close_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_stop_text', color: '#000000' },
+              { name: 'btn_stop_1', color: '#ffffff', stroke: '#000000' },
+              { name: 'btn_stop_2', color: '#ffffff', stroke: '#000000' },
+  
+              { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+              { name: 'btn_reset_1', color: '#E6E6E6' },
+              { name: 'btn_reset_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+            ]
           },
-          elements: [
-            { name: 'title_open_vn', text: 'Байпас всех БЛОК' },
-          ]
-        }, 
-        helper2D: [
-          { x: 90.3, y: 96, w: 3.2, h: 2.5, id: 'close_vn' },  // нет
-          { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
-        ]
-      },
-          startTime: timeDiff + 51.2,
-      human: true,
-    },
-    // маленькое окошко ОК
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          newPositionWindow: {  //  wind 2 
-            x: 1741,
-            y: 930
-          },
-          elements: [],
         },
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( ручной )
-        ]
+        startTime: timeDiff + 45.2,
+        human: true,
       },
-          startTime: timeDiff + 51.4,
-      human: true,
-    },
-    ////////  -------
-    {
-      scenarioText: 'Перевести клапан 118а в ручной режим.',
-      sender: 'Система',
-      action:{
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( ручной )
-        ]
-      },
-          startTime: timeDiff + 52,
-    },
-    // окно ВН  // клик ручной
-    {
-      action: {
-        target2D: 'open_vn',
-        window2D: {
-          newPositionWindow: {  //  wind 2
-            x: 1756,
-            y: 770
+      {
+        action: {
+          target2D: 'open_vn',
+          window2D: {
+            newPositionWindow: { x: 1765, y: 350 },
+            elements: [
+              { name: 'title_open_vn', text: 'Открыть' },
+            ],
           },
-          elements: [
-            { name: 'title_open_vn', text: 'Ручной' },
-          ],
-        },
-        helper2D: [
-          { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
-          { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
-        ]
-      },
-          startTime: timeDiff + 52.2,
-      human: true,
-    },
-    // маленькое окошко ОК
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          elements: [
-            { name: 'status_control_vnk_text', text: 'Ручной' },
-            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+          helper2D: [
+            { x: 92, y: 37.3, w: 3.2, h: 2.5, id: 'close_vn' },
+            { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
           ]
         },
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-          { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( Байпас всех блокировок )
-        ]
+        startTime: timeDiff + 45.3,
+        human: true,
       },
-          startTime: timeDiff + 54.4,
-      human: true,
-    },
-    ////--------------------------------1.5---------------------------------------- 118
-    {
-      scenarioText: 'Аналогично п.4, только клапан 118',
-      sender: 'Система',
-      action:{
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-          { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118а -> окно ВН ( Байпас всех блокировок )
-        ]
+      {
+        action: {
+          target2D: 'open_vn1',
+          window2D: {
+            elements: [
+              { name: 'status_window_text', text: 'Открывается' },
+              { name: 'status_control_vnk_text', text: 'Ручной' },
+  
+              { name: 'btn_auto_text', color: '#000000' },
+              { name: 'btn_auto_1', color: '#ffffff' },
+              { name: 'btn_auto_2', color: '#ffffff', stroke: '#000000' },
+  
+              // { name: 'btn_auto_text', color: '#6E6E6E' },
+              // { name: 'btn_auto_1', color: '#E6E6E6' },
+              // { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_ruchnoy_text', color: '#6E6E6E' },
+              { name: 'btn_ruchnoy_1', color: '#E6E6E6', },
+              { name: 'btn_ruchnoy_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_open_text', color: '#6E6E6E' },
+              { name: 'btn_open_1', color: '#E6E6E6' },
+              { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_close_text', color: '#000000' },
+              { name: 'btn_close_1', color: '#ffffff' },
+              { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
+  
+              { name: 'btn_stop_text', color: '#000000' },
+              { name: 'btn_stop_1', color: '#ffffff', stroke: '#000000' },
+              { name: 'btn_stop_2', color: '#ffffff', stroke: '#000000' },
+  
+              { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+              { name: 'btn_reset_1', color: '#E6E6E6' },
+              { name: 'btn_reset_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+            ]
+          },
+        },
+        startTime: timeDiff + 45.4,
+        human: true,
       },
-          startTime: timeDiff + 55,
-    },
-    {
-      action: {
-        target2D: 'close_w1',
+      {
+        action: {
+          window2D: {
+            elements: [
+              { name: 'left_vn', color: '#06FF06' },
+              { name: 'right_vn', color: '#06FF06' },
+              { name: 'circle_n_winVN', stroke: '#06FF06' },
+              { name: 'circle_n_winVN', stroke: '#06FF06' },
+              { name: 'kl_002', color: '#06FF06' },
+              { name: 'circle_kl002', stroke: '#06FF06' },
+            ]
+          }
+        },
+        startTime: timeDiff + 46,
       },
-          startTime: timeDiff + 55.2,
-      human: true,
-    },
-    ////////  -------
-    //  Клапан 118  //kl118
-    {
-      action: {
-        target2D: 'kl118',  
-        window2D: {
-          elements: [ 
-            { name: 'title_work_vn', text: 'Управление клапаном 118' },
-            { name: 'left_vn', color: '#ff1e00' },
-            { name: 'right_vn', color: '#ff1e00' },
-            { name: 'circle_n_winVN', stroke: '#ff1e00' },
-            { name: 'circle_n_winVN', stroke: '#ff1e00' },
-            { name: 'status_control_vnk_text', text: 'Автоматический' },
-            { name: 'status_window_text', text: 'Закрыт' },
-            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
+      {
+        action: {
+          window2D: {
+            elements: [
+              { name: 'left_vn', color: '#8F8F8F' },
+              { name: 'right_vn', color: '#8F8F8F' },
+              { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+              { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+              { name: 'kl_002', color: '#8F8F8F' },
+              { name: 'circle_kl002', stroke: '#8F8F8F' },
+            ]
+          }
+        },
+        startTime: timeDiff + 47,
+      },
+      {
+        action: {
+          window2D: {
+            elements: [
+              { name: 'left_vn', color: '#06FF06' },
+              { name: 'right_vn', color: '#06FF06' },
+              { name: 'circle_n_winVN', stroke: '#06FF06' },
+              { name: 'circle_n_winVN', stroke: '#06FF06' },
+              { name: 'kl_002', color: '#06FF06' },
+              { name: 'circle_kl002', stroke: '#06FF06' },
+            ]
+          }
+        },
+        startTime: timeDiff + 48,
+      },
+      {
+        action: {
+          window2D: {
+            elements: [
+              { name: 'left_vn', color: '#8F8F8F' },
+              { name: 'right_vn', color: '#8F8F8F' },
+              { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+              { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+              { name: 'kl_002', color: '#8F8F8F' },
+              { name: 'circle_kl002', stroke: '#8F8F8F' },
+            ]
+          }
+        },
+        startTime: timeDiff + 49,
+      },
+      {
+        action: {
+          window2D: {
+            elements: [
+              { name: 'left_vn', color: '#06FF06' },
+              { name: 'right_vn', color: '#06FF06' },
+              { name: 'circle_n_winVN', stroke: '#06FF06' },
+              { name: 'circle_n_winVN', stroke: '#06FF06' },
+              { name: 'kl_002', color: '#06FF06' },
+              { name: 'circle_kl002', stroke: '#06FF06' },
+              { name: 'status_window_text', text: 'Открыт' },
+            ]
+          }
+        },
+        startTime: timeDiff + 50,
+      },
+      {
+        action: {
+          target2D: 'auto',
+          window2D: {
+            newPositionWindow: { x: 1765, y: 350 },
+            elements: [
+              { name: 'title_open_vn', text: 'Авто' },
+            ],
+          },
+          helper2D: [
+            { x: 92, y: 37.3, w: 3.2, h: 2.5, id: 'close_vn' },
+            { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
           ]
         },
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 118 -> окно ВН ( ручной )
-        ]
+        startTime: timeDiff + 50.1,
+        human: true,
       },
-          startTime: timeDiff + 55.4,
-      human: true,
-    },
-    // окно ВН  // клик ручной
-    {
-      action: {
-        target2D: 'open_vn',
-        window2D: {
-          newPositionWindow: {  //  wind 2
-            x: 1756,
-            y: 770
+      {
+        action: {
+          target2D: 'open_vn1',
+          window2D: {
+            elements: [
+              // { name: 'status_window_text', text: 'Открывается' },
+              { name: 'status_control_vnk_text', text: 'Автоматический' },
+  
+              { name: 'btn_auto_text', color: '#6E6E6E' },
+              { name: 'btn_auto_1', color: '#E6E6E6' },
+              { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              // { name: 'btn_auto_text', color: '#6E6E6E' },
+              // { name: 'btn_auto_1', color: '#E6E6E6' },
+              // { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_ruchnoy_text', color: '#000000' },
+              { name: 'btn_ruchnoy_1', color: '#ffffff', },
+              { name: 'btn_ruchnoy_2', color: '#ffffff', stroke: '#000000' },
+  
+              { name: 'btn_open_text', color: '#6E6E6E' },
+              { name: 'btn_open_1', color: '#E6E6E6' },
+              { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_close_text', color: '#000000' },
+              { name: 'btn_close_1', color: '#ffffff' },
+              { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
+  
+              { name: 'btn_stop_text', color: '#6E6E6E' },
+              { name: 'btn_stop_1', color: '#E6E6E6', stroke: '#6E6E6E' },
+              { name: 'btn_stop_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+              { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+              { name: 'btn_reset_1', color: '#E6E6E6' },
+              { name: 'btn_reset_2', color: '#E6E6E6', stroke: '#6E6E6E' },
+  
+  
+            ]
           },
-          elements: [
-            { name: 'title_open_vn', text: 'Ручной' },
-          ],
         },
-        helper2D: [
-          { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
-          { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
-        ]
+        startTime: timeDiff + 50.2,
+        human: true,
       },
-          startTime: timeDiff + 55.6,
-      human: true,
-    },
-    // маленькое окошко ОК
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          elements: [
-            { name: 'status_control_vnk_text', text: 'Ручной' },
-            // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
-          ]
-        },
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-          { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118 -> окно ВН ( Байпас всех блокировок )
-        ]
+      {
+        action: { target2D: 'close_w1', },
+        startTime: timeDiff + 50.3,
+        human: true,
       },
-          startTime: timeDiff + 55.8,
-      human: true,
-    },
-    ////////  -------
-    // окно ВН // Байпас всех блокировок
-    {
-      action: {
-        target2D: 'open_vn', 
-        window2D: {
-          newPositionWindow: {  //  wind 2 
-            x: 1728,
-            y: 930
+      {
+        action: {
+          window2D: {
+            elements: [
+              { name: '7TI_41', text: '17' },
+              { name: '7PI_12', text: '10,86' },
+              // { name: 'ramka_7PI_12', color: '#ffff0f' },
+              { name: '7FI_05', text: '0' },
+              { name: '7TI_40', text: '16' },
+              { name: '7PI_11', text: '0,00' },
+              { name: '7FI_04', text: '0' },
+              { name: '5QI_01_01', text: '21' },
+              { name: '5QI_01_02', text: '42' },
+              { name: 'PV2', text: '10,85' },
+              { name: 'SP2', text: '9,00' },
+              { name: 'PV2_1', text: '15,93' },
+              { name: 'M_t1_4', text: 'Работа', color: '#06FF06' },
+              { name: 'PV3', text: '5,00' },
+              { name: 'SP3', text: '0,00' },
+              { name: 'PV3_1', text: '0,00' },
+              { name: 'M_t2_4', text: 'Соглас', color: '#000' },
+              { name: 'PV4', text: '0,76' },
+              { name: 'SP4', text: '0,00' },
+              { name: 'PV4_1', text: '0,00' },
+              { name: 'M_t3_4', text: 'Работа', color: '#06FF06' },
+              { name: 'kl053_proc', text: '16' },
+              { name: 'kl051_proc', text: '0' },
+              { name: 'kl052_proc', text: '0' },
+              { name: 'kl035_proc', text: '86' },
+              { name: 'klOF3_proc', text: '0' },
+              { name: 'klOF2_proc', text: '0' },
+              { name: 'klOF1_proc', text: '15' },
+              { name: 'kl0333_proc', text: '0' },
+              { name: 'kl0313_proc', text: '100' },
+              { name: 'kl0332_proc', text: '0' },
+              { name: 'kl0312_proc', text: '100' },
+              { name: 'kl0331_proc', text: '100' },
+              { name: 'kl0311_proc', text: '100' },
+              { name: '7QI_01', text: '-999,00' },
+              { name: 'kl038_proc', text: '0' },
+              { name: 'kl028_proc', text: '0' },
+              { name: 'kl020_proc', text: '100' },
+              { name: 'kl036v_proc', text: '0' },
+              { name: 'kl036b_proc', text: '0' },
+              { name: 'kl048_proc', text: '0' },
+              { name: 'kl029_proc', text: '100' },
+              { name: 'kl004_proc', text: '100' },
+              { name: 'PI_16_proc', text: '0,40' },
+              { name: 'ramka_PI_16', color: '#ff1e00' },
+              { name: '9TI_44_proc', text: '25' },
+              { name: 'kl037_proc', text: '0' },
+              { name: 'kl007_proc', text: '0' },
+              { name: 'kl025_proc', text: '100' },
+              { name: '8QI_05_01', text: '0,03' },
+              { name: '8QI_05_02', text: '1,92' },
+              { name: '8QI_05_04', text: '2,76' },
+              { name: '7PI_13', text: '10,86' },
+              { name: '7PI_42', text: '47' },
+              // { name: 'PV1', text: '1209,70' },
+              // { name: 'SP1', text: '1210,00' },
+              // { name: 'PV1_1', text: '31,12' },
+              // { name: 'M_t4_4', text: 'Работа', color: '#06FF06' },
+              { name: 'vnk3_fire', opacity: '0' }, // стрелка
+              { name: 'vnk_3', color: '#878881' }, // задник стрелки
+              { name: 'Tkyp_3', text: '1118' },
+              { name: 'VNK3_status_1', text: 'Циклический' },
+              { name: 'VNK3_status_2', text: 'Отделение' },
+              { name: 'vnk3_stripes', color: '#878881' },
+              { name: 'VNK3_Fr', text: '0' },
+              { name: 'VNK3_Fb', text: '0' },
+              { name: 'Tdym_3', text: '132' },
+              { name: 'kl001_proc', text: '0' },
+              { name: 'kl001a_proc', text: '0' },
+              { name: 'vnk2_fire', opacity: '1' }, // стрелка
+              { name: 'vnk_2', color: '#878881' }, // задник стрелки
+              { name: 'Tkyp_2', text: '1108' },
+              { name: 'VNK2_status_1', text: 'Циклический' },
+              { name: 'VNK2_status_2', text: 'Отделение' },
+              { name: 'vnk2_stripes', color: '#878881' },
+              { name: 'VNK2_Fr', text: '0' },
+              { name: 'VNK2_Fb', text: '0' },
+              { name: 'Tdym_2', text: '170' },
+              { name: '5PI_08', text: '53' },
+              { name: 'TI_36', text: '18' },
+              { name: 'FI_03', text: '1130' },
+              { name: 'vnk1_fire', opacity: '0' }, // стрелка
+              { name: 'vnk_1', color: '#000BF6' }, // задник стрелки
+              { name: 'Tkyp_1', text: '1140' },
+              { name: 'VNK1_status_1', text: 'Циклический' },
+              { name: 'VNK1_status_2', text: 'Дутье' },
+              { name: 'vnk1_stripes', color: '#000BF6' },
+              { name: 'VNK1_Fr', text: '0' },
+              { name: 'VNK1_Fb', text: '0' },
+              { name: 'Tdym_1', text: '187' },
+              // { name: 'vybor_signala', text: '1210' },
+              // { name: '5TI_21', text: '1200' },
+              // { name: '5TI_22', text: '1210' },
+              // { name: 'PI_09', text: '546,64' },
+            ],
           },
-          elements: [
-            { name: 'title_open_vn', text: 'Байпас всех БЛОК' },
-          ]
-        }, 
-        helper2D: [
-          { x: 90.3, y: 96, w: 3.2, h: 2.5, id: 'close_vn' },  // нет
-          { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
-        ]
+        },
+        startTime: timeDiff + 50.4,
       },
-          startTime: timeDiff + 56.0,
-      human: true,
-    },
-    // маленькое окошко ОК
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          newPositionWindow: {  //  wind 2 
-            x: 1741,
-            y: 930
+      ////-----------------------------------35
+      {
+        // scenarioText: 'Повысить давление.', // TODO какой то баг
+        text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 0,7 кгс/см².',
+        sender: 'Система',
+        audio: 'tts--32',
+        startTime: timeDiff + 51,
+      },
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0.785 },
+        },
+        duration: 0.15,
+        startTime: timeDiff + 52,
+        human: true,
+      },
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0 },
+        },
+        duration: 0.15,
+        startTime: timeDiff + 53,
+        human: true,
+      },
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0.785 },
+        },
+        duration: 0.15,
+        startTime: timeDiff + 54,
+        human: true,
+      },
+      {
+        action: {
+          target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
+          rotation: { y: 0 },
+        },
+        duration: 0.15,
+        startTime: timeDiff + 55,
+        human: true,
+      },
+      // DP
+      {
+        action: {
+          window2D: {
+            elements: [
+              { name: 'H_snotr', text: '56' },
+              { name: 'H_progres_7', opacity: '1' },
+              { name: 'H_progres_19', opacity: '1' },
+              { name: 'H_progres_22', opacity: '1' },
+              { name: 'H_progres_33', opacity: '1' },
+              { name: 'H_progres_49', opacity: '1' },
+              { name: 'H_progres_56', opacity: '1' },
+              { name: 'H_progres_60', opacity: '0' },
+              { name: 'H_progres_67', opacity: '0' },
+              { name: 'H_progres_89', opacity: '0' },
+              { name: 'H_progres_100', opacity: '0' },
+              { name: 'P_2', text: '0.55' },
+            ]
+          }
+        },
+        startTime: timeDiff + 55.1,
+      },
+      ////-----------------------------------36
+      {
+        text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
+        sender: 'Система',
+        audio: 'SoundSnortFurma',
+        startTime: timeDiff + 56,
+      },
+      {
+        multi: [
+          {
+            action: {
+              target2D: 'R_Snort',
+            },
           },
-          elements: [],
-        },
-        helper2D: [ 
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
-          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 118 -> окно ВН ( ОТКРЫТЬ )
-        ]
-      },
-          startTime: timeDiff + 56.2,
-      human: true,
-    },
-    ////////  -------
-    {
-      action: {
-        target2D: 'open_vn',
-        window2D: {
-          newPositionWindow: {  //  wind 2 
-            x: 1692,
-            y: 810
+          {
+            action: {
+              target2D: 'R_Furm',
+            },
           },
-          elements: [
-            { name: 'title_open_vn', text: 'Открыть' },
-          ],
-        },
-        helper2D: [
-          { x: 88.5, y: 83.9, w: 3.2, h: 2.6, id: 'close_vn' },   // net
-          { x: 84.9, y: 83.9, w: 3.2, h: 2.6, id: 'open_vn1' },   // da
-        ]
+        ],
+        startTime: timeDiff + 57,
+        human: true,
       },
-          startTime: timeDiff + 56.6,
-      human: true,
-    },
-    // маленькое окошко ОК
-    {
-      action: {
-        target2D: 'open_vn1',
-        window2D: {
-          elements: [
-            { name: 'title_open_vn', text: 'Открыть' },
-          ],
-        },
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
-          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
-        ]
-      },
-          startTime: timeDiff + 56.8,
-      human: true,
-    },
-    ////////  -------
-    ////--------------------------------1.6---------------------------------------- 119
-    {
-      scenarioText: 'Аналогично п.4, только клапан 119',
-      sender: 'Система',
-      action:{
-        helper2D: [
-          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' }, // КРЕСТИК
-          { x: 82.8, y: 80.2, w: 4, h: 2.6, id: 'open_vn' },      // клапан 110 -> окно ВН ( ОТКРЫТЬ )
-        ]
-      },
-          startTime: timeDiff + 57,
-    },
-    {
-      action: {
-        target2D: 'close_w1',
-      },
-          startTime: timeDiff + 57.2,
-      human: true,
-    },
-    ////////  -------
-*/
-    /*
-         // клапан 119
-         {
-           action: {
-             target2D: 'kl119',  
-             window2D: {
-               elements: [ 
-                 { name: 'title_work_vn', text: 'Управление клапаном 119' },
-                 { name: 'left_vn', color: '#ff1e00' },
-                 { name: 'right_vn', color: '#ff1e00' },
-                 { name: 'circle_n_winVN', stroke: '#ff1e00' },
-                 { name: 'circle_n_winVN', stroke: '#ff1e00' },
-                 { name: 'status_control_vnk_text', text: 'Автоматический' },
-                 { name: 'status_window_text', text: 'Закрыт' },
-                 // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
-               ]
-             },
-             helper2D: [
-               { x: 83.10, y: 44.15, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-               { x: 80.10, y: 52.00, w: 4.0, h: 2.6, id: 'open_vn' },   // клапан 119 -> окно ВН ( ручной )
-             ]
-           },
-           startTime: timeDiff + 57.4,
-           human: true,
-         },
-         // окно ВН  // клик ручной
-         {
-           action: {
-             target2D: 'open_vn',
-             window2D: {
-               newPositionWindow: {  //  wind 2
-                 x: 1756,
-                 y: 770
-               },
-               elements: [
-                 { name: 'title_open_vn', text: 'Ручной' },
-               ],
-             },
-             helper2D: [
-               { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
-               { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
-             ]
-           },
-           startTime: timeDiff + 57.6,
-           human: true,
-         },
-         // маленькое окошко ОК
-         {
-           action: {
-             target2D: 'open_vn1',
-             window2D: {
-               elements: [
-                 { name: 'status_control_vnk_text', text: 'Ручной' },
-                 // ДОДЕЛАТЬ // СТРАННО МЕНЯЕТСЯ 
-               ]
-             },
-             helper2D: [
-               { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1' },  // КРЕСТИК
-               { x: 82.70, y: 93.80, w: 8.6, h: 2.6, id: 'open_vn' },   // клапан 118 -> окно ВН ( Байпас всех блокировок )
-             ]
-           },
-           startTime: timeDiff + 57.8,
-           human: true,
-         },
-         ////////  -------
-     */
-  ]
+      ////-----------------------------------34
+  
+      // ЗАГЛУШКА ПРОСТО
+      { action: { window2D: { elements: [] } }, startTime: timeDiff + 15000.1, },
+  
+    ]
+  
 ]
 // Массив исходных состояний
 let startState2D = [
@@ -24492,12 +24902,12 @@ let startState2D = [
     { name: 'vnk_1', color: '#B50000' },
     { name: 'kl_0332', color: '#06FF06' },
     { name: 'kl0332_proc', text: '100' },
-    { name: 'kl_0331', color: '#FF1E00' },
+    { name: 'kl_0331', color: '#ff1e00' },
     { name: 'kl0331_proc', text: '0' },
     { name: 'vnk1_stripes', color: '#B50000' },
     { name: 'vnk3_stripes', color: '#0033FF' },
     { name: 'circle_kl0332', stroke: '#06FF06' },
-    { name: 'circle_kl0331', stroke: '#FF1E00' },
+    { name: 'circle_kl0331', stroke: '#ff1e00' },
     { name: 'vnk3_fire', opacity: 0 },
     // { name: '0F2_stripe', stroke: '#000000'},
     // { name: '0F1_stripe', stroke: '#FF0000'},
@@ -24536,6 +24946,14 @@ let startState2D = [
     { name: 'circle_kl007', stroke: '#06FF06' },
     { name: 'circle_kl028', stroke: '#06FF06' },
     { name: 'circle_053', stroke: '#B0B0B0' },
+    { name: 'circle_dutyo_VNK3', stroke: '#04FF00' },
+    { name: 'circle_nagrev_VNK3', stroke: '#000600' },
+    { name: 'circle_kl_0502', stroke: '#ff1e00' },
+    { name: 'circle_051', stroke: '#ff1e00' },
+    { name: 'circle_052', stroke: '#ff1e00' },
+    { name: 'circle_0501', stroke: '#ff1e00' },
+    { name: 'circle_001', stroke: '#ff1e00' },
+    { name: 'circle_kl036b', stroke: '#ff1e00' },
     // BVNK_VNK1
     { name: 'VNK1_status_2', text: 'Нагрев-Отдел.' },
     { name: '1FI_01', text: '109505' },
@@ -24577,8 +24995,8 @@ let startState2D = [
     { name: 'kl_111', color: '#06FF06' },
     { name: 'kl_112', color: '#06FF06' },
     { name: '1PS_05', color: '#06FF06' },
-    { name: 'kl_118', color: '#FF1E00' },
-    { name: 'kl_119', color: '#FF1E00' },
+    { name: 'kl_118', color: '#ff1e00' },
+    { name: 'kl_119', color: '#ff1e00' },
     { name: 'circle_dutyo', color: '#000000' },
     { name: 'circle_nagrev', color: '#06FF06' },
     { name: '115_stripe', color: '#000000' },
@@ -24705,9 +25123,9 @@ let startState2D = [
     { name: 'radar3_text', text: '-1,67' },
     { name: 'T_hol_dyt', text: '79' },
     { name: 'VNK1_status_2', text: 'Нагрев' },
-    { name: 'VNK3_status_1_fon', color: '#0033FF' },
-    { name: 'VNK2_status_1_fon', color: '#0033FF' },
-    { name: 'VNK1_status_1_fon', color: '#0033FF' },
+    { name: 'VNK3_status_1_fon_DP', color: '#0033FF' },
+    { name: 'VNK2_status_1_fon_DP', color: '#ff1e00' },
+    { name: 'VNK1_status_1_fon_DP', color: '#ff1e00' },
     { name: 'Fvozdyh_3', text: '0' },
     { name: 'Fgaz_3', text: '0' },
     { name: 'Fvozdyh_2', text: '115641' },
@@ -24765,13 +25183,14 @@ let startState2D = [
     { name: 'vipusk_L3', stroke: '#191919' },
     { name: 'L1', opacity: 0 },
     { name: 'L2', text: '1474' },
-    { name: 'L3', opacity: 0 },
+    { name: 'L3', opacity: 1 },
     { name: 'L4', opacity: 0 },
     { name: 'L2_elem', color: '#CCD056' },
     { name: 'N2', text: '42,3' },
     { name: 'H2_tryb', text: '9,0' },
     { name: 'W_sinij_hol_dyt', text: '7,2' },
     { name: 'O_hol_dyt', text: '29,9' },
+    { name: 'EVD1_O_fon', color: '#FFFFFF' },
     // vnk_spvg
     { name: '6TI_39_1', text: '41' },
     { name: '6TI_38_1', text: '37' },
@@ -24831,6 +25250,11 @@ let startState2D = [
     { name: '9TI_30', text: '22' },
     { name: '9TI_44', text: '27' },
     { name: 'PI_16', text: '10,25' },
+    { name: 'circle_kl0333', stroke: '#06FF06' },
+    { name: 'circle_kl004', stroke: '#06FF06' },
+    { name: 'circle_kl025', stroke: '#06FF06' },
+    { name: 'circle_kl030', stroke: '#06FF06' },
+    { name: 'circle_kl048', stroke: '#ff1e00' },
     // { name: 'kl_028', color: '#06FF06' },
   ]
 ]
@@ -25158,12 +25582,51 @@ let startState3D = [
     { name: 'smesKlapBRU_1_r', number: '000.8', color: 'red' },
     { name: 'smesKlapBRU_2_r', number: '002.1', color: 'red' },
     { name: 'obshKlapVozGorBRU_r', number: '079.0', color: 'red' },
-    // Второй щит
+    // Второй щит BZU
     { id: '6ddce191-0d83-43c2-af7e-ebdaddf5ab37', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор бункера
     { id: '53ce370c-847a-41d5-ad4b-8acfa136f7fd', rotation: { y: (90 * Math.PI) / 180 } }, // Выбор режима
     { id: '9c84c3c4-e56b-4c5d-ab4d-dd1e3dd93833', rotation: { y: (45 * Math.PI) / 180 } }, // Выбор уровнемера
+    // { id: 'c148f4e6-c6e9-4ecc-b6a8-ab22ac6bea77', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // положение на колошнике
+    // { id: 'd682e192-5c28-41a3-bc3b-e16b17d03989', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // обойти остановку конвейера
+    // { id: '3d6bbe77-1dea-4e8a-8dd8-238707bd6611', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // выбор режима АВТОМАТИЧ ПУСК
+    { id: 'ca347a9f-4ba3-427f-a670-87edac8c1b6f', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // выбор режима АВТОМАТИЧ СТОП
+    // { id: '4ef3ebb3-38b4-417b-b53c-29728435c435', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // клапан сброса ЗАКРЫТ (слева)
+    { id: 'e1811a26-22eb-4aa4-b105-82eebe3d1f50', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // клапан сброса ОТКРЫТ (слева)
+    { id: 'ed264d39-16f2-4c05-bb44-1eaca334f770', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // клапан первичного выравнивания ЗАКРЫТ (слева)
+    // { id: 'ee652b8c-bb08-49a6-b6c9-23865c084520', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // клапан вторичного выравнивания ОТКРЫТ (справа)
+    { id: '2cda85aa-dac2-42ca-9881-cf907eac7fe7', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // клапан вторичного выравнивания ЗАКРЫТ (справа)
+    { id: 'ac36637f-ce86-4d3a-bc27-969e9d7b0be9', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // клапан первичного выравнивания ЗАКРЫТ (справа)
+    // { id: '5007bde1-510e-43ab-9451-aa80ea873560', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // выбор угла наклона <1
+    { id: '0db3fee6-f875-48a3-ac29-6f3cb24f987d', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // выбор угла наклона <8
+    // { id: '39eae169-9777-45dd-ad48-17af39e3f1f7', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // желоб распределитель бункер 1
+    { id: '56ee3c7e-2a19-40cb-9583-234429e9974e', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // желоб распределитель бункер 2
+    // { id: '150106eb-69af-4b04-9027-f7830b1689af', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // верхний газоуплотнительный клапан ОТКРЫТ (слева)
+    { id: '12da4e03-0b8d-4b99-bab3-894030abe51a', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // верхний газоуплотнительный клапан ЗАКРЫТ (слева)
+    { id: '1ce1d776-154a-4831-98f9-a3a028aae415', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // нижний шихтовый затвор ЗАКРЫТ (слева) верх
+    { id: '6795a23a-d2f7-4e56-a2a4-9e6c7d723013', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // нижний шихтовый затвор ЗАКРЫТ (слева) низ
+    { id: '6ec942f8-f3be-417c-9887-0d7a128ef755', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // нижний шихтовый затвор ОТКРЫТ (справа) верх
+    // { id: '0f9728b6-3aae-4637-a4ba-d1a9d6fe2d50', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // нижний шихтовый затвор ОТКРЫТ (справа) низ
+    { id: '3ab702cb-b75b-4239-a546-8fbd27a38d20', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // нижний шихтовый затвор ЗАКРЫТ (справа) низ
+    { id: '4d1de7e7-1f2c-4b05-876b-3c8c07363a9e', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // агломерат 1
+    { id: '54116a57-7c08-4cc6-9ab4-4d55636e5354', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // агломерат 2
+    // { id: '16ec5920-4a18-48b6-860d-89fd70c039b7', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // верхний газоуплотнительный клапан ЗАКРЫТ (справа)
+    { id: '79785066-2885-4b81-8cae-7d8fdbe0b965', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // верхний газоуплотнительный клапан ОТКРЫТ (справа)
+    { id: 'f75b7231-1294-491d-ad84-ba29d2876708', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // клапан сброса ЗАКРЫТ (справа)
+    { id: 'f3ed9e35-90f2-4a34-9555-6a472ae68707', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // охлаждение ДИСТАНЦ
+    { id: '2ebe0893-f4da-4241-bf7f-3b42120e9906', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // охлаждение АВТОМАТ ВКЛ
+    { id: '8e28a17e-9949-4f01-9dc5-0ccd47533059', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // смазка ДИСТАНЦ
+    { id: '23b03ff6-10fd-45f7-8301-7c418754e860', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // смазка АВТОМАТ ВКЛ
+    { id: 'b968ba96-4d8f-44f4-acef-4bfef8978670', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // гидравлика ДИСТАНЦ
+    { id: 'ba315587-572c-4914-839c-06588dfb55aa', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // гидравлика АВТОМАТ ВКЛ
+    // { id: '75bf4393-8c70-4953-8187-36c0c785c233', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // клапан аварийного охлаждения ОТКРЫТ
+    { id: '8a6a2ebf-034c-467d-aa75-93fb829a25f6', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // клапан аварийного охлаждения ЗАКРЫТ
+    // { id: '30ad115a-f46c-4c47-80eb-d73e87e27326', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // механич уровнемер ОЖИДАНИЕ
+    { id: '10dee587-2039-4288-b05f-213dc1bef870', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // механич уровнемер ОЖИДАНИЕ
+    { id: 'b2dc1bc7-37a6-4c87-8a61-bd2636863890', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // вращение ВПРАВО БЫСТРО
+    { id: '19152be3-71fb-49f3-b81d-9bc82b13bc60', material: '18656b14-e5a3-4e09-ac52-00de847fa1bd' }, // приостановить выгрузку бункера 1 и 2
+    { id: 'd682e192-5c28-41a3-bc3b-e16b17d03989', material: 'f0e495bf-3d34-4e5e-a792-b539bfb9f230' }, // обойти остановку конвейера
     { name: 'bzuDavlenie_l', number: '00.00', color: 'red' },
-    { name: 'bzuVesNetto_l', number: '093.7', color: 'red' },
+    { name: 'bzuVesNetto_l', number: '093.0', color: 'red' },
     { name: 'bzuDavlenie_r', number: '00.00', color: 'red' },
     { name: 'bzuVesNetto_r', number: '014.7', color: 'red' },
     { name: 'bzuPolShihZat_l', number: '001.3', color: 'red' },
