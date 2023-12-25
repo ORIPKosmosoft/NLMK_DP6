@@ -1174,7 +1174,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
     intervalFon: undefined,
     maxCountSvgElems: 0,
@@ -1195,38 +1195,68 @@ const devHelper = {
 };
 const timeDiff = -0;
 let tempActions = [
-  /*
-  [{
-    action: {
-      target2D: 'kl029',
-      window2D: {
-        elements: [
-          { name: 'title_work_vn', text: 'Управление клапаном 029' },
-          { name: 'circle_n_winVN', stroke: '#8F8F8F' },
-          { name: 'circle_kl029', stroke: '#8F8F8F' },
-          { name: 'left_vn', color: '#8F8F8F' },
-          { name: 'right_vn', color: '#8F8F8F' },
-          { name: 'status_control_vnk_text', text: 'Ручной' },
-          { name: 'status_window_text', text: 'Нет данных' },
-          // { name: 'skhema_sobrana', color: '#06FF06' },
-          // { name: 'block_open',     color: '#06FF06' },
-          // { name: 'block_close',    color: '#06FF06' },
-          { name: 'btn_auto_text', color: '#000' },
-          { name: 'btn_auto_2', color: '#fff' },
-          { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
-          { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
-          { name: 'btn_open_text', color: '#000' },
-          { name: 'btn_open_2', color: '#fff', stroke: '#000' },
-          { name: 'polozenie_text', text: '51' },
-          { name: 'polozenie_button_text', color: '#000000' },
-        ],
-      },
+  [
+    {
+      scenarioText: 'Отделить подогреватели воздуха и газа',
+      sender: 'Система',
+      startTime: timeDiff + 0,
     },
-    startTime: timeDiff + 0.1,
-    human: true,
-  },
+    {
+      text: 'Нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС», «Угольная» на телефоне.',
+      sender: 'Система',
+      audio: 'telephone_say',
+      multi: [
+        {
+          text: 'Газовый цех: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton001',
+          },
+          audio: 'tts-vo1',
+        },
+        {
+          text: 'Насосный цех: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton006',
+          },
+          audio: 'tts-vo1',
+        },
+        {
+          text: 'Кислородный цех: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton017',
+          },
+          audio: 'tts-vo1',
+        },
+        {
+          text: 'ЭВС: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton020',
+          },
+          audio: 'tts-vo1',
+        },
+        {
+          text: 'Угольная: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton016',
+          },
+          audio: 'tts-vo1',
+        },
+      ],
+      startTime: timeDiff + 1,
+      human: true,
+    },
+    {
+      scenarioText: 'Отделить подогреватели воздуха и газа',
+      sender: 'Система',
+      startTime: timeDiff + 2,
+    },
   ],
-  */
+  
   // Первый сценарий  
   [
     {
