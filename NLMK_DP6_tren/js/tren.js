@@ -2098,6 +2098,19 @@ function helperHighlight2DOn(Actions) {
                 }
               }
             })
+            if (displayNames.length === 0) {
+              devHelper.model3DVals.svgDisplays.meshs.find(mesh => {
+                if (mesh.svgArr && mesh.svgArr.find(obj => obj.name === svgName)) {
+                  const tempPosIndex = mesh.positionIndex;
+                  if (tempPosIndex) {
+                    displayPositions.push(tempPosIndex);
+                    displayNames.push(devHelper.model3DVals.cameraPositions.find(obj3 => obj3.position === tempPosIndex).name);
+                  } else {
+                    devHelper.dev.enable && console.warn('Не найдено место.');
+                  }
+                }
+              })
+            }
           } else {
             devHelper.dev.enable && console.warn('Не найдено реальное имя схемы.');
           }
