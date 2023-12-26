@@ -681,9 +681,10 @@ const devHelper = {
         { x: 1.0, y: 16.8, w: 3.0, h: 2.9, forAction: true, id: 'Iskl_Radar1', realName: 'Кнопка искл/вкл радара 1' },
         { x: 4.6, y: 16.8, w: 3.0, h: 2.9, forAction: true, id: 'Iskl_Radar2', realName: 'Кнопка искл/вкл радара 2' },
         { x: 8.5, y: 16.8, w: 3.0, h: 2.9, forAction: true, id: 'Vkl_Radar3', realName: 'Кнопка искл/вкл радара 3' },
-        { x: 13.6, y: 0.0, w: 3.4, h: 2.8, name: 'dp', },
+        { x: 13.7, y: 0.0, w: 3.4, h: 3.3, name: 'dp', },
         { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
-        { x: 45.5, y: 0.0, w: 3.5, h: 2.8, name: 'bzu', },
+        { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
+        { x: 60, y: 0.0, w: 5.5, h: 2.5, name: 'gazoochistka', },
         // ilay
         { x: 75.85, y: 51.5, w: 3.3, h: 3.0, forAction: true, id: 'F_Obsh', realName: 'F общ.' },
         { x: 75.85, y: 56.5, w: 3.3, h: 3.0, forAction: true, id: 'F_Tek', realName: 'F тек.' },
@@ -813,6 +814,7 @@ const devHelper = {
         { x: 13.7, y: 0.0, w: 3.4, h: 3.3, name: 'dp', },
         { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
         { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
+        { x: 60, y: 0.0, w: 5.5, h: 2.5, name: 'gazoochistka', },
       ]
     },
     {
@@ -820,6 +822,15 @@ const devHelper = {
         { x: 13.7, y: 0.0, w: 3.4, h: 3.3, name: 'dp', },
         { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
         { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
+        { x: 60, y: 0.0, w: 5.5, h: 2.5, name: 'gazoochistka', },
+      ]
+    },
+    {
+      name: 'gazoochistka', helpers: [
+        { x: 13.7, y: 0.0, w: 3.4, h: 3.3, name: 'dp', },
+        { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
+        { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
+        { x: 60, y: 0.0, w: 5.5, h: 2.5, name: 'gazoochistka', },
       ]
     },
     {
@@ -1174,7 +1185,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
     intervalFon: undefined,
     maxCountSvgElems: 0,

@@ -1,6 +1,8 @@
 /*----------TODO----------------------------------------------------
 --------------------------------------------------------------------
 */
+let testSvgElemCount = 0;
+let testSvgName = 'Kontrol_progara';
 
 window.addEventListener('load', function () {
   document.querySelector('.svg-scheme-container').querySelectorAll('object').forEach((ObjSvg) => {
@@ -33,10 +35,11 @@ window.addEventListener('load', function () {
                                   ObjectSvg.name === 'win_sym_302' ? 'Дополнительное окно' :
                                     ObjectSvg.name === 'priczvuksinal' ? 'Дополнительное окно' :
                                       ObjectSvg.name === 'win_otdel2_na_vnk' ? 'Дополнительное окно' :
-                                        ObjectSvg.name === 'Kontrol_progara' ? 'Контроль прогара' :
-                                          ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
+                                        ObjectSvg.name === 'Kontrol_progara' ? 'Протечки' :
+                                          ObjectSvg.name === 'gazoochistka' ? 'Газоочистка' :
+                                            ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'dp1') {
+    if (ObjectSvg.name === 'gazoochistka1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -1427,7 +1430,6 @@ window.addEventListener('load', function () {
     }
     else if (ObjectSvg.name === 'Kontrol_progara') {
       ObjectSvg.svg.querySelectorAll('rect').forEach((Element, TextIndex) => {
-        if (Element.innerHTML === '11:05:39') { addSvgElem(Index, Element, 'lifetime'); }
         if (Element.getAttribute('x') === '401.43' && Element.getAttribute('y') === '183.87') { addSvgElem(Index, Element, 'KP_c_1_1'); }
         if (Element.getAttribute('x') === '479.6' && Element.getAttribute('y') === '183.87') { addSvgElem(Index, Element, 'KP_c_1_2'); }
         if (Element.getAttribute('x') === '559.69' && Element.getAttribute('y') === '183.87') { addSvgElem(Index, Element, 'KP_c_1_3'); }
@@ -2372,6 +2374,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('transform') === 'matrix(1.00143 0 0 1 -81.835 309.247)') { addSvgElem(Index, Element, 'shagUprav_bunkerNum'); }
       })
     }
+
   })
 
   devHelper.svgVals.forEach(Element => {
@@ -2398,15 +2401,22 @@ window.addEventListener('load', function () {
 
   changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime });
 
+  devHelper.dev.enable && console.log(`В схеме ${testSvgName} было создано ${testSvgElemCount} элементов. Проверьте количество 'addSvgElem' в коде.`);
+
 });
 
 
-function addSvgElem(SvgIndex, Element, Name, Move = 'middle') {//start middle end
+
+function addSvgElem(SvgIndex, Element, Name, Move = 'middle') {
+  if (devHelper.svgVals[SvgIndex].name === testSvgName) {
+    devHelper.dev.enable && console.log(`В схему ${testSvgName} был добавлен ${Name} элемент.`);
+    testSvgElemCount++;
+  }
   devHelper.dev.maxCountSvgElems++;
   devHelper.svgVals[SvgIndex].activeElements.push({
     element: Element,
     name: Name,
-    // name: Name.replace(/\s/g, "_").replace(/\./g, "_").replace(/\,/g, "_"),
+    /*name: Name.replace(/\s/g, "_").replace(/\./g, "_").replace(/\,/g, "_"),*/
   })
 
   if (Move !== false) {
