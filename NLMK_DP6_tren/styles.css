@@ -3035,6 +3035,12 @@ ul {
   pointer-events: none !important;
 }
 
+[disabled2] {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none !important;
+}
+
 .backArea-white-100 {
   background: rgba(255, 255, 255, 1);
 }

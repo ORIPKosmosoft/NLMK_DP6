@@ -85,9 +85,9 @@ function domLoaded() {
         btnCon.style.marginTop = -btnCon.getBoundingClientRect().height + 'px';
         btnCon.style.transform = `translateY(${(e.currentTarget.getBoundingClientRect().height + window.innerHeight * 0.02) * Array.from(e.currentTarget.parentElement.children).indexOf(e.currentTarget) - window.innerHeight * 0.02}px`;
         if (!tempActions[Array.from(document.querySelectorAll('.drop-item')).indexOf(document.querySelector('.drop-item-active'))] || tempActions[Array.from(document.querySelectorAll('.drop-item')).indexOf(document.querySelector('.drop-item-active'))].length === 0) {
-          btnCon.setAttribute('disabled', '');
+          btnCon.setAttribute('disabled2', '');
         } else {
-          if (btnCon.hasAttribute('disabled')) btnCon.removeAttribute('disabled');
+          if (btnCon.hasAttribute('disabled2')) btnCon.removeAttribute('disabled2');
         }
       } else {
         e.currentTarget.classList.toggle('drop-item-active', false);
