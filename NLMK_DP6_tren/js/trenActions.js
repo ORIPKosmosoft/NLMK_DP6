@@ -1185,7 +1185,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: true,
+    enable: false,
     perfomance: undefined,
     intervalFon: undefined,
     maxCountSvgElems: 0,
