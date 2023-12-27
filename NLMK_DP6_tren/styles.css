@@ -1039,7 +1039,6 @@ ul {
 
 /* babylon 
 ----------------------------------------------------------------------------------------------------------
-
 */
 #renderCanvas {
   width: 100%;
@@ -1050,6 +1049,18 @@ ul {
 
 .value-input {
   width: 40px;
+}
+
+.loader-3d-screen {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  opacity: 0;
+  background-color: rgba(255, 0, 0, 0.2);
+  transition: all 0.5s ease;
 }
 /* babylon 
 -----------------------------------------------------

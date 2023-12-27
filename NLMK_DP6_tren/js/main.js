@@ -56,8 +56,10 @@ function domLoaded() {
       revialTrenScreen();
       devHelper.trenVals.type = TrenType;
       devHelper.trenVals.scenario = Index;
-      startTren();
       stopChangeFon();
+      if (devHelper.model3DVals.startLoad)
+        startTren();
+      else startLoadScene();
     }
   }
 
@@ -119,36 +121,30 @@ function domLoaded() {
     })
   })
 
-  // Создание тестов
   devHelper.testVals.arrayForCreateTests.forEach((Element, Index) => {
     createTests(Element, Index);
   });
 
-  // Вешаю обработчик нажатия на все <div class="selfcheck-radio">
   document.querySelectorAll('.radio-elem').forEach((Element) => {
     Element.addEventListener('click', (e) => {
       radioButtonChange(e.currentTarget.querySelector('.selfcheck-radio'));
     })
   })
 
-  // Вешаю обработчик на кнопку 'Подтвердить'
   document.querySelectorAll('.selfcheck-confirm-button').forEach((Element) => {
     Element.addEventListener('click', (e) => {
       confirmSelfcheckButtonClick(e.currentTarget, devHelper.testVals.answersArray);
     })
   })
 
-  // Рандомлю ответы в каждом <div class="selfcheck-radio-container">
   document.querySelectorAll('.selfcheck-radio-container').forEach((Element) => {
     randomAnswer(Element);
   })
 
-  // Заполняю массив контейнерами вопросов
   document.querySelectorAll('.selfcheck-container').forEach((Element) => {
     devHelper.testVals.containerArray.push(Element);
   });
 
-  // При переходе на вкладку тесты, появляется случайный вопрос
   document.querySelector('.section').querySelectorAll('.nav-icon')[document.querySelector('.section').querySelectorAll('.nav-icon').length - 1].addEventListener('mouseup', (e) => {
     if (!e.currentTarget.classList.contains('test-opened')) {
       glavTestFun(e.currentTarget.classList[0], e.currentTarget);
@@ -177,23 +173,23 @@ function domLoaded() {
         Element.querySelector('.text-container').style.transition = Element.style.width === '68vw' ? 'margin-top 0.3s ease' : 'none';
     });
   })
-  // Вешаю евенты на контейнеры перетаскивания текста
+
   document.querySelectorAll('.drag-drop-elem').forEach((Element) => {
     setDragEvents(Element);
   });
-  // Вешаю евенты на контейнеры где нужно выставить ответы последовательно
+
   document.querySelectorAll('.consecutive-elem').forEach((Element) => {
     setDragEvents(Element);
   });
-  // рандомлю ответы контейнерах где нужно выставить ответы последовательно
+
   document.querySelectorAll('.container-consecutive').forEach((Element) => {
     randomAnswer(Element);
   });
 
-  // Наведение на кнопку 'Помощь'
   document.querySelector('.helper-answer').addEventListener('mouseover', (e) => {
     showhelperTooltip(e.currentTarget, e.currentTarget.getBoundingClientRect());
   });
+
   document.querySelector('.helper-answer').addEventListener('mouseout', (e) => {
     document.querySelector('.helper-tooltip').classList.toggle('visible-tiiltip', false);
   });
@@ -222,6 +218,19 @@ function domLoaded() {
 
   loadTrenActions();
 }
+
+window.addEventListener('load', function () {
+  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
+    Element.style.marginTop = `1vh`;
+    Element.classList.remove('first-drop');
+  })
+
+  document.querySelectorAll('.nav-icon').forEach((Element) => {
+    Element.addEventListener('click', guideBtnsClick);
+  });
+  startChangeFon();
+  if (devHelper.dev.enable === true) console.log(devHelper);
+});
 
 // Показать текст при наведении на 'Помощь'
 function showhelperTooltip(elem, elemRect) {
@@ -315,20 +324,6 @@ function stopChangeFon() {
   clearInterval(devHelper.dev.intervalFon);
 }
 
-window.addEventListener('load', function () {
-  document.querySelectorAll('.dropdown-container .dropdown-content').forEach((Element) => {
-    Element.style.marginTop = `1vh`;
-    Element.classList.remove('first-drop');
-  })
-
-  document.querySelectorAll('.nav-icon').forEach((Element) => {
-    Element.addEventListener('click', guideBtnsClick);
-  });
-  startChangeFon();
-  if (devHelper.dev.enable === true) console.log(devHelper);
-});
-
-
 function guideBtnsClick(e) {
   const section = e.currentTarget.closest('.section');
   if (!e.currentTarget.classList.contains('nav-icon-active')) {
@@ -366,7 +361,6 @@ function guideBtnsClick(e) {
   }
 }
 
-// Функция работы с radioButton
 function radioButtonChange(elem) {
   let confirmButton = elem.closest('.tests-container-elem').querySelector('.selfcheck-confirm-button');
   let selfcheckContainer = elem.closest('.tests-container-elem').querySelector('.selfcheck-visible');
@@ -387,7 +381,6 @@ function radioButtonChange(elem) {
   }
 }
 
-// Подтверждение ответа в тестах
 function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
   let selfcheckContainer = elem.closest('.tests-container-elem').querySelector('.selfcheck-visible');
   let selfcheckcontainerIndex;
@@ -558,7 +551,6 @@ function confirmSelfcheckButtonClick(elem, selfcheckTrueResults) {
 
 }
 
-// Функция рандома ответов в вопросе
 function randomAnswer(parent) {
   const radioElements = parent.querySelectorAll('.radio-elem');
   const dragDropElements = parent.querySelectorAll('.selfcheck-radio-dragDrop');
@@ -609,7 +601,6 @@ function randomAnswer(parent) {
   }
 }
 
-// Перезаполнение массива контейнерами вопросов
 function reviveArray(min) {
   document.querySelectorAll('.selfcheck-container').forEach((Element) => {
     devHelper.testVals.containerArray.push(Element);
@@ -646,37 +637,6 @@ function reviveArray(min) {
   devHelper.testVals.previousContainer = randomContainer;
 }
 
-// Изменение текста плана действий в title
-// function titleInfo() {
-//   if (devHelper.testVals.previousContainer.querySelector('.radio-title-info').textContent !== '') return;
-//   const container = devHelper.testVals.previousContainer;
-//   const containerIndex = devHelper.testVals.containerArray.indexOf(container);
-//   const answerLength = devHelper.testVals.answersArray[containerIndex].length;
-
-//   if (container.classList.contains('container-dragDrop')) {
-//     container.querySelector('.radio-title-info').textContent = devHelper.testVals.dragDropHelperText;
-//   }
-//   if (container.classList.contains('container-dropDownMenu')) {
-//     container.querySelector('.radio-title-info').textContent = devHelper.testVals.dropDownHelperText;
-//   }
-//   if (container.classList.contains('container-consecutive')) {
-//     container.querySelector('.radio-title-info').textContent = devHelper.testVals.consecutiveHelperText;
-//   }
-//   if (container.classList.contains('container-radioButton')) {
-//     if (answerLength > 4) {
-//       container.querySelector('.radio-title-info').textContent = `Выберите ${answerLength} верных ответов и нажмите подтвердить.`;
-//       return;
-//     }
-//     if (answerLength > 1) {
-//       container.querySelector('.radio-title-info').textContent = `Выберите ${answerLength} верных ответа и нажмите подтвердить.`;
-//       return;
-//     } else {
-//       container.querySelector('.radio-title-info').textContent = devHelper.testVals.radioSelfcheckHelperText;
-//       return;
-//     }
-//   }
-// }
-
 function navIconClick(randomContainer, min) {
   randomContainer = devHelper.testVals.containerArray[Math.floor(Math.random() * (devHelper.testVals.containerArray.length - min) + min)];
 
@@ -687,7 +647,6 @@ function navIconClick(randomContainer, min) {
     document.querySelector('.selfcheck-confirm-button').classList.toggle('active-button', true);
   }
   devHelper.testVals.previousContainer = randomContainer;
-  // titleInfo();
 }
 
 function randomAnswerButtonClick(randomContainer, min, previousContainerIndex) {
@@ -984,7 +943,6 @@ function rightAnswer(Elem, SelfcheckContainer, newClass) {
   if (audioElement) audioElement.play();
 }
 
-// Фукция создания тестов
 function createTests(elem, index) {
   if (elem.questionType === 'radio') {
     let radioTitleInfoText;
@@ -1078,7 +1036,6 @@ function createTests(elem, index) {
   }
 }
 
-// создает selfcheck контейнеры для функции createTests
 function createSelfcheckForTests(elem, answerElem, div, radioTitleInfoText) {
   const selfcheckContainer = `
       <span class="selfcheck-title">${elem.questionTopic}</span>

@@ -108,7 +108,6 @@ function loadTrenActions() {
 }
 
 function startTren(Restart = false) {
-
   devHelper.trenVals.scenarioArr.forEach(scenarioObj => {
     if (scenarioObj.actions) {
       scenarioObj.actions.forEach((action, index) => {
@@ -125,7 +124,6 @@ function startTren(Restart = false) {
       })
     }
   })
-
   clearChat();
   if (devHelper.trenVals.type === 'learn') {
     document.querySelector('#b_reference').removeAttribute('disabled');
@@ -182,7 +180,7 @@ function startTren(Restart = false) {
   changeTimerText(true);
   if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human && devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human &&
     devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].startTime === 0) {
-    devHelper.trenVals.waitingInput = true;
+      devHelper.trenVals.waitingInput = true;
   } else devHelper.trenVals.waitingInput = false;
   document.querySelector('.end-cointainer').style.opacity = '';
   document.querySelector('.end-cointainer').style.display = '';
@@ -239,6 +237,7 @@ function startTren(Restart = false) {
   })
   devHelper.endVals.currentChapter = 0;
   requestAnimationFrame(trenTimeTick);
+  removeLoaderScreen(1000);
 }
 
 function convertMilliseconds(milliseconds) {
@@ -902,13 +901,10 @@ function takeStartingState(Restart = false) {
       })
   })
   makeStart2DVisual();
-  makeStart3DVisual();
-  makeStart2DHelpers();
-  animMoveCamera(devHelper.model3DVals.cameraPositions[0], 1);
-
   function makeStart2DVisual(firstTime = false) {
     let reloadImg = [];
     devHelper.model3DVals.svgDisplays.meshs.forEach((mesh) => {
+      // mesh.svgArr = [];
       mesh.svgArr.length = 0;
       mesh.svgArr.push(mesh.startSvg);
       if (!reloadImg.includes(mesh.startSvg.name))
@@ -941,6 +937,9 @@ function takeStartingState(Restart = false) {
     }
     updateSvgTextures();
   }
+  makeStart3DVisual();
+  makeStart2DHelpers();
+  animMoveCamera(devHelper.model3DVals.cameraPositions[0], 1);
   function makeStart3DVisual() {
     devHelper.model3DVals.scene.meshes.forEach(mesh => {
       if (mesh.startState && mesh.startState.enable === true) {

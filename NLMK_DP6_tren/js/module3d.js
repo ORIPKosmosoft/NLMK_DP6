@@ -25,6 +25,7 @@ window.addEventListener('load', function () {
     var shadowGenerator = new BABYLON.ShadowGenerator(1024, light2);
     shadowGenerator.useContactHardeningShadow = true;
     shadowGenerator.usePercentageCloserFiltering = true;
+    devHelper.model3DVals.shadowGenerator = shadowGenerator;
     /*
         shadowGenerator.useBlurCloseExponentialShadowMap = true;
         shadowGenerator.forceBackFacesOnly = true;
@@ -34,7 +35,6 @@ window.addEventListener('load', function () {
         shadowGenerator.usePoissonSampling = true;
         shadowGenerator.useBlurExponentialShadowMap = true;
     */
-    loadModel(devHelper.model3DVals.loadModels[0], scene, shadowGenerator);
     scene.actionManager = new BABYLON.ActionManager(scene);
     scene.actionManager.registerAction(
       new BABYLON.ExecuteCodeAction(
@@ -54,6 +54,7 @@ window.addEventListener('load', function () {
         }
       )
     );
+    devHelper.model3DVals.octree = scene.createOrUpdateSelectionOctree();
     let tempDiffPosPointer = {};
     scene.onPointerDown = function (evt, pickResult) {
       tempDiffPosPointer.x = evt.clientX;
@@ -153,8 +154,16 @@ window.addEventListener('load', function () {
   window.addEventListener("resize", function () {
     devHelper.model3DVals.engine.resize();
   });
+})
+
+function startLoadScene() {
+  revialLoaderScreen();
+  loadModel(devHelper.model3DVals.loadModels[0], devHelper.model3DVals.scene, devHelper.model3DVals.shadowGenerator);
+
   function loadModel(Name, Scene, ShadowGenerator) {
+    devHelper.model3DVals.startLoad = true;
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
+      console.log(Name);
       if (Name === 'All') {
         let meshArr = [];
         meshes.forEach(element => {
@@ -335,7 +344,12 @@ window.addEventListener('load', function () {
       findActiveMeshs();
       generateShadows();
       generateReceiveShadows();
-
+      devHelper.model3DVals.loadModels.shift();
+      if (devHelper.model3DVals.loadModels.length > 0)
+        loadModel(devHelper.model3DVals.loadModels[0], Scene, ShadowGenerator);
+      else {
+        startTren();
+      }
     });
     function allMeshOptimization() {
       devHelper.model3DVals.scene.meshes.forEach(mesh => {
@@ -375,7 +389,6 @@ window.addEventListener('load', function () {
         }
       });
     }
-
     function generateShadows() {
       devHelper.model3DVals.shadowGenMeshes.forEach(meshNameId => {
         const meshNamesToSearch = devHelper.model3DVals.scene.meshes.filter(mesh => mesh.name.includes(meshNameId) || mesh.id === meshNameId);
@@ -402,16 +415,25 @@ window.addEventListener('load', function () {
         });
       });
     }
-
-    if (devHelper.model3DVals.loadModels.length > 1) {
-      devHelper.model3DVals.loadModels.shift();
-      loadModel(devHelper.model3DVals.loadModels[0], Scene, ShadowGenerator);
-    }
-    else {
-      devHelper.model3DVals.octree = Scene.createOrUpdateSelectionOctree();
-    }
   }
-})
+
+}
+
+function revialLoaderScreen() {
+  let loaderScreen = createCustomElement('div', '', { 'class': 'loader-3d-screen' });
+  loaderScreen.style.opacity = 1;
+  document.body.append(loaderScreen);
+}
+function removeLoaderScreen(Time = 0) {
+  let loaderScreen = document.querySelector('.loader-3d-screen');
+  if (loaderScreen) {
+    setTimeout(() => { loaderScreen.style.opacity = 0; }, Time)
+    loaderScreen.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'opacity' && loaderScreen.style.opacity === '0') loaderScreen.remove();
+    })
+  }
+}
+
 
 function setImageOnMonitor(url, scene, mesh) {
   if (mesh._sourceMesh !== undefined) mesh = createCloneInstancedMesh(mesh, url, scene);

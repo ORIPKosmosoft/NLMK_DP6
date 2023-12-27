@@ -1204,10 +1204,11 @@ const devHelper = {
     restarts: 0,
   }
 };
-const timeDiff = -0;
+const timeDiff = -130;
 let tempActions = [
   // Первый сценарий  
   [
+    /*
     {
       lifeTime: '07:30:00',
       chapterText: 'Отделение подогревателей воздуха и газа.',
@@ -4032,6 +4033,7 @@ let tempActions = [
       },
       startTime: timeDiff + 130,
     },
+    */
     ////--------------------------------2//23//-new
     {
       text: 'Перекидка клапанов в автоматическом режиме.',
