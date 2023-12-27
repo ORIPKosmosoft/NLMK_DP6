@@ -29,6 +29,7 @@ window.addEventListener('load', function () {
                       ObjectSvg.name === 'O_n_k_na_VNK_posle_1' ? 'Управление клапаном' :
                         ObjectSvg.name === 'O_n_k_na_VNK_posle_2' ? 'Управление клапаном' :
                           ObjectSvg.name === 'O_p_n_na_k_na-o_2_na_VNK' ? 'Перекидка из Нагрева в Отделение' :
+                          ObjectSvg.name === 'VN3_Perekidka_iz_Otdeleniya_v_Nagrev' ? 'Перекидка из Отделения в Нагрев' : // ilay
                             ObjectSvg.name === 'O_p_n_na_k_p_na_VNK' ? 'Перекидка' :
                               ObjectSvg.name === 'vvod_znachenij' ? 'Ввод значений' :
                                 ObjectSvg.name === 'Osnovnye_parametry_DP' ? 'Основные параметры доменной печи' :
