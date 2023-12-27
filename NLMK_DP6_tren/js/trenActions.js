@@ -381,7 +381,7 @@ const devHelper = {
         { x: 49.1, y: 43.7, w: 2.2, h: 3.1, forAction: true, id: 'kl_037', value: { window: 'O_n_k_na_VNK_posle_1', x: 1030, y: 440, }, realName: 'Клапан 037 на дымовую трубу' },    // win 37
         { x: 49.1, y: 55.4, w: 2.1, h: 3.1, forAction: true, id: 'kl007', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 555, }, realName: 'Клапан 007 на дымовую трубу' },    // win 07
         { x: 36.5, y: 55.4, w: 2.3, h: 3.1, forAction: true, id: 'kl028', value: { window: 'O_n_k_na_VNK_posle_1', x: 1082, y: 480, }, realName: 'Клапан 028 на дымовую трубу' },    // win 28
-        { x: 86.4, y: 20.9, w: 2.0, h: 3.0, forAction: true, id: 'kl022', value: { window: 'O_n_k_na_VNK_posle_1', x: 1582, y: 260, }, realName: 'Клапан на тягу 022' },    // win 22
+        { x: 86.4, y: 20.9, w: 2.0, h: 3.0, forAction: true, id: 'kl022_vnkM', value: { window: 'O_n_k_na_VNK_posle_1', x: 1582, y: 260, }, realName: 'Клапан на тягу 022' },    // win 22
         { x: 36.2, y: 37.8, w: 2.1, h: 3.1, forAction: true, id: 'kl039', realName: 'Клапан доменного газа 039' },
         { x: 39.9, y: 38.0, w: 7.6, h: 8.4, forAction: true, id: 'podogrev_vozduh', realName: 'Подогреватель воздуха' },
         { x: 39.9, y: 55.9, w: 7.6, h: 8.4, forAction: true, id: 'podogrev_gaza', realName: 'Подогреватель газа' },
@@ -6595,7 +6595,7 @@ let tempActions = [
             { name: 'vnk2_fire_border', opacity: '0' }, // обводка стрелка
             { name: 'vnk_2', color: '#fff' }, // задник стрелки
             { name: 'VNK2_status_1', text: 'Циклический' },
-            { name: 'VNK2_status_2', text: 'Нагрев-Отдел.' },
+            // { name: 'VNK2_status_2', text: 'Нагрев-Отдел.' },
             { name: 'vnk2_stripes', color: '#fff' },
             { name: 'Vremya_nagreva', text: '52' },
             { name: 'Vremya_dutya', text: '60' },
@@ -6947,7 +6947,7 @@ let tempActions = [
             { name: 'vnk2_fire_border', opacity: '0' }, // обводка стрелка
             { name: 'vnk_2', color: '#fff' }, // задник стрелки
             { name: 'VNK2_status_1', text: 'Циклический' },
-            { name: 'VNK2_status_2', text: 'Нагрев-Отдел.' },
+            { name: 'VNK2_status_2', text: 'Отделение' },
             { name: 'vnk2_stripes', color: '#fff' },
             { name: 'Vremya_nagreva', text: '52' },
             { name: 'Vremya_dutya', text: '60' },
@@ -6960,7 +6960,7 @@ let tempActions = [
             { name: 'vybor_signala', text: '1343' },
             { name: 'circle_dutyo_VNK2', color: '#000' },
             { name: 'circle_nagrev_VNK2', color: '#000' },
-            { name: 'circle_otdeleniye_1_VNK2', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK2', color: '#06FF06' },
             { name: 'circle_otdeleniye_2_VNK2', color: '#000' },
             //VN
             { name: 'rect_232_2', position: { x: -3 }, color: '#000' },
@@ -9599,7 +9599,7 @@ let tempActions = [
             { name: 'Tkyp_3_rect', color: '#fff' },
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
-            { name: 'VNK3_status_1', text: 'ДУТЬЕ' },
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'circle_dutyo_VNK3', color: '#06FF06' },
             { name: 'circle_nagrev_VNK3', color: '#000' },
             { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
@@ -18191,7 +18191,7 @@ let tempActions = [
             { name: 'Tkyp_3_rect', color: '#fff' },
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
-            { name: 'VNK3_status_1', text: 'ДУТЬЕ' },
+            { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
             { name: 'circle_dutyo_VNK3', color: '#06FF06' },
             { name: 'circle_nagrev_VNK3', color: '#000' },
             { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
@@ -23777,7 +23777,7 @@ let tempActions = [
     },
     {
       action: {
-        target2D: 'kl022',
+        target2D: 'kl022_vnkM',
         window2D: {
           elements: [
             { name: 'title_work_vn', text: 'Управление клапаном 022' },
