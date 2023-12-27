@@ -1059,9 +1059,39 @@ ul {
   left: 0;
   z-index: 99;
   opacity: 0;
-  background-color: rgba(255, 0, 0, 0.2);
+  background-color: rgba(60, 60, 60, 1);
   transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.loader-icon-3d {
+  width: 1vw;
+  height: 5vw;
+  display: block;
+  left: -3vw;
+  position: relative;
+  border-radius: 0.3vw;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: 1vw 0 #2c5289, 3vw 0 #f4f4f4, 5vw 0 #f4f4f4;
+  }
+
+  50% {
+    box-shadow: 1vw 0 #f4f4f4, 3vw 0 #2c5289, 5vw 0 #f4f4f4;
+  }
+
+  100% {
+    box-shadow: 1vw 0 #f4f4f4, 3vw 0 #f4f4f4, 5vw 0 #2c5289;
+  }
+}
+
+
 /* babylon 
 -----------------------------------------------------
 */

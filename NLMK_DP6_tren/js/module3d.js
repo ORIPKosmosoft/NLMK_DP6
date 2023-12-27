@@ -421,8 +421,10 @@ function startLoadScene() {
 
 function revialLoaderScreen() {
   let loaderScreen = createCustomElement('div', '', { 'class': 'loader-3d-screen' });
-  loaderScreen.style.opacity = 1;
+  let spinElem = createCustomElement('span', '', { 'class': 'loader-icon-3d' });
+  loaderScreen.append(spinElem);
   document.body.append(loaderScreen);
+  setTimeout(() => { loaderScreen.style.opacity = 1; }, 10);
 }
 function removeLoaderScreen(Time = 0) {
   let loaderScreen = document.querySelector('.loader-3d-screen');
