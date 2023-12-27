@@ -2297,6 +2297,10 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1841.28 654.76h56.66v21.95h-56.66z') { addSvgElem(Index, Element, 'bzu_T2_color'); }
         if (Element.getAttribute('d') === 'M1392.57 822.75h103.25v30.52h-103.25z') { addSvgElem(Index, Element, 'ismetir_ramki'); }
         if (Element.getAttribute('d') === 'M526.25 421.26h55.32c1.34 0 2.42 1.05 2.42 2.34v24.86c0 1.29-1.08 2.34-2.42 2.34h-55.32c-1.33 0-2.42-1.05-2.42-2.34V423.6c0-1.29 1.09-2.34 2.42-2.34z') { addSvgElem(Index, Element, 'left_vugr_rect'); }
+        // ilay 2
+        if (Element.getAttribute('d') === 'm630.46 154.53-4.93 4.93 14.85 13.78 4.93-4.93z') { addSvgElem(Index, Element, 'black_arrow_under_verx'); }
+        if (Element.getAttribute('d') === 'm648.61 164.2-12.37 12.43 13.38.91z') { addSvgElem(Index, Element, 'black_arrow_under_verx'); }
+        if (Element.getAttribute('d') === 'M1833.08 256.89v17.39h-5.03l7.45 12.91 7.68-13.31h-5.08v-16.87z') { addSvgElem(Index, Element, 'K_16_strelka'); }
       })
     }
     else if (ObjectSvg.name === 'vvod_znachenij') {
