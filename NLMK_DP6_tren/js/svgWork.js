@@ -2435,7 +2435,79 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('x') === '905'     && Element.getAttribute('y') === '400.15') { addSvgElem(Index, Element, 'bakcground Avstop SDE_VSP01_M01'); }
       })
     }
-    
+    else if (ObjectSvg.name === 'VN3_Perekidka_iz_Otdeleniya_v_Nagrev') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element, TextIndex) => {
+        if (Element.innerHTML == 'ВН3 Перекидка из Отделения в Нагрев') { addSvgElem(Index, Element, 'OvN_Title'); }
+        // if (Element.innerHTML == '') { addSvgElem(Index, Element, 'OvN_usl_1'); }
+        // if (Element.innerHTML == '') { addSvgElem(Index, Element, 'OvN_usl_2'); }
+        // if (Element.innerHTML == '') { addSvgElem(Index, Element, 'OvN_usl_3'); }
+        // if (Element.innerHTML == '') { addSvgElem(Index, Element, 'OvN_usl_4'); }
+        // if (Element.innerHTML == '') { addSvgElem(Index, Element, 'OvN_usl_5'); }
+        // if (Element.innerHTML == '') { addSvgElem(Index, Element, 'OvN_usl_6'); }
+        if (Element.innerHTML == 'Закрыть клапан')          { addSvgElem(Index, Element, 'OvN_usl_7'); }
+        if (Element.innerHTML == 'продувки азотом 24')      { addSvgElem(Index, Element, 'OvN_usl_7_down'); }
+        if (Element.innerHTML == 'Контроль расхода азота')  { addSvgElem(Index, Element, 'OvN_usl_8'); }
+        if (Element.innerHTML == 'при продувки')            { addSvgElem(Index, Element, 'OvN_usl_8_down'); }
+        if (Element.innerHTML == 'Закрыть отделительный' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -319.144 160.235)') { addSvgElem(Index, Element, 'OvN_usl_9'); }
+        if (Element.innerHTML == 'клапан на газе 13'     && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -319.144 160.235)') { addSvgElem(Index, Element, 'OvN_usl_9_down'); }
+        if (Element.innerHTML == 'Ожидание времени')    { addSvgElem(Index, Element, 'OvN_usl_10'); }
+        if (Element.innerHTML == 'вентиляции воздухом') { addSvgElem(Index, Element, 'OvN_usl_10_down'); }
+
+        if (Element.innerHTML == 'Закрыть отделительный'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -319.261 241.395)') { addSvgElem(Index, Element, 'OvN_usl_11'); }
+        if (Element.innerHTML == 'клапан на возд.гор. 24' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -319.261 241.395)') { addSvgElem(Index, Element, 'OvN_usl_11_down'); }
+        if (Element.innerHTML == 'Закрыть отсечной')        { addSvgElem(Index, Element, 'OvN_usl_12'); }
+        if (Element.innerHTML == 'клапан на возд.гор. 17')  { addSvgElem(Index, Element, 'OvN_usl_12_down'); }
+        if (Element.innerHTML == 'Зкарыть дымовой' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -317.274 324.925)') { addSvgElem(Index, Element, 'OvN_usl_13'); }
+        if (Element.innerHTML == 'клапан 11'       && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -317.274 324.925)') { addSvgElem(Index, Element, 'OvN_usl_13_down'); }
+
+        if (Element.innerHTML == 'Зкарыть дымовой' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -317.274 364.157)') { addSvgElem(Index, Element, 'OvN_usl_14'); }
+        if (Element.innerHTML == 'клапан 12'       && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -317.274 364.157)') { addSvgElem(Index, Element, 'OvN_usl_14_down'); }
+
+        if (Element.innerHTML == 'Открыть сбросной' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -319.21 403.458)') { addSvgElem(Index, Element, 'OvN_usl_15'); }
+        if (Element.innerHTML == 'клапан 13'        && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -319.21 403.458)') { addSvgElem(Index, Element, 'OvN_usl_15_down'); }
+
+        if (Element.innerHTML == '180' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -212.529 -159.506)') { addSvgElem(Index, Element, 'OvN_Time_1'); }
+        if (Element.innerHTML == '65'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.604 -119.375)') { addSvgElem(Index, Element, 'OvN_Time_2'); }
+        if (Element.innerHTML == '180' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -212.529 -78.093)')  { addSvgElem(Index, Element, 'OvN_Time_3'); }
+        if (Element.innerHTML == '5'   && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.604 -37.962)')  { addSvgElem(Index, Element, 'OvN_Time_4'); }
+        if (Element.innerHTML == '27'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.505 4.472)')    { addSvgElem(Index, Element, 'OvN_Time_5'); }
+        if (Element.innerHTML == '15'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.604 44.603)')   { addSvgElem(Index, Element, 'OvN_Time_6'); }
+        if (Element.innerHTML == '27'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.472 85.888)')   { addSvgElem(Index, Element, 'OvN_Time_7'); }
+        if (Element.innerHTML == '5'   && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.604 126.019)')  { addSvgElem(Index, Element, 'OvN_Time_8'); }
+        if (Element.innerHTML == '27'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.472 166.916)')  { addSvgElem(Index, Element, 'OvN_Time_9'); }
+        if (Element.innerHTML == '20'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.604 207.048)')  { addSvgElem(Index, Element, 'OvN_Time_10'); }
+        if (Element.innerHTML == '35'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.472 249.866)')  { addSvgElem(Index, Element, 'OvN_Time_11'); }
+        if (Element.innerHTML == '27'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.604 289.997)')  { addSvgElem(Index, Element, 'OvN_Time_12'); }
+        if (Element.innerHTML == '27'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.472 330.512)')  { addSvgElem(Index, Element, 'OvN_Time_13'); }
+        if (Element.innerHTML == '27'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.604 370.643)')  { addSvgElem(Index, Element, 'OvN_Time_14'); }
+        if (Element.innerHTML == '27'  && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -188.604 411.924)')  { addSvgElem(Index, Element, 'OvN_Time_15'); }
+ 
+        if (Element.innerHTML == 'Закрыт' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -170.582 -209.833)') { addSvgElem(Index, Element, 'OvN_number_310'); }
+        if (Element.innerHTML == 'Закрыт' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -109.787 -209.833)') { addSvgElem(Index, Element, 'OvN_number_311'); }
+        if (Element.innerHTML == 'Закрыт' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -43.62 -210.217)')   { addSvgElem(Index, Element, 'OvN_number_312'); }
+        if (Element.innerHTML == 'Закрыт' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 23.125 -209.833)')   { addSvgElem(Index, Element, 'OvN_number_313'); }
+        if (Element.innerHTML == 'Закрыт' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 92.167 -208.106)')   { addSvgElem(Index, Element, 'OvN_number_324'); }
+        if (Element.innerHTML == 'Закрыт' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 163.51 -208.106)')   { addSvgElem(Index, Element, 'OvN_number_317'); }
+        if (Element.innerHTML == 'Закрыт' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 234.852 -208.106)')  { addSvgElem(Index, Element, 'OvN_number_334'); }
+        if (Element.innerHTML == 'Закрыт' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 295.839 -208.106)')  { addSvgElem(Index, Element, 'OvN_number_316'); }
+        if (Element.innerHTML == 'Закрыт' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 353.77 -208.106)')   { addSvgElem(Index, Element, 'OvN_number_332'); }
+
+      });
+      ObjectSvg.svg.querySelectorAll('path').forEach((Element, TextIndex) => {
+        if (Element.getAttribute('d') === 'M296.01 249.62h57.56v42.23h-57.56z') { addSvgElem(Index, Element, 'OvN_path_310'); }
+        if (Element.getAttribute('d') === 'M353.54 249.62h64.67v42.23h-64.67z') { addSvgElem(Index, Element, 'OvN_path_311'); }
+        if (Element.getAttribute('d') === 'M418.41 248.8h67.12v42.23h-67.12z')  { addSvgElem(Index, Element, 'OvN_path_312'); }
+        if (Element.getAttribute('d') === 'M486.31 249.62h64.06v42.23h-64.06z') { addSvgElem(Index, Element, 'OvN_path_313'); }
+        if (Element.getAttribute('d') === 'M549.53 249.62h77.11v42.23h-77.11z') { addSvgElem(Index, Element, 'OvN_path_324'); }
+        if (Element.getAttribute('d') === 'M627.05 249.62h64.32v42.23h-64.32z') { addSvgElem(Index, Element, 'OvN_path_317'); }
+        if (Element.getAttribute('d') === 'M690.96 249.62h70.92v42.23h-70.92z') { addSvgElem(Index, Element, 'OvN_path_334'); }
+        if (Element.getAttribute('d') === 'M761.88 249.62h56.08v42.23h-56.08z') { addSvgElem(Index, Element, 'OvN_path_316'); }
+        if (Element.getAttribute('d') === 'M817.13 249.62h56.08v42.23h-56.08z') { addSvgElem(Index, Element, 'OvN_path_332'); }
+
+      })
+      
+     
+    }
   })
 
   devHelper.svgVals.forEach(Element => {
