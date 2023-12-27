@@ -873,6 +873,11 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '0' && TextIndex === 154) { addSvgElem(Index, Element, 'Vremya_otdelen'); }
         if (Element.getAttribute('x') === '1017.42') { addSvgElem(Index, Element, 'VNK3_status_1', 'center'); }
         if (Element.getAttribute('x') === '1096.84') { addSvgElem(Index, Element, 'VNK3_status_2', 'center'); }
+        // ilay
+        if (Element.getAttribute('x') === '409.68' && Element.innerHTML === 'Соглас') { addSvgElem(Index, Element, 'V3_t1_5'); }
+        if (Element.getAttribute('x') === '548.43' && Element.innerHTML === 'Соглас') { addSvgElem(Index, Element, 'V3_t2_4'); }
+        if (Element.getAttribute('x') === '514.49' && Element.innerHTML === 'Соглас') { addSvgElem(Index, Element, 'V3_t3_5'); }
+        if (Element.getAttribute('x') === '512.77' && Element.innerHTML === 'Соглас') { addSvgElem(Index, Element, 'V3_t4_4'); }
       });
     }
     else if (ObjectSvg.name === 'vnk_main') {
