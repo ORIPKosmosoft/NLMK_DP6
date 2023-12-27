@@ -432,6 +432,7 @@ const devHelper = {
         { x: 84.1, y: 50.8, w: 4.0, h: 10.5, forAction: true, id: 'VNK1_main', realName: 'ВНК №1' },
         { x: 73.8, y: 50.8, w: 4.0, h: 10.5, forAction: true, id: 'VNK2_main', realName: 'ВНК №2' },
         { x: 63.7, y: 50.8, w: 4.0, h: 10.5, forAction: true, id: 'VNK3_main', realName: 'ВНК №3' },
+        { x: 86.4, y: 20.9, w: 0.0, h: 0.0,  forAction: true, id: 'kl022_falsh', realName: 'Клапан на тягу 022' },  // ilay  
       ]
     },
     {
@@ -483,6 +484,7 @@ const devHelper = {
         { x: 74.9, y: 92.4, w: 1.7, h: 2.5, forAction: true, id: 'trend_V3_t_serdech', realName: 'Тренд В3 по температуре сердечника и обмоток стратора двигателя' },
         { x: 78.1, y: 92.4, w: 1.7, h: 2.5, forAction: true, id: 'trend_V2_t_serdech', realName: 'Тренд В2 по температуре сердечника и обмоток стратора двигателя' },
         { x: 81.6, y: 92.4, w: 1.7, h: 2.5, forAction: true, id: 'trend_V1_t_serdech', realName: 'Тренд В1 по температуре сердечника и обмоток стратора двигателя' },
+        { x: 10.1, y: 8.5, w: 7.0, h: 3.0, forAction: true, id: 'perekidta3_btn', value: { window: 'O_p_n_na_k_p_na_VNK', x: 270, y: 116 }, realName: 'Вкладка Перекидка' },  // ilay
       ]
     },
     {
@@ -506,7 +508,7 @@ const devHelper = {
         { x: 52.7, y: 23.8, w: 8.4, h: 21.3, forAction: true, id: 'VNK_1_BVNK', realName: 'ВНК №1' },
         { x: 73.5, y: 77.0, w: 2.1, h: 2.7, forAction: true, id: 'kl118', value: { window: 'O_n_k_na_VNK_posle_1', x: 1488, y: 678, }, realName: 'Клапан холодного дутья 118' },
         { x: 73.5, y: 83.0, w: 2.0, h: 2.9, forAction: true, id: 'kl110', value: { window: 'O_n_k_na_VNK_posle_1', x: 1488, y: 678, }, realName: 'Клапан сброса 110' },
-        { x: 73.4, y: 70.5, w: 2.0, h: 2.8, forAction: true, id: 'kl118a', value: { window: 'O_n_k_na_VNK_posle_1', x: 1488, y: 678, }, realName: 'Клапан холодного дутья 118а' },
+        { x: 73.2, y: 70.3, w: 2.5, h: 3.0, forAction: true, id: 'kl118a', value: { window: 'okno_klap_vid3', x: 1507, y: 490, }, realName: 'Клапан холодного дутья 118а' },    // win 118a ILAY
         { x: 72.6, y: 62.6, w: 2.2, h: 3.0, forAction: true, id: 'kl136a', realName: 'Клапан разрежения 136а' },
         { x: 65.3, y: 43.0, w: 2.2, h: 3.0, forAction: true, id: 'kl119', value: { window: 'O_n_k_na_VNK_posle_1', x: 1348, y: 439, }, realName: 'Клапан горячего дутья 119' },
         { x: 39.8, y: 17.6, w: 1.3, h: 4.2, forAction: true, id: 'kl121', realName: 'Клапан 121' },
@@ -607,14 +609,14 @@ const devHelper = {
     },
     {
       name: 'okno_klap_vid3', helpers: [
-        { x: 61.00, y: 47.2, w: 1.5, h: 2.4, forAction: true, id: 'close_w1', realName: 'Закрыть', removeWindow: 'O_n_k_na_VNK_posle_1' }, // КРЕСТИК
-        { x: 53.40, y: 55.4, w: 4.0, h: 2.6, forAction: true, id: 'auto', realName: 'Авто', value: { window: 'O_n_k_na_VNK_posle_2', x: 1719, y: 669, } },
-        { x: 57.8, y: 55.4, w: 4.0, h: 2.6, forAction: true, id: 'ruchnoi', realName: 'Ручной', value: { window: 'O_n_k_na_VNK_posle_2', x: 1804, y: 669, } },
-        { x: 53.5, y: 59.3, w: 4.0, h: 2.6, forAction: true, id: 'open_vn', realName: 'Открыть', value: { window: 'O_n_k_na_VNK_posle_2', x: 1717, y: 708, } },
-        { x: 57.8, y: 59.3, w: 4.0, h: 2.6, forAction: true, id: 'close_ventil', realName: 'Закрыть', value: { window: 'O_n_k_na_VNK_posle_2', x: 1800, y: 708, } },
-        { x: 53.4, y: 62.1, w: 8.5, h: 2.9, forAction: true, id: 'stop', realName: 'СТОП' },
-        { x: 53.4, y: 67.5, w: 8.5, h: 2.6, forAction: true, id: 'sbros_oshibki', realName: 'Сброс ошибки' },
-        { x: 53.4, y: 72.85, w: 8.5, h: 2.6, forAction: true, id: 'baypas_blokirovok', realName: 'Байпас всех блокировок', value: { window: 'O_n_k_na_VNK_posle_2', x: 1774, y: 837, } },
+        { x: 91.1, y: 49.6, w: 1.4,  h: 1.5, forAction: true, id: 'close_w1A', realName: 'Закрыть', removeWindow: 'okno_klap_vid3' }, // КРЕСТИК
+        { x: 83.6, y: 57.2, w: 4.0,  h: 2.4, forAction: true, id: 'autoA', realName: 'Авто',             value: { window: 'O_n_k_na_VNK_posle_2', x: 1729, y: 583, } },
+        { x: 87.9, y: 57.2, w: 4.0,  h: 2.4, forAction: true, id: 'ruchnoiA', realName: 'Ручной',        value: { window: 'O_n_k_na_VNK_posle_2', x: 1805, y: 583, } },  
+        { x: 83.6, y: 61.1, w: 4.0,  h: 2.4, forAction: true, id: 'open_vnA', realName: 'Открыть',       value: { window: 'O_n_k_na_VNK_posle_2', x: 1729, y: 619, } },
+        { x: 88.0, y: 61.1, w: 4.0,  h: 2.4, forAction: true, id: 'close_ventilA', realName: 'Закрыть',  value: { window: 'O_n_k_na_VNK_posle_2', x: 1805, y: 619, } },
+        { x: 83.6, y: 64.0, w: 8.5,  h: 2.7, forAction: true, id: 'stopA', realName: 'СТОП' },
+        { x: 83.6, y: 69.3, w: 8.5,  h: 2.3, forAction: true, id: 'sbros_oshibkiA', realName: 'Сброс ошибки' },
+        { x: 83.6, y: 74.7, w: 8.5,  h: 2.3, forAction: true, id: 'baypas_blokirovokA', realName: 'Байпас всех блокировок', value: { window: 'O_n_k_na_VNK_posle_2', x: 1770, y: 755, } },
       ]
     },
 
@@ -724,7 +726,7 @@ const devHelper = {
       name: 'O_p_n_na_k_p_na_VNK', helpers: [
         { x: 27.2, y: 11.8, w: 2.25, h: 2.6, forAction: true, id: 'perekidta_exit_btn', realName: 'Закрыть', removeWindow: 'O_p_n_na_k_p_na_VNK', },
         { x: 15.6, y: 20.8, w: 11.9, h: 3.6, forAction: true, id: 'avaric_otdel_btn', realName: 'Аварийное отделение', },
-        { x: 15.6, y: 25.0, w: 11.9, h: 3.6, forAction: true, id: 'otdel_nagrev_btn', realName: 'Отделение-Нагрев', },
+        { x: 15.6, y: 25.0, w: 11.9, h: 3.6, forAction: true, id: 'otdel_nagrev_btn', realName: 'Отделение-Нагрев', value: { window: 'VN3_Perekidka_iz_Otdeleniya_v_Nagrev', x: 379, y: 32, } },
         { x: 15.6, y: 29.0, w: 11.9, h: 3.6, forAction: true, id: 'nagrev_otd2_btn', realName: 'Нагрев-Отделение 2', value: { window: 'O_p_n_na_k_na-o_2_na_VNK', x: 379, y: 32, } },
         { x: 15.6, y: 33.1, w: 11.9, h: 3.6, forAction: true, id: 'otdel_dutia_btn', realName: 'Отделение-Дутье', },
         { x: 15.6, y: 37.1, w: 11.9, h: 3.6, forAction: true, id: 'dutia_otdel_btn', realName: 'Дутье-отделение', },
@@ -823,6 +825,113 @@ const devHelper = {
         { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
         { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
         { x: 60, y: 0.0, w: 5.5, h: 2.5, name: 'gazoochistka', },
+        // #region Kontrol_progara Table 1
+        { x: 20.10, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_1',    realName: 'Контоль прогара холодильников фурм 1', },
+        { x: 24.00, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_2',    realName: 'Контоль прогара холодильников фурм 2', },
+        { x: 27.95, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_3',    realName: 'Контоль прогара холодильников фурм 3', },
+        { x: 31.80, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_4',    realName: 'Контоль прогара холодильников фурм 4', },
+        { x: 35.60, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_5',    realName: 'Контоль прогара холодильников фурм 5', },
+        { x: 39.65, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_6',    realName: 'Контоль прогара холодильников фурм 6', },
+        { x: 43.60, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_7',    realName: 'Контоль прогара холодильников фурм 7', },
+        { x: 47.30, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_8',    realName: 'Контоль прогара холодильников фурм 8', },
+        { x: 51.25, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_9',    realName: 'Контоль прогара холодильников фурм 9', },
+        { x: 55.10, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_10',   realName: 'Контоль прогара холодильников фурм 10', },
+        { x: 58.95, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_11',   realName: 'Контоль прогара холодильников фурм 11', },
+        { x: 62.80, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_12',   realName: 'Контоль прогара холодильников фурм 12', },
+        { x: 66.65, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_13',   realName: 'Контоль прогара холодильников фурм 13', },
+        { x: 70.70, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_14',   realName: 'Контоль прогара холодильников фурм 14', },
+        { x: 74.50, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_15',   realName: 'Контоль прогара холодильников фурм 15', },
+        { x: 78.30, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_16',   realName: 'Контоль прогара холодильников фурм 16', },
+
+        { x: 20.05, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_17',   realName: 'Контоль прогара холодильников фурм 17', },
+        { x: 23.90, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_18',   realName: 'Контоль прогара холодильников фурм 18', },
+        { x: 27.90, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_19',   realName: 'Контоль прогара холодильников фурм 19', },
+        { x: 31.80, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_20',   realName: 'Контоль прогара холодильников фурм 20', },
+        { x: 35.55, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_21',   realName: 'Контоль прогара холодильников фурм 21', },
+        { x: 39.65, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_22',   realName: 'Контоль прогара холодильников фурм 22', },
+        { x: 43.60, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_23',   realName: 'Контоль прогара холодильников фурм 23', },
+        { x: 47.30, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_24',   realName: 'Контоль прогара холодильников фурм 24', },
+        { x: 51.25, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_25',   realName: 'Контоль прогара холодильников фурм 25', },
+        { x: 55.10, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_26',   realName: 'Контоль прогара холодильников фурм 26', },
+        { x: 58.95, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_27',   realName: 'Контоль прогара холодильников фурм 27', },
+        { x: 62.80, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_28',   realName: 'Контоль прогара холодильников фурм 28', },
+        { x: 66.65, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_29',   realName: 'Контоль прогара холодильников фурм 29', },
+        { x: 70.65, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_30',   realName: 'Контоль прогара холодильников фурм 30', },
+        { x: 74.60, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_31',   realName: 'Контоль прогара холодильников фурм 31', },
+        { x: 78.40, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_32',   realName: 'Контоль прогара холодильников фурм 32', },
+// #endregion
+
+        // #region Kontrol_progara Table 2
+        { x: 20.00, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_1',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 1', },
+        { x: 23.80, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_2',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 2', },
+        { x: 27.80, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_3',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 3', },
+        { x: 31.65, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_4',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 4', },
+        { x: 35.50, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_5',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 5', },
+        { x: 39.50, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_6',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 6', },
+        { x: 43.50, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_7',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 7', },
+        { x: 47.20, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_8',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 8', },
+        { x: 51.25, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_9',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 9', },
+        { x: 55.10, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_10',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 10', },
+        { x: 58.95, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_11',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 11', },
+        { x: 62.80, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_12',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 12', },
+        { x: 66.65, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_13',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 13', },
+        { x: 70.70, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_14',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 14', },
+        { x: 74.60, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_15',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 15', },
+        { x: 78.45, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_16',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 16', },
+
+        { x: 19.90, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_17',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 17', },
+        { x: 23.80, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_18',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 18', },
+        { x: 27.80, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_19',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 19', },
+        { x: 31.60, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_20',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 20', },
+        { x: 35.50, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_21',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 21', },
+        { x: 39.50, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_22',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 22', },
+        { x: 43.50, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_23',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 23', },
+        { x: 47.20, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_24',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 24', },
+        { x: 51.25, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_25',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 25', },
+        { x: 55.10, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_26',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 26', },
+        { x: 58.95, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_27',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 27', },
+        { x: 62.80, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_28',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 28', },
+        { x: 66.65, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_29',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 29', },
+        { x: 70.65, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_30',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 30', },
+        { x: 74.60, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_31',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 31', },
+        { x: 78.50, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_32',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 32', },
+// #endregion 
+
+        // #region Kontrol_progara Table 3
+        { x: 19.85, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_1',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 1', },
+        { x: 23.70, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_2',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 2', },
+        { x: 27.70, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_3',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 3', },
+        { x: 31.60, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_4',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 4', },
+        { x: 35.50, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_5',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 5', },
+        { x: 39.50, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_6',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 6', },
+        { x: 43.50, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_7',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 7', },
+        { x: 47.20, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_8',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 8', },
+        { x: 51.25, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_9',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 9', },
+        { x: 55.10, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_10',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 10', },
+        { x: 58.95, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_11',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 11', },
+        { x: 62.80, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_12',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 12', },
+        { x: 70.75, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_13',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 13', },
+        { x: 70.80, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_14',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 14', },
+        { x: 74.70, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_15',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 15', },
+        { x: 78.50, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_16',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 16', },
+        
+        { x: 19.80, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_17',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 17', },
+        { x: 23.70, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_18',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 18', },
+        { x: 27.70, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_19',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 19', },
+        { x: 31.60, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_20',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 20', },
+        { x: 35.50, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_21',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 21', },
+        { x: 39.50, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_22',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 22', },
+        { x: 43.50, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_23',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 23', },
+        { x: 47.20, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_24',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 24', },
+        { x: 51.25, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_25',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 25', },
+        { x: 55.10, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_26',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 26', },
+        { x: 58.95, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_27',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 27', },
+        { x: 62.80, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_28',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 28', },
+        { x: 70.75, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_29',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 29', },
+        { x: 70.80, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_30',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 30', },
+        { x: 74.70, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_31',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 31', },
+        { x: 78.50, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_32',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 32', },
+// #endregion
       ]
     },
     {
@@ -831,6 +940,50 @@ const devHelper = {
         { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
         { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
         { x: 60, y: 0.0, w: 5.5, h: 2.5, name: 'gazoochistka', },
+        { x: 8.500, y: 21.10, w: 5.0, h: 5.3, id: 'gaz_sbrosOshibok',  realName: 'Сброс ошибки', forAction: true,},
+        { x: 16.60, y: 19.85, w: 4.3, h: 4.5, id: 'gaz_AKZ',           realName: 'ЭКЗ',          forAction: true,},
+        { x: 21.30, y: 19.85, w: 4.4, h: 4.5, id: 'gaz_GUBT',          realName: 'ГУБТ',         forAction: true,},
+        { x: 37.00, y: 18.20, w: 3.8, h: 3.9, id: 'gaz_Mectn',         realName: 'Местн',        forAction: true,},
+        { x: 41.95, y: 18.20, w: 3.8, h: 3.9, id: 'gaz_Dist',          realName: 'Дист',         forAction: true,},
+        { x: 37.00, y: 23.20, w: 4.6, h: 4.2, id: 'gaz_AVSTOP',        realName: 'АВ.СТОП',      forAction: true,},
+        { x: 41.95, y: 22.70, w: 3.7, h: 5.0, id: 'gaz_sbrosAvarii',   realName: 'Сброс аварии', forAction: true,},
+
+        { x: 57.30, y: 23.30, w: 6.5, h: 4.6, id: 'gaz_PkolGaza',      realName: 'Р.кол.газа',   forAction: true,},
+        { x: 57.30, y: 28.80, w: 6.5, h: 4.6, id: 'gaz_dPpechiObsh',   realName: 'dP печи общ',  forAction: true,},
+
+        { x: 72.00, y: 19.2, w: 6.9, h: 3.6, id: 'gaz_AKZ1_avtomat',   realName: 'ЭКЗ-1  Автомат.',  forAction: true,}, 
+        { x: 72.00, y: 23.3, w: 6.9, h: 3.6, id: 'gaz_AKZ1_ruchnoy',   realName: 'ЭКЗ-1  Ручной',    forAction: true,},   
+        { x: 72.05, y: 27.5, w: 6.9, h: 3.6, id: 'gaz_AKZ1_mestnuy',   realName: 'ЭКЗ-1  Местный',   forAction: true,},  
+        { x: 72.05, y: 31.7, w: 6.9, h: 3.6, id: 'gaz_AKZ1_distanc',   realName: 'ЭКЗ-1  Дистанц.',  forAction: true,}, 
+        { x: 72.05, y: 35.9, w: 6.9, h: 3.6, id: 'gaz_AKZ1_razblok',   realName: 'ЭКЗ-1  Разблок.',  forAction: true,}, 
+
+        { x: 72.90, y: 44.4, w: 5.35, h: 2.7, id: 'gaz_AKZ1_open',     realName: 'ЭКЗ-1 Открыть',       forAction: true,}, 
+        { x: 72.90, y: 47.2, w: 5.35, h: 2.7, id: 'gaz_AKZ1_close',    realName: 'ЭКЗ-1 Закрыть',       forAction: true,}, 
+        { x: 71.50, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ1_error',    realName: 'ЭКЗ-1 Ошибка',        forAction: true,}, 
+        { x: 75.80, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ1_reset',    realName: 'ЭКЗ-1 Сброс ошибки',  forAction: true,}, 
+
+        { x: 81.10, y: 19.2, w: 6.9, h: 3.6, id: 'gaz_AKZ2_avtomat',   realName: 'ЭКЗ-2  Автомат.',  forAction: true,}, 
+        { x: 81.10, y: 23.3, w: 6.9, h: 3.6, id: 'gaz_AKZ2_ruchnoy',   realName: 'ЭКЗ-2  Ручной',    forAction: true,},   
+        { x: 81.15, y: 27.5, w: 6.9, h: 3.6, id: 'gaz_AKZ2_mestnuy',   realName: 'ЭКЗ-2  Местный',   forAction: true,},  
+        { x: 81.15, y: 31.7, w: 6.9, h: 3.6, id: 'gaz_AKZ2_distanc',   realName: 'ЭКЗ-2  Дистанц.',  forAction: true,}, 
+        { x: 81.15, y: 35.9, w: 6.9, h: 3.6, id: 'gaz_AKZ2_razblok',   realName: 'ЭКЗ-2  Разблок.',  forAction: true,},
+
+        { x: 82.00, y: 44.4, w: 5.35, h: 2.7, id: 'gaz_AKZ2_open',     realName: 'ЭКЗ-2 Открыть',       forAction: true,}, 
+        { x: 82.00, y: 47.2, w: 5.35, h: 2.7, id: 'gaz_AKZ2_close',    realName: 'ЭКЗ-2 Закрыть',       forAction: true,}, 
+        { x: 80.70, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ2_error',    realName: 'ЭКЗ-2 Ошибка',        forAction: true,}, 
+        { x: 84.90, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ2_reset',    realName: 'ЭКЗ-2 Сброс ошибки',  forAction: true,}, 
+
+        { x: 90.15, y: 19.2, w: 6.9, h: 3.6, id: 'gaz_AKZ3_avtomat',   realName: 'ЭКЗ-3  Автомат.',  forAction: true,}, 
+        { x: 90.15, y: 23.3, w: 6.9, h: 3.6, id: 'gaz_AKZ3_ruchnoy',   realName: 'ЭКЗ-3  Ручной',    forAction: true,},   
+        { x: 90.15, y: 27.5, w: 6.9, h: 3.6, id: 'gaz_AKZ3_mestnuy',   realName: 'ЭКЗ-3  Местный',   forAction: true,},  
+        { x: 90.20, y: 31.7, w: 6.9, h: 3.6, id: 'gaz_AKZ3_distanc',   realName: 'ЭКЗ-3  Дистанц.',  forAction: true,}, 
+        { x: 90.20, y: 35.9, w: 6.9, h: 3.6, id: 'gaz_AKZ3_razblok',   realName: 'ЭКЗ-3  Разблок.',  forAction: true,},
+        { x: 90.20, y: 35.9, w: 6.9, h: 3.6, id: 'gaz_AKZ3_razblok',   realName: 'ЭКЗ-3  Разблок.',  forAction: true,},
+
+        { x: 91.05, y: 44.4, w: 5.35, h: 2.7, id: 'gaz_AKZ3_open',     realName: 'ЭКЗ-3 Открыть',       forAction: true,}, 
+        { x: 91.05, y: 47.2, w: 5.35, h: 2.7, id: 'gaz_AKZ3_close',    realName: 'ЭКЗ-3 Закрыть',       forAction: true,}, 
+        { x: 89.70, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ3_error',    realName: 'ЭКЗ-3 Ошибка',        forAction: true,}, 
+        { x: 94.00, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ3_reset',    realName: 'ЭКЗ-3 Сброс ошибки',  forAction: true,}, 
       ]
     },
     {
@@ -839,6 +992,14 @@ const devHelper = {
         { x: 10.1, y: 92.4, w: 4.9, h: 2.2, forAction: true, id: 'shagi_uprav_zakryt', realName: 'Закрыть', },
       ]
     },
+    {
+      name: 'VN3_Perekidka_iz_Otdeleniya_v_Nagrev', helpers: [
+        { x: 63.7, y: 3.50, w: 2.4, h: 3.0, forAction: true, id: 'pericNagrev_close_btn', realName: 'Закрыть',  removeWindow: 'VN3_Perekidka_iz_Otdeleniya_v_Nagrev',},
+        { x: 31.8, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_pusk_btn',  realName: 'Пуск',     value: { window: 'O_n_k_na_VNK_posle_2', x: 678, y: 917 },},
+        { x: 35.0, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_stop_btn',  realName: 'Стоп', },
+        { x: 38.2, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_reset_btn', realName: 'Сброс', },
+      ]
+    }
   ],
   startPos: {
     IF2D: [],
