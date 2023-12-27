@@ -1206,67 +1206,6 @@ const devHelper = {
 };
 const timeDiff = -0;
 let tempActions = [
-  // [
-  //   {
-  //     scenarioText: 'Отделить подогреватели воздуха и газа',
-  //     sender: 'Система',
-  //     startTime: timeDiff + 0,
-  //   },
-  //   {
-  //     text: 'Нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС», «Угольная» на телефоне.',
-  //     sender: 'Система',
-  //     audio: 'telephone_say',
-  //     multi: [
-  //       {
-  //         text: 'Газовый цех: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-  //         sender: 'Газовщик',
-  //         action: {
-  //           target3D: 'PhoneButton001',
-  //         },
-  //         audio: 'tts-vo1',
-  //       },
-  //       {
-  //         text: 'Насосный цех: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-  //         sender: 'Газовщик',
-  //         action: {
-  //           target3D: 'PhoneButton006',
-  //         },
-  //         audio: 'tts-vo1',
-  //       },
-  //       {
-  //         text: 'Кислородный цех: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-  //         sender: 'Газовщик',
-  //         action: {
-  //           target3D: 'PhoneButton017',
-  //         },
-  //         audio: 'tts-vo1',
-  //       },
-  //       {
-  //         text: 'ЭВС: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-  //         sender: 'Газовщик',
-  //         action: {
-  //           target3D: 'PhoneButton020',
-  //         },
-  //         audio: 'tts-vo1',
-  //       },
-  //       {
-  //         text: 'Угольная: Здравствуйте! Планируется остановка доменной печи №6 в 09:00 на 3 часа.',
-  //         sender: 'Газовщик',
-  //         action: {
-  //           target3D: 'PhoneButton016',
-  //         },
-  //         audio: 'tts-vo1',
-  //       },
-  //     ],
-  //     startTime: timeDiff + 1,
-  //     human: true,
-  //   },
-  //   {
-  //     scenarioText: 'Отделить подогреватели воздуха и газа',
-  //     sender: 'Система',
-  //     startTime: timeDiff + 2,
-  //   },
-  // ],
   // Первый сценарий  
   [
     {
@@ -3970,6 +3909,10 @@ let tempActions = [
             { name: 'vnk3_stripes', color: '#0033FF' },
             { name: 'VNK3_Fr', text: '0' },
             { name: 'VNK3_Fb', text: '0' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'Tdym_3', text: '139' },
             { name: 'kl001_proc', text: '0' },
             { name: 'kl001a_proc', text: '22' },
@@ -4150,10 +4093,10 @@ let tempActions = [
             { name: '1TI_04', text: '-999' },
             { name: '1TI_05', text: '1209' },
             { name: 'vybor_signala', text: '1221' },
-            { name: 'circle_dutyo', color: '#000' },
-            { name: 'circle_nagrev', color: '#06FF06' },
-            { name: 'circle_otdeleniye_1', color: '#000' },
-            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'circle_dutyo_VNK1', color: '#000' },
+            { name: 'circle_nagrev_VNK1', color: '#06FF06' },
+            { name: 'circle_otdeleniye_1_VNK1', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK1', color: '#000' },
             //main
             { name: '7PI_12', text: '17,60' },
             { name: 'ramka_7PI_12', color: '#ffff0f' },
@@ -4207,6 +4150,10 @@ let tempActions = [
             { name: 'VNK3_status_1', text: 'Циклический' },
             { name: 'VNK3_status_2', text: 'Дутье' },
             { name: 'vnk3_stripes', color: '#0033FF' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK3_Fr', text: '0' },
             { name: 'VNK3_Fb', text: '0' },
             { name: 'Tdym_3', text: '139' },
@@ -4237,6 +4184,23 @@ let tempActions = [
             { name: '5TI_21', text: '1201' },
             { name: '5TI_22', text: '1210' },
             { name: 'PI_09', text: '536б65' },
+
+            // Перекидка из нагрева в отделение
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
           ]
         }
       },
@@ -4306,6 +4270,25 @@ let tempActions = [
             { name: 'rect_111', position: { y: 40 } },
             { name: 'rect_112', position: { y: 40 } },
             { name: 'nagrev_otd_2_rect', color: '#06FF06' },
+
+            { name: 'str_1_textFon', opacity: '1' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
+            // { name: 'rashod_azota_fon', color: '#1CCC3D' },
+            { name: 'na_Ugle_115', color: '#CF25FB' },
+            { name: 'na_Ugle_123', color: '#CF25FB' },
           ]
         },
       },
@@ -4378,6 +4361,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 81 } },
             { name: 'rect_111', position: { y: 81 } },
             { name: 'rect_112', position: { y: 81 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '1' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4412,6 +4411,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 123 } },
             { name: 'rect_111', position: { y: 123 } },
             { name: 'rect_112', position: { y: 123 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '1' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4445,6 +4460,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 164 } },
             { name: 'rect_111', position: { y: 164 } },
             { name: 'rect_112', position: { y: 164 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '1' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4480,6 +4511,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 205 } },
             { name: 'rect_111', position: { y: 205 } },
             { name: 'rect_112', position: { y: 205 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '1' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4511,6 +4558,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 245 } },
             { name: 'rect_111', position: { y: 245 } },
             { name: 'rect_112', position: { y: 245 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '1' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4541,6 +4604,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 286 } },
             { name: 'rect_111', position: { y: 286 } },
             { name: 'rect_112', position: { y: 286 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '1' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4572,6 +4651,23 @@ let tempActions = [
             { name: 'rect_117', position: { y: 327 } },
             { name: 'rect_111', position: { y: 327 } },
             { name: 'rect_112', position: { y: 327 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '1' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
+            { name: 'rashod_azota_fon', color: '#1CCC3D' },
             // End Table
           ]
         }
@@ -4603,6 +4699,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 368 } },
             { name: 'rect_111', position: { y: 368 } },
             { name: 'rect_112', position: { y: 368 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '1' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4634,6 +4746,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 409 } },
             { name: 'rect_111', position: { y: 409 } },
             { name: 'rect_112', position: { y: 409 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '1' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4663,6 +4791,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 450 } },
             { name: 'rect_111', position: { y: 450 } },
             { name: 'rect_112', position: { y: 450 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '1' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4693,6 +4837,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 491 }, color: '#ff1e00' },
             { name: 'rect_111', position: { y: 491 } },
             { name: 'rect_112', position: { y: 491 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '1' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4729,6 +4889,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 531 } },
             { name: 'rect_111', position: { y: 531 }, color: '#ff1e00' },
             { name: 'rect_112', position: { y: 531 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '1' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4761,6 +4937,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 572 } },
             { name: 'rect_111', position: { y: 572 } },
             { name: 'rect_112', position: { y: 572 }, color: '#ff1e00' },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '1' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -4784,10 +4976,10 @@ let tempActions = [
             { name: 'kl_121', color: '#06FF06' },
             { name: 'kl_140', color: '#06FF06' },
             { name: 'kl_111', color: '#06FF06' },
-            { name: 'circle_dutyo', color: '#000' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#000' },
-            { name: 'circle_otdeleniye_2', color: '#06FF06' },
+            { name: 'circle_dutyo_VNK1', color: '#000' },
+            { name: 'circle_nagrev_VNK1', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK1', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK1', color: '#06FF06' },
             { name: 'Vremya_nagreva', text: '109' },
             { name: '7PI_13', text: '8,62' },
             { name: '1FI_01', text: '0' },
@@ -4819,6 +5011,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 613 } },
             { name: 'rect_111', position: { y: 613 } },
             { name: 'rect_112', position: { y: 613 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '1' },
             //  End Table
           ]
         }
@@ -4843,11 +5051,46 @@ let tempActions = [
             { name: 'rect_132', position: { y: 0 } },
             { name: 'rect_116', position: { y: 0 } },
             { name: 'rect_124', position: { y: 0 } },
-            { name: 'rect_113', position: { y: 0 } },
+            { name: 'rect_113', position: { y: 0 }, color: '#ff1e00' },
             { name: 'rect_134', position: { y: 0 } },
             { name: 'rect_117', position: { y: 0 } },
-            { name: 'rect_111', position: { y: 0 } },
+            { name: 'rect_111', position: { y: 0 }, color: '#06f322' },
             { name: 'rect_112', position: { y: 0 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
+
+            { name: 'time_shag_111', color: '#06f322' },
+            { name: 'time_shag_112', color: '#ff1e00' },
+            { name: 'time_shag_113', color: '#ff1e00' },
+            { name: 'time_shag_121', color: '#ff1e00' },
+            { name: 'time_shag_124_1', color: '#06f322' },
+            { name: 'time_shag_117', color: '#ff1e00' },
+            { name: 'time_shag_143', color: '#ff1e00' },
+            { name: 'time_shag_110', color: '#06f322' },
+            { name: 'time_shag_124_2', color: '#ff1e00' },
+            { name: 'time_shag_123', color: '#ff1e00' },
+            { name: 'time_shag_114', color: '#ff1e00' },
+            { name: 'time_shag_127', color: '#ff1e00' },
+            { name: 'time_shag_cikl', color: '#06f322' },
+            { name: 'time_shag_nagrev', color: '#ff1e00' },
+            { name: 'time_shag_davAzot', color: '#06f322' },
+            { name: 'time_shag_regulator_rashoda', color: '#06f322' },
+            { name: 'time_shag_regulator_sootn', color: '#06f322' },
             //  End Table
           ]
         }
@@ -4895,7 +5138,7 @@ let tempActions = [
             { name: 'vnk_1', color: '#808080' }, // задник стрелки
             { name: 'VNK1_status_1', text: 'Циклический' },
             { name: 'VNK1_status_2', text: 'Отделение 2' },
-            { name: 'vnk1_stripes', color: '#ff1e00' },
+            { name: 'vnk1_stripes', color: '#808080' },
             { name: 'Vremya_nagreva', text: '109' },
             { name: 'Vremya_dutya', text: '60' },
             { name: 'Vremya_otdelen', text: '0' },
@@ -4905,10 +5148,10 @@ let tempActions = [
             { name: '1TI_04', text: '-999' },
             { name: '1TI_05', text: '1089' },
             { name: 'vybor_signala', text: '1222' },
-            { name: 'circle_dutyo', color: '#000' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#000' },
-            { name: 'circle_otdeleniye_2', color: '#06FF06' },
+            { name: 'circle_dutyo_VNK1', color: '#000' },
+            { name: 'circle_nagrev_VNK1', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK1', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK1', color: '#06FF06' },
             //VN
             { name: 'rect_132_2', position: { x: -3 }, color: '#000' },
             { name: 'kl_132', color: '#ff1e00' },
@@ -5005,7 +5248,10 @@ let tempActions = [
         target2D: 'otdel2_otdel_btn',
         window2D: {
           elements: [
-            { name: 'rect_ish_c5', color: '#ff1e00' },
+            // { name: 'rect_ish_c5', color: '#ff1e00' },
+            // { name: 'rect_ish_c5', color: '#06FF06' },
+            { name: 'str_1_textFon_otdel2', opacity: '0' },
+            { name: 'text_ish_c5', text: 'Открыт' },
           ]
         },
       },
@@ -5046,7 +5292,6 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'title_open_vn', text: 'Пуск' },
-            { name: 'rect_ish_c5', color: '#ff1e00' },
           ]
         },
         helper2D: [
@@ -5063,12 +5308,15 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'otd2_otd_rect', color: '#06FF06' },
-            // { name: 'text_ish_c4', y: 297.5 },   // start 237.5
-            // { name: 'text_ish_c5', y: 297.5 },   // start 237.5
-            // { name: 'text_ish_c6', y: 297.5 },   // start 237.5
-            // { name: 'rect_ish_c4', position: { y: 60 } },
-            // { name: 'rect_ish_c5', position: { y: 60 } },
-            // { name: 'rect_ish_c6', position: { y: 60 } },
+            { name: 'text_ish_c4', y: 297.5 },   // start 237.5
+            { name: 'text_ish_c5', y: 297.5 },   // start 237.5
+            { name: 'text_ish_c6', y: 297.5 },   // start 237.5
+            { name: 'rect_ish_c4', position: { y: 60 } },
+            { name: 'rect_ish_c5', position: { y: 60 } },
+            { name: 'rect_ish_c6', position: { y: 60 } },
+            { name: 'str_1_textFon_otdel2', opacity: '1' },
+            { name: 'text_ish_c5', text: 'Закрыт' },
+            { name: 'rect_ish_c5', color: '#ff1e00' },
           ]
         }
       },
@@ -5099,6 +5347,7 @@ let tempActions = [
             { name: 'vnk_1', color: '#e6e6e6' },
             { name: 'status_1', text: 'Циклический' },
             { name: 'status_1', text: 'Отдел.2-Отдел.' },
+            { name: 'vnk1_stripes', color: '#e6e6e6' },
             { name: '7PI_13', text: '9,54' },
             { name: '1FI_01', text: '0' },
             { name: '1PI_02', text: '0,00' },
@@ -5248,10 +5497,10 @@ let tempActions = [
             { name: '1TI_04', text: '-999' },
             { name: '1TI_05', text: '1104' },
             { name: 'vybor_signala', text: '1134' },
-            { name: 'circle_dutyo', color: '#000' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#06FF06' },
-            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'circle_dutyo_VNK1', color: '#000' },
+            { name: 'circle_nagrev_VNK1', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK1', color: '#06FF06' },
+            { name: 'circle_otdeleniye_2_VNK1', color: '#000' },
             //VN
             { name: 'rect_132_2', position: { x: -3 }, color: '#000' },
             { name: 'kl_132', color: '#ff1e00' },
@@ -5364,6 +5613,42 @@ let tempActions = [
             { name: 'rect_117', position: { y: 0 } },
             { name: 'rect_111', position: { y: 0 } },
             { name: 'rect_112', position: { y: 0 } },
+
+            { name: 'text_115_na_ugle', text: '215 на угле зажиг.' },
+            { name: 'text_123_na_ugle', text: '223 на угле зажиг.' },
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
+            { name: 'time_shag_111', color: '#06f322' },
+            { name: 'time_shag_112', color: '#06f322' },
+            { name: 'time_shag_113', color: '#06f322' },
+            { name: 'time_shag_121', color: '#06f322' },
+            { name: 'time_shag_124_1', color: '#06f322' },
+            { name: 'time_shag_117', color: '#06f322' },
+            { name: 'time_shag_143', color: '#06f322' },
+            { name: 'time_shag_110', color: '#06f322' },
+            { name: 'time_shag_124_2', color: '#06f322' },
+            { name: 'time_shag_123', color: '#06f322' },
+            { name: 'time_shag_114', color: '#06f322' },
+            { name: 'time_shag_127', color: '#06f322' },
+            { name: 'time_shag_cikl', color: '#06f322' },
+            { name: 'time_shag_nagrev', color: '#06f322' },
+            { name: 'time_shag_davAzot', color: '#06f322' },
+            { name: 'time_shag_regulator_rashoda', color: '#06f322' },
+            { name: 'time_shag_regulator_sootn', color: '#06f322' },
           ]
         },
       },
@@ -5407,6 +5692,25 @@ let tempActions = [
             { name: 'rect_111', position: { y: 40 } },
             { name: 'rect_112', position: { y: 40 } },
             { name: 'nagrev_otd_2_rect', color: '#06FF06' },
+
+            { name: 'str_1_textFon', opacity: '1' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
+            // { name: 'rashod_azota_fon', color: '#1CCC3D' },
+            { name: 'na_Ugle_115', color: '#CF25FB' },
+            { name: 'na_Ugle_123', color: '#CF25FB' },
           ]
         }
       },
@@ -5511,6 +5815,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 81 } },
             { name: 'rect_111', position: { y: 81 } },
             { name: 'rect_112', position: { y: 81 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '1' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5539,6 +5859,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 123 } },
             { name: 'rect_111', position: { y: 123 } },
             { name: 'rect_112', position: { y: 123 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '1' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5569,6 +5905,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 164 } },
             { name: 'rect_111', position: { y: 164 } },
             { name: 'rect_112', position: { y: 164 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '1' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5606,6 +5958,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 205 } },
             { name: 'rect_111', position: { y: 205 } },
             { name: 'rect_112', position: { y: 205 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '1' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5644,6 +6012,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 245 } },
             { name: 'rect_111', position: { y: 245 } },
             { name: 'rect_112', position: { y: 245 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '1' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5674,6 +6058,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 286 } },
             { name: 'rect_111', position: { y: 286 } },
             { name: 'rect_112', position: { y: 286 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '1' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5709,6 +6109,23 @@ let tempActions = [
             { name: 'rect_117', position: { y: 327 } },
             { name: 'rect_111', position: { y: 327 } },
             { name: 'rect_112', position: { y: 327 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '1' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
+            { name: 'rashod_azota_fon', color: '#1CCC3D' },
             // End Table
           ]
         }
@@ -5739,6 +6156,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 368 } },
             { name: 'rect_111', position: { y: 368 } },
             { name: 'rect_112', position: { y: 368 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '1' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5774,6 +6207,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 409 } },
             { name: 'rect_111', position: { y: 409 } },
             { name: 'rect_112', position: { y: 409 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '1' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5806,6 +6255,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 450 } },
             { name: 'rect_111', position: { y: 450 } },
             { name: 'rect_112', position: { y: 450 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '1' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5836,6 +6301,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 491 }, color: '#ff1e00' },
             { name: 'rect_111', position: { y: 491 } },
             { name: 'rect_112', position: { y: 491 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '1' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5874,6 +6355,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 531 } },
             { name: 'rect_111', position: { y: 531 }, color: '#ff1e00' },
             { name: 'rect_112', position: { y: 531 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '1' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5905,6 +6402,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 572 } },
             { name: 'rect_111', position: { y: 572 } },
             { name: 'rect_112', position: { y: 572 }, color: '#ff1e00' },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '1' },
+            { name: 'str_15_textFon', opacity: '0' },
             // End Table
           ]
         }
@@ -5954,6 +6467,22 @@ let tempActions = [
             { name: 'rect_117', position: { y: 613 } },
             { name: 'rect_111', position: { y: 613 } },
             { name: 'rect_112', position: { y: 613 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '1' },
             //  End Table
           ]
         }
@@ -5983,6 +6512,41 @@ let tempActions = [
             { name: 'rect_117', position: { y: 0 } },
             { name: 'rect_111', position: { y: 0 } },
             { name: 'rect_112', position: { y: 0 } },
+
+            { name: 'str_1_textFon', opacity: '0' },
+            { name: 'str_2_textFon', opacity: '0' },
+            { name: 'str_3_textFon', opacity: '0' },
+            { name: 'str_4_textFon', opacity: '0' },
+            { name: 'str_5_textFon', opacity: '0' },
+            { name: 'str_6_textFon', opacity: '0' },
+            { name: 'str_7_textFon', opacity: '0' },
+            { name: 'str_8_textFon', opacity: '0' },
+            { name: 'str_9_textFon', opacity: '0' },
+            { name: 'str_10_textFon', opacity: '0' },
+            { name: 'str_11_textFon', opacity: '0' },
+            { name: 'str_12_textFon', opacity: '0' },
+            { name: 'str_13_textFon', opacity: '0' },
+            { name: 'str_14_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
+            { name: 'str_15_textFon', opacity: '0' },
+
+            { name: 'time_shag_111', color: '#06f322' },
+            { name: 'time_shag_112', color: '#ff1e00' },
+            { name: 'time_shag_113', color: '#ff1e00' },
+            { name: 'time_shag_121', color: '#ff1e00' },
+            { name: 'time_shag_124_1', color: '#06f322' },
+            { name: 'time_shag_117', color: '#ff1e00' },
+            { name: 'time_shag_143', color: '#ff1e00' },
+            { name: 'time_shag_110', color: '#06f322' },
+            { name: 'time_shag_124_2', color: '#ff1e00' },
+            { name: 'time_shag_123', color: '#ff1e00' },
+            { name: 'time_shag_114', color: '#ff1e00' },
+            { name: 'time_shag_127', color: '#ff1e00' },
+            { name: 'time_shag_cikl', color: '#06f322' },
+            { name: 'time_shag_nagrev', color: '#ff1e00' },
+            { name: 'time_shag_davAzot', color: '#06f322' },
+            { name: 'time_shag_regulator_rashoda', color: '#06f322' },
+            { name: 'time_shag_regulator_sootn', color: '#06f322' },
             //  End Table
           ]
         }
@@ -6042,10 +6606,10 @@ let tempActions = [
             { name: '2TI_04', text: '1080' },
             { name: '2TI_05', text: '-999' },
             { name: 'vybor_signala', text: '1343' },
-            { name: 'circle_dutyo', color: '#000' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#000' },
-            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'circle_dutyo_VNK2', color: '#000' },
+            { name: 'circle_nagrev_VNK2', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK2', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK2', color: '#000' },
             //VN
             { name: 'rect_232_2', position: { x: -3 }, color: '#000' },
             { name: 'kl_232', color: '#ff1e00' },
@@ -6128,6 +6692,10 @@ let tempActions = [
             // { name: 'PV1_1',  text: '23,33' },
             { name: 'M_t4_4', text: 'Работа', color: '#06FF06' },
             { name: 'VNK2_status_2', text: 'Отделение 2' },
+            { name: 'circle_dutyo_VNK2', color: '#000' },
+            { name: 'circle_nagrev_VNK2', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK2', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK2', color: '#06FF06' },
             // { name: 'vybor_signala',  text: '1210' },
             // { name: '5TI_21',         text: '1201' },
             // { name: '5TI_22',         text: '1210' },
@@ -6185,8 +6753,10 @@ let tempActions = [
             { name: 'text_ish_c5', y: 237.5 },
             { name: 'text_ish_c6', y: 237.5 },
             { name: 'rect_ish_c4', color: '#ff1e00', position: { y: 0 } },
-            { name: 'rect_ish_c5', color: '#ff1e00', position: { y: 0 } },
+            { name: 'rect_ish_c5', color: '#06FF06', position: { y: 0 } },
             { name: 'rect_ish_c6', color: '#ff1e00', position: { y: 0 } },
+            { name: 'str_1_textFon_otdel2', opacity: '0' },
+            { name: 'text_ish_c5', text: 'Открыт' },
           ]
         }
       },
@@ -6214,12 +6784,15 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'otd2_otd_rect', color: '#06FF06' },
-            // { name: 'text_ish_c4', y: 297.5 },   // start 237.5
-            // { name: 'text_ish_c5', y: 297.5 },   // start 237.5
-            // { name: 'text_ish_c6', y: 297.5 },   // start 237.5
-            // { name: 'rect_ish_c4', position: { y: 60 } },
-            // { name: 'rect_ish_c5', position: { y: 60 } },
-            // { name: 'rect_ish_c6', position: { y: 60 } },
+            { name: 'text_ish_c4', y: 297.5 },   // start 237.5
+            { name: 'text_ish_c5', y: 297.5 },   // start 237.5
+            { name: 'text_ish_c6', y: 297.5 },   // start 237.5
+            { name: 'rect_ish_c4', position: { y: 60 } },
+            { name: 'rect_ish_c5', position: { y: 60 } },
+            { name: 'rect_ish_c6', position: { y: 60 } },
+            { name: 'str_1_textFon_otdel2', opacity: '1' },
+            { name: 'text_ish_c5', text: 'Закрыт' },
+            { name: 'rect_ish_c5', color: '#ff1e00' },
           ]
         }
       },
@@ -6385,10 +6958,10 @@ let tempActions = [
             { name: '2TI_04', text: '1080' },
             { name: '2TI_05', text: '-999' },
             { name: 'vybor_signala', text: '1343' },
-            { name: 'circle_dutyo', color: '#000' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#000' },
-            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'circle_dutyo_VNK2', color: '#000' },
+            { name: 'circle_nagrev_VNK2', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK2', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK2', color: '#000' },
             //VN
             { name: 'rect_232_2', position: { x: -3 }, color: '#000' },
             { name: 'kl_232', color: '#ff1e00' },
@@ -8757,6 +9330,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK2_Fb', text: '0' },
             { name: 'VNK2_Fr', text: '0' },
@@ -9023,14 +9600,18 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_1', text: 'ДУТЬЕ' },
-            { name: 'VNK2_status_1', text: 'ОТДЕЛЕН' },
-            { name: 'VNK1_status_1', text: 'ОТДЕЛЕН' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#ada3b0' },
             { name: 'VNK1_status_1_fon', color: '#ada3b0' },
-            { name: 'VNK3_status_2', text: 'Цикл' },
-            { name: 'VNK2_status_2', text: 'Цикл' },
-            { name: 'VNK1_status_2', text: 'Цикл' },
+            { name: 'VNK3_status_1_DP', text: 'Цикл' },
+            { name: 'VNK2_status_1_DP', text: 'Цикл' },
+            { name: 'VNK1_status_1_DP', text: 'Цикл' },
             { name: 'Fvozdyh_3', text: '0' },
             { name: 'Fvozdyh_2', text: '0' },
             { name: 'Fvozdyh_1', text: '0' },
@@ -10185,6 +10766,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
@@ -10552,6 +11137,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
@@ -11986,6 +12575,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
@@ -13715,6 +14308,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
@@ -15240,6 +15837,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
@@ -17591,14 +18192,18 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_1', text: 'ДУТЬЕ' },
-            { name: 'VNK2_status_1', text: 'ОТДЕЛЕН' },
-            { name: 'VNK1_status_1', text: 'ОТДЕЛЕН' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
             { name: 'VNK2_status_1_fon', color: '#ada3b0' },
             { name: 'VNK1_status_1_fon', color: '#ada3b0' },
-            { name: 'VNK3_status_2', text: 'Цикл' },
-            { name: 'VNK2_status_2', text: 'Цикл' },
-            { name: 'VNK1_status_2', text: 'Цикл' },
+            { name: 'VNK3_status_1_DP', text: 'Цикл' },
+            { name: 'VNK2_status_1_DP', text: 'Цикл' },
+            { name: 'VNK1_status_1_DP', text: 'Цикл' },
             { name: 'Fvozdyh_3', text: '0' },
             { name: 'Fvozdyh_2', text: '0' },
             { name: 'Fvozdyh_1', text: '0' },
@@ -18480,6 +19085,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
@@ -18690,6 +19299,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
@@ -19481,6 +20094,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
@@ -19875,6 +20492,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
@@ -20714,6 +21335,10 @@ let tempActions = [
             { name: 'Tkyp_2_rect', color: '#ffff0f' },
             { name: 'Tkyp_1_rect', color: '#ffff0f' },
             { name: 'VNK3_status_2', text: 'ДУТЬЕ' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
             { name: 'VNK3_status_1_fon', color: '#0033FF' },
@@ -21070,10 +21695,10 @@ let tempActions = [
             { name: '3TI_05', text: '1065' },
             { name: 'vybor_signala', text: '1225' },
             { name: 'kl_319', color: '#06FF06' },
-            { name: 'circle_dutyo', color: '#06FF06' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#000' },
-            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'kl_336a', color: '#ff0000' },
             { name: 'kl_318a', color: '#ff0000' },
             { name: 'kl_318', color: '#06FF06' },
@@ -21305,10 +21930,10 @@ let tempActions = [
             { name: '3TI_05', text: '1073' },
             { name: 'vybor_signala', text: '1225' },
             { name: 'kl_319', color: '#06FF06' },
-            { name: 'circle_dutyo', color: '#06FF06' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#000' },
-            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
           ]
         }
       },
@@ -21353,7 +21978,8 @@ let tempActions = [
         },
         helper2D: [
           { x: 91.30, y: 63.9, w: 1.5, h: 2.0, id: 'close_w1' },
-          { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },
+          // { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'open_vn' },
+          { x: 88.15, y: 71.8, w: 4.0, h: 2.6, id: 'ruchnoi' },
         ]
       },
       startTime: timeDiff + 617.1,
@@ -21512,6 +22138,10 @@ let tempActions = [
             { name: 'vnk_3', color: '#050FE5' }, // задник стрелки
             { name: 'VNK3_status_1', text: 'Циклический.' },
             { name: 'VNK3_status_2', text: 'Дутье' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'vnk3_stripes', color: '#050FE5' },
             { name: 'Vremya_nagreva', text: '106' },
             { name: 'Vremya_dutya', text: '105' },
@@ -21713,6 +22343,10 @@ let tempActions = [
             { name: 'VNK3_status_1', text: 'Циклический.' },
             { name: 'VNK3_status_2', text: 'Дутье' },
             { name: 'vnk3_stripes', color: '#050FE5' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'Vremya_nagreva', text: '106' },
             { name: 'Vremya_dutya', text: '105' },
             { name: 'Vremya_otdelen', text: '0' },
@@ -21985,10 +22619,10 @@ let tempActions = [
             { name: '3TI_04', text: '-999' },
             { name: '3TI_05', text: '1068' },
             { name: 'vybor_signala', text: '1224' },
-            { name: 'circle_dutyo', color: '#000' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#000' },
-            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'circle_dutyo_VNK3', color: '#000' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
           ]
         }
       },
@@ -22465,10 +23099,10 @@ let tempActions = [
             { name: '3TI_05', text: '1063' },
             // { name: 'vybor_signala',   text: '1225' },
             // { name: 'kl_319',   color: '#06FF06' },
-            // { name: 'circle_dutyo',           color: '#06FF06' },
-            // { name: 'circle_nagrev',          color: '#000' },
-            // { name: 'circle_otdeleniye_1',    color: '#000' },
-            // { name: 'circle_otdeleniye_2',    color: '#000' },
+            { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             // { name: 'kl_336a',   color: '#ff0000' },
             // { name: 'kl_318a',   color: '#ff0000' },
             // { name: 'kl_318',   color: '#06FF06' },
@@ -22563,10 +23197,10 @@ let tempActions = [
             { name: '3TI_05', text: '1073' },
             { name: 'vybor_signala', text: '1222' },
             { name: 'kl_319', color: '#06FF06' },
-            { name: 'circle_dutyo', color: '#000' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#000' },
-            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'circle_dutyo_VNK3', color: '#000' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'kl_336a', color: '#ff0000' },
             { name: 'kl_318a', color: '#ff0000' },
             { name: 'kl_318', color: '#ff0000' },
@@ -22802,10 +23436,10 @@ let tempActions = [
             { name: '3TI_05', text: '1057' },
             { name: 'vybor_signala', text: '1221' },
             { name: 'kl_319', color: '#ff0000' },
-            { name: 'circle_dutyo', color: '#000' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#000' },
-            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'circle_dutyo_VNK3', color: '#000' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'kl_336a', color: '#ff0000' },
             { name: 'kl_318a', color: '#ff0000' },
             { name: 'kl_318', color: '#ff0000' },
@@ -23054,10 +23688,10 @@ let tempActions = [
             { name: '3TI_05', text: '1058' },
             { name: 'vybor_signala', text: '1221' },
             { name: 'kl_319', color: '#ff0000' },
-            { name: 'circle_dutyo', color: '#000' },
-            { name: 'circle_nagrev', color: '#000' },
-            { name: 'circle_otdeleniye_1', color: '#06FF06' },
-            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'circle_dutyo_VNK3', color: '#000' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#06FF06' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'kl_336a', color: '#ff0000' },
             { name: 'kl_318a', color: '#ff0000' },
             { name: 'kl_318', color: '#ff0000' },
@@ -23733,6 +24367,10 @@ let tempActions = [
             { name: 'Tkyp_3', text: '1216' },
             { name: 'VNK3_status_1', text: 'Индивидуальн.' },
             { name: 'VNK3_status_2', text: 'Отделение' },
+            { name: 'circle_dutyo_VNK3', color: '#000' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#06FF06' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'vnk3_stripes', color: '#9CA4AD' },
             { name: 'VNK3_Fr', text: '0' },
             { name: 'VNK3_Fb', text: '0' },
@@ -23831,7 +24469,6 @@ let tempActions = [
       sender: 'Система',
       startTime: timeDiff + 695,
     },
-    /**/
   ],
   // 2 scenario
   [
@@ -24357,35 +24994,35 @@ let tempActions = [
             { name: 'right_vn', color: '#ff1e00' },
             { name: 'circle_n_winVN', stroke: '#ff1e00' },
             { name: 'circle_n_winVN', stroke: '#ff1e00' },
- 
+
             { name: 'btn_auto_text', color: '#6E6E6E' },
             { name: 'btn_auto_1', color: '#E6E6E6' },
             { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             // { name: 'btn_auto_text', color: '#6E6E6E' },
             // { name: 'btn_auto_1', color: '#E6E6E6' },
             // { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_ruchnoy_text', color: '#000000' },
             { name: 'btn_ruchnoy_1', color: '#ffffff', },
             { name: 'btn_ruchnoy_2', color: '#ffffff', stroke: '#000000' },
- 
+
             { name: 'btn_open_text', color: '#6E6E6E' },
             { name: 'btn_open_1', color: '#E6E6E6' },
             { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_close_text', color: '#6E6E6E' },
             { name: 'btn_close_1', color: '#E6E6E6' },
             { name: 'btn_close_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_stop_text', color: '#6E6E6E' },
             { name: 'btn_stop_1', color: '#E6E6E6', stroke: '#6E6E6E' },
             { name: 'btn_stop_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
             { name: 'btn_reset_1', color: '#E6E6E6' },
             { name: 'btn_reset_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_baypas_vsekh_blokirovok_1', color: '#ffffff' },
             { name: 'btn_baypas_vsekh_blokirovok_2', color: '#ffffff' },
             { name: 'time_full_vnk_text', text: '25' },
@@ -24429,31 +25066,31 @@ let tempActions = [
           elements: [
             // { name: 'status_window_text', text: 'Открывается' },
             { name: 'status_control_vnk_text', text: 'Ручной' },
- 
+
             { name: 'btn_auto_text', color: '#000000' },
             { name: 'btn_auto_1', color: '#ffffff' },
             { name: 'btn_auto_2', color: '#ffffff', stroke: '#000000' },
- 
+
             // { name: 'btn_auto_text', color: '#6E6E6E' },
             // { name: 'btn_auto_1', color: '#E6E6E6' },
             // { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_ruchnoy_text', color: '#6E6E6E' },
             { name: 'btn_ruchnoy_1', color: '#E6E6E6', },
             { name: 'btn_ruchnoy_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_open_text', color: '#000000' },
             { name: 'btn_open_1', color: '#ffffff' },
             { name: 'btn_open_2', color: '#ffffff', stroke: '#000000' },
- 
+
             { name: 'btn_close_text', color: '#6E6E6E' },
             { name: 'btn_close_1', color: '#E6E6E6' },
             { name: 'btn_close_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_stop_text', color: '#000000' },
             { name: 'btn_stop_1', color: '#ffffff', stroke: '#000000' },
             { name: 'btn_stop_2', color: '#ffffff', stroke: '#000000' },
- 
+
             { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
             { name: 'btn_reset_1', color: '#E6E6E6' },
             { name: 'btn_reset_2', color: '#E6E6E6', stroke: '#6E6E6E' },
@@ -24487,31 +25124,31 @@ let tempActions = [
           elements: [
             { name: 'status_window_text', text: 'Открывается' },
             { name: 'status_control_vnk_text', text: 'Ручной' },
- 
+
             { name: 'btn_auto_text', color: '#000000' },
             { name: 'btn_auto_1', color: '#ffffff' },
             { name: 'btn_auto_2', color: '#ffffff', stroke: '#000000' },
- 
+
             // { name: 'btn_auto_text', color: '#6E6E6E' },
             // { name: 'btn_auto_1', color: '#E6E6E6' },
             // { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_ruchnoy_text', color: '#6E6E6E' },
             { name: 'btn_ruchnoy_1', color: '#E6E6E6', },
             { name: 'btn_ruchnoy_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_open_text', color: '#6E6E6E' },
             { name: 'btn_open_1', color: '#E6E6E6' },
             { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_close_text', color: '#000000' },
             { name: 'btn_close_1', color: '#ffffff' },
             { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
- 
+
             { name: 'btn_stop_text', color: '#000000' },
             { name: 'btn_stop_1', color: '#ffffff', stroke: '#000000' },
             { name: 'btn_stop_2', color: '#ffffff', stroke: '#000000' },
- 
+
             { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
             { name: 'btn_reset_1', color: '#E6E6E6' },
             { name: 'btn_reset_2', color: '#E6E6E6', stroke: '#6E6E6E' },
@@ -24621,36 +25258,36 @@ let tempActions = [
           elements: [
             // { name: 'status_window_text', text: 'Открывается' },
             { name: 'status_control_vnk_text', text: 'Автоматический' },
- 
+
             { name: 'btn_auto_text', color: '#6E6E6E' },
             { name: 'btn_auto_1', color: '#E6E6E6' },
             { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             // { name: 'btn_auto_text', color: '#6E6E6E' },
             // { name: 'btn_auto_1', color: '#E6E6E6' },
             // { name: 'btn_auto_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_ruchnoy_text', color: '#000000' },
             { name: 'btn_ruchnoy_1', color: '#ffffff', },
             { name: 'btn_ruchnoy_2', color: '#ffffff', stroke: '#000000' },
- 
+
             { name: 'btn_open_text', color: '#6E6E6E' },
             { name: 'btn_open_1', color: '#E6E6E6' },
             { name: 'btn_open_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_close_text', color: '#000000' },
             { name: 'btn_close_1', color: '#ffffff' },
             { name: 'btn_close_2', color: '#ffffff', stroke: '#000000' },
- 
+
             { name: 'btn_stop_text', color: '#6E6E6E' },
             { name: 'btn_stop_1', color: '#E6E6E6', stroke: '#6E6E6E' },
             { name: 'btn_stop_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
+
             { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
             { name: 'btn_reset_1', color: '#E6E6E6' },
             { name: 'btn_reset_2', color: '#E6E6E6', stroke: '#6E6E6E' },
- 
- 
+
+
           ]
         },
       },
@@ -24730,6 +25367,10 @@ let tempActions = [
             { name: 'VNK3_status_1', text: 'Циклический' },
             { name: 'VNK3_status_2', text: 'Отделение' },
             { name: 'vnk3_stripes', color: '#878881' },
+            { name: 'circle_dutyo_VNK3', color: '#000' },
+            { name: 'circle_nagrev_VNK3', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK3', color: '#06FF06' },
+            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK3_Fr', text: '0' },
             { name: 'VNK3_Fb', text: '0' },
             { name: 'Tdym_3', text: '132' },
@@ -24741,6 +25382,10 @@ let tempActions = [
             { name: 'VNK2_status_1', text: 'Циклический' },
             { name: 'VNK2_status_2', text: 'Отделение' },
             { name: 'vnk2_stripes', color: '#878881' },
+            { name: 'circle_dutyo_VNK2', color: '#000' },
+            { name: 'circle_nagrev_VNK2', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK2', color: '#06FF06' },
+            { name: 'circle_otdeleniye_2_VNK2', color: '#000' },
             { name: 'VNK2_Fr', text: '0' },
             { name: 'VNK2_Fb', text: '0' },
             { name: 'Tdym_2', text: '170' },
@@ -24753,6 +25398,10 @@ let tempActions = [
             { name: 'VNK1_status_1', text: 'Циклический' },
             { name: 'VNK1_status_2', text: 'Дутье' },
             { name: 'vnk1_stripes', color: '#000BF6' },
+            { name: 'circle_dutyo_VNK1', color: '#06FF06' },
+            { name: 'circle_nagrev_VNK1', color: '#000' },
+            { name: 'circle_otdeleniye_1_VNK1', color: '#000' },
+            { name: 'circle_otdeleniye_2_VNK1', color: '#000' },
             { name: 'VNK1_Fr', text: '0' },
             { name: 'VNK1_Fb', text: '0' },
             { name: 'Tdym_1', text: '187' },
@@ -24855,13 +25504,11 @@ let tempActions = [
       human: true,
     },
     ////-----------------------------------34
- 
+
     // ЗАГЛУШКА ПРОСТО
     { action: { window2D: { elements: [] } }, startTime: timeDiff + 15000.1, },
-      */
-
+*/
   ]
-
 ]
 // Массив исходных состояний
 let startState2D = [
@@ -24922,6 +25569,10 @@ let startState2D = [
     { name: 'kl001a_proc', text: '31' },
     { name: 'Tkyp_3', text: '1296' },
     { name: 'VNK3_status_2', text: 'Дутье' },
+    { name: 'circle_dutyo_VNK3', color: '#06FF06' },
+    { name: 'circle_nagrev_VNK3', color: '#000' },
+    { name: 'circle_otdeleniye_1_VNK3', color: '#000' },
+    { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
     { name: 'VNK3_Fr', text: '0' },
     { name: 'VNK3_Fb', text: '0' },
     { name: 'Tdym_3', text: '181' },
@@ -25037,8 +25688,8 @@ let startState2D = [
     { name: '1PS_05', color: '#06FF06' },
     { name: 'kl_118', color: '#ff1e00' },
     { name: 'kl_119', color: '#ff1e00' },
-    { name: 'circle_dutyo', color: '#000000' },
-    { name: 'circle_nagrev', color: '#06FF06' },
+    { name: 'circle_dutyo_VNK1', color: '#000000' },
+    { name: 'circle_nagrev_VNK1', color: '#06FF06' },
     { name: '115_stripe', color: '#000000' },
     { name: '123_stripe', color: '#000000' },
     // BVNK_VNK2
