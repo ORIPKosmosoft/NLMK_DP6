@@ -2510,8 +2510,14 @@ function createSvghelper(CurrentPosition, SvgName = undefined) {
         let textureSvgName = SvgName === undefined ? mainMesh.svgArr[mainMesh.svgArr.length - 1].name : SvgName;
         let currentMeshTexture = devHelper.model3DVals.svgDisplays.meshs.find(mesh => mesh.positionIndex === devHelper.model3DVals.currentPosition).material.diffuseTexture;
         let textureName = currentMeshTexture.name.substring(currentMeshTexture.name.indexOf('_') + 1);
-        // TODO Ошибка поиска element => element.name === textureSvgName
-        createSvgHelperButtons(devHelper.svgHelpers[devHelper.svgHelpers.findIndex(element => element.name === textureSvgName)].helpers, textureSvgName);
+        let tempLoad = undefined;
+        devHelper.svgHelpers.forEach((element, index) => {
+          console.log(element.name, textureSvgName, );
+          if (element.name === textureSvgName ) {
+            tempLoad = element
+          }
+        });
+        createSvgHelperButtons(tempLoad.helpers, textureSvgName);
         function createSvgHelperButton(Vals, DisplayMesh) {
           let invisElem = document.createElement('div');
           invisElem.classList.add('invisible-element-svg');
