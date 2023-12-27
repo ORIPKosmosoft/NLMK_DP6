@@ -624,10 +624,10 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1553.12 284.46h23.96v19.79h-23.96z') { addSvgElem(Index, Element, 'rect_Vblb_sig_2'); }
         if (Element.getAttribute('d') === 'M1184.37 646.96h16.67v15.62h-16.67z') { addSvgElem(Index, Element, 'rect_R_VN-ATM'); }
         if (Element.getAttribute('d') === 'M1184.37 674.04h16.67v15.63h-16.67z') { addSvgElem(Index, Element, 'rect_R_VN-GD'); }
-        if (Element.getAttribute('d') === 'M1402.6 490.71c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_dutyo'); }
-        if (Element.getAttribute('d') === 'M1402.6 518.84c8.06 0 14.59 5.82 14.59 13.02 0 7.19-6.53 13.01-14.59 13.01-8.05 0-14.58-5.82-14.58-13.01 0-7.2 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_nagrev'); }
-        if (Element.getAttribute('d') === 'M1402.6 548c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_1'); }
-        if (Element.getAttribute('d') === 'M1402.6 576.13c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_2'); }
+        if (Element.getAttribute('d') === 'M1402.6 490.71c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_dutyo_VNK1'); }
+        if (Element.getAttribute('d') === 'M1402.6 518.84c8.06 0 14.59 5.82 14.59 13.02 0 7.19-6.53 13.01-14.59 13.01-8.05 0-14.58-5.82-14.58-13.01 0-7.2 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_nagrev_VNK1'); }
+        if (Element.getAttribute('d') === 'M1402.6 548c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_1_VNK1'); }
+        if (Element.getAttribute('d') === 'M1402.6 576.13c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_2_VNK1'); }
         // Sergey
         if (Element.getAttribute('d') === 'M679.12 263.96a2.99 2.99 0 0 1 4.2-.6c1.33.99 1.6 2.87.6 4.2l-4.8-3.6zM664 284.17l15.12-20.21 4.8 3.6-15.12 20.21-4.8-3.6zm4.8 3.6a2.99 2.99 0 0 1-4.2.6 2.99 2.99 0 0 1-.6-4.2l4.8 3.6z') { addSvgElem(Index, Element, '115_stripe'); }
         if (Element.getAttribute('d') === 'M564.54 549.37a3.008 3.008 0 0 1 4.2-.6c1.32.99 1.59 2.87.6 4.2l-4.8-3.6zm-15.13 20.22 15.13-20.22 4.8 3.6-15.12 20.21-4.81-3.59zm4.81 3.59a3.002 3.002 0 0 1-4.81-3.59l4.81 3.59z') { addSvgElem(Index, Element, '123_stripe'); }
@@ -741,10 +741,10 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M1553.12 284.46h23.96v19.79h-23.96z') { addSvgElem(Index, Element, 'rect_Vblb_sig_2'); }
         if (Element.getAttribute('d') === 'M1184.37 646.96h16.67v15.62h-16.67z') { addSvgElem(Index, Element, 'rect_R_VN-ATM'); }
         if (Element.getAttribute('d') === 'M1184.37 674.04h16.67v15.63h-16.67z') { addSvgElem(Index, Element, 'rect_R_VN-GD'); }
-        if (Element.getAttribute('d') === 'M1402.6 490.71c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_dutyo'); }
-        if (Element.getAttribute('d') === 'M1402.6 518.84c8.06 0 14.59 5.82 14.59 13.02 0 7.19-6.53 13.01-14.59 13.01-8.05 0-14.58-5.82-14.58-13.01 0-7.2 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_nagrev'); }
-        if (Element.getAttribute('d') === 'M1402.6 548c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_1'); }
-        if (Element.getAttribute('d') === 'M1402.6 576.13c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_2'); }
+        if (Element.getAttribute('d') === 'M1402.6 490.71c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_dutyo_VNK2'); }
+        if (Element.getAttribute('d') === 'M1402.6 518.84c8.06 0 14.59 5.82 14.59 13.02 0 7.19-6.53 13.01-14.59 13.01-8.05 0-14.58-5.82-14.58-13.01 0-7.2 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_nagrev_VNK2'); }
+        if (Element.getAttribute('d') === 'M1402.6 548c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_1_VNK2'); }
+        if (Element.getAttribute('d') === 'M1402.6 576.13c8.06 0 14.59 5.83 14.59 13.02 0 7.19-6.53 13.02-14.59 13.02-8.05 0-14.58-5.83-14.58-13.02 0-7.19 6.53-13.02 14.58-13.02z') { addSvgElem(Index, Element, 'circle_otdeleniye_2_VNK2'); }
         // Ilay
         if (Element.getAttribute('d') === 'm1117.06 355.18-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4z') { addSvgElem(Index, Element, 'vnk2_fire'); }
         if (Element.getAttribute('d') === 'm1118.01 355.49-9.92 32.3 11.81-4.38c.44-.16.92 0 1.17.38l25.18 37.43 22.86-37.2c.29-.47.9-.61 1.37-.33.07.05.14.1.19.16l8.76 7.67-17.95-55.7a.999.999 0 0 1 1.38-1.21l7.03 3.34-25.32-49.07-31.65 49.14 9.46-3.12c.52-.17 1.09.12 1.26.64.07.22.06.45-.01.66l-5.61 19.26c-.01.01-.01.02-.01.03zm-.95-.31-10.51 34.25 13.7-5.09 26.04 38.73 23.67-38.52 11.53 10.1-19.06-59.14 9.7 4.61-27.47-53.23-34.11 52.96 12.14-4-5.63 19.33z') { addSvgElem(Index, Element, 'vnk2_fire_border'); }
@@ -1766,35 +1766,37 @@ window.addEventListener('load', function () {
 
         if (Element.innerHTML === 'ВН1 Перекидка из Нагрева в Отделение') { addSvgElem(Index, Element, 'Title_window_peric_nagrevotd'); }
 
-        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -170.582 -209.832)') { addSvgElem(Index, Element, 'text_132'); }
-        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -109.787 -209.832)') { addSvgElem(Index, Element, 'text_116'); }
-        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -43.62 -210.215)') { addSvgElem(Index, Element, 'text_124'); }
-        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 23.125 -209.832)') { addSvgElem(Index, Element, 'text_113'); }
-        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 92.167 -208.104)') { addSvgElem(Index, Element, 'text_134'); }
-        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 163.51 -208.104)') { addSvgElem(Index, Element, 'text_117'); }
-        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 234.852 -208.104)') { addSvgElem(Index, Element, 'text_111'); }
-        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 295.839 -208.104)') { addSvgElem(Index, Element, 'text_112'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -170.582 -209.833)') { addSvgElem(Index, Element, 'text_132'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -109.787 -209.833)') { addSvgElem(Index, Element, 'text_116'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -43.62 -210.217)') { addSvgElem(Index, Element, 'text_124'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 23.125 -209.833)') { addSvgElem(Index, Element, 'text_113'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 92.167 -208.106)') { addSvgElem(Index, Element, 'text_134'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 163.51 -208.106)') { addSvgElem(Index, Element, 'text_117'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 234.852 -208.106)') { addSvgElem(Index, Element, 'text_111'); }
+        if (Element.getAttribute('transform') == 'matrix(.9988 0 0 1 295.839 -208.106)') { addSvgElem(Index, Element, 'text_112'); }
 
-        if (Element.innerHTML == '111' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -160.064 -367.476)') { addSvgElem(Index, Element, 'text_Nagrev_111'); }
-        if (Element.innerHTML == '112' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -98.694 -368.244)') { addSvgElem(Index, Element, 'text_Nagrev_112'); }
-        if (Element.innerHTML == '113' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -31.57 -368.244)') { addSvgElem(Index, Element, 'text_Nagrev_113'); }
+        if (Element.innerHTML == '111' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -160.064 -367.477)') { addSvgElem(Index, Element, 'text_Nagrev_111'); }
+        if (Element.innerHTML == '112' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -98.693 -368.245)') { addSvgElem(Index, Element, 'text_Nagrev_112'); }
+        if (Element.innerHTML == '113' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -31.57 -368.245)') { addSvgElem(Index, Element, 'text_Nagrev_113'); }
         if (Element.innerHTML == '121') { addSvgElem(Index, Element, 'text_Nagrev_121'); }
-        if (Element.innerHTML == '117' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 175.174 -368.244)') { addSvgElem(Index, Element, 'text_Nagrev_117'); }
+        if (Element.innerHTML == '117' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 175.174 -368.245)') { addSvgElem(Index, Element, 'text_Nagrev_117'); }
         if (Element.innerHTML == '143') { addSvgElem(Index, Element, 'text_Nagrev_143'); }
         if (Element.innerHTML == '110') { addSvgElem(Index, Element, 'text_Nagrev_110'); }
-        if (Element.innerHTML == '124' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 102.295 -368.244)') { addSvgElem(Index, Element, 'text_Nagrev_124_1'); }
-        if (Element.innerHTML == '124' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -160.064 -326.962)') { addSvgElem(Index, Element, 'text_Nagrev_124_2'); }
+        if (Element.innerHTML == '124' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 102.296 -368.245)') { addSvgElem(Index, Element, 'text_Nagrev_124_1'); }
+        if (Element.innerHTML == '124' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -160.064 -326.963)') { addSvgElem(Index, Element, 'text_Nagrev_124_2'); }
         if (Element.innerHTML == '123') { addSvgElem(Index, Element, 'text_Nagrev_123'); }
         if (Element.innerHTML == '114') { addSvgElem(Index, Element, 'text_Nagrev_114'); }
         if (Element.innerHTML == '127') { addSvgElem(Index, Element, 'text_Nagrev_127'); }
         if (Element.innerHTML == '132') { addSvgElem(Index, Element, 'text_Nagrev_132_down'); }
         if (Element.innerHTML == '116') { addSvgElem(Index, Element, 'text_Nagrev_116_down'); }
-        if (Element.innerHTML == '124' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -32.69 -244.012)') { addSvgElem(Index, Element, 'text_Nagrev_124_down'); }
-        if (Element.innerHTML == '113' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 34.051 -244.012)') { addSvgElem(Index, Element, 'text_Nagrev_113_down'); }
+        if (Element.innerHTML == '124' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 -32.69 -244.013)') { addSvgElem(Index, Element, 'text_Nagrev_124_down'); }
+        if (Element.innerHTML == '113' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 34.051 -244.013)') { addSvgElem(Index, Element, 'text_Nagrev_113_down'); }
         if (Element.innerHTML == '134') { addSvgElem(Index, Element, 'text_Nagrev_134_down'); }
-        if (Element.innerHTML == '117') { addSvgElem(Index, Element, 'text_Nagrev_117_down'); }
-        if (Element.innerHTML == '111' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 245.015 -244.012)') { addSvgElem(Index, Element, 'text_Nagrev_111_down'); }
-        if (Element.innerHTML == '112' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 307.346 -244.012)') { addSvgElem(Index, Element, 'text_Nagrev_112_down'); }
+        if (Element.innerHTML == '117' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 175.397 -244.013)') { addSvgElem(Index, Element, 'text_Nagrev_117_down'); }
+        if (Element.innerHTML == '111' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 245.015 -244.013)') { addSvgElem(Index, Element, 'text_Nagrev_111_down'); }
+        if (Element.innerHTML == '112' && Element.getAttribute('transform') == 'matrix(.9988 0 0 1 307.346 -244.013)') { addSvgElem(Index, Element, 'text_Nagrev_112_down'); }
+        if (Element.innerHTML == '115 на угле зажиг.') { addSvgElem(Index, Element, 'text_115_na_ugle'); }
+        if (Element.innerHTML == '123 на угле зажиг.') { addSvgElem(Index, Element, 'text_123_na_ugle'); }
 
       });
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, TextIndex) => {
@@ -1839,17 +1841,49 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M223.72 104.3h40.62v24.08h-40.62z') { addSvgElem(Index, Element, 'c_3_5'); }
         if (Element.getAttribute('d') === 'M264.35 104.3h83.2v24.08h-83.2z') { addSvgElem(Index, Element, 'c_3_6'); }
 
-        if (Element.getAttribute('d') === 'M296.01 249.63h57.56v42.23h-57.56z') { addSvgElem(Index, Element, 'rect_132'); }
-        if (Element.getAttribute('d') === 'M353.54 249.63h64.67v42.23h-64.67z') { addSvgElem(Index, Element, 'rect_116'); }
+        if (Element.getAttribute('d') === 'M296.01 249.62h57.56v42.23h-57.56z') { addSvgElem(Index, Element, 'rect_132'); }
+        if (Element.getAttribute('d') === 'M353.54 249.62h64.67v42.23h-64.67z') { addSvgElem(Index, Element, 'rect_116'); }
         if (Element.getAttribute('d') === 'M418.41 248.8h67.12v42.23h-67.12z') { addSvgElem(Index, Element, 'rect_124'); }
-        if (Element.getAttribute('d') === 'M486.31 249.63h64.06v42.23h-64.06z') { addSvgElem(Index, Element, 'rect_113'); }
-        if (Element.getAttribute('d') === 'M549.53 249.63h77.11v42.23h-77.11z') { addSvgElem(Index, Element, 'rect_134'); }
-        if (Element.getAttribute('d') === 'M627.05 249.63h64.32v42.23h-64.32z') { addSvgElem(Index, Element, 'rect_117'); }
-        if (Element.getAttribute('d') === 'M690.96 249.63h70.92v42.23h-70.92z') { addSvgElem(Index, Element, 'rect_111'); }
-        if (Element.getAttribute('d') === 'M761.88 249.63h56.08v42.23h-56.08z') { addSvgElem(Index, Element, 'rect_112'); }
+        if (Element.getAttribute('d') === 'M486.31 249.62h64.06v42.23h-64.06z') { addSvgElem(Index, Element, 'rect_113'); }
+        if (Element.getAttribute('d') === 'M549.53 249.62h77.11v42.23h-77.11z') { addSvgElem(Index, Element, 'rect_134'); }
+        if (Element.getAttribute('d') === 'M627.05 249.62h64.32v42.23h-64.32z') { addSvgElem(Index, Element, 'rect_117'); }
+        if (Element.getAttribute('d') === 'M690.96 249.62h70.92v42.23h-70.92z') { addSvgElem(Index, Element, 'rect_111'); }
+        if (Element.getAttribute('d') === 'M761.88 249.62h56.08v42.23h-56.08z') { addSvgElem(Index, Element, 'rect_112'); }
         if (Element.getAttribute('d') === 'M447.62 909.53h159.95v27.27H447.62z') { addSvgElem(Index, Element, 'rashod_azota_fon'); }
         if (Element.getAttribute('d') === 'M617.62 909.53h131.41v27.27H617.62z') { addSvgElem(Index, Element, 'na_Ugle_115'); }
         if (Element.getAttribute('d') === 'M759.08 909.53h131.41v27.27H759.08z') { addSvgElem(Index, Element, 'na_Ugle_123'); }
+        if (Element.getAttribute('d') === 'M296.09 81.03h57.31v41.43h-57.31z') { addSvgElem(Index, Element, 'time_shag_111'); }
+        if (Element.getAttribute('d') === 'M354.22 81.03h64.31v41.43h-64.31z') { addSvgElem(Index, Element, 'time_shag_112'); }
+        if (Element.getAttribute('d') === 'M418.55 81.03h66.79v41.43h-66.79z') { addSvgElem(Index, Element, 'time_shag_113'); }
+        if (Element.getAttribute('d') === 'M485.34 81.03h64.33v41.43h-64.33z') { addSvgElem(Index, Element, 'time_shag_121'); }
+        if (Element.getAttribute('d') === 'M550.69 81.03h75.66v41.43h-75.66z') { addSvgElem(Index, Element, 'time_shag_124_1'); }
+        if (Element.getAttribute('d') === 'M626.56 81.03h65.35v41.43h-65.35z') { addSvgElem(Index, Element, 'time_shag_117'); }
+        if (Element.getAttribute('d') === 'M692.12 81.03h70.09v41.43h-70.09z') { addSvgElem(Index, Element, 'time_shag_143'); }
+        if (Element.getAttribute('d') === 'M762.21 81.03h56.29v41.43h-56.29z') { addSvgElem(Index, Element, 'time_shag_110'); }
+        if (Element.getAttribute('d') === 'M296.09 122.88h57.31v41.43h-57.31z') { addSvgElem(Index, Element, 'time_shag_124_2'); }
+        if (Element.getAttribute('d') === 'M354.22 122.88h64.31v41.43h-64.31z') { addSvgElem(Index, Element, 'time_shag_123'); }
+        if (Element.getAttribute('d') === 'M418.55 122.88h66.79v41.43h-66.79z') { addSvgElem(Index, Element, 'time_shag_114'); }
+        if (Element.getAttribute('d') === 'M485.34 122.88h64.33v41.43h-64.33z') { addSvgElem(Index, Element, 'time_shag_127'); }
+        if (Element.getAttribute('d') === 'M296.09 165.14h57.31v38.13h-57.31z') { addSvgElem(Index, Element, 'time_shag_cikl'); }
+        if (Element.getAttribute('d') === 'M354.22 165.14h64.31v38.13h-64.31z') { addSvgElem(Index, Element, 'time_shag_nagrev'); }
+        if (Element.getAttribute('d') === 'M418.55 165.14h131.74v38.13H418.55z') { addSvgElem(Index, Element, 'time_shag_davAzot'); }
+        if (Element.getAttribute('d') === 'M551.1 122.67h139.77v81.22H551.1z') { addSvgElem(Index, Element, 'time_shag_regulator_rashoda'); }
+        if (Element.getAttribute('d') === 'M691.71 122.67h126.58v80.81H691.71z') { addSvgElem(Index, Element, 'time_shag_regulator_sootn'); }
+        if (Element.getAttribute('d') === 'M72.88 291.25h174.03v39.45H72.88z') { addSvgElem(Index, Element, 'str_1_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 331.09h174.03v41.4H72.88z') { addSvgElem(Index, Element, 'str_2_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 372.79h174.03v40.23H72.88z') { addSvgElem(Index, Element, 'str_3_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 413.41h174.03v41.21H72.88z') { addSvgElem(Index, Element, 'str_4_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 454.82h174.03v39.46H72.88z') { addSvgElem(Index, Element, 'str_5_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 494.27h174.03v41.8H72.88z') { addSvgElem(Index, Element, 'str_6_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 536.07h174.03v40.23H72.88z') { addSvgElem(Index, Element, 'str_7_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 576.3h174.03v41.8H72.88z') { addSvgElem(Index, Element, 'str_8_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 618.1h174.03v39.64H72.88z') { addSvgElem(Index, Element, 'str_9_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 657.74h174.03v41.84H72.88z') { addSvgElem(Index, Element, 'str_10_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 699.59h174.03v40.43H72.88z') { addSvgElem(Index, Element, 'str_11_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 740.02h174.03v41.99H72.88z') { addSvgElem(Index, Element, 'str_12_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 782.01h174.03v39.45H72.88z') { addSvgElem(Index, Element, 'str_13_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 821.46h174.03v41.79H72.88z') { addSvgElem(Index, Element, 'str_14_textFon'); }
+        if (Element.getAttribute('d') === 'M72.88 863.26h174.03v35.94H72.88z') { addSvgElem(Index, Element, 'str_15_textFon'); }
       })
     }
     else if (ObjectSvg.name === 'O_p_n_na_k_p_na_VNK') {
@@ -2326,6 +2360,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'M327.2 291.87h67.75v60.96H327.2z') { addSvgElem(Index, Element, 'rect_ish_c4'); }
         if (Element.getAttribute('d') === 'M395.95 291.87h68.79v60.96h-68.79z') { addSvgElem(Index, Element, 'rect_ish_c5'); }
         if (Element.getAttribute('d') === 'M466.76 291.87h62.94v60.96h-62.94z') { addSvgElem(Index, Element, 'rect_ish_c6'); }
+        if (Element.getAttribute('d') === 'M69.94 351.95h200v61.33h-200z') { addSvgElem(Index, Element, 'str_1_textFon_otdel2'); }
       })
     }
     // Ilay
