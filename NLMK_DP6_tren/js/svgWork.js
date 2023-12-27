@@ -731,6 +731,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'm1505.4 725.07-32.88-19.7v19.7l32.88-19.7z') { addSvgElem(Index, Element, 'kl_218a'); }
         if (Element.getAttribute('d') === 'm1507.22 788.11-32.88-19.7v19.7l32.88-19.7z') { addSvgElem(Index, Element, 'kl_218'); }
         if (Element.getAttribute('d') === 'M1482.15 833.43c-2.56-1.57-5.11-3.13-7.67-4.7v19.79l9.3-5.7 2.85-1.75 4-2.44c-1.94-1.19-3.87-2.38-5.81-3.56-.89-.55-1.78-1.1-2.67-1.64z') { addSvgElem(Index, Element, 'kl_210'); }
+        if (Element.getAttribute('d') === 'm1506.77 828.73-10.18 6.24-2.85 1.75-3.11 1.91c.71.43 1.42.87 2.13 1.31.9.54 1.79 1.09 2.68 1.64 3.78 2.31 7.55 4.63 11.33 6.94v-19.79z') { addSvgElem(Index, Element, 'kl_210'); }
         if (Element.getAttribute('d') === 'M120.83 359.46h16.67v17.71h-16.67z') { addSvgElem(Index, Element, 'PS_10'); }
         if (Element.getAttribute('d') === 'M754.17 233.42h16.67v16.67h-16.67z') { addSvgElem(Index, Element, '2PS_03'); }
         if (Element.getAttribute('d') === 'M689.58 539.67h15.63v15.63h-15.63z') { addSvgElem(Index, Element, '2PS_05'); }
