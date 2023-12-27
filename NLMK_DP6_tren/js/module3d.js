@@ -303,7 +303,17 @@ window.addEventListener('load', function () {
         box.position = new BABYLON.Vector3(2.993, 1.184, 0.353);
         box.scaling = new BABYLON.Vector3(0.015, 0.015, 0.02);
         box.material = lightMat;
-        makeActiveMesh(box, { name: 'downBtnFPrirGaza_highlight', posIndex: 9, realName: 'Регулятор природного газа' });
+        makeActiveMesh(box, { name: 'downBtnFPrirGaza_highlight', posIndex: 9, realName: 'Регулятор природного газа вниз' });
+        var box = BABYLON.MeshBuilder.CreateBox("upBtnFPrirGaza_highlight", { size: 1 }, Scene);
+        box.position = new BABYLON.Vector3(2.993, 1.199, 0.353);
+        box.scaling = new BABYLON.Vector3(0.015, 0.015, 0.02);
+        box.material = lightMat;
+        makeActiveMesh(box, { name: 'upBtnFPrirGaza_highlight', posIndex: 9, realName: 'Регулятор природного газа вверх' });
+        var box = BABYLON.MeshBuilder.CreateBox("upLeftBtnFPrirGaza_highlight", { size: 1 }, Scene);
+        box.position = new BABYLON.Vector3(2.919, 1.199, 0.353);
+        box.scaling = new BABYLON.Vector3(0.015, 0.015, 0.02);
+        box.material = lightMat;
+        makeActiveMesh(box, { name: 'upLeftBtnFPrirGaza_highlight', posIndex: 9, realName: 'Регулятор природного газа автоматический режим' });
       } else if (Name === 'Console_BVNK') {
         const lightMat = new BABYLON.StandardMaterial("lightMatBVNK");
         lightMat.diffuseColor = new BABYLON.Color3(2, 1, 0);
