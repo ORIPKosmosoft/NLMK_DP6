@@ -2379,12 +2379,62 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('x') === '14.72' && Element.getAttribute('y') === '256.05') { addSvgElem(Index, Element, 'block_open'); }
         if (Element.getAttribute('x') === '87.79' && Element.getAttribute('y') === '256.05') { addSvgElem(Index, Element, 'block_close'); }
       })
-    } else if (ObjectSvg.name === 'Shagi_upraleniya') {
+    } 
+    else if (ObjectSvg.name === 'Shagi_upraleniya') {
       ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
         if (Element.getAttribute('transform') === 'matrix(1.00143 0 0 1 -81.835 309.247)') { addSvgElem(Index, Element, 'shagUprav_bunkerNum'); }
       })
     }
+    else if (ObjectSvg.name === 'gazoochistka') {
+      ObjectSvg.svg.querySelectorAll('text').forEach((Element) => {
+        if (Element.innerHTML === '0,93' && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 -808.698 -100.853)') { addSvgElem(Index, Element, 'PT1',); }
+        if (Element.innerHTML === '0,93' && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 -808.698 -40.787)') { addSvgElem(Index, Element, 'PT2',); }
+        if (Element.innerHTML === '0,90')   { addSvgElem(Index, Element, 'Pkol',        ); }
+        if (Element.innerHTML === '0,35')   { addSvgElem(Index, Element, 'dPvAKZ',      ); }
+        if (Element.innerHTML === '1,60')   { addSvgElem(Index, Element, 'dPvobsh',     ); }
+        if (Element.innerHTML === '1,58')   { addSvgElem(Index, Element, 'dPobsh',      ); }
+        if (Element.innerHTML === '0,11')   { addSvgElem(Index, Element, 'dPverhniy',   ); }
+        if (Element.innerHTML === '1,47')   { addSvgElem(Index, Element, 'dPnijniy',    ); }
+        if (Element.innerHTML === '109')    { addSvgElem(Index, Element, 'SDE_SCV_TE01',); }
+        if (Element.innerHTML === '0,72')   { addSvgElem(Index, Element, 'SDE_SCV_PT01',); }
+        if (Element.innerHTML === '0,21')   { addSvgElem(Index, Element, 'dP_aboveSkrubber',); }
+        if (Element.innerHTML === '0,21')   { addSvgElem(Index, Element, 'SDE_PT01'    ,); }
+        if (Element.innerHTML === '17,60')  { addSvgElem(Index, Element, 'Fakt_H1',     ); }
+        if (Element.innerHTML === '17,65')  { addSvgElem(Index, Element, 'Fakt_H2',     ); }
+        if (Element.innerHTML === '17,83')  { addSvgElem(Index, Element, 'Fakt_H3',     ); }
+        if (Element.innerHTML === '19,30' && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 -231.348 267.129)') { addSvgElem(Index, Element, 'Zadaniy_H1',); }
+        if (Element.innerHTML === '19,30' && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 -231.348 319.586)') { addSvgElem(Index, Element, 'Zadaniy_H2',); }
+        if (Element.innerHTML === '19,30' && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 -231.348 377.603)') { addSvgElem(Index, Element, 'Zadaniy_H3',); }
 
+        if (Element.innerHTML === '100' && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 -80.925 367.2)')   { addSvgElem(Index, Element, 'vodUst_H1',); }
+        if (Element.innerHTML === '100' && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 -80.925 413.156)') { addSvgElem(Index, Element, 'vodUst_H2',); }
+        if (Element.innerHTML === '100' && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 -80.925 463.983)') { addSvgElem(Index, Element, 'vodUst_H3',); }
+
+        if (Element.innerHTML === '33')     { addSvgElem(Index, Element, 'GBF_TE01' ,); }
+        if (Element.innerHTML === '0,19')   { addSvgElem(Index, Element, 'GBF_PT01' ,); }
+        if (Element.innerHTML === '603097') { addSvgElem(Index, Element, 'GBF_FM01' ,); }
+        if (Element.innerHTML === '0'   && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 679.031 105.321)')  { addSvgElem(Index, Element, 'ZT90224'  ,); }
+        if (Element.innerHTML === '2'   && Element.getAttribute('transform') === 'matrix(1.00562 0 0 1 720.721 107.722)') { addSvgElem(Index, Element, 'ZT90224_zadaniy',); }
+        if (Element.innerHTML === '100' && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 679.031 197.423)')  { addSvgElem(Index, Element, 'ZT90223',); }
+        if (Element.innerHTML === '100' && Element.getAttribute('transform') === 'matrix(1.00562 0 0 1 720.721 199.823)') { addSvgElem(Index, Element, 'ZT90223_zadaniy',); }
+        if (Element.innerHTML === '55'  && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 699.898 433.643)')  { addSvgElem(Index, Element, 'ZT90276',); }
+        if (Element.innerHTML === '55'  && Element.getAttribute('transform') === 'matrix(1.0012 0 0 1 699.898 460.718)')  { addSvgElem(Index, Element, 'ZT90276_zadaniy',); }
+        if (Element.innerHTML === '') { addSvgElem(Index, Element, '',); }
+        if (Element.getAttribute('transform') === '') { addSvgElem(Index, Element, ''); }
+      })
+      ObjectSvg.svg.querySelectorAll('path').forEach((Element) => {
+        if (Element.getAttribute('d') === '') { addSvgElem(Index, Element, ''); }
+      })
+      ObjectSvg.svg.querySelectorAll('ellipse').forEach((Element) => {
+        if (Element.getAttribute('rx') === '') { addSvgElem(Index, Element, ''); }
+      })
+      ObjectSvg.svg.querySelectorAll('rect').forEach((Element) => {
+        if (Element.getAttribute('x') === '1205.96' && Element.getAttribute('y') === '210.01') { addSvgElem(Index, Element, 'background Pkolgaza'); }
+        if (Element.getAttribute('x') === '1205.96' && Element.getAttribute('y') === '261.25') { addSvgElem(Index, Element, 'background dPpechiObsh'); }
+        if (Element.getAttribute('x') === '905'     && Element.getAttribute('y') === '400.15') { addSvgElem(Index, Element, 'bakcground Avstop SDE_VSP01_M01'); }
+      })
+    }
+    
   })
 
   devHelper.svgVals.forEach(Element => {
