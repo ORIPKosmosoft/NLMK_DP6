@@ -34491,6 +34491,9 @@ let startState2D = [
     { name: 'circle_kl030', stroke: '#06FF06' },
     { name: 'circle_kl048', stroke: '#ff1e00' },
     // { name: 'kl_028', color: '#06FF06' },
+  ],
+  [
+    { name: 'Left_GBF_VA01_M01', color: '#FF1E06' }
   ]
 ]
 // Лучше всего искать по id а не имени.
