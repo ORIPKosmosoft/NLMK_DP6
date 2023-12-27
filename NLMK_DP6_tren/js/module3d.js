@@ -163,7 +163,6 @@ function startLoadScene() {
   function loadModel(Name, Scene, ShadowGenerator) {
     devHelper.model3DVals.startLoad = true;
     BABYLON.SceneLoader.ImportMesh('', '../media/models/Babylon/', `${Name}.babylon`, Scene, function (meshes) {
-      console.log(Name);
       if (Name === 'All') {
         let meshArr = [];
         meshes.forEach(element => {
