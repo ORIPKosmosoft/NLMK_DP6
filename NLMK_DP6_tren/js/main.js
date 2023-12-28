@@ -305,6 +305,7 @@ function setDragEvents(elem) {
 
 function startChangeFon() {
   stopNoiseAudio();
+  stopAllAudio();
   if (devHelper.trenVals.scenario !== undefined) devHelper.trenVals.scenario = undefined;
   devHelper.dev.intervalFon = setInterval(() => {
     for (let i = 0; i < document.querySelectorAll('.photo').length; i++) {

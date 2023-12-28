@@ -1185,7 +1185,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
     intervalFon: undefined,
     maxCountSvgElems: 0,
@@ -1204,10 +1204,16 @@ const devHelper = {
     restarts: 0,
   }
 };
-const timeDiff = -0;
+/*
+audio: 'Zvuk_gudka_telefona',
+audioLoop: true,
+audioStopAction: 'kl028',
+*/
+const timeDiff = -70;
 let tempActions = [
   // Первый сценарий  
   [
+    /*
     {
       lifeTime: '07:30:00',
       chapterText: 'Отделение подогревателей воздуха и газа.',
@@ -2661,11 +2667,14 @@ let tempActions = [
       audio: 'tts-8 (1)',
       startTime: timeDiff + 64,
     },
+    */
     ////--------------------------------1----------------------------------------//14//-new
     {
       text: 'Принять телефонный звонок, подняв трубку телефона.',
       sender: 'Система',
       audio: 'Zvuk_gudka_telefona',
+      audioLoop: true,
+      audioStopAction: 'Telephone_highlight2',
       startTime: timeDiff + 72,
     },
     {
@@ -2685,7 +2694,7 @@ let tempActions = [
       text: 'Приступаю к выполнению.',
       sender: 'Газовщик',
       audio: 'vo_new_14_2',
-      startTime: timeDiff + 76,
+      startTime: timeDiff + 78,
     },
 
     ////--------------------------------//15//-new
@@ -2693,13 +2702,13 @@ let tempActions = [
       text: 'Нажать на кнопку с надписью: «Угольная».',
       sender: 'Система',
       audio: 'telephone_say',
-      startTime: timeDiff + 79,
+      startTime: timeDiff + 80,
     },
     {
       action: {
         target3D: 'PhoneButton016',
       },
-      startTime: timeDiff + 79.5,
+      startTime: timeDiff + 80.1,
       human: true,
     },
     {

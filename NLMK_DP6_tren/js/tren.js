@@ -87,7 +87,7 @@ function loadTrenActions() {
 
   devHelper.audio.forEach(element => {
     element.element.addEventListener('ended', function () {
-      const activeAudio = devHelper.audio.some(audioFile => !audioFile.element.paused);
+      const activeAudio = devHelper.audio.some(audioFile => (((audioFile.loop && audioFile.loop === false) || !audioFile.loop) && !audioFile.element.paused));
       if (!activeAudio)
         Array.from(document.querySelectorAll('.block-interaction')).forEach(element => element.remove());
     });
@@ -108,6 +108,7 @@ function loadTrenActions() {
 }
 
 function startTren(Restart = false) {
+  stopAllAudio();
   playNoiseAudio();
   devHelper.trenVals.scenarioArr.forEach(scenarioObj => {
     if (scenarioObj.actions) {
@@ -394,7 +395,9 @@ function trenTimeTick(timeStamp) {
           if (nextAction.chapterText) sendMessage(nextAction.sender, nextAction.chapterText);
           if (nextAction.text && (devHelper.trenVals.type === 'learn' || (nextAction.audio && nextAction.audio.indexOf('vo') !== -1))) sendMessage(nextAction.sender, nextAction.text);
           if (nextAction.scenarioText) sendMessage(nextAction.sender, nextAction.scenarioText);
-          if (nextAction.audio && (devHelper.trenVals.type === 'learn' || nextAction.scenarioText || nextAction.chapterText)) playAudio(nextAction.audio);
+          if (nextAction.audio && (devHelper.trenVals.type === 'learn' || nextAction.scenarioText || nextAction.chapterText)) {
+            playAudio(nextAction.audio, nextAction.audioLoop ? true : false, nextAction.audioStopAction ? nextAction.audioStopAction : false);
+          }
         }
       }
       let lastAction = devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions.find(action => (action.passed === false));
@@ -437,10 +440,10 @@ function actionAfterClickOnMesh(Action, Mesh, Text) {
         }, standartActionMesh.duration * 1000 + 100)
       }
     }
-    if (standartActionMesh.audio) playAudio(standartActionMesh.audio);
+    if (standartActionMesh.audio) playAudio(standartActionMesh.audio, standartActionMesh.audioLoop ? true : false, standartActionMesh.audioStopAction ? standartActionMesh.audioStopAction : false);
     handleRotation(Action, Mesh);
     handlePosition(Action, Mesh);
-    if (Action.audio) playAudio(Action.audio);
+    if (Action.audio) playAudio(Action.audio, Action.audioLoop ? true : false, Action.audioStopAction ? Action.audioStopAction : false);
     if (Text) sendMessage(Action.sender, Action.text);
     if (Action.material) {
       const tempMaterial = findMaterial(Action.material);
@@ -511,13 +514,22 @@ function trenClickOnMesh(Mesh) {
   } else handleError(Mesh);
 }
 
-function playAudio(AudioName) {
-  let audioTag = devHelper.audio.find(element => element.name === AudioName)?.element;
-  if (!audioTag) return;
+function playAudio(AudioName, Loop = false, StopRule = false) {
+  let audioElem = devHelper.audio.find(element => element.name === AudioName);
+  if (!audioElem) return;
   else {
+    let audioTag = audioElem.element;
     audioTag.play();
-    if (!document.querySelector('.block-interaction'))
-      document.body.append(createCustomElement('div', '', { 'class': 'block-interaction' }));
+    if (Loop) {
+      audioTag.loop = true;
+      audioElem.loop = true;
+      audioElem.stopAction = StopRule;
+    } else {
+      audioElem.loop = false;
+      audioElem.stopAction = undefined;
+      if (!document.querySelector('.block-interaction'))
+        document.body.append(createCustomElement('div', '', { 'class': 'block-interaction' }));
+    }
   }
 }
 function handleRotation(currentAction, Mesh) {
@@ -602,7 +614,7 @@ function afterClickOn2DHelper(SvgElemHelper, CurrentAction) {
   }
 
   if (CurrentAction.audio && (devHelper.trenVals.type === 'learn' || CurrentAction.scenarioText || CurrentAction.chapterText))
-    playAudio(CurrentAction.audio);
+    playAudio(CurrentAction.audio, CurrentAction.audioLoop ? true : false, CurrentAction.audioStopAction ? CurrentAction.audioStopAction : false);
   if (CurrentAction.action && CurrentAction.action.helper2D)
     createSvghelper(devHelper.model3DVals.currentPosition)
   playAudio('tren_click');
@@ -633,6 +645,7 @@ function trenFinish() {
   devHelper.trenVals.ended = true;
   playAudio('right');
   stopNoiseAudio();
+  stopAllAudio();
   devHelper.endVals.restarts++;
   if (devHelper.endVals.humanTime.length === 0) {
     devHelper.endVals.humanTime.push(Math.ceil(document.querySelector('.box-time').milisecs / 1000));
@@ -1031,6 +1044,13 @@ function saveStart2DIF() {
 }
 
 function newActionStartHelper(Action) {
+  const loopElemAudio = devHelper.audio.find(audioFile => (audioFile.loop === true && !audioFile.element.paused));
+  if (loopElemAudio) {
+    if (Action.action && (Action.action.target3D === loopElemAudio.stopAction || Action.action.target2D === loopElemAudio.stopAction)) {
+      loopElemAudio.element.pause();
+      loopElemAudio.element.currentTime = 0;
+    }
+  }
   devHelper.trenVals.timers.actionTimeHelper = devHelper.trenVals.timers.deadTimerHelper = 0;
   if (devHelper.trenVals.type !== 'learn') {
     let hasBorder = window.getComputedStyle(document.querySelector('#b_help')).getPropertyValue('border') !== 'none';
@@ -2473,11 +2493,11 @@ function compareElements(element1, element2) {
 
 function playNoiseAudio() {
   if (devHelper.serverSound) {
-    if (devHelper.serverSound.paused) 
+    if (devHelper.serverSound.paused)
       devHelper.serverSound.play();
   } else {
     let noiseAudio = new Audio(`/media/audio/effects/server-noise.mp3`);
-    noiseAudio.volume = 0.035;
+    noiseAudio.volume = 0.05;
     noiseAudio.loop = true;
     noiseAudio.play();
     devHelper.serverSound = noiseAudio;
@@ -2487,4 +2507,10 @@ function playNoiseAudio() {
 function stopNoiseAudio() {
   if (devHelper.serverSound && !devHelper.serverSound.paused)
     devHelper.serverSound.pause();
+}
+
+function stopAllAudio() {
+  Array.from(devHelper.audio).forEach(audioFile => {
+    audioFile.element.pause();
+  })
 }

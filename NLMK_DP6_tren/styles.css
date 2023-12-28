@@ -380,6 +380,7 @@ body {
   background-color: #f4f4f4;
   border: 0.15vw solid #f4f4f4;
   transition: background-color 0.2s ease, border 0.2s ease;
+  color: #7C7C7C;
 }
 
 .scenarion-buttons-container .border-right {

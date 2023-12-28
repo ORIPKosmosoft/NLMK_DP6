@@ -876,7 +876,6 @@ function moveRotationMesh(Mesh = undefined, Type = 'r', Val = 0, Axis = undefine
 }
 
 function animMoveCamera(Vals, Speed = 2) {
-  // if (!document.querySelector('.block-interaction'))
   document.body.append(createCustomElement('div', '', { 'class': 'block-interaction' }));
   if (document.querySelector('#b_help'))
     document.querySelector('#b_help').style.pointerEvents = 'none';
@@ -948,7 +947,7 @@ function animMoveCamera(Vals, Speed = 2) {
         }
       })
     }
-    const activeAudio = devHelper.audio.some(audioFile => !audioFile.element.paused);
+    const activeAudio = devHelper.audio.some(audioFile => (((audioFile.loop && audioFile.loop === false) || !audioFile.loop) && !audioFile.element.paused));
     if (!activeAudio)
       Array.from(document.querySelectorAll('.block-interaction')).forEach(element => element.remove());
   });
