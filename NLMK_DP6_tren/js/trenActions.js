@@ -432,6 +432,7 @@ const devHelper = {
         { x: 84.1, y: 50.8, w: 4.0, h: 10.5, forAction: true, id: 'VNK1_main', realName: 'ВНК №1' },
         { x: 73.8, y: 50.8, w: 4.0, h: 10.5, forAction: true, id: 'VNK2_main', realName: 'ВНК №2' },
         { x: 63.7, y: 50.8, w: 4.0, h: 10.5, forAction: true, id: 'VNK3_main', realName: 'ВНК №3' },
+        { x: 86.4, y: 20.9, w: 0.0, h: 0.0,  forAction: true, id: 'kl022_falsh', realName: 'Клапан на тягу 022' },  // ilay 
       ]
     },
     {
@@ -506,6 +507,7 @@ const devHelper = {
         { x: 52.7, y: 23.8, w: 8.4, h: 21.3, forAction: true, id: 'VNK_1_BVNK', realName: 'ВНК №1' },
         { x: 73.5, y: 77.0, w: 2.1, h: 2.7, forAction: true, id: 'kl118', value: { window: 'O_n_k_na_VNK_posle_1', x: 1488, y: 678, }, realName: 'Клапан холодного дутья 118' },
         { x: 73.5, y: 83.0, w: 2.0, h: 2.9, forAction: true, id: 'kl110', value: { window: 'O_n_k_na_VNK_posle_1', x: 1488, y: 678, }, realName: 'Клапан сброса 110' },
+        { x: 73.2, y: 70.3, w: 2.5, h: 3.0, forAction: true, id: 'kl118a', value: { window: 'okno_klap_vid3', x: 1507, y: 490, }, realName: 'Клапан холодного дутья 118а' },    // win 118a ILAY
         { x: 73.4, y: 70.5, w: 2.0, h: 2.8, forAction: true, id: 'kl118a', value: { window: 'O_n_k_na_VNK_posle_1', x: 1488, y: 678, }, realName: 'Клапан холодного дутья 118а' },
         { x: 72.6, y: 62.6, w: 2.2, h: 3.0, forAction: true, id: 'kl136a', realName: 'Клапан разрежения 136а' },
         { x: 65.3, y: 43.0, w: 2.2, h: 3.0, forAction: true, id: 'kl119', value: { window: 'O_n_k_na_VNK_posle_1', x: 1348, y: 439, }, realName: 'Клапан горячего дутья 119' },
@@ -607,14 +609,14 @@ const devHelper = {
     },
     {
       name: 'okno_klap_vid3', helpers: [
-        { x: 61.00, y: 47.2, w: 1.5, h: 2.4, forAction: true, id: 'close_w1', realName: 'Закрыть', removeWindow: 'O_n_k_na_VNK_posle_1' }, // КРЕСТИК
-        { x: 53.40, y: 55.4, w: 4.0, h: 2.6, forAction: true, id: 'auto', realName: 'Авто', value: { window: 'O_n_k_na_VNK_posle_2', x: 1719, y: 669, } },
-        { x: 57.8, y: 55.4, w: 4.0, h: 2.6, forAction: true, id: 'ruchnoi', realName: 'Ручной', value: { window: 'O_n_k_na_VNK_posle_2', x: 1804, y: 669, } },
-        { x: 53.5, y: 59.3, w: 4.0, h: 2.6, forAction: true, id: 'open_vn', realName: 'Открыть', value: { window: 'O_n_k_na_VNK_posle_2', x: 1717, y: 708, } },
-        { x: 57.8, y: 59.3, w: 4.0, h: 2.6, forAction: true, id: 'close_ventil', realName: 'Закрыть', value: { window: 'O_n_k_na_VNK_posle_2', x: 1800, y: 708, } },
-        { x: 53.4, y: 62.1, w: 8.5, h: 2.9, forAction: true, id: 'stop', realName: 'СТОП' },
-        { x: 53.4, y: 67.5, w: 8.5, h: 2.6, forAction: true, id: 'sbros_oshibki', realName: 'Сброс ошибки' },
-        { x: 53.4, y: 72.85, w: 8.5, h: 2.6, forAction: true, id: 'baypas_blokirovok', realName: 'Байпас всех блокировок', value: { window: 'O_n_k_na_VNK_posle_2', x: 1774, y: 837, } },
+        { x: 91.1, y: 49.6, w: 1.4,  h: 1.5, forAction: true, id: 'close_w1A', realName: 'Закрыть', removeWindow: 'okno_klap_vid3' }, // КРЕСТИК
+        { x: 83.6, y: 57.2, w: 4.0,  h: 2.4, forAction: true, id: 'autoA', realName: 'Авто',             value: { window: 'O_n_k_na_VNK_posle_2', x: 1729, y: 583, } },
+        { x: 87.9, y: 57.2, w: 4.0,  h: 2.4, forAction: true, id: 'ruchnoiA', realName: 'Ручной',        value: { window: 'O_n_k_na_VNK_posle_2', x: 1805, y: 583, } },  
+        { x: 83.6, y: 61.1, w: 4.0,  h: 2.4, forAction: true, id: 'open_vnA', realName: 'Открыть',       value: { window: 'O_n_k_na_VNK_posle_2', x: 1729, y: 619, } },
+        { x: 88.0, y: 61.1, w: 4.0,  h: 2.4, forAction: true, id: 'close_ventilA', realName: 'Закрыть',  value: { window: 'O_n_k_na_VNK_posle_2', x: 1805, y: 619, } },
+        { x: 83.6, y: 64.0, w: 8.5,  h: 2.7, forAction: true, id: 'stopA', realName: 'СТОП' },
+        { x: 83.6, y: 69.3, w: 8.5,  h: 2.3, forAction: true, id: 'sbros_oshibkiA', realName: 'Сброс ошибки' },
+        { x: 83.6, y: 74.7, w: 8.5,  h: 2.3, forAction: true, id: 'baypas_blokirovokA', realName: 'Байпас всех блокировок', value: { window: 'O_n_k_na_VNK_posle_2', x: 1770, y: 755, } },
       ]
     },
 
@@ -724,7 +726,7 @@ const devHelper = {
       name: 'O_p_n_na_k_p_na_VNK', helpers: [
         { x: 27.2, y: 11.8, w: 2.25, h: 2.6, forAction: true, id: 'perekidta_exit_btn', realName: 'Закрыть', removeWindow: 'O_p_n_na_k_p_na_VNK', },
         { x: 15.6, y: 20.8, w: 11.9, h: 3.6, forAction: true, id: 'avaric_otdel_btn', realName: 'Аварийное отделение', },
-        { x: 15.6, y: 25.0, w: 11.9, h: 3.6, forAction: true, id: 'otdel_nagrev_btn', realName: 'Отделение-Нагрев', },
+        { x: 15.6, y: 25.0, w: 11.9, h: 3.6, forAction: true, id: 'otdel_nagrev_btn', realName: 'Отделение-Нагрев', value: { window: 'VN3_Perekidka_iz_Otdeleniya_v_Nagrev', x: 379, y: 32, } },
         { x: 15.6, y: 29.0, w: 11.9, h: 3.6, forAction: true, id: 'nagrev_otd2_btn', realName: 'Нагрев-Отделение 2', value: { window: 'O_p_n_na_k_na-o_2_na_VNK', x: 379, y: 32, } },
         { x: 15.6, y: 33.1, w: 11.9, h: 3.6, forAction: true, id: 'otdel_dutia_btn', realName: 'Отделение-Дутье', },
         { x: 15.6, y: 37.1, w: 11.9, h: 3.6, forAction: true, id: 'dutia_otdel_btn', realName: 'Дутье-отделение', },
@@ -823,6 +825,113 @@ const devHelper = {
         { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
         { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
         { x: 60, y: 0.0, w: 5.5, h: 2.5, name: 'gazoochistka', },
+        // #region Kontrol_progara Table 1
+        { x: 20.10, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_1',    realName: 'Контоль прогара холодильников фурм 1', },
+        { x: 24.00, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_2',    realName: 'Контоль прогара холодильников фурм 2', },
+        { x: 27.95, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_3',    realName: 'Контоль прогара холодильников фурм 3', },
+        { x: 31.80, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_4',    realName: 'Контоль прогара холодильников фурм 4', },
+        { x: 35.60, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_5',    realName: 'Контоль прогара холодильников фурм 5', },
+        { x: 39.65, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_6',    realName: 'Контоль прогара холодильников фурм 6', },
+        { x: 43.60, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_7',    realName: 'Контоль прогара холодильников фурм 7', },
+        { x: 47.30, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_8',    realName: 'Контоль прогара холодильников фурм 8', },
+        { x: 51.25, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_9',    realName: 'Контоль прогара холодильников фурм 9', },
+        { x: 55.10, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_10',   realName: 'Контоль прогара холодильников фурм 10', },
+        { x: 58.95, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_11',   realName: 'Контоль прогара холодильников фурм 11', },
+        { x: 62.80, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_12',   realName: 'Контоль прогара холодильников фурм 12', },
+        { x: 66.65, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_13',   realName: 'Контоль прогара холодильников фурм 13', },
+        { x: 70.70, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_14',   realName: 'Контоль прогара холодильников фурм 14', },
+        { x: 74.50, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_15',   realName: 'Контоль прогара холодильников фурм 15', },
+        { x: 78.30, y: 17.75, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_16',   realName: 'Контоль прогара холодильников фурм 16', },
+
+        { x: 20.05, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_17',   realName: 'Контоль прогара холодильников фурм 17', },
+        { x: 23.90, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_18',   realName: 'Контоль прогара холодильников фурм 18', },
+        { x: 27.90, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_19',   realName: 'Контоль прогара холодильников фурм 19', },
+        { x: 31.80, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_20',   realName: 'Контоль прогара холодильников фурм 20', },
+        { x: 35.55, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_21',   realName: 'Контоль прогара холодильников фурм 21', },
+        { x: 39.65, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_22',   realName: 'Контоль прогара холодильников фурм 22', },
+        { x: 43.60, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_23',   realName: 'Контоль прогара холодильников фурм 23', },
+        { x: 47.30, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_24',   realName: 'Контоль прогара холодильников фурм 24', },
+        { x: 51.25, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_25',   realName: 'Контоль прогара холодильников фурм 25', },
+        { x: 55.10, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_26',   realName: 'Контоль прогара холодильников фурм 26', },
+        { x: 58.95, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_27',   realName: 'Контоль прогара холодильников фурм 27', },
+        { x: 62.80, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_28',   realName: 'Контоль прогара холодильников фурм 28', },
+        { x: 66.65, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_29',   realName: 'Контоль прогара холодильников фурм 29', },
+        { x: 70.65, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_30',   realName: 'Контоль прогара холодильников фурм 30', },
+        { x: 74.60, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_31',   realName: 'Контоль прогара холодильников фурм 31', },
+        { x: 78.40, y: 30.10, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T1_32',   realName: 'Контоль прогара холодильников фурм 32', },
+        // #endregion
+
+        // #region Kontrol_progara Table 2
+        { x: 20.00, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_1',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 1', },
+        { x: 23.80, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_2',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 2', },
+        { x: 27.80, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_3',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 3', },
+        { x: 31.65, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_4',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 4', },
+        { x: 35.50, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_5',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 5', },
+        { x: 39.50, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_6',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 6', },
+        { x: 43.50, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_7',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 7', },
+        { x: 47.20, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_8',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 8', },
+        { x: 51.25, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_9',    realName: 'Контроль прогара фурм по охлаждению носка фурмы 9', },
+        { x: 55.10, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_10',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 10', },
+        { x: 58.95, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_11',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 11', },
+        { x: 62.80, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_12',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 12', },
+        { x: 66.65, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_13',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 13', },
+        { x: 70.70, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_14',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 14', },
+        { x: 74.60, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_15',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 15', },
+        { x: 78.45, y: 46.1, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_16',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 16', },
+
+        { x: 19.90, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_17',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 17', },
+        { x: 23.80, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_18',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 18', },
+        { x: 27.80, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_19',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 19', },
+        { x: 31.60, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_20',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 20', },
+        { x: 35.50, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_21',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 21', },
+        { x: 39.50, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_22',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 22', },
+        { x: 43.50, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_23',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 23', },
+        { x: 47.20, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_24',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 24', },
+        { x: 51.25, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_25',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 25', },
+        { x: 55.10, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_26',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 26', },
+        { x: 58.95, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_27',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 27', },
+        { x: 62.80, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_28',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 28', },
+        { x: 66.65, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_29',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 29', },
+        { x: 70.65, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_30',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 30', },
+        { x: 74.60, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_31',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 31', },
+        { x: 78.50, y: 58.5, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T2_32',   realName: 'Контроль прогара фурм по охлаждению носка фурмы 32', },
+        // #endregion 
+
+        // #region Kontrol_progara Table 3
+        { x: 19.85, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_1',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 1', },
+        { x: 23.70, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_2',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 2', },
+        { x: 27.70, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_3',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 3', },
+        { x: 31.60, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_4',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 4', },
+        { x: 35.50, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_5',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 5', },
+        { x: 39.50, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_6',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 6', },
+        { x: 43.50, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_7',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 7', },
+        { x: 47.20, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_8',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 8', },
+        { x: 51.25, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_9',    realName: 'Контроль прогара фурм по охлаждению тела фурмы 9', },
+        { x: 55.10, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_10',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 10', },
+        { x: 58.95, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_11',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 11', },
+        { x: 62.80, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_12',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 12', },
+        { x: 70.75, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_13',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 13', },
+        { x: 70.80, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_14',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 14', },
+        { x: 74.70, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_15',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 15', },
+        { x: 78.50, y: 74.8, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_16',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 16', },
+        
+        { x: 19.80, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_17',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 17', },
+        { x: 23.70, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_18',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 18', },
+        { x: 27.70, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_19',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 19', },
+        { x: 31.60, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_20',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 20', },
+        { x: 35.50, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_21',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 21', },
+        { x: 39.50, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_22',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 22', },
+        { x: 43.50, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_23',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 23', },
+        { x: 47.20, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_24',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 24', },
+        { x: 51.25, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_25',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 25', },
+        { x: 55.10, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_26',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 26', },
+        { x: 58.95, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_27',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 27', },
+        { x: 62.80, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_28',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 28', },
+        { x: 70.75, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_29',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 29', },
+        { x: 70.80, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_30',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 30', },
+        { x: 74.70, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_31',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 31', },
+        { x: 78.50, y: 87.3, w: 2.6, h: 3.0, forAction: true, id: 'Progar_T3_32',   realName: 'Контроль прогара фурм по охлаждению тела фурмы 32', },
+      // #endregion
       ]
     },
     {
@@ -831,6 +940,50 @@ const devHelper = {
         { x: 18.0, y: 0.0, w: 4.5, h: 3.3, name: 'Kontrol_progara', },
         { x: 45.5, y: 0.0, w: 3.5, h: 3.3, name: 'bzu', },
         { x: 60, y: 0.0, w: 5.5, h: 2.5, name: 'gazoochistka', },
+        { x: 8.500, y: 21.10, w: 5.0, h: 5.3, id: 'gaz_sbrosOshibok',  realName: 'Сброс ошибки', forAction: true,},
+        { x: 16.60, y: 19.85, w: 4.3, h: 4.5, id: 'gaz_AKZ',           realName: 'ЭКЗ',          forAction: true,},
+        { x: 21.30, y: 19.85, w: 4.4, h: 4.5, id: 'gaz_GUBT',          realName: 'ГУБТ',         forAction: true,},
+        { x: 37.00, y: 18.20, w: 3.8, h: 3.9, id: 'gaz_Mectn',         realName: 'Местн',        forAction: true,},
+        { x: 41.95, y: 18.20, w: 3.8, h: 3.9, id: 'gaz_Dist',          realName: 'Дист',         forAction: true,},
+        { x: 37.00, y: 23.20, w: 4.6, h: 4.2, id: 'gaz_AVSTOP',        realName: 'АВ.СТОП',      forAction: true,},
+        { x: 41.95, y: 22.70, w: 3.7, h: 5.0, id: 'gaz_sbrosAvarii',   realName: 'Сброс аварии', forAction: true,},
+
+        { x: 57.30, y: 23.30, w: 6.5, h: 4.6, id: 'gaz_PkolGaza',      realName: 'Р.кол.газа',   forAction: true,},
+        { x: 57.30, y: 28.80, w: 6.5, h: 4.6, id: 'gaz_dPpechiObsh',   realName: 'dP печи общ',  forAction: true,},
+
+        { x: 72.00, y: 19.2, w: 6.9, h: 3.6, id: 'gaz_AKZ1_avtomat',   realName: 'ЭКЗ-1  Автомат.',  forAction: true,}, 
+        { x: 72.00, y: 23.3, w: 6.9, h: 3.6, id: 'gaz_AKZ1_ruchnoy',   realName: 'ЭКЗ-1  Ручной',    forAction: true,},   
+        { x: 72.05, y: 27.5, w: 6.9, h: 3.6, id: 'gaz_AKZ1_mestnuy',   realName: 'ЭКЗ-1  Местный',   forAction: true,},  
+        { x: 72.05, y: 31.7, w: 6.9, h: 3.6, id: 'gaz_AKZ1_distanc',   realName: 'ЭКЗ-1  Дистанц.',  forAction: true,}, 
+        { x: 72.05, y: 35.9, w: 6.9, h: 3.6, id: 'gaz_AKZ1_razblok',   realName: 'ЭКЗ-1  Разблок.',  forAction: true,}, 
+
+        { x: 72.90, y: 44.4, w: 5.35, h: 2.7, id: 'gaz_AKZ1_open',     realName: 'ЭКЗ-1 Открыть',       forAction: true,}, 
+        { x: 72.90, y: 47.2, w: 5.35, h: 2.7, id: 'gaz_AKZ1_close',    realName: 'ЭКЗ-1 Закрыть',       forAction: true,}, 
+        { x: 71.50, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ1_error',    realName: 'ЭКЗ-1 Ошибка',        forAction: true,}, 
+        { x: 75.80, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ1_reset',    realName: 'ЭКЗ-1 Сброс ошибки',  forAction: true,}, 
+
+        { x: 81.10, y: 19.2, w: 6.9, h: 3.6, id: 'gaz_AKZ2_avtomat',   realName: 'ЭКЗ-2  Автомат.',  forAction: true,}, 
+        { x: 81.10, y: 23.3, w: 6.9, h: 3.6, id: 'gaz_AKZ2_ruchnoy',   realName: 'ЭКЗ-2  Ручной',    forAction: true,},   
+        { x: 81.15, y: 27.5, w: 6.9, h: 3.6, id: 'gaz_AKZ2_mestnuy',   realName: 'ЭКЗ-2  Местный',   forAction: true,},  
+        { x: 81.15, y: 31.7, w: 6.9, h: 3.6, id: 'gaz_AKZ2_distanc',   realName: 'ЭКЗ-2  Дистанц.',  forAction: true,}, 
+        { x: 81.15, y: 35.9, w: 6.9, h: 3.6, id: 'gaz_AKZ2_razblok',   realName: 'ЭКЗ-2  Разблок.',  forAction: true,},
+
+        { x: 82.00, y: 44.4, w: 5.35, h: 2.7, id: 'gaz_AKZ2_open',     realName: 'ЭКЗ-2 Открыть',       forAction: true,}, 
+        { x: 82.00, y: 47.2, w: 5.35, h: 2.7, id: 'gaz_AKZ2_close',    realName: 'ЭКЗ-2 Закрыть',       forAction: true,}, 
+        { x: 80.70, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ2_error',    realName: 'ЭКЗ-2 Ошибка',        forAction: true,}, 
+        { x: 84.90, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ2_reset',    realName: 'ЭКЗ-2 Сброс ошибки',  forAction: true,}, 
+
+        { x: 90.15, y: 19.2, w: 6.9, h: 3.6, id: 'gaz_AKZ3_avtomat',   realName: 'ЭКЗ-3  Автомат.',  forAction: true,}, 
+        { x: 90.15, y: 23.3, w: 6.9, h: 3.6, id: 'gaz_AKZ3_ruchnoy',   realName: 'ЭКЗ-3  Ручной',    forAction: true,},   
+        { x: 90.15, y: 27.5, w: 6.9, h: 3.6, id: 'gaz_AKZ3_mestnuy',   realName: 'ЭКЗ-3  Местный',   forAction: true,},  
+        { x: 90.20, y: 31.7, w: 6.9, h: 3.6, id: 'gaz_AKZ3_distanc',   realName: 'ЭКЗ-3  Дистанц.',  forAction: true,}, 
+        { x: 90.20, y: 35.9, w: 6.9, h: 3.6, id: 'gaz_AKZ3_razblok',   realName: 'ЭКЗ-3  Разблок.',  forAction: true,},
+        { x: 90.20, y: 35.9, w: 6.9, h: 3.6, id: 'gaz_AKZ3_razblok',   realName: 'ЭКЗ-3  Разблок.',  forAction: true,},
+
+        { x: 91.05, y: 44.4, w: 5.35, h: 2.7, id: 'gaz_AKZ3_open',     realName: 'ЭКЗ-3 Открыть',       forAction: true,}, 
+        { x: 91.05, y: 47.2, w: 5.35, h: 2.7, id: 'gaz_AKZ3_close',    realName: 'ЭКЗ-3 Закрыть',       forAction: true,}, 
+        { x: 89.70, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ3_error',    realName: 'ЭКЗ-3 Ошибка',        forAction: true,}, 
+        { x: 94.00, y: 51.10, w: 4.0, h: 4.5, id: 'gaz_AKZ3_reset',    realName: 'ЭКЗ-3 Сброс ошибки',  forAction: true,}, 
       ]
     },
     {
@@ -839,6 +992,14 @@ const devHelper = {
         { x: 10.1, y: 92.4, w: 4.9, h: 2.2, forAction: true, id: 'shagi_uprav_zakryt', realName: 'Закрыть', },
       ]
     },
+    {
+      name: 'VN3_Perekidka_iz_Otdeleniya_v_Nagrev', helpers: [
+        { x: 63.7, y: 3.50, w: 2.4, h: 3.0, forAction: true, id: 'pericNagrev_close_btn', realName: 'Закрыть',  removeWindow: 'VN3_Perekidka_iz_Otdeleniya_v_Nagrev',},
+        { x: 31.8, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_pusk_btn',  realName: 'Пуск',     value: { window: 'O_n_k_na_VNK_posle_2', x: 678, y: 917 },},
+        { x: 35.0, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_stop_btn',  realName: 'Стоп', },
+        { x: 38.2, y: 94.6, w: 3.4, h: 3.4, forAction: true, id: 'pericNagrev_reset_btn', realName: 'Сброс', },
+      ]
+    }
   ],
   startPos: {
     IF2D: [],
@@ -24472,87 +24633,3791 @@ let tempActions = [
   ],
   // 2 scenario
   [
-    // #region qs/qsa
-    /*
+    {
+      lifeTime: '11:50:00',
+      startTime: timeDiff + 0,
+    },
+    ////-----------------------------------1
+    {
+      chapterText: 'Сообщение о намеченном пуске ДП',
+      scenarioText: 'Сообщить о намеченном пуске доменной печи',
+      text: 'Сообщить о намеченном пуске доменной печи.',
+      sender: 'Система',
+      audio: 'tts-45',  //3
+      startTime: timeDiff + 3,
+    },
+    ////--------------------------------2-6---------------------------------------
+    {
+      text: 'Нажать на кнопки с надписью: «Газовый цех», «Насосный цех», «Кислородный цех», «ЭВС», «Угольная» на телефоне.',
+      sender: 'Система',
+      audio: 'telephone_say',
+      startTime: timeDiff + 7,
+    },
+    {
+      multi: [  
+        {
+          text: 'Сейчас будем раздувать доменную печь №6.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton001',
+          },
+          audio: 'tts-vo59',
+        },
+        {
+          text: 'Сейчас будем раздувать доменную печь №6.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton006',
+          },
+          audio: 'tts-vo59',
+        },
+        {
+          text: 'Сейчас будем раздувать доменную печь №6.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton017',
+          },
+          audio: 'tts-vo59',
+        },
+        {
+          text: 'Сейчас будем раздувать доменную печь №6.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton020',
+          },
+          audio: 'tts-vo59',
+        },
+        {
+          text: 'Сейчас будем раздувать доменную печь №6.',
+          sender: 'Газовщик',
+          action: {
+            target3D: 'PhoneButton016',
+          },
+          audio: 'tts-vo59',
+        },
+      ],
+      startTime: timeDiff + 7.5,
+      human: true,
+    },
+    ////--------------------------------7----------------------------------------
+    {      lifeTime: '12:00:00',      startTime: timeDiff + 8,    },
+    {
+      chapterText: 'Снятие печи с «тяги»',
+      scenarioText: 'По команде сменного мастера, снять печь с «тяги»',
+      text: 'Снять печь с тяги.',
+      sender: 'Мастер печи',
+      audio: 'tts-46',  //  1.6
+      startTime: timeDiff + 9,
+    },
+    ////--------------------------------8----------------------------------------
+    {
+      action:{
+        helper2D: [
+          { x: 86.4, y: 20.9, w: 0.0, h: 0.0, id: 'kl022'},
+          { x: 86.4, y: 20.9, w: 2.0, h: 3.0, id: 'kl022_falsh'},
+        ]
+      },
+      text: 'Убедиться, что клапан тяги 022 закрыт.',
+      sender: 'Система',
+      audio: 'tts-46--8', // 5.9
+      startTime: timeDiff + 11.5,
+    },
+    {
+      action: {
+        target2D: 'kl022_falsh',
+        helper2D: [
+          { x: 86.4, y: 20.9, w: 2.0, h: 3.0, id: 'kl022'},
+          { x: 86.4, y: 20.9, w: 0.0, h: 0.0, id: 'kl022_falsh'},
+        ]
+      },
+      startTime: timeDiff + 12,
+      human: true,
+    },
+    {      lifeTime: '12:03:00',      startTime: timeDiff + 13,    },
+    ////--------------------------------9----------------------------------------
+    {
+      text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 14,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },  startTime: timeDiff + 15, human: true, }, 
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_on', },                        startTime: timeDiff + 16, },
+    {
+      text: 'Печь с тяги снята.',
+      sender: 'Газовщик',
+      audio: 'tts-vo60',
+      startTime: timeDiff + 17,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', },                       startTime: timeDiff + 18, },
+    ////--------------------------------10----------------------------------------
+    {
+      chapterText: 'Повышение давления ГД до 0,3 кгс/см²',
+      scenarioText: 'Открыть шибера',
+      text: 'Открывайте шибера и делайте 0,3.',
+      audio: 'tts-vo61', //  4
+      sender: 'Мастер печи',
+      startTime: timeDiff + 19,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 20,  human: true, },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_on', },  startTime: timeDiff + 21, },
+    {
+      text: 'Открываю шибера и делаю 0,3 кг.',
+      sender: 'Газовщик',
+      audio: 'tts-vo62',  // 4.2
+      startTime: timeDiff + 22,
+    },
+    ////--------------------------------11----------------------------------------
+    {      lifeTime: '12:04:00',      startTime: timeDiff + 26.3,    },
+    {
+      text: 'Установить ВНК №1 в положение «Индивидуальное дутье».',
+      sender: 'Система',
+      audio: 'tts-47', // 4.5
+      startTime: timeDiff + 27.3,
+    },
+    ////------------------------------12---------------------
+    {
+      text: 'Открыть клапан сброса 110.',
+      sender: 'Система',
+      audio: 'tts-47New_11', // 2.6
+      startTime: timeDiff + 32.5,
+    },
+    //  Клапан 110
+    {
+      action: {
+        target2D: 'kl110',  
+        window2D: {
+          elements: [ 
+            { name: 'title_work_vn', text: 'Управление клапаном 110' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_control_vnk_text', text: 'Автоматический' },
+            { name: 'status_window_text', text: 'Закрыт' },
+
+            { name: 'btn_auto_text',          color: '#6E6E6E' },
+            { name: 'btn_auto_2',                       color: '#e6e6e6',  stroke: '#b3b3b3' },
+            
+            { name: 'btn_ruchnoy_text',       color: '#000000' }, 
+            { name: 'btn_ruchnoy_2',                    color: '#ffffff',  stroke: '#000000' },
+             
+            { name: 'btn_open_text',          color: '#6E6E6E' }, 
+            { name: 'btn_open_2',                       color: '#e6e6e6',  stroke: '#b3b3b3' },
+            
+            { name: 'btn_close_text',         color: '#6E6E6E' },
+            { name: 'btn_close_2',                      color: '#e6e6e6',  stroke: '#b3b3b3' },
+
+            { name: 'btn_stop_text',          color: '#6E6E6E' },
+            { name: 'btn_stop_2',                       color: '#e6e6e6',  stroke: '#b3b3b3' },
+
+            { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+            { name: 'btn_reset_2',                       color: '#e6e6e6', stroke: '#b3b3b3' },
+            
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',     color: '#ffffff', stroke: '#000000' },
+            
+            { name: 'skhema_sobrana',     color: '#00FF00'}, // Схема собрана
+            { name: 'block_open',         color: '#00FF00'}, // Блокировки-Открытие
+            { name: 'block_close',        color: '#00FF00'}, // Блокировки-Закрытие
+          ]
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1',           },//
+          { x: 82.80, y: 76.20, w: 4.0, h: 2.6, id: 'auto',               },
+          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'ruchnoi',            },//
+          { x: 82.80, y: 80.20, w: 4.0, h: 2.6, id: 'open_vn',            },//
+          { x: 87.10, y: 80.20, w: 4.0, h: 2.6, id: 'close_ventil',       },
+          { x: 82.80, y: 83.10, w: 8.5, h: 2.9, id: 'stop',               },
+          { x: 82.80, y: 88.40, w: 8.5, h: 2.6, id: 'sbros_oshibki',      },
+          { x: 82.80, y: 93.80, w: 8.5, h: 2.6, id: 'baypas_blokirovok',  }//
+        ]
+      },
+      startTime: timeDiff + 33.0,
+      human: true,
+    },
+    // окно ВН  // клик ручной
+    {
+      action: {
+        target2D: 'ruchnoi',
+        window2D: {
+          newPositionWindow: {  //  wind 2
+            x: 1756,
+            y: 770
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Ручной' },
+          ],
+        },
+        helper2D: [
+          { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
+          { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 33.1,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'title_work_vn', text: 'Управление клапаном 110' },
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_window_text', text: 'Закрыт' },
+
+            { name: 'btn_auto_text',          color: '#000000' },
+            { name: 'btn_auto_2',                       color: '#ffffff', stroke: '#000000' },
+
+            { name: 'btn_ruchnoy_text',       color: '#6E6E6E' },
+            { name: 'btn_ruchnoy_2',                    color: '#e6e6e6', stroke: '#b3b3b3' },
+            
+            { name: 'btn_open_text',          color: '#000000' },
+            { name: 'btn_open_2',                       color: '#ffffff', stroke: '#000000' },
+            
+            { name: 'btn_close_text',         color: '#6E6E6E' },
+            { name: 'btn_close_2',                      color: '#e6e6e6', stroke: '#b3b3b3' },
+
+            { name: 'btn_stop_text',          color: '#000000' },
+            { name: 'btn_stop_2',                       color: '#ffffff', stroke: '#000000' },
+
+            { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+            { name: 'btn_reset_2',                       color: '#e6e6e6', stroke: '#b3b3b3' },
+            
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',              color: '#ffffff', stroke: '#000000' },
+            
+            { name: 'skhema_sobrana',     color: '#00FF00'}, // Схема собрана
+            { name: 'block_open',         color: '#00FF00'}, // Блокировки-Открытие
+            { name: 'block_close',        color: '#00FF00'}, // Блокировки-Закрытие
+          ]
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1',           },//
+          { x: 82.80, y: 76.20, w: 4.0, h: 2.6, id: 'auto',               },
+          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'ruchnoi',            },//
+          { x: 82.80, y: 80.20, w: 4.0, h: 2.6, id: 'open_vn',            },//
+          { x: 87.10, y: 80.20, w: 4.0, h: 2.6, id: 'close_ventil',       },
+          { x: 82.80, y: 83.10, w: 8.5, h: 2.9, id: 'stop',               },
+          { x: 82.80, y: 88.40, w: 8.5, h: 2.6, id: 'sbros_oshibki',      },
+          { x: 82.80, y: 93.80, w: 8.5, h: 2.6, id: 'baypas_blokirovok',  }//
+        ]
+      },
+      startTime: timeDiff + 33.2,
+      human: true,
+    },
+
+    // окно ВН // Байпас всех блокировок
+    {
+      action: {
+        target2D: 'baypas_blokirovok', 
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1728,
+            y: 930
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Байпас всех БЛОК' },
+          ]
+        }, 
+        helper2D: [
+          { x: 90.3, y: 96, w: 3.2, h: 2.5, id: 'close_vn' },  // нет
+          { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 33.3,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1741,
+            y: 930
+          },
+          elements: [
+            { name: 'btn_baypas_vsekh_blokirovok_2',      color: '#00FF00', stroke: '#000000' },
+          ],
+        },
+      },
+      startTime: timeDiff + 33.4,
+      human: true,
+    },
+    ////////  ------- //       old text: 'Перевести клапан 110 в открытый режим.',
+    { 
+      action:{
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1',           },//
+          { x: 82.80, y: 76.20, w: 4.0, h: 2.6, id: 'auto',               },
+          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'ruchnoi',            },//
+          { x: 82.80, y: 80.20, w: 4.0, h: 2.6, id: 'open_vn',            },//
+          { x: 87.10, y: 80.20, w: 4.0, h: 2.6, id: 'close_ventil',       },
+          { x: 82.80, y: 83.10, w: 8.5, h: 2.9, id: 'stop',               },
+          { x: 82.80, y: 88.40, w: 8.5, h: 2.6, id: 'sbros_oshibki',      },
+          { x: 82.80, y: 93.80, w: 8.5, h: 2.6, id: 'baypas_blokirovok',  }//
+        ]
+      },
+      startTime: timeDiff + 33.5,
+    },
+    // окно ВН  // Открыть
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1692,
+            y: 810
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+        helper2D: [
+          { x: 88.5, y: 83.9, w: 3.2, h: 2.6, id: 'close_vn' },   // net
+          { x: 84.9, y: 83.9, w: 3.2, h: 2.6, id: 'open_vn1' },       // da
+        ]
+      },
+      startTime: timeDiff + 33.6,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            // по действиям раскидано
+          ],
+        },
+      },
+      startTime: timeDiff + 33.7,
+      human: true,
+    },
+    { //1
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+            
+            
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'VNK1_status_1', text: 'Индивидуал.' },
+            { name: 'VNK1_status_2', text: 'Отделение' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 34,
+    },
+    { //2
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+           
+
+            { name: 'vnk1_fire', opacity: '1' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '1' }, // обводка стрелка
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'VNK1_status_2', text: '' },
+            { name: 'vnk1_stripes', color: '#e6e6e6' },
+          ]
+        }
+      },
+      startTime: timeDiff + 35,
+    },
+    { //3
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+           
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'vnk1_stripes', color: '#e6e6e6' },
+
+            { name: 'circle_dutyo',         color: '#000' },
+            { name: 'circle_nagrev',        color: '#000' },
+            { name: 'circle_otdeleniye_1',  color: '#000' },
+            { name: 'circle_otdeleniye_2',  color: '#000' },
+          ]
+        }
+      },
+      startTime: timeDiff + 36,
+    },
+    { //4
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+           
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.46' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 37,
+    },
+    { //5
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+          
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.47' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 38,
+    },
+    { //6
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+          
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.52' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 39,
+    },
+    { //7
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+        
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.47' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 40,
+    },
+    { //8
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+         
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.49' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 41,
+    },
+    { //9
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+   
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.52' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 42,
+    },
+    { //10
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открыт' },
+     
+            { name: 'btn_open_text',          color: '#6E6E6E' },  
+            { name: 'btn_open_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_close_text',         color: '#000000' },  
+            { name: 'btn_close_2',                      color: '#ffffff',   stroke: '#000000' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.54' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 43,
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 44,
+      human: true,
+    },
+    ////////  -------
+    {
+      lifeTime: '12:04:00',
+      startTime: timeDiff + 44.1,
+  },
+    ////--------------------------------13---------------------------------------- 118а
+    {
+      text: 'Открыть клапан холодного дутья 118а.',
+      sender: 'Система',
+      audio: 'tts-48 (1)', // 3.7
+      startTime: timeDiff + 45,
+    },
+    //  Клапан 118a
+    {
+      action: {
+        target2D: 'kl118a',  
+        window2D: {
+          elements: [ 
+            { name: 'title_work_vn', text: 'Управление клапаном 118а' },
+            { name: 'left_vn',  color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+ 
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+ 
+            { name: 'status_control_vnk_text', text: 'Автоматический' },
+            { name: 'status_window_text', text: 'Закрыт' },
+    
+            { name: 'btn_auto_text',          color: '#6E6E6E' },  
+            { name: 'btn_auto_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_ruchnoy_text',       color: '#000000' },  
+            { name: 'btn_ruchnoy_2',                    color: '#ffffff',   stroke: '#000000' },
+              
+            { name: 'btn_open_text',          color: '#6E6E6E' },  
+            { name: 'btn_open_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_close_text',         color: '#6E6E6E' },  
+            { name: 'btn_close_2',                      color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_stop_text',          color: '#6E6E6E' },  
+            { name: 'btn_stop_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+    
+            { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+            { name: 'btn_reset_2',                        color: '#e6e6e6', stroke: '#b3b3b3' },
+    
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',      color: '#ffffff', stroke: '#000000' },
+    
+            { name: 'skhema_sobrana',     color: '#00FF00'}, // Схема собрана
+            { name: 'block_open',         color: '#00FF00'}, // Блокировки-Открытие
+            { name: 'block_close',        color: '#ff1e00'}, // Блокировки-Закрытие
+          ]
+        },
+      },
+      startTime: timeDiff + 46,
+      human: true,
+    },
+    // окно ВН  // клик ручной
+    {
+      action: {
+        target2D: 'ruchnoiA',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Ручной' },
+          ],
+        },
+        helper2D: [
+          { x: 94.00, y: 60.6, w: 3.2, h: 2.6, id: 'close_vn' },   // нет
+          { x: 90.40, y: 60.6, w: 3.2, h: 2.6, id: 'open_vn1' },   // да     
+        ]
+      },
+      startTime: timeDiff + 46.1,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_window_text', text: 'Закрыт' },
+
+            { name: 'btn_auto_text',          color: '#000000' },
+            { name: 'btn_auto_2',                       color: '#ffffff', stroke: '#000000' },
+
+            { name: 'btn_ruchnoy_text',       color: '#6E6E6E' },
+            { name: 'btn_ruchnoy_2',                    color: '#e6e6e6', stroke: '#b3b3b3' },
+            
+            { name: 'btn_open_text',          color: '#000000' },
+            { name: 'btn_open_2',                       color: '#ffffff', stroke: '#000000' },
+            
+            { name: 'btn_close_text',         color: '#6E6E6E' },
+            { name: 'btn_close_2',                      color: '#e6e6e6', stroke: '#b3b3b3' },
+
+            { name: 'btn_stop_text',          color: '#000000' },
+            { name: 'btn_stop_2',                       color: '#ffffff', stroke: '#000000' },
+
+            { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+            { name: 'btn_reset_2',                       color: '#e6e6e6', stroke: '#b3b3b3' },
+            
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',              color: '#ffffff', stroke: '#000000' },
+            
+            { name: 'skhema_sobrana',     color: '#00FF00'}, // Схема собрана
+            { name: 'block_open',         color: '#ff1e00'}, // Блокировки-Открытие
+            { name: 'block_close',        color: '#ff1e00'}, // Блокировки-Закрытие
+          ]
+        },
+      },
+      startTime: timeDiff + 46.2,
+      human: true,
+    },
+    // окно ВН // Байпас всех блокировок
+    {
+      action: {
+        target2D: 'baypas_blokirovokA', 
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Байпас всех БЛОК' },
+          ]
+        }, 
+        helper2D: [
+          { x: 92.35, y: 78.20, w: 3.2, h: 2.6, id: 'close_vn' },   // нет
+          { x: 88.75, y: 78.20, w: 3.2, h: 2.6, id: 'open_vn1' },   // да   
+        ]
+      },
+      startTime: timeDiff + 46.3,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'btn_baypas_vsekh_blokirovok_2',      color: '#00FF00', stroke: '#000000' },
+          ],
+        },
+      },
+      startTime: timeDiff + 46.4,
+      human: true,
+    },
+      // окно ВН  // Открыть
+    {
+      action: {
+        target2D: 'open_vnA',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+        helper2D: [
+          { x: 90.2, y: 64.4, w: 3.2, h: 2.6, id: 'close_vn' },   // net
+          { x: 86.6, y: 64.4, w: 3.2, h: 2.6, id: 'open_vn1' },   // da
+        ]
+      },
+      startTime: timeDiff + 46.5,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'kl_118a_proc', text: '50' },
+          ],
+        },
+      },
+      startTime: timeDiff + 46.6,
+      human: true,
+    },
+    { //1
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'kl_118a_proc', text: '55' },
+            
+            
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'VNK1_status_1', text: 'Индивидуал.' },
+            { name: 'VNK1_status_2', text: '' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 47,
+    },
+    { //2
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'kl_118a_proc', text: '60' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'VNK1_status_2', text: '' },
+            { name: 'vnk1_stripes', color: '#e6e6e6' },
+          ]
+        }
+      },
+      startTime: timeDiff + 48,
+    },
+    { //3
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'kl_118a_proc', text: '65' },
+
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'vnk1_stripes', color: '#e6e6e6' },
+
+            { name: 'circle_dutyo',         color: '#000' },
+            { name: 'circle_nagrev',        color: '#000' },
+            { name: 'circle_otdeleniye_1',  color: '#000' },
+            { name: 'circle_otdeleniye_2',  color: '#000' },
+          ]
+        }
+      },
+      startTime: timeDiff + 49,
+    },
+    { //4
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'kl_118a_proc', text: '70' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.87' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.37' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1017' },
+            { name: 'vybor_signala', text: '1224' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 50,
+    },
+    { //5
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'kl_118a_proc', text: '75' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.92' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.37' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 51,
+    },
+    { //6
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'kl_118a_proc', text: '80' },
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.96' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.37' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 52,
+    },
+    { //7
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'kl_118a_proc', text: '85' },
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.03' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 53,
+    },
+    { //8
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'kl_118a_proc', text: '90' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.07' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 54,
+    },
+    { //9
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+            { name: 'kl_118a_proc', text: '95' },
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.09' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 55,
+    },
+    { //10
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открыт' },
+            { name: 'kl_118a_proc', text: '100' },
+            { name: 'btn_open_text',          color: '#6E6E6E' },  
+            { name: 'btn_open_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_close_text',         color: '#000000' },  
+            { name: 'btn_close_2',                      color: '#ffffff',   stroke: '#000000' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.08' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.36' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 56,
+    },
+    {
+      action: {
+        target2D: 'close_w1A',
+      },
+      startTime: timeDiff + 56.1,
+      human: true,
+    },
+    ////--------------------------------14---------------------------------------- 118
+    {
+      text: 'Открыть клапан холодного дутья 118.',
+      audio: 'tts-48_118', // 3.6
+      sender: 'Система',
+      startTime: timeDiff + 57,
+    },
+    ////////  -------
+    //  Клапан 118  //kl118
+    {
+      action: {
+        target2D: 'kl118',  
+        window2D: {
+          elements: [ 
+            { name: 'title_work_vn', text: 'Управление клапаном 118' },
+            { name: 'left_vn',  color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+ 
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+ 
+            { name: 'status_control_vnk_text', text: 'Автоматический' },
+            { name: 'status_window_text', text: 'Закрыт' },
+    
+            { name: 'btn_auto_text',          color: '#6E6E6E' },  
+            { name: 'btn_auto_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_ruchnoy_text',       color: '#000000' },  
+            { name: 'btn_ruchnoy_2',                    color: '#ffffff',   stroke: '#000000' },
+              
+            { name: 'btn_open_text',          color: '#6E6E6E' },  
+            { name: 'btn_open_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_close_text',         color: '#6E6E6E' },  
+            { name: 'btn_close_2',                      color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_stop_text',          color: '#6E6E6E' },  
+            { name: 'btn_stop_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+    
+            { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+            { name: 'btn_reset_2',                        color: '#e6e6e6', stroke: '#b3b3b3' },
+    
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',      color: '#ffffff', stroke: '#000000' },
+    
+            { name: 'skhema_sobrana',     color: '#00FF00'}, // Схема собрана
+            { name: 'block_open',         color: '#00FF00'}, // Блокировки-Открытие
+            { name: 'block_close',        color: '#ff1e00'}, // Блокировки-Закрытие
+          ]
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1',           },//
+          { x: 82.80, y: 76.20, w: 4.0, h: 2.6, id: 'auto',               },
+          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'ruchnoi',            },//
+          { x: 82.80, y: 80.20, w: 4.0, h: 2.6, id: 'open_vn',            },//
+          { x: 87.10, y: 80.20, w: 4.0, h: 2.6, id: 'close_ventil',       },
+          { x: 82.80, y: 83.10, w: 8.5, h: 2.9, id: 'stop',               },
+          { x: 82.80, y: 88.40, w: 8.5, h: 2.6, id: 'sbros_oshibki',      },
+          { x: 82.80, y: 93.80, w: 8.5, h: 2.6, id: 'baypas_blokirovok',  }//
+        ]
+      },
+      startTime: timeDiff + 58.0,
+      human: true,
+    },
+    // окно ВН  // клик ручной
+    {
+      action: {
+        target2D: 'ruchnoi',
+        window2D: {
+          newPositionWindow: {  //  wind 2
+            x: 1756,
+            y: 770
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Ручной' },
+          ],
+        },
+        helper2D: [
+          { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
+          { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 58.1,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_window_text', text: 'Закрыт' },
+
+            { name: 'btn_auto_text',          color: '#000000' },
+            { name: 'btn_auto_2',                       color: '#ffffff', stroke: '#000000' },
+
+            { name: 'btn_ruchnoy_text',       color: '#6E6E6E' },
+            { name: 'btn_ruchnoy_2',                    color: '#e6e6e6', stroke: '#b3b3b3' },
+            
+            { name: 'btn_open_text',          color: '#000000' },
+            { name: 'btn_open_2',                       color: '#ffffff', stroke: '#000000' },
+            
+            { name: 'btn_close_text',         color: '#6E6E6E' },
+            { name: 'btn_close_2',                      color: '#e6e6e6', stroke: '#b3b3b3' },
+
+            { name: 'btn_stop_text',          color: '#000000' },
+            { name: 'btn_stop_2',                       color: '#ffffff', stroke: '#000000' },
+
+            { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+            { name: 'btn_reset_2',                       color: '#e6e6e6', stroke: '#b3b3b3' },
+            
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',              color: '#ffffff', stroke: '#000000' },
+          ]
+        },
+        
+      },
+      startTime: timeDiff + 58.2,
+      human: true,
+    },
+    ////////  -------
+    // окно ВН // Байпас всех блокировок
+    {
+      action: {
+        target2D: 'open_vn', 
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1728,
+            y: 930
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Байпас всех БЛОК' },
+          ]
+        }, 
+        helper2D: [
+          { x: 90.3, y: 96, w: 3.2, h: 2.5, id: 'close_vn' },  // нет
+          { x: 86.7, y: 96, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 58.3,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1741,
+            y: 930
+          },
+          elements: [
+            { name: 'btn_baypas_vsekh_blokirovok_2',      color: '#00FF00', stroke: '#000000' },
+          ],
+        },
+      },
+      startTime: timeDiff + 58.4,
+      human: true,
+    },
+    ////////  -------
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1692,
+            y: 810
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+        helper2D: [
+          { x: 88.5, y: 83.9, w: 3.2, h: 2.6, id: 'close_vn' },   // net
+          { x: 84.9, y: 83.9, w: 3.2, h: 2.6, id: 'open_vn1' },   // da
+        ]
+      },
+      startTime: timeDiff + 58.5,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+      },
+      startTime: timeDiff + 58.6,
+      human: true,
+    },
+    { //1
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+            
+            
+
+          ]
+        }
+      },
+      startTime: timeDiff + 59,
+    },
+    { //2
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+           
+          ]
+        }
+      },
+      startTime: timeDiff + 60,
+    },
+    { //3
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+          
+
+            { name: 'circle_dutyo',         color: '#000' },
+            { name: 'circle_nagrev',        color: '#000' },
+            { name: 'circle_otdeleniye_1',  color: '#000' },
+            { name: 'circle_otdeleniye_2',  color: '#000' },
+          ]
+        }
+      },
+      startTime: timeDiff + 61,
+    },
+    { //4
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+           
+            
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.09' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 62,
+    },
+    { //5
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+          
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.10' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 63,
+    },
+    { //6
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+          
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.11' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 64,
+    },
+    { //7
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+        
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.12' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 65,
+    },
+    { //8
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+         
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.13' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 66,
+    },
+    { //9
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+   
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.13' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 67,
+    },
+    { //10
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открыт' },
+     
+            { name: 'btn_open_text',          color: '#6E6E6E' },  
+            { name: 'btn_open_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_close_text',         color: '#000000' },  
+            { name: 'btn_close_2',                      color: '#ffffff',   stroke: '#000000' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '13.15' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.38' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 68,
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 68.1,
+      human: true,
+    },
+    
+    ////--------------------------------15---------------------------------------- 119
+    {
+      text: 'Открыть клапан 119 горячего дутья.',
+      sender: 'Система',
+      audio: 'tts-49_new_15', // 3.7
+      startTime: timeDiff + 69,
+    },
+    // клапан 119
+    {
+      action: {
+        target2D: 'kl119',  
+        window2D: {
+          elements: [ 
+            { name: 'title_work_vn', text: 'Управление клапаном 119' },
+            { name: 'left_vn', color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_control_vnk_text', text: 'Автоматический' },
+            { name: 'status_window_text', text: 'Закрыт' },
+            
+            { name: 'btn_auto_text',          color: '#6E6E6E' },  
+            { name: 'btn_auto_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_ruchnoy_text',       color: '#000000' },  
+            { name: 'btn_ruchnoy_2',                    color: '#ffffff',   stroke: '#000000' },
+              
+            { name: 'btn_open_text',          color: '#6E6E6E' },  
+            { name: 'btn_open_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_close_text',         color: '#6E6E6E' },  
+            { name: 'btn_close_2',                      color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_stop_text',          color: '#6E6E6E' },  
+            { name: 'btn_stop_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+    
+            { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+            { name: 'btn_reset_2',                        color: '#e6e6e6', stroke: '#b3b3b3' },
+    
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',      color: '#ffffff', stroke: '#000000' },
+    
+            { name: 'skhema_sobrana',     color: '#00FF00'}, // Схема собрана
+            { name: 'block_open',         color: '#00FF00'}, // Блокировки-Открытие
+            { name: 'block_close',        color: '#00FF00'}, // Блокировки-Закрытие
+          ]
+        },
+        helper2D: [
+          { x: 83.15, y: 44.12, w: 1.50, h: 2.0, id: 'close_w1',           },//
+          { x: 75.70, y: 52.02, w: 4.05, h: 2.6, id: 'auto',               },
+          { x: 80.01, y: 52.02, w: 4.05, h: 2.6, id: 'ruchnoi',            },//
+
+          { x: 75.70, y: 55.85, w: 4.05, h: 2.6, id: 'open_vn',            },
+          { x: 80.01, y: 55.85, w: 4.05, h: 2.6, id: 'close_ventil',       },
+
+          { x: 75.70, y: 58.85, w: 8.50, h: 2.9, id: 'stop',               },
+          { x: 75.70, y: 64.10, w: 8.50, h: 2.6, id: 'sbros_oshibki',      },
+          { x: 75.70, y: 69.40, w: 8.50, h: 2.6, id: 'baypas_blokirovok',  },//
+        ]
+      },
+      startTime: timeDiff + 70,
+      human: true,
+    },
+    // окно ВН  // клик ручной
+    {
+      action: {
+        target2D: 'ruchnoi',
+        window2D: {
+          newPositionWindow: {  //  wind 2
+            x: 1636,
+            y: 523
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Ручной' },
+          ],
+        },
+        helper2D: [
+          { x: 85.55, y: 54.7, w: 3.2, h: 2.6, id: 'close_vn' },   // нет
+          { x: 82.10, y: 54.7, w: 3.2, h: 2.6, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 70.1,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+
+            { name: 'btn_auto_text',          color: '#000000' },  
+            { name: 'btn_auto_2',                       color: '#ffffff',   stroke: '#000000' },
+              
+            { name: 'btn_ruchnoy_text',       color: '#6E6E6E' },  
+            { name: 'btn_ruchnoy_2',                    color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_open_text',          color: '#000000' },  
+            { name: 'btn_open_2',                       color: '#ffffff',   stroke: '#000000' },
+              
+            { name: 'btn_close_text',         color: '#6E6E6E' },  
+            { name: 'btn_close_2',                      color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_stop_text',          color: '#000000' },  
+            { name: 'btn_stop_2',                       color: '#ffffff',   stroke: '#000000' },
+    
+            { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
+            { name: 'btn_reset_2',                        color: '#e6e6e6', stroke: '#b3b3b3' },
+    
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },  
+            { name: 'btn_baypas_vsekh_blokirovok_2',              color: '#ffffff',   stroke: '#000000' },
+
+          ]
+        },
+      },
+      startTime: timeDiff + 70.2,
+      human: true,
+    },
+
+    // окно ВН // Байпас всех блокировок
+    {
+      action: {
+        target2D: 'baypas_blokirovok', 
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1636,
+            y: 693
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Байпас всех БЛОК' },
+          ]
+        }, 
+        helper2D: [
+          { x: 85.55, y: 71.90, w: 3.2, h: 2.6, id: 'close_vn' },   // нет
+          { x: 82.10, y: 71.90, w: 3.2, h: 2.6, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 70.3,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1741,
+            y: 930
+          },
+          elements: [
+            { name: 'btn_baypas_vsekh_blokirovok_2',      color: '#00FF00', stroke: '#000000' },
+          ],
+        },
+      },
+      startTime: timeDiff + 70.4,
+      human: true,
+    },
+    // окно ВН  // Открыть
+    {
+      action: {
+        target2D: 'open_vn',
+        window2D: {
+          newPositionWindow: {  //  wind 2 
+            x: 1552,
+            y: 562
+          },
+          elements: [
+            { name: 'title_open_vn', text: 'Открыть' },
+          ],
+        },
+        helper2D: [
+          { x: 81.40, y: 58.60, w: 3.2, h: 2.6, id: 'close_vn' },   // нет
+          { x: 77.80, y: 58.60, w: 3.2, h: 2.6, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 70.5,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+  
+          ],
+        },
+      },
+      startTime: timeDiff + 70.6,
+      human: true,
+    },
+    { //1
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_119',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+            
+            
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'VNK1_status_1', text: 'Индивидуал.' },
+            { name: 'VNK1_status_2', text: '' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.93' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '17.75' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '241' },
+            { name: '1TI_28_1', text: '243' },
+            { name: '1TI_28_2', text: '239' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 71,
+    },
+    { //2
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_119',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.90' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '17.75' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '241' },
+            { name: '1TI_28_1', text: '243' },
+            { name: '1TI_28_2', text: '239' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 72,
+    },
+    { //3
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_119',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+           
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'vnk1_stripes', color: '#e6e6e6' },
+
+            { name: 'circle_dutyo',         color: '#000' },
+            { name: 'circle_nagrev',        color: '#000' },
+            { name: 'circle_otdeleniye_1',  color: '#000' },
+            { name: 'circle_otdeleniye_2',  color: '#000' },
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.88' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '17.75' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '241' },
+            { name: '1TI_28_1', text: '243' },
+            { name: '1TI_28_2', text: '239' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 73,
+    },
+    { //4
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_119',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+           
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.83' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '17.75' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '241' },
+            { name: '1TI_28_1', text: '243' },
+            { name: '1TI_28_2', text: '239' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1019' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 74,
+    },
+    { //5
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_119',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+          
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.60' },
+
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+
+            { name: '1FI_02', text: '0' },
+
+
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '17.90' },
+
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '244' },
+            { name: '1TI_28_1', text: '245' },
+            { name: '1TI_28_2', text: '242' },
+
+            
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+
+            { name: '1PI_01', text: '1' },
+
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 75,
+    },
+    { //6
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_119',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.56' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '17.90' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '243' },
+            { name: '1TI_28_1', text: '242' },
+            { name: '1TI_28_2', text: '238' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 76,
+    },
+    { //7
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_119',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.54' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '17.91' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '243' },
+            { name: '1TI_28_1', text: '242' },
+            { name: '1TI_28_2', text: '238' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 77,
+    },
+    { //8
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_119',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открывается' },
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.51' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '17.92' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '243' },
+            { name: '1TI_28_1', text: '242' },
+            { name: '1TI_28_2', text: '238' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 78,
+    },
+    { //9
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_119',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Открывается' },
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.48' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '17.93' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '240' },
+            { name: '1TI_28_1', text: '242' },
+            { name: '1TI_28_2', text: '238' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 79,
+    },
+    { //10
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_119',   color: '#00FF00' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_window_text', text: 'Открыт' },
+     
+            { name: 'btn_open_text',          color: '#6E6E6E' },  
+            { name: 'btn_open_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_close_text',         color: '#000000' },  
+            { name: 'btn_close_2',                      color: '#ffffff',   stroke: '#000000' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.47' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '17.95' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '241' },
+            { name: '1TI_28_1', text: '242' },
+            { name: '1TI_28_2', text: '238' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 80,
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 80.1,
+      human: true,
+    },
+    
+    ////--------------------------------16--------------------------//// ЗАКРЫТЬ 118а
+    {
+      text: 'Закрыть клапан холодного дутья 118а.',
+      sender: 'Система',
+      audio: 'tts--16', // 3.7
+      startTime: timeDiff + 95,
+    },
+    //  Клапан 118a
+    {
+      action: {
+        target2D: 'kl118a',  
+        window2D: {
+          elements: [ 
+            { name: 'title_work_vn', text: 'Управление клапаном 118а' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+ 
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+ 
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'status_window_text', text: 'Открыт' },
+    
+            { name: 'btn_auto_text',          color: '#000000' },  
+            { name: 'btn_auto_2',                       color: '#ffffff',   stroke: '#000000' },
+              
+            { name: 'btn_ruchnoy_text',       color: '#6E6E6E' },  
+            { name: 'btn_ruchnoy_2',                    color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_open_text',          color: '#6E6E6E' },  
+            { name: 'btn_open_2',                       color: '#e6e6e6',   stroke: '#b3b3b3' },
+              
+            { name: 'btn_close_text',         color: '#000000' },  
+            { name: 'btn_close_2',                      color: '#ffffff',   stroke: '#000000' },
+              
+            { name: 'btn_stop_text',          color: '#000000' },  
+            { name: 'btn_stop_2',                       color: '#ffffff',   stroke: '#000000' },
+    
+            { name: 'btn_sbros_oshibki_text', color: '#000000' },  
+            { name: 'btn_reset_2',                      color: '#ffffff',   stroke: '#000000' },
+    
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',      color: '#00FF00', stroke: '#000000' },
+    
+            { name: 'skhema_sobrana',     color: '#00FF00'}, // Схема собрана
+            { name: 'block_open',         color: '#ff1e00'}, // Блокировки-Открытие
+            { name: 'block_close',        color: '#00FF00'}, // Блокировки-Закрытие
+          ]
+        },
+      },
+      startTime: timeDiff + 96,
+      human: true,
+    },
+    // окно ВН  // Закрыть
+    {
+      action: {
+        target2D: 'close_ventilA',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Закрыть' },
+          ],
+        },
+        helper2D: [
+          { x: 94.00, y: 64.4, w: 3.2, h: 2.6, id: 'close_vn' },   // net
+          { x: 90.45, y: 64.4, w: 3.2, h: 2.6, id: 'open_vn1' },   // da
+        ]
+      },
+      startTime: timeDiff + 96.1,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'kl_118a_proc', text: '50' },
+            { name: 'btn_auto_text',          color: '#000000' }, 
+            { name: 'btn_auto_2',                       color: '#ffffff',  stroke: '#000000' },
+            
+            { name: 'btn_ruchnoy_text',       color: '#6E6E6E' }, 
+            { name: 'btn_ruchnoy_2',                    color: '#e6e6e6',  stroke: '#b3b3b3' },
+             
+            { name: 'btn_open_text',          color: '#000000' }, 
+            { name: 'btn_open_2',                       color: '#ffffff',  stroke: '#000000' },
+            
+            { name: 'btn_close_text',         color: '#6E6E6E' }, 
+            { name: 'btn_close_2',                      color: '#e6e6e6',  stroke: '#b3b3b3' },
+
+            { name: 'btn_stop_text',          color: '#000000' }, 
+            { name: 'btn_stop_2',                       color: '#ffffff',  stroke: '#000000' },
+
+            { name: 'btn_sbros_oshibki_text', color: '#000000' }, 
+            { name: 'btn_reset_2',                      color: '#ffffff',  stroke: '#000000' },
+            
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',     color: '#00FF00', stroke: '#000000' },
+            
+            { name: 'skhema_sobrana',     color: '#00FF00'}, // Схема собрана
+            { name: 'block_open',         color: '#ff1e00'}, // Блокировки-Открытие
+            { name: 'block_close',        color: '#00FF00'}, // Блокировки-Закрытие
+          ],
+        },
+      },
+      startTime: timeDiff + 96.2,
+      human: true,
+    },
+    { //1
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',  color: '#ff1e00' },
+            { name: 'left_vn',  color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_window_text', text: 'Закрывается' },
+            { name: 'kl_118a_proc', text: '40' },
+            
+            
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'VNK1_status_1', text: 'Индивидуал.' },
+            { name: 'VNK1_status_2', text: '' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.03' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.05' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '241' },
+            { name: '1TI_28_1', text: '241' },
+            { name: '1TI_28_2', text: '237' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1103' },
+            { name: '1TI_03', text: '1104' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1017' },
+            { name: 'vybor_signala', text: '1224' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 97,
+    },
+    { //2
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',  color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Закрывается' },
+            { name: 'kl_118a_proc', text: '30' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'VNK1_status_2', text: '' },
+            { name: 'vnk1_stripes', color: '#e6e6e6' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.01' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.05' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '233' },
+            { name: '1TI_28_1', text: '241' },
+            { name: '1TI_28_2', text: '237' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1104' },
+            { name: '1TI_03', text: '103' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 98,
+    },
+    { //3
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',  color: '#ff1e00' },            
+            { name: 'left_vn',  color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_window_text', text: 'Закрывается' },
+            { name: 'kl_118a_proc', text: '20' },
+
+            { name: 'vnk_1', color: '#e6e6e6' }, // задник стрелки
+            { name: 'vnk1_stripes', color: '#e6e6e6' },
+
+            { name: 'circle_dutyo',         color: '#000' },
+            { name: 'circle_nagrev',        color: '#000' },
+            { name: 'circle_otdeleniye_1',  color: '#000' },
+            { name: 'circle_otdeleniye_2',  color: '#000' },
+            
+            /// vnk1-sm
+            { name: '7PI_13', text: '12.00' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.05' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '238' },
+            { name: '1TI_28_1', text: '241' },
+            { name: '1TI_28_2', text: '237' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1103' },
+            { name: '1TI_03', text: '1103' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1017' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 99,
+    },
+    { //4
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',  color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'status_window_text', text: 'Закрывается' },
+            { name: 'kl_118a_proc', text: '10' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '11.98' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.04' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '238' },
+            { name: '1TI_28_1', text: '240' },
+            { name: '1TI_28_2', text: '237' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1103' },
+            { name: '1TI_03', text: '1103' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1016' },
+            { name: 'vybor_signala', text: '1224' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 100,
+    },
+    { //5
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_118a',  color: '#ff1e00' },
+            { name: 'left_vn',  color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_window_text', text: 'Закрыт' },
+            { name: 'kl_118a_proc', text: '0' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '11.90' },
+            { name: '1FI_03', text: '0' },
+            { name: '1FI_01', text: '0' }, 
+            { name: '1FI_02', text: '0' },
+            { name: '1PI_02', text: '0.00' },
+            { name: 'Kl115_proc', text: '23' },
+            { name: '1PI_04', text: '0.00' },
+            { name: 'Kl123_proc', text: '22' },
+            { name: '1QI_01', text: '18.04' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '238' },
+            { name: '1TI_28_1', text: '240' },
+            { name: '1TI_28_2', text: '237' },
+            { name: 'Vremya_nagreva', text: '109' },
+            { name: 'Vremya_dutya', text: '60' },
+            { name: 'Vremya_otdelen', text: '208' },
+            { name: '1PI_01', text: '1' },
+            { name: '1TI_02', text: '1103' },
+            { name: '1TI_03', text: '1103' },
+            { name: '1TI_04', text: '-999' },
+            { name: '1TI_05', text: '1017' },
+            { name: 'vybor_signala', text: '1224' },
+          ]
+        }
+      },
+      startTime: timeDiff + 101,
+    },
+    {
+      action: {
+        target2D: 'close_w1A',
+      },
+      startTime: timeDiff + 101.1,
+      human: true,
+    },
+
+
+    ////--------------------------------17--------------------------//// ЗАКРЫТЬ 110
+    {
+      text: 'Закрыть клапан сброса 110.',
+      sender: 'Система',
+      audio: 'tts--17', // 2.79
+      startTime: timeDiff + 102,
+    },
+    //  F Клапан 110
+    {
+      action: {
+        target2D: 'kl110',  
+        window2D: {
+          elements: [ 
+            { name: 'title_work_vn', text: 'Управление клапаном 110' },
+            { name: 'left_vn',  color: '#00FF00' },
+            { name: 'right_vn', color: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'circle_n_winVN', stroke: '#00FF00' },
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'status_window_text', text: 'Открыт' },
+
+            { name: 'btn_auto_text',          color: '#000000' }, 
+            { name: 'btn_auto_2',                       color: '#ffffff',  stroke: '#000000' },
+            
+            { name: 'btn_ruchnoy_text',       color: '#6E6E6E' }, 
+            { name: 'btn_ruchnoy_2',                    color: '#e6e6e6',  stroke: '#b3b3b3' },
+             
+            { name: 'btn_open_text',          color: '#6E6E6E' }, 
+            { name: 'btn_open_2',                       color: '#e6e6e6',  stroke: '#b3b3b3' },
+            
+            { name: 'btn_close_text',         color: '#000000' }, 
+            { name: 'btn_close_2',                      color: '#ffffff',  stroke: '#000000' },
+
+            { name: 'btn_stop_text',          color: '#000000' }, 
+            { name: 'btn_stop_2',                       color: '#ffffff',  stroke: '#000000' },
+
+            { name: 'btn_sbros_oshibki_text', color: '#000000' }, 
+            { name: 'btn_reset_2',                      color: '#ffffff',  stroke: '#000000' },
+            
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',     color: '#00FF00', stroke: '#000000' },
+            
+            { name: 'skhema_sobrana',     color: '#00FF00'}, // Схема собрана
+            { name: 'block_open',         color: '#ff1e00'}, // Блокировки-Открытие
+            { name: 'block_close',        color: '#00FF00'}, // Блокировки-Закрытие
+
+          ]
+        },
+        helper2D: [
+          { x: 90.30, y: 68.30, w: 1.5, h: 2.0, id: 'close_w1',           },//
+          { x: 82.80, y: 76.20, w: 4.0, h: 2.6, id: 'auto',               },
+          { x: 87.10, y: 76.20, w: 4.0, h: 2.6, id: 'ruchnoi',            },//
+          { x: 82.80, y: 80.20, w: 4.0, h: 2.6, id: 'open_vn',            },//
+          { x: 87.10, y: 80.20, w: 4.0, h: 2.6, id: 'close_ventil',       },
+          { x: 82.80, y: 83.10, w: 8.5, h: 2.9, id: 'stop',               },
+          { x: 82.80, y: 88.40, w: 8.5, h: 2.6, id: 'sbros_oshibki',      },
+          { x: 82.80, y: 93.80, w: 8.5, h: 2.6, id: 'baypas_blokirovok',  }//
+        ]
+      },
+      startTime: timeDiff + 103,
+      human: true,
+    },
+    // окно ВН  // клик закрыть
+    {
+      action: {
+        target2D: 'close_ventil',
+        window2D: {
+          newPositionWindow: {  //  wind 2
+            x: 1756,
+            y: 770
+          },
+          elements:[
+            { name: 'title_open_vn', text: 'Закрыть' },
+          ]
+        },
+        helper2D: [
+          { x: 91.70, y: 79.8, w: 3.2, h: 2.5, id: 'close_vn' },   // нет
+          { x: 88.00, y: 79.8, w: 3.3, h: 2.5, id: 'open_vn1' },   // да
+        ]
+      },
+      startTime: timeDiff + 103.1,
+      human: true,
+    },
+    // маленькое окошко ОК
+    {
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+            { name: 'title_work_vn', text: 'Управление клапаном 110' },
+            { name: 'left_vn',  color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_control_vnk_text', text: 'Ручной' },
+            { name: 'status_window_text', text: 'Закрывается' },
+
+            { name: 'btn_auto_text',          color: '#000000' }, 
+            { name: 'btn_auto_2',                       color: '#ffffff',  stroke: '#000000' },
+            
+            { name: 'btn_ruchnoy_text',       color: '#6E6E6E' }, 
+            { name: 'btn_ruchnoy_2',                    color: '#e6e6e6',  stroke: '#b3b3b3' },
+             
+            { name: 'btn_open_text',          color: '#000000' }, 
+            { name: 'btn_open_2',                       color: '#ffffff',  stroke: '#000000' },
+            
+            { name: 'btn_close_text',         color: '#6E6E6E' }, 
+            { name: 'btn_close_2',                      color: '#e6e6e6',  stroke: '#b3b3b3' },
+
+            { name: 'btn_stop_text',          color: '#000000' }, 
+            { name: 'btn_stop_2',                       color: '#ffffff',  stroke: '#000000' },
+
+            { name: 'btn_sbros_oshibki_text', color: '#000000' }, 
+            { name: 'btn_reset_2',                      color: '#ffffff',  stroke: '#000000' },
+            
+            { name: 'btn_baypas_vsekh_blokirovok_text', color: '#000000' },
+            { name: 'btn_baypas_vsekh_blokirovok_2',     color: '#00FF00', stroke: '#000000' },
+            
+            { name: 'skhema_sobrana',     color: '#00FF00'}, // Схема собрана
+            { name: 'block_open',         color: '#ff1e00'}, // Блокировки-Открытие
+            { name: 'block_close',        color: '#00FF00'}, // Блокировки-Закрытие
+          ],
+        },
+      },
+      startTime: timeDiff + 103.2,
+      human: true,
+    },
+    { //1
+      action:{
+        window2D:{
+          elements:[   
+            { name: 'kl_110',   color: '#ff1e00' },
+            { name: 'left_vn',  color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_window_text', text: 'Закрывается' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'VNK1_status_1', text: 'Индивидуал.' },
+            { name: 'VNK1_status_2', text: '' },
+
+            { name: 'circle_dutyo',         color: '#000' },
+            { name: 'circle_nagrev',        color: '#000' },
+            { name: 'circle_otdeleniye_1',  color: '#000' },
+            { name: 'circle_otdeleniye_2',  color: '#000' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '11.86' },
+            { name: '1QI_01', text: '18.03' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '238' },
+            { name: '1TI_28_1', text: '241' },
+            { name: '1TI_28_2', text: '237' },
+            { name: '1TI_02', text: '1103' },
+            { name: '1TI_03', text: '1103' },
+            { name: '1TI_05', text: '1016' },
+          ]
+        }
+      },
+      startTime: timeDiff + 104,
+    },
+    { //2
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'VNK1_status_1', text: 'Индивидуал.' },
+            { name: 'VNK1_status_2', text: '' },
+
+            { name: 'circle_dutyo',         color: '#000' },
+            { name: 'circle_nagrev',        color: '#000' },
+            { name: 'circle_otdeleniye_1',  color: '#000' },
+            { name: 'circle_otdeleniye_2',  color: '#000' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '11.85' },
+            { name: '1QI_01', text: '18.02' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '238' },
+            { name: '1TI_28_1', text: '241' },
+            { name: '1TI_28_2', text: '237' },
+            { name: '1TI_02', text: '1103' },
+            { name: '1TI_03', text: '1103' },
+            { name: '1TI_05', text: '1016' },
+          ]
+        }
+      },
+      startTime: timeDiff + 104,
+    },
+    { //3
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#ff1e00' },
+            { name: 'left_vn',  color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_1',        color: '#0033FF' }, // задник стрелки
+            { name: 'vnk1_stripes', color: '#0033FF' },
+            { name: 'VNK1_status_1', text: 'Индивидуал.' },
+            { name: 'VNK1_status_2', text: 'Дутье' },
+
+            { name: 'circle_dutyo',         color: '#00ff00' },
+            { name: 'circle_nagrev',        color: '#000000' },
+            { name: 'circle_otdeleniye_1',  color: '#000000' },
+            { name: 'circle_otdeleniye_2',  color: '#000000' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '11.81' },
+            { name: '1QI_01', text: '18.03' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '238' },
+            { name: '1TI_28_1', text: '240' },
+            { name: '1TI_28_2', text: '236' },
+            { name: '1TI_02', text: '1103' },
+            { name: '1TI_03', text: '1103' },
+            { name: '1TI_05', text: '1017' },
+          ]
+        }
+      },
+      startTime: timeDiff + 104,
+    },
+    { //4
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#8F8F8F' },
+            { name: 'left_vn',  color: '#8F8F8F' },
+            { name: 'right_vn', color: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+            { name: 'circle_n_winVN', stroke: '#8F8F8F' },
+
+            { name: 'vnk1_fire', opacity: '0' }, // стрелка
+            { name: 'vnk1_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_1',        color: '#0033FF' }, // задник стрелки
+            { name: 'vnk1_stripes', color: '#0033FF' },
+            { name: 'VNK1_status_1', text: 'Индивидуал.' },
+            { name: 'VNK1_status_2', text: 'Дутье' },
+
+            { name: 'circle_dutyo',         color: '#00ff00' },
+            { name: 'circle_nagrev',        color: '#000000' },
+            { name: 'circle_otdeleniye_1',  color: '#000000' },
+            { name: 'circle_otdeleniye_2',  color: '#000000' },
+
+            /// vnk1-sm
+            { name: '7PI_13', text: '11.81' },
+            { name: '1QI_01', text: '18.03' },
+            { name: '1TI_43', text: '41' },
+            { name: '1TI_29', text: '25' },
+            { name: 'dym_vybor_signala', text: '238' },
+            { name: '1TI_28_1', text: '240' },
+            { name: '1TI_28_2', text: '236' },
+            { name: '1TI_02', text: '1103' },
+            { name: '1TI_03', text: '1103' },
+            { name: '1TI_05', text: '1017' },
+
+          ]
+        }
+      },
+      startTime: timeDiff + 105,
+    },
+    { //5
+      action:{
+        window2D:{
+          elements:[
+            { name: 'kl_110',   color: '#ff1e00' },
+            { name: 'left_vn',  color: '#ff1e00' },
+            { name: 'right_vn', color: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'circle_n_winVN', stroke: '#ff1e00' },
+            { name: 'status_window_text', text: 'Закрыт' },
+          ]
+        }
+      },
+      startTime: timeDiff + 106,
+    },
+    {
+      action: {
+        target2D: 'close_w1',
+      },
+      startTime: timeDiff + 106.1,
+      human: true,
+    },
+    { action: { target3D: 'Rectangle072', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle070', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle067', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle064', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle046', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle044', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle104', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle096', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle057', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle075', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle073', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle081', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle079', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle056', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle061', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle077', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle084', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle055', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle115', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle029', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle031', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle034', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle036', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle039', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle041', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle048', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'Rectangle050', material: 'ButtonLightOn', },         startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.00', },    startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuVesNetto_l', color: 'red', number: '093.0', },    startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '001.3', },  startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0085', },   startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '048.4', },    startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.00', },    startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '014.7', },    startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuPolShihZat_r', color: 'red', number: '001.3', },  startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '04.70', },    startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuVremVigruz_r', color: 'red', number: '0096', },   startTime: timeDiff + 106.2, },
+    { action: { target3D: 'bzuUrovZasip', color: 'red', number: '02.81', },     startTime: timeDiff + 106.2, },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0000', },         startTime: timeDiff + 106.3, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0000', },          startTime: timeDiff + 106.3, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '0005', },          startTime: timeDiff + 106.3, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '0005', },           startTime: timeDiff + 106.3, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '0000', },       startTime: timeDiff + 106.3, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '0003', },         startTime: timeDiff + 106.3, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '0285', },       startTime: timeDiff + 106.3, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '0287', },       startTime: timeDiff + 106.3, },
+    
+
+    ////--------------------------------18--------------------------//// ЗАКРЫТЬ 110
+    {
+      lifeTime: '12:07:00',
+      startTime: timeDiff + 106.4,
+    },
+    {
+      scenarioText: 'Повысить давление',
+      text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 0,3 кгс/см².',
+      sender: 'Система',
+      audio: 'tts--51',
+      startTime: timeDiff + 107,
+    },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 },  }, duration: 0.15,  startTime: timeDiff + 108, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0 },  },     duration: 0.15,  startTime: timeDiff + 109, human: true, },
+    { action: { target3D: 'Lamp_Green_024', material: 'Green_Lamp_Off', },                                     startTime: timeDiff + 110, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 },  }, duration: 0.15,  startTime: timeDiff + 111, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0 },      }, duration: 0.15,  startTime: timeDiff + 112, human: true, },    
+    {
+      action: {
+        window2D:{
+          elements:[
+            // dp
+            { name: 'radar1_text', text: '2.83' },
+            { name: 'radar2_text', text: '2.83' },
+            { name: 'radar3_text', text: '2.91' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+
+            { name: 'EKZ_H1', text: '100' },
+            { name: 'EKZ_H2', text: '100' },
+            { name: 'EKZ_H3', text: '100' },
+            { name: 'AKZ_100', opacity: 1 },
+            { name: 'AKZ_45-100', opacity: 1 },
+            { name: 'AKZ_45', opacity: 1 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+
+            { name: 'EVS_DP7_O', text: '53185' },
+            { name: 'EVD1_O', text: '0' },
+            { name: 'EVS_DP7_F', text: '7207' },
+            { name: 'EVD1_F', text: '305768' },
+            { name: 'EVD_F', text: '305529' },
+            { name: 'P_1', text: '0.30' },
+            { name: 'F_evd', text: '5143' },
+            { name: 'F_hol_dyt', text: '478' },
+            { name: 'T_hol_dyt', text: '29' },
+            { name: 'O_hol_dyt', text: '22.0' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.2' },
+            { name: 'FO2_hol_dyt', text: '1134' },
+
+            { name: 'N2', text: '55.5' },
+            { name: 'CO', text: '20.3' },
+            { name: 'CO2', text: '16.7' },
+            { name: 'H2_tryb', text: '6.9' },
+            { name: 'Nco_tryb', text: '45.1' },
+            { name: 'Q_domG_tryb', text: '813', opacity: '0' },
+            { name: 'P_vozd_tryb', text: '1' },
+            { name: 'P_gaza_tryb', text: '12' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+
+            { name: 'H_snotr', text: '94' },
+            { name: 'dp_kl_red', color: '#6E6E6E' },
+            { name: 'H_progres_7', opacity: '1' },
+            { name: 'H_progres_19', opacity: '1' },
+            { name: 'H_progres_22', opacity: '1' },
+            { name: 'H_progres_33', opacity: '1' },
+            { name: 'H_progres_49', opacity: '1' },
+            { name: 'H_progres_56', opacity: '1' },
+            { name: 'H_progres_60', opacity: '1' },
+            { name: 'H_progres_89', opacity: '1' },
+            { name: 'H_progres_100', opacity: '0' },
+
+            { name: 'H_step_isp', text: '', opacity: '1' },
+            { name: 'HCO_step_isp', text: '27.6' },
+            { name: 'Tkyp_3', text: '1120' },
+            { name: 'Tkyp_2', text: '1111' },
+            { name: 'Tkyp_1', text: '1104' },
+            { name: 'Tkyp_3_rect', color: '#ffff0f' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+
+            { name: 'VNK3_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK3_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK2_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK1_status_1_fon', color: '#43A3EF' },
+
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3', text: '0' },
+            { name: 'Fgaz_2', text: '0' },
+            { name: 'VNK1_Fb', text: '0' },
+            { name: 'VNK1_Fr', text: '0' },
+            { name: 'Tdym_3', text: '133' },
+            { name: 'Tdym_2', text: '170' },
+            { name: 'Tdym_1', text: '232' },
+            { name: 'P_Os_szat_voz', text: '8.35' },
+            { name: 'T_Os_szat_voz', text: '27' },
+
+            { name: 'Temp_peref_1', text: '53' },
+            { name: 'Temp_peref_2', text: '47' },
+            { name: 'Temp_peref_3', text: '52' },
+            { name: 'Temp_peref_4', text: '48' },
+            { name: 'Temp_peref_5', text: '59' },
+            { name: 'Temp_peref_6', text: '52' },
+            { name: 'Temp_peref_7', text: '57' },
+            { name: 'Temp_peref_8', text: '55' },
+            { name: 'Temp_peref_9', text: '71' },
+            { name: 'Temp_peref_10', text: '50' },
+            { name: 'Temp_peref_11', text: '50' },
+            { name: 'Temp_peref_12', text: '56' },
+            { name: 'Temp_peref_13', text: '90' },
+            { name: 'Temp_peref_14', text: '49' },
+            { name: 'Temp_peref_15', text: '56' },
+            { name: 'Temp_peref_16', text: '49' },
+            { name: 'T1', text: '93' },
+            { name: 'T2', text: '117' },
+            { name: 'T3', text: '102' },
+            { name: 'T4', text: '89' },
+            { name: 'P_2', text: '0.30' },
+            { name: 'P_2_rect', color: "#d22b24" },
+            { name: 't_gor_dut', text: '1178' },
+            { name: 'H_Os_szat_voz', text: '0' },
+            { name: 't_prirodn_gaz', text: '15' },
+            { name: 'P_pg_prir_gaz', text: '8,60' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+
+            { name: 'F_tryba', text: '0' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.00' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.01' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '0.30' },
+            { name: 'dP_obsh_trybarect', color: '#ffff0f' },
+            { name: 'dP_nish_tryba', text: '0.29' },
+            { name: 'dP_nish_rect', color: '#ffff0f' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'zadanie_rect', color: '#ffffff', opacity: '1' },
+            { name: 'TTG_raschet', text: '2211', opacity: '1' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', text: '' },
+            { name: 'L2', text: '' },
+            { name: 'L3', text: '' },
+            { name: 'L4', text: '' },
+            { name: 'L1_elem', color: '#ffffff' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L3_elem', color: '#ffffff' },
+            { name: 'L4_elem', color: '#ffffff' },
+
+            { name: 'P_tryba_1_590', text: '0.00' },
+            { name: 'P_tryba_1_591', text: '0.00' },
+            { name: 'P_tryba_1_592', text: '0.01' },
+            { name: 'P_tryba_1_593', text: '0.01' },
+            { name: 'P_tryba_2_1', text: '0.00' },
+            { name: 'P_tryba_2_2', text: '0.00' },
+            { name: 'P_tryba_2_3', text: '0.01' },
+            { name: 'P_tryba_2_4', text: '0.01' },
+            { name: 'P_tryba_3_590', text: '0.00' },
+            { name: 'P_tryba_3_591', text: '0.00' },
+            { name: 'P_tryba_4_1', text: '0.00' },
+            { name: 'P_tryba_4_2', text: '0.00' },
+            { name: 'P_tryba_4_3', text: '0.00' },
+            { name: 'P_tryba_4_4', text: '0.00' },
+
+            { name: 'P_tryba_5_1', text: '0.01' },
+            { name: 'P_tryba_5_2', text: '0.01' },
+            { name: 'P_tryba_5_3', text: '0.01' },
+            { name: 'P_tryba_5_4', text: '0.01' },
+            { name: 'V_dyt', text: '66.9' },
+            { name: 'fyrm_v_rab', text: '0' },
+
+            { name: 'ydel_tep_18', text: '27.8' },
+            { name: 'ydel_tep_17', text: '29.4' },
+            { name: 'ydel_tep_16', text: '29.6' },
+            { name: 'ydel_tep_15', text: '25.5' },
+            { name: 'ydel_tep_12_14', text: '51.9' },
+            { name: 'ydel_tep_10_11', text: '8.5' },
+            { name: 'ydel_tep_9', text: '8.2' },
+            { name: 'ydel_tep_8', text: '14.5' },
+            { name: 'ydel_tep_7', text: '26.1' },
+          ]
+        }
+      },
+      startTime: timeDiff + 112.3,
+    },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.00', },    startTime: timeDiff + 112.31, },
+    { action: { target3D: 'bzuVesNetto_l', color: 'red', number: '093.0', },    startTime: timeDiff + 112.31, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '001.3', },  startTime: timeDiff + 112.31, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0085', },   startTime: timeDiff + 112.31, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '356.3', },    startTime: timeDiff + 112.31, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.00', },    startTime: timeDiff + 112.31, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '014.7', },    startTime: timeDiff + 112.31, },
+    { action: { target3D: 'bzuPolShihZat_r', color: 'red', number: '001.3', },  startTime: timeDiff + 112.31, },
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '047.0', },    startTime: timeDiff + 112.31, },
+    { action: { target3D: 'bzuVremVigruz_r', color: 'red', number: '0096', },   startTime: timeDiff + 112.31, },
+    { action: { target3D: 'bzuUrovZasip', color: 'red', number: '02.81', },     startTime: timeDiff + 112.31, },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0.002', },        startTime: timeDiff + 112.32, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.004', },         startTime: timeDiff + 112.32, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '0.274', },         startTime: timeDiff + 112.32, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '0.239', },          startTime: timeDiff + 112.32, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '0829.', },      startTime: timeDiff + 112.32, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '0.267', },        startTime: timeDiff + 112.32, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '0285', },       startTime: timeDiff + 112.32, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '0284', },       startTime: timeDiff + 112.32, },
+    { action: { target3D: 'urZasMeh', color: 'green', number: '0000', },        startTime: timeDiff + 112.32, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0113.', },        startTime: timeDiff + 112.32, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0143.', },        startTime: timeDiff + 112.32, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0123', },         startTime: timeDiff + 112.32, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0101', },         startTime: timeDiff + 112.32, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '0671', },         startTime: timeDiff + 112.32, },
+    { action: { target3D: 'tVGazT6', color: 'green', number: '0035', },         startTime: timeDiff + 112.32, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1180', },         startTime: timeDiff + 112.32, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '1012', },      startTime: timeDiff + 112.32, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '1012', },      startTime: timeDiff + 112.32, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '1510', },       startTime: timeDiff + 112.32, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '0442', },  startTime: timeDiff + 112.32, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2395', },      startTime: timeDiff + 112.32, },
+    ////--------------------------------19--------------------------//// 
+    {
+      text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
+      sender: 'Система',
+      audio: 'SoundSnortFurma',
+      startTime: timeDiff + 113,
+    }, 
+    {
+      multi: [
+        {
+          action: {
+            target2D: 'R_Snort',
+          },
+        },
+        {
+          action: {
+            target2D: 'R_Furm',
+          },
+        },
+      ],
+      startTime: timeDiff + 114,
+      human: true,
+    },
+    ////--------------------------------20--------------------------//// 
+    {
+      text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 115,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 116, human: true,     },
+    {
+      text: 'На фурмах 0,3.',
+      sender: 'Газовщик',
+      audio: 'tts-vo63', // 2.6
+      startTime: timeDiff + 117,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 120, },
+    ////--------------------------------21--------------------------//// 
+    {
+      scenarioText: 'Открыть отсечной клапан.',
+      text: 'Открывайте отсечной',
+      sender: 'Мастер печи',
+      audio: 'tts-vo64', // 1.65
+      startTime: timeDiff + 121,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 122, human: true, },    
+    {
+      text: 'Артём Викторович, открываем отсечной.',
+      sender: 'Газовщик',
+      audio: 'tts-vo65', // 2.76
+      startTime: timeDiff + 123,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 126, },
+    {
+      text: 'Понятно, открываю отсечной.',
+      sender: 'Аппаратчик газоочистки',
+      audio: 'tts-vo66', // 2.25
+      startTime: timeDiff + 127,
+    },
+    ////--------------------------------22--------------------------//// 
+    {
+      scenarioText: 'Повысить давление',
+      text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 0,3 кгс/см².',
+      sender: 'Система',
+      audio: 'tts--51',
+      startTime: timeDiff + 130,
+    },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 }, }, duration: 0.15,  startTime: timeDiff + 131,  human: true,},
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0 },     }, duration: 0.15,  startTime: timeDiff + 132,  human: true,},
+    { action: { target3D: 'Lamp_Green_024', material: 'Green_Lamp_Off', },                                    startTime: timeDiff + 133, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 }, }, duration: 0.15,  startTime: timeDiff + 134,  human: true,},
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0 },     }, duration: 0.15,  startTime: timeDiff + 135,  human: true,},
+    {
+      action: {
+        window2D:{
+          elements:[
+            { name: 'H_snotr', text: '87' },
+            { name: 'dp_kl_red', color: '#6E6E6E' },
+            { name: 'H_progres_7', opacity: '1' },
+            { name: 'H_progres_19', opacity: '1' },
+            { name: 'H_progres_22', opacity: '1' },
+            { name: 'H_progres_33', opacity: '1' },
+            { name: 'H_progres_49', opacity: '1' },
+            { name: 'H_progres_56', opacity: '1' },
+            { name: 'H_progres_60', opacity: '1' },
+            { name: 'H_progres_89', opacity: '1' },
+            { name: 'H_progres_100', opacity: '0' },
+            { name: 'P_2', text: '0.30' },
+            { name: 'P_2_rect', color: "#d22b24" }
+            
+          ]
+        }
+      },
+      startTime: timeDiff + 136,
+    },
+    
+    ////--------------------------------23--------------------------//// 
+    {
+      text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
+      sender: 'Система',
+      audio: 'SoundSnortFurma',
+      startTime: timeDiff + 137,
+    }, 
+    {
+      multi: [
+        {
+          action: {
+            target2D: 'R_Snort',
+          },
+        },
+        {
+          action: {
+            target2D: 'R_Furm',
+          },
+        },
+      ],
+      startTime: timeDiff + 138,
+      human: true,
+    },
+    ////--------------------------------24--------------------------//// 
+    {      lifeTime: '12:10:00',      startTime: timeDiff + 139,    },
+    {
+      scenarioText: 'Перевести в нейтральное положение клапан тяги 022',
+      text: 'Перевести в нейтральное положение клапан тяги 022.',
+      sender: 'Система',
+      audio: 'tts-51', // 4.3
+      startTime: timeDiff + 140,
+    },
+    {
+      action: {
+        target3D: 'kl022',
+        rotation: { y: -0.85 },
+      },
+      duration: 0.3,
+      startTime: timeDiff + 141,
+      human: true,
+    },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.00', },    startTime: timeDiff + 141.01, },
+    { action: { target3D: 'bzuVesNetto_l', color: 'red', number: '093.0', },    startTime: timeDiff + 141.01, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '001.3', },  startTime: timeDiff + 141.01, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0085', },   startTime: timeDiff + 141.01, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '193.4', },    startTime: timeDiff + 141.01, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.00', },    startTime: timeDiff + 141.01, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '014.7', },    startTime: timeDiff + 141.01, },
+    { action: { target3D: 'bzuPolShihZat_r', color: 'red', number: '001.3', },  startTime: timeDiff + 141.01, },
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '047.0', },    startTime: timeDiff + 141.01, },
+    { action: { target3D: 'bzuVremVigruz_r', color: 'red', number: '0096', },   startTime: timeDiff + 141.01, },
+    { action: { target3D: 'bzuUrovZasip', color: 'red', number: '02.81', },     startTime: timeDiff + 141.01, },
+
+    ////--------------------------------25--------------------------//// 
+    {
+      text: 'Закрыть свечу 723 на природном газе.',
+      sender: 'Система',
+      audio: 'tts--25',
+      startTime: timeDiff + 142,
+    },
+    { action: { target3D: 'Handle_012', rotation: { y: 0.785398 }, },      duration: 0.3, startTime: timeDiff + 143, human: true, },
+    { action: { window2D:{ elements:[ { name: 'kl_723_b', color: "#ff1e00" } ] } },       startTime: timeDiff + 144,},
+    { action: { target3D: 'Handle_012', rotation: { y: 0 }, },             duration: 0.3, startTime: timeDiff + 145, human: true, },
+    { action: { window2D: { elements: [ { name: 'kl_723_t', color: "#ff1e00" } ] } },     startTime: timeDiff + 146, },
+    { action: { target3D: 'Lamp_Green_021', material: 'Green_Lamp_Off', }, duration: 0.3, startTime: timeDiff + 147, },
+    { action: { target3D: 'Lamp_Red_017',   material: 'Green_Lamp_Off', }, duration: 0.3, startTime: timeDiff + 148, },
+    ////--------------------------------26--------------------------//// 
+    {      lifeTime: '12:12:00',      startTime: timeDiff + 149,    },
+    {
+      text: 'Отсечной открыт.',
+      sender: 'Аппаратчик газоочистки',
+      audio: 'tts_vo67', // 1.3
+      startTime: timeDiff + 150,
+    }, 
+    {
+      text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 152,
+    },
+    {      action: {        target3D: 'ButtonHightlight_046', },    startTime: timeDiff + 153,      human: true,    },
+    {
+      text: 'Отсечной открыт. На фурмах 0,3.',
+      sender: 'Газовщик',
+      audio: 'tts_vo68', // 3.76
+      startTime: timeDiff + 154,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 158.3, },
+
     ////-----------------------------------27
     {
       chapterText: 'Повышение давления ГД до 0,6-0,8 кгс/см²',
       text: 'Делаем 0,7.',
       sender: 'Мастер печи',
-      audio: 'tts-vo69',
-      startTime: timeDiff + 3,
+      audio: 'tts-vo69', // 2.4
+      startTime: timeDiff + 159,
     },
-    {
-      action: {
-        target3D: 'ButtonHightlight_046',
-      },
-      startTime: timeDiff + 6,
-      human: true,
-    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 160, human: true, },
     {
       text: 'Делаю 0,7.',
       sender: 'Газовщик',
-      audio: 'tts-vo70',
-      startTime: timeDiff + 7,
+      audio: 'tts-vo70', // 2.56
+      startTime: timeDiff + 161,
     },
-    {
-      action: {
-        target3D: 'Lamp_034',
-        material: 'DonorLamp_off',
-      },
-      startTime: timeDiff + 10,
-    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 164.1, },
     ////-----------------------------------28
     {
-      // scenarioText: 'Повысить давление.', // TODO какой то баг
+      scenarioText: 'Повысить давление.', 
       text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 0,4 кгс/см².',
       sender: 'Система',
-      audio: 'tts-53',
-      startTime: timeDiff + 11,
+      audio: 'tts--51',
+      startTime: timeDiff + 165,
     },     
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 12,
-      human: true,
-    },
-    {
-      action: {
-        target3D: 'Lamp_Red_020',
-        material: 'Unic_Lamp_Red_Off',
-      },
-      startTime: timeDiff + 12.1,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 13,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 14,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 15,
-      human: true,
-    },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',        rotation: { y: 0.785 }, }, duration: 0.15, startTime: timeDiff + 166, human: true, },
+    { action: { target3D: 'Lamp_Red_020', material: 'Unic_Lamp_Red_Off',                         },                 startTime: timeDiff + 167, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',        rotation: { y: 0 },     }, duration: 0.15, startTime: timeDiff + 168, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',        rotation: { y: 0.785 }, }, duration: 0.15, startTime: timeDiff + 169, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',        rotation: { y: 0 },     }, duration: 0.15, startTime: timeDiff + 170, human: true, },
     // DP
     {
       action: {
@@ -24573,22 +28438,15 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 15.1,
+      startTime: timeDiff + 170.1,
     },
-    {
-      action: {
-        target3D: 'tGorDut', 
-        color: 'green',
-        number: '1165.'
-      },
-      startTime: timeDiff + 15.101,
-    },
+    { action: { target3D: 'tGorDut', color: 'green', number: '1165.' }, startTime: timeDiff + 170.2, },
     ////-----------------------------------29
     {
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 16,
+      startTime: timeDiff + 171,
     },
     {
       multi: [
@@ -24603,86 +28461,78 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 17,
+      startTime: timeDiff + 172,
       human: true,
     },
     ////-----------------------------------30
     {
-      // scenarioText: 'Установить БЗУ на автоматический режим.', // TODO какой то баг
+      scenarioText: 'Установить БЗУ на автоматический режим.', 
       text: 'Установить БЗУ на автоматический режим.',
       sender: 'Система',
       audio: 'tts--30',
-      startTime: timeDiff + 18,
+      startTime: timeDiff + 173,
     },
-    {
-      action: { target3D: 'Rectangle071' },
-      startTime: timeDiff + 18.1,
-      human: true,
-    },
-    { action: { target3D: 'Rectangle071', material: 'ButtonLightOn' }, startTime: timeDiff + 18.5,},
-    { action: { target3D: 'Rectangle072', material: 'ButtonLightOff' }, startTime: timeDiff + 19,},
-    { action: { target3D: 'Rectangle070', material: 'ButtonLightOff' }, startTime: timeDiff + 19,},
-    { action: { target3D: 'Rectangle084', material: 'ButtonLightOff' }, startTime: timeDiff + 19,},
- 
-    { action: { target3D: 'Rectangle069', material: 'ButtonLightOn' }, startTime: timeDiff + 19,},
-    { action: { target3D: 'Rectangle114', material: 'ButtonLightOn' }, startTime: timeDiff + 19,},
-    { action: { target3D: 'Rectangle083', material: 'ButtonLightOn' }, startTime: timeDiff + 19,},
-    { action: { target3D: 'Rectangle104', material: 'ButtonLightOn' }, startTime: timeDiff + 19,},
-    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '242.5' }, startTime: timeDiff + 19,},
-    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '047.0' }, startTime: timeDiff + 19,},
- 
-    { action: { target3D: 'Rectangle069', material: 'ButtonLightOff' }, startTime: timeDiff + 20,},
-    { action: { target3D: 'Rectangle114', material: 'ButtonLightOff' }, startTime: timeDiff + 20,},
-    { action: { target3D: 'Rectangle083', material: 'ButtonLightOff' }, startTime: timeDiff + 20,},
-    { action: { target3D: 'Rectangle104', material: 'ButtonLightOff' }, startTime: timeDiff + 20,},
- 
-    { action: { target3D: 'Rectangle069', material: 'ButtonLightOn' }, startTime: timeDiff + 21,},
-    { action: { target3D: 'Rectangle114', material: 'ButtonLightOn' }, startTime: timeDiff + 21,},
-    { action: { target3D: 'Rectangle083', material: 'ButtonLightOn' }, startTime: timeDiff + 21,},
-    { action: { target3D: 'Rectangle104', material: 'ButtonLightOn' }, startTime: timeDiff + 21,},
- 
-    { action: { target3D: 'Rectangle069', material: 'ButtonLightOff' }, startTime: timeDiff + 22,},
-    { action: { target3D: 'Rectangle114', material: 'ButtonLightOff' }, startTime: timeDiff + 22,},
-    { action: { target3D: 'Rectangle083', material: 'ButtonLightOff' }, startTime: timeDiff + 22,},
-    { action: { target3D: 'Rectangle104', material: 'ButtonLightOff' }, startTime: timeDiff + 22,},
-    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '277.5' }, startTime: timeDiff + 22,},
-    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '046.6' }, startTime: timeDiff + 22,},
- 
-    { action: { target3D: 'Rectangle069', material: 'ButtonLightOn' }, startTime: timeDiff + 23,},
-    { action: { target3D: 'Rectangle114', material: 'ButtonLightOn' }, startTime: timeDiff + 23,},
-    { action: { target3D: 'Rectangle083', material: 'ButtonLightOn' }, startTime: timeDiff + 23,},
-    { action: { target3D: 'Rectangle104', material: 'ButtonLightOn' }, startTime: timeDiff + 23,},
- 
+    { action: { target3D: 'Rectangle071' },                                 startTime: timeDiff + 174, human: true, },
+    { action: { target3D: 'Rectangle071', material: 'ButtonLightOn' },      startTime: timeDiff + 175,},
+    { action: { target3D: 'Rectangle072', material: 'ButtonLightOff' },     startTime: timeDiff + 175,},
+    { action: { target3D: 'Rectangle070', material: 'ButtonLightOff' },     startTime: timeDiff + 175,},
+    { action: { target3D: 'Rectangle084', material: 'ButtonLightOff' },     startTime: timeDiff + 175,},
+
+    { action: { target3D: 'Rectangle069', material: 'ButtonLightOn' },      startTime: timeDiff + 176,},
+    { action: { target3D: 'Rectangle114', material: 'ButtonLightOn' },      startTime: timeDiff + 176,},
+    { action: { target3D: 'Rectangle083', material: 'ButtonLightOn' },      startTime: timeDiff + 176,},
+    { action: { target3D: 'Rectangle104', material: 'ButtonLightOn' },      startTime: timeDiff + 176,},
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '242.5' }, startTime: timeDiff + 176,},
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '047.0' }, startTime: timeDiff + 176,},
+
+    { action: { target3D: 'Rectangle069', material: 'ButtonLightOff' },     startTime: timeDiff + 177,},
+    { action: { target3D: 'Rectangle114', material: 'ButtonLightOff' },     startTime: timeDiff + 177,},
+    { action: { target3D: 'Rectangle083', material: 'ButtonLightOff' },     startTime: timeDiff + 177,},
+    { action: { target3D: 'Rectangle104', material: 'ButtonLightOff' },     startTime: timeDiff + 177,},
+
+    { action: { target3D: 'Rectangle069', material: 'ButtonLightOn' },      startTime: timeDiff + 178,},
+    { action: { target3D: 'Rectangle114', material: 'ButtonLightOn' },      startTime: timeDiff + 178,},
+    { action: { target3D: 'Rectangle083', material: 'ButtonLightOn' },      startTime: timeDiff + 178,},
+    { action: { target3D: 'Rectangle104', material: 'ButtonLightOn' },      startTime: timeDiff + 178,},
+
+    { action: { target3D: 'Rectangle069', material: 'ButtonLightOff' },     startTime: timeDiff + 179,},
+    { action: { target3D: 'Rectangle114', material: 'ButtonLightOff' },     startTime: timeDiff + 179,},
+    { action: { target3D: 'Rectangle083', material: 'ButtonLightOff' },     startTime: timeDiff + 179,},
+    { action: { target3D: 'Rectangle104', material: 'ButtonLightOff' },     startTime: timeDiff + 179,},
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '277.5' }, startTime: timeDiff + 179,},
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '046.6' }, startTime: timeDiff + 179,},
+
+    { action: { target3D: 'Rectangle069', material: 'ButtonLightOn' },      startTime: timeDiff + 180,},
+    { action: { target3D: 'Rectangle114', material: 'ButtonLightOn' },      startTime: timeDiff + 180,},
+    { action: { target3D: 'Rectangle083', material: 'ButtonLightOn' },      startTime: timeDiff + 180,},
+    { action: { target3D: 'Rectangle104', material: 'ButtonLightOn' },      startTime: timeDiff + 180,},
+
     {
       text: 'Сбросить сигнал тревоги.',
       sender: 'Система',
-      audio: 'tts--30(1)',
-      startTime: timeDiff + 24,
+      audio: 'tts--30(1)', // 2
+      startTime: timeDiff + 181,
     },
-    {
-      action: { target3D: 'Rectangle053' },
-      startTime: timeDiff + 25,
-      human: true,
-    },
-    { action: { target3D: 'Rectangle053', material: 'ButtonLightOn' }, startTime: timeDiff + 25.5, },
-    { action: { target3D: 'Rectangle055', material: 'ButtonLightOff' }, startTime: timeDiff + 26, },
- 
-    { action: { target3D: 'Rectangle066', material: 'ButtonLightOn' }, startTime: timeDiff + 26,},
-    { action: { target3D: 'Rectangle054', material: 'ButtonLightOn' }, startTime: timeDiff + 26,},
-    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '178.6' }, startTime: timeDiff + 26,},
-    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '046.6' }, startTime: timeDiff + 26,},
- 
-    { action: { target3D: 'Rectangle066', material: 'ButtonLightOff' }, startTime: timeDiff + 27,},
-    { action: { target3D: 'Rectangle054', material: 'ButtonLightOff' }, startTime: timeDiff + 27,},
- 
-    { action: { target3D: 'Rectangle066', material: 'ButtonLightOn' }, startTime: timeDiff + 28,},
-    { action: { target3D: 'Rectangle054', material: 'ButtonLightOn' }, startTime: timeDiff + 28,},
- 
-    { action: { target3D: 'Rectangle066', material: 'ButtonLightOff' }, startTime: timeDiff + 29,},
-    { action: { target3D: 'Rectangle054', material: 'ButtonLightOff' }, startTime: timeDiff + 29,},
- 
-    { action: { target3D: 'Rectangle066', material: 'ButtonLightOn' }, startTime: timeDiff + 30,},
-    { action: { target3D: 'Rectangle054', material: 'ButtonLightOn' }, startTime: timeDiff + 30,},
+    { action: { target3D: 'Rectangle053' },                                 startTime: timeDiff + 182,  human: true,},
+    { action: { target3D: 'Rectangle053', material: 'ButtonLightOn' },      startTime: timeDiff + 183, },
+
+    { action: { target3D: 'Rectangle055', material: 'ButtonLightOff' },     startTime: timeDiff + 184, },
+    { action: { target3D: 'Rectangle066', material: 'ButtonLightOn' },      startTime: timeDiff + 185,},
+    { action: { target3D: 'Rectangle054', material: 'ButtonLightOn' },      startTime: timeDiff + 185,},
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '178.6' }, startTime: timeDiff + 185,},
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '046.6' }, startTime: timeDiff + 185,},
+
+    { action: { target3D: 'Rectangle066', material: 'ButtonLightOff' },     startTime: timeDiff + 186,},
+    { action: { target3D: 'Rectangle054', material: 'ButtonLightOff' },     startTime: timeDiff + 186,},
+
+    { action: { target3D: 'Rectangle066', material: 'ButtonLightOn' },      startTime: timeDiff + 187,},
+    { action: { target3D: 'Rectangle054', material: 'ButtonLightOn' },      startTime: timeDiff + 187,},
+
+    { action: { target3D: 'Rectangle066', material: 'ButtonLightOff' },     startTime: timeDiff + 188,},
+    { action: { target3D: 'Rectangle054', material: 'ButtonLightOff' },     startTime: timeDiff + 188,},
+
+    { action: { target3D: 'Rectangle066', material: 'ButtonLightOn' },      startTime: timeDiff + 189,},
+    { action: { target3D: 'Rectangle054', material: 'ButtonLightOn' },      startTime: timeDiff + 189,},
     {
       action: {
         window2D: {
@@ -24692,7 +28542,7 @@ let tempActions = [
             { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
             { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '31' },
             { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
- 
+
             { name: 'B1_dp Bunker', text: '0.05' },
             { name: 'B1_P compes', text: '0.00' },
             { name: 'B1_vremy vygruski', text: '83' },
@@ -24701,14 +28551,14 @@ let tempActions = [
             { name: 'B1_vremy nabora P ', text: '2' },
             { name: 'B1_ves s SHP', text: '93.0' },
             { name: 'B1_vibratciya', text: '2' },
- 
+
             { name: 'V linii P_B1', text: '202' }, // Б1
             { name: 'V linii dP_B1', text: '225' },
             { name: 'V sisteme vzveh_B1', text: '153' },
             { name: 'V linii P_B2', text: '150' }, // Б2
             { name: 'V linii dP_B2', text: '276' },
             { name: 'V sisteme vzveh_B2', text: '165' },
- 
+
             { name: 'rashody u davlenia v gazoprovode_P1', text: '0.04' },
             { name: 'rashody u davlenia v gazoprovode_P2', text: '0.05' },
             { name: 'rashody u davlenia v gazoprovode_P3', text: '0.05' },
@@ -24717,14 +28567,14 @@ let tempActions = [
             { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
             { name: 'rashody u davlenia v gazoprovode_F3', text: '130' },
             { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
- 
+
             { name: 'stanciia', text: '8' },
- 
+
             { name: 'ugol naklona_tekushiy', text: '34.5' },
             { name: 'ugol naklona_zadanyi', text: '33.4' },
- 
+
             { name: 'gradusow ugol', text: '251.5' },
- 
+
             { name: 'prochent1', text: '4' }, // %
             { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
             { name: 'zagr_ramka_l',  color: '#06FF06' }, // загр слева
@@ -24761,15 +28611,15 @@ let tempActions = [
             { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
             { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
             { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
-            { name: 'leviy', color: '#ff1e00' }, 
-            { name: 'praviy', color: '#ff1e00' }, 
-            { name: 'pech_left_down_zaglushka', color: '#ff1e00' }, 
-            { name: 'Krasniy nijniy Poloska', color: '#ff1e00' }, 
- 
+            { name: 'leviy', color: '#FF1E00' }, 
+            { name: 'praviy', color: '#FF1E00' }, 
+            { name: 'pech_left_down_zaglushka', color: '#FF1E00' }, 
+            { name: 'Krasniy nijniy Poloska', color: '#FF1E00' }, 
+
             { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
             { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '31' }, // 
             { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
- 
+
             { name: 'B2_Dp bunker', text: '0.04' }, // 
             { name: 'B2_P compens', text: '0.06' }, // 
             { name: 'B2_time vygruski', text: '96' }, // 
@@ -24778,25 +28628,25 @@ let tempActions = [
             { name: 'B2_time nabora P', text: '2' }, // 
             { name: 'B2_ves s HP', text: '16.4' }, // 
             { name: 'B2_vibratciya', text: '53' }, // 
- 
+
             { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
             { name: 'counder podachi_za past smenu', text: '78' }, // 
- 
+
             { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
- 
+
             { name: 'given_level', text: '0.90' }, // 
             { name: 'tekushy_level', text: '2.84' }, // 
- 
+
             { name: 'radar 1', text: '2.83' }, // 
             { name: 'radar 2', text: '2.86' }, // 
             { name: 'mexan', text: '2.86' }, // 
             { name: 'do zapuska mexan min', text: '0' }, // 
             { name: 'do zapuska mexan max', text: '0' }, // 
- 
+
             { name: 'bg_vRabote', color: '#00FF00' }, // в работе
             { name: 'v rabote', color: '#000' }, // в работе
             { name: 'ismetir_ramki', color: '#EADCC2' }, // измерить
- 
+
             { name: 'B1_nomerstr', text: '4' }, // 
             { name: 'B2_nomerstr', text: '5' }, // 
             { name: 'T3_nomerstr', text: '5' }, // 
@@ -24817,7 +28667,7 @@ let tempActions = [
             { name: 'T3_ves', text: '16.4' }, // 
             { name: 'T2_ves', text: '16.4' }, // 
             { name: 'T1_ves', text: '16.4' }, // 
- 
+
             { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
             { name: 'P_str2', opacity: '0' }, //
             { name: 'na_conveer_s1_bukca', opacity: '0' }, //
@@ -24830,30 +28680,17 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 30,
+      startTime: timeDiff + 190,
     },
     ////-----------------------------------31
     {
       text: 'Проверка шагов управления.',
       sender: 'Система',
-      audio: 'tts--31',
-      startTime: timeDiff + 31,
+      audio: 'tts--31', // 2.1
+      startTime: timeDiff + 191,
     },
-    {
-      action: {
-        target2D: 'hagi upravleniy1',
-        window2D: {
-          elements: [ { name: 'shagUprav_bunkerNum', text: 'Бункер 1' }, ]
-        },
-      },
-      startTime: timeDiff + 32,
-      human: true,
-    },
-    {
-      action: { target2D: 'shagi_uprav_close_btn',},
-      startTime: timeDiff + 32.5,
-      human: true,
-    },
+    { action: { target2D: 'hagi upravleniy1', window2D: { elements: [ { name: 'shagUprav_bunkerNum', text: 'Бункер 1' },]},}, startTime: timeDiff + 192,   human: true,},
+    { action: { target2D: 'shagi_uprav_close_btn',},                                                                          startTime: timeDiff + 192.1, human: true,},
     {
       action: {
         target2D: 'hagi upravleniy2',
@@ -24865,58 +28702,23 @@ let tempActions = [
           { x: 53.65, y: 92.5, w: 4.9, h: 2.2, id: 'shagi_uprav_zakryt', },
         ]
       },
-      startTime: timeDiff + 33,
+      startTime: timeDiff + 192.2,
       human: true,
     },
-    {
-      action: { target2D: 'shagi_uprav_close_btn',},
-      startTime: timeDiff + 33.5,
-      human: true,
-    },
+    { action: { target2D: 'shagi_uprav_close_btn',}, startTime: timeDiff + 192.3, human: true,},
+    { lifeTime: '12:14:00',                          startTime: timeDiff + 192.4, },
     ////-----------------------------------32
     {
-      // scenarioText: 'Повысить давление.', // TODO какой то баг
+      scenarioText: 'Повысить давление.',
       text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 0,55 кгс/см².',
       sender: 'Система',
-      audio: 'tts--32',
-      startTime: timeDiff + 34,
+      audio: 'tts--51',
+      startTime: timeDiff + 193.4,
     },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 35,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 36,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 37,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 38,
-      human: true,
-    },
+    {action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 },}, duration: 0.15, startTime: timeDiff + 194, human: true, },
+    {action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0 },    }, duration: 0.15, startTime: timeDiff + 195, human: true, },
+    {action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 },}, duration: 0.15, startTime: timeDiff + 196, human: true, },
+    {action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0 },    }, duration: 0.15, startTime: timeDiff + 197, human: true, },
     // DP
     {
       action: {
@@ -24937,14 +28739,14 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 38.1,
+      startTime: timeDiff + 198,
     },
     ////-----------------------------------33
     {
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 39,
+      startTime: timeDiff + 199,
     },
     {
       multi: [
@@ -24959,25 +28761,24 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 40,
+      startTime: timeDiff + 200,
       human: true,
     },
     ////-----------------------------------34
     {
-      // scenarioText: 'При необходимости открыть смесительно-предохранительный клапан (для поддержания заданной температуры горячего дутья).', // TODO какой то баг
+      scenarioText: 'При необходимости открыть смесительно-предохранительный клапан (для поддержания заданной температуры горячего дутья).', 
       text: 'Отрегулировать температуру дутья.',
       sender: 'Система',
-      audio: 'tts-53',
-      startTime: timeDiff + 41,
+      audio: 'tts-53', // 2.35
+      startTime: timeDiff + 201,
     },
-    // #endregion
+    
     ////-----------------------------------35
-    {
-      // scenarioText: 'При необходимости открыть смесительно-предохранительный клапан (для поддержания заданной температуры горячего дутья).', // TODO какой то баг
+    { 
       text: 'Открыть смесительно-предохранительный клапан 002.',
       sender: 'Система',
       audio: 'tts--35',
-      startTime: timeDiff + 44,
+      startTime: timeDiff + 204,
     },
     {
       action: {
@@ -25022,7 +28823,7 @@ let tempActions = [
             { name: 'btn_sbros_oshibki_text', color: '#6E6E6E' },
             { name: 'btn_reset_1', color: '#E6E6E6' },
             { name: 'btn_reset_2', color: '#E6E6E6', stroke: '#6E6E6E' },
-
+            
             { name: 'btn_baypas_vsekh_blokirovok_1', color: '#ffffff' },
             { name: 'btn_baypas_vsekh_blokirovok_2', color: '#ffffff' },
             { name: 'time_full_vnk_text', text: '25' },
@@ -25039,7 +28840,7 @@ let tempActions = [
           { x: 87.2, y: 51.45, w: 8.5, h: 2.6, id: 'baypas_blokirovok', }
         ]
       },
-      startTime: timeDiff + 45,
+      startTime: timeDiff + 205,
       human: true,
     },
     {
@@ -25056,7 +28857,7 @@ let tempActions = [
           { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 45.1,
+      startTime: timeDiff + 205.1,
       human: true,
     },
     {
@@ -25097,7 +28898,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 45.2,
+      startTime: timeDiff + 205.2,
       human: true,
     },
     {
@@ -25114,7 +28915,7 @@ let tempActions = [
           { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 45.3,
+      startTime: timeDiff + 205.3,
       human: true,
     },
     {
@@ -25155,7 +28956,7 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 45.4,
+      startTime: timeDiff + 205.4,
       human: true,
     },
     {
@@ -25171,8 +28972,8 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 46,
-    },
+      startTime: timeDiff + 206,
+    }, 
     {
       action: {
         window2D: {
@@ -25186,8 +28987,8 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 47,
-    },
+      startTime: timeDiff + 207,
+    }, 
     {
       action: {
         window2D: {
@@ -25201,8 +29002,8 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 48,
-    },
+      startTime: timeDiff + 208,
+    }, 
     {
       action: {
         window2D: {
@@ -25216,7 +29017,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 49,
+      startTime: timeDiff + 209,
     },
     {
       action: {
@@ -25232,7 +29033,7 @@ let tempActions = [
           ]
         }
       },
-      startTime: timeDiff + 50,
+      startTime: timeDiff + 210,
     },
     {
       action: {
@@ -25248,7 +29049,7 @@ let tempActions = [
           { x: 88.3, y: 37.3, w: 3.3, h: 2.5, id: 'open_vn1' },
         ]
       },
-      startTime: timeDiff + 50.1,
+      startTime: timeDiff + 210.1,
       human: true,
     },
     {
@@ -25291,12 +29092,12 @@ let tempActions = [
           ]
         },
       },
-      startTime: timeDiff + 50.2,
+      startTime: timeDiff + 210.2,
       human: true,
     },
     {
       action: { target2D: 'close_w1', },
-      startTime: timeDiff + 50.3,
+      startTime: timeDiff + 210.3,
       human: true,
     },
     {
@@ -25338,16 +29139,16 @@ let tempActions = [
             { name: 'kl0331_proc', text: '100' },
             { name: 'kl0311_proc', text: '100' },
             { name: '7QI_01', text: '-999,00' },
-            { name: 'kl038_proc', text: '0' },
+            { name: 'kl038_proc',   text: '0' },
             { name: 'kl028_proc', text: '0' },
-            { name: 'kl020_proc', text: '100' },
-            { name: 'kl036v_proc', text: '0' },
-            { name: 'kl036b_proc', text: '0' },
+            { name: 'kl020_proc',   text: '100' },
+            { name: 'kl036v_proc',  text: '0' },
+            { name: 'kl036b_proc',  text: '0' },
             { name: 'kl048_proc', text: '0' },
             { name: 'kl029_proc', text: '100' },
             { name: 'kl004_proc', text: '100' },
             { name: 'PI_16_proc', text: '0,40' },
-            { name: 'ramka_PI_16', color: '#ff1e00' },
+            { name: 'ramka_PI_16', color: '#FF1E00' },
             { name: '9TI_44_proc', text: '25' },
             { name: 'kl037_proc', text: '0' },
             { name: 'kl007_proc', text: '0' },
@@ -25367,10 +29168,6 @@ let tempActions = [
             { name: 'VNK3_status_1', text: 'Циклический' },
             { name: 'VNK3_status_2', text: 'Отделение' },
             { name: 'vnk3_stripes', color: '#878881' },
-            { name: 'circle_dutyo_VNK3', color: '#000' },
-            { name: 'circle_nagrev_VNK3', color: '#000' },
-            { name: 'circle_otdeleniye_1_VNK3', color: '#06FF06' },
-            { name: 'circle_otdeleniye_2_VNK3', color: '#000' },
             { name: 'VNK3_Fr', text: '0' },
             { name: 'VNK3_Fb', text: '0' },
             { name: 'Tdym_3', text: '132' },
@@ -25382,10 +29179,6 @@ let tempActions = [
             { name: 'VNK2_status_1', text: 'Циклический' },
             { name: 'VNK2_status_2', text: 'Отделение' },
             { name: 'vnk2_stripes', color: '#878881' },
-            { name: 'circle_dutyo_VNK2', color: '#000' },
-            { name: 'circle_nagrev_VNK2', color: '#000' },
-            { name: 'circle_otdeleniye_1_VNK2', color: '#06FF06' },
-            { name: 'circle_otdeleniye_2_VNK2', color: '#000' },
             { name: 'VNK2_Fr', text: '0' },
             { name: 'VNK2_Fb', text: '0' },
             { name: 'Tdym_2', text: '170' },
@@ -25398,10 +29191,6 @@ let tempActions = [
             { name: 'VNK1_status_1', text: 'Циклический' },
             { name: 'VNK1_status_2', text: 'Дутье' },
             { name: 'vnk1_stripes', color: '#000BF6' },
-            { name: 'circle_dutyo_VNK1', color: '#06FF06' },
-            { name: 'circle_nagrev_VNK1', color: '#000' },
-            { name: 'circle_otdeleniye_1_VNK1', color: '#000' },
-            { name: 'circle_otdeleniye_2_VNK1', color: '#000' },
             { name: 'VNK1_Fr', text: '0' },
             { name: 'VNK1_Fb', text: '0' },
             { name: 'Tdym_1', text: '187' },
@@ -25412,80 +29201,52 @@ let tempActions = [
           ],
         },
       },
-      startTime: timeDiff + 50.4,
+      startTime: timeDiff + 210.4,
     },
-    ////-----------------------------------35
     {
-      // scenarioText: 'Повысить давление.', // TODO какой то баг
+      lifeTime: '12:16:00',
+      startTime: timeDiff + 210.5,
+    },
+    ////-----------------------------------36
+    {
+      scenarioText: 'Повысить давление.',
       text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 0,7 кгс/см².',
       sender: 'Система',
-      audio: 'tts--32',
-      startTime: timeDiff + 51,
+      audio: 'tts--51',
+      startTime: timeDiff + 211.5,
     },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 52,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 53,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0.785 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 54,
-      human: true,
-    },
-    {
-      action: {
-        target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f',
-        rotation: { y: 0 },
-      },
-      duration: 0.15,
-      startTime: timeDiff + 55,
-      human: true,
-    },
+    { action: {target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 },}, duration: 0.15, startTime: timeDiff + 212, human: true, },
+    { action: {target3D: '128f49df-9d0a-4b03-b177-dfa71831d6f',  rotation: { y: 0 },    }, duration: 0.15, startTime: timeDiff + 213, human: true, },
+    { action: {target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 },}, duration: 0.15, startTime: timeDiff + 214, human: true, },
+    { action: {target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0 },    }, duration: 0.15, startTime: timeDiff + 215, human: true, },
     // DP
     {
       action: {
         window2D: {
           elements: [
-            { name: 'H_snotr', text: '56' },
+            { name: 'H_snotr', text: '48' },
             { name: 'H_progres_7', opacity: '1' },
             { name: 'H_progres_19', opacity: '1' },
             { name: 'H_progres_22', opacity: '1' },
             { name: 'H_progres_33', opacity: '1' },
             { name: 'H_progres_49', opacity: '1' },
-            { name: 'H_progres_56', opacity: '1' },
+            { name: 'H_progres_56', opacity: '0' },
             { name: 'H_progres_60', opacity: '0' },
             { name: 'H_progres_67', opacity: '0' },
             { name: 'H_progres_89', opacity: '0' },
             { name: 'H_progres_100', opacity: '0' },
-            { name: 'P_2', text: '0.55' },
+            { name: 'P_2', text: '0.70' },
           ]
         }
       },
-      startTime: timeDiff + 55.1,
+      startTime: timeDiff + 216,
     },
-    ////-----------------------------------36
+    ////-----------------------------------37
     {
       text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
       sender: 'Система',
       audio: 'SoundSnortFurma',
-      startTime: timeDiff + 56,
+      startTime: timeDiff + 217,
     },
     {
       multi: [
@@ -25500,14 +29261,5633 @@ let tempActions = [
           },
         },
       ],
-      startTime: timeDiff + 57,
+      startTime: timeDiff + 218,
       human: true,
     },
-    ////-----------------------------------34
+   // #endregion 
+    
+    ////-----------------------------------38--------------------------//// 
+    {
+      text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 219,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                  startTime: timeDiff + 220, human: true, },
+    {
+      text: 'На фурмах 0,7.',
+      sender: 'Газовщик',
+      audio: 'tts--vo71', // 4.49
+      startTime: timeDiff + 221,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', },   startTime: timeDiff + 226,},
+    ////-----------------------------------39--------------------------//// 
+    {
+      chapterText: 'Повышение давления ГД 1-2 кгс/см²',
+      text: 'Единицу делаем.',
+      sender: 'Мастер печи',
+      audio: 'tts--vo72', // 1.46 
+      startTime: timeDiff + 227,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 228, human: true, },
+    {
+      text: 'Делаю единицу.',
+      sender: 'Газовщик',
+      audio: 'tts--vo73', // 1.7
+      startTime: timeDiff + 229,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 231, },
 
-    // ЗАГЛУШКА ПРОСТО
-    { action: { window2D: { elements: [] } }, startTime: timeDiff + 15000.1, },
-*/
+    ////-----------------------------------40--------------------------//// 
+    {
+      scenarioText: 'Повысить давление.',
+      text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 1,00 кгс/см².',
+      audio: 'tts--51', // 4.7
+      sender: 'Система',
+      startTime: timeDiff + 232,
+    },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 }, }, duration: 0.15, startTime: timeDiff + 233, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0     }, }, duration: 0.15, startTime: timeDiff + 234, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 }, }, duration: 0.15, startTime: timeDiff + 235, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0     }, }, duration: 0.15, startTime: timeDiff + 236, human: true, },
+    { 
+      action: {
+        windows2D:{
+          elements:[
+            { name: 'H_snotr', text: '36' },
+            { name: 'dp_kl_red', color: '#6E6E6E' },
+            { name: 'H_progres_7',    opacity: '1' },
+            { name: 'H_progres_19',   opacity: '1' },
+            { name: 'H_progres_22',   opacity: '1' },
+            { name: 'H_progres_33',   opacity: '1' },
+            { name: 'H_progres_49',   opacity: '0' },
+            { name: 'H_progres_56',   opacity: '0' },
+            { name: 'H_progres_60',   opacity: '0' },
+            { name: 'H_progres_89',   opacity: '0' },
+            { name: 'H_progres_100',  opacity: '0' },
+            { name: 'P_2', text: '1.00' },
+            { name: 'P_2_rect', color: "#ffffff" }
+          ]
+        }
+      },
+      startTime: timeDiff + 237,
+    },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0.056', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.058', },         startTime: timeDiff + 237.01, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '0.926', },         startTime: timeDiff + 237.01, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '0.771', },          startTime: timeDiff + 237.01, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '3720.', },      startTime: timeDiff + 237.01, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '0.976', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.85', },      startTime: timeDiff + 237.01, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.79', },      startTime: timeDiff + 237.01, },
+    { action: { target3D: 'urZasMeh', color: 'green', number: '0000', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0129.', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0153.', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0133.', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0117.', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '06.81', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'tVGazT6', color: 'green', number: '00.39', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1119.', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.12', },     startTime: timeDiff + 237.01, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.12', },     startTime: timeDiff + 237.01, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.15', },      startTime: timeDiff + 237.01, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.41', }, startTime: timeDiff + 237.01, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.384', },     startTime: timeDiff + 237.01, },
+    { action: { target3D: 'tReduct', color: 'green', number: '034.9', },        startTime: timeDiff + 237.01, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '24.83', },   startTime: timeDiff + 237.01, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '0000', },      startTime: timeDiff + 237.01, },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.08', },    startTime: timeDiff + 237.02, },
+    { action: { target3D: 'bzuVesNetto_l', color: 'red', number: '093.1', },    startTime: timeDiff + 237.02, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '001.3', },  startTime: timeDiff + 237.02, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0085', },   startTime: timeDiff + 237.02, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '169.6', },    startTime: timeDiff + 237.02, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.03', },    startTime: timeDiff + 237.02, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '016.2', },    startTime: timeDiff + 237.02, },
+    { action: { target3D: 'bzuPolShihZat_r', color: 'red', number: '001.3', },  startTime: timeDiff + 237.02, },
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '033.5', },    startTime: timeDiff + 237.02, },
+    { action: { target3D: 'bzuVremVigruz_r', color: 'red', number: '0096', },   startTime: timeDiff + 237.02, },
+    { action: { target3D: 'bzuUrovZasip', color: 'red', number: '02.81', },     startTime: timeDiff + 237.02, },
+
+    ////-----------------------------------41--------------------------//// 
+    {
+      text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
+      sender: 'Система',
+      audio: 'SoundSnortFurma', // 3.5
+      startTime: timeDiff + 238,
+    }, 
+    {multi: [{action: {target2D: 'R_Snort',},},{action: {target2D: 'R_Furm',},},],startTime: timeDiff + 239,human: true,},
+
+
+    ////-----------------------------------42--------------------------//// 
+    {
+      text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 240,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 241, human: true, },
+    {
+      text: 'На фурмах единица.',
+      sender: 'Газовщик',
+      audio: 'tts-vo74', //  1.77 
+      startTime: timeDiff + 242,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 244.5, },
+    {
+      text: '1,5 делаем.',
+      sender: 'Мастер печи',
+      audio: 'tts--vo42-1', // 2.3
+      startTime: timeDiff + 245,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 246, human: true,},
+    {
+      text: 'Делаю полтора.',
+      sender: 'Газовщик',
+      audio: 'tts--vo76', // 1.4
+      startTime: timeDiff + 247,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 249, },
+    {
+      lifeTime: '12:19:00',
+      startTime: timeDiff + 250,
+    },
+    ////-----------------------------------43--------------------------//// 
+    {
+      text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 1,5 кгс/см².',
+      audio: 'tts--51', // 4.7
+      sender: 'Система',
+      startTime: timeDiff + 251,
+    },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 }, }, duration: 0.15, startTime: timeDiff + 252, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0     }, }, duration: 0.15, startTime: timeDiff + 253, human: true, },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0.083', },        startTime: timeDiff + 253.01, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.082', },         startTime: timeDiff + 253.01, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.200', },         startTime: timeDiff + 253.01, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1.114', },          startTime: timeDiff + 253.01, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4204.', },      startTime: timeDiff + 253.01, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '1.423', },        startTime: timeDiff + 253.01, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.83', },      startTime: timeDiff + 253.01, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.81', },      startTime: timeDiff + 253.01, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0137.', },        startTime: timeDiff + 253.01, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0161.', },        startTime: timeDiff + 253.01, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0144.', },        startTime: timeDiff + 253.01, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0127.', },        startTime: timeDiff + 253.01, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '06.67', },        startTime: timeDiff + 253.01, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1095.', },        startTime: timeDiff + 253.01, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.16', },     startTime: timeDiff + 253.01, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.17', },     startTime: timeDiff + 253.01, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.11', },      startTime: timeDiff + 253.01, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.39', }, startTime: timeDiff + 253.01, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.367', },     startTime: timeDiff + 253.01, },
+    { action: { target3D: 'tReduct', color: 'green', number: '034.8', },        startTime: timeDiff + 253.01, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '24.82', },   startTime: timeDiff + 253.01, },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.10', },    startTime: timeDiff + 253.02, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '251.1', },    startTime: timeDiff + 253.02, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.07', },    startTime: timeDiff + 253.02, },
+    {
+      action: {
+        window2D: {
+          elements:[
+            // dp f
+            { name: 'radar1_text', text: '2.86' },
+            { name: 'radar2_text', text: '2.82' },
+            { name: 'radar3_text', text: '2.78' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+            { name: 'EKZ_H1', text: '100' },
+            { name: 'EKZ_H2', text: '100' },
+            { name: 'EKZ_H3', text: '100' },
+            { name: 'AKZ_100',    opacity: 1 },
+            { name: 'AKZ_45-100', opacity: 1 },
+            { name: 'AKZ_45',     opacity: 1 },
+            { name: 'AKZ_30',     opacity: 1 },
+            { name: 'AKZ_17',     opacity: 1 },
+            { name: 'EVS_DP7_O', text: '53776' },
+            { name: 'EVD1_O',    text: '0' },
+            { name: 'EVS_DP7_F', text: '7182' },
+            { name: 'EVD1_F',    text: '305077' },
+            { name: 'EVD_F',     text: '303236' },
+            { name: 'P_1',       text: '1.51' },
+            { name: 'F_evd',     text: '5085' },
+            { name: 'F_hol_dyt', text: '3225' },
+            { name: 'T_hol_dyt', text: '45' },
+            { name: 'O_hol_dyt', text: '21.0' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.5' },
+            { name: 'FO2_hol_dyt', text: '1115' },
+            { name: 'N2',       text: '57.7' },
+            { name: 'CO',       text: '18.3' },
+            { name: 'CO2',      text: '16.8' },
+            { name: 'H2_tryb',  text: '6.6' },
+            { name: 'Nco_tryb', text: '47.8' },
+            { name: 'Q_domG_tryb', text: '742', opacity: '1' },
+            { name: 'P_vozd_tryb', text: '1' },
+            { name: 'P_gaza_tryb', text: '13' },
+            { name: 'CO_bor_tryb', text: '0.16' },
+            // { name: 'H_snotr', text: '15' },
+            // { name: 'kl_red', color: '#00DA01' },
+            // { name: 'H_progres_7', opacity: '1' },
+            // { name: 'H_progres_19', opacity: '1' },
+            // { name: 'H_progres_22', opacity: '1' },
+            // { name: 'H_progres_33', opacity: '1' },
+            // { name: 'H_progres_49', opacity: '1' },
+            // { name: 'H_progres_56', opacity: '1' },
+            // { name: 'H_progres_60', opacity: '1' },
+            // { name: 'H_progres_89', opacity: '1' },
+            // { name: 'H_progres_100', opacity: '1' },
+            { name: 'H_step_isp',   text: '52.9', opacity: '0' },
+            { name: 'HCO_step_isp', text: '30.2' },
+            { name: 'Tkyp_3', text: '1117' },
+            { name: 'Tkyp_2', text: '1105' },
+            { name: 'Tkyp_1', text: '1182' },
+            { name: 'Tkyp_3_rect', color: '#ffff0f' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+            { name: 'VNK3_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK3_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK2_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK1_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+            { name: 'Fvozdyh_3',  text: '0' },
+            { name: 'Fvozdyh_2',  text: '0' },
+            { name: 'Fgaz_3',     text: '0' },
+            { name: 'Fgaz_2',     text: '0' },
+            { name: 'VNK1_Fb',   text: '0' },
+            { name: 'VNK1_Fr',   text: '0' },
+            { name: 'Tdym_3', text: '132' },
+            { name: 'Tdym_2', text: '169' },
+            { name: 'Tdym_1', text: '155' },
+            { name: 'P_Os_szat_voz', text: '8.31' },
+            { name: 'T_Os_szat_voz', text: '26' },
+            { name: 'Temp_peref_1',   text: '55' },
+            { name: 'Temp_peref_2',   text: '47' },
+            { name: 'Temp_peref_3',   text: '52' },
+            { name: 'Temp_peref_4',   text: '48' },
+            { name: 'Temp_peref_5',   text: '58' },
+            { name: 'Temp_peref_6',   text: '51' },
+            { name: 'Temp_peref_7',   text: '55' },
+            { name: 'Temp_peref_8',   text: '54' },
+            { name: 'Temp_peref_9',   text: '68' },
+            { name: 'Temp_peref_10',  text: '49' },
+            { name: 'Temp_peref_11',  text: '51' },
+            { name: 'Temp_peref_12',  text: '56' },
+            { name: 'Temp_peref_13',  text: '89' },
+            { name: 'Temp_peref_14',  text: '50' },
+            { name: 'Temp_peref_15',  text: '57' },
+            { name: 'Temp_peref_16',  text: '48' },
+            { name: 'T1', text: '114' },
+            { name: 'T2', text: '134' },
+            { name: 'T3', text: '104' },
+            { name: 'T4', text: '119' },
+            { name: 'P_2', text: '1.45' },
+            { name: 'P_2_rect', color: "#ffffff" },
+            { name: 't_gor_dut', text: '1094' },
+            { name: 't_gor_dut_spravaRydom', text: '1100' },
+            { name: 'H_Os_szat_voz', text: '78' },
+            { name: 't_prirodn_gaz', text: '15' },
+            { name: 'P_pg_prir_gaz', text: '8,61' },
+            { name: 'F_prir_gaz_table',   text: '30000' },
+            { name: 'F_pg_sym_prir_gaz',  text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+            { name: 'F_tryba',    text: '0' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt',  text: '0' },
+            { name: 'P_vbls',     text: '0.09' },
+            { name: 'P_vus_rect',   color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.09' },
+            { name: 'dP_verh_rect', color: '#ffff0f' },
+            { name: 'dP_obsh_tryba', text: '1.36' },
+            { name: 'dP_obsh_trybarect', color: '#ffffff' },
+            { name: 'dP_nish_tryba', text: '1.27' },
+            { name: 'dP_nish_rect', color: '#ffffff' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'zadanie_rect', color: '#ffffff' },
+            { name: 'TTG_raschet', text: '2296', opacity: '1' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', text: '1428', opacity: '0' },
+            { name: 'L2', text: '1428', opacity: '0' },
+            { name: 'L4', text: '1428', opacity: '0' },
+            { name: 'L3', text: '1428', opacity: '0' },
+            { name: 'L1_elem', color: '#ffffff' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L4_elem', color: '#ffffff' },
+            { name: 'L3_elem', color: '#ffffff' },
+            { name: 'P_tryba_1_590', text: '0.09' },
+            { name: 'P_tryba_1_591', text: '0.09' },
+            { name: 'P_tryba_1_592', text: '0.09' },
+            { name: 'P_tryba_1_593', text: '0.09' },
+            { name: 'P_tryba_2_1', text: '0.13' },
+            { name: 'P_tryba_2_2', text: '0.14' },
+            { name: 'P_tryba_2_3', text: '0.14' },
+            { name: 'P_tryba_2_4', text: '0.14' },
+            { name: 'P_tryba_3_590', text: '0.18' },
+            { name: 'P_tryba_3_591', text: '0.18' },
+            { name: 'P_tryba_4_1', text: '2.76' },
+            { name: 'P_tryba_4_2', text: '1.87' },
+            { name: 'P_tryba_4_3', text: '2.88' },
+            { name: 'P_tryba_4_4', text: '1.20' },
+            { name: 'P_tryba_5_1', text: '0.84' },
+            { name: 'P_tryba_5_2', text: '1.55' },
+            { name: 'P_tryba_5_3', text: '1.97' },
+            { name: 'P_tryba_5_4', text: '2.80' },
+            { name: 'V_dyt',      text: '211.8' },
+            { name: 'fyrm_v_rab', text: '0' },
+            { name: 'ydel_tep_18',    text: '27.5' },
+            { name: 'ydel_tep_17',    text: '33.2' },
+            { name: 'ydel_tep_16',    text: '32.2' },
+            { name: 'ydel_tep_15',    text: '27.5' },
+            { name: 'ydel_tep_12_14', text: '52.2' },
+            { name: 'ydel_tep_10_11', text: '14.2' },
+            { name: 'ydel_tep_9',     text: '12.2' },
+            { name: 'ydel_tep_8',     text: '14.1' },
+            { name: 'ydel_tep_7',     text: '30.1' },
+
+            // bzu full+
+            { name: 'ochistka sedel_P', text: '6.10' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '31' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '12' },
+            { name: 'B1_dp Bunker', text: '-0.01' },
+            { name: 'B1_P compes', text: '0.10' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP',       text: '93.0' },
+            { name: 'B1_vibratciya',      text: '2' },
+            { name: 'V linii P_B1',       text: '202' }, // Б1
+            { name: 'V linii dP_B1',      text: '226' },
+            { name: 'V sisteme vzveh_B1', text: '193' },
+            { name: 'V linii P_B2',       text: '148' }, // Б2
+            { name: 'V linii dP_B2',      text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '165' },
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.09' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.10' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.09' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.09' },
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '130' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+            { name: 'stanciia',             text: '8' },
+            { name: 'ugol naklona_tekushiy',  text: '33.3' },
+            { name: 'ugol naklona_zadanyi',   text: '33.4' },
+            { name: 'gradusow ugol',          text: '103.1' },
+            { name: 'prochent1', text: '2' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#06FF06' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', text: 'Р',         opacity: '1' },
+            { name: 'left_ellipse',      color: '#860004',  opacity: '1' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.10' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '93.1' }, // T
+            { name: 'matrix 1 str 1_M', text: '47.7' }, // M3
+            { name: 'primoygolinik_smehivateli', color: '#860004' }, // горизонтальная палочка слева
+            // не хватает схемы ПУСТ, зеленая/красная палочка рядом
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.3' }, // ШЗ слева
+            { name: 'left_vugr_rect', color: '#06FF06' }, //  Выгр зеленые зеленые рамки  #06FF06       #E6E6E6
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка слева
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            { name: 'btn_Pause_border', color: '#e6e6e6' }, // пауза по центру
+            { name: 'leviy', color: '#860004' }, // палка от цифр слева
+
+            { name: 'verx', text: '0' }, // цифры сверху
+            // не хватает палочки горизонтальной под цифрами
+            { name: 'black_arrow_under_verx', opacity: '0' }, // стрелка под цифрами
+
+            { name: 'praviy', color: '#860004' }, // палка от цифр справа
+            // не хватает элемента [К - в зеленом кружке]
+            { name: 'tr_3_str_1_', text: '5' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            { name: 'rezym_A', color: '#06FF06' }, // текущий режим А задник
+            { name: 'rezym_D', color: '#06FF06' }, // текущий режим Д задник
+            { name: 'K_16_strelka', opacity: '0' }, // к16 сброс ошибки стрелка
+
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '1.06' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '15.4' }, // t
+            // { name: 'matrix 1 str 14_M', text: '34.9' }, //  HZ ne vidno
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            { name: 'prochent2', text: '1' }, // % справа
+            
+            { name: 'klNKB-2_2',      color: '#860004' }, // НКВ-2 verh  // ilay
+            { name: 'klNKB-2_1',      color: '#860004' }, // НКВ-2 niz   // ilay
+            { name: 'vigruzca pravo', color: '#E6E6E6' }, // Выгр спарва   // ilay
+            
+
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '31' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+            { name: 'B2_Dp bunker', text: '-0.01' }, // 
+            { name: 'B2_P compens', text: '0.14' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '100' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.4' }, // 
+            { name: 'B2_vibratciya', text: '53' }, // 
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            // { name: 'btn_ZapSledPorc_border', text: '6' }, //  Запрет след.порции задник
+
+            { name: 'given_level',   text: '0.90' }, // 
+            { name: 'tekushy_level', text: '2.84' }, // 
+            { name: 'radar 1',  text: '2.83' },   // 
+            { name: 'radar 2',  text: '2.82' },   // 
+            { name: 'mexan',    text: '2.81' },  // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'v rabote',   color: '#D0D1D3' }, // в работе текст // afk  #c8c8d2 #D0D1D3
+            { name: 'bg_vRabote', color: '#06FF06' }, // в работе       // afk  #f6fbff #06FF06
+            { name: 'ismetir_ramki',      color: '#06FF06' }, // Измерить задник
+            { name: 'mex.zond na huxte',  color: '#D0D1D3' }, //  зеленый квадрат Мех.зонд на шихт
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '5' }, // 
+            { name: 'T3_nomerstr', text: '5' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+            { name: 'B1_Tip',   color: '#860004' }, // 
+            { name: 'B2_Tip',   color: '#008600' }, // 
+            { name: 'T2_Tip',   color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip',   color: '#008600' }, // 
+            { name: 'B1_ves', text: '93.1' }, // 
+            { name: 'B2_ves', text: '16.4' }, // 
+            { name: 'T3_ves', text: '16.4' }, // 
+            { name: 'T2_ves', text: '16.4' }, // 
+            { name: 'T1_ves', text: '16.4' }, // 
+            // { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            // { name: 'P_str2', color: '#CEC7B5' }, // str 2 color
+            // { name: 'K_str1', color: '#008600' }, // str 1 color
+            // { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+
+            // { name: 'na_conveer_s1_bukca', text: 'См', opacity: '0' }, // str 2 
+            // { name: 'str1_down',           text: 'К' }, // str 2 
+            // { name: 'str51_down',          text: 'К' }, // str 51 
+            // { name: 'str2_P_1',   text: '0' }, // str 2-11 t
+            // { name: 'str2_P_2',   text: '0' }, // str 2-10 t
+            // { name: 'str2_P_3',   text: '0' }, // str 2-9 t
+            // { name: 'str2_P_4',   text: '13' }, // str 2-8 t
+            // { name: 'str2_P_5',   text: '13' }, // str 2-7 t
+            // { name: 'str2_P_6',   text: '13' }, // str 2-6 t
+            // { name: 'str2_P_7',   text: '11' }, // str 2-5 t
+            // { name: 'str2_P_8',   text: '10' }, // str 2-4 t
+            // { name: 'str2_P_9',   text: '10' }, // str 2-3 t
+            // { name: 'str2_P_10',  text: '9' }, // str 2-2 t
+            // { name: 'str2_P_11',  text: '21' }, // str 2-1 t
+            // { name: 'str2_P_12',  text: '16.2' }, // str 2-ves t
+            // { name: 'Str1_8', color: '#008600' }, // str 1-8 r  // #008600
+            // { name: 'Str1_4', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'Str1_1', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'str1_K_1',   text: '0' }, // str 1-11 t
+            // { name: 'str1_K_2',   text: '0' }, // str 1-10 t
+            // { name: 'str1_K_3',   text: '0' }, // str 1-9 t
+            // { name: 'str1_K_4',   text: '22' }, // str 1-8 t
+            // { name: 'str1_K_5',   text: '21' }, // str 1-7 t
+            // { name: 'str1_K_6',   text: '19' }, // str 1-6 t
+            // { name: 'str1_K_7',   text: '15' }, // str 1-5 t
+            // { name: 'str1_K_8',   text: '13' }, // str 1-4 t
+            // { name: 'str1_K_9',   text: '10' }, // str 1-3 t
+            // { name: 'str1_K_10',  text: '0' },  // str 1-2 t
+            // { name: 'str1_K_11',  text: '0' },  // str 1-1 t
+            // { name: 'str1_K_12',  text: '93.0' }, // str 1-ves t
+         
+            // { name: 'str51_SM_1',   text: '0' }, // str 51-11 t
+            // { name: 'str51_SM_2',   text: '0' }, // str 51-10 t
+            // { name: 'str51_SM_3',   text: '0' }, // str 51-9 t
+            // { name: 'str51_SM_4',   text: '0' }, // str 51-8 t
+            // { name: 'str51_SM_5',   text: '0' }, // str 51-7 t
+            // { name: 'str51_SM_6',   text: '0' }, // str 51-6 t
+            // { name: 'str51_SM_7',   text: '0  0' }, // str 51-5-4 t
+            // { name: 'str51_SM_8',   text: '0' }, // str 51-3 t
+            // { name: 'str51_SM_9',   text: '0' }, // str 51-2 t
+            // { name: 'str51_SM_10',  text: '100' }, // str 51-1 t
+            // { name: 'str51_SM_11',  text: '15.0' }, // str 51-ves t
+          ]
+        }
+      },
+      starttime: timeDiff + 253.03,
+    },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 }, }, duration: 0.15, startTime: timeDiff + 254, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0     }, }, duration: 0.15, startTime: timeDiff + 255, human: true, },
+    { 
+      action: {
+        windows2D:{
+          elements:[
+            { name: 'H_snotr', text: '24' },
+            { name: 'dp_kl_red', color: '#6E6E6E' },
+            { name: 'H_progres_7',    opacity: '1' },
+            { name: 'H_progres_19',   opacity: '1' },
+            { name: 'H_progres_22',   opacity: '1' },
+            { name: 'H_progres_33',   opacity: '0' },
+            { name: 'H_progres_49',   opacity: '0' },
+            { name: 'H_progres_56',   opacity: '0' },
+            { name: 'H_progres_60',   opacity: '0' },
+            { name: 'H_progres_89',   opacity: '0' },
+            { name: 'H_progres_100',  opacity: '0' },
+            { name: 'P_2', text: '1.50' },
+            { name: 'P_2_rect', color: "#ffffff" }
+          ]
+        }
+      },
+      startTime: timeDiff + 256,
+    },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0.091', },        startTime: timeDiff + 256.01, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.090', },         startTime: timeDiff + 256.01, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.401', },         startTime: timeDiff + 256.01, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1.165', },          startTime: timeDiff + 256.01, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4213.', },      startTime: timeDiff + 256.01, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '1.489', },        startTime: timeDiff + 256.01, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.85', },      startTime: timeDiff + 256.01, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.07', },      startTime: timeDiff + 256.01, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0141.', },        startTime: timeDiff + 256.01, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0166.', },        startTime: timeDiff + 256.01, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0146.', },        startTime: timeDiff + 256.01, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0129.', },        startTime: timeDiff + 256.01, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '06.71', },        startTime: timeDiff + 256.01, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.13', },     startTime: timeDiff + 256.01, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.13', },     startTime: timeDiff + 256.01, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.14', },      startTime: timeDiff + 256.01, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.38', }, startTime: timeDiff + 256.01, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.355', },     startTime: timeDiff + 256.01, },
+    { action: { target3D: 'tReduct', color: 'green', number: '034.0', },        startTime: timeDiff + 256.01, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '24.00', },   startTime: timeDiff + 256.01, },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.11', },    startTime: timeDiff + 256.02, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '056.3', },    startTime: timeDiff + 256.02, },
+    ////-----------------------------------44--------------------------//// 
+    {      lifeTime: '12:23:00',      startTime: timeDiff + 257,    },
+    {
+      text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
+      sender: 'Система',
+      audio: 'SoundSnortFurma', // 3.5
+      startTime: timeDiff + 258,
+    }, 
+    {multi: [{action: {target2D: 'R_Snort',},},{action: {target2D: 'R_Furm',},},],startTime: timeDiff + 259,human: true,},
+
+    ////-----------------------------------45--------------------------//// 
+    {
+      text: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say',
+      startTime: timeDiff + 260,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 261, human: true, },
+    {
+      text: 'На фурмах 1,5.',
+      sender: 'Газовщик',
+      audio: 'tts-vo77', //  2.7
+      startTime: timeDiff + 262,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 265, },
+    {
+      text: 'Закрывайте свечи.',
+      sender: 'Мастер печи',
+      audio: 'tts-vo77', // 1.6
+      startTime: timeDiff + 265.5,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 267, human: true,},
+    {
+      text: 'Закрываем атмосферные клапана.',
+      sender: 'Газовщик',
+      audio: 'tts--vo45', // 2.5
+      startTime: timeDiff + 268,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 271, },
+    ////--------------------------------46--------------------------//// 
+    {
+      scenarioText: 'Закрыть атмосферные клапаны',
+      text: 'Закрыть атмосферные клапаны доменной печи. Проверить плотность закрытия атмосферных клапанов.',
+      sender: 'Система',
+      audio: 'tts--46', // 6
+      startTime: timeDiff + 272,
+    },
+    ////--------------------------------47--------------------------//// 
+    {
+      text: 'Закрыть атмосферные клапаны 1, 2 (с дросселем-регулятором), 3 (с гидравлическим приводом)',
+      sender: 'Система',
+      audio: 'tts--47', // 6.6
+      startTime: timeDiff + 279,
+    },
+    { action: { target3D: 'Handle_033', rotation: { y: 0.785398 },  }, duration: 0.3,  startTime: timeDiff + 280, human: true, },
+    { action: { target3D: 'Lamp_Green_006', material: 'Green_Lamp_Off',  },            startTime: timeDiff + 271,              },
+    { action: { target3D: 'Lamp_Red_006', material: 'Red_Lamp_On',  },                 startTime: timeDiff + 272,              },
+    { action: { target3D: 'Lamp_Red_006', material: 'Red_Lamp_Off', },                 startTime: timeDiff + 273,              },
+    { action: { target3D: 'Lamp_Red_006', material: 'Red_Lamp_On',  },                 startTime: timeDiff + 274,              },
+    { action: { target3D: 'Lamp_Red_006', material: 'Red_Lamp_Off', },                 startTime: timeDiff + 275,              },
+    { action: { target3D: 'Lamp_Red_006', material: 'Red_Lamp_On',  },                 startTime: timeDiff + 276,              },
+
+    { action: { target3D: 'Handle_034', rotation: { y: 0.785398 },  }, duration: 0.3,  startTime: timeDiff + 276, human: true, },
+    { action: { target3D: 'Lamp_Green_007', material: 'Green_Lamp_Off',  },            startTime: timeDiff + 277,              },
+    { action: { target3D: 'Lamp_Red_007', material: 'Red_Lamp_On',  },                 startTime: timeDiff + 278,              },
+    { action: { target3D: 'Lamp_Red_007', material: 'Red_Lamp_Off', },                 startTime: timeDiff + 279,              },
+    { action: { target3D: 'Lamp_Red_007', material: 'Red_Lamp_On',  },                 startTime: timeDiff + 280,              },
+    { action: { target3D: 'Lamp_Red_007', material: 'Red_Lamp_Off', },                 startTime: timeDiff + 281,              },
+    { action: { target3D: 'Lamp_Red_007', material: 'Red_Lamp_On',  },                 startTime: timeDiff + 282,              },
+
+    { action: { target3D: 'Handle_032', rotation: { y: 0.785398 },  }, duration: 0.3,  startTime: timeDiff + 283, human: true, },
+    { action: { target3D: 'Lamp_Green_005', material: 'Green_Lamp_Off',  },            startTime: timeDiff + 284,              },
+    { action: { target3D: 'Lamp_Red_005', material: 'Red_Lamp_On',  },                 startTime: timeDiff + 285,              },
+    { action: { target3D: 'Lamp_Red_005', material: 'Red_Lamp_Off', },                 startTime: timeDiff + 286,              },
+    { action: { target3D: 'Lamp_Red_005', material: 'Red_Lamp_On',  },                 startTime: timeDiff + 287,              },
+    { action: { target3D: 'Lamp_Red_005', material: 'Red_Lamp_Off', },                 startTime: timeDiff + 288,              },
+    { action: { target3D: 'Lamp_Red_005', material: 'Red_Lamp_On',  },                 startTime: timeDiff + 289,              },
+
+    ////--------------------------------48--------------------------//// 
+    { action: { target3D: 'Handle_034', rotation: { y: 0 },  }, duration: 0.3,  startTime: timeDiff + 290, human: true, },
+    { action: { target3D: 'Handle_033', rotation: { y: 0 },  }, duration: 0.3,  startTime: timeDiff + 291, human: true, },
+    { action: { target3D: 'Handle_032', rotation: { y: 0 },  }, duration: 0.3,  startTime: timeDiff + 292, human: true, },
+    // multi { multi: [ { action: { target3D: 'Handle_033', rotation: { y: 0 }, } }, { action: { target3D: 'Handle_034', rotation: { y: 0 }, } }, { action: { target3D: 'Handle_032', rotation: { y: 0 }, } }],startTime: timeDiff + 514,human: true,},
+    {
+      text: 'Атмосферные клапана закрыты и находятся в нейтральном положении.',
+      sender: 'Система',
+      audio: 'tts--48', // 5
+      startTime: timeDiff + 293,
+    },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0.219', },        startTime: timeDiff + 299.01, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.120', },         startTime: timeDiff + 299.01, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.385', },         startTime: timeDiff + 299.01, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1.123', },          startTime: timeDiff + 299.01, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4188.', },      startTime: timeDiff + 299.01, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '1.561', },        startTime: timeDiff + 299.01, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.82', },      startTime: timeDiff + 299.01, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.87', },      startTime: timeDiff + 299.01, },
+    { action: { target3D: 'urZasMeh', color: 'green', number: '0000', },        startTime: timeDiff + 299.01, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0145.', },        startTime: timeDiff + 299.01, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0171.', },        startTime: timeDiff + 299.01, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0149.', },        startTime: timeDiff + 299.01, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0132.', },        startTime: timeDiff + 299.01, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '09.06', },        startTime: timeDiff + 299.01, },
+    { action: { target3D: 'tVGazT6', color: 'green', number: '00.40', },        startTime: timeDiff + 299.01, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1098.', },        startTime: timeDiff + 299.01, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.13', },     startTime: timeDiff + 299.01, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.14', },     startTime: timeDiff + 299.01, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.14', },      startTime: timeDiff + 299.01, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.38', }, startTime: timeDiff + 299.01, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2332', },      startTime: timeDiff + 299.01, },
+    { action: { target3D: 'tReduct', color: 'green', number: '0349', },         startTime: timeDiff + 299.01, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '2482', },    startTime: timeDiff + 299.01, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '0000', },      startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.03', },    startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuVesNetto_l', color: 'red', number: '093.0', },    startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '001.3', },  startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0085', },   startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '074.4', },    startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.20', },    startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '016.2', },    startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuPolShihZat_r', color: 'red', number: '001.3', },  startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '033.5', },    startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuVremVigruz_r', color: 'red', number: '0096', },   startTime: timeDiff + 299.01, },
+    { action: { target3D: 'bzuUrovZasip', color: 'red', number: '02.81', },     startTime: timeDiff + 299.01, },
+
+    ////--------------------------------49--------------------------//// 
+    {
+      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say', // 1.567
+      startTime: timeDiff + 300,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 301,    human: true, },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_on', },  startTime: timeDiff + 302,                 },
+    {
+      text: 'Атмосферные клапана закрыты. На фурмах 1 и 5.',
+      sender: 'Газовщик',
+      audio: 'tts-vo80', // 4.1
+      startTime: timeDiff + 303,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 308,                 },
+    {
+      text: 'Николай Владимирович, выходи на режим.',
+      sender: 'Мастер печи',
+      audio: 'tts-vo81', // 2.8
+      startTime: timeDiff + 309,
+    },
+    { action: { target3D: 'ButtonHightlight_046', },                startTime: timeDiff + 310,    human: true, },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_on', },  startTime: timeDiff + 311,                 },
+    {
+      text: 'Понятно, полный ход.',
+      sender: 'Газовщик',
+      audio: 'tts-vo82', // 1.9
+      startTime: timeDiff + 312,
+    },
+    { action: { target3D: 'bzuDavlenie_l',   color: 'red', number: '00.31', }, startTime: timeDiff + 314.1, },
+    { action: { target3D: 'bzuVesNetto_l',   color: 'red', number: '093.1', }, startTime: timeDiff + 314.1, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '001.3', }, startTime: timeDiff + 314.1, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0085',  }, startTime: timeDiff + 314.1, },
+    { action: { target3D: 'bzuFactUgol_l',   color: 'red', number: '209.7', }, startTime: timeDiff + 314.1, },
+    { action: { target3D: 'bzuDavlenie_r',   color: 'red', number: '00.28', }, startTime: timeDiff + 314.1, },
+    { action: { target3D: 'bzuVesNetto_r',   color: 'red', number: '016.2', }, startTime: timeDiff + 314.1, },
+    {      lifeTime: '12:25:00',      startTime: timeDiff + 314.2,    },
+
+    ////--------------------------------50--------------------------//// 
+    {
+      scenarioText: 'Дать команду открыть кислород.',
+      sender: 'Система',
+      audio: 'telephone_say', // 1.7
+      startTime: timeDiff + 315,
+    },
+    { action: { target3D: 'PhoneButton017', }, startTime: timeDiff + 316, human: true, },
+    {
+      text: 'Открывайте 10000 кислорода.',
+      sender: 'Газовщик',
+      audio: 'tts-vo83', // 2.37
+      startTime: timeDiff + 317,
+    },
+    {
+      text: 'Понял, выполняю.',
+      sender: 'Инженер-энергетик',
+      audio: 'tts-vo84', // 1.76
+      startTime: timeDiff + 320,
+    }, 
+    { action: { windows2D: { elements: [ {name: 'EVD1_O', text: '100'}    ] } }, startTime : timeDiff + 322.0, },
+    { action: { windows2D: { elements: [ {name: 'EVD1_O', text: '400'}    ] } }, startTime : timeDiff + 322.1, },
+    { action: { windows2D: { elements: [ {name: 'EVD1_O', text: '900'}    ] } }, startTime : timeDiff + 322.2, },
+    { action: { windows2D: { elements: [ {name: 'EVD1_O', text: '1500'}   ] } }, startTime : timeDiff + 322.3, },
+    { action: { windows2D: { elements: [ {name: 'EVD1_O', text: '2500'}   ] } }, startTime : timeDiff + 322.4, },
+    { action: { windows2D: { elements: [ {name: 'EVD1_O', text: '5000'}   ] } }, startTime : timeDiff + 322.5, },
+    { action: { windows2D: { elements: [ {name: 'EVD1_O', text: '7500'}   ] } }, startTime : timeDiff + 322.6, },
+    { action: { windows2D: { elements: [ {name: 'EVD1_O', text: '9999'}   ] } }, startTime : timeDiff + 322.7, },
+    { action: { windows2D: { elements: [ {name: 'EVD1_O', text: '10100'}  ] } }, startTime : timeDiff + 322.7, },
+    ////--------------------------------51--------------------------////
+    {
+      scenarioText: 'Повысить давление.',
+      text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 1,7 кгс/см².',
+      audio: 'tts--51', // 4.7
+      sender: 'Система',
+      startTime: timeDiff + 323,
+    },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785  }, }, duration: 0.15, startTime: timeDiff + 324, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0      }, }, duration: 0.15, startTime: timeDiff + 325, human: true, },
+    { // На схеме ДП будет падать давление с Н24 до Н20, а на фурмах с 1.50 поднимется до 1.70.
+      action: {
+        windows2D:{
+          elements:[
+            { name: 'H_snotr', text: '20' },
+            { name: 'dp_kl_red', color: '#6E6E6E' },
+            { name: 'H_progres_7',    opacity: '1' },
+            { name: 'H_progres_19',   opacity: '1' },
+            { name: 'H_progres_22',   opacity: '1' },
+            { name: 'H_progres_33',   opacity: '0' },
+            { name: 'H_progres_49',   opacity: '0' },
+            { name: 'H_progres_56',   opacity: '0' },
+            { name: 'H_progres_60',   opacity: '0' },
+            { name: 'H_progres_89',   opacity: '0' },
+            { name: 'H_progres_100',  opacity: '0' },
+            { name: 'P_2', text: '1.70' },
+            { name: 'P_2_rect', color: "#ffffff" }
+          ]
+        }
+      },
+      startTime: timeDiff + 326,
+    },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4175.',     }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '1.654',       }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.82',     }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.87',     }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'urZasMeh', color: 'green', number: '0000',       }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0137.',       }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '06.54',       }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'tVGazT6', color: 'green', number: '00.40',       }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1100.',       }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.13',     }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.37',}, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.342',    }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'tReduct', color: 'green', number: '035.1',       }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '24.84',  }, startTime: timeDiff + 326.01, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '0000',     }, startTime: timeDiff + 326.01, },
+
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.29',   }, startTime: timeDiff + 326.02, },
+    { action: { target3D: 'bzuVesNetto_l', color: 'red', number: '093.1',   }, startTime: timeDiff + 326.02, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '001.3', }, startTime: timeDiff + 326.02, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0085',  }, startTime: timeDiff + 326.02, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '217.0',   }, startTime: timeDiff + 326.02, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.28',   }, startTime: timeDiff + 326.02, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '016.2',   }, startTime: timeDiff + 326.02, },
+    { action: { target3D: 'bzuPolShihZat_r', color: 'red', number: '001.3', }, startTime: timeDiff + 326.02, },
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '33.5',    }, startTime: timeDiff + 326.02, },
+    { action: { target3D: 'bzuVremVigruz_r', color: 'red', number: '0096',  }, startTime: timeDiff + 326.02, },
+    { action: { target3D: 'bzuUrovZasip', color: 'red', number: '02.81',    }, startTime: timeDiff + 326.02, },
+    {      lifeTime: '12:26:00',      startTime: timeDiff + 326.03,    },
+    ////--------------------------------52--------------------------//// 
+    {
+      text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
+      sender: 'Система',
+      audio: 'SoundSnortFurma', // 3.5
+      startTime: timeDiff + 327,
+    }, 
+    {multi: [{action: {target2D: 'R_Snort',},},{action: {target2D: 'R_Furm',},},],startTime: timeDiff + 328, human: true,},
+    {
+      action: {
+        window2D: {
+          elements: [
+            // bzu full+
+            // { name: 'ochistka sedel_P', text: '5.36' },
+            // { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            // { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '31' },
+            // { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+            // { name: 'B1_dp Bunker', text: '-0.00' },
+            // { name: 'B1_P compes', text: '1.29' },
+            // { name: 'B1_vremy vygruski', text: '104' },
+            // { name: 'B1_vremy vygruski raschoytnoe ', text: '105' },
+            // { name: 'B1_vremy sbrosa P ', text: '0' },
+            // { name: 'B1_vremy nabora P ', text: '2' },
+            // { name: 'B1_ves s SHP',       text: '93.0' },
+            // { name: 'B1_vibratciya',      text: '2' },
+            // { name: 'V linii P_B1',       text: '201' }, // Б1
+            // { name: 'V linii dP_B1',      text: '228' },
+            // { name: 'V sisteme vzveh_B1', text: '191' },
+            // { name: 'V linii P_B2',       text: '148' }, // Б2
+            // { name: 'V linii dP_B2',      text: '275' },
+            // { name: 'V sisteme vzveh_B2', text: '165' },
+            // { name: 'rashody u davlenia v gazoprovode_P1', text: '1.32' },
+            // { name: 'rashody u davlenia v gazoprovode_P2', text: '1.32' },
+            // { name: 'rashody u davlenia v gazoprovode_P3', text: '1.32' },
+            // { name: 'rashody u davlenia v gazoprovode_P4', text: '1.32' },
+            // { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            // { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            // { name: 'rashody u davlenia v gazoprovode_F3', text: '129' },
+            // { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+            // { name: 'stanciia',             text: '8' },
+            // { name: 'ugol naklona_tekushiy',  text: '20.5' },
+            // { name: 'ugol naklona_zadanyi',   text: '33.4' },
+            // { name: 'gradusow ugol',          text: '20.1' },
+            // { name: 'prochent1', text: '1' }, // %
+            // { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            // { name: 'zagr_ramka_l', color: '#06FF06' }, // загр слева
+            // // не хватает схемы 
+            // { name: 'left_ellipse_text', text: 'Р',         opacity: '0' },
+            // { name: 'left_ellipse',      color: '#860004',  opacity: '0' }, // K
+            // { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            // { name: 'matrix 1 str 1_kgc', text: '1.30' }, // кгс/см
+            // { name: 'matrix 1 str 1_T', text: '-0.2' }, // T
+            // { name: 'matrix 1 str 1_M', text: '-0.1' }, // M3
+            // { name: 'primoygolinik_smehivateli', color: '#860004' }, // горизонтальная палочка слева
+            // // не хватает схемы ПУСТ, зеленая/красная палочка рядом
+            // // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'HZ1', text: '1.3' }, // ШЗ слева
+            // { name: 'left_vugr_rect', color: '#E6E6E6' }, //  Выгр зеленые зеленые рамки
+            // { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            // { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            // { name: 'arrow_left', opacity: '0' }, // стрелка слева
+            // { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            // { name: 'btn_Pause_border', color: '#e6e6e6' }, // пауза по центру
+            // { name: 'leviy', color: '#860004' }, // палка от цифр слева
+
+            // { name: 'verx', text: '0' }, // цифры сверху
+            // // не хватает палочки горизонтальной под цифрами
+            // { name: 'black_arrow_under_verx', opacity: '0' }, // стрелка под цифрами
+
+            // { name: 'praviy', color: '#860004' }, // палка от цифр справа
+            // // не хватает элемента [К - в зеленом кружке]
+            // { name: 'tr_3_str_1_', text: '5' }, // 
+            // { name: 'tr_2_str_2_', text: '5' }, // 
+            // { name: 'cir_t_2', color: '#5E5E5E' },
+            // { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            // { name: 'rezym_A', color: '#06FF06' }, // текущий режим А задник
+            // { name: 'rezym_D', color: '#06FF06' }, // текущий режим Д задник
+            // { name: 'K_16_strelka', opacity: '0' }, // к16 сброс ошибки стрелка
+
+            // { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            // { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            // { name: 'matrix 1 str 14_kgc', text: '1.28' }, // kгс/см
+            // { name: 'matrix 1 str 14_T', text: '16.4' }, // t
+            // { name: 'matrix 1 str 14_M', text: '34.9' }, // 
+            // { name: 'pust_ramka_r', opacity: '0' }, // 
+            // { name: 'r_pust', opacity: '0' }, // 
+            // { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            // { name: 'prochent2', text: '1' }, // % справа
+            
+            // { name: 'klNKB-2_2',      color: '#06FF06' }, // НКВ-2 verh  // ilay
+            // { name: 'klNKB-2_1',      color: '#06FF06' }, // НКВ-2 niz   // ilay
+            // { name: 'vigruzca pravo', color: '#06FF06' }, // Выгр спарва   // ilay
+            
+
+            // { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            // { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            // { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '32' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+            { name: 'B2_Dp bunker', text: '-0.01' }, // 
+            { name: 'B2_P compens', text: '0.34' }, // 
+            { name: 'B2_time vygruski', text: '94' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '100' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '15.4' }, // 
+            { name: 'B2_vibratciya', text: '53' }, // 
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            { name: 'btn_ZapSledPorc_border', color: '#06FF06' }, //  Запрет след.порции задник
+
+            { name: 'given_level',   text: '0.90' }, // 
+            { name: 'tekushy_level', text: '2.82' }, // 
+            { name: 'radar 1',  text: '2.80' },   // 
+            { name: 'radar 2',  text: '2.89' },   // 
+            { name: 'mexan',    text: '2.82' },  // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'v rabote',   color: '#06FF06' }, // в работе текст // afk
+            { name: 'bg_vRabote', color: '#D0D1D3' }, // в работе       // afk
+            { name: 'ismetir_ramki',      color: '#06FF06' }, // Измерить задник
+            { name: 'mex.zond na huxte',  color: '#D0D1D3' }, //  зеленый квадрат Мех.зонд на шихт
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '5' }, // 
+            { name: 'T3_nomerstr', text: '5' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+            { name: 'B1_Tip',   color: '#860004' }, // 
+            { name: 'B2_Tip',   color: '#008600' }, // 
+            { name: 'T2_Tip',   color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip',   color: '#008600' }, // 
+            { name: 'B1_ves', text: '93.1' }, // 
+            { name: 'B2_ves', text: '16.4' }, // 
+            { name: 'T3_ves', text: '16.4' }, // 
+            { name: 'T2_ves', text: '16.4' }, // 
+            { name: 'T1_ves', text: '16.4' }, // 
+            // { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            // { name: 'P_str2', color: '#CEC7B5' }, // str 2 color
+            // { name: 'K_str1', color: '#008600' }, // str 1 color
+            // { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+
+            // { name: 'na_conveer_s1_bukca', text: 'См', opacity: '0' }, // str 2 
+            // { name: 'str1_down',           text: 'К' }, // str 2 
+            // { name: 'str51_down',          text: 'К' }, // str 51 
+            // { name: 'str2_P_1',   text: '0' }, // str 2-11 t
+            // { name: 'str2_P_2',   text: '0' }, // str 2-10 t
+            // { name: 'str2_P_3',   text: '0' }, // str 2-9 t
+            // { name: 'str2_P_4',   text: '13' }, // str 2-8 t
+            // { name: 'str2_P_5',   text: '13' }, // str 2-7 t
+            // { name: 'str2_P_6',   text: '13' }, // str 2-6 t
+            // { name: 'str2_P_7',   text: '11' }, // str 2-5 t
+            // { name: 'str2_P_8',   text: '10' }, // str 2-4 t
+            // { name: 'str2_P_9',   text: '10' }, // str 2-3 t
+            // { name: 'str2_P_10',  text: '9' }, // str 2-2 t
+            // { name: 'str2_P_11',  text: '21' }, // str 2-1 t
+            // { name: 'str2_P_12',  text: '16.2' }, // str 2-ves t
+            // { name: 'Str1_8', color: '#008600' }, // str 1-8 r  // #008600
+            // { name: 'Str1_4', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'Str1_1', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'str1_K_1',   text: '0' }, // str 1-11 t
+            // { name: 'str1_K_2',   text: '0' }, // str 1-10 t
+            // { name: 'str1_K_3',   text: '0' }, // str 1-9 t
+            // { name: 'str1_K_4',   text: '22' }, // str 1-8 t
+            // { name: 'str1_K_5',   text: '21' }, // str 1-7 t
+            // { name: 'str1_K_6',   text: '19' }, // str 1-6 t
+            // { name: 'str1_K_7',   text: '15' }, // str 1-5 t
+            // { name: 'str1_K_8',   text: '13' }, // str 1-4 t
+            // { name: 'str1_K_9',   text: '10' }, // str 1-3 t
+            // { name: 'str1_K_10',  text: '0' },  // str 1-2 t
+            // { name: 'str1_K_11',  text: '0' },  // str 1-1 t
+            // { name: 'str1_K_12',  text: '93.0' }, // str 1-ves t
+         
+            // { name: 'str51_SM_1',   text: '0' }, // str 51-11 t
+            // { name: 'str51_SM_2',   text: '0' }, // str 51-10 t
+            // { name: 'str51_SM_3',   text: '0' }, // str 51-9 t
+            // { name: 'str51_SM_4',   text: '0' }, // str 51-8 t
+            // { name: 'str51_SM_5',   text: '0' }, // str 51-7 t
+            // { name: 'str51_SM_6',   text: '0' }, // str 51-6 t
+            // { name: 'str51_SM_7',   text: '0  0' }, // str 51-5-4 t
+            // { name: 'str51_SM_8',   text: '0' }, // str 51-3 t
+            // { name: 'str51_SM_9',   text: '0' }, // str 51-2 t
+            // { name: 'str51_SM_10',  text: '100' }, // str 51-1 t
+            // { name: 'str51_SM_11',  text: '15.0' }, // str 51-ves t
+          ]
+        }
+      },
+      starttime: timeDiff + 328.5,
+    },
+    ////--------------------------------53--------------------------////
+    {
+      scenarioText: 'Сбросить контроль прогара фурм.',
+      text: 'Сбросить контроль прогара фурм.',
+      audio: 'tts--53', // 2.5
+      sender: 'Система',
+      startTime: timeDiff + 329,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'KP_c_1_17',    stroke: '#009933' },
+            { name: 'KP_c_2_17',    stroke: '#4d4d4d' },
+            { name: 'KP_c_3_17',    stroke: '#009933' },
+            { name: 'KP_c_4_17',    stroke: '#009933' },
+            { name: 'KP_c_5_17',    stroke: '#009933' },
+            { name: 'KP_c_6_17',    stroke: '#009933' },
+            { name: 'KP_c_7_17',    stroke: '#009933' },
+            { name: 'KP_c_8_17',    stroke: '#009933' },
+            { name: 'KP_c_9_17',    stroke: '#009933' },
+            { name: 'KP_c_10_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_11_17',   stroke: '#009933' },
+            { name: 'KP_c_12_17',   stroke: '#009933' },
+            { name: 'KP_c_13_17',   stroke: '#009933' },
+            { name: 'KP_c_14_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_15_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_16_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_17_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_18_17',   stroke: '#009933' },
+            { name: 'KP_c_19_17',   stroke: '#009933' },
+            { name: 'KP_c_20_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_21_17',   stroke: '#009933' },
+            { name: 'KP_c_22_17',   stroke: '#009933' },
+            { name: 'KP_c_23_17',   stroke: '#009933' },
+            { name: 'KP_c_24_17',   stroke: '#009933' },
+            { name: 'KP_c_25_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_26_17',   stroke: '#009933' },
+            { name: 'KP_c_27_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_28_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_29_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_30_17',   stroke: '#4d4d4d' },
+            { name: 'KP_c_31_17',   stroke: '#009933' },
+            { name: 'KP_c_32_17',   stroke: '#4d4d4d' },
+          ]
+        }
+      },
+      startTime: timeDiff + 332,
+    },
+
+    { 
+      multi: [
+        { action: { target2D: 'Progar_T2_1',  window2D: { elements: [ {name: 'KP_c_5_1',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_3',  window2D: { elements: [ {name: 'KP_c_5_3',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_4',  window2D: { elements: [ {name: 'KP_c_5_4',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_5',  window2D: { elements: [ {name: 'KP_c_5_5',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_6',  window2D: { elements: [ {name: 'KP_c_5_6',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_7',  window2D: { elements: [ {name: 'KP_c_5_7',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_9',  window2D: { elements: [ {name: 'KP_c_5_9',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_11', window2D: { elements: [ {name: 'KP_c_5_11',   stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_12', window2D: { elements: [ {name: 'KP_c_5_12',   stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_13', window2D: { elements: [ {name: 'KP_c_5_13',   stroke: '#808080'} ] } }, },
+
+        { action: { target2D: 'Progar_T2_18', window2D: { elements: [ {name: 'KP_c_7_2',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_19', window2D: { elements: [ {name: 'KP_c_7_3',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_21', window2D: { elements: [ {name: 'KP_c_7_5',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_22', window2D: { elements: [ {name: 'KP_c_7_6',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_23', window2D: { elements: [ {name: 'KP_c_7_7',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_25', window2D: { elements: [ {name: 'KP_c_7_9',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_26', window2D: { elements: [ {name: 'KP_c_7_10',   stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_30', window2D: { elements: [ {name: 'KP_c_7_14',   stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T2_31', window2D: { elements: [ {name: 'KP_c_7_15',   stroke: '#808080'} ] } }, },
+
+        { action: { target2D: 'Progar_T3_9',  window2D: { elements: [ {name: 'KP_c_9_9',    stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T3_25', window2D: { elements: [ {name: 'KP_c_10_9',   stroke: '#808080'} ] } }, },
+        { action: { target2D: 'Progar_T3_31', window2D: { elements: [ {name: 'KP_c_10_15',  stroke: '#808080'} ] } }, },
+        
+      ],
+      startTime: timeDiff + 333,
+      human: true,
+    },
+    {
+      action: {
+        window2D: {
+          elements: [
+            // bzu full+
+            { name: 'ochistka sedel_P', text: '6.06' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '31' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+            { name: 'B1_dp Bunker', text: '-0.02' },
+            { name: 'B1_P compes', text: '0.29' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP',       text: '93.0' },
+            { name: 'B1_vibratciya',      text: '2' },
+            { name: 'V linii P_B1',       text: '231' }, // Б1
+            { name: 'V linii dP_B1',      text: '225' },
+            { name: 'V sisteme vzveh_B1', text: '193' },
+            { name: 'V linii P_B2',       text: '148' }, // Б2
+            { name: 'V linii dP_B2',      text: '245' },
+            { name: 'V sisteme vzveh_B2', text: '1655' },
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.27' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.28' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.27' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.28' },
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '130' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+            { name: 'stanciia',             text: '8' },
+            { name: 'ugol naklona_tekushiy',  text: '33.3' },
+            { name: 'ugol naklona_zadanyi',   text: '33.4' },
+            { name: 'gradusow ugol',          text: '256.4' },
+            { name: 'prochent1', text: '0' }, // %
+            { name: 'jelob_ramka',  color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#06FF06' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', text: 'Р',         opacity: '1' },
+            { name: 'left_ellipse',      color: '#860004',  opacity: '1' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.29' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '93.0' }, // T
+            { name: 'matrix 1 str 1_M', text: '67.7' }, // M3
+            { name: 'primoygolinik_smehivateli', color: '#860004' }, // горизонтальная палочка слева
+            // не хватает схемы ПУСТ, зеленая/красная палочка рядом
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.4' }, // ШЗ слева
+            { name: 'left_vugr_rect', color: '#06FF06' }, //  Выгр зеленые зеленые рамки
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка слева
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            { name: 'btn_Pause_border', color: '#e6e6e6' }, // пауза по центру
+            { name: 'leviy', color: '#860004' }, // палка от цифр слева
+
+            { name: 'verx', text: '0' }, // цифры сверху
+            // не хватает палочки горизонтальной под цифрами
+            { name: 'black_arrow_under_verx', opacity: '0' }, // стрелка под цифрами
+
+            { name: 'praviy', color: '#860004' }, // палка от цифр справа
+            // не хватает элемента [К - в зеленом кружке]
+            { name: 'tr_3_str_1_', text: '5' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            { name: 'rezym_A', color: '#06FF06' }, // текущий режим А задник
+            { name: 'rezym_D', color: '#06FF06' }, // текущий режим Д задник
+            { name: 'K_16_strelka', opacity: '0' }, // к16 сброс ошибки стрелка
+
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '0.25' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '16.4' }, // t
+            { name: 'matrix 1 str 14_M', text: '34.9' }, // 
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            { name: 'prochent2', text: '0' }, // % справа
+            
+            { name: 'klNKB-2_2',      color: '#06FF06' }, // НКВ-2 verh  // ilay
+            { name: 'klNKB-2_1',      color: '#06FF06' }, // НКВ-2 niz   // ilay
+            { name: 'vigruzca pravo', color: '#06FF06' }, // Выгр спарва   // ilay
+            
+
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '31' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+            { name: 'B2_Dp bunker', text: '-0.02' }, // 
+            { name: 'B2_P compens', text: '0.33' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '100' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP',      text: '16.4' }, // 
+            { name: 'B2_vibratciya',    text: '53' }, // 
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            { name: 'btn_ZapSledPorc_border', color: '#06FF06' }, //  Запрет след.порции задник
+
+            { name: 'given_level',   text: '0.90' }, // 
+            { name: 'tekushy_level', text: '2.84' }, // 
+            { name: 'radar 1',  text: '2.81' },   // 
+            { name: 'radar 2',  text: '2.88' },   // 
+            { name: 'mexan',    text: '2.84' },  // 
+
+            { name: 'bzu_bg_dosZadYrov',    color: '#06FF06' },  // Достигнут заданный уровень ЗАДНИК
+
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'v rabote',   color: '#06FF06' }, // в работе текст // afk
+            { name: 'bg_vRabote', color: '#D0D1D3' }, // в работе       // afk
+            { name: 'ismetir_ramki',      color: '#06FF06' }, // Измерить задник
+            { name: 'mex.zond na huxte',  color: '#06FF06' }, //  зеленый квадрат Мех.зонд на шихт
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '5' }, // 
+            { name: 'T3_nomerstr', text: '5' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+            { name: 'B1_Tip',   color: '#860004' }, // 
+            { name: 'B2_Tip',   color: '#008600' }, // 
+            { name: 'T2_Tip',   color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip',   color: '#008600' }, // 
+            { name: 'B1_ves', text: '93.0' }, // 
+            { name: 'B2_ves', text: '16.3' }, // 
+            { name: 'T3_ves', text: '16.4' }, // 
+            { name: 'T2_ves', text: '16.4' }, // 
+            { name: 'T1_ves', text: '16.4' }, // 
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#CEC7B5' }, // str 2 color
+            { name: 'K_str1', color: '#860004' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+
+            { name: 'na_conveer_s1_bukca', text: 'См', opacity: '0' }, // str 2 
+            { name: 'str1_down',           text: 'Р' }, // str 2 
+            { name: 'str51_down',          text: 'К' }, // str 51 
+            // { name: 'str2_P_1',   text: '0' }, // str 2-11 t
+            // { name: 'str2_P_2',   text: '0' }, // str 2-10 t
+            // { name: 'str2_P_3',   text: '0' }, // str 2-9 t
+            // { name: 'str2_P_4',   text: '13' }, // str 2-8 t
+            // { name: 'str2_P_5',   text: '13' }, // str 2-7 t
+            // { name: 'str2_P_6',   text: '13' }, // str 2-6 t
+            // { name: 'str2_P_7',   text: '11' }, // str 2-5 t
+            // { name: 'str2_P_8',   text: '10' }, // str 2-4 t
+            // { name: 'str2_P_9',   text: '10' }, // str 2-3 t
+            // { name: 'str2_P_10',  text: '9' }, // str 2-2 t
+            // { name: 'str2_P_11',  text: '21' }, // str 2-1 t
+            // { name: 'str2_P_12',  text: '16.2' }, // str 2-ves t
+            // { name: 'Str1_8', color: '#008600' }, // str 1-8 r  // #008600
+            // { name: 'Str1_4', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'Str1_1', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'str1_K_1',   text: '0' }, // str 1-11 t
+            // { name: 'str1_K_2',   text: '0' }, // str 1-10 t
+            // { name: 'str1_K_3',   text: '0' }, // str 1-9 t
+            // { name: 'str1_K_4',   text: '22' }, // str 1-8 t
+            // { name: 'str1_K_5',   text: '21' }, // str 1-7 t
+            // { name: 'str1_K_6',   text: '19' }, // str 1-6 t
+            // { name: 'str1_K_7',   text: '15' }, // str 1-5 t
+            // { name: 'str1_K_8',   text: '13' }, // str 1-4 t
+            // { name: 'str1_K_9',   text: '10' }, // str 1-3 t
+            // { name: 'str1_K_10',  text: '0' },  // str 1-2 t
+            // { name: 'str1_K_11',  text: '0' },  // str 1-1 t
+            // { name: 'str1_K_12',  text: '93.0' }, // str 1-ves t
+         
+            // { name: 'str51_SM_1',   text: '0' }, // str 51-11 t
+            // { name: 'str51_SM_2',   text: '0' }, // str 51-10 t
+            // { name: 'str51_SM_3',   text: '0' }, // str 51-9 t
+            // { name: 'str51_SM_4',   text: '0' }, // str 51-8 t
+            // { name: 'str51_SM_5',   text: '0' }, // str 51-7 t
+            // { name: 'str51_SM_6',   text: '0' }, // str 51-6 t
+            // { name: 'str51_SM_7',   text: '0  0' }, // str 51-5-4 t
+            // { name: 'str51_SM_8',   text: '0' }, // str 51-3 t
+            // { name: 'str51_SM_9',   text: '0' }, // str 51-2 t
+            // { name: 'str51_SM_10',  text: '100' }, // str 51-1 t
+            // { name: 'str51_SM_11',  text: '15.0' }, // str 51-ves t
+          ]
+        }
+      },
+      starttime: timeDiff + 334,
+    },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0.267',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.091',      },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.484',      },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1238',        },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4294.',   },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '1.753',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.83',   },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.90',   },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'urZasMeh', color: 'green', number: '0000',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0155.',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0182.',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0157.',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0140.',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '06.52',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'tVGazT6', color: 'green', number: '00.39',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1100.',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.13',  },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.14',  },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.12',   },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.36', }, startTime: timeDiff + 334.01, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.339',  },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'tReduct', color: 'green', number: '035.1',     },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '24.82', },   startTime: timeDiff + 334.01, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '0000',   },    startTime: timeDiff + 334.01, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.24',   },  startTime: timeDiff + 334.02, },
+
+    ////--------------------------------54--------------------------////
+    {
+      text: 'Прикрывая клапан «СНОРТ» поднять давление горючего дутья до 2,00 кгс/см².',
+      audio: 'tts--51', // 4.7
+      sender: 'Система',
+      startTime: timeDiff + 335,
+    },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785  }, }, duration: 0.15, startTime: timeDiff + 336, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0      }, }, duration: 0.15, startTime: timeDiff + 337, human: true, },
+    { 
+      action: {
+        windows2D:{
+          elements:[
+            { name: 'H_snotr', text: '15' },
+            { name: 'dp_kl_red', color: '#6E6E6E' },
+            { name: 'H_progres_7',    opacity: '1' },
+            { name: 'H_progres_19',   opacity: '1' },
+            { name: 'H_progres_22',   opacity: '1' },
+            { name: 'H_progres_33',   opacity: '0' },
+            { name: 'H_progres_49',   opacity: '0' },
+            { name: 'H_progres_56',   opacity: '0' },
+            { name: 'H_progres_60',   opacity: '0' },
+            { name: 'H_progres_89',   opacity: '0' },
+            { name: 'H_progres_100',  opacity: '0' },
+            { name: 'P_2', text: '2.00' },
+            { name: 'P_2_rect', color: "#ffffff" }
+          ]
+        }
+      },
+      startTime: timeDiff + 338,
+    },
+    { 
+      action: {
+        windows2D:{
+          elements:[
+            // #region dp full 
+            { name: 'radar1_text', text: '2.80' },
+            { name: 'radar2_text', text: '2.88' },
+            { name: 'radar3_text', text: '2.84' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+            { name: 'EKZ_H1', text: '51' },
+            { name: 'EKZ_H2', text: '51' },
+            { name: 'EKZ_H3', text: '51' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 1 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+            { name: 'EVS_DP7_O', text: '55096' },
+            { name: 'EVD1_O', text: '0' },
+            { name: 'EVS_DP7_F', text: '7195' },
+             { name: 'EVD1_F', text: '302169' },
+            { name: 'EVD_F', text: '300281' },
+            { name: 'P_1', text: '2.02' },
+            { name: 'F_evd', text: '5036' },
+            { name: 'F_hol_dyt', text: '3891' },
+            { name: 'T_hol_dyt', text: '49' },
+            { name: 'O_hol_dyt', text: '21.0' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.6' },
+            { name: 'FO2_hol_dyt', text: '1110' },
+            { name: 'N2', text: '68.3' },
+            { name: 'CO', text: '16.8' },
+            { name: 'CO2', text: '13.2' },
+            { name: 'H2_tryb', text: '1.1' },
+            { name: 'Nco_tryb', text: '44.0' },
+            { name: 'Q_domG_tryb', text: '552', opacity: '1' },
+            { name: 'P_vozd_tryb', text: '2' },
+            { name: 'P_gaza_tryb', text: '19' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+            // { name: 'H_snotr', text: '15' },
+            // { name: 'kl_red', color: '#00DA01' },
+            // { name: 'H_progres_7', opacity: '1' },
+            // { name: 'H_progres_19', opacity: '1' },
+            // { name: 'H_progres_22', opacity: '1' },
+            // { name: 'H_progres_33', opacity: '1' },
+            // { name: 'H_progres_49', opacity: '1' },
+            // { name: 'H_progres_56', opacity: '1' },
+            // { name: 'H_progres_60', opacity: '1' },
+            // { name: 'H_progres_89', opacity: '1' },
+            // { name: 'H_progres_100', opacity: '1' },
+            { name: 'H_step_isp',   text: '52.9', opacity: '1' },
+            { name: 'HCO_step_isp', text: '44.6' },
+            { name: 'Tkyp_3', text: '1115' },
+            { name: 'Tkyp_2', text: '1103' },
+            { name: 'Tkyp_1', text: '1208' },
+            { name: 'Tkyp_3_rect', color: '#ffff0f' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+            { name: 'VNK3_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK3_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK2_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK1_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3',     text: '0' },
+            { name: 'Fgaz_2',     text: '0' },
+            { name: 'VNK1_Fb',   text: '0' },
+            { name: 'VNK1_Fr',   text: '0' },
+            { name: 'Tdym_3', text: '132' },
+            { name: 'Tdym_2', text: '169' },
+            { name: 'Tdym_1', text: '155' },
+            { name: 'P_Os_szat_voz', text: '8.31' },
+            { name: 'T_Os_szat_voz', text: '26' },
+            { name: 'Temp_peref_1',   text: '57' },
+            { name: 'Temp_peref_2',   text: '47' },
+            { name: 'Temp_peref_3',   text: '52' },
+            { name: 'Temp_peref_4',   text: '48' },
+            { name: 'Temp_peref_5',   text: '58' },
+            { name: 'Temp_peref_6',   text: '51' },
+            { name: 'Temp_peref_7',   text: '54' },
+            { name: 'Temp_peref_8',   text: '54' },
+            { name: 'Temp_peref_9',   text: '67' },
+            { name: 'Temp_peref_10',  text: '49' },
+            { name: 'Temp_peref_11',  text: '51' },
+            { name: 'Temp_peref_12',  text: '56' },
+            { name: 'Temp_peref_13',  text: '89' },
+            { name: 'Temp_peref_14',  text: '51' },
+            { name: 'Temp_peref_15',  text: '58' },
+            { name: 'Temp_peref_16',  text: '48' },
+            { name: 'T1', text: '134' },
+            { name: 'T2', text: '157' },
+            { name: 'T3', text: '134' },
+            { name: 'T4', text: '120' },
+            { name: 'P_2', text: '1.96' },
+            { name: 'P_2_rect', color: "#ffffff" },
+            { name: 't_gor_dut', text: '1100' },
+            { name: 't_gor_dut_spravaRydom', text: '1100' },
+            { name: 'H_Os_szat_voz', text: '68' },
+            { name: 't_prirodn_gaz', text: '15' },
+            { name: 'P_pg_prir_gaz', text: '8,64' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '0' },
+            { name: 'H_prir_gaz', text: '2' },
+            { name: 'F_tryba', text: '318693' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.33' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.11' },
+            { name: 'dP_verh_rect', color: '#ffffff' },
+            { name: 'dP_obsh_tryba', text: '1.64' },
+            { name: 'dP_obsh_trybarect', color: '#ffffff' },
+            { name: 'dP_nish_tryba', text: '1.52' },
+            { name: 'dP_nish_rect', color: '#ffffff' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'zadanie_rect', color: '#ffffff' },
+            { name: 'TTG_raschet', text: '2300', opacity: '1' },
+            { name: 'F_pg_prir_gaz', text: '0' },
+            { name: 'dF_pg_prir_gaz', text: '0' },
+            { name: 'L1', text: '1428', opacity: '0' },
+            { name: 'L2', text: '1428', opacity: '0' },
+            { name: 'L4', text: '1428', opacity: '0' },
+            { name: 'L3', text: '1428', opacity: '0' },
+            { name: 'L1_elem', color: '#ffffff' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L4_elem', color: '#ffffff' },
+            { name: 'L3_elem', color: '#ffffff' },
+            { name: 'P_tryba_1_590', text: '0.33' },
+            { name: 'P_tryba_1_591', text: '0.33' },
+            { name: 'P_tryba_1_592', text: '0.33' },
+            { name: 'P_tryba_1_593', text: '0.33' },
+            { name: 'P_tryba_2_1', text: '0.38' },
+            { name: 'P_tryba_2_2', text: '0.38' },
+            { name: 'P_tryba_2_3', text: '0.38' },
+            { name: 'P_tryba_2_4', text: '0.38' },
+            { name: 'P_tryba_3_590', text: '0.43' },
+            { name: 'P_tryba_3_591', text: '0.43' },
+            { name: 'P_tryba_4_1', text: '2.45' },
+            { name: 'P_tryba_4_2', text: '1.74' },
+            { name: 'P_tryba_4_3', text: '2.56' },
+            { name: 'P_tryba_4_4', text: '1.90' },
+            { name: 'P_tryba_5_1', text: '0.91' },
+            { name: 'P_tryba_5_2', text: '1.39' },
+            { name: 'P_tryba_5_3', text: '1.78' },
+            { name: 'P_tryba_5_4', text: '2.50' },
+            { name: 'V_dyt', text: '211.8' },
+            { name: 'fyrm_v_rab', text: '0' },
+            { name: 'ydel_tep_18', text: '27.5' },
+            { name: 'ydel_tep_17', text: '33.3' },
+            { name: 'ydel_tep_16', text: '32.1' },
+            { name: 'ydel_tep_15', text: '27.7' },
+            { name: 'ydel_tep_12_14', text: '52.7' },
+            { name: 'ydel_tep_10_11', text: '14.4' },
+            { name: 'ydel_tep_9', text: '15.5' },
+            { name: 'ydel_tep_8', text: '14.2' },
+            { name: 'ydel_tep_7', text: '29.7' },
+            // #endregion
+            // #region bzu full
+            { name: 'ochistka sedel_P', text: '6.07' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '31' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+            { name: 'B1_dp Bunker', text: '-0.00' },
+            { name: 'B1_P compes', text: '0.34' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP',       text: '93.0' },
+            { name: 'B1_vibratciya',      text: '2' },
+            { name: 'V linii P_B1',       text: '201' }, // Б1
+            { name: 'V linii dP_B1',      text: '225' },
+            { name: 'V sisteme vzveh_B1', text: '192' },
+            { name: 'V linii P_B2',       text: '149' }, // Б2
+            { name: 'V linii dP_B2',      text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '165' },
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.34' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.35' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.34' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.35' },
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '129' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+            { name: 'stanciia',             text: '8' },
+            { name: 'ugol naklona_tekushiy',  text: '33.3' },
+            { name: 'ugol naklona_zadanyi',   text: '33.4' },
+            { name: 'gradusow ugol',          text: '98.1' },
+            { name: 'prochent1', text: '5' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#06FF06' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', text: 'Р',         opacity: '1' },
+            { name: 'left_ellipse',      color: '#860004',  opacity: '1' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.34' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '93.0' }, // T
+            { name: 'matrix 1 str 1_M', text: '47.7' }, // M3
+            { name: 'primoygolinik_smehivateli', color: '#860004' }, // горизонтальная палочка слева
+            // не хватает схемы ПУСТ, зеленая/красная палочка рядом
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.3' }, // ШЗ слева
+            { name: 'left_vugr_rect', color: '#06FF06' }, //  Выгр зеленые зеленые рамки
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка слева
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            { name: 'btn_Pause_border', color: '#e6e6e6' }, // пауза по центру
+            { name: 'leviy', color: '#860004' }, // палка от цифр слева
+
+            { name: 'verx', text: '-0' }, // цифры сверху
+            // не хватает палочки горизонтальной под цифрами
+            { name: 'black_arrow_under_verx', opacity: '0' }, // стрелка под цифрами
+
+            { name: 'praviy', color: '#860004' }, // палка от цифр справа
+            // не хватает элемента [К - в зеленом кружке]
+            { name: 'tr_3_str_1_', text: '5' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            { name: 'rezym_A', color: '#06FF06' }, // текущий режим А задник
+            { name: 'rezym_D', color: '#06FF06' }, // текущий режим Д задник
+            { name: 'K_16_strelka', opacity: '0' }, // к16 сброс ошибки стрелка
+
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '0.30' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '16.4' }, // t
+            { name: 'matrix 1 str 14_M', text: '34.4' }, // 
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            { name: 'prochent2', text: '2' }, // % справа
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '31' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+            { name: 'B2_Dp bunker', text: '0.00' }, // 
+            { name: 'B2_P compens', text: '0.37' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '100' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.4' }, // 
+            { name: 'B2_vibratciya', text: '53' }, // 
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            // { name: 'btn_ZapSledPorc_border', text: '6' }, //  Запрет след.порции задник
+
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '2.84' }, // 
+            { name: 'radar 1',  text: '2.80' }, // 
+            { name: 'radar 2',  text: '2.88' }, // 
+            { name: 'mexan',    text: '2.84' }, // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'v rabote',   color: '#2b2a29' }, // в работе текст
+            { name: 'bg_vRabote', color: '#06FF06' }, // в работе
+            { name: 'ismetir_ramki', color: '#06FF06' }, // Измерить задник
+            { name: 'mex.zond na huxte', color: '#06FF06' }, //  зеленый квадрат Мех.зонд на шихт
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '5' }, // 
+            { name: 'T3_nomerstr', text: '5' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+            { name: 'B1_Tip',   color: '#860004' }, // 
+            { name: 'B2_Tip',   color: '#008600' }, // 
+            { name: 'T2_Tip',   color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip',   color: '#008600' }, // 
+            { name: 'B1_ves', text: '93.0' }, // 
+            { name: 'B2_ves', text: '16.4' }, // 
+            { name: 'T3_ves', text: '16.4' }, // 
+            { name: 'T2_ves', text: '16.4' }, // 
+            { name: 'T1_ves', text: '16.4' }, // 
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#CEC7B5' }, // str 2 color
+            { name: 'K_str1', color: '#860004' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+
+            { name: 'na_conveer_s1_bukca', text: 'Р', opacity: '0' }, // str 2 
+            { name: 'str1_down', text: 'Р' }, // str 2 
+            { name: 'str51_down', text: 'К' }, // str 51 
+            { name: 'str2_P_1',   text: '0' }, // str 2-11 t
+            { name: 'str2_P_2',   text: '0' }, // str 2-10 t
+            { name: 'str2_P_3',   text: '0' }, // str 2-9 t
+            { name: 'str2_P_4',   text: '13' }, // str 2-8 t
+            { name: 'str2_P_5',   text: '13' }, // str 2-7 t
+            { name: 'str2_P_6',   text: '13' }, // str 2-6 t
+            { name: 'str2_P_7',   text: '11' }, // str 2-5 t
+            { name: 'str2_P_8',   text: '10' }, // str 2-4 t
+            { name: 'str2_P_9',   text: '10' }, // str 2-3 t
+            { name: 'str2_P_10',  text: '9' }, // str 2-2 t
+            { name: 'str2_P_11',  text: '21' }, // str 2-1 t
+            { name: 'str2_P_12',  text: '16.2' }, // str 2-ves t
+            { name: 'Str1_8', color: '#008600' }, // str 1-8 r  // #008600
+            // { name: 'Str1_4', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'Str1_1', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'str1_K_1',   text: '0' }, // str 1-11 t
+            // { name: 'str1_K_2',   text: '0' }, // str 1-10 t
+            // { name: 'str1_K_3',   text: '0' }, // str 1-9 t
+            // { name: 'str1_K_4',   text: '22' }, // str 1-8 t
+            // { name: 'str1_K_5',   text: '21' }, // str 1-7 t
+            // { name: 'str1_K_6',   text: '19' }, // str 1-6 t
+            // { name: 'str1_K_7',   text: '15' }, // str 1-5 t
+            // { name: 'str1_K_8',   text: '13' }, // str 1-4 t
+            // { name: 'str1_K_9',   text: '10' }, // str 1-3 t
+            // { name: 'str1_K_10',  text: '0' },  // str 1-2 t
+            // { name: 'str1_K_11',  text: '0' },  // str 1-1 t
+            // { name: 'str1_K_12',  text: '93.0' }, // str 1-ves t
+         
+            // { name: 'str51_SM_1',   text: '0' }, // str 51-11 t
+            // { name: 'str51_SM_2',   text: '0' }, // str 51-10 t
+            // { name: 'str51_SM_3',   text: '0' }, // str 51-9 t
+            // { name: 'str51_SM_4',   text: '0' }, // str 51-8 t
+            // { name: 'str51_SM_5',   text: '0' }, // str 51-7 t
+            // { name: 'str51_SM_6',   text: '0' }, // str 51-6 t
+            // { name: 'str51_SM_7',   text: '0  0' }, // str 51-5-4 t
+            // { name: 'str51_SM_8',   text: '0' }, // str 51-3 t
+            // { name: 'str51_SM_9',   text: '0' }, // str 51-2 t
+            // { name: 'str51_SM_10',  text: '100' }, // str 51-1 t
+            // { name: 'str51_SM_11',  text: '15.0' }, // str 51-ves t
+
+            // #endregion
+
+          ]
+        }
+      },
+      startTime: timeDiff + 338.01,
+    },
+    { action: { target3D: 'pKolGaz',    color: 'green', number: '0.306', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'dpVerh',     color: 'green', number: '0.109', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'dpObsh',     color: 'green', number: '1.631', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'dpNiz',      color: 'green', number: '1352', },      startTime: timeDiff + 338.01, },
+    { action: { target3D: 'fHolodDut',  color: 'green', number: '4656.', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'pGorDut',    color: 'green', number: '1.931', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'urZasDat1',  color: 'green', number: '02.82', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'urZasDat2',  color: 'green', number: '02.93', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'urZasMeh',   color: 'green', number: '0000', },      startTime: timeDiff + 338.01, },
+    { action: { target3D: 'tVGazT1',    color: 'green', number: '0162.', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'tVGazT2',    color: 'green', number: '0190.', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'tVGazT3',    color: 'green', number: '0163.', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'tVGazT4',    color: 'green', number: '0146.', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'tVGazT5',    color: 'green', number: '06.78', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'tVGazT6',    color: 'green', number: '00.40', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'tVGazT7',    color: 'green', number: '1101.', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.16', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.16', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'pSjatVozd',  color: 'green', number: '05.11', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.36', }, startTime: timeDiff + 338.01, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.340', },     startTime: timeDiff + 338.01, },
+    { action: { target3D: 'tReduct', color: 'green', number: '035.2', },        startTime: timeDiff + 338.01, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '24.82', },   startTime: timeDiff + 338.01, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '0000', },      startTime: timeDiff + 338.01, },
+    { action: { target3D: 'fPrirodGazReg', color: 'red', number: '001.9', },    startTime: timeDiff + 338.01, },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.35', },    startTime: timeDiff + 338.02, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '105.2', },    startTime: timeDiff + 338.02, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.30', },    startTime: timeDiff + 338.02, },
+    
+    ////--------------------------------55--------------------------////
+    {
+      text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
+      audio: 'SoundSnortFurma', // 3.5
+      sender: 'Система',
+      startTime: timeDiff + 339,
+    },
+    {multi: [{action: {target2D: 'R_Snort',},},{action: {target2D: 'R_Furm',},},],startTime: timeDiff + 340, human: true, },
+    ////--------------------------------56--------------------------////
+    {
+      chapterText: 'Подача природного газа на фурмы',
+      scenarioText: 'Принять природный газ в коллектор, предупредив мастера печи о приемки природного газа.',
+      text: 'Открыть природный газ в коллектор.',
+      audio: 'tts--56', // 2.3
+      sender: 'Система',
+      startTime: timeDiff + 341,
+    },
+    ////--------------------------------57--------------------------////
+    {
+      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say', // 1.567
+      startTime: timeDiff + 344,
+    },
+    { action: { target3D: 'ButtonHightlight_046', }, startTime: timeDiff + 345, human: true, },
+    {
+      text: 'Принимайте ПГ в коллектор.',
+      sender: 'Газовщик',
+      audio: 'tts--vo57-1', // 1.9
+      startTime: timeDiff + 346,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 348, },
+    {
+      text: 'Хорошо',
+      sender: 'Мастер печи',
+      audio: 'tts--vo57-2', // 1
+      startTime: timeDiff + 349,
+    },
+    ////--------------------------------58--------------------------////
+    {
+      text: 'Открыть природный газ на коллекторе электрифицированной задвижкой 721.',
+      sender: 'Система',
+      audio: 'tts--58', // 5.95
+      startTime: timeDiff + 351,
+    },
+    { action: { target3D: 'Handle_014', rotation: { y: -0.785  }, },    duration: 0.15, startTime: timeDiff + 352, human: true, },
+    { action: { target3D: 'Lamp_Red_019',   material: 'Red_Lamp_Off', },                startTime: timeDiff + 353 },
+    { action: { target3D: 'Handle_014', rotation: { y: 0      },  },    duration: 0.15, startTime: timeDiff + 354, human: true, },
+    { action: { target3D: 'Lamp_Green_023', material: 'Green_Lamp_On', },       startTime: timeDiff + 355 },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0.514', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.102', },         startTime: timeDiff + 355.01, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.611', },         startTime: timeDiff + 355.01, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1.341', },          startTime: timeDiff + 355.01, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4544.', },      startTime: timeDiff + 355.01, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '2.125', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.76', },      startTime: timeDiff + 355.01, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.96', },      startTime: timeDiff + 355.01, },
+    { action: { target3D: 'urZasMeh', color: 'green', number: '0000', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0169.', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0201.', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0169.', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0152.', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '07.21', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'tVGazT6', color: 'green', number: '00.39', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1102.', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.17', },     startTime: timeDiff + 355.01, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.18', },     startTime: timeDiff + 355.01, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.15', },      startTime: timeDiff + 355.01, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.35', }, startTime: timeDiff + 355.01, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.353', },     startTime: timeDiff + 355.01, },
+    { action: { target3D: 'tReduct', color: 'green', number: '035.3', },        startTime: timeDiff + 355.01, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '24.84', },   startTime: timeDiff + 355.01, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '0.578', },     startTime: timeDiff + 355.01, },
+    { action: { target3D: 'fPrirodGazReg', color: 'red', number: '001.9', },    startTime: timeDiff + 355.01, },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.52', },    startTime: timeDiff + 355.02, },
+    { action: { target3D: 'bzuVesNetto_l', color: 'red', number: '093.0', },    startTime: timeDiff + 355.02, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '001.3', },  startTime: timeDiff + 355.02, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0085', },   startTime: timeDiff + 355.02, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '027.2', },    startTime: timeDiff + 355.02, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.49', },    startTime: timeDiff + 355.02, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '016.2', },    startTime: timeDiff + 355.02, },
+    { action: { target3D: 'bzuPolShihZat_r', color: 'red', number: '001.3', },  startTime: timeDiff + 355.02, },
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '33.5', },     startTime: timeDiff + 355.02, },
+    { action: { target3D: 'bzuVremVigruz_r', color: 'red', number: '0096', },   startTime: timeDiff + 355.02, },
+    { action: { target3D: 'bzuUrovZasip', color: 'red', number: '02.75', },     startTime: timeDiff + 355.02, },
+
+    ////--------------------------------59--------------------------////
+    {
+      scenarioText: 'Сообщить по рации в «Литейный фурменный поддоменник».',
+      sender: 'Система',
+      audio: 'radio_say', // 1.567
+      startTime: timeDiff + 356,
+    },
+    { action: { target3D: 'ButtonHightlight_046', }, startTime: timeDiff + 357, human: true, },
+    {
+      text: 'Принимайте ПГ в коллектор.',
+      sender: 'Газовщик',
+      audio: 'tts—vo85', // 3.2
+      startTime: timeDiff + 358,
+    },
+    { action: { target3D: 'Lamp_034', material: 'DonorLamp_off', }, startTime: timeDiff + 361.7, },
+    {
+      text: 'Понятно',
+      sender: 'Дежурный водопроводчик',
+      audio: 'tts-vo86', // 0.98
+      startTime: timeDiff + 362,
+    },
+     
+    ////--------------------------------60--------------------------////
+    
+    {
+      scenarioText: 'Отрегулировать расход природного газа на печь и отдельно на каждую фурму.',
+      text: 'Увеличить значение параметра на регуляторе природного газа.',
+      sender: 'Система',
+      audio: 'tts-57', // 3.8
+      startTime: timeDiff + 363.6,
+    },
+    { action: { target3D: 'upBtnFPrirGaza_highlight', },                                  startTime: timeDiff + 364, human: true, },
+    { action: { target3D: 'fPrirodGazReg', color: 'red', number: '006.3' },               startTime: timeDiff + 364.01, },
+    { action: { target3D: 'progress bar142',          material: 'Unic_progress bar_on' }, startTime: timeDiff + 364.02, },
+    { action: { target3D: 'Clone_0_progress bar142',  material: 'Unic_progress bar_on' }, startTime: timeDiff + 364.02, },
+    { 
+      action: {
+        windows2D:{
+          elements:[
+            // #region dp full 
+            { name: 'radar1_text', text: '2.83' },
+            { name: 'radar2_text', text: '2.89' },
+            { name: 'radar3_text', text: '2.87' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+            { name: 'EKZ_H1', text: '19' },
+            { name: 'EKZ_H2', text: '19' },
+            { name: 'EKZ_H3', text: '19' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 0 },
+            { name: 'AKZ_17', opacity: 1 },
+            { name: 'EVS_DP7_O', text: '53719' },
+            { name: 'EVD1_O', text: '10683' },
+            { name: 'EVS_DP7_F', text: '7203' },
+             { name: 'EVD1_F', text: '303528' },
+            { name: 'EVD_F', text: '301517' },
+            { name: 'P_1', text: '2.44' },
+            { name: 'F_evd', text: '5026' },
+            { name: 'F_hol_dyt', text: '4022' },
+            { name: 'T_hol_dyt', text: '53' },
+            { name: 'O_hol_dyt', text: '23.9' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.4' },
+            { name: 'FO2_hol_dyt', text: '1209' },
+            { name: 'N2', text: '60.5' },
+            { name: 'CO', text: '21.4' },
+            { name: 'CO2', text: '16.7' },
+            { name: 'H2_tryb', text: '0.7' },
+            { name: 'Nco_tryb', text: '43.8' },
+            { name: 'Q_domG_tryb', text: '685', opacity: '1' },
+            { name: 'P_vozd_tryb', text: '8' },
+            { name: 'P_gaza_tryb', text: '19' },
+            { name: 'CO_bor_tryb', text: '0.20' },
+            // { name: 'H_snotr', text: '15' },
+            // { name: 'kl_red', color: '#00DA01' },
+            // { name: 'H_progres_7', opacity: '1' },
+            // { name: 'H_progres_19', opacity: '1' },
+            // { name: 'H_progres_22', opacity: '1' },
+            // { name: 'H_progres_33', opacity: '1' },
+            // { name: 'H_progres_49', opacity: '1' },
+            // { name: 'H_progres_56', opacity: '1' },
+            // { name: 'H_progres_60', opacity: '1' },
+            // { name: 'H_progres_89', opacity: '1' },
+            // { name: 'H_progres_100', opacity: '1' },
+            { name: 'H_step_isp',   text: '89.0', opacity: '1' },
+            { name: 'HCO_step_isp', text: '49.9' },
+            { name: 'Tkyp_3', text: '1114' },
+            { name: 'Tkyp_2', text: '1100' },
+            { name: 'Tkyp_1', text: '1226' },
+            { name: 'Tkyp_3_rect', color: '#ffff0f' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffffff' },
+            { name: 'VNK3_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK3_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK2_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK1_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3',     text: '0' },
+            { name: 'Fgaz_2',     text: '0' },
+            { name: 'VNK1_Fb',   text: '0' },
+            { name: 'VNK1_Fr',   text: '0' },
+            { name: 'Tdym_3', text: '131' },
+            { name: 'Tdym_2', text: '169' },
+            { name: 'Tdym_1', text: '145' },
+            { name: 'P_Os_szat_voz', text: '8.33' },
+            { name: 'T_Os_szat_voz', text: '26' },
+            { name: 'Temp_peref_1',   text: '58' },
+            { name: 'Temp_peref_2',   text: '48' },
+            { name: 'Temp_peref_3',   text: '53' },
+            { name: 'Temp_peref_4',   text: '59' },
+            { name: 'Temp_peref_5',   text: '58' },
+            { name: 'Temp_peref_6',   text: '52' },
+            { name: 'Temp_peref_7',   text: '54' },
+            { name: 'Temp_peref_8',   text: '54' },
+            { name: 'Temp_peref_9',   text: '68' },
+            { name: 'Temp_peref_10',  text: '49' },
+            { name: 'Temp_peref_11',  text: '52' },
+            { name: 'Temp_peref_12',  text: '57' },
+            { name: 'Temp_peref_13',  text: '88' },
+            { name: 'Temp_peref_14',  text: '52' },
+            { name: 'Temp_peref_15',  text: '58' },
+            { name: 'Temp_peref_16',  text: '48' },
+            { name: 'T1', text: '149' },
+            { name: 'T2', text: '177' },
+            { name: 'T3', text: '149' },
+            { name: 'T4', text: '131' },
+            { name: 'P_2', text: '2.38' },
+            { name: 'P_2_rect', color: "#ffffff" },
+            { name: 't_gor_dut', text: '1100' },
+            { name: 't_gor_dut_spravaRydom', text: '1100' },
+            { name: 'H_Os_szat_voz', text: '70' },
+            { name: 't_prirodn_gaz', text: '15' },
+            { name: 'P_pg_prir_gaz', text: '8.59' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '7254' },
+            { name: 'H_prir_gaz', text: '13' },
+            { name: 'F_tryba', text: '341321' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.77' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.11' },
+            { name: 'dP_verh_rect', color: '#ffffff' },
+            { name: 'dP_obsh_tryba', text: '1.62' },
+            { name: 'dP_obsh_trybarect', color: '#ffffff' },
+            { name: 'dP_nish_tryba', text: '1.51' },
+            { name: 'dP_nish_rect', color: '#ffffff' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'zadanie_rect', color: '#ffffff' },
+            { name: 'TTG_raschet', text: '2303', opacity: '1' },
+            { name: 'F_pg_prir_gaz', text: '5595' },
+            { name: 'dF_pg_prir_gaz', text: '1659' },
+            // { name: 'L1', text: '1428', opacity: '0' },
+            // { name: 'L2', text: '1428', opacity: '0' },
+            // { name: 'L4', text: '1428', opacity: '0' },
+            // { name: 'L3', text: '1428', opacity: '0' },
+            // { name: 'L1_elem', color: '#ffffff' },
+            // { name: 'L2_elem', color: '#ffffff' },
+            // { name: 'L4_elem', color: '#ffffff' },
+            // { name: 'L3_elem', color: '#ffffff' },
+            // { name: 'P_tryba_1_590', text: '0.33' },
+            // { name: 'P_tryba_1_591', text: '0.33' },
+            // { name: 'P_tryba_1_592', text: '0.33' },
+            // { name: 'P_tryba_1_593', text: '0.33' },
+            // { name: 'P_tryba_2_1', text: '0.38' },
+            // { name: 'P_tryba_2_2', text: '0.38' },
+            // { name: 'P_tryba_2_3', text: '0.38' },
+            // { name: 'P_tryba_2_4', text: '0.38' },
+            // { name: 'P_tryba_3_590', text: '0.43' },
+            // { name: 'P_tryba_3_591', text: '0.43' },
+            // { name: 'P_tryba_4_1', text: '2.45' },
+            // { name: 'P_tryba_4_2', text: '1.74' },
+            // { name: 'P_tryba_4_3', text: '2.56' },
+            // { name: 'P_tryba_4_4', text: '1.90' },
+            // { name: 'P_tryba_5_1', text: '0.91' },
+            // { name: 'P_tryba_5_2', text: '1.39' },
+            // { name: 'P_tryba_5_3', text: '1.78' },
+            // { name: 'P_tryba_5_4', text: '2.50' },
+            { name: 'V_dyt', text: '157.3' },
+            // { name: 'fyrm_v_rab', text: '0' },
+            // { name: 'ydel_tep_18', text: '27.5' },
+            // { name: 'ydel_tep_17', text: '33.3' },
+            // { name: 'ydel_tep_16', text: '32.1' },
+            // { name: 'ydel_tep_15', text: '27.7' },
+            // { name: 'ydel_tep_12_14', text: '52.7' },
+            // { name: 'ydel_tep_10_11', text: '14.4' },
+            // { name: 'ydel_tep_9', text: '15.5' },
+            // { name: 'ydel_tep_8', text: '14.2' },
+            // { name: 'ydel_tep_7', text: '29.7' },
+            // #endregion
+          ]
+        }
+      },
+      startTime: timeDiff + 365.03,
+    },
+    { action: { target3D: 'upBtnFPrirGaza_highlight', },                                 startTime: timeDiff + 366, human: true, },
+    { action: { target3D: 'fPrirodGazReg', color: 'red', number: '011.3' },              startTime: timeDiff + 366.5, },
+    { action: { target3D: 'Clone_1_progress bar142', material: 'Unic_progress bar_on' }, startTime: timeDiff + 366.5, },
+        
+    { action: { target3D: 'pKolGaz',      color: 'green', number: '0.551', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'dpVerh',       color: 'green', number: '0.100', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'dpObsh',       color: 'green', number: '1.607', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'dpNiz',        color: 'green', number: '1.339', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'fHolodDut',    color: 'green', number: '4615.', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'pGorDut',      color: 'green', number: '2.161', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'urZasDat1',    color: 'green', number: '02.78', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'tVGazT1',      color: 'green', number: '0171.', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'tVGazT2',      color: 'green', number: '0203.', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'tVGazT3',      color: 'green', number: '0170.', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'tVGazT4',      color: 'green', number: '0153.', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'tVGazT5',      color: 'green', number: '06.58', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'tVGazT7',      color: 'green', number: '1101.', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'pTechVodT1',   color: 'green', number: '10.18', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'pTechVodT2',   color: 'green', number: '10.19', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'pSjatVozd',    color: 'green', number: '05.13', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'pAzotkZatv',   color: 'green', number: '2.361', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '24.85', }, startTime: timeDiff + 366.52, },
+    { action: { target3D: 'fPrirodGaz',   color: 'green', number: '0.570', }, startTime: timeDiff + 366.52, },
+    {      lifeTime: '12:31:00',      startTime: timeDiff + 367,    },
+    
+    ////--------------------------------61--------------------------////
+    {
+      text: 'Понизить давление газа.',
+      sender: 'Система',
+      audio: 'tts-58', // 1.8
+      startTime: timeDiff + 368,
+    },
+    { action: { target2D: 'P cop gaza', window2D: { elements: [ { name: 'vz_number',    text: '2.00' }, ] }, }, startTime: timeDiff + 368.01, human: true, },
+    { action: { target2D: 'vz_1',       window2D: { elements: [ { name: 'vz_number',    text: '1' }, ] } },     startTime: timeDiff + 368.02, human: true, }, 
+    { action: { target2D: 'vz_ok',      window2D: { elements: [ { name: 'TTG_zadanie',  text: '1.90' }, ] } },  startTime: timeDiff + 368.03, human: true, },
+
+    {
+      action: {
+        window2D: {
+          elements: [
+            // #region dp full 
+            { name: 'radar1_text', text: '2.79' },
+            { name: 'radar2_text', text: '2.95' },
+            { name: 'radar3_text', text: '2.86' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+            { name: 'EKZ_H1', text: '25' },
+            { name: 'EKZ_H2', text: '25' },
+            { name: 'EKZ_H3', text: '25' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 1 },
+            { name: 'AKZ_17', opacity: 1 },
+            { name: 'EVS_DP7_O', text: '53646' },
+            { name: 'EVD1_O', text: '10167' },
+            { name: 'EVS_DP7_F', text: '7202' },
+             { name: 'EVD1_F', text: '333588' },
+            { name: 'EVD_F', text: '303407' },
+            { name: 'P_1', text: '2.24' },
+            { name: 'F_evd', text: '5068' },
+            { name: 'F_hol_dyt', text: '3939' },
+            { name: 'T_hol_dyt', text: '51' },
+            { name: 'O_hol_dyt', text: '22.1' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.4' },
+            { name: 'FO2_hol_dyt', text: '1192' },
+            { name: 'N2', text: '68.3' },
+            { name: 'CO', text: '16.8' },
+            { name: 'CO2', text: '13.2' },
+            { name: 'H2_tryb', text: '1.1' },
+            { name: 'Nco_tryb', text: '44.0' },
+            { name: 'Q_domG_tryb', text: '552', opacity: '1' },
+            { name: 'P_vozd_tryb', text: '2' },
+            { name: 'P_gaza_tryb', text: '19' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+            // { name: 'H_snotr', text: '15' },
+            // { name: 'kl_red', color: '#00DA01' },
+            // { name: 'H_progres_7', opacity: '1' },
+            // { name: 'H_progres_19', opacity: '1' },
+            // { name: 'H_progres_22', opacity: '1' },
+            // { name: 'H_progres_33', opacity: '1' },
+            // { name: 'H_progres_49', opacity: '1' },
+            // { name: 'H_progres_56', opacity: '1' },
+            // { name: 'H_progres_60', opacity: '1' },
+            // { name: 'H_progres_89', opacity: '1' },
+            // { name: 'H_progres_100', opacity: '1' },
+            { name: 'H_step_isp',   text: '81.6', opacity: '1' },
+            { name: 'HCO_step_isp', text: '50.3' },
+            { name: 'Tkyp_3', text: '1114' },
+            { name: 'Tkyp_2', text: '1102' },
+            { name: 'Tkyp_1', text: '1218' },
+            { name: 'Tkyp_3_rect', color: '#ffff0f' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffff0f' },
+            { name: 'VNK3_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK3_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK2_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK1_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3',     text: '0' },
+            { name: 'Fgaz_2',     text: '0' },
+            { name: 'VNK1_Fb',   text: '0' },
+            { name: 'VNK1_Fr',   text: '0' },
+            { name: 'Tdym_3', text: '131' },
+            { name: 'Tdym_2', text: '169' },
+            { name: 'Tdym_1', text: '150' },
+            { name: 'P_Os_szat_voz', text: '8.29' },
+            { name: 'T_Os_szat_voz', text: '26' },
+            { name: 'Temp_peref_1',   text: '58' },
+            { name: 'Temp_peref_2',   text: '47' },
+            { name: 'Temp_peref_3',   text: '53' },
+            { name: 'Temp_peref_4',   text: '49' },
+            { name: 'Temp_peref_5',   text: '58' },
+            { name: 'Temp_peref_6',   text: '51' },
+            { name: 'Temp_peref_7',   text: '54' },
+            { name: 'Temp_peref_8',   text: '54' },
+            { name: 'Temp_peref_9',   text: '87' },
+            { name: 'Temp_peref_10',  text: '49' },
+            { name: 'Temp_peref_11',  text: '52' },
+            { name: 'Temp_peref_12',  text: '56' },
+            { name: 'Temp_peref_13',  text: '59' },
+            { name: 'Temp_peref_14',  text: '52' },
+            { name: 'Temp_peref_15',  text: '58' },
+            { name: 'Temp_peref_16',  text: '48' },
+            { name: 'T1', text: '141' },
+            { name: 'T2', text: '166' },
+            { name: 'T3', text: '141' },
+            { name: 'T4', text: '126' },
+            { name: 'P_2', text: '1.18' },
+            { name: 'P_2_rect', color: "#ffffff" },
+            { name: 't_gor_dut', text: '1100' },
+            { name: 't_gor_dut_spravaRydom', text: '1100' },
+            { name: 'H_Os_szat_voz', text: '70' },
+            { name: 't_prirodn_gaz', text: '15' },
+            { name: 'P_pg_prir_gaz', text: '8,59' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '362' },
+            { name: 'H_prir_gaz', text: '12' },
+            { name: 'F_tryba', text: '340828' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.57' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.10' },
+            { name: 'dP_verh_rect', color: '#ffffff' },
+            { name: 'dP_obsh_tryba', text: '1.61' },
+            { name: 'dP_obsh_trybarect', color: '#ffffff' },
+            { name: 'dP_nish_tryba', text: '1.51' },
+            { name: 'dP_nish_rect', color: '#ffffff' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'zadanie_rect', color: '#ffffff' },
+            { name: 'TTG_raschet', text: '2237', opacity: '1' },
+            { name: 'F_pg_prir_gaz', text: '4894' },
+            { name: 'dF_pg_prir_gaz', text: '-4531' },
+            { name: 'L1', text: '1428', opacity: '0' },
+            { name: 'L2', text: '1428', opacity: '0' },
+            { name: 'L4', text: '1428', opacity: '0' },
+            { name: 'L3', text: '1428', opacity: '0' },
+            { name: 'L1_elem', color: '#ffffff' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L4_elem', color: '#ffffff' },
+            { name: 'L3_elem', color: '#ffffff' },
+            { name: 'P_tryba_1_590', text: '0.57' },
+            { name: 'P_tryba_1_591', text: '0.57' },
+            { name: 'P_tryba_1_592', text: '0.57' },
+            { name: 'P_tryba_1_593', text: '0.57' },
+            { name: 'P_tryba_2_1', text: '0.62' },
+            { name: 'P_tryba_2_2', text: '0.62' },
+            { name: 'P_tryba_2_3', text: '0.62' },
+            { name: 'P_tryba_2_4', text: '0.62' },
+            { name: 'P_tryba_3_590', text: '0.59' },
+            { name: 'P_tryba_3_591', text: '0.59' },
+            { name: 'P_tryba_4_1', text: '4.91' },
+            { name: 'P_tryba_4_2', text: '3.02' },
+            { name: 'P_tryba_4_3', text: '4.95' },
+            { name: 'P_tryba_4_4', text: '4.70' },
+            { name: 'P_tryba_5_1', text: '3.57' },
+            { name: 'P_tryba_5_2', text: '1.07' },
+            { name: 'P_tryba_5_3', text: '1.32' },
+            { name: 'P_tryba_5_4', text: '2.18' },
+            { name: 'V_dyt', text: '203.6' },
+            { name: 'fyrm_v_rab', text: '0' },
+            { name: 'ydel_tep_18', text: '27.5' },
+            { name: 'ydel_tep_17', text: '34.5' },
+            { name: 'ydel_tep_16', text: '33.5' },
+            { name: 'ydel_tep_15', text: '28.9' },
+            { name: 'ydel_tep_12_14', text: '51.8' },
+            { name: 'ydel_tep_10_11', text: '18.9' },
+            { name: 'ydel_tep_9', text: '17.9' },
+            { name: 'ydel_tep_8', text: '14.4' },
+            { name: 'ydel_tep_7', text: '29.9' },
+            // #endregion
+            
+          ]
+        }
+      },
+      startTime: timeDiff + 368.5
+    },
+    { action: { target3D: 'bzuDavlenie_l',  color: 'red', number: '00.59', }, startTime: timeDiff + 368.61, },
+    { action: { target3D: 'bzuDavlenie_r',  color: 'red', number: '00.56', }, startTime: timeDiff + 368.61, },
+    { action: { target3D: 'bzuUrovZasip',   color: 'red', number: '02.81', }, startTime: timeDiff + 368.61, },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0.585', },      startTime: timeDiff + 368.62, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.101', },       startTime: timeDiff + 368.62, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.608', },       startTime: timeDiff + 368.62, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1.338', },        startTime: timeDiff + 368.62, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4548.', },    startTime: timeDiff + 368.62, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '2.194', },      startTime: timeDiff + 368.62, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.81', },    startTime: timeDiff + 368.62, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.95', },    startTime: timeDiff + 368.62, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0172.', },      startTime: timeDiff + 368.62, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0205.', },      startTime: timeDiff + 368.62, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0172.', },      startTime: timeDiff + 368.62, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0155.', },      startTime: timeDiff + 368.62, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1100.', },      startTime: timeDiff + 368.62, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.17', },   startTime: timeDiff + 368.62, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.360', },   startTime: timeDiff + 368.62, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '0.500', },   startTime: timeDiff + 368.62, },
+    ////--------------------------------62--------------------------////
+    {
+      text: 'Уменьшить значение параметра на регуляторе природного газа.',
+      sender: 'Система',
+      audio: 'tts-59', // 3.86
+      startTime: timeDiff + 367,
+    },
+    { action: { target3D: 'upBtnFPrirGaza_highlight', },                                    startTime: timeDiff + 368.00, human: true, },
+    { action: { target3D: 'fPrirodGazReg', color: 'red', number: '010.4' },                 startTime: timeDiff + 368.01, },
+    { action: { target3D: 'Clone_1_progress bar142', material: 'Unic_progress bar_off' },   startTime: timeDiff + 368.02, },
+
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.80', },    startTime: timeDiff + 368.11, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '078.4', },    startTime: timeDiff + 368.11, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.70', },    startTime: timeDiff + 368.11, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '016.0', },    startTime: timeDiff + 368.11, },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0.761', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.095', },         startTime: timeDiff + 368.12, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.607', },         startTime: timeDiff + 368.12, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1.344', },          startTime: timeDiff + 368.12, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4508.', },      startTime: timeDiff + 368.12, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '2.382', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.84', },      startTime: timeDiff + 368.12, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.92', },      startTime: timeDiff + 368.12, },
+    { action: { target3D: 'urZasMeh', color: 'green', number: '0000', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0182.', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0218.', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0180.', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0161.', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '07.09', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'tVGazT6', color: 'green', number: '00.39', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1100.', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.05', },     startTime: timeDiff + 368.12, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.16', },     startTime: timeDiff + 368.12, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.15', },      startTime: timeDiff + 368.12, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.28', }, startTime: timeDiff + 368.12, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.369', },     startTime: timeDiff + 368.12, },
+    { action: { target3D: 'tReduct', color: 'green', number: '035.8', },        startTime: timeDiff + 368.12, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '25.08', },   startTime: timeDiff + 368.12, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '0.707', },     startTime: timeDiff + 368.12, },
+
+    ////--------------------------------63--------------------------////
+    {      lifeTime: '12:35:00',      startTime: timeDiff + 369,    },
+    {
+      scenarioText: 'Дать команду добавить кислород.',
+      sender: 'Система',
+      audio: 'telephone_say', // 1.7
+      startTime: timeDiff + 370,
+    },
+    { action: { target3D: 'PhoneButton017', }, startTime: timeDiff + 371, human: true, },
+    {
+      text: 'Открывайте 10000 кислорода.',
+      sender: 'Газовщик',
+      audio: 'tts-vo87', // 2.28
+      startTime: timeDiff + 372,
+    },
+    {
+      text: 'Понял.',
+      sender: 'Инженер-энергетик',
+      audio: 'tts-vo88', // 0.94
+      startTime: timeDiff + 373,
+    },
+
+    { 
+      action: {
+        windows2D:{
+          elements:[
+            // #region dp full 
+            { name: 'radar1_text', text: '2.83' },
+            { name: 'radar2_text', text: '2.88' },
+            { name: 'radar3_text', text: '2.74' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+            { name: 'EKZ_H1', text: '16' },
+            { name: 'EKZ_H2', text: '16' },
+            { name: 'EKZ_H3', text: '16' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 0 },
+            { name: 'AKZ_17', opacity: 1 },
+            { name: 'EVS_DP7_O',  text: '14059' },
+            { name: 'EVD1_O',     text: '10028' },
+            { name: 'EVS_DP7_F',  text: '7135' },
+             { name: 'EVD1_F',    text: '381084' },
+            { name: 'EVD_F',      text: '322111' },
+            { name: 'P_1',       text: '2.43' },
+            { name: 'F_evd',     text: '5018' },
+            { name: 'F_hol_dyt', text: '3347' },
+            { name: 'T_hol_dyt', text: '54' },
+            { name: 'O_hol_dyt', text: '24.1' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.4' },
+            { name: 'FO2_hol_dyt', text: '1183' },
+            { name: 'N2', text: '60.5' },
+            { name: 'CO', text: '21.4' },
+            { name: 'CO2', text: '16.7' },
+            { name: 'H2_tryb', text: '0.7' },
+            { name: 'Nco_tryb', text: '43.8' },
+            // { name: 'Q_domG_tryb', text: '552', opacity: '1' },
+            { name: 'P_vozd_tryb', text: '8' },
+            { name: 'P_gaza_tryb', text: '19' },
+            { name: 'CO_bor_tryb', text: '0.00' },
+            // { name: 'H_snotr', text: '15' },
+            // { name: 'kl_red', color: '#00DA01' },
+            // { name: 'H_progres_7', opacity: '1' },
+            // { name: 'H_progres_19', opacity: '1' },
+            // { name: 'H_progres_22', opacity: '1' },
+            // { name: 'H_progres_33', opacity: '1' },
+            // { name: 'H_progres_49', opacity: '1' },
+            // { name: 'H_progres_56', opacity: '1' },
+            // { name: 'H_progres_60', opacity: '1' },
+            // { name: 'H_progres_89', opacity: '1' },
+            // { name: 'H_progres_100', opacity: '1' },
+            { name: 'H_step_isp',   text: '83.6', opacity: '1' },
+            { name: 'HCO_step_isp', text: '51.1' },
+            { name: 'Tkyp_3', text: '1114' },
+            { name: 'Tkyp_2', text: '1102' },
+            { name: 'Tkyp_1', text: '1218' },
+            { name: 'Tkyp_3_rect', color: '#ffff0f' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffffff' },
+            { name: 'VNK3_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK3_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK2_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK1_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3',     text: '0' },
+            { name: 'Fgaz_2',     text: '0' },
+            { name: 'VNK1_Fb',   text: '0' },
+            { name: 'VNK1_Fr',   text: '0' },
+            { name: 'Tdym_3', text: '131' },
+            { name: 'Tdym_2', text: '169' },
+            { name: 'Tdym_1', text: '143' },
+            { name: 'P_Os_szat_voz', text: '8.27' },
+            { name: 'T_Os_szat_voz', text: '26' },
+            // { name: 'Temp_peref_1',   text: '58' },
+            // { name: 'Temp_peref_2',   text: '47' },
+            // { name: 'Temp_peref_3',   text: '53' },
+            // { name: 'Temp_peref_4',   text: '49' },
+            // { name: 'Temp_peref_5',   text: '58' },
+            // { name: 'Temp_peref_6',   text: '51' },
+            // { name: 'Temp_peref_7',   text: '54' },
+            // { name: 'Temp_peref_8',   text: '54' },
+            // { name: 'Temp_peref_9',   text: '87' },
+            // { name: 'Temp_peref_10',  text: '49' },
+            // { name: 'Temp_peref_11',  text: '52' },
+            // { name: 'Temp_peref_12',  text: '56' },
+            // { name: 'Temp_peref_13',  text: '59' },
+            // { name: 'Temp_peref_14',  text: '52' },
+            // { name: 'Temp_peref_15',  text: '58' },
+            // { name: 'Temp_peref_16',  text: '48' },
+            { name: 'T1', text: '151' },
+            { name: 'T2', text: '182' },
+            { name: 'T3', text: '149' },
+            { name: 'T4', text: '133' },
+            { name: 'P_2', text: '2.43' },
+            { name: 'P_2_rect', color: "#ffffff" },
+            { name: 't_gor_dut', text: '1100' },
+            { name: 't_gor_dut_spravaRydom', text: '1100' },
+            // { name: 'H_Os_szat_voz', text: '70' },
+            // { name: 't_prirodn_gaz', text: '15' },
+            { name: 'P_pg_prir_gaz', text: '8.58' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '7091' },
+            { name: 'H_prir_gaz', text: '15' },
+            { name: 'F_tryba', text: '318961' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.84' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.11' },
+            { name: 'dP_verh_rect', color: '#ffffff' },
+            { name: 'dP_obsh_tryba', text: '1.16' },
+            { name: 'dP_obsh_trybarect', color: '#ffffff' },
+            { name: 'dP_nish_tryba', text: '1.14' },
+            { name: 'dP_nish_rect', color: '#ffffff' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'zadanie_rect', color: '#ffffff' },
+            { name: 'TTG_raschet', text: '2275', opacity: '1' },
+            { name: 'F_pg_prir_gaz', text: '7059' },
+            { name: 'dF_pg_prir_gaz', text: '33' },
+            { name: 'L1', text: '1428', opacity: '0' },
+            { name: 'L2', text: '1428', opacity: '0' },
+            { name: 'L4', text: '1428', opacity: '0' },
+            { name: 'L3', text: '1428', opacity: '0' },
+            { name: 'L1_elem', color: '#ffffff' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L4_elem', color: '#ffffff' },
+            { name: 'L3_elem', color: '#ffffff' },
+            // { name: 'P_tryba_1_590', text: '0.57' },
+            // { name: 'P_tryba_1_591', text: '0.57' },
+            // { name: 'P_tryba_1_592', text: '0.57' },
+            // { name: 'P_tryba_1_593', text: '0.57' },
+            // { name: 'P_tryba_2_1', text: '0.62' },
+            // { name: 'P_tryba_2_2', text: '0.62' },
+            // { name: 'P_tryba_2_3', text: '0.62' },
+            // { name: 'P_tryba_2_4', text: '0.62' },
+            // { name: 'P_tryba_3_590', text: '0.59' },
+            // { name: 'P_tryba_3_591', text: '0.59' },
+            // { name: 'P_tryba_4_1', text: '4.91' },
+            // { name: 'P_tryba_4_2', text: '3.02' },
+            // { name: 'P_tryba_4_3', text: '4.95' },
+            // { name: 'P_tryba_4_4', text: '4.70' },
+            // { name: 'P_tryba_5_1', text: '3.57' },
+            // { name: 'P_tryba_5_2', text: '1.07' },
+            // { name: 'P_tryba_5_3', text: '1.32' },
+            // { name: 'P_tryba_5_4', text: '2.18' },
+            { name: 'V_dyt', text: '193.0' },
+            // { name: 'fyrm_v_rab', text: '0' },
+            // { name: 'ydel_tep_18', text: '27.5' },
+            // { name: 'ydel_tep_17', text: '34.5' },
+            // { name: 'ydel_tep_16', text: '33.5' },
+            // { name: 'ydel_tep_15', text: '28.9' },
+            // { name: 'ydel_tep_12_14', text: '51.8' },
+            // { name: 'ydel_tep_10_11', text: '18.9' },
+            // { name: 'ydel_tep_9', text: '17.9' },
+            // { name: 'ydel_tep_8', text: '14.4' },
+            // { name: 'ydel_tep_7', text: '29.9' },
+            // #endregion
+
+            // #region bzu full
+            { name: 'ochistka sedel_P', text: '6.12' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '3.88' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '31' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+            { name: 'B1_dp Bunker', text: '0.01' },
+            { name: 'B1_P compes', text: '0.82' },
+            { name: 'B1_vremy vygruski', text: '83' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '106' },
+            { name: 'B1_vremy sbrosa P ', text: '4' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP',       text: '93.0' },
+            { name: 'B1_vibratciya',      text: '2' },
+            { name: 'V linii P_B1',       text: '201' }, // Б1
+            { name: 'V linii dP_B1',      text: '226' },
+            { name: 'V sisteme vzveh_B1', text: '193' },
+            { name: 'V linii P_B2',       text: '148' }, // Б2
+            { name: 'V linii dP_B2',      text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '165' },
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '0.84' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '0.85' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '0.84' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '0.85' },
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '129' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+            { name: 'stanciia',             text: '8' },
+            { name: 'ugol naklona_tekushiy',  text: '33.3' },
+            { name: 'ugol naklona_zadanyi',   text: '33.4' },
+            { name: 'gradusow ugol',          text: '8.3' },
+            { name: 'prochent1', text: '5' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#06FF06' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', text: 'Р',         opacity: '1' },
+            { name: 'left_ellipse',      color: '#860004',  opacity: '1' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.83' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '93.0' }, // T
+            { name: 'matrix 1 str 1_M', text: '47.7' }, // M3
+            { name: 'primoygolinik_smehivateli', color: '#860004' }, // горизонтальная палочка слева
+            // не хватает схемы ПУСТ, зеленая/красная палочка рядом
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.3' }, // ШЗ слева
+            { name: 'left_vugr_rect', color: '#06FF06' }, //  Выгр зеленые зеленые рамки
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка слева
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            { name: 'btn_Pause_border', color: '#e6e6e6' }, // пауза по центру
+            { name: 'leviy', color: '#860004' }, // палка от цифр слева
+
+            { name: 'verx', text: '0' }, // цифры сверху
+            // не хватает палочки горизонтальной под цифрами
+            { name: 'black_arrow_under_verx', opacity: '0' }, // стрелка под цифрами
+
+            { name: 'praviy', color: '#860004' }, // палка от цифр справа
+            // не хватает элемента [К - в зеленом кружке]
+            { name: 'tr_3_str_1_', text: '5' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            { name: 'rezym_A', color: '#06FF06' }, // текущий режим А задник
+            { name: 'rezym_D', color: '#06FF06' }, // текущий режим Д задник
+            { name: 'K_16_strelka', opacity: '0' }, // к16 сброс ошибки стрелка
+
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '0.78' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '16.1' }, // t
+            { name: 'matrix 1 str 14_M', text: '34.3' }, // 
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            { name: 'prochent2', text: '12' }, // % справа
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '3.88' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '31' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+            { name: 'B2_Dp bunker', text: '0.02' }, // 
+            { name: 'B2_P compens', text: '0.84' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '96' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.4' }, // 
+            { name: 'B2_vibratciya', text: '54' }, // 
+            { name: 'counder podachi_za tekuschuyu smenu', text: '8' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            // { name: 'btn_ZapSledPorc_border', text: '6' }, //  Запрет след.порции задник
+
+            { name: 'given_level', text: '0.90' }, // 
+            { name: 'tekushy_level', text: '2.76' }, // 
+            { name: 'radar 1',  text: '2.93' }, // 
+            { name: 'radar 2',  text: '2.96' }, // 
+            { name: 'mexan',    text: '2.74' }, // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'v rabote',   color: '#2b2a29' }, // в работе текст
+            { name: 'bg_vRabote', color: '#06FF06' }, // в работе
+            { name: 'ismetir_ramki', color: '#06FF06' }, // Измерить задник
+            { name: 'mex.zond na huxte', color: '#06FF06' }, //  зеленый квадрат Мех.зонд на шихт
+            // { name: 'B1_nomerstr', text: '4' }, // 
+            // { name: 'B2_nomerstr', text: '5' }, // 
+            // { name: 'T3_nomerstr', text: '5' }, // 
+            // { name: 'T2_nomerstr', text: '5' }, // 
+            // { name: 'T1_nomerstr', text: '5' }, // 
+            // { name: 'B1_Tip_text', text: 'Р' }, // 
+            // { name: 'B2_Tip_text', text: 'К' }, // 
+            // { name: 'T3_Tip_text', text: 'К' }, // 
+            // { name: 'T2_Tip_text', text: 'К' }, // 
+            // { name: 'T1_Tip_text', text: 'К' }, // 
+            // { name: 'B1_Tip',   color: '#860004' }, // 
+            // { name: 'B2_Tip',   color: '#008600' }, // 
+            // { name: 'T2_Tip',   color: '#008600' }, // 
+            // { name: 'T2_color', color: '#008600' }, // 
+            // { name: 'T1_Tip',   color: '#008600' }, // 
+            // { name: 'B1_ves', text: '93.0' }, // 
+            // { name: 'B2_ves', text: '16.4' }, // 
+            // { name: 'T3_ves', text: '16.4' }, // 
+            // { name: 'T2_ves', text: '16.4' }, // 
+            // { name: 'T1_ves', text: '16.4' }, // 
+            // { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            // { name: 'P_str2', color: '#CEC7B5' }, // str 2 color
+            // { name: 'K_str1', color: '#860004' }, // str 1 color
+            // { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+
+            // { name: 'na_conveer_s1_bukca', text: 'Р', opacity: '0' }, // str 2 
+            // { name: 'str1_down', text: 'Р' }, // str 2 
+            // { name: 'str51_down', text: 'К' }, // str 51 
+            // { name: 'str2_P_1',   text: '0' }, // str 2-11 t
+            // { name: 'str2_P_2',   text: '0' }, // str 2-10 t
+            // { name: 'str2_P_3',   text: '0' }, // str 2-9 t
+            // { name: 'str2_P_4',   text: '13' }, // str 2-8 t
+            // { name: 'str2_P_5',   text: '13' }, // str 2-7 t
+            // { name: 'str2_P_6',   text: '13' }, // str 2-6 t
+            // { name: 'str2_P_7',   text: '11' }, // str 2-5 t
+            // { name: 'str2_P_8',   text: '10' }, // str 2-4 t
+            // { name: 'str2_P_9',   text: '10' }, // str 2-3 t
+            // { name: 'str2_P_10',  text: '9' }, // str 2-2 t
+            // { name: 'str2_P_11',  text: '21' }, // str 2-1 t
+            // { name: 'str2_P_12',  text: '16.2' }, // str 2-ves t
+            // { name: 'Str1_8', color: '#008600' }, // str 1-8 r  // #008600
+            // { name: 'Str1_4', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'Str1_1', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'str1_K_1',   text: '0' }, // str 1-11 t
+            // { name: 'str1_K_2',   text: '0' }, // str 1-10 t
+            // { name: 'str1_K_3',   text: '0' }, // str 1-9 t
+            // { name: 'str1_K_4',   text: '22' }, // str 1-8 t
+            // { name: 'str1_K_5',   text: '21' }, // str 1-7 t
+            // { name: 'str1_K_6',   text: '19' }, // str 1-6 t
+            // { name: 'str1_K_7',   text: '15' }, // str 1-5 t
+            // { name: 'str1_K_8',   text: '13' }, // str 1-4 t
+            // { name: 'str1_K_9',   text: '10' }, // str 1-3 t
+            // { name: 'str1_K_10',  text: '0' },  // str 1-2 t
+            // { name: 'str1_K_11',  text: '0' },  // str 1-1 t
+            // { name: 'str1_K_12',  text: '93.0' }, // str 1-ves t
+         
+            // { name: 'str51_SM_1',   text: '0' }, // str 51-11 t
+            // { name: 'str51_SM_2',   text: '0' }, // str 51-10 t
+            // { name: 'str51_SM_3',   text: '0' }, // str 51-9 t
+            // { name: 'str51_SM_4',   text: '0' }, // str 51-8 t
+            // { name: 'str51_SM_5',   text: '0' }, // str 51-7 t
+            // { name: 'str51_SM_6',   text: '0' }, // str 51-6 t
+            // { name: 'str51_SM_7',   text: '0  0' }, // str 51-5-4 t
+            // { name: 'str51_SM_8',   text: '0' }, // str 51-3 t
+            // { name: 'str51_SM_9',   text: '0' }, // str 51-2 t
+            // { name: 'str51_SM_10',  text: '100' }, // str 51-1 t
+            // { name: 'str51_SM_11',  text: '15.0' }, // str 51-ves t
+
+            // #endregion
+
+          ]
+        }
+      },
+      startTime: timeDiff + 373.01,
+    },
+    ////--------------------------------64--------------------------////
+    {
+      scenarioText: 'Включить загрузку печи.',
+      text: 'Дроссель-регулятор природного газа установить на автоматический режим.',
+      sender: 'Система',
+      audio: 'tts--64', // 4.8
+      startTime: timeDiff + 374,
+    },
+    { action: { target3D: 'upLeftBtnFPrirGaza_highlight', }, startTime: timeDiff + 375, human: true, },
+
+    { action: { target3D: 'pKolGaz', color: 'green', number: '0.873', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.110', },         startTime: timeDiff + 375.13, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.604', },         startTime: timeDiff + 375.13, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1.327', },          startTime: timeDiff + 375.13, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4745.', },      startTime: timeDiff + 375.13, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '2.470', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.84', },      startTime: timeDiff + 375.13, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.91', },      startTime: timeDiff + 375.13, },
+    { action: { target3D: 'urZasMeh', color: 'green', number: '0000', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0186.', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0224.', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0183.', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0162.', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '06.66', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'tVGazT6', color: 'green', number: '00.39', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1101.', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.13', },     startTime: timeDiff + 375.13, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.14', },     startTime: timeDiff + 375.13, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.13', },      startTime: timeDiff + 375.13, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.28', }, startTime: timeDiff + 375.13, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.362', },     startTime: timeDiff + 375.13, },
+    { action: { target3D: 'tReduct', color: 'green', number: '036.1', },        startTime: timeDiff + 375.13, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '25.12', },   startTime: timeDiff + 375.13, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '0.727', },     startTime: timeDiff + 375.13, },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '00.90', },    startTime: timeDiff + 375.13, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '010.2', },    startTime: timeDiff + 375.13, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.80', },    startTime: timeDiff + 375.13, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '016.2', },    startTime: timeDiff + 375.13, },
+
+    ////--------------------------------65--------------------------////
+    { 
+      action: { 
+        windows2D: {
+          elements: [
+            { name: 'Left_GBF_VA01_M01', color: '#FF1E06' }
+          ]
+        }
+      }, 
+      startTime: timeDiff + 376, 
+      human: true,
+    },
+    {
+      text: 'Перевести управление общего перепада от колошника.',
+      sender: 'Система',
+      audio: 'tts-61', // 3.5
+      startTime: timeDiff + 377,
+    },
+    { 
+      action: { 
+        target2D: 'gaz_sbrosOshibok', 
+        windows2D: {
+          elements: [
+            // Shema_gazoochistka full
+            {name: 'PT1',               text: '0.93'},
+            {name: 'PT2',               text: '0.93'},
+            {name: 'Pkol',              text: '0.90'},
+            {name: 'dPvAKZ',            text: '0.35'},
+            {name: 'dPvobsh',           text: '1.60'},
+            {name: 'dPobsh',            text: '1.58'},
+            {name: 'dPverhniy',         text: '0.11'},
+            {name: 'dPnijniy',          text: '1.47'},
+            {name: 'SDE_SCV_TE01',      text: '109'},
+            {name: 'SDE_SCV_PT01',      text: '0.73'},
+            {name: 'dP_aboveSkrubber',  text: '0.51'},
+            {name: 'SDE_PT01',          text: '0.21'},
+            {name: 'Fakt_H1',           text: '17.60'},
+            {name: 'Fakt_H2',           text: '18.40'},
+            {name: 'Fakt_H3',           text: '18.60'},
+            {name: 'Zadaniy_H1',        text: '19.30'},
+            {name: 'Zadaniy_H2',        text: '20.24'},
+            {name: 'Zadaniy_H3',        text: '20.24'},
+            {name: 'vodUst_H1',         text: '100'},
+            {name: 'vodUst_H2',         text: '100'},
+            {name: 'vodUst_H3',         text: '100'},
+            {name: 'GBF_TE01',          text: '34'},
+            {name: 'GBF_PT01',          text: '0.19'},
+            {name: 'GBF_FM01',          text: '371569'},
+            {name: 'ZT90224',           text: '99'},
+            {name: 'ZT90224_zadaniy',   text: '100'},
+            {name: 'ZT90223',           text: '100'},
+            {name: 'ZT90223_zadaniy',   text: '100'},
+            {name: 'ZT90276',           text: '3'},
+            {name: 'ZT90276_zadaniy',   text: '2'},
+          ]
+        }
+      }, 
+      startTime: timeDiff + 378.0, 
+      human: true,
+    },
+    { 
+      action: { 
+        target2D: 'gaz_PkolGaza', 
+        windows2D:{
+          elements: [
+            {name: 'background Pkolgaza',     color: '#06FF06'},
+            {name: 'background dPpechiObsh',  color: '#ffffff'},
+
+            // Shema_gazoochistka full
+            {name: 'PT1',               text: '0.92'},
+            {name: 'PT2',               text: '0.93'},
+            {name: 'Pkol',              text: '0.90'},
+            {name: 'dPvAKZ',            text: '0.35'},
+            {name: 'dPvobsh',           text: '1.60'},
+            {name: 'dPobsh',            text: '1.58'},
+            {name: 'dPverhniy',         text: '0.10'},
+            {name: 'dPnijniy',          text: '1.48'},
+            {name: 'SDE_SCV_TE01',      text: '109'},
+            {name: 'SDE_SCV_PT01',      text: '0.73'},
+            {name: 'dP_aboveSkrubber',  text: '0.51'},
+            {name: 'SDE_PT01',          text: '0.22'},
+            {name: 'Fakt_H1',           text: '18.55'},
+            {name: 'Fakt_H2',           text: '18.42'},
+            {name: 'Fakt_H3',           text: '18.75'},
+            {name: 'Zadaniy_H1',        text: '19.69'},
+            {name: 'Zadaniy_H2',        text: '19.69'},
+            {name: 'Zadaniy_H3',        text: '19.69'},
+            {name: 'vodUst_H1',         text: '100'},
+            {name: 'vodUst_H2',         text: '100'},
+            {name: 'vodUst_H3',         text: '100'},
+            {name: 'GBF_TE01',          text: '33'},
+            {name: 'GBF_PT01',          text: '0.19'},
+            {name: 'GBF_FM01',          text: '380155'},
+            {name: 'ZT90224',           text: '99'},
+            {name: 'ZT90224_zadaniy',   text: '100'},
+            {name: 'ZT90223',           text: '100'},
+            {name: 'ZT90223_zadaniy',   text: '100'},
+            {name: 'ZT90276',           text: '3'},
+            {name: 'ZT90276_zadaniy',   text: '2'},
+
+            // #region dp full 
+            { name: 'radar1_text', text: '2.83' },
+            { name: 'radar2_text', text: '2.91' },
+            { name: 'radar3_text', text: '2.87' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+            { name: 'EKZ_H1', text: '17' },
+            { name: 'EKZ_H2', text: '17' },
+            { name: 'EKZ_H3', text: '17' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 0 },
+            { name: 'AKZ_17', opacity: 1 },
+            { name: 'EVS_DP7_O',  text: '52249' },
+            { name: 'EVD1_O',     text: '14001' },
+            { name: 'EVS_DP7_F',  text: '7201' },
+             { name: 'EVD1_F',    text: '304103' },
+            { name: 'EVD_F',      text: '303090' },
+            { name: 'P_1',       text: '2.68' },
+            { name: 'F_evd',     text: '5067' },
+            { name: 'F_hol_dyt', text: '4322' },
+            { name: 'T_hol_dyt', text: '55' },
+            { name: 'O_hol_dyt', text: '24.2' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.3' },
+            { name: 'FO2_hol_dyt', text: '1233' },
+            { name: 'N2',           text: '55.2' },
+            { name: 'CO',           text: '22.5' },
+            { name: 'CO2',          text: '18.6' },
+            { name: 'H2_tryb',      text: '3.1' },
+            { name: 'Nco_tryb',     text: '45.2' },
+            { name: 'Q_domG_tryb', text: '781', opacity: '1' },
+            { name: 'P_vozd_tryb',  text: '8' },
+            { name: 'P_gaza_tryb',  text: '19' },
+            { name: 'CO_bor_tryb',  text: '0.00' },
+            { name: 'H_snotr', text: '11' },
+            // { name: 'kl_red', color: '#00DA01' },
+            { name: 'H_progres_7', opacity: '1' },
+            { name: 'H_progres_19', opacity: '0' },
+            // { name: 'H_progres_22', opacity: '1' },
+            // { name: 'H_progres_33', opacity: '1' },
+            // { name: 'H_progres_49', opacity: '1' },
+            // { name: 'H_progres_56', opacity: '1' },
+            // { name: 'H_progres_60', opacity: '1' },
+            // { name: 'H_progres_89', opacity: '1' },
+            // { name: 'H_progres_100', opacity: '1' },
+            { name: 'H_step_isp',   text: '64.2', opacity: '1' },
+            { name: 'HCO_step_isp', text: '48.5' },
+            { name: 'Tkyp_3', text: '1113' },
+            { name: 'Tkyp_2', text: '1100' },
+            { name: 'Tkyp_1', text: '1232' },
+            { name: 'Tkyp_3_rect', color: '#ffff0f' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffffff' },
+            { name: 'VNK3_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK3_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK2_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK1_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+            { name: 'Fvozdyh_3', text: '0' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3',     text: '0' },
+            { name: 'Fgaz_2',     text: '0' },
+            { name: 'VNK1_Fb',   text: '0' },
+            { name: 'VNK1_Fr',   text: '0' },
+            { name: 'Tdym_3', text: '131' },
+            { name: 'Tdym_2', text: '168' },
+            { name: 'Tdym_1', text: '141' },
+            { name: 'P_Os_szat_voz', text: '8.28' },
+            { name: 'T_Os_szat_voz', text: '26' },
+            { name: 'Temp_peref_1',   text: '60' },
+            { name: 'Temp_peref_2',   text: '48' },
+            { name: 'Temp_peref_3',   text: '54' },
+            { name: 'Temp_peref_4',   text: '49' },
+            { name: 'Temp_peref_5',   text: '59' },
+            { name: 'Temp_peref_6',   text: '52' },
+            { name: 'Temp_peref_7',   text: '54' },
+            { name: 'Temp_peref_8',   text: '54' },
+            { name: 'Temp_peref_9',   text: '67' },
+            { name: 'Temp_peref_10',  text: '49' },
+            { name: 'Temp_peref_11',  text: '53' },
+            { name: 'Temp_peref_12',  text: '57' },
+            { name: 'Temp_peref_13',  text: '88' },
+            { name: 'Temp_peref_14',  text: '52' },
+            { name: 'Temp_peref_15',  text: '61' },
+            { name: 'Temp_peref_16',  text: '48' },
+            { name: 'T1', text: '158' },
+            { name: 'T2', text: '186' },
+            { name: 'T3', text: '154' },
+            { name: 'T4', text: '134' },
+            { name: 'P_2', text: '2.62' },
+            { name: 'P_2_rect', color: "#ffffff" },
+            { name: 't_gor_dut', text: '1101' },
+            { name: 't_gor_dut_spravaRydom', text: '1100' },
+            // { name: 'H_Os_szat_voz', text: '68' },
+            // { name: 't_prirodn_gaz', text: '15' },
+            { name: 'P_pg_prir_gaz', text: '8.56' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '11492' },
+            { name: 'H_prir_gaz', text: '25' },
+            { name: 'F_tryba', text: '399054' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '0.94' },
+            { name: 'P_vus_rect', color: '#ffff0f' },
+            { name: 'dP_verh', text: '0.10' },
+            { name: 'dP_verh_rect', color: '#ffffff' },
+            { name: 'dP_obsh_tryba', text: '1.67' },
+            { name: 'dP_obsh_trybarect', color: '#ffffff' },
+            { name: 'dP_nish_tryba', text: '1.56' },
+            { name: 'dP_nish_rect', color: '#ffffff' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'zadanie_rect', color: '#ffffff' },
+            { name: 'TTG_raschet', text: '2198', opacity: '1' },
+            { name: 'F_pg_prir_gaz', text: '11678' },
+            { name: 'dF_pg_prir_gaz', text: '-187' },
+            { name: 'L1', text: '1428', opacity: '0' },
+            { name: 'L2', text: '1428', opacity: '0' },
+            { name: 'L4', text: '1428', opacity: '0' },
+            { name: 'L3', text: '1428', opacity: '0' },
+            { name: 'L1_elem', color: '#ffffff' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L4_elem', color: '#ffffff' },
+            { name: 'L3_elem', color: '#ffffff' },
+            { name: 'P_tryba_1_590', text: '0.93' },
+            { name: 'P_tryba_1_591', text: '0.93' },
+            { name: 'P_tryba_1_592', text: '0.93' },
+            { name: 'P_tryba_1_593', text: '0.93' },
+            { name: 'P_tryba_2_1', text: '0.98' },
+            { name: 'P_tryba_2_2', text: '0.98' },
+            { name: 'P_tryba_2_3', text: '0.98' },
+            { name: 'P_tryba_2_4', text: '0.98' },
+            { name: 'P_tryba_3_590', text: '1.03' },
+            { name: 'P_tryba_3_591', text: '1.03' },
+            { name: 'P_tryba_4_1', text: '4.66' },
+            { name: 'P_tryba_4_2', text: '3.00' },
+            { name: 'P_tryba_4_3', text: '4.70' },
+            { name: 'P_tryba_4_4', text: '4.30' },
+            { name: 'P_tryba_5_1', text: '3.19' },
+            { name: 'P_tryba_5_2', text: '1.44' },
+            { name: 'P_tryba_5_3', text: '1.45' },
+            { name: 'P_tryba_5_4', text: '2.10' },
+            { name: 'V_dyt', text: '202.6' },
+            // { name: 'fyrm_v_rab', text: '0' },
+            // { name: 'ydel_tep_18', text: '27.5' },
+            // { name: 'ydel_tep_17', text: '34.5' },
+            // { name: 'ydel_tep_16', text: '33.5' },
+            // { name: 'ydel_tep_15', text: '28.9' },
+            // { name: 'ydel_tep_12_14', text: '51.8' },
+            // { name: 'ydel_tep_10_11', text: '18.9' },
+            // { name: 'ydel_tep_9', text: '17.9' },
+            // { name: 'ydel_tep_8', text: '14.4' },
+            // { name: 'ydel_tep_7', text: '29.9' },
+            // #endregion
+          ]
+        }
+      }, 
+      startTime: timeDiff + 378.1, 
+      human: true,
+    },
+    ////--------------------------------66--------------------------
+    
+    {
+      chapterText: 'Подача ПУТ в ДП',
+      scenarioText: 'Установка копий для подачи ПУТ в доменную печь.',
+      sender: 'Система',
+      audio: 'telephone_say', // 1.7
+      startTime: timeDiff + 379,
+    },
+    { action: { target3D: 'PhoneButton023', }, startTime: timeDiff + 380, human: true, },
+    {
+      text: 'Сейчас будем выставлять копья.',
+      sender: 'Газовщик',
+      audio: 'tts-vo89', // 2.14
+      startTime: timeDiff + 381,
+    },
+    {
+      text: 'Понял.',
+      sender: 'Оператор установки вдувания',
+      audio: 'tts-vo88', // 0.94
+      startTime: timeDiff + 383.7,
+    },
+    {
+      lifeTime: '12:38:00',
+      startTime: timeDiff + 384,
+    },
+    
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '01.06', },    startTime: timeDiff + 384.01, },
+    { action: { target3D: 'bzuVesNetto_l', color: 'red', number: '093.1', },    startTime: timeDiff + 384.01, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '001.3', },  startTime: timeDiff + 384.01, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0085', },   startTime: timeDiff + 384.01, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '150.1', },    startTime: timeDiff + 384.01, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '00.99', },    startTime: timeDiff + 384.01, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '016.2', },    startTime: timeDiff + 384.01, },
+    { action: { target3D: 'bzuPolShihZat_r', color: 'red', number: '001.3', },  startTime: timeDiff + 384.01, },
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '033.5', },    startTime: timeDiff + 384.01, },
+    { action: { target3D: 'bzuVremVigruz_r', color: 'red', number: '0096', },   startTime: timeDiff + 384.01, },
+    { action: { target3D: 'bzuUrovZasip', color: 'red', number: '02.81', },     startTime: timeDiff + 384.01, },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '1.019', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.104', },         startTime: timeDiff + 384.02, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.642', },         startTime: timeDiff + 384.02, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1.367', },          startTime: timeDiff + 384.02, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4677.', },      startTime: timeDiff + 384.02, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '2.677', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.84', },      startTime: timeDiff + 384.02, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '02.92', },      startTime: timeDiff + 384.02, },
+    { action: { target3D: 'urZasMeh', color: 'green', number: '0000', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0196.', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0229.', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0190.', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0166.', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '06.65', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'tVGazT6', color: 'green', number: '00.39', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1100.', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.11', },     startTime: timeDiff + 384.02, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.11', },     startTime: timeDiff + 384.02, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.14', },      startTime: timeDiff + 384.02, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.29', }, startTime: timeDiff + 384.02, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.377', },     startTime: timeDiff + 384.02, },
+    { action: { target3D: 'tReduct', color: 'green', number: '035.8', },        startTime: timeDiff + 384.02, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '25.11', },   startTime: timeDiff + 384.02, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '1.326', },     startTime: timeDiff + 384.02, },
+    {
+      action: {
+        windows2D:{
+          elements: [
+            // vnk3 full
+            { name: '7PI_13', text: '19.04' },
+            // { name: 'ramka_7PI_13', text: '19.04' }, // черный зданий. его нет. todo
+            { name: 'PS_10', color: '#06FF06' },
+            { name: '3FI_03', text: '0' },
+            { name: '3FI_01', text: '0' },
+            { name: 'kl_327', color: '#06FF06' },
+            { name: 'kl_332', color: '#ff0000' },
+            { name: 'rect_332_1', color: '#000' },
+            { name: 'rect_332_2', color: '#000' },
+            { name: 'kl_316', color: '#ff0000' },
+            { name: 'rect_316_1', color: '#000' },
+            { name: 'rect_316_2', color: '#000' },
+            { name: '315_SPW',  text: '430,0' },
+            { name: '315_SPT',  text: '108,0' },
+            { name: '315_KP_2', text: '130,6' },
+            { name: '315_GAZ',  text: '80000' },
+            { name: 'V3_t1_5', text: 'Соглас', color: '#000000' },
+            { name: '323_PV_2', text: '1111,3' },
+            { name: '323_SP_2', text: '1330,0' },
+            { name: '323_KP_2', text: '22,00' },
+            { name: '323_GAZ',  text: '0,00' },
+            { name: 'V3_t3_5',  text: 'Соглас', color: '#000000' },
+            { name: 'kl_334', color: '#ff0000' },
+            { name: '3FI_02', text: '0' },
+
+            { name: '315_PV',   text: '0' },
+            { name: '315_SP',   text: '80000' },
+            { name: '315_KP_1', text: '22,42' },
+            { name: 'V3_t3_4',  text: 'Соглас', color: '#000' },
+            { name: '123_PV_1', text: '5,000' },
+            { name: '123_SP_1', text: '1,300' },
+            { name: '123_KP_1', text: '22,00' },
+            { name: 'V3_t4_4', text: 'Соглас', color: '#000' },
+            { name: '3PI_02', text: '0,00' },
+            { name: '3PS_03', color: '#ff0000' },
+            { name: 'kl_321', color: '#06FF06' },
+            { name: 'kl315_proc', text: '22' },
+            { name: '3PI_04', text: '0,02' },
+            { name: '3PS_05', color: '#ff0000' },
+            { name: 'kl323_proc', text: '21' },
+            { name: 'kl_311', color: '#ff0000' },
+            { name: 'kl_312', color: '#ff0000' },
+            { name: '3QI_01', text: '18,87' },
+            { name: '3TI_43', text: '51' },
+            { name: 'kl_313', color: '#ff0000' },
+            { name: '3TI_29', text: '26' },
+            { name: 'kl_317', color: '#ff0000' },
+            { name: 'dym_vybor_signala', text: '131' },
+            { name: '3TI_28_1', text: '129' },
+            { name: '3TI_28_2', text: '132' },
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отделение' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'Vremya_nagreva', text: '106' },
+            { name: 'Vremya_dutya', text: '105' },
+            { name: 'Vremya_otdelen', text: '197' },
+            { name: 'rect_R_VN-GD', color: '#04FF00' },
+            { name: '3PI_01', text: '2' },
+            { name: '3TI_02', text: '1111' },
+            { name: '3TI_03', text: '1113' },
+            { name: '3TI_04', text: '-999' },
+            { name: '3TI_05', text: '963' },
+            { name: 'vybor_signala', text: '1111' },
+            { name: 'kl_319', color: '#ff0000' },
+            { name: 'circle_dutyo', color: '#000' },
+            { name: 'circle_nagrev', color: '#000' },
+            { name: 'circle_otdeleniye_1', color: '#06FF06' },
+            { name: 'circle_otdeleniye_2', color: '#000' },
+            { name: 'kl_336a', color: '#ff0000' },
+            { name: 'kl_318a', color: '#ff0000' },
+            { name: 'kl_318', color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+          ]
+        }
+      },
+      startTime: timeDiff + 384.3,
+    },
+    ////--------------------------------67--------------------------////
+    {      lifeTime: '12:43:00',      startTime: timeDiff + 384.31,    },
+    {
+      scenarioText: 'Установить воздухонагреватели в режим «нагрев».',
+      text: 'Установить воздухонагреватель ВНК №3 в режим «нагрев».',
+      sender: 'Система',
+      audio: 'tts-62', // 4.6
+      startTime: timeDiff + 385,
+    },
+
+    { // perekidta3_btn
+      action: {
+        target2D: 'perekidta3_btn', 
+        window2D: {
+          elements: [
+            { name: 'avarin_otd_rect',    color: '#e6e6e6', stroke: '#808080' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_nagrev',       color: '#ffffff', stroke: '#808080' },
+            { name: 'nagrev_otd_2_rect',  color: '#e6e6e6', stroke: '#808080' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_dute',         color: '#ffffff', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'dute_otdel',         color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_otdel2',       color: '#ffffff', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otd2_otd_rect',      color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+          ]
+        }
+      },
+      startTime: timeDiff + 386,
+      human: true,
+    },
+    { // otdel_nagrev_btn
+      action: {
+        target2D: 'otdel_nagrev_btn',
+        window2D: {
+          elements: [
+            // { name: 'OvN_Title',        text: '',},
+
+            { name: 'OvN_str2_cel10',   text: '323 на',},
+            { name: 'OvN_str3_cel5',    text: 'Отдел.',},
+            { name: 'OvN_str3_cel10',   text: '>350',},
+            { name: 'OvN_usl_7',        text: 'Открыть отделительный',},
+            { name: 'OvN_usl_7_down',   text: 'клапан на газе 13',},
+            { name: 'OvN_usl_8',        text: 'Открыть клапан',},
+            { name: 'OvN_usl_8_down',   text: 'продувки на газе 24',},
+            { name: 'OvN_usl_9',        text: 'Ожидания разрешения',},
+            { name: 'OvN_usl_9_down',   text: 'пуска газа:',},
+            { name: 'OvN_usl_10',       text: 'Открыть отделительный',},
+            { name: 'OvN_usl_10_down',  text: 'клапан на воздух. гор. 17',},
+            { name: 'OvN_usl_11',       text: 'Открыть отсечной',},
+            { name: 'OvN_usl_11_down',  text: 'клапан на воздух. гор. 34',},
+            { name: 'OvN_usl_12',       text: 'Открыть отсечной',},
+            { name: 'OvN_usl_12_down',  text: 'клапан на смеш. газе 16',},
+            { name: 'OvN_usl_13',       text: 'Открыть отсечной',},
+            { name: 'OvN_usl_13_down',  text: 'клапан на смеш. газе 32',},
+            { name: 'OvN_usl_14',       text: 'Ожидание появления',},
+            { name: 'OvN_usl_14_down',  text: 'факела',},
+            { name: 'OvN_usl_15',       text: 'Закрыть клапан',},
+            { name: 'OvN_usl_15_down',  text: 'продувки азотом 24',},
+
+            { name: 'OvN_Time_1',       text: '27',},
+            { name: 'OvN_Time_2',       text: '300',},
+            { name: 'OvN_Time_3',       text: '27',},
+            { name: 'OvN_Time_4',       text: '27',},
+            { name: 'OvN_Time_5',       text: '27',},
+            { name: 'OvN_Time_6',       text: '10',},
+            { name: 'OvN_Time_7',       text: '27',},
+            { name: 'OvN_Time_8',       text: '27',},
+            { name: 'OvN_Time_9',       text: '2',},
+            { name: 'OvN_Time_10',      text: '27',},
+            { name: 'OvN_Time_11',      text: '30',},
+            { name: 'OvN_Time_12',      text: '125',},
+            { name: 'OvN_Time_13',      text: '125',},
+            { name: 'OvN_Time_14',      text: '10',},
+            { name: 'OvN_Time_15',      text: '27',},
+
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 475 },
+            { name: 'OvN_number_311',   text: 'Закрыт', y: 475 },
+            { name: 'OvN_number_312',   text: 'Закрыт', y: 475 },
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 475 },
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 475 },
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 475 },
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 475 },
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 475 },
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 475 },
+            
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_311',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_312',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 0 } },
+          ]
+        },
+      },
+      startTime: timeDiff + 386.1,
+      human: true,
+    },
+    {
+      action: {
+        target2D: 'pericNagrev_pusk_btn',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Пуск' },
+          ]
+        },
+        helper2D: [
+          { x: 37.9, y: 94.9, w: 3.2, h: 2.4, id: 'close_vn' },
+          { x: 34.3, y: 94.9, w: 3.2, h: 2.4, id: 'open_vn1' },  //  wind 2
+        ]
+      },
+      startTime: timeDiff + 386.2,
+      human: true,
+    },
+    {  // wind 2  ok
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+    
+          ]
+        },
+      },
+      startTime: timeDiff + 386.3,
+      human: true,
+    },
+    
+    //1
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '18.77' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_336a', color: '#ff0000' },
+            { name: 'kl_318a', color: '#ff0000' },
+            { name: 'kl_318', color: '#ff0000' },
+            { name: 'kl_310_1', color: '#06FF06' },
+            { name: 'kl_310_2', color: '#06FF06' },
+
+            { name: 'circle_dutyo',         color: '#000000' },
+            { name: 'circle_nagrev',        color: '#000000' },
+            { name: 'circle_otdeleniye_1',  color: '#000000' },
+            { name: 'circle_otdeleniye_2',  color: '#000000' },
+            // Table
+
+            { name: 'OvN_number_310',   text: 'Открыт', y: 520},
+            { name: 'OvN_number_311',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_312',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 520},
+            { name: 'OvN_path_310',     color: '#06FF06', position: { y: 40 } },
+            { name: 'OvN_path_311',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_312',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 40 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 387,
+    },
+    //2
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.00' },       
+            // Table
+            { name: 'OvN_number_310',   text: 'Открыт', y: 560},
+            { name: 'OvN_number_311',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_312',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 560},
+            { name: 'OvN_path_310',     color: '#06FF06', position: { y: 81 } },
+            { name: 'OvN_path_311',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_312',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 81 } },
+
+
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 388,
+    },
+    //3
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.15' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#06FF06' },
+            { name: 'kl_310_2', color: '#06FF06' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Открыт', y: 600},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 600},
+            { name: 'OvN_number_312',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 600},
+            { name: 'OvN_path_310',     color: '#06FF06', position: { y: 122 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 122 } },
+            { name: 'OvN_path_312',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 122 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 389,
+    },
+    //4
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.28' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#06FF06' },
+            { name: 'kl_310_2', color: '#06FF06' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Открыт', y: 640},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 640},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 640},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 640},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 640},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 640},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 640},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 640},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 640},
+            { name: 'OvN_path_310',     color: '#06FF06', position: { y: 162 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 162 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 162 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 162 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 162 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 162 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 162 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 162 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 162 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 390,
+    },
+    //5
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.27' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 680},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 680},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 680},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 204 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 204 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 204 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 391,
+    },
+    //6
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.18' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 720},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 720},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 720},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 245 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 245 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 245 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 392,
+    },
+    //7
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.10' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_313',   color: '#06FF06' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 762},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 762},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 762},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 762},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 762},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 762},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 762},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 762},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 762},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 286 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 286 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 286 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 286 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 286 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 286 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 286 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 286 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 286 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 393,
+    },
+    //8
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.11' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_324',   color: '#06FF06' },
+            { name: 'kl_313',   color: '#06FF06' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 805},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 805},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 805},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 805},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 805},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 805},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 805},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 805},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 805},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 327 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 327 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 327 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 327 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 327 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 327 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 327 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 327 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 327 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 394,
+    },
+    //9
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.09' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_324',   color: '#06FF06' },
+            { name: 'kl_313',   color: '#06FF06' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 846},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 846},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 846},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 846},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 846},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 846},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 846},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 846},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 846},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 367 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 367 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 367 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 367 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 367 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 367 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 367 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 367 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 367 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 395,
+    },
+    //10
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.08' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_317',   color: '#06FF06' },
+            { name: 'kl_324',   color: '#06FF06' },
+            { name: 'kl_313',   color: '#06FF06' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 886},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 886},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 886},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 886},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 886},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 886},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 886},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 886},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 886},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 408 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 408 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 408 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 408 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 408 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 408 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 408 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 408 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 408 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 396,
+    },
+    //11
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.07' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_334',   color: '#06FF06' },
+            { name: 'kl_317',   color: '#06FF06' },
+            { name: 'kl_324',   color: '#06FF06' },
+            { name: 'kl_313',   color: '#06FF06' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 926},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 926},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 926},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 449 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 449 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 449 } },
+          
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 397,
+    },
+    //12
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '19.03' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_316',   color: '#06FF06' },
+            { name: 'kl_334',   color: '#06FF06' },
+            { name: 'kl_317',   color: '#06FF06' },
+            { name: 'kl_324',   color: '#06FF06' },
+            { name: 'kl_313',   color: '#06FF06' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 968},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_316',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 968},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 490 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_316',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 490 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 398,
+    },
+    //13
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '17.17' },       
+            { name: 'vnk3_fire', opacity: '0' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '0' }, // обводка стрелка
+            { name: 'vnk_3', color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_332',   color: '#06FF06' },
+            { name: 'kl_316',   color: '#06FF06' },
+            { name: 'kl_334',   color: '#06FF06' },
+            { name: 'kl_317',   color: '#06FF06' },
+            { name: 'kl_324',   color: '#06FF06' },
+            { name: 'kl_313',   color: '#06FF06' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 1008},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_316',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_332',   text: 'Открыт', y: 1008},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 531 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_316',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_332',     color: '#06FF06', position: { y: 531 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 399,
+    },
+    //14
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '15.70' },       
+            { name: 'vnk3_fire',        opacity: '1' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '1' }, // обводка стрелка
+            { name: 'vnk_3',            color: '#9CA4AD' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes', color: '#9CA4AD' },
+            { name: 'kl_332',   color: '#06FF06' },
+            { name: 'kl_316',   color: '#06FF06' },
+            { name: 'kl_334',   color: '#06FF06' },
+            { name: 'kl_317',   color: '#06FF06' },
+            { name: 'kl_324',   color: '#06FF06' },
+            { name: 'kl_313',   color: '#06FF06' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 1050},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_316',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_332',   text: 'Открыт', y: 1050},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 572 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_316',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_332',     color: '#06FF06', position: { y: 572 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 400,
+    },
+    { // где-то в середине 
+      action: {
+        window2D:{
+          elements:[
+            // vnk_spvg 
+            { name: '6TI_39_1',   text: '28' },
+            { name: '6TI_39_2',   text: '27' },
+            { name: '6TI_39_3',   text: '53' },
+            { name: '6TI_39_4',   text: '54' },
+            { name: '6TI_39_5',   text: '53' },
+            { name: '6TI_39_6',   text: '53' },
+            { name: '6TI_39_7',   text: '55' },
+            { name: '6TI_39_8',   text: '51' },
+            { name: '6TI_39_9',   text: '29' },
+            { name: '6TI_39_10',  text: '31' },
+            { name: '6TI_38_1',   text: '22' },
+            { name: '6TI_38_2',   text: '23' },
+            { name: '6TI_38_3',   text: '53' },
+            { name: '6TI_38_4',   text: '56' },
+            { name: '6TI_38_5',   text: '52' },
+            { name: '6TI_38_6',   text: '53' },
+            { name: '6TI_38_7',   text: '51' },
+            { name: '6TI_38_8',   text: '54' },
+            { name: '6TI_38_9',   text: '29' },
+            { name: '6TI_38_10',  text: '30' },
+            { name: '6TI_37_1',   text: '40' },
+            { name: '6TI_37_2',   text: '44' },
+            { name: '6TI_37_3',   text: '57' },
+            { name: '6TI_37_4',   text: '55' },
+            { name: '6TI_37_5',   text: '60' },
+            { name: '6TI_37_6',   text: '54' },
+            { name: '6TI_37_7',   text: '57' },
+            { name: '6TI_37_8',   text: '52' },
+            { name: '6TI_37_9',   text: '33' },
+            { name: '6TI_37_10',  text: '36' },
+            { name: 'klO35_proc', text: '12' },
+            //table1
+            //table1
+            //table1
+            { name: 'spvg_t1_4', text: 'Работа', color: '#06FF06' },
+            { name: 'vnk_spvg_B3_1', color: '#06FF06' },
+            { name: 'vnk_spvg_B2_1', color: '#06FF06' },
+            { name: 'vnk_spvg_B1_1', color: '#808080' },
+            { name: '6VI_3_1', text: '1,02' },
+            { name: '6VI_3_2', text: '2,19' },
+            { name: '6VI_3_3', text: '1,56' },
+            { name: '6VI_3_4', text: '1,45' },
+            { name: '6VI_2_1', text: '1,11' },
+            { name: '6VI_2_2', text: '2,67' },
+            { name: '6VI_2_3', text: '1,40' },
+            { name: '6VI_2_4', text: '2,177' },
+            { name: 'klOF3_proc', text: '100' },
+            { name: '6TI_31_3', text: '17' },
+            { name: '8QI_05_1', text: '0,00' },
+            { name: '8QI_05_2', text: '2,31' },
+            { name: '8QI_05_4', text: '2,64' },
+            { name: '6VI_1_1', text: '0,04' },
+            { name: '6VI_1_2', text: '0,20' },
+            { name: '6VI_1_3', text: '0,38' },
+            { name: '6VI_1_4', text: '0,22' },
+            { name: 'klOF2_proc', text: '100' },
+            { name: '6TI_31_2', text: '17' },
+            { name: 'klOF1_proc', text: '0' },
+            { name: '6TI_31_1', text: '20' },
+            { name: '9TI_41', text: '24' },
+            { name: '9TI_34', text: '54' },
+            { name: '9TI_35', text: '34' },
+            { name: '9TI_30', text: '29' },
+            { name: '9TI_42', text: '45' },
+            { name: '9TI_42', text: '30' },
+            { name: '9TI_32', text: '56' },
+            { name: '9TI_33', text: '30' },
+            { name: '9TI_16', text: '9,82' },
+            { name: '9TI_44', text: '29' },
+          ]
+        }
+      },
+      startTime: timeDiff + 401
+    },
+    //15          
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '15.70' },       
+            { name: 'vnk3_fire',        opacity: '1' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '1' }, // обводка стрелка
+            // { name: 'vnk_3',            color: '#ff0000' }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            // { name: 'vnk3_stripes',     color: '#ff0000' },
+            { name: 'kl_332',   color: '#06FF06' },
+            { name: 'kl_316',   color: '#06FF06' },
+            { name: 'kl_334',   color: '#06FF06' },
+            { name: 'kl_317',   color: '#06FF06' },
+            { name: 'kl_324',   color: '#ff0000' },
+            { name: 'kl_313',   color: '#06FF06' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 1090},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 1090},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_316',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_332',   text: 'Открыт', y: 1090},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 610 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 610 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_316',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_332',     color: '#06FF06', position: { y: 610 } },
+            //  End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 402,
+    },
+    //16
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: '7PI_13', text: '15.70' },       
+            { name: 'vnk3_fire',        opacity: '1' }, // стрелка
+            { name: 'vnk3_fire_border', opacity: '1' }, // обводка стрелка
+            { name: 'vnk_3',            color: '#ff0000'  }, // задник стрелки
+            { name: 'VNK3_status_1', text: 'Циклический.' },
+            { name: 'VNK3_status_2', text: 'Отдел.-Нагрев' },
+            { name: 'vnk3_stripes',     color: '#ff0000' },
+            { name: 'kl_332',   color: '#06FF06' },
+            { name: 'kl_316',   color: '#06FF06' },
+            { name: 'kl_334',   color: '#06FF06' },
+            { name: 'kl_317',   color: '#06FF06' },
+            { name: 'kl_324',   color: '#ff0000' },
+            { name: 'kl_313',   color: '#06FF06' },
+            { name: 'kl_312',   color: '#06FF06' },
+            { name: 'kl_311',   color: '#06FF06' },
+            { name: 'kl_336a',  color: '#ff0000' },
+            { name: 'kl_318a',  color: '#ff0000' },
+            { name: 'kl_318',   color: '#ff0000' },
+            { name: 'kl_310_1', color: '#ff0000' },
+            { name: 'kl_310_2', color: '#ff0000' },
+
+            { name: '7PI_13', text: '11.40' },     
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 475},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 475},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_316',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_332',   text: 'Открыт', y: 475},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_316',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_332',     color: '#06FF06', position: { y: 0 } },
+            //  End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 403,
+    },
+    
+    // в конце
+    { action: { target3D: 'Rectangle083', material: 'ButtonLightOn', },         startTime: timeDiff + 403.02, },
+    { action: { target3D: 'Rectangle056', material: 'ButtonLightOn', },         startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '01.25', },    startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuVesNetto_l', color: 'red', number: '093.1', },    startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '001.3', },  startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0085', },   startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '237.1', },    startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '01.22', },    startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '016.2', },    startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuPolShihZat_r', color: 'red', number: '001.3', },  startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '033.5', },    startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuVremVigruz_r', color: 'red', number: '0096', },   startTime: timeDiff + 403.02, },
+    { action: { target3D: 'bzuUrovZasip', color: 'red', number: '02.70', },     startTime: timeDiff + 403.02, },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '1.187', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.119', },         startTime: timeDiff + 403.03, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.674', },         startTime: timeDiff + 403.03, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1.381', },          startTime: timeDiff + 403.03, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '4881.', },      startTime: timeDiff + 403.03, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '2.000', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '02.71', },      startTime: timeDiff + 403.03, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '03.20', },      startTime: timeDiff + 403.03, },
+    { action: { target3D: 'urZasMeh', color: 'green', number: '0000', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0216.', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0246.', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0215.', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0188.', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '06.60', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'tVGazT6', color: 'green', number: '00.39', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1100.', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.15', },     startTime: timeDiff + 403.03, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.16', },     startTime: timeDiff + 403.03, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.12', },      startTime: timeDiff + 403.03, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.15', }, startTime: timeDiff + 403.03, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.402', },     startTime: timeDiff + 403.03, },
+    { action: { target3D: 'tReduct', color: 'green', number: '036,6', },        startTime: timeDiff + 403.03, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '25.13', },   startTime: timeDiff + 403.03, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '1.707', },     startTime: timeDiff + 403.03, },
+
+    {  
+      action: {
+        target2D: 'pericNagrev_close_btn',
+      },
+      startTime: timeDiff + 403.1,
+      human: true,
+    },
+    { 
+      action: {
+        target2D: 'perekidta_exit_btn',
+      },
+      startTime: timeDiff + 403.2,
+      human: true,
+    },
+
+    ////--------------------------------68--------------------------////
+    {
+      scenarioText: 'Повысить давление.',
+      text: 'Прикрыть клапан «СНОРТ» до давления на фурмах 2,90-3,00 кг.',
+      audio: 'tts--68', // 3.7
+      sender: 'Система',
+      startTime: timeDiff + 404,
+    },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 }, }, duration: 0.15, startTime: timeDiff + 405, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0 },     }, duration: 0.15, startTime: timeDiff + 406, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0.785 }, }, duration: 0.15, startTime: timeDiff + 407, human: true, },
+    { action: { target3D: '128f49df-9d0a-4b03-b177-dfa710831d6f', rotation: { y: 0 },     }, duration: 0.15, startTime: timeDiff + 408, human: true, },
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'H_snotr', text: '0' },
+            { name: 'H_progres_7',   opacity: 0 },
+            { name: 'H_progres_19',  opacity: 0 },
+            { name: 'H_progres_22',  opacity: 0 },
+            { name: 'H_progres_33',  opacity: 1 },
+            { name: 'H_progres_49',  opacity: 0 },
+            { name: 'H_progres_56',  opacity: 0 },
+            { name: 'H_progres_60',  opacity: 0 },
+            { name: 'H_progres_89',  opacity: 0 },
+            { name: 'H_progres_100', opacity: 0 },
+            { name: 'P_2', text: '2.92' },
+            //100 
+          ]
+        }
+      },
+      startTime: timeDiff + 408.5,
+    },
+
+    { action: { target3D: 'Lamp_Red_020', material: 'Red_Lamp_On', },           startTime: timeDiff + 408.51, },
+    { action: { target3D: 'pKolGaz', color: 'green', number: '1.268', },        startTime: timeDiff + 408.52, },
+    { action: { target3D: 'dpVerh', color: 'green', number: '0.131', },         startTime: timeDiff + 408.52, },
+    { action: { target3D: 'dpObsh', color: 'green', number: '1.613', },         startTime: timeDiff + 408.52, },
+    { action: { target3D: 'dpNiz', color: 'green', number: '1.316', },          startTime: timeDiff + 408.52, },
+    { action: { target3D: 'fHolodDut', color: 'green', number: '5292.', },      startTime: timeDiff + 408.52, },
+    { action: { target3D: 'pGorDut', color: 'green', number: '2.907', },        startTime: timeDiff + 408.52, },
+    { action: { target3D: 'urZasDat1', color: 'green', number: '03.05', },      startTime: timeDiff + 408.52, },
+    { action: { target3D: 'urZasDat2', color: 'green', number: '03.19', },      startTime: timeDiff + 408.52, },
+    { action: { target3D: 'tVGazT1', color: 'green', number: '0220.', },        startTime: timeDiff + 408.52, },
+    { action: { target3D: 'tVGazT2', color: 'green', number: '0252.', },        startTime: timeDiff + 408.52, },
+    { action: { target3D: 'tVGazT3', color: 'green', number: '0223.', },        startTime: timeDiff + 408.52, },
+    { action: { target3D: 'tVGazT4', color: 'green', number: '0199.', },        startTime: timeDiff + 408.52, },
+    { action: { target3D: 'tVGazT5', color: 'green', number: '08.35', },        startTime: timeDiff + 408.52, },
+    { action: { target3D: 'tVGazT7', color: 'green', number: '1102.', },        startTime: timeDiff + 408.52, },
+    { action: { target3D: 'pTechVodT1', color: 'green', number: '10.14', },     startTime: timeDiff + 408.52, },
+    { action: { target3D: 'pTechVodT2', color: 'green', number: '10.15', },     startTime: timeDiff + 408.52, },
+    { action: { target3D: 'pSjatVozd', color: 'green', number: '05.14', },      startTime: timeDiff + 408.52, },
+    { action: { target3D: 'pOsyshSjatVozd', color: 'green', number: '04.12', }, startTime: timeDiff + 408.52, },
+    { action: { target3D: 'pAzotkZatv', color: 'green', number: '2.347', },     startTime: timeDiff + 408.52, },
+    { action: { target3D: 'tReduct', color: 'green', number: '037,7', },        startTime: timeDiff + 408.52, },
+    { action: { target3D: 'fVodNaReduct', color: 'green', number: '25.14', },   startTime: timeDiff + 408.52, },
+    { action: { target3D: 'fPrirodGaz', color: 'green', number: '1.893', },     startTime: timeDiff + 408.52, },
+    { action: { target3D: 'bzuDavlenie_l', color: 'red', number: '01.27', },    startTime: timeDiff + 408.53, },
+    { action: { target3D: 'bzuVesNetto_l', color: 'red', number: '012.2', },    startTime: timeDiff + 408.53, },
+    { action: { target3D: 'bzuPolShihZat_l', color: 'red', number: '037.5', },  startTime: timeDiff + 408.53, },
+    { action: { target3D: 'bzuVremVigruz_l', color: 'red', number: '0080', },   startTime: timeDiff + 408.53, },
+    { action: { target3D: 'bzuFactUgol_l', color: 'red', number: '019.1', },    startTime: timeDiff + 408.53, },
+    { action: { target3D: 'bzuDavlenie_r', color: 'red', number: '01.27', },    startTime: timeDiff + 408.53, },
+    { action: { target3D: 'bzuVesNetto_r', color: 'red', number: '016.2', },    startTime: timeDiff + 408.53, },
+    { action: { target3D: 'bzuPolShihZat_r', color: 'red', number: '001.3', },  startTime: timeDiff + 408.53, },
+    { action: { target3D: 'bzuFactUgol_r', color: 'red', number: '023.2', },    startTime: timeDiff + 408.53, },
+    { action: { target3D: 'bzuVremVigruz_r', color: 'red', number: '0096', },   startTime: timeDiff + 408.53, },
+    { action: { target3D: 'bzuUrovZasip', color: 'red', number: '03.04', },     startTime: timeDiff + 408.53, },
+
+    { action: { target3D: 'Rectangle097', material: 'ButtonLightOff', }, startTime: timeDiff + 408.53, },
+    { action: { target3D: 'Rectangle098', material: 'ButtonLightOff', }, startTime: timeDiff + 408.53, },
+    { action: { target3D: 'Rectangle099', material: 'ButtonLightOff', }, startTime: timeDiff + 408.53, },
+    { action: { target3D: 'Rectangle100', material: 'ButtonLightOn',  }, startTime: timeDiff + 408.53, },
+    { action: { target3D: 'Rectangle101', material: 'ButtonLightOff', }, startTime: timeDiff + 408.53, },
+    { action: { target3D: 'Rectangle102', material: 'ButtonLightOff', }, startTime: timeDiff + 408.53, },
+    { action: { target3D: 'Rectangle103', material: 'ButtonLightOff', }, startTime: timeDiff + 408.53, },
+    { action: { target3D: 'Rectangle104', material: 'ButtonLightOff', }, startTime: timeDiff + 408.53, },
+    { action: { target3D: 'Rectangle105', material: 'ButtonLightOff', }, startTime: timeDiff + 408.53, },
+    { action: { target3D: 'Rectangle106', material: 'ButtonLightOff', }, startTime: timeDiff + 408.53, },
+    { action: { target3D: 'Rectangle107', material: 'ButtonLightOff', }, startTime: timeDiff + 408.53, },
+    {
+      action: {
+        window2D: {
+          elements: [
+            // dp full 
+            // { name: 'radar1_text', text: '2.83' },
+            // { name: 'radar2_text', text: '2.91' },
+            // { name: 'radar3_text', text: '2.87' },
+            { name: 'zadan_yrov_sin', text: '0.90' },
+            { name: 'EKZ_H1', text: '16' },
+            { name: 'EKZ_H2', text: '16' },
+            { name: 'EKZ_H3', text: '16' },
+            { name: 'AKZ_100', opacity: 0 },
+            { name: 'AKZ_45-100', opacity: 0 },
+            { name: 'AKZ_45', opacity: 0 },
+            { name: 'AKZ_30', opacity: 0 },
+            { name: 'AKZ_17', opacity: 1 },
+            // { name: 'EVS_DP7_O',  text: '52249' },
+            // { name: 'EVD1_O',     text: '14001' },
+            { name: 'EVS_DP7_F',  text: '7219' },
+            //  { name: 'EVD1_F',    text: '304103' },
+            // { name: 'EVD_F',      text: '303090' },
+            { name: 'P_1',       text: '3.00' },
+            { name: 'F_evd',     text: '50001' },
+            { name: 'F_hol_dyt', text: '4321' },
+            { name: 'T_hol_dyt', text: '64' },
+            { name: 'O_hol_dyt', text: '22.6' },
+            { name: 'par_yvlaz', text: '0.00' },
+            { name: 'W_sinij_hol_dyt', text: '8.2' },
+            { name: 'FO2_hol_dyt', text: '1364' },
+            { name: 'N2',           text: '50.7' },
+            { name: 'CO',           text: '24.1' },
+            { name: 'CO2',          text: '19.7' },
+            { name: 'H2_tryb',      text: '4.9' },
+            { name: 'Nco_tryb',     text: '45.0' },
+            { name: 'Q_domG_tryb', text: '878', opacity: '1' },
+            { name: 'P_vozd_tryb',  text: '10' },
+            { name: 'P_gaza_tryb',  text: '9' },
+            { name: 'CO_bor_tryb',  text: '6.40' },
+            // { name: 'H_snotr', text: '11' },
+            { name: 'kl_red', color: '#BD0102' },
+            // { name: 'H_progres_7', opacity: '1' },
+            // { name: 'H_progres_19', opacity: '0' },
+            // { name: 'H_progres_22', opacity: '1' },
+            // { name: 'H_progres_33', opacity: '1' },
+            // { name: 'H_progres_49', opacity: '1' },
+            // { name: 'H_progres_56', opacity: '1' },
+            // { name: 'H_progres_60', opacity: '1' },
+            // { name: 'H_progres_89', opacity: '1' },
+            // { name: 'H_progres_100', opacity: '1' },
+            { name: 'H_step_isp',   text: '48.8', opacity: '1' },
+            { name: 'HCO_step_isp', text: '45.7' },
+            { name: 'Tkyp_3', text: '1125' },
+            { name: 'Tkyp_2', text: '1094' },
+            { name: 'Tkyp_1', text: '1255' },
+            { name: 'Tkyp_3_rect', color: '#ffffff' },
+            { name: 'Tkyp_2_rect', color: '#ffff0f' },
+            { name: 'Tkyp_1_rect', color: '#ffffff' },
+            { name: 'VNK3_status_2', text: 'НАГРЕВ' },
+            { name: 'VNK2_status_2', text: 'ОТДЕЛЕН' },
+            { name: 'VNK1_status_2', text: 'ДУТЬЕ' },
+            { name: 'VNK3_status_1_fon', color: '#BD0102' },
+            { name: 'VNK2_status_1_fon', color: '#ada3b0' },
+            { name: 'VNK1_status_1_fon', color: '#43A3EF' },
+            { name: 'VNK3_status_1_3', text: 'Цикл' },
+            { name: 'VNK2_status_1_2', text: 'Цикл' },
+            { name: 'VNK1_status_1_1', text: 'Цикл' },
+            { name: 'Fvozdyh_3', text: '65151' },
+            { name: 'Fvozdyh_2', text: '0' },
+            { name: 'Fgaz_3',     text: '0' },
+            { name: 'Fgaz_2',     text: '75128' },
+            { name: 'VNK1_Fb',   text: '0' },
+            { name: 'VNK1_Fr',   text: '0' },
+            { name: 'Tdym_3', text: '106' },
+            { name: 'Tdym_2', text: '167' },
+            { name: 'Tdym_1', text: '128' },
+            { name: 'P_Os_szat_voz', text: '8.24' },
+            { name: 'T_Os_szat_voz', text: '26' },
+            { name: 'Temp_peref_1',   text: '67' },
+            { name: 'Temp_peref_2',   text: '56' },
+            { name: 'Temp_peref_3',   text: '56' },
+            { name: 'Temp_peref_4',   text: '52' },
+            { name: 'Temp_peref_5',   text: '62' },
+            { name: 'Temp_peref_6',   text: '52' },
+            { name: 'Temp_peref_7',   text: '56' },
+            { name: 'Temp_peref_8',   text: '54' },
+            { name: 'Temp_peref_9',   text: '60' },
+            { name: 'Temp_peref_10',  text: '11' },
+            { name: 'Temp_peref_11',  text: '57' },
+            { name: 'Temp_peref_12',  text: '56' },
+            { name: 'Temp_peref_13',  text: '87' },
+            { name: 'Temp_peref_14',  text: '58' },
+            { name: 'Temp_peref_15',  text: '68' },
+            { name: 'Temp_peref_16',  text: '49' },
+            { name: 'T1', text: '181' },
+            { name: 'T2', text: '204' },
+            { name: 'T3', text: '184' },
+            { name: 'T4', text: '163' },
+            { name: 'P_2', text: '2.92' },
+            { name: 'P_2_rect', color: "#ffffff" },
+            { name: 't_gor_dut', text: '1101' },
+            { name: 't_gor_dut_spravaRydom', text: '1100' },
+            { name: 'H_Os_szat_voz', text: '68' },
+            { name: 't_prirodn_gaz', text: '15' },
+            { name: 'P_pg_prir_gaz', text: '8.56' },
+            { name: 'F_prir_gaz_table', text: '30000' },
+            { name: 'F_pg_sym_prir_gaz', text: '16557' },
+            { name: 'H_prir_gaz', text: '29' },
+            { name: 'F_tryba', text: '465918' },
+            { name: 'F_obsh_pyt', text: '0.0' },
+            { name: 'F_tek_pyt', text: '0' },
+            { name: 'P_vbls', text: '1.28' },
+            { name: 'P_vus_rect', color: '#ffffff' },
+            { name: 'dP_verh', text: '0.13' },
+            { name: 'dP_verh_rect', color: '#ffffff' },
+            { name: 'dP_obsh_tryba', text: '1.61' },
+            { name: 'dP_obsh_trybarect', color: '#ffffff' },
+            { name: 'dP_nish_tryba', text: '1.48' },
+            { name: 'dP_nish_rect', color: '#ffffff' },
+            { name: 'TTG_zadanie', text: '2200' },
+            { name: 'zadanie_rect', color: '#ffffff' },
+            { name: 'TTG_raschet', text: '2201', opacity: '1' },
+            { name: 'F_pg_prir_gaz', text: '16735' },
+            { name: 'dF_pg_prir_gaz', text: '-178' },
+            { name: 'L1', text: '1428', opacity: '0' },
+            { name: 'L2', text: '1428', opacity: '0' },
+            { name: 'L4', text: '1428', opacity: '0' },
+            { name: 'L3', text: '1428', opacity: '0' },
+            { name: 'L1_elem', color: '#ffffff' },
+            { name: 'L2_elem', color: '#ffffff' },
+            { name: 'L4_elem', color: '#ffffff' },
+            { name: 'L3_elem', color: '#ffffff' },
+            { name: 'P_tryba_1_590', text: '1.27' },
+            { name: 'P_tryba_1_591', text: '1.27' },
+            { name: 'P_tryba_1_592', text: '1.28' },
+            { name: 'P_tryba_1_593', text: '1.28' },
+            { name: 'P_tryba_2_1', text: '1.34' },
+            { name: 'P_tryba_2_2', text: '1.34' },
+            { name: 'P_tryba_2_3', text: '1.34' },
+            { name: 'P_tryba_2_4', text: '1.34' },
+            { name: 'P_tryba_3_590', text: '1.51' },
+            { name: 'P_tryba_3_591', text: '1.51' },
+            { name: 'P_tryba_4_1', text: '4.56' },
+            { name: 'P_tryba_4_2', text: '4.35' },
+            { name: 'P_tryba_4_3', text: '4.58' },
+            { name: 'P_tryba_4_4', text: '4.20' },
+
+            { name: 'P_tryba_5_1', text: '3.08' },
+            { name: 'P_tryba_5_2', text: '1.93' },
+            { name: 'P_tryba_5_3', text: '2.17' },
+            { name: 'P_tryba_5_4', text: '2.50' },
+            { name: 'V_dyt', text: '214.7' },
+            // { name: 'fyrm_v_rab', text: '0' },
+            // { name: 'ydel_tep_18', text: '27.5' },
+            // { name: 'ydel_tep_17', text: '34.5' },
+            // { name: 'ydel_tep_16', text: '33.5' },
+            // { name: 'ydel_tep_15', text: '28.9' },
+            // { name: 'ydel_tep_12_14', text: '51.8' },
+            // { name: 'ydel_tep_10_11', text: '18.9' },
+            // { name: 'ydel_tep_9', text: '17.9' },
+            // { name: 'ydel_tep_8', text: '14.4' },
+            // { name: 'ydel_tep_7', text: '29.9' },
+          ]
+        }
+      },
+      startTime: timeDiff + 408.54,
+    },
+
+    ////--------------------------------69--------------------------////
+    {
+      text: 'Проконтролировать давление на клапане «СНОРТ» и на фурмах.',
+      audio: 'SoundSnortFurma', // 3.5
+      sender: 'Система',
+      startTime: timeDiff + 409,
+    },
+    {multi: [{action: {target2D: 'R_Snort',},},{action: {target2D: 'R_Furm',},},],startTime: timeDiff + 410, human: true,},
+    {
+      action: {
+        window2D: {
+          elements: [
+            // bzu full+
+            { name: 'ochistka sedel_P', text: '5.36' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '31' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+            { name: 'B1_dp Bunker', text: '-0.00' },
+            { name: 'B1_P compes', text: '1.29' },
+            { name: 'B1_vremy vygruski', text: '104' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '105' },
+            { name: 'B1_vremy sbrosa P ', text: '0' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP',       text: '93.0' },
+            { name: 'B1_vibratciya',      text: '2' },
+            { name: 'V linii P_B1',       text: '201' }, // Б1
+            { name: 'V linii dP_B1',      text: '228' },
+            { name: 'V sisteme vzveh_B1', text: '191' },
+            { name: 'V linii P_B2',       text: '148' }, // Б2
+            { name: 'V linii dP_B2',      text: '275' },
+            { name: 'V sisteme vzveh_B2', text: '165' },
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '1.32' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '1.32' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '1.32' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '1.32' },
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '129' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '141' },
+            { name: 'stanciia',             text: '8' },
+            { name: 'ugol naklona_tekushiy',  text: '20.5' },
+            { name: 'ugol naklona_zadanyi',   text: '33.4' },
+            { name: 'gradusow ugol',          text: '20.1' },
+            { name: 'prochent1', text: '1' }, // %
+            { name: 'jelob_ramka', color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l', color: '#06FF06' }, // загр слева
+            // не хватает схемы 
+            { name: 'left_ellipse_text', text: 'Р',         opacity: '0' },
+            { name: 'left_ellipse',      color: '#860004',  opacity: '0' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '1.30' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '-0.2' }, // T
+            { name: 'matrix 1 str 1_M', text: '-0.1' }, // M3
+            { name: 'primoygolinik_smehivateli', color: '#860004' }, // горизонтальная палочка слева
+            // не хватает схемы ПУСТ, зеленая/красная палочка рядом
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.3' }, // ШЗ слева
+            { name: 'left_vugr_rect', color: '#E6E6E6' }, //  Выгр зеленые зеленые рамки
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка слева
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            { name: 'btn_Pause_border', color: '#e6e6e6' }, // пауза по центру
+            { name: 'leviy', color: '#860004' }, // палка от цифр слева
+
+            { name: 'verx', text: '0' }, // цифры сверху
+            // не хватает палочки горизонтальной под цифрами
+            { name: 'black_arrow_under_verx', opacity: '0' }, // стрелка под цифрами
+
+            { name: 'praviy', color: '#860004' }, // палка от цифр справа
+            // не хватает элемента [К - в зеленом кружке]
+            { name: 'tr_3_str_1_', text: '5' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            { name: 'rezym_A', color: '#06FF06' }, // текущий режим А задник
+            { name: 'rezym_D', color: '#06FF06' }, // текущий режим Д задник
+            { name: 'K_16_strelka', opacity: '0' }, // к16 сброс ошибки стрелка
+
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '1.28' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '16.4' }, // t
+            { name: 'matrix 1 str 14_M', text: '34.9' }, // 
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            { name: 'prochent2', text: '1' }, // % справа
+            
+            { name: 'klNKB-2_2',      color: '#06FF06' }, // НКВ-2 verh  // ilay
+            { name: 'klNKB-2_1',      color: '#06FF06' }, // НКВ-2 niz   // ilay
+            { name: 'vigruzca pravo', color: '#06FF06' }, // Выгр спарва   // ilay
+            
+
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '32' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+            { name: 'B2_Dp bunker', text: '-0.01' }, // 
+            { name: 'B2_P compens', text: '1.32' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '100' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.4' }, // 
+            { name: 'B2_vibratciya', text: '36' }, // 
+            { name: 'counder podachi_za tekuschuyu smenu', text: '9' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+            { name: 'zaprosi_shp_stroka', text: '6' }, //  Запросы на ШП // строка
+            // { name: 'btn_ZapSledPorc_border', text: '6' }, //  Запрет след.порции задник
+
+            { name: 'given_level',   text: '0.90' }, // 
+            { name: 'tekushy_level', text: '3.14' }, // 
+            { name: 'radar 1',  text: '3.06' },   // 
+            { name: 'radar 2',  text: '3.27' },   // 
+            { name: 'mexan',    text: '-1.67' },  // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'v rabote',   color: '#c8c8d2' }, // в работе текст // afk
+            { name: 'bg_vRabote', color: '#f6fbff' }, // в работе       // afk
+            { name: 'ismetir_ramki',      color: '#06FF06' }, // Измерить задник
+            { name: 'mex.zond na huxte',  color: '#D0D1D3' }, //  зеленый квадрат Мех.зонд на шихт
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '5' }, // 
+            { name: 'T3_nomerstr', text: '5' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'К' }, // 
+            { name: 'B1_Tip',   color: '#860004' }, // 
+            { name: 'B2_Tip',   color: '#008600' }, // 
+            { name: 'T2_Tip',   color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip',   color: '#008600' }, // 
+            { name: 'B1_ves', text: '93.1' }, // 
+            { name: 'B2_ves', text: '16.4' }, // 
+            { name: 'T3_ves', text: '16.4' }, // 
+            { name: 'T2_ves', text: '16.4' }, // 
+            { name: 'T1_ves', text: '16.4' }, // 
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#CEC7B5' }, // str 2 color
+            { name: 'K_str1', color: '#008600' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+
+            { name: 'na_conveer_s1_bukca', text: 'См', opacity: '0' }, // str 2 
+            { name: 'str1_down',           text: 'К' }, // str 2 
+            { name: 'str51_down',          text: 'К' }, // str 51 
+            { name: 'str2_P_1',   text: '0' }, // str 2-11 t
+            { name: 'str2_P_2',   text: '0' }, // str 2-10 t
+            { name: 'str2_P_3',   text: '0' }, // str 2-9 t
+            { name: 'str2_P_4',   text: '13' }, // str 2-8 t
+            { name: 'str2_P_5',   text: '13' }, // str 2-7 t
+            { name: 'str2_P_6',   text: '13' }, // str 2-6 t
+            { name: 'str2_P_7',   text: '11' }, // str 2-5 t
+            { name: 'str2_P_8',   text: '10' }, // str 2-4 t
+            { name: 'str2_P_9',   text: '10' }, // str 2-3 t
+            { name: 'str2_P_10',  text: '9' }, // str 2-2 t
+            { name: 'str2_P_11',  text: '21' }, // str 2-1 t
+            { name: 'str2_P_12',  text: '16.2' }, // str 2-ves t
+            { name: 'Str1_8', color: '#008600' }, // str 1-8 r  // #008600
+            // { name: 'Str1_4', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'Str1_1', color: '#C7B295' }, // str 1-4 r  // #C7B295
+            // { name: 'str1_K_1',   text: '0' }, // str 1-11 t
+            // { name: 'str1_K_2',   text: '0' }, // str 1-10 t
+            // { name: 'str1_K_3',   text: '0' }, // str 1-9 t
+            // { name: 'str1_K_4',   text: '22' }, // str 1-8 t
+            // { name: 'str1_K_5',   text: '21' }, // str 1-7 t
+            // { name: 'str1_K_6',   text: '19' }, // str 1-6 t
+            // { name: 'str1_K_7',   text: '15' }, // str 1-5 t
+            // { name: 'str1_K_8',   text: '13' }, // str 1-4 t
+            // { name: 'str1_K_9',   text: '10' }, // str 1-3 t
+            // { name: 'str1_K_10',  text: '0' },  // str 1-2 t
+            // { name: 'str1_K_11',  text: '0' },  // str 1-1 t
+            // { name: 'str1_K_12',  text: '93.0' }, // str 1-ves t
+         
+            // { name: 'str51_SM_1',   text: '0' }, // str 51-11 t
+            // { name: 'str51_SM_2',   text: '0' }, // str 51-10 t
+            // { name: 'str51_SM_3',   text: '0' }, // str 51-9 t
+            // { name: 'str51_SM_4',   text: '0' }, // str 51-8 t
+            // { name: 'str51_SM_5',   text: '0' }, // str 51-7 t
+            // { name: 'str51_SM_6',   text: '0' }, // str 51-6 t
+            // { name: 'str51_SM_7',   text: '0  0' }, // str 51-5-4 t
+            // { name: 'str51_SM_8',   text: '0' }, // str 51-3 t
+            // { name: 'str51_SM_9',   text: '0' }, // str 51-2 t
+            // { name: 'str51_SM_10',  text: '100' }, // str 51-1 t
+            // { name: 'str51_SM_11',  text: '15.0' }, // str 51-ves t
+          ]
+        }
+      },
+      starttime: timeDiff + 411,
+    },
+
+    ////--------------------------------70--------------------------////
+    {
+      scenarioText: 'Дать команду добавить кислород.',
+      audio: 'telephone_say',// 1.7
+      sender: 'Система',
+      startTime: timeDiff + 412,
+    },
+    { action: { target3D: 'PhoneButton017', }, startTime: timeDiff + 413, human: true, },
+    {
+      text: 'Добавляйте 5000 дутья и 5000 кислорода.',
+      sender: 'Газовщик',
+      audio: 'tts-vo91', // 3.78
+      startTime: timeDiff + 414,
+    },
+    {
+      text: 'Выполняю.',
+      sender: 'Инженер-энергетик',
+      audio: 'tts-vo92', // 1.25
+      startTime: timeDiff + 418.4,
+    },
+
+    ////--------------------------------71--------------------------////
+    {
+      text: 'Возобновить загрузку.',
+      audio: 'tts--70', // 1.77
+      sender: 'Система',
+      startTime: timeDiff + 420.5,
+    },
+    //bzu_pause_btn
+    {
+      action: {
+        target2D: 'bzu_pause_btn',
+        window2D: {
+          elements: [
+            // { name: 'right_rect_yellow_arrow', color: 'start' },
+            // { name: 'btn_Pause_border', color: '#06FF06' },
+            // bzu custom
+            { name: 'ochistka sedel_P', text: '6.08' },
+            { name: 'Vtorichnye vyskazyvaniia_P_B1 sedel_P', text: '4.00' },
+            { name: 'Vtorichnye vyskazyvaniia_T_B1', text: '32' },
+            { name: 'Vtorichnye vyskazyvaniia_F_B1', text: '0' },
+            { name: 'B1_dp Bunker', text: '1.24' },
+            { name: 'B1_P compes', text: '0.07' },
+            { name: 'B1_vremy vygruski', text: '104' },
+            { name: 'B1_vremy vygruski raschoytnoe ', text: '105' },
+            { name: 'B1_vremy sbrosa P ', text: '9' },
+            { name: 'B1_vremy nabora P ', text: '2' },
+            { name: 'B1_ves s SHP',       text: '93.0' },
+            { name: 'B1_vibratciya',      text: '3' },
+            { name: 'V linii P_B1',       text: '200' }, // Б1
+            { name: 'V linii dP_B1',      text: '225' },
+            { name: 'V sisteme vzveh_B1', text: '192' },
+            { name: 'V linii P_B2',       text: '149' }, // Б2
+            { name: 'V linii dP_B2',      text: '276' },
+            { name: 'V sisteme vzveh_B2', text: '165' },
+            { name: 'rashody u davlenia v gazoprovode_P1', text: '1.31' },
+            { name: 'rashody u davlenia v gazoprovode_P2', text: '1.32' },
+            { name: 'rashody u davlenia v gazoprovode_P3', text: '1.32' },
+            { name: 'rashody u davlenia v gazoprovode_P4', text: '1.31' },
+            { name: 'rashody u davlenia v gazoprovode_F1', text: '0' },
+            { name: 'rashody u davlenia v gazoprovode_F2', text: '149' },
+            { name: 'rashody u davlenia v gazoprovode_F3', text: '276' },
+            { name: 'rashody u davlenia v gazoprovode_F4', text: '165' },
+            { name: 'stanciia',             text: '8' },
+            { name: 'ugol naklona_tekushiy',  text: '32.3' },
+            { name: 'ugol naklona_zadanyi',   text: '32.4' },
+            { name: 'gradusow ugol',          text: '56.2' },
+            { name: 'prochent1', text: '0' }, // %
+            
+            { name: 'kl.Oh.VGYK1_2',  color: '#06FF06' }, // Клап.оч. ВГУК1 LEFT
+            { name: 'jelob_ramka',    color: '#E6E6E6' }, // желоб
+            { name: 'zagr_ramka_l',   color: '#06FF06' }, // загр слева
+            { name: 'leviy', color: '#000' }, // палка справа под Клап.оч. ВГУК1 LEFT
+            // не хватает схемы 
+            { name: 'left_ellipse_text', text: 'Р',         opacity: '0' },
+            { name: 'left_ellipse',      color: '#860004',  opacity: '0' }, // K
+            { name: 'left_matrix_text', text: '4' }, // Матр. 1 стр. _
+            { name: 'matrix 1 str 1_kgc', text: '0.05' }, // кгс/см
+            { name: 'matrix 1 str 1_T', text: '1.5' }, // T
+            { name: 'matrix 1 str 1_M', text: '0.6' }, // M3
+            { name: 'primoygolinik_smehivateli', color: '#860004' }, // горизонтальная палочка слева
+            // не хватает схемы ПУСТ, зеленая/красная палочка рядом
+            // { name: 'beliy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            // { name: 'zelyniy primoygolinik_smehivateli',  opacity: '0' }, // зеленая палочка
+            { name: 'HZ1', text: '1.4' }, // ШЗ слева
+            { name: 'left_vugr_rect', color: '#E6E6E6' }, //  Выгр зеленые зеленые рамки
+            { name: 'left_rect_yellow_arrow', opacity: '0' }, // желтая над стрелкой
+            { name: 'left_rect_under_arrow', opacity: '1' }, // красная над стрелкой
+            { name: 'arrow_left', opacity: '0' }, // стрелка слева
+            { name: 'strelka_snizu', opacity: '0' }, // стрелка снизу
+            { name: 'btn_Pause_border', color: '#e6e6e6' }, // пауза по центру
+            
+            { name: 'verx', text: '0' }, // цифры сверху
+            // не хватает палочки горизонтальной под цифрами
+            { name: 'black_arrow_under_verx', opacity: '0' }, // стрелка под цифрами
+
+            { name: 'praviy', color: '#860004' }, // палка от цифр справа
+            // не хватает элемента [К - в зеленом кружке]
+            { name: 'tr_3_str_1_', text: '5' }, // 
+            { name: 'tr_2_str_2_', text: '5' }, // 
+            { name: 'cir_t_2', color: '#5E5E5E' },
+            { name: 'dlina_porcii', text: '125' }, // длина порции
+
+            { name: 'rezym_A', color: '#06FF06' }, // текущий режим А задник
+            { name: 'rezym_D', color: '#06FF06' }, // текущий режим Д задник
+            { name: 'K_16_strelka', opacity: '0' }, // к16 сброс ошибки стрелка
+
+            { name: 'zagr_ramka_r', color: '#E6E6E6' }, // загр справа
+            { name: 'right_matrix_text', text: '5' }, // матр 1 загр 51
+            { name: 'matrix 1 str 14_kgc', text: '1.28' }, // kгс/см
+            { name: 'matrix 1 str 14_T', text: '16.4' }, // t
+            { name: 'matrix 1 str 14_M', text: '34.9' }, // 
+            { name: 'pust_ramka_r', opacity: '0' }, // 
+            { name: 'r_pust', opacity: '0' }, // 
+            { name: 'HZ2', text: '1.4' }, // Ш3 справа
+            { name: 'prochent2', text: '3' }, // % справа
+            
+            { name: 'klNKB-2_2',      color: '#06FF06' }, // НКВ-2 verh  // ilay
+            { name: 'klNKB-2_1',      color: '#06FF06' }, // НКВ-2 niz   // ilay
+            { name: 'vigruzca pravo', color: '#06FF06' }, // Выгр спарва   // ilay
+            
+
+            { name: 'right_rect_yellow_arrow', opacity: '0' }, // желтая палка справа
+            { name: 'right_rect_under_arrow', opacity: '1' }, // красная палка справа
+            { name: 'arrow_right', opacity: '0' }, // зеленая стрелка справа
+            { name: 'Vtorichnye vyskazyvaniia_P_B2', text: '4.00' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_T_B2', text: '32' }, // 
+            { name: 'Vtorichnye vyskazyvaniia_F_B2', text: '0' }, // 
+            { name: 'B2_Dp bunker', text: '-0.01' }, // 
+            { name: 'B2_P compens', text: '1.32' }, // 
+            { name: 'B2_time vygruski', text: '96' }, // 
+            { name: 'B2_time vygruski raschyotnoe', text: '100' }, // 
+            { name: 'B2_time sbrosa P', text: '4' }, // 
+            { name: 'B2_time nabora P', text: '2' }, // 
+            { name: 'B2_ves s HP', text: '16.4' }, // 
+            { name: 'B2_vibratciya', text: '36' }, // 
+            { name: 'counder podachi_za tekuschuyu smenu', text: '9' }, // 
+            { name: 'counder podachi_za past smenu', text: '78' }, // 
+            // { name: 'counder podachi_za tekuschuyu smenu', text: '' }, // 
+            // { name: 'counder podachi_za past smenu', text: '' }, // 
+            { name: 'zaprosi_shp_stroka', text: '7' }, //  Запросы на ШП // строка
+            // { name: 'btn_ZapSledPorc_border', color: '' }, //  Запрет след.порции задник
+
+            { name: 'given_level',   text: '0.90' }, // 
+            { name: 'tekushy_level', text: '3.14' }, // 
+            { name: 'radar 1',  text: '3.02' },   // 
+            { name: 'radar 2',  text: '3.30' },   // 
+            { name: 'mexan',    text: '0.53' },  // 
+            { name: 'do zapuska mexan min', text: '0' }, // 
+            { name: 'do zapuska mexan max', text: '0' }, // 
+            { name: 'v rabote',   color: '#D0D1D3' }, // в работе текст // afk
+            { name: 'bg_vRabote', color: '#06FF06' }, // в работе       // afk
+            { name: 'ismetir_ramki',      color: '#06FF06' }, // Измерить задник
+            { name: 'mex.zond na huxte',  color: '#D0D1D3' }, //  зеленый квадрат Мех.зонд на шихт
+            { name: 'B1_nomerstr', text: '4' }, // 
+            { name: 'B2_nomerstr', text: '5' }, // 
+            { name: 'T3_nomerstr', text: '5' }, // 
+            { name: 'T2_nomerstr', text: '5' }, // 
+            { name: 'T1_nomerstr', text: '5' }, // 
+            { name: 'B1_Tip_text', text: 'Р' }, // 
+            { name: 'B2_Tip_text', text: 'К' }, // 
+            { name: 'T3_Tip_text', text: 'К' }, // 
+            { name: 'T2_Tip_text', text: 'К' }, // 
+            { name: 'T1_Tip_text', text: 'Р' }, // 
+            { name: 'B1_Tip',   color: '#860004' }, // 
+            { name: 'B2_Tip',   color: '#008600' }, // 
+            { name: 'T2_Tip',   color: '#008600' }, // 
+            { name: 'T2_color', color: '#008600' }, // 
+            { name: 'T1_Tip',   color: '#860004' }, // 
+            { name: 'B1_ves', text: '93.1' }, // 
+            { name: 'B2_ves', text: '16.4' }, // 
+            { name: 'T3_ves', text: '16.4' }, // 
+            { name: 'T2_ves', text: '16.4' }, // 
+            { name: 'T1_ves', text: '-1.0' }, // 
+            { name: 'str51_SM_7', text: '0  0' }, // цифры справа снизу // была ерунда написанна  
+            { name: 'P_str2', color: '#860004' }, // str 2 color
+            { name: 'K_str1', color: '#008600' }, // str 1 color
+            { name: 'zelyniy primoygolinik_Radar2', color: '#008600' }, // str 51 color
+
+            { name: 'na_conveer_s1_bukca', text: 'Р', opacity: '0' }, // str 2 
+            { name: 'str1_down',           text: 'К' }, // str 2 
+            { name: 'str51_down',          text: 'К' }, // str 51 
+           
+           
+
+          ]
+        }
+      },
+      startTime: timeDiff + 421,
+      human: true
+    },  
+    ////--------------------------------72--------------------------////
+    {
+      audio: 'telephone_say',// 1.7
+      sender: 'Система',
+      startTime: timeDiff + 422,
+    },
+    { action: { target3D: 'PhoneButton017', }, startTime: timeDiff + 423, human: true, },
+    {
+      text: 'Добавляйте 5000 кислорода и 5000 дутья.',
+      sender: 'Газовщик',
+      audio: 'tts-vo93', // 3.7
+      startTime: timeDiff + 424,
+    },
+    {
+      text: 'Выполняю.',
+      sender: 'Инженер-энергетик',
+      audio: 'tts-vo92', // 1.25
+      startTime: timeDiff + 428.5,
+    },
+    ////--------------------------------73--------------------------////
+    {
+      scenarioText: 'Дать команду подать ПУТ в ДП',
+      audio: 'telephone_say',// 1.7
+      sender: 'Система',
+      startTime: timeDiff + 430.5,
+    },
+    { action: { target3D: 'PhoneButton023', }, startTime: timeDiff + 431, human: true, }, 
+    {
+      text: 'Приступить подачу ПУТ в ДП-6.',
+      sender: 'Газовщик',
+      audio: 'tts-vo95', // 2.79
+      startTime: timeDiff + 432,
+    },
+    {
+      text: 'Выполняю.',
+      sender: 'Оператор установки вдувания',
+      audio: 'tts-vo92', // 1.25
+      startTime: timeDiff + 435.5,
+    },
+    ////--------------------------------74--------------------------////
+    {
+      text: 'Установить воздухонагреватель ВНК №2 в режим «нагрев».',
+      sender: 'Система',
+      audio: 'tts-65',
+      startTime: timeDiff + 437.5,
+    },
+    {
+      action: {
+        target2D: 'perekidta2_btn',
+        window2D: {
+          elements: [
+            { name: 'text_132', y: 475, text: 'Открыт' },
+            { name: 'text_116', y: 475, text: 'Открыт' },
+            { name: 'text_124', y: 475, text: 'Закрыт' },
+            { name: 'text_113', y: 475, text: 'Открыт' },
+            { name: 'text_134', y: 475, text: 'Открыт' },
+            { name: 'text_117', y: 475, text: 'Открыт' },
+            { name: 'text_111', y: 475, text: 'Открыт' },
+            { name: 'text_112', y: 475, text: 'Открыт' },
+            { name: 'rect_132', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_116', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_124', position: { y: 0 }, color: '#FF1E06' },
+            { name: 'rect_113', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_134', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_117', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_111', position: { y: 0 }, color: '#06f322' },
+            { name: 'rect_112', position: { y: 0 }, color: '#06f322' },
+            { name: 'avarin_otd_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_nagrev', color: '#e6e6e6', stroke: '#808080' },
+            { name: 'nagrev_otd_2_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_dute', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+            { name: 'otd2_otd_rect', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
+          ]
+        }
+      },
+      startTime: timeDiff + 438.0,
+      human: true,
+    },
+    { // otdel_nagrev_btn
+      action: {
+        target2D: 'otdel_nagrev_btn',
+        window2D: {
+          elements: [
+            { name: 'OvN_Title',        text: 'ВН2 Перекидка из Отделения в Нагрев',},
+
+            { name: 'time_shaga_310',   text: '210',},
+            { name: 'time_shaga_311',   text: '211',},
+            { name: 'time_shaga_312',   text: '212',},
+            { name: 'time_shaga_313',   text: '213',},
+            { name: 'time_shaga_324',   text: '224',},
+            { name: 'time_shaga_321',   text: '221',},
+            { name: 'time_shaga_317',   text: '217',},
+            { name: 'time_shaga_342',   text: '242',},
+            { name: 'time_shaga_316',   text: '216',},
+            { name: 'time_shaga_334',   text: '234',},
+            { name: 'time_shaga_327',   text: '227',},
+            { name: 'time_shaga_332',   text: '232',},
+            { name: 'time_shaga_332_1', text: '232',},
+            { name: 'time_shaga_327_1', text: '227',},
+            { name: 'time_shaga_334_1', text: '234',},
+            { name: 'time_shaga_335',   text: '235',},
+            { name: 'time_shaga_315',   text: '215',},
+            { name: 'time_shaga_321_1', text: '221',},
+            { name: 'grey_number_310',  text: '210',},
+            { name: 'grey_number_311',  text: '211',},
+            { name: 'grey_number_312',  text: '212',},
+            { name: 'grey_number_313',  text: '213',},
+            { name: 'grey_number_324',  text: '224',},
+            { name: 'grey_number_317',  text: '217',},
+            { name: 'grey_number_334',  text: '234',},
+            { name: 'grey_number_316',  text: '216',},
+            { name: 'grey_number_332',  text: '232',},
+
+            { name: 'OvN_usl_7',        text: 'Открыть отделительный',},
+            { name: 'OvN_usl_7_down',   text: 'клапан на газе 13',},
+            { name: 'OvN_usl_8',        text: 'Открыть клапан',},
+            { name: 'OvN_usl_8_down',   text: 'продувки на газе 24',},
+            { name: 'OvN_usl_9',        text: 'Ожидания разрешения',},
+            { name: 'OvN_usl_9_down',   text: 'пуска газа:',},
+            { name: 'OvN_usl_10',       text: 'Открыть отделительный',},
+            { name: 'OvN_usl_10_down',  text: 'клапан на воздух. гор. 17',},
+            { name: 'OvN_usl_11',       text: 'Открыть отсечной',},
+            { name: 'OvN_usl_11_down',  text: 'клапан на воздух. гор. 34',},
+            { name: 'OvN_usl_12',       text: 'Открыть отсечной',},
+            { name: 'OvN_usl_12_down',  text: 'клапан на смеш. газе 34',},
+            { name: 'OvN_usl_13',       text: 'Открыть отсечной',},
+            { name: 'OvN_usl_13_down',  text: 'клапан на смеш. газе 34',},
+            { name: 'OvN_usl_14',       text: 'Ожидание появления',},
+            { name: 'OvN_usl_14_down',  text: 'факела',},
+            { name: 'OvN_usl_15',       text: 'Закрыть клапан',},
+            { name: 'OvN_usl_15_down',  text: 'продувки азотом 24',},
+
+            { name: 'OvN_Time_1',       text: '27',},
+            { name: 'OvN_Time_2',       text: '300',},
+            { name: 'OvN_Time_3',       text: '27',},
+            { name: 'OvN_Time_4',       text: '27',},
+            { name: 'OvN_Time_5',       text: '27',},
+            { name: 'OvN_Time_6',       text: '10',},
+            { name: 'OvN_Time_7',       text: '27',},
+            { name: 'OvN_Time_8',       text: '27',},
+            { name: 'OvN_Time_9',       text: '2',},
+            { name: 'OvN_Time_10',      text: '27',},
+            { name: 'OvN_Time_11',      text: '30',},
+            { name: 'OvN_Time_12',      text: '125',},
+            { name: 'OvN_Time_13',      text: '125',},
+            { name: 'OvN_Time_14',      text: '10',},
+            { name: 'OvN_Time_15',      text: '27',},
+
+            { name: 'OvN_number_310',   text: 'Закрыт',  },
+            { name: 'OvN_number_311',   text: 'Закрыт',  },
+            { name: 'OvN_number_312',   text: 'Закрыт',  },
+            { name: 'OvN_number_313',   text: 'Закрыт',  },
+            { name: 'OvN_number_324',   text: 'Закрыт',  },
+            { name: 'OvN_number_317',   text: 'Закрыт',  },
+            { name: 'OvN_number_334',   text: 'Закрыт',  },
+            { name: 'OvN_number_316',   text: 'Закрыт',  },
+            { name: 'OvN_number_332',   text: 'Закрыт',  },
+            
+            { name: 'OvN_path_310',     color: '#FF381B',  },
+            { name: 'OvN_path_311',     color: '#FF381B',  },
+            { name: 'OvN_path_312',     color: '#FF381B',  },
+            { name: 'OvN_path_313',     color: '#FF381B',  },
+            { name: 'OvN_path_324',     color: '#FF381B',  },
+            { name: 'OvN_path_317',     color: '#FF381B',  },
+            { name: 'OvN_path_334',     color: '#FF381B',  },
+            { name: 'OvN_path_316',     color: '#FF381B',  },
+            { name: 'OvN_path_332',     color: '#FF381B',  },
+          ]
+        },
+      },
+      startTime: timeDiff + 438.1,
+      human: true,
+    },
+    {
+      action: {
+        target2D: 'pericNagrev_pusk_btn',
+        window2D: {
+          elements: [
+            { name: 'title_open_vn', text: 'Пуск' },
+          ]
+        },
+        helper2D: [
+          { x: 37.9, y: 94.9, w: 3.2, h: 2.4, id: 'close_vn' },
+          { x: 34.3, y: 94.9, w: 3.2, h: 2.4, id: 'open_vn1' },  //  wind 2
+        ]
+      },
+      startTime: timeDiff + 438.2,
+      human: true,
+    },
+    {  // wind 2  ok
+      action: {
+        target2D: 'open_vn1',
+        window2D: {
+          elements: [
+    
+          ]
+        },
+      },
+      startTime: timeDiff + 438.3,
+      human: true,
+    },
+    //1  
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'circle_dutyo',         color: '#000000' },
+            { name: 'circle_nagrev',        color: '#000000' },
+            { name: 'circle_otdeleniye_1',  color: '#000000' },
+            { name: 'circle_otdeleniye_2',  color: '#000000' },
+
+            { name: 'kl_210',  color: '#00FF00' },
+            { name: 'kl_211',  color: '#FF1E00' },
+            { name: 'kl_212',  color: '#FF1E00' },
+            { name: 'kl_213',  color: '#FF1E00' },
+            // { name: '___',  color: '#FF1E00' },
+            { name: 'kl_217',  color: '#FF1E00' },
+            { name: 'kl_234',  color: '#FF1E00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+            // Table
+
+            { name: 'OvN_number_310',   text: 'Открыт', y: 520},
+            { name: 'OvN_number_311',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_312',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 520},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 520},
+            { name: 'OvN_path_310',     color: '#06FF06', position: { y: 40 } },
+            { name: 'OvN_path_311',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_312',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 40 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 40 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 439,
+    },
+    //2
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#00FF00' },
+            { name: 'kl_211',  color: '#FF1E00' },
+            { name: 'kl_212',  color: '#FF1E00' },
+            { name: 'kl_213',  color: '#FF1E00' },
+            // { name: '___',  color: '#FF1E00' },
+            { name: 'kl_217',  color: '#FF1E00' },
+            { name: 'kl_234',  color: '#FF1E00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+
+            // Table
+            { name: 'OvN_number_310',   text: 'Открыт', y: 560},
+            { name: 'OvN_number_311',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_312',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 560},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 560},
+            { name: 'OvN_path_310',     color: '#06FF06', position: { y: 81 } },
+            { name: 'OvN_path_311',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_312',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 81 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 81 } },
+
+
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 440,
+    },
+    //3
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#00FF00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#FF1E00' },
+            { name: 'kl_213',  color: '#FF1E00' },
+            // { name: '___',  color: '#FF1E00' },
+            { name: 'kl_217',  color: '#FF1E00' },
+            { name: 'kl_234',  color: '#FF1E00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+
+            // Table
+            { name: 'OvN_number_310',   text: 'Открыт', y: 600},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 600},
+            { name: 'OvN_number_312',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 600},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 600},
+            { name: 'OvN_path_310',     color: '#06FF06', position: { y: 122 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 122 } },
+            { name: 'OvN_path_312',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 122 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 122 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 441,
+    },
+    //4
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#00FF00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#FF1E00' },
+            // { name: '___',  color: '#FF1E00' },
+            { name: 'kl_217',  color: '#FF1E00' },
+            { name: 'kl_234',  color: '#FF1E00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Открыт', y: 640},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 640},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 640},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 640},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 640},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 640},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 640},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 640},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 640},
+            { name: 'OvN_path_310',     color: '#06FF06', position: { y: 162 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 162 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 162 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 162 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 162 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 162 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 162 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 162 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 162 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 442,
+    },
+    //5
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#FF1E00' },
+            // { name: '___',  color: '#FF1E00' },
+            { name: 'kl_217',  color: '#FF1E00' },
+            { name: 'kl_234',  color: '#FF1E00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 680},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 680},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 680},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 680},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 204 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 204 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 204 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 204 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 443,
+    },
+    //6
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#FF1E00' },
+            // { name: '___',  color: '#FF1E00' },
+            { name: 'kl_217',  color: '#FF1E00' },
+            { name: 'kl_234',  color: '#FF1E00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 720},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 720},
+            { name: 'OvN_number_313',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 720},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 720},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 245 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 245 } },
+            { name: 'OvN_path_313',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 245 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 245 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 444,
+    },
+    //7
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#00FF00' },
+            // { name: '___',  color: '#FF1E00' },
+            { name: 'kl_217',  color: '#FF1E00' },
+            { name: 'kl_234',  color: '#FF1E00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 762},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 762},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 762},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 762},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 762},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 762},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 762},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 762},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 762},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 286 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 286 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 286 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 286 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 286 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 286 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 286 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 286 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 286 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 445,
+    },
+    //8
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#00FF00' },
+            // { name: '___',  color: '#00FF00' },
+            { name: 'kl_217',  color: '#FF1E00' },
+            { name: 'kl_234',  color: '#FF1E00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 805},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 805},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 805},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 805},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 805},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 805},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 805},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 805},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 805},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 327 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 327 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 327 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 327 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 327 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 327 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 327 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 327 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 327 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 446,
+    },
+    //9
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#00FF00' },
+            // { name: '___',  color: '#00FF00' },
+            { name: 'kl_217',  color: '#FF1E00' },
+            { name: 'kl_234',  color: '#FF1E00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 846},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 846},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 846},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 846},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 846},
+            { name: 'OvN_number_317',   text: 'Закрыт', y: 846},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 846},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 846},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 846},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 367 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 367 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 367 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 367 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 367 } },
+            { name: 'OvN_path_317',     color: '#FF1E06', position: { y: 367 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 367 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 367 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 367 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 447,
+    },
+    //10
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#00FF00' },
+            // { name: '___',  color: '#00FF00' },
+            { name: 'kl_217',  color: '#00FF00' },
+            { name: 'kl_234',  color: '#FF1E00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 886},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 886},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 886},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 886},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 886},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 886},
+            { name: 'OvN_number_334',   text: 'Закрыт', y: 886},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 886},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 886},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 408 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 408 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 408 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 408 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 408 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 408 } },
+            { name: 'OvN_path_334',     color: '#FF1E06', position: { y: 408 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 408 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 408 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 448,
+    },
+    //11
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#00FF00' },
+            // { name: '___',  color: '#00FF00' },
+            { name: 'kl_217',  color: '#00FF00' },
+            { name: 'kl_234',  color: '#00FF00' },
+            { name: 'kl_216',  color: '#FF1E00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 926},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 926},
+            { name: 'OvN_number_316',   text: 'Закрыт', y: 926},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 926},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 449 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 449 } },
+            { name: 'OvN_path_316',     color: '#FF1E06', position: { y: 449 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 449 } },
+          
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 449,
+    },
+    //12
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#00FF00' },
+            // { name: '___',  color: '#00FF00' },
+            { name: 'kl_217',  color: '#00FF00' },
+            { name: 'kl_234',  color: '#00FF00' },
+            { name: 'kl_216',  color: '#00FF00' },
+            { name: 'kl_232',  color: '#FF1E00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 968},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_316',   text: 'Открыт', y: 968},
+            { name: 'OvN_number_332',   text: 'Закрыт', y: 968},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 490 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_316',     color: '#06FF06', position: { y: 490 } },
+            { name: 'OvN_path_332',     color: '#FF1E06', position: { y: 490 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 450,
+    },
+    //13
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#00FF00' },
+            // { name: '___',  color: '#00FF00' },
+            { name: 'kl_217',  color: '#00FF00' },
+            { name: 'kl_234',  color: '#00FF00' },
+            { name: 'kl_216',  color: '#00FF00' },
+            { name: 'kl_232',  color: '#00FF00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 1008},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_316',   text: 'Открыт', y: 1008},
+            { name: 'OvN_number_332',   text: 'Открыт', y: 1008},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 531 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_316',     color: '#06FF06', position: { y: 531 } },
+            { name: 'OvN_path_332',     color: '#06FF06', position: { y: 531 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 451,
+    },
+    //14
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#00FF00' },
+            // { name: '___',  color: '#00FF00' },
+            { name: 'kl_217',  color: '#00FF00' },
+            { name: 'kl_234',  color: '#00FF00' },
+            { name: 'kl_216',  color: '#00FF00' },
+            { name: 'kl_232',  color: '#00FF00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 1050},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_324',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_316',   text: 'Открыт', y: 1050},
+            { name: 'OvN_number_332',   text: 'Открыт', y: 1050},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 572 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_324',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_316',     color: '#06FF06', position: { y: 572 } },
+            { name: 'OvN_path_332',     color: '#06FF06', position: { y: 572 } },
+            // End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 452,
+    },
+    //15          
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#00FF00' },
+            // { name: '___',  color: '#FF1E00' },
+            { name: 'kl_217',  color: '#00FF00' },
+            { name: 'kl_234',  color: '#00FF00' },
+            { name: 'kl_216',  color: '#00FF00' },
+            { name: 'kl_232',  color: '#00FF00' },
+            
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 1090},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 1090},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_316',   text: 'Открыт', y: 1090},
+            { name: 'OvN_number_332',   text: 'Открыт', y: 1090},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 610 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 610 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_316',     color: '#06FF06', position: { y: 610 } },
+            { name: 'OvN_path_332',     color: '#06FF06', position: { y: 610 } },
+            //  End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 453,
+    },
+    //16
+    {
+      action: {
+        window2D: {
+          elements: [
+            { name: 'kl_210',  color: '#FF1E00' },
+            { name: 'kl_211',  color: '#00FF00' },
+            { name: 'kl_212',  color: '#00FF00' },
+            { name: 'kl_213',  color: '#00FF00' },
+            // { name: '___',  color: '#FF1E00' },
+            { name: 'kl_217',  color: '#00FF00' },
+            { name: 'kl_234',  color: '#00FF00' },
+            { name: 'kl_216',  color: '#00FF00' },
+            { name: 'kl_232',  color: '#00FF00' },
+            
+            // Table
+            { name: 'OvN_number_310',   text: 'Закрыт', y: 475},
+            { name: 'OvN_number_311',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_312',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_313',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_324',   text: 'Закрыт', y: 475},
+            { name: 'OvN_number_317',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_334',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_316',   text: 'Открыт', y: 475},
+            { name: 'OvN_number_332',   text: 'Открыт', y: 475},
+            { name: 'OvN_path_310',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_311',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_312',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_313',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_324',     color: '#FF1E06', position: { y: 0 } },
+            { name: 'OvN_path_317',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_334',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_316',     color: '#06FF06', position: { y: 0 } },
+            { name: 'OvN_path_332',     color: '#06FF06', position: { y: 0 } },
+            //  End Table
+          ]
+        }
+      },
+      startTime: timeDiff + 454,
+    },
+    {  
+      action: {
+        target2D: 'pericNagrev_close_btn',
+      },
+      startTime: timeDiff + 454.1,
+      human: true,
+    },
+    {  
+      action: {
+        target2D: 'perekidta_exit_btn',
+      },
+      startTime: timeDiff + 454.2,
+      human: true,
+    },
+    ////-----------------------------------75
+    {
+      text: 'Выполнен запуск доменной печи №6, после кратковременной остановки.',
+      sender: 'Система',
+      audio: 'tts--75',
+      startTime: timeDiff + 455,
+    },
+    /**/
   ]
 ]
 // Массив исходных состояний
@@ -25947,6 +35327,9 @@ let startState2D = [
     { name: 'circle_kl030', stroke: '#06FF06' },
     { name: 'circle_kl048', stroke: '#ff1e00' },
     // { name: 'kl_028', color: '#06FF06' },
+  ],
+  [
+    { name: 'Left_GBF_VA01_M01', color: '#FF1E06' }
   ]
 ]
 // Лучше всего искать по id а не имени.
