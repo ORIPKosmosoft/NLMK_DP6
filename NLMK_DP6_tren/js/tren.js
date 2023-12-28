@@ -1250,7 +1250,8 @@ const Roles = {
   "Оператор": "message",
   "Дежурный водопроводчик": "message",
   "Работник": "message",
-  "Ошибка": "messageError"
+  "Ошибка": "messageError",
+  "Оператор установки вдувания": "message",
 }
 function addTrenValsMessages(elem) {
   devHelper.trenVals.messages.push(elem);
