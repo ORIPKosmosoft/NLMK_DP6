@@ -108,6 +108,7 @@ function loadTrenActions() {
 }
 
 function startTren(Restart = false) {
+  playNoiseAudio();
   devHelper.trenVals.scenarioArr.forEach(scenarioObj => {
     if (scenarioObj.actions) {
       scenarioObj.actions.forEach((action, index) => {
@@ -180,7 +181,7 @@ function startTren(Restart = false) {
   changeTimerText(true);
   if (devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human && devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].human &&
     devHelper.trenVals.scenarioArr[devHelper.trenVals.scenario].actions[0].startTime === 0) {
-      devHelper.trenVals.waitingInput = true;
+    devHelper.trenVals.waitingInput = true;
   } else devHelper.trenVals.waitingInput = false;
   document.querySelector('.end-cointainer').style.opacity = '';
   document.querySelector('.end-cointainer').style.display = '';
@@ -631,7 +632,7 @@ function trenClickOnSvgElem(SvgElemHelper = undefined) {
 function trenFinish() {
   devHelper.trenVals.ended = true;
   playAudio('right');
-
+  stopNoiseAudio();
   devHelper.endVals.restarts++;
   if (devHelper.endVals.humanTime.length === 0) {
     devHelper.endVals.humanTime.push(Math.ceil(document.querySelector('.box-time').milisecs / 1000));
@@ -1538,7 +1539,6 @@ function clickCloseChat(e) {
 
 function setLifeTime(time) {
   devHelper.trenVals.timers.lifeTime = time;
-
 }
 
 {
@@ -1802,7 +1802,6 @@ Array.from(document.querySelectorAll('.box-tren-ui .line-tren')).forEach((item) 
 });
 
 Array.from(document.querySelectorAll('[window-interface]')).forEach((item) => {
-
   setCenterWindow(item);
   let _item = document.querySelector(`.${item.getAttribute('window-interface')}`)
   _item.setAttribute('sx', _item.style.left);
@@ -2470,4 +2469,22 @@ function compareElements(element1, element2) {
     }
   }
   return true;
+}
+
+function playNoiseAudio() {
+  if (devHelper.serverSound) {
+    if (devHelper.serverSound.paused) 
+      devHelper.serverSound.play();
+  } else {
+    let noiseAudio = new Audio(`/media/audio/effects/server-noise.mp3`);
+    noiseAudio.volume = 0.035;
+    noiseAudio.loop = true;
+    noiseAudio.play();
+    devHelper.serverSound = noiseAudio;
+  }
+}
+
+function stopNoiseAudio() {
+  if (devHelper.serverSound && !devHelper.serverSound.paused)
+    devHelper.serverSound.pause();
 }
