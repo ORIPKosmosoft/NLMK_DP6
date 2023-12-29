@@ -1185,7 +1185,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: true,
+    enable: false,
     perfomance: undefined,
     intervalFon: undefined,
     maxCountSvgElems: 0,
@@ -1204,16 +1204,11 @@ const devHelper = {
     restarts: 0,
   }
 };
-/*
-audio: 'Zvuk_gudka_telefona',
-audioLoop: true,
-audioStopAction: 'kl028',
-*/
-const timeDiff = -70;
+
+const timeDiff = -0;
 let tempActions = [
   // Первый сценарий  
   [
-    /*
     {
       lifeTime: '07:30:00',
       chapterText: 'Отделение подогревателей воздуха и газа.',
@@ -2667,7 +2662,6 @@ let tempActions = [
       audio: 'tts-8 (1)',
       startTime: timeDiff + 64,
     },
-    */
     ////--------------------------------1----------------------------------------//14//-new
     {
       text: 'Принять телефонный звонок, подняв трубку телефона.',
