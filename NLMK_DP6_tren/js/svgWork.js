@@ -40,11 +40,11 @@ window.addEventListener('load', function () {
                                           ObjectSvg.name === 'gazoochistka' ? 'Газоочистка' :
                                             ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'gazoochistka1') {
+    if (ObjectSvg.name === 'bzu1') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
-      // ObjectSvg.object.style.zIndex = 999;
+      ObjectSvg.object.style.zIndex = 999;
       ObjectSvg.object.style.width = '95%';
     }
 
@@ -131,8 +131,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('x') === '1010.96' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK1_status_1_1'); } // Sergey
         if (Element.getAttribute('x') === '918.26' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK2_status_1_2'); } // Sergey
         if (Element.getAttribute('x') === '825.55' && Element.getAttribute('y') === '731.58') { addSvgElem(Index, Element, 'VNK3_status_1_3'); } // Sergey
-        if (Element.innerHTML === '68') { addSvgElem(Index, Element, 'Temp_peref_1'); }
-        if (Element.innerHTML === '140,0' && TextIndex === 296) { addSvgElem(Index, Element, 'nizkoe'); }
+        if (Element.innerHTML === '140,0') { addSvgElem(Index, Element, 'nizkoe'); }
         if (Element.innerHTML === 'Р кол. газа' && TextIndex === 532) { addSvgElem(Index, Element, 'P col. gaza'); }
         if (Element.innerHTML === 'dp ' && TextIndex === 196) { addSvgElem(Index, Element, 'dp obh.', 'start'); Element.innerHTML = 'dp общ'; }
         if (Element.innerHTML === 'общ' && TextIndex === 198) { Element.innerHTML = ''; }
@@ -153,34 +152,26 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === 'Выпуск Л3' && TextIndex === 195) { addSvgElem(Index, Element, 'vipysk L3'); }
         if (Element.innerHTML === 'Выпуск Л2' && TextIndex === 519) { addSvgElem(Index, Element, 'vipysk L2'); }
         if (Element.innerHTML === 'Выпуск Л4' && TextIndex === 520) { addSvgElem(Index, Element, 'vipusk L4'); }
-        if (Element.innerHTML === 'Достигнут заданный уровень' && TextIndex === 42) { addSvgElem(Index, Element, 'dostignyt zadanyu yroven'); }
+        if (Element.innerHTML === 'Достигнут заданный уровень') { addSvgElem(Index, Element, 'dostignyt zadanyu yroven'); }
         if (Element.innerHTML === '10' && TextIndex === 244) { addSvgElem(Index, Element, 'Pvozd'); }
         if (Element.innerHTML === '9' && TextIndex === 245) { addSvgElem(Index, Element, 'Pgaz'); }
         if (Element.innerHTML === '0,00' && TextIndex === 246) { addSvgElem(Index, Element, 'CO bor'); }
-        if (Element.innerHTML === '63') {
-          if (TextIndex === 252)
-            addSvgElem(Index, Element, 'Temp_peref_2'); else
-            addSvgElem(Index, Element, 'Temp_peref_13');
-        }
-        if (Element.innerHTML === '56') { addSvgElem(Index, Element, 'Temp_peref_3'); }
-        if (Element.innerHTML === '62') {
-          if (TextIndex === 254)
-            addSvgElem(Index, Element, 'Temp_peref_4'); else if (TextIndex === 257)
-            addSvgElem(Index, Element, 'Temp_peref_8'); else
-            addSvgElem(Index, Element, 'Temp_peref_11');
-        }
-        if (Element.innerHTML === '61') {
-          if (TextIndex === 256)
-            addSvgElem(Index, Element, 'Temp_peref_5'); else if (TextIndex === 258)
-            addSvgElem(Index, Element, 'Temp_peref_7'); else
-            addSvgElem(Index, Element, 'Temp_peref_9');
-        }
-        if (Element.innerHTML === '57') { addSvgElem(Index, Element, 'Temp_peref_6'); }
-        if (Element.innerHTML === '58') { addSvgElem(Index, Element, 'Temp_peref_10'); }
-        if (Element.innerHTML === '59') { addSvgElem(Index, Element, 'Temp_peref_12'); }
-        if (Element.innerHTML === '66') { addSvgElem(Index, Element, 'Temp_peref_14'); }
-        if (Element.innerHTML === '65') { addSvgElem(Index, Element, 'Temp_peref_15'); }
-        if (Element.innerHTML === '64') { addSvgElem(Index, Element, 'Temp_peref_16'); }
+        if (Element.innerHTML === '68' && Element.getAttribute('x') === '1354.76' && Element.getAttribute('y') === '428.24') { addSvgElem(Index, Element, 'Temp_peref_1'); }
+        if (Element.innerHTML === '63' && Element.getAttribute('x') === '1401.07' && Element.getAttribute('y') === '458.97') { addSvgElem(Index, Element, 'Temp_peref_2'); }
+        if (Element.innerHTML === '56' && Element.getAttribute('x') === '1435.48' && Element.getAttribute('y') === '489.7') { addSvgElem(Index, Element, 'Temp_peref_3'); }
+        if (Element.innerHTML === '62' && Element.getAttribute('x') === '1449.62' && Element.getAttribute('y') === '528.84') { addSvgElem(Index, Element, 'Temp_peref_4'); }
+        if (Element.innerHTML === '61' && Element.getAttribute('x') === '1449.62' && Element.getAttribute('y') === '567.38') { addSvgElem(Index, Element, 'Temp_peref_5'); }
+        if (Element.innerHTML === '57' && Element.getAttribute('x') === '1430.8' && Element.getAttribute('y') === '606.37') { addSvgElem(Index, Element, 'Temp_peref_6'); }
+        if (Element.innerHTML === '61' && Element.getAttribute('x') === '1401.7' && Element.getAttribute('y') === '638.73') { addSvgElem(Index, Element, 'Temp_peref_7'); }
+        if (Element.innerHTML === '62' && Element.getAttribute('x') === '1354.31' && Element.getAttribute('y') === '664.7') { addSvgElem(Index, Element, 'Temp_peref_8'); }
+        if (Element.innerHTML === '61' && Element.getAttribute('x') === '1225.55' && Element.getAttribute('y') === '664.7') { addSvgElem(Index, Element, 'Temp_peref_9'); }
+        if (Element.innerHTML === '58' && Element.getAttribute('x') === '1179.93' && Element.getAttribute('y') === '639.18') { addSvgElem(Index, Element, 'Temp_peref_10'); }
+        if (Element.innerHTML === '62' && Element.getAttribute('x') === '1145.97' && Element.getAttribute('y') === '606.37') { addSvgElem(Index, Element, 'Temp_peref_11'); }
+        if (Element.innerHTML === '59' && Element.getAttribute('x') === '1131.84' && Element.getAttribute('y') === '566.86') { addSvgElem(Index, Element, 'Temp_peref_12'); }
+        if (Element.innerHTML === '63' && Element.getAttribute('x') === '1131.39' && Element.getAttribute('y') === '528.24') { addSvgElem(Index, Element, 'Temp_peref_13'); }
+        if (Element.innerHTML === '66' && Element.getAttribute('x') === '1152.22' && Element.getAttribute('y') === '489.7') { addSvgElem(Index, Element, 'Temp_peref_14'); }
+        if (Element.innerHTML === '65' && Element.getAttribute('x') === '1179.83' && Element.getAttribute('y') === '458.53') { addSvgElem(Index, Element, 'Temp_peref_15'); }
+        if (Element.innerHTML === '64' && Element.getAttribute('x') === '1227.74' && Element.getAttribute('y') === '428.42') { addSvgElem(Index, Element, 'Temp_peref_16'); }
         if (Element.innerHTML === '117') { addSvgElem(Index, Element, 'T1'); }
         if (Element.innerHTML === '101') { addSvgElem(Index, Element, 'T2'); }
         if (Element.innerHTML === '114') { addSvgElem(Index, Element, 'T3'); }
@@ -234,19 +225,19 @@ window.addEventListener('load', function () {
             addSvgElem(Index, Element, 'EVD2_O'); else if (TextIndex === 327)
             addSvgElem(Index, Element, 'H_par_yvlaz');
         }
-        if (Element.innerHTML === '10' && Element.getAttribute('x') == 707.62) { addSvgElem(Index, Element, 'P_vozd_tryb'); }
-        if (Element.innerHTML === '9' && Element.getAttribute('x') == 718.7) { addSvgElem(Index, Element, 'P_gaza_tryb'); }
-        if (Element.innerHTML === '0,00' && Element.getAttribute('x') == 706) { addSvgElem(Index, Element, 'CO_bor_tryb'); }
+        if (Element.innerHTML === '10' && Element.getAttribute('x') == 709.54) { addSvgElem(Index, Element, 'P_vozd_tryb'); }
+        if (Element.innerHTML === '9' && Element.getAttribute('x') == 718.96) { addSvgElem(Index, Element, 'P_gaza_tryb'); }
+        if (Element.innerHTML === '0,00' && Element.getAttribute('x') == 707.67) { addSvgElem(Index, Element, 'CO_bor_tryb'); }
         // Sergey
-        if (Element.innerHTML === '1210' && Element.getAttribute('x') === '1917.7' && Element.getAttribute('y') === '248.82') { addSvgElem(Index, Element, 't_gor_dut'); }
-        if (Element.innerHTML === '1210' && Element.getAttribute('x') === '1275.31' && Element.getAttribute('y') === '708.13') { addSvgElem(Index, Element, 't_gor_dut'); }
-        if (Element.innerHTML === '1210' && Element.getAttribute('x') === '1347.06' && Element.getAttribute('y') === '710.66') { addSvgElem(Index, Element, 't_gor_dut'); }
-        if (Element.innerHTML === '15' && Element.getAttribute('x') === '1254.49' && Element.getAttribute('y') === '893.55') { addSvgElem(Index, Element, 't_prirodn_gaz'); }
+        if (Element.innerHTML === '1210' && Element.getAttribute('x') === '1921.42' && Element.getAttribute('y') === '248.82') { addSvgElem(Index, Element, 't_gor_dut'); }
+        if (Element.innerHTML === '1210' && Element.getAttribute('x') === '1278.33' && Element.getAttribute('y') === '708.13') { addSvgElem(Index, Element, 't_gor_dut'); }
+        if (Element.innerHTML === '1210' && Element.getAttribute('x') === '1351.86' && Element.getAttribute('y') === '710.66') { addSvgElem(Index, Element, 't_gor_dut'); }
+        if (Element.innerHTML === '15' && Element.getAttribute('x') === '1255.66' && Element.getAttribute('y') === '893.55') { addSvgElem(Index, Element, 't_prirodn_gaz'); }
         if (Element.innerHTML === 'Выпуск Л3' && Element.getAttribute('x') === '779.42' && Element.getAttribute('y') === '252.37') { addSvgElem(Index, Element, 'vipusk_L3'); }
-        if (Element.innerHTML === '3,12' && Element.getAttribute('x') === '1810.69' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_1'); }
-        if (Element.innerHTML === '2,78' && Element.getAttribute('x') === '1859.05' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_2'); }
-        if (Element.innerHTML === '3,78' && Element.getAttribute('x') === '1906.28' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_3'); }
-        if (Element.innerHTML === '2,98' && Element.getAttribute('x') === '1953.68' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_4'); }
+        if (Element.innerHTML === '3,12' && Element.getAttribute('x') === '1813.12' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_1'); }
+        if (Element.innerHTML === '2,78' && Element.getAttribute('x') === '1861.48' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_2'); }
+        if (Element.innerHTML === '3,78' && Element.getAttribute('x') === '1908.71' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_3'); }
+        if (Element.innerHTML === '2,98' && Element.getAttribute('x') === '1954.32' && Element.getAttribute('y') === '642.76') { addSvgElem(Index, Element, 'P_tryba_4_4'); }
         if (Element.innerHTML === '0' && Element.getAttribute('x') === '1024.06' && Element.getAttribute('y') === '807.2') { addSvgElem(Index, Element, 'VNK1_Fr'); }
         if (Element.innerHTML === '0' && Element.getAttribute('x') === '1024.06' && Element.getAttribute('y') === '773.85') { addSvgElem(Index, Element, 'VNK1_Fb'); }
         if (Element.innerHTML === 'ДУТЬЕ' && Element.getAttribute('x') === '999.53' && Element.getAttribute('y') === '703.28') { addSvgElem(Index, Element, 'VNK1_status_2'); }
@@ -260,10 +251,10 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === 'Соглас' && Element.getAttribute('x') === '234.62' && Element.getAttribute('y') === '463.58') { addSvgElem(Index, Element, 'M_t2_4'); }
         if (Element.innerHTML === 'Работа' && Element.getAttribute('x') === '174.04' && Element.getAttribute('y') === '810.13') { addSvgElem(Index, Element, 'M_t3_4'); }
         if (Element.innerHTML === 'Работа' && Element.getAttribute('x') === '1316.65' && Element.getAttribute('y') === '187.93') { addSvgElem(Index, Element, 'M_t4_4'); }
-        if (Element.innerHTML === '2,40' && Element.getAttribute('x') === '1811.04' && Element.getAttribute('y') === '518.28') { addSvgElem(Index, Element, 'P_tryba_2_1'); }
-        if (Element.innerHTML === '2,40' && Element.getAttribute('x') === '1858.96' && Element.getAttribute('y') === '518.28') { addSvgElem(Index, Element, 'P_tryba_2_2'); }
-        if (Element.innerHTML === '2,39' && Element.getAttribute('x') === '1905.73' && Element.getAttribute('y') === '518.28') { addSvgElem(Index, Element, 'P_tryba_2_3'); }
-        if (Element.innerHTML === '2,40' && Element.getAttribute('x') === '1953.65' && Element.getAttribute('y') === '518.28') { addSvgElem(Index, Element, 'P_tryba_2_4'); }
+        if (Element.innerHTML === '2,40' && Element.getAttribute('x') === '1813.47' && Element.getAttribute('y') === '518.28') { addSvgElem(Index, Element, 'P_tryba_2_1'); }
+        if (Element.innerHTML === '2,40' && Element.getAttribute('x') === '1861.39' && Element.getAttribute('y') === '518.28') { addSvgElem(Index, Element, 'P_tryba_2_2'); }
+        if (Element.innerHTML === '2,39' && Element.getAttribute('x') === '1908.16' && Element.getAttribute('y') === '518.28') { addSvgElem(Index, Element, 'P_tryba_2_3'); }
+        if (Element.innerHTML === '2,40' && Element.getAttribute('x') === '1956.08' && Element.getAttribute('y') === '518.28') { addSvgElem(Index, Element, 'P_tryba_2_4'); }
 
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
@@ -277,7 +268,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('d') === 'm1152.61 808.2-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'kl_002'); }
         if (Element.getAttribute('d') === 'm957.81 359.24-36.45 21.88v-21.88l36.45 21.88z') { addSvgElem(Index, Element, 'kl_81'); }
         if (Element.getAttribute('d') === 'M497.4 887.89c2.58 0 4.68 2.1 4.68 4.69 0 2.59-2.1 4.69-4.68 4.69a4.69 4.69 0 0 1 0-9.38zm2.6 2.08a3.632 3.632 0 0 0-2.6-1.08c-1.02 0-1.95.42-2.61 1.08-.67.67-1.08 1.59-1.08 2.61 0 1.02.41 1.94 1.08 2.61.66.66 1.59 1.08 2.61 1.08a3.69 3.69 0 0 0 3.68-3.69c0-1.02-.41-1.94-1.07-2.61H500z') { addSvgElem(Index, Element, 'W g/m3'); }
-        if (Element.getAttribute('d') === 'm1306.77 925.91-36.46-21.87v21.87l36.46-21.87z') { addSvgElem(Index, Element, 'kl_722'); }
+        if (Element.getAttribute('d') === 'm1460.94 972.79-36.46-21.88v21.88l36.46-21.88z') { addSvgElem(Index, Element, 'kl_722'); }
 
         // if (Element.getAttribute('d') === 'm1494.27 899.87-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'kl_723'); }
         if (Element.getAttribute('d') === 'm1422.83 770.52 5.84-9.36 5.84-9.36h-23.37l5.84 9.36z') { addSvgElem(Index, Element, 'kl_723_t'); }
@@ -478,6 +469,9 @@ window.addEventListener('load', function () {
         // Sergey
         if (Element.getAttribute('d') === 'M1695.84 909.77h72.91v29.16h-72.91z') { addSvgElem(Index, Element, 'L2_elem'); }
         if (Element.getAttribute('d') === 'M23.96 771.22h87.5v32.3h-87.5z') { addSvgElem(Index, Element, 'EVD1_O_fon'); }
+        if (Element.getAttribute('d') === 'M6.25 403.52h259.38v23.95H6.25z') { addSvgElem(Index, Element, 'dostig_zad_level_fon'); }
+        if (Element.getAttribute('d') === 'm1494.27 899.87-23.96-33.33h23.96l-23.96 33.33z') { addSvgElem(Index, Element, 'kl_723'); }
+        if (Element.getAttribute('d') === 'm1306.77 925.91-36.46-21.87v21.87l36.46-21.87z') { addSvgElem(Index, Element, 'kl_721'); }
         // Ilay
         if (Element.getAttribute('d') === 'm1512.14 554.97-5.12 1.96 12.51-22.86 10.1 22.86-4.55-3.22 7.96 25.58-5.24-5.37-7.7 16.8-8.59-16.74-5.75 3.35z') { addSvgElem(Index, Element, 'vnk2_fire'); }
         if (Element.getAttribute('d') === 'M1505.8 544.97V557l-22.15 28.77c-2.52 3.27-3.72 6.81-3.72 10.94v11.21h77.35v-12.74c0-4.66-1.43-8.66-4.38-12.26l-20.55-25.18v-12.46h2.35l-.29-.91v-22.21c0-8.54-6.96-12.27-15.5-12.27h-.4c-8.53 0-15.5 3.73-15.5 12.27v22.81h2.79z') { addSvgElem(Index, Element, 'vnk_2'); }
@@ -2136,6 +2130,7 @@ window.addEventListener('load', function () {
         if (Element.getAttribute('transform') === 'matrix(1.24252 0 0 1 -560.095 -104.792)' && Element.innerHTML === 'Пуст') { addSvgElem(Index, Element, 'r_pust'); }
         if (Element.getAttribute('transform') === 'matrix(1.05071 0 0 1 500.85 365.119)' && Element.innerHTML === '1') { addSvgElem(Index, Element, 'v_pech_str3_str'); }
         if (Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 371.317 283.192)' && Element.innerHTML === 'Р') { addSvgElem(Index, Element, 'na_conveer_s1_bukca'); }
+        if (Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 371.819 283.778)' && Element.innerHTML === 'Р') { addSvgElem(Index, Element, 'na_conveer_s1_bukca'); }
         if (Element.innerHTML === 'К' && Element.getAttribute('transform') === 'matrix(1.21021 0 0 1 371.317 361.589)') { addSvgElem(Index, Element, 'str1_down'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
