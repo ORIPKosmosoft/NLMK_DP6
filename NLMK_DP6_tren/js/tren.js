@@ -339,12 +339,12 @@ function trenTimeTick(timeStamp) {
           }
         } else {
           if (nextAction.lifeTime) {
-            if (nextAction.startTime === 0) {
-              setLifeTime(nextAction.lifeTime);
-              change3DTime(devHelper.trenVals.timers.lifeTime);
-              changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime, });
-              updateSvgTextures();
-            } else startTimerToStep(nextAction.lifeTime, false);
+            // if (nextAction.startTime === 0) {
+            setLifeTime(nextAction.lifeTime);
+            change3DTime(devHelper.trenVals.timers.lifeTime);
+            changeSvgElem({ name: 'lifetime', text: devHelper.trenVals.timers.lifeTime, });
+            updateSvgTextures();
+            // } else startTimerToStep(nextAction.lifeTime, false);
           }
           if (nextAction.action && nextAction.action.window2D) {
             if (nextAction.action.window2D.elements) {
