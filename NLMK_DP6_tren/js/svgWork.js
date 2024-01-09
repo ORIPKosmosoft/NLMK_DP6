@@ -39,7 +39,7 @@ window.addEventListener('load', function () {
                                           ObjectSvg.name === 'gazoochistka' ? 'Газоочистка' :
                                             ObjectSvg.name === 'Shagi_upraleniya' ? 'Дополнительное окно' : 'Дополнительное окно';
 
-    if (ObjectSvg.name === 'dp1') {
+    if (ObjectSvg.name === 'BVNK_VNK11') {
       ObjectSvg.object.style.left = '0';
       ObjectSvg.object.style.top = '0';
       ObjectSvg.object.style.visibility = 'visible';
@@ -575,6 +575,16 @@ window.addEventListener('load', function () {
         if (Element.innerHTML === '0' && Element.getAttribute('x') === '1486.31' && Element.getAttribute('y') === '735.25') { addSvgElem(Index, Element, 'kl_118a_proc'); }
       })
       ObjectSvg.svg.querySelectorAll('path').forEach((Element, ElemIndex) => {
+        if (Element.getAttribute('d') === 'M1075.55 693.91h4.66v59.3h-4.66z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M1088.54 691.75h5.21v60.42h-5.21z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M1104.17 693.64h3.13v65.82h-3.13z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M1117.71 692.79h5.21v61.65h-5.21z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M1132.29 692.79h5.21v62.5h-5.21z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M1145.83 690.91h5.21v65.43h-5.21z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M1161.46 692.41h4.17v60.8h-4.17z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M1176.04 692.41h5.21v63.93h-5.21z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M1189.58 693.31h5.21v59.9h-5.21z') { addSvgElem(Index, Element, 'vnk_1'); }
+        if (Element.getAttribute('d') === 'M1205.21 691.75h4.17v61.46h-4.17z') { addSvgElem(Index, Element, 'vnk_1'); }
         if (Element.getAttribute('d') === 'M1004.17 466.75h277.11v45.68h-277.11z') { addSvgElem(Index, Element, 'VNK1_status_1_fon'); }
         if (Element.getAttribute('d') === 'm953.82 288.26-32.87-19.69v19.69l32.87-19.69z') { addSvgElem(Index, Element, '313'); }
         if (Element.getAttribute('d') === 'M1110.06 314.88v25.77l-47.47 61.65c-5.4 7.01-7.99 14.61-7.99 23.45v24.03H1220.37v-27.3c0-9.98-3.05-18.56-9.36-26.29l-44.06-53.95v-26.7h5.04l-.61-1.97v-47.58c0-18.3-14.93-26.31-33.23-26.31h-.84c-18.3 0-33.23 8.01-33.23 26.31v48.89h5.98z') { addSvgElem(Index, Element, 'vnk_1'); }
