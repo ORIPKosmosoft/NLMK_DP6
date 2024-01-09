@@ -1185,7 +1185,7 @@ const devHelper = {
   },
   //---------------------------
   dev: {
-    enable: false,
+    enable: true,
     perfomance: undefined,
     intervalFon: undefined,
     maxCountSvgElems: 0,
@@ -1205,10 +1205,11 @@ const devHelper = {
   }
 };
 
-const timeDiff = -0;
+const timeDiff = -106;
 let tempActions = [
   // Первый сценарий  
   [
+    /*
     {
       lifeTime: '07:30:00',
       chapterText: 'Отделение подогревателей воздуха и газа.',
@@ -1253,7 +1254,7 @@ let tempActions = [
             { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
             { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
             { name: 'btn_open_text', color: '#000' },
-            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000000' },
             { name: 'polozenie_text', text: '51' },
             { name: 'polozenie_button_text', color: '#000000' },
           ],
@@ -1615,7 +1616,7 @@ let tempActions = [
             { name: 'btn_open_text', color: '#666' },                        // afk
             { name: 'btn_open_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
             { name: 'btn_close_text', color: '#000' },
-            { name: 'btn_close_2', color: '#fff', stroke: '#000' },
+            { name: 'btn_close_2', color: '#fff', stroke: '#000000' },
             { name: 'polozenie_text', text: '51' },
             { name: 'polozenie_button_text', color: '#000000' },
           ],
@@ -1749,7 +1750,7 @@ let tempActions = [
             { name: 'circle_n_winVN', stroke: '#ff1e00' },
             { name: 'circle_n_winVN', stroke: '#ff1e00' },
             { name: 'btn_open_text', color: '#000' },
-            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000000' },
             { name: 'btn_close_text', color: '#666' },                        // afk
             { name: 'btn_close_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
           ],
@@ -1866,9 +1867,9 @@ let tempActions = [
             { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
             { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
             { name: 'btn_open_text', color: '#000' },
-            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000000' },
             { name: 'btn_close_text', color: '#000' },
-            { name: 'btn_close_2', color: '#fff', stroke: '#000' },
+            { name: 'btn_close_2', color: '#fff', stroke: '#000000' },
             { name: 'polozenie_text', text: '45' },
           ],
         },
@@ -2005,7 +2006,7 @@ let tempActions = [
             { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
             { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
             { name: 'btn_open_text', color: '#000' },
-            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000000' },
             { name: 'btn_close_text', color: '#666' },                        // afk
             { name: 'btn_close_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
             { name: 'kl037_proc', text: '0' },
@@ -2124,7 +2125,7 @@ let tempActions = [
             { name: 'btn_open_text', color: '#666' },                        // afk
             { name: 'btn_open_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
             { name: 'btn_close_text', color: '#000' },
-            { name: 'btn_close_2', color: '#fff', stroke: '#000' },
+            { name: 'btn_close_2', color: '#fff', stroke: '#000000' },
             { name: 'kl007_proc', text: '100' },
             { name: 'polozenie_text', text: '100' },
           ],
@@ -2262,7 +2263,7 @@ let tempActions = [
             { name: 'btn_ruchnoy_text', color: '#666' },                        // afk
             { name: 'btn_ruchnoy_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
             { name: 'btn_open_text', color: '#000' },
-            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000000' },
             { name: 'btn_close_text', color: '#666' },                        // afk
             { name: 'btn_close_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
             { name: 'kl007_proc', text: '0' },
@@ -2364,7 +2365,7 @@ let tempActions = [
             { name: 'btn_open_text', color: '#666' },                        // afk
             { name: 'btn_open_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
             { name: 'btn_close_text', color: '#000' },
-            { name: 'btn_close_2', color: '#fff', stroke: '#000' },
+            { name: 'btn_close_2', color: '#fff', stroke: '#000000' },
           ],
         },
         helper2D: [
@@ -2492,7 +2493,7 @@ let tempActions = [
             { name: 'polozenie_text', text: '0' },
             { name: 'status_window_text', text: 'Закрыт' },
             { name: 'polozenie_button_text', color: '#000' },        //  #6E6E6E //  #000;
-            { name: 'btn_open', color: '#fff', stroke: '#000' },     //  #C4C4C4 //  #fff       //  #000
+            { name: 'btn_open', color: '#fff', stroke: '#000000' },     //  #C4C4C4 //  #fff       //  #000
             { name: 'left_vn', color: '#ff1e00' },
             { name: 'right_vn', color: '#ff1e00' },
             { name: 'circle_kl028', stroke: '#ff1e00' },
@@ -2500,7 +2501,7 @@ let tempActions = [
             { name: 'circle_n_winVN', stroke: '#ff1e00' },
             { name: 'circle_n_winVN', stroke: '#ff1e00' },
             { name: 'btn_open_text', color: '#000' },
-            { name: 'btn_open_2', color: '#fff', stroke: '#000' },
+            { name: 'btn_open_2', color: '#fff', stroke: '#000000' },
             { name: 'btn_close_text', color: '#666' },                        // afk
             { name: 'btn_close_2', color: '#e6e6e6', stroke: '#b3b3b3' }, // afk
           ],
@@ -3025,6 +3026,7 @@ let tempActions = [
       },
       startTime: timeDiff + 106.62,
     },
+    */
     ////--------------------------------3----------------------------------------//19//-new
     {
       text: 'Настройка значения теоретической температуры горения.',
@@ -3051,7 +3053,7 @@ let tempActions = [
           elements: [
             { name: 'ws3_ttg', text: 'ТТГ' },
             { name: 'FprirGaz_text', stroke: '#c4bdb3' },
-            { name: 'TTG_text', stroke: '#000' },
+            { name: 'TTG_text', stroke: '#000000', color: '#000000' },
           ]
         },
         helper2D: [
@@ -3068,8 +3070,8 @@ let tempActions = [
         window2D: {
           elements: [
             { name: 'ws3_ttg', text: 'расход ПГ' },
-            { name: 'FprirGaz_text', stroke: '#000' },
-            { name: 'TTG_text', stroke: '#c4bdb3' },
+            { name: 'FprirGaz_text', stroke: '#000000' },
+            { name: 'TTG_text', stroke: '#c4bdb3', color: '#c4bdb3' },
           ]
         },
         helper2D: [
@@ -3178,14 +3180,13 @@ let tempActions = [
             { name: 'dP_verh', text: '0,22' },
             { name: 'dP_obsh_tryba', text: '1,74' },
             { name: 'dP_nish_tryba', text: '1,53' },
-            { name: 'TTG_zadanie', text: '2100' },
             { name: 'TTG_raschet', text: '2237' },
             { name: 'F_pg_prir_gaz', text: '33456' },
             { name: 'dF_pg_prir_gaz', text: '-57' },
             { name: 'L2', text: '1474' },
             { name: 'Dp_obsh', text: '1,60' },
             { name: 'F_prir_gaz_table', text: '37000' },
-            { name: 'TTG_zadanie', text: '2100' },
+            { name: 'TTG_zadanie', text: '2110' },
             { name: 'P_tryba_3_590', text: '2,48' },
             { name: 'P_tryba_3_591', text: '2,48' },
             { name: 'P_tryba_4_1', text: '4,18' },
@@ -3435,7 +3436,6 @@ let tempActions = [
             { name: 'L2', text: '1472' },
             { name: 'Dp_obsh', text: '1,60' },
             { name: 'F_prir_gaz_table', text: '37000' },
-            { name: 'TTG_zadanie', text: '2200' },
             { name: 'P_tryba_3_590', text: '2,48' },
             { name: 'P_tryba_3_591', text: '2,48' },
             { name: 'P_tryba_4_1', text: '4,11' },
@@ -3541,7 +3541,7 @@ let tempActions = [
           elements: [
             { name: 'ws3_ttg', text: 'ТТГ' },
             { name: 'FprirGaz_text', stroke: '#c4bdb3' }, //  #000  //  #c4bdb3
-            { name: 'TTG_text', stroke: '#000' },
+            { name: 'TTG_text', stroke: '#000000', color: '#000000' },
           ]
         },
       },
@@ -3650,7 +3650,6 @@ let tempActions = [
             { name: 'L2', text: '1472' },
             { name: 'Dp_obsh', text: '1,60' },
             { name: 'F_prir_gaz_table', text: '37000' },
-            { name: 'TTG_zadanie', text: '2200' },
             { name: 'P_tryba_3_590', text: '2,48' },
             { name: 'P_tryba_3_591', text: '2,48' },
             { name: 'P_tryba_4_1', text: '4,11' },
@@ -4216,9 +4215,9 @@ let tempActions = [
           elements: [
             { name: 'vb_otkr_klap2_rect', color: '#e3d4ce' },
             { name: 'kl_11_rect', color: '#06FF06' },
-            { name: 'avarin_otd_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'avarin_otd_rect', color: '#fff', stroke: '#000000' },     // color: '#e6e6e6', stroke: '#808080'
             { name: 'otdel_nagrev', color: '#e6e6e6', stroke: '#808080' },
-            { name: 'nagrev_otd_2_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'nagrev_otd_2_rect', color: '#fff', stroke: '#000000' },     // color: '#e6e6e6', stroke: '#808080'
             { name: 'otdel_dute', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
             { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
             { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
@@ -5234,12 +5233,12 @@ let tempActions = [
     //         { name: 'vb_otkr_klap2_rect', color: '#e3d4ce' },
     //         { name: 'kl_11_rect', color: '#06FF06' },
     //         { name: 'avarin_otd_rect', color: '#e6e6e6', stroke: '#808080' },
-    //         { name: 'otdel_nagrev', color: '#fff', stroke: '#000' },
+    //         { name: 'otdel_nagrev', color: '#fff', stroke: '#000000' },
     //         { name: 'nagrev_otd_2_rect', color: '#e6e6e6', stroke: '#808080' },
-    //         { name: 'otdel_dute', color: '#fff', stroke: '#000' },            // color: '#e6e6e6', stroke: '#808080'
+    //         { name: 'otdel_dute', color: '#fff', stroke: '#000000' },            // color: '#e6e6e6', stroke: '#808080'
     //         { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },
     //         { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },
-    //         { name: 'otd2_otd_rect', color: '#fff', stroke: '#000' },
+    //         { name: 'otd2_otd_rect', color: '#fff', stroke: '#000000' },
     //       ]
     //     }
     //   },
@@ -5569,9 +5568,9 @@ let tempActions = [
             { name: 'rect_117', position: { y: 0 }, color: '#06f322' },
             { name: 'rect_111', position: { y: 0 }, color: '#06f322' },
             { name: 'rect_112', position: { y: 0 }, color: '#06f322' },
-            { name: 'avarin_otd_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'avarin_otd_rect', color: '#fff', stroke: '#000000' },     // color: '#e6e6e6', stroke: '#808080'
             { name: 'otdel_nagrev', color: '#e6e6e6', stroke: '#808080' },
-            { name: 'nagrev_otd_2_rect', color: '#fff', stroke: '#000' },     // color: '#e6e6e6', stroke: '#808080'
+            { name: 'nagrev_otd_2_rect', color: '#fff', stroke: '#000000' },     // color: '#e6e6e6', stroke: '#808080'
             { name: 'otdel_dute', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
             { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
             { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },      // color: '#e6e6e6', stroke: '#808080'
@@ -6731,12 +6730,12 @@ let tempActions = [
     //     window2D: {
     //       elements: [
     //         { name: 'avarin_otd_rect', color: '#e6e6e6', stroke: '#808080' },
-    //         { name: 'otdel_nagrev', color: '#fff', stroke: '#000' },
+    //         { name: 'otdel_nagrev', color: '#fff', stroke: '#000000' },
     //         { name: 'nagrev_otd_2_rect', color: '#e6e6e6', stroke: '#808080' },
-    //         { name: 'otdel_dute', color: '#fff', stroke: '#000' },            // color: '#e6e6e6', stroke: '#808080'
+    //         { name: 'otdel_dute', color: '#fff', stroke: '#000000' },            // color: '#e6e6e6', stroke: '#808080'
     //         { name: 'dute_otdel', color: '#e6e6e6', stroke: '#808080' },
     //         { name: 'otdel_otdel2', color: '#e6e6e6', stroke: '#808080' },
-    //         { name: 'otd2_otd_rect', color: '#fff', stroke: '#000' },
+    //         { name: 'otd2_otd_rect', color: '#fff', stroke: '#000000' },
     //       ]
     //     }
     //   },
@@ -25832,7 +25831,7 @@ let startState2D = [
     { name: 'dP_verh', text: '0,22' },
     { name: 'dP_obsh_tryba', text: '1,77' },
     { name: 'dP_nish_tryba', text: '1,51' },
-    { name: 'TTG_zadanie', text: '2100' },
+    { name: 'TTG_zadanie', text: '2110' },
     { name: 'TTG_raschet', text: '2122' },
     { name: 'F_pg_prir_gaz', text: '28869' },
     { name: 'dF_pg_prir_gaz', text: '-191' },
